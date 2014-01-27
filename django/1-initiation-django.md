@@ -79,6 +79,8 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 
 # Tutoriel fil rouge : une gestion de *Todo lists*
 
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # Installer Django
@@ -290,6 +292,12 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
 ![L'interface d'administration Django](./admin.png)
 
 .fx: imageslide
+
+--------------------------------------------------------------------------------
+
+# Tutoriel fil rouge : créer l'application *todo*, le modèle *tâche*, et activer l'application
+
+.fx: alternate
 
 --------------------------------------------------------------------------------
 
@@ -631,6 +639,12 @@ La vue aura en argument l'objet ``HttpRequest``, puis les valeurs trouvées dans
 
 --------------------------------------------------------------------------------
 
+# Tutoriel fil rouge : créer la vue *listes des tâches* et "détail d'une tâche"
+
+.fx: alternate
+
+--------------------------------------------------------------------------------
+
 # Les formulaires
 
 --------------------------------------------------------------------------------
@@ -764,6 +778,8 @@ Le fonctionnement est assez semblable à celui des formulaires classiques à que
 
 # Tutoriel : Créer les vues d'ajout / modification / détail d'une tâche
 
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # Relations entre les modèles
@@ -847,6 +863,8 @@ Un livre est associé à un seul code barre, un code barre correspond à un seul
 --------------------------------------------------------------------------------
 
 # Tutoriel : Mettre en place une modélisation gérant des listes de tâches partagées entre utilisateurs
+
+.fx: alternate
 
 --------------------------------------------------------------------------------
 
@@ -964,6 +982,8 @@ Supprimer l'association de livres à une catégorie :
 
 # Tutoriel : Mettre en place un formulaire de filtrage de listes et de tâches
 
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # Pour finir ...
@@ -1030,3 +1050,8 @@ Supprimer l'association de livres à une catégorie :
 * Djangocong : Conférence annuelle française
 * Djangocon-eu : Conférence annuelle européenne
 * D'autres Djangocon un peu partout dans le monde
+
+--------------------------------------------------------------------------------
+
+# Merci !
+

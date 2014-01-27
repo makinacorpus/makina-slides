@@ -179,11 +179,13 @@ div.blackheading h1 {color: black !important;}
 
 /* ----- First slide ----- */
 
+.slides .slide-wrapper:last-child .slide,
 .slides .slide-wrapper:first-child .slide {
   background: url(../logo-black.png) 250px 300px no-repeat;
   padding-top: 0px;
 }
 
+.slides .slide-wrapper:last-child .slide header:only-child h1,
 .slides .slide-wrapper:first-child .slide header:only-child h1 {
   height: 400px !important;
 }

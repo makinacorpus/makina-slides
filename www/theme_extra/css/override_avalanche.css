@@ -60,12 +60,20 @@ blockquote p {
   border-radius: 5px;
 }
 
-/* ----- First slide ----- */
+/* ----- Alternate color for only H1 slides ----- */
 
+.slide.alternate header:only-child h1 {
+  color: #c9015a;
+}
+
+/* ----- First slide and last slide ----- */
+
+.slides .slide-wrapper:last-child .slide,
 .slides .slide-wrapper:first-child .slide {
   background: url(theme_extra/logo.png) 283px 375px no-repeat;
 }
 
+.slides .slide-wrapper:last-child .slide header:only-child h1,
 .slides .slide-wrapper:first-child .slide header:only-child h1 {
   height: 550px;
 }
