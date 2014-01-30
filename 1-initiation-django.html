@@ -2451,7 +2451,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 <span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">ListView</span>
 <span class="kn">from</span> <span class="nn">todo.models</span> <span class="kn">import</span> <span class="n">Task</span>
 
-<span class="k">class</span> <span class="nc">TasKView</span><span class="p">(</span><span class="n">ListView</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">TaskList</span><span class="p">(</span><span class="n">ListView</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Task</span>
 </pre></div>
 </section>
@@ -2486,9 +2486,9 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             <section><div class="highlight"><pre>{# todo/templates/todo/task_list.html #}
 <span class="nt">&lt;h1&gt;</span>Liste des tâches<span class="nt">&lt;/h1&gt;</span>
-{% if tasks %}
+{% if object_list %}
   <span class="nt">&lt;ul&gt;</span>
-    {% for task in tasks %}
+    {% for task in object_list %}
       <span class="nt">&lt;li&gt;</span>{{ task }}<span class="nt">&lt;/li&gt;</span>
     {% endfor %}
   <span class="nt">&lt;/ul&gt;</span>
@@ -2529,9 +2529,9 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <section><h2>Déclaration d'une URL</h2>
 <div class="highlight"><pre><span class="c"># todo/urls.py</span>
 <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">include</span><span class="p">,</span> <span class="n">url</span>
-<span class="kn">from</span> <span class="nn">todo.views</span> <span class="kn">import</span> <span class="n">TaskView</span>
+<span class="kn">from</span> <span class="nn">todo.views</span> <span class="kn">import</span> <span class="n">TaskList</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^task_list$&#39;</span><span class="p">,</span> <span class="n">TaskView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;task_list&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^task_list$&#39;</span><span class="p">,</span> <span class="n">TaskList</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;task_list&#39;</span><span class="p">),</span>
 <span class="p">)</span>
 </pre></div>
 
@@ -2785,7 +2785,10 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             
             <section><p>C'est un simple fichier texte qui peut générer n'importe quel format de texte (HTML, XML, CSV, ...).</p>
-<p>Une template a accès à des <strong>variables</strong> qui lui auront été passées via un <strong>contexte</strong> par la vue.</p></section>
+<p>Une template a accès à des <strong>variables</strong> qui lui auront été passées via un <strong>contexte</strong> par la vue.</p>
+<h2>Où écrire ses templates ?</h2>
+<p>Les templates peuvent être écrites dans chaque application, dans un répertoire <code>&lt;application&gt;/templates/&lt;application&gt;</code>.</p>
+<p>Le mécanisme de Django <code>template loader</code> découvre et charge ces templates automatiquement.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2867,8 +2870,8 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 <div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">list</span> <span class="o">%</span><span class="p">}</span> <span class="o">..</span> <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
 </pre></div>
 
-<h3>Cache de variable <em>with</em> :</h3>
-<div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">with</span> <span class="n">total</span><span class="o">=</span><span class="nb">list</span><span class="o">.</span><span class="n">count</span> <span class="o">%</span><span class="p">}</span> <span class="p">{{</span> <span class="n">total</span> <span class="p">}}</span> <span class="p">{</span><span class="o">%</span> <span class="n">endwith</span> <span class="o">%</span><span class="p">}</span>
+<h3>Un lien avec <em>url</em> :</h3>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{% url &#39;book_detail&#39; book.pk %}&quot;</span><span class="nt">&gt;</span>Django book<span class="nt">&lt;/a&gt;</span>
 </pre></div>
 
 <p>Django fournit aussi plusieurs tags nativement et il est possible d'écrire ses propres tags.</p></section>
@@ -2933,7 +2936,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <header><h1>Exemple de template <em>parent</em></h1></header>
             
             
-            <section><div class="highlight"><pre>{# base.html #}
+            <section><div class="highlight"><pre>{# templates/base.html #}
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;title&gt;</span>
@@ -2993,9 +2996,9 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 {% endblock %}
 
 {% block content %}
-  {% if tasks %}
+  {% if object_list %}
     <span class="nt">&lt;ul&gt;</span>
-      {% for task in tasks %}
+      {% for task in object_list %}
         <span class="nt">&lt;li&gt;</span>{{ task }}<span class="nt">&lt;/li&gt;</span>
       {% endfor %}
     <span class="nt">&lt;/ul&gt;</span>
@@ -3148,9 +3151,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             
             <section><h2>URL sans paramètre</h2>
-<div class="highlight"><pre><span class="n">url</span><span class="p">(</span><span class="s">r&#39;^myview$&#39;</span><span class="p">,</span>
-    <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span>
-    <span class="n">name</span><span class="o">=</span><span class="s">&#39;myview&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">url</span><span class="p">(</span><span class="s">r&#39;^myview$&#39;</span><span class="p">,</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;myview&#39;</span><span class="p">)</span>
 </pre></div>
 
 <p>La vue aura en argument seulement l'objet <code>HttpRequest</code>.</p>
@@ -3160,7 +3161,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
     <span class="n">name</span><span class="o">=</span><span class="s">&#39;myview_by_month&#39;</span><span class="p">),</span>
 </pre></div>
 
-<p>La vue aura en argument l'objet <code>HttpRequest</code>, puis les valeurs trouvées dans l'expression régulière (ex: <code>year=2014, month=12</code>).</p></section>
+<p>La vue aura en argument l'objet <code>HttpRequest</code>, puis les valeurs trouvées dans l'expression régulière (ex: <code>request, year=2014, month=12</code>).</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3235,7 +3236,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         <div class="slide alternate">
           <div class="inner">
             
-            <header><h1>Tutoriel fil rouge : créer la vue <em>listes des tâches</em> et "détail d'une tâche"</h1></header>
+            <header><h1>Tutoriel fil rouge : créer la vue <em>listes des tâches</em> et <em>détail d'une tâche</em></h1></header>
             
             
           </div>
@@ -3378,6 +3379,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             <section><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">myapp.forms</span> <span class="kn">import</span> <span class="n">ContactForm</span>
 
 <span class="k">def</span> <span class="nf">contact</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span><span class="p">:</span>
@@ -3589,7 +3591,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         <div class="slide alternate">
           <div class="inner">
             
-            <header><h1>Tutoriel : Créer les vues d'ajout / modification / détail d'une tâche</h1></header>
+            <header><h1>Tutoriel : Créer les vues d'ajout et modification d'une tâche</h1></header>
             
             
           </div>
@@ -3779,8 +3781,8 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 
 <span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-    <span class="n">barcode</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">BarCode</span><span class="p">,</span>
-                                     <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;book&#39;</span><span class="p">)</span>
+    <span class="n">barcode</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">BarCode</span><span class="p">,</span>
+                                   <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;book&#39;</span><span class="p">)</span>
 </pre></div>
 </section>
             
@@ -4105,7 +4107,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         <div class="slide alternate">
           <div class="inner">
             
-            <header><h1>Tutoriel : Mettre en place un formulaire de filtrage de listes et de tâches</h1></header>
+            <header><h1>Tutoriel : Mettre en place un formulaire de filtrage de tâches</h1></header>
             
             
           </div>
@@ -4617,7 +4619,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
       
       
       <tr id="toc-row-43">
-        <th><a href="#slide43">Tutoriel fil rouge : créer la vue <em>listes des tâches</em> et "détail d'une tâche"</a></th>
+        <th><a href="#slide43">Tutoriel fil rouge : créer la vue <em>listes des tâches</em> et <em>détail d'une tâche</em></a></th>
         <td><a href="#slide43">43</a></td>
       </tr>
       
@@ -4671,7 +4673,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
       
       
       <tr id="toc-row-52">
-        <th><a href="#slide52">Tutoriel : Créer les vues d'ajout / modification / détail d'une tâche</a></th>
+        <th><a href="#slide52">Tutoriel : Créer les vues d'ajout et modification d'une tâche</a></th>
         <td><a href="#slide52">52</a></td>
       </tr>
       
@@ -4755,7 +4757,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
       
       
       <tr id="toc-row-66">
-        <th><a href="#slide66">Tutoriel : Mettre en place un formulaire de filtrage de listes et de tâches</a></th>
+        <th><a href="#slide66">Tutoriel : Mettre en place un formulaire de filtrage de tâches</a></th>
         <td><a href="#slide66">66</a></td>
       </tr>
       
