@@ -312,7 +312,7 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
     from django.views.generic import ListView
     from todo.models import Task
 
-    class TasKView(ListView):
+    class TaskList(ListView):
         model = Task
 
 --------------------------------------------------------------------------------
@@ -322,9 +322,9 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
     !html
     {# todo/templates/todo/task_list.html #}
     <h1>Liste des tâches</h1>
-    {% if tasks %}
+    {% if object_list %}
       <ul>
-        {% for task in tasks %}
+        {% for task in object_list %}
           <li>{{ task }}</li>
         {% endfor %}
       </ul>
@@ -342,9 +342,9 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
     !python
     # todo/urls.py
     from django.conf.urls import patterns, include, url
-    from todo.views import TaskView
+    from todo.views import TaskList
     urlpatterns = patterns('',
-        url(r'^task_list$', TaskView.as_view(), name='task_list'),
+        url(r'^task_list$', TaskList.as_view(), name='task_list'),
     )
 
 ## Inclusion des URLs de l'application au projet
@@ -441,6 +441,12 @@ C'est un simple fichier texte qui peut générer n'importe quel format de texte 
 
 Une template a accès à des **variables** qui lui auront été passées via un **contexte** par la vue.
 
+## Où écrire ses templates ?
+
+Les templates peuvent être écrites dans chaque application, dans un répertoire ``<application>/templates/<application>``.
+
+Le mécanisme de Django ``template loader`` découvre et charge ces templates automatiquement.
+
 --------------------------------------------------------------------------------
 
 # Base de la syntaxe de template
@@ -481,10 +487,10 @@ Les **tags** sont plus complexes que les variables, ils peuvent créer du texte 
     {% for item in list %} .. {% endfor %}
 
 
-### Cache de variable *with* :
+### Un lien avec *url* :
 
-    !python
-    {% with total=list.count %} {{ total }} {% endwith %}
+    !html
+    <a href="{% url 'book_detail' book.pk %}">Django book</a>
 
 Django fournit aussi plusieurs tags nativement et il est possible d'écrire ses propres tags.
 
@@ -503,7 +509,7 @@ Dans une template *enfant*, la balise ``{% extends %}`` permet de préciser de q
 # Exemple de template *parent*
 
     !html
-    {# base.html #}
+    {# templates/base.html #}
     <html>
       <head>
         <title>
@@ -538,9 +544,9 @@ Dans une template *enfant*, la balise ``{% extends %}`` permet de préciser de q
     {% endblock %}
 
     {% block content %}
-      {% if tasks %}
+      {% if object_list %}
         <ul>
-          {% for task in tasks %}
+          {% for task in object_list %}
             <li>{{ task }}</li>
           {% endfor %}
         </ul>
@@ -597,9 +603,7 @@ Souvent, l'*URLconf* racine inclura les modules URLconf de chaque application :
 ## URL sans paramètre
     
     !python
-    url(r'^myview$',
-        MyView.as_view(),
-        name='myview')
+    url(r'^myview$', MyView.as_view(), name='myview')
 
 La vue aura en argument seulement l'objet ``HttpRequest``.
 
@@ -610,7 +614,7 @@ La vue aura en argument seulement l'objet ``HttpRequest``.
         MyViewByMonth.as_view(),
         name='myview_by_month'),
 
-La vue aura en argument l'objet ``HttpRequest``, puis les valeurs trouvées dans l'expression régulière (ex: ``year=2014, month=12``).
+La vue aura en argument l'objet ``HttpRequest``, puis les valeurs trouvées dans l'expression régulière (ex: ``request, year=2014, month=12``).
 
 --------------------------------------------------------------------------------
 
@@ -639,7 +643,7 @@ La vue aura en argument l'objet ``HttpRequest``, puis les valeurs trouvées dans
 
 --------------------------------------------------------------------------------
 
-# Tutoriel fil rouge : créer la vue *listes des tâches* et "détail d'une tâche"
+# Tutoriel fil rouge : créer la vue *listes des tâches* et *détail d'une tâche*
 
 .fx: alternate
 
@@ -687,6 +691,7 @@ Les concepts principaux sont les suivants:
     !python
     from django.shortcuts import render
     from django.http import HttpResponseRedirect
+    from myapp.forms import ContactForm    
 
     def contact(request):
         if request.method == 'POST':
@@ -776,7 +781,7 @@ Le fonctionnement est assez semblable à celui des formulaires classiques à que
 
 --------------------------------------------------------------------------------
 
-# Tutoriel : Créer les vues d'ajout / modification / détail d'une tâche
+# Tutoriel : Créer les vues d'ajout et modification d'une tâche
 
 .fx: alternate
 
@@ -857,8 +862,8 @@ Un livre est associé à un seul code barre, un code barre correspond à un seul
 
     class Book(models.Model):
         title = models.CharField(max_length=100)
-        barcode = models.ManyToManyField(BarCode,
-                                         related_name='book')
+        barcode = models.OneToOneField(BarCode,
+                                       related_name='book')
 
 --------------------------------------------------------------------------------
 
@@ -980,7 +985,7 @@ Supprimer l'association de livres à une catégorie :
 
 --------------------------------------------------------------------------------
 
-# Tutoriel : Mettre en place un formulaire de filtrage de listes et de tâches
+# Tutoriel : Mettre en place un formulaire de filtrage de tâches
 
 .fx: alternate
 
