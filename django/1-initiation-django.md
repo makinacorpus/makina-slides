@@ -1,5 +1,7 @@
 # Initiation à Django
 
+.fx: logolicence
+
 --------------------------------------------------------------------------------
 
 > La Plateforme de développement Web pour les perfectionnistes sous pression.
