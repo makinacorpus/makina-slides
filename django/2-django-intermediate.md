@@ -1545,6 +1545,228 @@ ou même d'écrire son propre formulaire et de le déclarer dans le ``ModelAdmin
 
     admin.site.register(Book, BookAdmin)
 
+
 --------------------------------------------------------------------------------
 
+# Tutoriel : Personnaliser légèrement l'interface d'administration
+
+.fx: alternate
+
+--------------------------------------------------------------------------------
+
+# Introduction aux tests
+
+--------------------------------------------------------------------------------
+
+# Arborescence
+
+Une architecture conseillée pour organiser les tests d'une application est
+de créer, dans un dossier ``tests``, un fichier de tests
+(``test_views.py``, ``test_models.py``, ...) par fichier de
+l'application (``views.py``, ``models.py``, ...).
+
+    !console
+    ├── todo
+    │   ├── __init__.py
+    │   ├── forms.py
+    │   ├── models.py
+    │   ├── views.py
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   ├── test_forms.py
+    │   │   ├── test_models.py
+    │   │   └── test_views.py
+
+Les tests unitaires sont les premières briques indispensables pour garantir une
+application fiable et éviter les régressions au fil du temps.
+
+--------------------------------------------------------------------------------
+
+# Tester un modèle
+
+## Le modèle
+
+Voici un modèle très basique :
+
+    !python
+    # models.py
+
+    class Author(models.Model):
+        firstname = forms.CharField(max_length=100, null=True, blank=True)
+        lastname = forms.CharField(max_length=100)
+
+        def __unicode__(self):
+            if self.firstname:
+                return u'%s %s' % (self.firstname, self.lastname)
+            else:
+                return self.lastname
+
+L'idée n'est pas de tester Django (création d'instance, vérification que les 
+différents fonctionnent, ...) mais bien de tester notre code personnel. Ici,
+seule la fonction ``__unicode__`` est donc à tester.
+
+Il faut prendre soin de tester les différents cas possibles d'exécution ( en
+l'occurrence, la présence d'un ``firstname`` ou non).
+
+
+--------------------------------------------------------------------------------
+
+# Tester un modèle
+
+## Le test
+
+    !python
+    # tests/test_models.py
+    from django.test import TestCase
+    from my_app.models import Author
+
+    class AuthorTest(TestCase):
+
+        def test_unicode(self):
+
+            # Test with first_name
+            a = Author.objects.create(firstname='John', lastname='DOE')
+            self.assertEqual(a.__unicode__(), 'John DOE')
+
+            # Test without first_name
+            a = Author.objects.create(lastname='DOE')
+            self.assertEqual(a.__unicode__(), 'DOE')
+
+--------------------------------------------------------------------------------
+
+# Tester un formulaire
+
+## Le formulaire
+
+En reprenant un exemple de formulaire vu précédemment :
+
+    !python
+    # forms.py
+
+    class PeriodForm(forms.Form):
+        begin = forms.DateField()
+        end = forms.DateField()
+
+        def __init__(self, *args, **kwargs):
+            super(PeriodForm, self).__init__(*args, **kwargs)
+
+            begin = self.initial.get('begin', None)
+            if begin:
+                self.initial['end'] = begin + delta(months=1)
+
+
+Comme pour le modèle, l'idée n'est pas de tester ce qui est du ressort de Django.
+Ici, il est simplement nécessaire de s'assurer que la fonction ``__init__``fonctionne correctement dans les différents cas possibles (présence ou non d'une valeur
+initiale pour le champ ``begin``).
+
+--------------------------------------------------------------------------------
+
+# Tester un formulaire
+
+## Le test
+
+    !python
+    # tests/test_forms.py
+    from django.test import TestCase
+    from my_app.forms import PeriodForm
+
+    class PeriodFormTest(TestCase):
+
+        def test_init(self):
+
+            # Test without 'begin' initial value
+            f = PeriodForm()
+            self.assertIsNone(f.initial.get('end'))
+
+            # Test witht 'begin' initial value
+            initial = {'begin': date(2014, 01, 01)}
+            f = PeriodForm(initial=initial)
+            self.assertEqual(f.initial.get('end'), date(2014, 01, 01))
+
+--------------------------------------------------------------------------------
+
+# Tester une vue
+
+## La vue
+
+Voici un exemple de vue assez basique, une liste de *nouveaux* livres :
+
+    !python
+    from django.core.exceptions import PermissionDenied
+
+    def new_book_list(request):
+        
+        results = Book.objects.filter(release__lte=date(2014, 01, 01))
+        
+        return render(
+            'books/book_list.html',
+            {
+                'results': results
+            })
+
+Bien que ce type de requête est plus souvent réalisé dans un ``Manager``, il
+est ici intéressant de vérifier :
+
+1. que la vue fonctionne correctement (pas d'erreur 500);
+2. que la requête renvoit les résultats attendus.
+
+--------------------------------------------------------------------------------
+
+# Tester une vue
+
+## Le test
+
+    !python
+    # tests/test_views.py
+    from django.test import TestCase
+    from django.core.urlresolvers import reverse
+
+    class BookViewsTest(TestCase):
+
+        def test_new_book_list(self):
+
+            b1 = Book.objects.create(title='Foo', release=date(2013, 06, 22))
+            b2 = Book.objects.create(title='Bar', release=date(2014, 02, 01))
+
+            url = reverse('book_list')
+            self.client.get(url)
+
+            # HTTP response is OK
+            self.assertEqual(resp.status_code, 200)
+            # b1 must not be in results (not a new book)
+            self.assertNotIn(b1.title, resp.content)
+            # b2 must be in results (new book !)
+            self.assertIn(b2.title, resp.content)
+
+
+--------------------------------------------------------------------------------
+
+# Exécuter les tests
+
+Dans un premier temps, la solution la plus simple est de laisser Django 
+jouer les tests.
+
+    !console
+    $ ./manage.py test
+    
+    test_unicode (my_app.tests.AuthorTest) ... ok
+    test_init (my_app.tests.PeriodFormTest) ... ok
+    test_new_book_list (my_app.tests.BookViewsTest) ... ok
+
+    ----------------------------------------------------------------------
+    Ran 3 tests in 0.753s
+
+Pour aller plus loin, il est intéressant :
+
+* de lancer les tests via ``coverage``, qui calcule et détaille la couverture de tests de l'application ou du projet ;
+* d'utiliser des outils de tests plus haut niveau (PyTest, WebTest) ;
+* d'automatiser le lancement de la suite de tests via Jenkins et django-jenkins par exemple.
+
+--------------------------------------------------------------------------------
+
+# Tutoriel : Test all the things !
+
+.fx: alternate
+
+--------------------------------------------------------------------------------
 # Merci !
