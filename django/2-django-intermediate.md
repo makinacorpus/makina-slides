@@ -753,10 +753,10 @@ de l'application.
 
 
     !console
-    ├── todo
+    ├── my_app
+    │   ├── __init__.py
     │   ├── admin.py
     │   ├── forms.py
-    │   ├── __init__.py
     │   ├── models.py
     │   ├── templatetags
     │   │   ├── __init__.py
@@ -881,9 +881,179 @@ filter (nécessaire si le filtre introduit du HTML).
 
 # Gestion des fichiers
 
-* Upload
-* Media
-* Static
+--------------------------------------------------------------------------------
+
+# Introduction à la gestion des fichiers statiques
+
+Les sites web ont très souvent besoin de servir des fichier dits *statiques*, 
+principalement des images, CSS et JS.
+
+Django fournit un module ``django.contrib.staticfiles`` qui facilite cette gestion.
+
+## Quelques réglages
+
+Comme toujours, pour l'application soit utilisable, il faut qu'elle soit présente
+dans les ``INSTALLED_APPS`` du projet.
+
+``STATIC_URL`` permet ensuite de spécifier l'URL à partir de laquelle ces fichiers
+statiques seront disponibles.
+
+    !python
+    # settings.py
+    INSTALLED_APPS = (
+      ...
+      'django.contrib.staticfiles',
+      ...
+    )
+
+    STATIC_URL = '/static/'
+
+
+--------------------------------------------------------------------------------
+
+# Gérer les fichiers statiques
+
+## Stockage
+
+Les fichiers statiques doivent être stockés dans un répertoire ``static`` de
+l'application. Les scripts par défaut configurés dans ``STATICFILES_FINDERS`` (cf ``settings.py``) pourront alors retrouver les fichiers statiques de chaque application.
+
+Il est aussi possible de stocker des fichiers statiques dans d'autres dossiers. 
+Il faut alors ceux-ci dans un réglage particulier : ``STATICFILES_DIRS``.
+
+La commande ``collectstatic`` permet d'aggréger ces fichiers dans un répoertoire
+unique à la racine du projet :
+
+    !console
+    $ ./manage.py collecstatic
+
+--------------------------------------------------------------------------------
+
+# Utiliser les fichiers statiques
+
+## Dans les templates
+
+Le tag ``{% static %}`` permet de créer une URL dynamiquement vers un fichier
+statique.
+
+Exemple pour une image :
+
+    !python
+    {# my_app/templates/my_app/my_template.html #}
+    {% load staticfiles %}
+    ...
+    <img src="{% static "my_app/img/myexample.jpg" %}" alt="My image"/>
+
+Exemple pour un CSS :
+
+    !python
+    {# base.html #}
+    {% load staticfiles %}
+    <html>
+      <head>
+        <link href="{% static "my_app/css/styles.css" %}" />
+
+--------------------------------------------------------------------------------
+
+# Servir les fichiers statiques
+
+## En développement
+
+En cours de développement (``DEBUG = True``), la serveur *standalone* de Django
+se charge de servir les fichier statiques lui-même via une vue dédie : 
+``django.contrib.staticfiles.views.serve``.
+
+Cette méthode est peu efficace et peu sécurisée, et ne doit pas être utilisée
+en production
+
+## En production
+
+Un réglage supplémentaire, ``STATIC_ROOT``, permet de spécifier le chemin vers
+le répertoire des fichier statiques sur le système de fichiers.
+
+Grâce à ce réglage, la commande ``collectstatic`` copie tous les fichier statiques
+vers le chemin précisé.
+
+Il suffit ensuite de paramétrer le serveur web pour qu'il serve lui-meme ces fichiers.
+
+--------------------------------------------------------------------------------
+
+# Gérer les fichiers media
+
+Les fichiers dits *media* sont les fichiers uploadés par les utilisateurs.
+
+Comme pour les statiques, deux réglages principaux sont à connaître :
+
+* ``MEDIA_URL`` : URL à laquelle il faut mettre à disposition les fichiers media
+* ``MEDIA_ROOT`` : chemin vers lequel les fichiers media doivent être stockés
+
+De manière interne, la gestion des fichiers est faite via le module ``django.core.files``
+qui apporte notamment une classe ``File`` et des sous-classes comme ``ImageFile`` 
+disposant de propriétés (``name``, ``size``, ...) et de méthodes très utiles
+(``open()``, ``read()``, ``save()``).
+
+--------------------------------------------------------------------------------
+
+## Utiliser les fichiers media dans les modèles
+
+Deux champs ``FileField`` et ``ImageField`` sont fournis pour pouvoir associer
+facilement un fichier ou une image à une instance de modèle.
+
+## Exemple
+
+    !python
+    # models.py
+
+    class Book(models.Model):
+        # ...
+        summary = models.FileField(upload_to='summaries')
+
+    class Author(models.Model):
+        # ...
+        photo = models.ImageField(upload_to='avatars')
+
+Les instance de ```Book`` pourront donc chacun avoir un fichier attaché :
+
+    !python
+    >>> book = Book.objects.get(pk=12)
+    >>> book.summary
+    <FieldFile: summaries/summary_12.pdf>
+    >>> book.summary.url
+    u'http://my_site.com/media/summaries/summary_12.pdf'
+
+
+--------------------------------------------------------------------------------
+
+## Utiliser les fichiers media dans les formulaires
+
+Il existe des champs de formulaires correspondant aux champs de modèles vus précédemment.
+Il  est donc très facile d'obtenir un champ d'upload dans un formulaire.
+
+    !python
+    # forms.py
+    class MyForm(forms.Form):
+        # ...
+        my_file = forms.FileField()
+
+
+L'utilisation de ce type de formulaire impliquent quelques spécificités.
+Dans la vue, l'objet ``request.FILES`` doit être fourni à l'initialisation du
+formulaire :
+
+    !python
+    # views.py
+    def my_view(request):
+        # ...
+        form = MyForm(request.POST, request.FILES)
+        # ...
+
+Dans la template, il faut préciser l'attribut ``enctype`` du ``<form>`` :
+
+    !python
+    {# my_app/templates/my_app/my_form_template.html #}
+    <form action="" enctype="multipart/form-data" method="POST">
+     ...
+    </form>
 
 --------------------------------------------------------------------------------
 
@@ -894,10 +1064,10 @@ filter (nécessaire si le filtre introduit du HTML).
 # Quelques réglages
 
 Plusieurs réglages dans ``settings.py`` permettent d'activer ou non certaines
-fonctionnalités liés à l'internationalisation et la localisation :
+fonctionnalités liées à l'internationalisation et la localisation :
 
 * ``USE_I18N`` : active ou non le module de traduction
-* ``USE_L10N`` : active ou non l'affichages des dates et des nombres selon la langue
+* ``USE_L10N`` : active ou non l'affichage des dates et des nombres selon la langue
 * ``USE_TZ`` : active ou non la gestion des fuseaux horaires
 * ``LANGUAGE_CODE`` : langue par défaut
 * ``LANGUAGES`` : liste des langues connues par l'application
@@ -964,12 +1134,12 @@ généralement cette fonction avec l'alias '_'.
 
 # Traduire l'interface (templates)
 
-Deux tags permettent de traduire l'interface directement dans les templates
-sont utilisés :
+Deux tags permettant de traduire l'interface directement dans les templates
+sont disponibles :
 
 ## Le tag {% trans %}
 
-Il permet de traduire une chaine de caractère ou le contenu d'une variable.
+Il permet de traduire une chaine de caractère simple ou le contenu d'une variable.
 
     !html
     <title>{% trans "List of books" %}</title>
@@ -992,9 +1162,9 @@ Il permet de mixer chaînes de caractères et variables pour traduire des chaîn
 
 La commande ``makemessages`` permet de créer le fichier traduction pour une langue
 donnée (fichier texte avec l'extension ".po" contenant les identifiants de messages
-et les traductions correspondantes). Elle doit être lancée depuis la racine
-de l'application ou du projet pour lequel le fichier doit être créé car la commande
-génère une arborescence de dossiers ``locale/LANG/LC_MESSAGES``.
+et les traductions correspondantes). Cette commande doit être lancée depuis la racine
+de l'application ou du projet pour lequel on crée le fichier car elle génère une
+arborescence de dossiers ``locale/LANG/LC_MESSAGES``.
 
     !console
      $ django-admin.py makemessages -l fr
@@ -1012,7 +1182,107 @@ pour qu'il soit utilisable dans le code Python.
 
 # Scripting
 
-Ecrire une commande manage.py
+--------------------------------------------------------------------------------
+
+# ``django-admin.py`` et ``manage.py``
+
+Les commandes ``django-admin.py`` sont très utilisées pour l'administration d'un 
+pojet Django (création d'une application, synchronisation de la base, compilation
+des fichiers de traduction, ...).
+
+Le point d'entrée ``./manage.py`` se greffe autour de ``django-admin.py`` et 
+s'exécute dans le contexte du projet (chargement des ``settings``, ajout du projet
+dans ``sys.path``).
+
+Lancer le script sans argument permet de lister les commandes disponibles :
+
+    !console
+    $ ./manage.py
+    
+    [django]
+        check
+        cleanup
+        compilemessages
+        createcachetable
+        ...
+
+Note : Il faut que l'environnement virtualisé soit démarré pour que Django
+soit chargé et les différents modules soient chargés.
+
+--------------------------------------------------------------------------------
+
+# Écrire une commande d'administration
+
+Écrire une commande *standalone* peut être très utile dans le cadre de tâches
+d'administration qui peuvent être lancées périodiquement et automatiquement (cron).
+
+# Arborescence des fichiers
+
+Les commandes doivent être des fichiers Python placés dans une module 
+``management/command`` de l'application.
+
+
+    !console
+    ├── my_app
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── models.py
+    │   ├── management
+    │   │   ├── __init__.py
+    │   │   ├── command
+    │   │   │   ├── __init__.py
+    │   │   │   ├── my_command.py
+
+--------------------------------------------------------------------------------
+
+# Structure d'une commande d'administration
+
+Pour créer une commande personnalisée, il faut écrire une classe qui hérite
+de ``django.core.management.base.BaseCommand``.
+
+    !python
+    # my_app/management/command/my_test_command.py
+    from django.core.management.base import BaseCommand, CommandError
+
+
+    class Command(BaseCommand):
+        args = '...'
+        help = 'Do specific administration stuff'
+
+
+        def handle(self, *args, **options):
+
+            self.stdout.write('Command started")
+            # Traitements
+            self.stdout.write('Command ended")
+
+--------------------------------------------------------------------------------
+
+# Éxécuter une commande d'administration
+
+## Éxécution manuelle
+
+Il est bien sûr possible de lancer une commande personnalisée à la main, tout
+simple en utilisant directement dans le terminal le point d'entrée ``./manage.py`` :
+
+    !python
+    $ ./manage.py my_test_command
+
+
+## Éxécution automatique
+
+Il peut être aussi très utile d'automatiser cette execution via une tâche cron :
+
+    !python
+    # Cron tasks
+    0 * * * * user source /project_env_path/bin activate && 
+                   /project_path/manage.py my_test_command
+
+--------------------------------------------------------------------------------
+
+# Tutoriel : Écrire une commande qui supprime automatiquement les tâches réalisées depuis une semaine
+
+.fx: alternate
 
 --------------------------------------------------------------------------------
 
