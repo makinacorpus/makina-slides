@@ -879,6 +879,126 @@ filter (nécessaire si le filtre introduit du HTML).
 
 --------------------------------------------------------------------------------
 
+# Aller plus loin avec les formulaires
+
+--------------------------------------------------------------------------------
+
+# Initialiser un formulaire
+
+## Founir des données initiales
+
+Il existe une méthode très simple pour initialiser les champs d'un formulaire :
+la méthode ``__init__()`` peut prendre en argument un dictionnaire "``initial``"
+dont les clés doivent correspondre aux noms des champs du formulaire.
+
+Exemple :
+
+    !python
+    # forms.py
+    class AccountForm(forms.Form):
+        lastname = forms.CharField(max_length=100)
+        firstname = forms.CharField(max_length=100)
+
+    #views.py
+    def create_account(request):
+        initial = {
+            'lastname': request.user.last_name,
+            'firstname': request.user.first_name
+        }
+        form = AccountForm(initial=initial)
+
+--------------------------------------------------------------------------------
+
+# Initialiser un formulaire
+
+## Personnaliser la méthode ``__init__()``
+
+Pour aller plus loin, il est possible de surcharger la méthode ``__init__()``
+pour réaliser des traitements particuliers (initialiser des valeurs complexes,
+limiter les choix d'un champ select, cacher dynamiquement des champs, ...).
+
+Exemple :
+
+    !python
+    # forms.py
+    class PeriodForm(forms.Form):
+        begin = forms.DateField()
+        end = forms.DateField()
+
+        def __init__(self, *args, **kwargs):
+            super(PeriodForm, self).__init__(*args, **kwargs)
+
+            begin = self.initial.get('begin', None)
+            if begin:
+                self.initial['end'] = begin + delta(months=1)
+
+
+--------------------------------------------------------------------------------
+
+# Valider un formulaire
+
+Un formulaire Django dispose d'un mécanisme de validation assez poussé qui consiste
+à valider chaque champ un par un, puis à exécuter une méthode réalisant une validation
+plus globale.
+
+Un échec de validation doit engendrer une exception de type ``ValidationError``.
+
+## Valider le champ d'un formulaire
+
+Pour valider un champ de formulaire, il suffit de créer une méthode de formulaire
+nommée par le nom du champ préfixé de ``clean_``.
+
+Exemple :
+
+    !python
+    # forms.py
+    class SearchBookForm(forms.Form):
+        search_text = forms.CharField(max_length=100)
+    
+        def clean_search_text(self):
+            search_text = self.cleaned_data['search_text']
+            if 'django' not in search_text:
+                msg = 'You should search Django books :)!'
+                raise forms.ValidationError(msg)
+            return search_text
+
+--------------------------------------------------------------------------------
+
+# Valider un formulaire
+
+## Valider le formulaire de manière globale
+
+Implémenter la méthode ``clean`` permet de faire une validation globale du formulaire,
+utile notamment pour faire des vérifications sur plusieurs champs dépendants les uns
+des autres.
+
+Exemple :
+
+    !python
+    # forms.py
+    class PeriodForm(forms.Form):
+        begin = forms.DateField()
+        end = forms.DateField()
+
+        def clean(self):
+            cleaned_data = super(PeriodForm, self).__init__(*args, **kwargs)
+            begin = cleaned_data.get('begin')
+            end = cleaned_data.get('end')
+
+            if begin and end and begin >= end:
+                msg = 'End date must be later than begin date!'
+                self.add_error('end', msg)
+
+            return cleaned_data
+
+--------------------------------------------------------------------------------
+
+# Tutoriel : Mettre en place l'initialisation et la validation du formulaire de contact
+
+.fx: alternate
+
+--------------------------------------------------------------------------------
+
 # Gestion des fichiers
 
 --------------------------------------------------------------------------------
@@ -978,6 +1098,12 @@ Il suffit ensuite de paramétrer le serveur web pour qu'il serve lui-meme ces fi
 
 --------------------------------------------------------------------------------
 
+# Tutoriel : Mettre en place une feuille de styles simple
+
+.fx: alternate
+
+--------------------------------------------------------------------------------
+
 # Gérer les fichiers media
 
 Les fichiers dits *media* sont les fichiers uploadés par les utilisateurs.
@@ -994,7 +1120,7 @@ disposant de propriétés (``name``, ``size``, ...) et de méthodes très utiles
 
 --------------------------------------------------------------------------------
 
-## Utiliser les fichiers media dans les modèles
+# Utiliser les fichiers media dans les modèles
 
 Deux champs ``FileField`` et ``ImageField`` sont fournis pour pouvoir associer
 facilement un fichier ou une image à une instance de modèle.
@@ -1024,7 +1150,7 @@ Les instance de ```Book`` pourront donc chacun avoir un fichier attaché :
 
 --------------------------------------------------------------------------------
 
-## Utiliser les fichiers media dans les formulaires
+# Utiliser les fichiers media dans les formulaires
 
 Il existe des champs de formulaires correspondant aux champs de modèles vus précédemment.
 Il  est donc très facile d'obtenir un champ d'upload dans un formulaire.
@@ -1055,7 +1181,7 @@ Dans la template, il faut préciser l'attribut ``enctype`` du ``<form>`` :
      ...
     </form>
 
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # Internationalisation et localisation
 
@@ -1286,15 +1412,138 @@ Il peut être aussi très utile d'automatiser cette execution via une tâche cro
 
 --------------------------------------------------------------------------------
 
-# Administration
-
-Customisation basique
+# Personnaliser l'interface d'administration
 
 --------------------------------------------------------------------------------
 
-# Introduction aux tests
+# Fonctionnement de l'interface d'administration
 
-Quoi mettre ?
+Pour activer l'interface d'administration il faut commencer par :
+
+* inclure le module et ses dépendances dans les ``INSTALLED_APPS`` ;
+* instancier un objet ``AdminSite`` et connecter une URL vers cette page ;
+* déclarer les modèles que l'on souhaite voir apparaître dans l'interface d'administration dans les fichiers ``admin.py`` des applications.
+
+## La classe ``ModelAdmin``
+
+La classe est la représentation d'un modèle dans l'interface d'administration.
+
+--------------------------------------------------------------------------------
+
+# Fonctionnement de l'interface d'administration
+
+## Déclaration d'un ``ModelAdmin``
+
+Si on ne souhaite pas personnaliser la représentation du modèle dans l'interface
+d'administration, il existe une version simplifiée de déclaration :
+
+    !python
+    # admin.py
+    from django.contrib import admin
+    from myproject.myapp.models import Book
+
+    admin.site.register(Book)
+
+Il est cependant possible de surcharger le ``ModelAdmin`` d'un modèle afin de
+personnaliser son comportement :
+
+    !python
+    # admin.py
+    from django.contrib import admin
+    from myproject.myapp.models import Book
+
+    class BookAdmin(admin.ModelAdmin):
+        # Personnalisations
+
+    admin.site.register(Book, BookAdmin)
+
+
+--------------------------------------------------------------------------------
+
+# Personnaliser les listes
+
+## Personnaliser l'affichage
+
+Les propriétés ``list_display`` et ``list_display_links`` permettent respectivement
+de spécifier les colonnes que l'on souhaite voir apparaitre dans la liste et de préciser
+lesquels d'entre elles doivent être cliquables.
+
+## Personnaliser le filtrage
+
+L'attribut ``list_filter`` permet de mettre en place une recherche type recherche
+à facettes dans une barre latérale à droite.
+
+Si le modèle à une propriété de type ``Date`` ou ``Datetime``, la propriété ``date_hierarchy`` peut être précisée pour créer un index par date.
+
+## Personnaliser la recherche
+
+L'attribut ``search_fields`` permet de lister les champs sur lesquels la recherche 
+doit être exécutée.
+
+--------------------------------------------------------------------------------
+
+# Personnaliser les listes
+
+## Un exemple combiné
+
+    !python
+    # admin.py
+    from django.contrib import admin
+    from myproject.myapp.models import Book
+
+    class BookAdmin(admin.ModelAdmin):
+        list_display = ['title', 'release']
+        list_display_links = ['title']
+        list_filter = ['author']
+        date_hierarchy = 'release'
+        search_fields = ['title', 'author__name']
+
+    admin.site.register(Book, BookAdmin)
+
+
+--------------------------------------------------------------------------------
+
+# Personnaliser les formulaires
+
+## Personnaliser les champs
+
+Grâce aux propriétés ``fields`` ou ``exclude``, il est possible de spécifier
+quels champs on souhaite voir apparaître dans les formulaires de l'interface
+d'administration
+
+La propriété ``fieldsets`` permet d'aller plus loin et d'organiser la mise en 
+page du formulaire.
+
+## Surcharger le formulaire
+
+Il est possible d'aller encore plus loin en surchargeant la template d'un formulaire
+ou même d'écrire son propre formulaire et de le déclarer dans le ``ModelAdmin``
+
+--------------------------------------------------------------------------------
+
+# Personnaliser les formulaires
+
+## L'exemple complété
+
+    !python
+    # admin.py
+    from django.contrib import admin
+    from django import forms
+    from myproject.myapp.models import Book
+
+    class BookAdminForm(forms.ModelForm):
+        # ...
+    
+    class BookAdmin(admin.ModelAdmin):
+        list_display = ['title', 'release']
+        list_display_links = ['title']
+        list_filter = ['author']
+        date_hierarchy = 'release'
+        search_fields = ['title', 'author__name']
+
+        form = BookAdminForm
+
+    admin.site.register(Book, BookAdmin)
 
 --------------------------------------------------------------------------------
 
