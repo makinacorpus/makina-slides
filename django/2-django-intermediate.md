@@ -40,7 +40,7 @@ La classe ``User`` fournit quelques propriétés de base comme ``first_name``, `
 sont à connaitre :
 
 * ``is_active`` : booléen précisant si le compte est actif ;
-* ``is_active`` : booléen précisant si l'utilisateur peut accéder à l'interface d'administration ;
+* ``is_staff`` : booléen précisant si l'utilisateur peut accéder à l'interface d'administration ;
 * ``is_superuser`` : booleén spécifiant si l'utilisateur est un super-utilisateur.
 
 --------------------------------------------------------------------------------
@@ -161,7 +161,7 @@ Il est donc possible de construire des requêtes en base de données via ce Quer
 
     !python
     >>> Book.objects.filter(title__icontains='django') \
-                    .excldue(relase__lte=date('2014-01-01')) \
+                    .exclude(relase__lte=date('2014-01-01')) \
                     .order_by('price')
 
 --------------------------------------------------------------------------------
@@ -173,7 +173,7 @@ Il est donc possible de construire des requêtes en base de données via ce Quer
 Cette méthode retourne un ``ValuesQuerySet`` qui liste des dictionnaires plutôt que des instances du modèle. Chaque dictionnaire représente une instance ; ses clés correspondent aux attributs de l'instance. Il est possible de spécifier les clés que l'on souhaite récupérer.
 
     !python
-    >>> Book.objects.filter(name__icontais='django') \
+    >>> Book.objects.filter(name__icontains='django') \
                     .values('title' , 'release')
 
     [{'title': 'Two scoops of django', 'release': date(2013, 08, 31)}, ]
@@ -192,7 +192,7 @@ Attention, dans le cas d'un attribut de type ``ForeignKey``, la clé et la valeu
 Cette méthode est semblable à la précédente mais elle retourne une liste de tuples plutôt qu'une liste de dictionnaires.
 
     !python
-    >>> Book.objects.filter(name__icontais='django') \
+    >>> Book.objects.filter(name__icontains='django') \
                     .values_list('title' , 'release')
 
     [('Two scoops of django', date(2013, 08, 31)),
@@ -202,7 +202,7 @@ Si un seul attribut est précisé, il est possible d'ajouter le paramètre ``fla
 pour obtenir une liste non imbriquée.
 
     !python
-    >>> Book.objects.filter(name__icontais='django') \
+    >>> Book.objects.filter(name__icontains='django') \
                     .values_list('title', flat=True)
 
     ['Two scoops of django', 'Django avancé']
@@ -278,7 +278,7 @@ Un ``Manager`` personnalisé est une classe héritant de ``Manager`` que l'on in
 
     class Book(models.Model):
         #...
-        custom_books = models.Manager()
+        custom_books = CustomBookManager()
 
 --------------------------------------------------------------------------------
 
@@ -297,7 +297,7 @@ Un ``Manager`` personnalisé est une classe héritant de ``Manager`` que l'on in
 
     class Author(models.Model):
         #...
-        objects = models.AuthorManager()
+        objects = AuthorManager()
 
 &nbsp;
 
@@ -330,8 +330,8 @@ Il peut être intéressant de créer un ``Manager`` pour surcharger cette métho
     class Book(models.Model):
         #...
         objects = models.Manager()
-        english_books = models.EnglishBookManager()
-        french_books = models.FrenchBookManager()
+        english_books = EnglishBookManager()
+        french_books = FrenchBookManager()
 
 --------------------------------------------------------------------------------
 
