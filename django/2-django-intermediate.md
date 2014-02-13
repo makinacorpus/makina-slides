@@ -987,7 +987,7 @@ Exemple :
 
             if begin and end and begin >= end:
                 msg = 'End date must be later than begin date!'
-                self._errors['end'] = msg
+                self._errors.setdefault('end', []).append(msg)
 
             return cleaned_data
 
