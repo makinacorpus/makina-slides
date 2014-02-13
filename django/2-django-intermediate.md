@@ -540,7 +540,7 @@ Dans ``django.views.generic`` :
 * ``ListView`` permet de lister très simplement des instances d'un modèle.
 * ``DetailView`` permet d'afficher le détail d'une instance d'un modèle.
 
-## Les vues permettant d'afficher des instances
+## Les vues permettant de modifier des instances
 
 Dans ``django.views.generic.edit`` :
 
@@ -837,7 +837,7 @@ templates. Deux solutions :
     from django import template
     register = template.Library()
 
-    register.filter()
+    @register.filter()
     def my_filter(value):
         # code du filtre
 
@@ -852,7 +852,7 @@ Si le filtre n'introduit pas de caractère HTML (comme "&" ou "<"), il peut êtr
 marqué comme sécurisé au moment de l'enregistrement grâce à l'équipement ``is_safe``.
 
     !python
-    register.filter(is_safe=True)
+    @register.filter(is_safe=True)
     def my_filter(value):
         # code du filtre
 
@@ -861,12 +861,12 @@ filtre personnalisé n'aura pas d'impact.
 
 
 Il est aussi possible de marqué la chaîne comme sécurisée manuellement en sortie du 
-filter (nécessaire si le filtre introduit du HTML).
+filtre (nécessaire si le filtre introduit du HTML).
 
     !python
     from django.utils.safestring import mark_safe
 
-    register.filter(is_safe=True)
+    @register.filter(is_safe=True)
     def my_filter(value):
         # code du filtre
         return mark_safe(output)
@@ -981,13 +981,13 @@ Exemple :
         end = forms.DateField()
 
         def clean(self):
-            cleaned_data = super(PeriodForm, self).__init__(*args, **kwargs)
+            cleaned_data = super(PeriodForm, self).clean()
             begin = cleaned_data.get('begin')
             end = cleaned_data.get('end')
 
             if begin and end and begin >= end:
                 msg = 'End date must be later than begin date!'
-                self.add_error('end', msg)
+                self._errors['end'] = msg
 
             return cleaned_data
 
