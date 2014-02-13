@@ -3891,7 +3891,7 @@ des autres.</p>
 
         <span class="k">if</span> <span class="n">begin</span> <span class="ow">and</span> <span class="n">end</span> <span class="ow">and</span> <span class="n">begin</span> <span class="o">&gt;=</span> <span class="n">end</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="s">&#39;End date must be later than begin date!&#39;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_errors</span><span class="p">[</span><span class="s">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msg</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_errors</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">cleaned_data</span>
 </pre></div>
