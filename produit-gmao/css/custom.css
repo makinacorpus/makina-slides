@@ -1,0 +1,32 @@
+.gmao_image img {
+    border: 3px solid white;
+    width: 99%;
+    max-width: 100%;
+    max-height: 100%
+}
+
+.gmao_image h1 {
+    margin: 0;
+}
+
+.gmao_image p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.gmao_image .img_legend {
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.img_w95percent img { width: 95%; }
+.img_w90percent img { width: 90%; }
+.img_w85percent img { width: 85%; }
+.img_w80percent img { width: 80%; }
+.img_w75percent img { width: 75%; }
+.img_w70percent img { width: 70%; }
+.img_w65percent img { width: 65%; }
+.img_w60percent img { width: 60%; }
+.img_w55percent img { width: 55%; }
+.img_w50percent img { width: 50%; }
