@@ -30,3 +30,7 @@
 .img_w60percent img { width: 60%; }
 .img_w55percent img { width: 55%; }
 .img_w50percent img { width: 50%; }
+
+a {
+    color: #e39b25;
+}

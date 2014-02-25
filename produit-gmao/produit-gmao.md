@@ -1,5 +1,13 @@
 # Gestion et maintenance d'un parc d'équipements industriels
 
+
+# Presenter Notes
+
+* Présentation du projet, du client, de ses besoins et des contraintes.
+* Les avantages de l'utilisation d'une solution à base de logiciels libres.
+* Présentation de la solution.
+* Présentation des outils utilisés et de la méthodoligie de développement.
+
 --------------------------------------------------------------------------------
 
 > La gestion de maintenance assistée par ordinateur est une méthode de gestion assistée d'un logiciel destiné aux services de maintenance d'une entreprise afin de l'aider dans ses activités.
@@ -7,6 +15,7 @@
 <cite> — http://fr.wikipedia.org/wiki/GMAO</cite>
 
 .fx: quoteslide
+
 
 --------------------------------------------------------------------------------
 
@@ -54,7 +63,7 @@
 * Assurer la traçabilité de toutes les interventions techniques.
 * Impliquer tous les services de la société.
 * Offrir à ses clients un accès sécurisé à leurs données.
-* Produire des tableaux de bord et bilans pour suivi et piloter l'activité.
+* Produire des tableaux de bord et bilans pour suivre et piloter l'activité.
 * Connecter l'outil aux autres applications du SI : gestion clients, gestion des stocks, facturation, planification, ...
 * Une application web accessible 24h/24 en mobilité, réactive, ergonomique et évolutive.
 
@@ -513,6 +522,103 @@ L’application peut être utilisée dans le navigateur d'un smartphone ou d'une
 
 .fx: gmao_image img_w90percent
 
+--------------------------------------------------------------------------------
+
+# Les outils Open Source utilisés > Pour le développement
+
+*   Interface utilisateur :
+    * [Twitter Bootstrap](http://getbootstrap.com/)
+    * [JQuery](http://jquery.com/)
+    * CSS3, HTML5
+*   Langage de programmation : [Python](http://python.org/)
+*   Framework de développement : [Django](https://www.djangoproject.com/)
+*   Modules Django issus de la communauté : gestion de workflow, génération de PDF, support LDAP, etc.
+*   Base de données : [PostgreSQL](http://www.postgresqlfr.org/)
+*   Tests automatisés : [Jenkins](http://jenkins-ci.org/)
+*   Déploiements automatisés : [Fabric](http://fabric.readthedocs.org/)
+
+En savoir plus : [billet de blog sur makina-corpus.com](http://makina-corpus.com/blog/metier/2013/les-technologies-utilisees-dans-notre-gmao-job)
+
+# Presenter Notes
+
+* Twitter Bootstrap est une collection d'outils particulièrement bien adaptée pour la création d'applications métier. Il offre de nombreux composants permettant de réaliser rapidement des interfaces efficaces et responsives : système de grilles, formulaires, boutons, labels et badges, tooltips, barre de navigation, etc.
+* JQuery : boîte à outil indispensable du ninja JavaScript, offrant une API cross-browser qui simplifie la manipulation du DOM HTML, la gestion des animations, des événements utilisateur ou encore la création d'interfaces Ajax.
+* Django : Orienté MVC, très bien adapté pour le développement d'applications métier, il peut être utilisé avec les principales bases de données SQL du marché.
+* Tests automatisés (87% des lignes de code Python): ou comment assurer la maintenance de son application et ajouter sereinement de nouvelles fonctionnalités ! => L'ensemble des tests unitaires et fonctionnels de l'application JOB sont rejoués à chaque commit, et si le build ne passe pas les développeurs sont prévenus par email en temps réel avec la sanction à la clé : croissants au prochain petit déj !
+* Déploiements automatisés : Déployer une nouvelle instance, mises à jour, restauration d'une sauvegarde.
+
+--------------------------------------------------------------------------------
+
+# Les outils Open Source utilisés > Côté système
+
+* Système d'exploitation : [Debian](http://www.debian.org/)
+* Gestion des machines virtuelles : [KVM](http://www.linux-kvm.org) (Kernel-based Virtual Machine)
+* Redondance des machines virtuelles hébergées sur deux serveurs miroirs : [DRBD](http://www.drbd.org/) (Distributed Replicated Block Device)
+* Supervision : [Nagios](http://www.nagios.org/)
+* Gestion centralisée des comptes utilisateurs et de l’authentification aux applications : [OpenLDAP](http://www.openldap.org/), [FusionDirectory](http://www.fusiondirectory.org/)
+* Sauvegardes multi-niveaux.
+
+# Presenter Notes
+
+* Améliorer la sécurisation et l'hébergement des applications.
+* KVM : Solution de virtualisation
+* DRBD : Réplication de périphériques de bloc (disques, partitions, volumes logiques etc...) entre des serveurs. Réplication en temps réel, de façon transparente, synchrone ou asynchrone. L’objectif étant de pouvoir basculer rapidement sur le serveur miroir avec le minimum de perte de données en cas de panne grave sur le serveur maître.
+
+--------------------------------------------------------------------------------
+
+# Contribuer en retour
+
+Une bonne pratique est de redistribuer tout module réutilisable à la communauté, pour alimenter le cercle vertueux.
+
+Deux contributions issues de ce projet :
+
+* [django-db-faker](https://github.com/fle/django-db-faker) : Module Django façilitant l'anonymisation des données d'une base de données Django.
+* [django-jsignature](https://github.com/fle/django-jsignature) : Module Django intégrant le module JQuery [jSignature](https://github.com/brinley/jSignature) qui permet de capturer une signature manuelle réalisée via le navigateur.
+
+![django-jsignature](images/django-jsignature.jpg)
+
+.fx: img_w75percent
+
+# Presenter Notes
+
+* django-db-faker : très utile pour monter une instance de démonstration en repartant d'une base contenant des données réelles de production
+* django-jsignature : avec la souris ou dans l'idéal sur un écran tactile, permet au client de signer un rapport d'intervention qui lui sera transmis dans la foulée par e-mail
+
+--------------------------------------------------------------------------------
+
+# Gestion de projet Agile
+
+*   Réunion hebdomadaire :
+    * Démonstrations,
+    * Validations,
+    * Écriture du cahier des charges,
+    * Choix des prochaines tâches à traiter.
+* Mises en production régulières et reccueil des retours utilisateurs au plus tôt.
+* Prise en compte du changement.
+
+> Obtenir une solution optimale correspondant aux besoins de ses utilisateurs.
+
+# Presenter Notes
+
+* Avoir des échanges fréquents entre le client et son prestataire.
+* Un groupe de travail complet chez le client : panel d'utilisateurs représentatif des futurs utilisateurs.
+* Un cahier des charges qui s'étoffe au fur et à mesure, pas de spécifications détaillées en début de projet.
+* Éviter l'effet tunnel.
+* Remettre en cause à tout moment ses choix pour prendre en compte l'évolution constante de ses besoins sous toutes ses formes (évolutions simples des besoins, changement de contexte économique, survenance de difficultés techniques) et à tous les stades du projet.
+
+--------------------------------------------------------------------------------
+
+# Workflow de développement avec Git
+
+*   [Git](http://git-scm.com/) : un gestionnaire de code source décentralisé.
+
+*   Un workflow de développement optimal intégrant :
+    * Plusieurs développeurs développant les fonctionnalités du produit dans des branches séparées.
+    * Des releases régulières assurées par un (et un seul) mainteneur : review du code, merge sur la branche master.
+    * Plusieurs serveurs pour les instances de pré-production et production.
+    * Des déploiements automatisés avec Fabric.
+
+* Pour en savoir plus sur le workflow Git mis en place : [blog de Makina Corpus](http://makina-corpus.com/blog/metier/2014/un-workflow-git-efficace-pour-les-projets-a-moyen-long-terme).
 
 --------------------------------------------------------------------------------
 
