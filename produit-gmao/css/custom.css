@@ -34,3 +34,7 @@
 a {
     color: #e39b25;
 }
+.slides .slide-wrapper:last-child .slide header:only-child h1 {
+    font-size: 60px;
+    height: 450px;
+}
