@@ -509,5 +509,5 @@ Deux contributions issues du projet :
 
 --------------------------------------------------------------------------------
 
-# Merci ! <br /> 09 53 73 22 74 <br /> sylvain.boureliou@makina-corpus.com
+# Merci ! <br /><br /> 09 53 73 22 74 <br /> sylvain.boureliou@makina-corpus.com <br /> http://makina-corpus.com
 
