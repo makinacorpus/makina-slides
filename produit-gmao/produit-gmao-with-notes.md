@@ -1,5 +1,13 @@
 # Gestion et maintenance d'un parc d'équipements industriels
 
+
+# Presenter Notes
+
+* Présentation du projet, du client, de ses besoins et des contraintes.
+* Les avantages de l'utilisation d'une solution à base de logiciels libres.
+* Présentation de la solution.
+* Présentation des outils utilisés et de la méthodoligie de développement.
+
 --------------------------------------------------------------------------------
 
 > La gestion de maintenance assistée par ordinateur est une méthode de gestion assistée d'un logiciel destiné aux services de maintenance d'une entreprise afin de l'aider dans ses activités.
@@ -7,6 +15,7 @@
 <cite> — http://fr.wikipedia.org/wiki/GMAO</cite>
 
 .fx: quoteslide
+
 
 --------------------------------------------------------------------------------
 
@@ -60,6 +69,12 @@
 
 ![Marketing et Statégie](images/marketing-strategy.jpg)
 
+# Presenter Notes
+
+* Cycle de vie d'une intervention : revue de contrat, préparation et planification de la mission, exécution de la mission par le technicien, clôture administrative et financière.
+* Services impliqués : techniciens, responsables d’opération et administratifs, partenaires, clients, commerciaux, ...
+* Mobilité : tablette, PC tactiles équipés de connexion 3G
+
 --------------------------------------------------------------------------------
 
 # La société ALMA Services > Les contraintes
@@ -70,6 +85,11 @@
     * 7 GMAO "quasi" identiques en Access
 
 ![ALMA Services](images/contraintes.jpg)
+
+# Presenter Notes
+
+* Ergonomie : notamment pour la saisie des rapports d'intervention par des techniciens non habitués à l'outil informatique
+* Historique : constitution technique et historique des interventions, assurer une continuité dans la traçabilité de toutes les interventions réalisées depuis les 10 dernières années
 
 --------------------------------------------------------------------------------
 
@@ -87,6 +107,16 @@
     * Formations internes pour les développements futurs
 * Aide et pérennité des outils grâce aux communautés d'utilisateurs et de développeurs
 *   Le principal : adapter la solution aux besoins du client
+
+# Presenter Notes
+
+* Il existe des outils spécialisés au métier d'ALMA Services mais aucun ne répondait intégralement au besoin et étaient rétissant à s'adapter aux besoins d'ALMA.
+* Coût d'acquisition : peut être la contrainte la moins importante
+* Accès au code source : pouvoir vérifier la qualité de l'application. Le logiciel n'est pas une boîte noire.
+* Internaliser les développement : on trouve de plus en plus facilement des formations pour développeurs
+* Communautés : Ex en cas de bug : Ayant accès au code source des briques utilisées ils nous est possible d’investiguer, de résoudre le problème ou de le reporter efficacement pour aider d’autres développeurs à le corriger. Nous avons eu le cas avec un bug de fonctionnement des menus Twitter Bootstrap sur les tablettes Androïd.
+
+* Les outils de développement Open Source ont permis de répondre à l’intégralité des besoins, du développement du logiciel jusqu’à sa mise en production et son hébergement.
 
 --------------------------------------------------------------------------------
 
@@ -126,6 +156,11 @@ Vue d'ensemble des interventions et des missions ; alertes sur les équipements 
 <div class="img_legend">Tableau de bord</div>
 
 .fx: gmao_image
+
+# Presenter Notes
+
+* Interventions : en cours, planifiées, en préparation, clôturées
+* Le tableau bord est personnalisé en fonction du profil. Un technicien y retourve son planning et la liste des rapports d'intervention qu'il doit remplir.
 
 --------------------------------------------------------------------------------
 
@@ -259,6 +294,10 @@ Suivi des heures réalisées en intervention
 
 .fx: gmao_image
 
+# Presenter Notes
+
+Cela peut aider par exemple à la saisie des feuilles de temps par les employés
+
 --------------------------------------------------------------------------------
 
 # GMAO > Aide à la planification
@@ -269,6 +308,12 @@ Planifier en avance les interventions récurrentes
 <div class="img_legend">Planifications d'interventions récurrentes</div>
 
 .fx: gmao_image img_w85percent
+
+# Presenter Notes
+
+* Plus qu'une aide à la saisie, ce module permet de préparer en avance son planning avec toutes les interventions à venir connues.
+
+* Des alertes informent en temps voulu les planificateurs de la nécessité de planifier une intervention.
 
 --------------------------------------------------------------------------------
 
@@ -281,6 +326,11 @@ Suivi des interventions par agence, équipe et intervenant. Synchronisation avec
 
 .fx: gmao_image img_w90percent
 
+# Presenter Notes
+
+* Agenda comprenant un calendrier par intervenant.
+* Cela offre une solution simple pour partager facilement des calendriers, et permet d' y accéder depuis son smartphone.
+
 --------------------------------------------------------------------------------
 
 # GMAO > Le rapport d'intervention
@@ -291,6 +341,15 @@ Revue de contrat, préparation, planification, rapport PDF, pré-facturation
 <div class="img_legend">Rapport d'intervention : iniation de la mission et revue de contrat</div>
 
 .fx: gmao_image img_w65percent
+
+# Presenter Notes
+
+* De la revue de contrat jusqu'à l'envoi du rapport PDF au client ainsi qu'un document de pré-facturation à l'ERP
+* Les interventions de maintenance sont réalisées par les intervenants sur les équipements.
+* Les étapes du cycle de vie sont organisées ainsi : Initiation mission, Revue de contrat, Préparation intervention, Exécution intervention (rapport de l'intervenant en mobilité), Clôture intervention, Intervention clôturée et mission pré-facturée.
+* Il y a également un module activant la géolocalisation du lieu au moment de l'envoi du rapport PDF au client.
+* 13-intervention-2.png
+* 13-intervention-3.png
 
 --------------------------------------------------------------------------------
 
@@ -303,6 +362,10 @@ Imprimable en PDF, transmission à l'ERP pour facturation
 
 .fx: gmao_image img_w75percent
 
+# Presenter notes
+
+* Rappel de la mission, du client, des temps passés, des déplacements et articles consommées
+
 --------------------------------------------------------------------------------
 
 # GMAO > Bilans et statistiques
@@ -311,6 +374,15 @@ Imprimable en PDF, transmission à l'ERP pour facturation
 <div class="img_legend">Bilans et indicateurs par agences</div>
 
 .fx: gmao_image img_w70percent
+
+# Presenter notes
+
+* Bilan par agence
+* Indicateurs de bonne utilisation
+* Par profil d'intervention
+* Poids du curatif
+* Consommation articles
+* Taux de disponibilité
 
 --------------------------------------------------------------------------------
 
@@ -339,6 +411,10 @@ Imprimable en PDF, transmission à l'ERP pour facturation
 
 .fx: gmao_image img_w80percent
 
+# Presenter notes
+
+* L’application peut être utilisée dans le navigateur d'un smartphone ou d'une tablette connectée à Internet
+
 --------------------------------------------------------------------------------
 
 # GMAO > Utilisation en mobilité
@@ -364,6 +440,15 @@ Imprimable en PDF, transmission à l'ERP pour facturation
 
 En savoir plus sur le blog de Makina Corpus : [les outils](http://makina-corpus.com/blog/metier/2013/les-technologies-utilisees-dans-notre-gmao-job), [le workflow de développement avec Git](http://makina-corpus.com/blog/metier/2014/un-workflow-git-efficace-pour-les-projets-a-moyen-long-terme)
 
+# Presenter Notes
+
+* Twitter Bootstrap : collection d'outils idéale pour la création d'applications métier. Nombreux composants pour des interfaces efficaces et responsives : système de grilles, formulaires, boutons, labels et badges, tooltips, barre de navigation, etc.
+* JQuery : boîte à outil indispensable du ninja JavaScript, API cross-browser pour la manipulation du DOM HTML, la gestion des animations, des événements utilisateur, création d'interfaces Ajax.
+* Django : Orienté MVC, en adapté pour le dev d'applications métier, connectable aux principales BDD SQL du marché.
+* Tests automatisés (87%): assurer la maintenance de son application et ajouter sereinement de nouvelles fonctionnalités ! => Tests unitaires et fonctionnels rejoués à chaque commit, et si le build ne passe pas les développeurs sont prévenus par email en temps réel
+* Déploiements automatisés : nouvelle instance, màj, restauration.
+* GIT : gestionnaire de code source décentralisé, workflow optimal plusieurs développeurs (branches dédiées), releases régulière par un mainteneur (review, merge, deploy), plusieurs serveurs, déploiement automatisé
+
 --------------------------------------------------------------------------------
 
 # Les outils Open Source utilisés > Côté système
@@ -373,6 +458,12 @@ En savoir plus sur le blog de Makina Corpus : [les outils](http://makina-corpus.
 * Redondance des machines virtuelles hébergées sur deux serveurs miroirs : [DRBD](http://www.drbd.org/) (Distributed Replicated Block Device)
 * Supervision : [Nagios](http://www.nagios.org/)
 * Gestion centralisée des comptes utilisateurs et de l’authentification aux applications : [OpenLDAP](http://www.openldap.org/), [FusionDirectory](http://www.fusiondirectory.org/)
+
+# Presenter Notes
+
+* Améliorer la sécurisation et l'hébergement des applications.
+* KVM : Solution de virtualisation
+* DRBD : Réplication de périphériques de bloc (disques, partitions, volumes logiques etc...) entre des serveurs. Réplication en temps réel, de façon transparente, synchrone ou asynchrone. L’objectif étant de pouvoir basculer rapidement sur le serveur miroir avec le minimum de perte de données en cas de panne grave sur le serveur maître.
 
 --------------------------------------------------------------------------------
 
@@ -389,6 +480,11 @@ Deux contributions issues du projet :
 
 .fx: img_w75percent
 
+# Presenter Notes
+
+* django-db-faker : très utile pour monter une instance de démonstration en repartant d'une base contenant des données réelles de production
+* django-jsignature : avec la souris ou dans l'idéal sur un écran tactile, permet au client de signer un rapport d'intervention qui lui sera transmis dans la foulée par e-mail
+
 --------------------------------------------------------------------------------
 
 # Gestion de projet Agile
@@ -402,6 +498,14 @@ Deux contributions issues du projet :
 * Prise en compte du changement
 
 <p style="padding-top:30px;font-size:130%">=> Obtenir une solution optimale correspondant aux besoins de ses utilisateurs</p>
+
+# Presenter Notes
+
+* Avoir des échanges fréquents entre le client et son prestataire.
+* Un groupe de travail complet chez le client : panel d'utilisateurs représentatif des futurs utilisateurs.
+* Un cahier des charges qui s'étoffe au fur et à mesure, pas de spécifications détaillées en début de projet.
+* Éviter l'effet tunnel.
+* Remettre en cause à tout moment ses choix pour prendre en compte l'évolution constante de ses besoins sous toutes ses formes (évolutions simples des besoins, changement de contexte économique, survenance de difficultés techniques) et à tous les stades du projet.
 
 --------------------------------------------------------------------------------
 
