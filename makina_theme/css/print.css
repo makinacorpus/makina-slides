@@ -386,3 +386,7 @@ aside.source {
     column-count: 3;
     column-gap: 20px;
 }
+
+div.presentation {
+  -webkit-transform: scale(1) !important;
+}
