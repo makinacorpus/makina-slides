@@ -1,2 +1,0 @@
-Output directory for generated files HTML slides. Contains also /theme_extra which provides custom css, logo and fonts.
-This directory should be exported in gh-pages with ghp-import
