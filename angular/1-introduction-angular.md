@@ -12,7 +12,7 @@
 
 # Qu'est-ce-que AngularJS ?
 
-AngularJS est un framework Javascript qui permet :
+AngularJS est un framework JavaScript qui permet :
 
 * d'étendre le language HTML (directives)
 * de réaliser des Single.Page.App.
@@ -63,7 +63,7 @@ AngularJS est un framework Javascript qui permet :
 
 # Template et directive
 
-* Un template est fichier html parsé par AngularJS
+* Un template est fichier HTML parsé par AngularJS
 * Une directive c'est l'extension d'HTML (ici ng-model)
 
 ![template & data binding](https://docs.angularjs.org/img/guide/concepts-databinding1.png)
@@ -72,7 +72,7 @@ AngularJS est un framework Javascript qui permet :
 
 # Contrôleur
 
-Il s'agit du contrôleur au sens MVC, lien entre les données / services et les vues. Il orchestre l'execution de l'application.
+Il s'agit du contrôleur au sens MVC, lien entre les données / services et les vues. Il orchestre l'exécution de l'application.
 
 ![controller](https://docs.angularjs.org/img/guide/concepts-databinding2.png)
 
@@ -81,19 +81,19 @@ Il s'agit du contrôleur au sens MVC, lien entre les données / services et les 
 
 # Scope
 
-Le scope apporte la visibilité des modèles à une vue. C'est un objet javascript attaché à l'application, un contexte d'execution. Voici quelques caractéristiques :
+Le scope apporte la visibilité des modèles à une vue. C'est un objet JavaScript attaché à l'application, un contexte d'exécution. Voici quelques caractéristiques :
 
 * $scope.$watch (observer les changements dans les modèles)
-* $scope.$apply (propager les changements qui ont lieu en dehors d'angular)
+* $scope.$apply (propager les changements qui ont lieu en dehors d'AngularJS)
 * hiérachique (hérite des propriétés des scopes parents)
-* contexte d'execution {{username}} -> $scope.username
+* contexte d'exécution {{username}} -> $scope.username
 
 
 --------------------------------------------------------------------------------
 
 # Expression
 
-Les expressions ressemble à du code Javascript et sont écrite avec des doubles accolades {{ expression }}.
+Les expressions ressemble à du code JavaScript et sont écrites avec des doubles accolades {{ expression }}.
 
 Voici quelques expressions valides :
 
@@ -108,7 +108,7 @@ Voici quelques expressions valides :
 
 # Service
 
-Les services sont des objets javascript qui sont cablés ensembles via l'injection de dépendances. Ils sont :
+Les services sont des objets JavaScript qui sont cablés ensembles via l'injection de dépendances. Ils sont :
 
 * des singletons
 * chargés uniquement si besoin (lazy load)
@@ -130,9 +130,9 @@ Exemples de services natif à AngularJS :
 
 C'est un patron de conception sur la manière dont les composants récupèrent leurs dépendances.
 
-AngularJS utilise une approche de résolution des dépendances à la création des componsants
+AngularJS utilise une approche de résolution des dépendances à la création des componsants.
 
-Ainsi si dessous nous apprenons à AngularJS à créer un service 'greet' dépendant d'un autre componsant '$window' :
+Ainsi ci-dessous nous apprenons à AngularJS à créer un service 'greet' dépendant d'un autre componsant '$window' :
 
     someModule.factory('greet', ['$window', function($window) {
       // ...
