@@ -418,6 +418,10 @@ aside.source {
     column-gap: 20px;
 }
 
+div.presentation {
+  -webkit-transform: scale(1) !important;
+}
+
     </style>
     <style type="text/css" media="screen, projection">
       /***************************************************************************/
@@ -605,7 +609,7 @@ div.slide {
 }
 
 .slide.future {
-  display: none;
+  display: block;
 }
 
 /* A title slide is a single header */
@@ -1036,6 +1040,15 @@ div#current_presenter_notes {
 
 div.slide div.presenter_notes {
   display: none;
+}
+
+.slide.tp h1,
+.slide.tp h2,
+.slide.tp h3,
+.slide.tp h4,
+.slide.tp h5,
+.slide.tp h6 {
+  color: #F08A00;
 }
 
     </style>
@@ -1632,7 +1645,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              1/17
+              1/19
             </aside>
           </footer>
         </div>
@@ -1664,7 +1677,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              2/17
+              2/19
             </aside>
           </footer>
         </div>
@@ -1678,7 +1691,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <header><h1>Qu'est-ce-que AngularJS ?</h1></header>
             
             
-            <section><p>AngularJS est un framework Javascript qui permet :</p>
+            <section><p>AngularJS est un framework JavaScript qui permet :</p>
 <ul>
 <li>d'étendre le language HTML (directives)</li>
 <li>de réaliser des Single.Page.App.</li>
@@ -1706,7 +1719,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              3/17
+              3/19
             </aside>
           </footer>
         </div>
@@ -1741,7 +1754,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              4/17
+              4/19
             </aside>
           </footer>
         </div>
@@ -1776,7 +1789,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              5/17
+              5/19
             </aside>
           </footer>
         </div>
@@ -1814,7 +1827,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              6/17
+              6/19
             </aside>
           </footer>
         </div>
@@ -1829,7 +1842,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             
             <section><ul>
-<li>Un template est fichier html parsé par AngularJS</li>
+<li>Un template est fichier HTML parsé par AngularJS</li>
 <li>Une directive c'est l'extension d'HTML (ici ng-model)</li>
 </ul>
 <p><img alt="template &amp; data binding" src="https://docs.angularjs.org/img/guide/concepts-databinding1.png" /></p></section>
@@ -1848,7 +1861,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              7/17
+              7/19
             </aside>
           </footer>
         </div>
@@ -1862,7 +1875,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <header><h1>Contrôleur</h1></header>
             
             
-            <section><p>Il s'agit du contrôleur au sens MVC, lien entre les données / services et les vues. Il orchestre l'execution de l'application.</p>
+            <section><p>Il s'agit du contrôleur au sens MVC, lien entre les données / services et les vues. Il orchestre l'exécution de l'application.</p>
 <p><img alt="controller" src="https://docs.angularjs.org/img/guide/concepts-databinding2.png" /></p></section>
             
           </div>
@@ -1879,7 +1892,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              8/17
+              8/19
             </aside>
           </footer>
         </div>
@@ -1893,12 +1906,12 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <header><h1>Scope</h1></header>
             
             
-            <section><p>Le scope apporte la visibilité des modèles à une vue. C'est un objet javascript attaché à l'application, un contexte d'execution. Voici quelques caractéristiques :</p>
+            <section><p>Le scope apporte la visibilité des modèles à une vue. C'est un objet JavaScript attaché à l'application, un contexte d'exécution. Voici quelques caractéristiques :</p>
 <ul>
 <li>$scope.$watch (observer les changements dans les modèles)</li>
-<li>$scope.$apply (propager les changements qui ont lieu en dehors d'angular)</li>
+<li>$scope.$apply (propager les changements qui ont lieu en dehors d'AngularJS)</li>
 <li>hiérachique (hérite des propriétés des scopes parents)</li>
-<li>contexte d'execution {{username}} -&gt; $scope.username</li>
+<li>contexte d'exécution {{username}} -&gt; $scope.username</li>
 </ul></section>
             
           </div>
@@ -1915,7 +1928,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              9/17
+              9/19
             </aside>
           </footer>
         </div>
@@ -1929,7 +1942,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <header><h1>Expression</h1></header>
             
             
-            <section><p>Les expressions ressemble à du code Javascript et sont écrite avec des doubles accolades {{ expression }}.</p>
+            <section><p>Les expressions ressemblent à du code JavaScript et sont écrites avec des doubles accolades {{ expression }}.</p>
 <p>Voici quelques expressions valides :</p>
 <ul>
 <li>1+2</li>
@@ -1952,7 +1965,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              10/17
+              10/19
             </aside>
           </footer>
         </div>
@@ -1966,7 +1979,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <header><h1>Service</h1></header>
             
             
-            <section><p>Les services sont des objets javascript qui sont cablés ensembles via l'injection de dépendances. Ils sont :</p>
+            <section><p>Les services sont des objets JavaScript qui sont cablés ensembles via l'injection de dépendances. Ils sont :</p>
 <ul>
 <li>des singletons</li>
 <li>chargés uniquement si besoin (lazy load)</li>
@@ -1995,7 +2008,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              11/17
+              11/19
             </aside>
           </footer>
         </div>
@@ -2010,8 +2023,8 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             
             <section><p>C'est un patron de conception sur la manière dont les composants récupèrent leurs dépendances.</p>
-<p>AngularJS utilise une approche de résolution des dépendances à la création des componsants</p>
-<p>Ainsi si dessous nous apprenons à AngularJS à créer un service 'greet' dépendant d'un autre componsant '$window' :</p>
+<p>AngularJS utilise une approche de résolution des dépendances à la création des componsants.</p>
+<p>Ainsi ci-dessous nous apprenons à AngularJS à créer un service 'greet' dépendant d'un autre componsant '$window' :</p>
 <pre><code>someModule.factory('greet', ['$window', function($window) {
   // ...
 }]);
@@ -2031,7 +2044,50 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              12/17
+              12/19
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 1-introduction-angular.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Comment penser AngularJS quand on connait jQuery</h1></header>
+            
+            
+            <section><p>Ou comment ne pas penser jQuery</p>
+<ul>
+<li>Ne pas créer une page pour manipuler son DOM</li>
+<li>Ne pas augmenter jQuery avec AngularJS</li>
+<li>
+<p>Les directives ne sont pas des modules jQuery</p>
+</li>
+<li>
+<p>Penser en terme d'architecture (service, contrôleur, ...)</p>
+</li>
+<li>Les données doivent être chargées dans des objets Javascript</li>
+<li>Eviter autant que possible d'inclure un plugin jQuery</li>
+</ul>
+<p><a href="http://stackoverflow.com/questions/14994391/how-do-i-think-in-angularjs-if-i-have-a-jquery-background/15012542#15012542">source</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="1-introduction-angular.md">1-introduction-angular.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/19
             </aside>
           </footer>
         </div>
@@ -2063,7 +2119,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              13/17
+              14/19
             </aside>
           </footer>
         </div>
@@ -2108,7 +2164,49 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              14/17
+              15/19
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 1-introduction-angular.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Outils (officiels)</h1></header>
+            
+            
+            <section><ul>
+<li>AngularJS Batarang (extension chrome)</li>
+<li>Protractor</li>
+<li>Karma</li>
+</ul>
+<h1>Outils (Commautaires)</h1>
+<ul>
+<li>AngularUI (bootstrap intégration)</li>
+<li>angular-gettext</li>
+<li>Restangular</li>
+<li>Gulp / Grunt</li>
+<li>Bower</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="1-introduction-angular.md">1-introduction-angular.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/19
             </aside>
           </footer>
         </div>
@@ -2136,7 +2234,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              15/17
+              17/19
             </aside>
           </footer>
         </div>
@@ -2173,7 +2271,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              16/17
+              18/19
             </aside>
           </footer>
         </div>
@@ -2201,7 +2299,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              17/17
+              19/19
             </aside>
           </footer>
         </div>
@@ -2289,32 +2387,44 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">Commencer un projet avec AngularJS</a></th>
+        <th><a href="#slide13">Comment penser AngularJS quand on connait jQuery</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">Le projet créé</a></th>
+        <th><a href="#slide14">Commencer un projet avec AngularJS</a></th>
         <td><a href="#slide14">14</a></td>
       </tr>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">Démonstration : Application de création de carte</a></th>
+        <th><a href="#slide15">Le projet créé</a></th>
         <td><a href="#slide15">15</a></td>
       </tr>
       
       
       <tr id="toc-row-16">
-        <th><a href="#slide16">Où obtenir des informations ?</a></th>
+        <th><a href="#slide16">Outils (officiels)</a></th>
         <td><a href="#slide16">16</a></td>
       </tr>
       
       
       <tr id="toc-row-17">
-        <th><a href="#slide17">Merci !</a></th>
+        <th><a href="#slide17">Démonstration : Application de création de carte</a></th>
         <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Où obtenir des informations ?</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Merci !</a></th>
+        <td><a href="#slide19">19</a></td>
       </tr>
       
       
