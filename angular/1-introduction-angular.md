@@ -2,11 +2,29 @@
 
 --------------------------------------------------------------------------------
 
+# Jean-Michel FRANCOIS
+
+* twitter: @toutpt & @toutpt_fr
+* github: toutpt
+* email: jeanmichel.francois@makina-corpus.com
+
+--------------------------------------------------------------------------------
+
+# Makina Corpus
+
+* Société de Services en Logiciels Libres, indépendante, créée en 2001
+* 35 collaborateurs dans 4 agences (Paris, Nantes, Toulouse, Pau)
+* SIG / Portails / Système et réseaux
+* Valeurs : Logiciel libre, OpenData, agilité, développement durable
+
+--------------------------------------------------------------------------------
+
 > HTML enhanced for web apps!
 
 <cite> — angularjs.org</cite>
 
 .fx: quoteslide
+
 
 --------------------------------------------------------------------------------
 
@@ -33,7 +51,7 @@ AngularJS est un framework JavaScript qui permet :
 * Ultra testé et donc testable
 * Les directives (html étendu)
 * Le modèle MVC
-* Les données sont des objets natifs javascript
+* Les données sont des objets natifs JavaScript
 
 
 --------------------------------------------------------------------------------
@@ -61,7 +79,7 @@ AngularJS est un framework JavaScript qui permet :
 
 --------------------------------------------------------------------------------
 
-# Template et directive
+# [Architecture] Template et directive
 
 * Un template est fichier HTML parsé par AngularJS
 * Une directive c'est l'extension d'HTML (ici ng-model)
@@ -70,7 +88,7 @@ AngularJS est un framework JavaScript qui permet :
 
 --------------------------------------------------------------------------------
 
-# Contrôleur
+# [Architecture] Contrôleur
 
 Il s'agit du contrôleur au sens MVC, lien entre les données / services et les vues. Il orchestre l'exécution de l'application.
 
@@ -79,7 +97,7 @@ Il s'agit du contrôleur au sens MVC, lien entre les données / services et les 
 
 --------------------------------------------------------------------------------
 
-# Scope
+# [Architecture] Scope
 
 Le scope apporte la visibilité des modèles à une vue. C'est un objet JavaScript attaché à l'application, un contexte d'exécution. Voici quelques caractéristiques :
 
@@ -91,7 +109,7 @@ Le scope apporte la visibilité des modèles à une vue. C'est un objet JavaScri
 
 --------------------------------------------------------------------------------
 
-# Expression
+# [Architecture] Expression
 
 Les expressions ressemblent à du code JavaScript et sont écrites avec des doubles accolades {{ expression }}.
 
@@ -106,7 +124,7 @@ Voici quelques expressions valides :
 
 --------------------------------------------------------------------------------
 
-# Service
+# [Architecture] Service
 
 Les services sont des objets JavaScript qui sont cablés ensembles via l'injection de dépendances. Ils sont :
 
@@ -125,7 +143,7 @@ Exemples de services natif à AngularJS :
 
 --------------------------------------------------------------------------------
 
-# Injection de dépendances (DI)
+# [Architecture] Injection de dépendances
 
 
 C'est un patron de conception sur la manière dont les composants récupèrent leurs dépendances.
@@ -141,9 +159,9 @@ Ainsi ci-dessous nous apprenons à AngularJS à créer un service 'greet' dépen
 
 --------------------------------------------------------------------------------
 
-# Comment penser AngularJS quand on connait jQuery
+# Passer de jQuery à AngularJS
 
-Ou comment ne pas penser jQuery
+Ou comment ne plus utiliser jQuery
 
 * Ne pas créer une page pour manipuler son DOM
 * Ne pas augmenter jQuery avec AngularJS
@@ -152,14 +170,13 @@ Ou comment ne pas penser jQuery
 * Les données doivent être chargées dans des objets JavaScript
 * Eviter autant que possible d'inclure un plugin jQuery
 
-[source](http://stackoverflow.com/questions/14994391/how-do-i-think-in-angularjs-if-i-have-a-jquery-background/15012542#15012542)
-
 
 --------------------------------------------------------------------------------
 
 # Commencer un projet avec AngularJS
 
-* https://github.com/angular/angular-seed
+* Angular seed
+* Angular Yeoman generator
 
 
 --------------------------------------------------------------------------------
@@ -168,17 +185,17 @@ Ou comment ne pas penser jQuery
 
     !console
     app/
-    ├── css/                --> css files
+    ├── css/                --> CSS files
     │   └── app.css         --> default stylesheet
     ├── img/                --> image files
     ├── index.html          --> app layout file
-    ├── js/                 --> javascript files
+    ├── js/                 --> JavaScript files
     │   ├── app.js          --> application
     │   ├── controllers.js  --> application controllers
     │   ├── directives.js   --> application directives
-    │   ├── filters.js      --> custom angular filters
-    │   └── services.js     --> custom angular services
-    └── partials/           --> angular view partials
+    │   ├── filters.js      --> custom AngularJS filters
+    │   └── services.js     --> custom AngularJS services
+    └── partials/           --> AngularJS view partials
         ├── partial1.html
         └── partial2.html
 
@@ -191,9 +208,9 @@ Ou comment ne pas penser jQuery
 * Protractor
 * Karma
 
-# Outils (Commautaires)
+# Outils (Communautaires)
 
-* AngularUI (bootstrap intégration)
+* AngularUI
 * angular-gettext
 * Restangular
 * Gulp / Grunt
@@ -209,12 +226,12 @@ Ou comment ne pas penser jQuery
 
 # Où obtenir des informations ?
 
-* [site officiel](http://www.angularjs.org) [EN]
-* [ng-book](https://www.ng-book.com/) [EN]
-* [protractor](https://github.com/angular/protractor) [EN]
-* [built with angular](http://builtwith.angularjs.org/) [EN]
-* [angular seed](https://github.com/angular/angular-seed) [EN]
-* [angular ui](http://angular-ui.github.io) [EN]
+* site officiel : http://www.angularjs.org [EN]
+* ng-book : https://www.ng-book.com/ [EN]
+* protractor : https://github.com/angular/protractor [EN]
+* built with angular : http://builtwith.angularjs.org/ [EN]
+* angular seed : https://github.com/angular/angular-seed [EN]
+* angular ui : http://angular-ui.github.io [EN]
 
 --------------------------------------------------------------------------------
 
