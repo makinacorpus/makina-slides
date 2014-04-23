@@ -93,7 +93,7 @@ Le scope apporte la visibilité des modèles à une vue. C'est un objet JavaScri
 
 # Expression
 
-Les expressions ressemble à du code JavaScript et sont écrites avec des doubles accolades {{ expression }}.
+Les expressions ressemblent à du code JavaScript et sont écrites avec des doubles accolades {{ expression }}.
 
 Voici quelques expressions valides :
 
