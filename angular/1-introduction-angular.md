@@ -20,7 +20,7 @@ AngularJS est un framework JavaScript qui permet :
 
 ## Historique
 
-* Créé en 2009, basé sur le langage Javascript
+* Créé en 2009, basé sur le langage JavaScript
 * 1.0 sortie en juin 2012
 * 1.2 sortie en novembre 2013 (version actuelle)
 * Prochaine version: 2.0
@@ -148,9 +148,8 @@ Ou comment ne pas penser jQuery
 * Ne pas créer une page pour manipuler son DOM
 * Ne pas augmenter jQuery avec AngularJS
 * Les directives ne sont pas des modules jQuery
-
 * Penser en terme d'architecture (service, contrôleur, ...)
-* Les données doivent être chargées dans des objets Javascript
+* Les données doivent être chargées dans des objets JavaScript
 * Eviter autant que possible d'inclure un plugin jQuery
 
 [source](http://stackoverflow.com/questions/14994391/how-do-i-think-in-angularjs-if-i-have-a-jquery-background/15012542#15012542)
