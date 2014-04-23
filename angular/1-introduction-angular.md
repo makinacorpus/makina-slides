@@ -138,6 +138,24 @@ Ainsi ci-dessous nous apprenons à AngularJS à créer un service 'greet' dépen
       // ...
     }]);
 
+
+--------------------------------------------------------------------------------
+
+# Comment penser AngularJS quand on connait jQuery
+
+Ou comment ne pas penser jQuery
+
+* Ne pas créer une page pour manipuler son DOM
+* Ne pas augmenter jQuery avec AngularJS
+* Les directives ne sont pas des modules jQuery
+
+* Penser en terme d'architecture (service, contrôleur, ...)
+* Les données doivent être chargées dans des objets Javascript
+* Eviter autant que possible d'inclure un plugin jQuery
+
+[source](http://stackoverflow.com/questions/14994391/how-do-i-think-in-angularjs-if-i-have-a-jquery-background/15012542#15012542)
+
+
 --------------------------------------------------------------------------------
 
 # Commencer un projet avec AngularJS
@@ -165,6 +183,22 @@ Ainsi ci-dessous nous apprenons à AngularJS à créer un service 'greet' dépen
         ├── partial1.html
         └── partial2.html
 
+
+--------------------------------------------------------------------------------
+
+# Outils (officiels)
+
+* AngularJS Batarang (extension chrome)
+* Protractor
+* Karma
+
+# Outils (Commautaires)
+
+* AngularUI (bootstrap intégration)
+* angular-gettext
+* Restangular
+* Gulp / Grunt
+* Bower
 
 --------------------------------------------------------------------------------
 
