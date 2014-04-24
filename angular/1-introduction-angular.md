@@ -32,7 +32,7 @@
 
 AngularJS est un framework JavaScript qui permet :
 
-* d'étendre le language HTML (directives)
+* d'étendre le langage HTML (directives)
 * de réaliser des Single.Page.App.
 * d'embarquer plusieurs applications
 
@@ -148,7 +148,7 @@ Exemples de services natif à AngularJS :
 
 C'est un patron de conception sur la manière dont les composants récupèrent leurs dépendances.
 
-AngularJS utilise une approche de résolution des dépendances à la création des componsants.
+AngularJS utilise une approche de résolution des dépendances à la création des composants.
 
 Ainsi ci-dessous nous apprenons à AngularJS à créer un service 'greet' dépendant d'un autre componsant '$window' :
 
@@ -175,13 +175,13 @@ Ou comment ne plus utiliser jQuery
 
 # Commencer un projet avec AngularJS
 
-* Angular seed
-* Angular Yeoman generator
+* Angular seed (projet minimal avec les tests)
+* Angular Yeoman generator (générateur de projet JavaScript)
 
 
 --------------------------------------------------------------------------------
 
-# Le projet créé
+# Un projet créé avec Angular seed
 
     !console
     app/
@@ -195,32 +195,45 @@ Ou comment ne plus utiliser jQuery
     │   ├── directives.js   --> application directives
     │   ├── filters.js      --> custom AngularJS filters
     │   └── services.js     --> custom AngularJS services
-    └── partials/           --> AngularJS view partials
+    └── partials/           --> AngularJS view partials (template)
         ├── partial1.html
         └── partial2.html
+
+
+Cette architecture est discutable, je préfère l'approche un fichier par objet métier (maps, messages, ...)
+
+--------------------------------------------------------------------------------
+
+# Déployer un projet AngularJS
+
+AngularJS est un framework JavaScript, vous avez donc juste à servir les ressources statiques par un simple serveur HTTP (apache / nginx).
+
+L'idéale est de passer par une phase de 'build' pour minifier les ressources.
 
 
 --------------------------------------------------------------------------------
 
 # Outils (officiels)
 
-* AngularJS Batarang (extension chrome)
-* Protractor
-* Karma
+* AngularJS Batarang (extension chrome pour le débug)
+* Protractor (aka testacular, tests fonctionnels multi navigateurs)
+* Karma (tests JavaScript)
 
 # Outils (Communautaires)
 
-* AngularUI
-* angular-gettext
-* Restangular
-* Gulp / Grunt
-* Bower
+* AngularUI (ensembles de directives pour réaliser vos interfaces)
+* angular-gettext (traduction)
+* Restangular (intégration d'API REST)
+* Gulp / Grunt (build / minification des resources)
+* Bower (gestionnaire de packages)
 
 --------------------------------------------------------------------------------
 
 # Démonstration : Application de création de carte
 
 .fx: alternate
+
+https://github.com/makinacorpus/openmapeditor
 
 --------------------------------------------------------------------------------
 
