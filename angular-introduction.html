@@ -1124,7 +1124,7 @@ div.slide div.presenter_notes {
       <style type="text/css" media="screen, projection">
         @import url(http://fonts.googleapis.com/css?family=Open+Sans:800italic,400,800,700);
 body {
-    font-size: 21px;
+    font-size: 22px;
     font-family: 'Open Sans', 'sans-serif';
     font-weight: normal;
     font-style: normal;
@@ -1759,7 +1759,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             <section><p>AngularJS est un framework JavaScript qui permet :</p>
 <ul>
-<li>d'étendre le language HTML (directives)</li>
+<li>d'étendre le langage HTML (directives)</li>
 <li>de réaliser des Single.Page.App.</li>
 <li>d'embarquer plusieurs applications</li>
 </ul>
@@ -2089,7 +2089,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             
             <section><p>C'est un patron de conception sur la manière dont les composants récupèrent leurs dépendances.</p>
-<p>AngularJS utilise une approche de résolution des dépendances à la création des componsants.</p>
+<p>AngularJS utilise une approche de résolution des dépendances à la création des composants.</p>
 <p>Ainsi ci-dessous nous apprenons à AngularJS à créer un service 'greet' dépendant d'un autre componsant '$window' :</p>
 <pre><code>someModule.factory('greet', ['$window', function($window) {
   // ...
@@ -2163,8 +2163,8 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             
             <section><ul>
-<li>Angular seed</li>
-<li>Angular Yeoman generator</li>
+<li>Angular seed (projet minimal avec les tests)</li>
+<li>Angular Yeoman generator (générateur de projet JavaScript)</li>
 </ul></section>
             
           </div>
@@ -2192,7 +2192,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Le projet créé</h1></header>
+            <header><h1>Un projet créé avec Angular seed</h1></header>
             
             
             <section><div class="highlight"><pre><span class="go">app/</span>
@@ -2206,11 +2206,12 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 <span class="go">│   ├── directives.js   --&gt; application directives</span>
 <span class="go">│   ├── filters.js      --&gt; custom AngularJS filters</span>
 <span class="go">│   └── services.js     --&gt; custom AngularJS services</span>
-<span class="go">└── partials/           --&gt; AngularJS view partials</span>
+<span class="go">└── partials/           --&gt; AngularJS view partials (template)</span>
 <span class="go">    ├── partial1.html</span>
 <span class="go">    └── partial2.html</span>
 </pre></div>
-</section>
+
+<p>Cette architecture est discutable, je préfère l'approche un fichier par objet métier (maps, messages, ...)</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2241,17 +2242,17 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             
             <section><ul>
-<li>AngularJS Batarang (extension chrome)</li>
-<li>Protractor</li>
-<li>Karma</li>
+<li>AngularJS Batarang (extension chrome pour le débug)</li>
+<li>Protractor (tests fonctionnels multi navigateurs aka testacular)</li>
+<li>Karma (tests JavaScript)</li>
 </ul>
 <h1>Outils (Communautaires)</h1>
 <ul>
-<li>AngularUI</li>
-<li>angular-gettext</li>
-<li>Restangular</li>
-<li>Gulp / Grunt</li>
-<li>Bower</li>
+<li>AngularUI (ensembles de directives pour réaliser vos interfaces)</li>
+<li>angular-gettext (traduction)</li>
+<li>Restangular (intégration d'API REST)</li>
+<li>Gulp / Grunt (build de votre application)</li>
+<li>Bower (gestionnaire de package)</li>
 </ul></section>
             
           </div>
@@ -2473,7 +2474,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
       
       
       <tr id="toc-row-17">
-        <th><a href="#slide17">Le projet créé</a></th>
+        <th><a href="#slide17">Un projet créé avec Angular seed</a></th>
         <td><a href="#slide17">17</a></td>
       </tr>
       
