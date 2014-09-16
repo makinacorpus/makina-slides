@@ -5,7 +5,32 @@
 
 ----
 
-# Jour 1 : HTML5 / CSS3
+# HTML5 / CSS3
+
+* _Intro : le WorldWideWeb_
+* Doctype
+* Sémantique
+* Formulaires
+* Media (figure, audio, video)
+* Canvas et SVG
+* Drag & Drop
+* Localstorage
+
+
+## Presenter notes
+
+* _Intro : le WorldWideWeb_ (10 min)
+* Doctype (5min)
+* Sémantique (15min)
+* Formulaires (30min)
+  * exercice (15min)
+* Media (figure, audio, video) (30min)
+  * exercice (15min)
+* Canvas et SVG (15min)
+* Drag & Drop (15min)
+* Localstorage (15min)
+
+### plan CDC
 
 1. Introduction à HTML5 (nouveau Doctype, nouveaux éléments sémantiques, audio, video, canvas, géolocalisation, drag and drop, localstorage)
 2. Introduction à CSS3 (propriétés, sélecteurs, préfixes, médias, transitions, transformations, Internet Explorer)
@@ -25,7 +50,6 @@
 
 ## BOOTSTRAP 3
 
-* installer Bootstrap
 * Mise en forme du contenu : texte, tableaux, formulaires, boutons, images et la mise en page
 * Mise en page avec la grille adaptative de Bootstrap : pour des sites Responsive Web Design
 * Composants Bootstrap : barres de navigation, pagination, boutons, etc.
@@ -46,9 +70,9 @@
 
 ## Composants du WorldWideWeb
 
-* URL
-* HTML
-* HTTP
+* URL (_Uniform Resource Locator_)
+* HTML (_HyperText Markup Language_)
+* HTTP (_HyperText Transfer Protocol_)
 
 ## le W3C
 
@@ -66,9 +90,9 @@
 
 ## Historique
 
-* 1989 : début des travaux de *Tim Berners Lee*, chercheur au CERN, et son équipe
+* 1989 : début des travaux de *Tim Berners Lee*, chercheur au CERN, et son équipe. Le principe, l'hypertexte
 * 1991 : *Tim Berners Lee* rend le projet **WorldWideWeb** public
-* 1993 : création du navigateur **Mosaic**, qui intègre également les images
+* 1993 : création du navigateur **Mosaic**
 * 1994 : création du **W3C** par *Tim Berners Lee*
 * 1996 : implémentation de **CSS1.0** par **IE**
 * 1998 : publication des spécifications **CSS 2.0**
@@ -76,7 +100,7 @@
 * 2000 : publication des spécifications pour **XHTML1**. 
 * 2006 : publication des recommandations de **XHTML2.0**
 
-Scission au sein du W3C : le **WhatWG** (Web Hypertext Application Technology Working Group) travaille sur un autre standard pour le **HTML**
+Scission au sein du W3C : le **WHATWG** (Web Hypertext Application Technology Working Group) travaille sur un autre standard pour le **HTML**
 
 * 2008 : "First Public Working Draft" du **HTML5** présentée par le **WHATWG**
 * 2012 : **HTML5** passe en "Candidate Recommandation"
@@ -89,10 +113,14 @@ Scission au sein du W3C : le **WhatWG** (Web Hypertext Application Technology Wo
 
 # Les outils de développement
 
-* Éditeur de code : Notepad++, Sublime Text
-* Navigateur : éviter IE !! Firefox ou Chrome, et leurs plugins d'inspection de code
-* Test et validation [validator.w3.org](http://validator.w3.org/)
-* Voir aussi [opquast.com](http://opquast.com/fr/) pour la qualité du code, l'accessibilité
+* Éditeur de code : [Notepad++](http://notepad-plus-plus.org/), Sublime Text
+* Navigateur : **éviter IE** !! Firefox ou Chrome, et leurs plugins d'inspection de code (voir [Liste de puglins](http://makina-corpus.com/blog/metier/2013/extensions-firefox-pour-le-developpement-web))
+* Test et validation
+    * [validator.w3.org](http://validator.w3.org/)
+    * [opquast.com](http://opquast.com/fr/) pour la qualité du code, l'accessibilité
+* Documentation
+    * officielle [w3c.org/TR/html5](http://www.w3.org/TR/html5/)
+    * compréhensible [developer.mozilla.org](https://developer.mozilla.org/fr/)
 
 .fx: larger
 
@@ -110,7 +138,7 @@ Scission au sein du W3C : le **WhatWG** (Web Hypertext Application Technology Wo
 * Media (figure, audio, video)
 * Canvas et SVG
 * Drag & Drop
-* localstorage
+* Localstorage
 
 ----
 
@@ -118,7 +146,7 @@ Scission au sein du W3C : le **WhatWG** (Web Hypertext Application Technology Wo
 
 * En "Candidate Recommandation" depuis 2012
 * Implémentation variable selon les navigateurs : voir [caniuse.com](http://caniuse.com/)
-* Compatible avec IE9, du moins en partie, des outils permettent une "régression en douceur" (graceful regression)
+* Compatible avec IE9, du moins en partie, des outils permettent une "régression en douceur" (graceful degradation)
 
 ## DocType
 
@@ -135,7 +163,7 @@ Scission au sein du W3C : le **WhatWG** (Web Hypertext Application Technology Wo
 * Section : `<article>`, `<aside>`, `<nav>`, `<section>`, `<header>`, `<footer>`
 * Grouper : `<figure>`, `<figcaption>`
 
-Voir [tinytypo.tetue.net](http://tinytypo.tetue.net/tinytypo.html)
+<!-- Voir [tinytypo.tetue.net](http://tinytypo.tetue.net/tinytypo.html) -->
 
 ## Microdatas
 
@@ -164,7 +192,13 @@ Autres implémentations : microformats, RDFa
 
 ----
 
-# Éléments embarqués
+## Exercice
+
+
+
+----
+
+# Media et Éléments embarqués
 
 ## `<audio>` et `<video>`
 
@@ -175,15 +209,20 @@ Autres implémentations : microformats, RDFa
 
 Les limites : 
 
-* format de fichiers différents selon les navigateurs
+* pas de DRM, les ayant-droits souhaitant ajouter du DRM dans HTML5 ("Hollyweb")
+* streaming compliqué
+* formats de fichiers différents / navigateurs
+    * ogg -> Firefox
+    * webm -> Chrome
+    * mp4 -> Chrome, IE 
 
 ----
 
 # CANVAS et SVG
 
-* canvas vs. svg
-* web gl
-* flash n’est pas mort
+* Canvas vs. SVG
+* Web gl
+* Flash n’est pas (tout à fait) mort
 
 ----
 
@@ -267,10 +306,10 @@ première lettre, première ligne
     ::first-letter
     ::first-line
 
-----
-
 * Un tutoriel : [flukeout.github.io](http://flukeout.github.io/)
 * La documentation officielle : [www.w3.org/TR/selectors](http://www.w3.org/TR/selectors/)
+
+.fx: smaller
 
 ----
 
@@ -345,6 +384,12 @@ Device api
 * Breadcrumb, pagination, label, badges
 * Media (groupe d'image + texte)
 * Vignettes
+
+.notes: notse
+
+### Presenter Notes
+
+this is notes
 
 ----
 
