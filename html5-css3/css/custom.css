@@ -1,0 +1,57 @@
+/* Style */
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin,latin-ext);
+
+body {
+    font-size: 24px;
+    font-family: "Helvetica", "Arial", "Liberation Sans", sans-serif;
+    color: #EEE;
+    background-color: #333; /* Colour outside of slide */
+}
+
+div.slide h1, div.slide h2, div.slide h3, div.slide h4, div.slide h5, div.slide h6 {
+   font-family:  'Roboto Condensed', sans-serif;
+   margin-top: 0.25em;
+   margin-bottom: 0.15em;
+}
+
+div.presentation, div.slide {
+    border-radius: 0;
+    background-color: #232f39; /* colour of the slide */
+}
+pre {
+    padding: 10px;
+    background-color: #555;
+}
+ul {
+    margin-top: 0.5em;
+}
+li {
+    padding: 5px 0;
+}
+/* layout */
+.2col {
+    width: 50%;
+    float: left;
+}
+
+/* Colors */
+div.slide h1 {
+    color: #d6e61f;
+}
+div.slide h2 {
+    color: #f08a00;
+}
+
+a {
+    color: #ef4e70;
+}
+
+/* Smaller */
+
+.smaller section {
+    font-size: 20px;
+}
+
+.larger section {
+    font-size: 30px;
+}
