@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <title>SVG</title>
+    <style>
+        #circle1 {
+            fill: #F66000;
+        }
+        #layer1 #circle2 {
+            fill: #CCCCCC;
+        }
+    </style>
+</head>
+<body onload="draw()">
+    <h1>SVG</h1>
+    <div class="logo">
+        <svg>
+          <circle id="circle1" cx="75" cy="75" r="75" />
+        </svg>
+    </div>
+    <div class="dessin">
+        <object data="objects/dessin.svg" type="image/svg+xml" />
+    </div>
+ </body>
+</html>

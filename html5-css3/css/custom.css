@@ -2,7 +2,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin,latin-ext);
 
 body {
-    font-size: 24px;
+    font-size: 26px;
     font-family: "Helvetica", "Arial", "Liberation Sans", sans-serif;
     color: #EEE;
     background-color: #333; /* Colour outside of slide */
@@ -20,7 +20,12 @@ div.presentation, div.slide {
 }
 pre {
     padding: 10px;
-    background-color: #555;
+    background-color: #222;
+    font-size: 20px;
+}
+
+p {
+    margin-bottom: 0.5em;
 }
 ul {
     margin-top: 0.5em;
@@ -51,7 +56,19 @@ a {
 .smaller section {
     font-size: 20px;
 }
+.smaller section pre {
+    font-size: 18px;
+}
+.smaller div h1 {
+    font-size: 40px;
+}
+
+/* Larger */
+
 
 .larger section {
     font-size: 30px;
+}
+.larger section pre {
+    font-size: 28px;
 }

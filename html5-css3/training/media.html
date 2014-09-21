@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Audio et vidéo</title>
+        <meta charset="utf8"></meta>
+    </head>
+    <body>
+        <h1>Audio element</h1>
+        <audio id="musique" controls>
+            <source src="donjon-episode31.ogg"></source>
+            <source src="donjon-crom.mp3"></source>
+            <p>Ce texte sera affiché si le navigateur ne supporte pas la balise audio.</p>
+        </audio>
+
+        <button onclick="document.getElementById('musique').play()">Play audio</button>
+        <button onclick="document.getElementById('musique').pause()">Pause audio</button>
+
+        <h1>Vidéo</h1>
+        <video  controls poster="bbb.jpg" width="640" height="480">
+            <source src="http://mirrorblender.top-ix.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_stereo.ogg" />
+            <source src="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi" />
+        </video>
+
+        
+        
+    </body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>Mon village</title>
+        <link rel="stylesheet" href="css/tp.css" />
+        <style>
+        #enonce {
+            padding: 10px;
+            background-color: #EEE;
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+        #enonce:before {
+            content: "+";
+            font-site: 3em;
+            font-weight: bold;
+        }
+        #enonce:hover:before {
+            content: "";
+        }
+        #enonce > div {
+            width: 0px;
+            max-height: 0px;
+            overflow: hidden;
+        }
+        #enonce:hover > div {
+            width: 400px;
+            max-height: 800px;
+            transition: all 500ms linear;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Mon village</h1>
+            <p class="tagline">Super village !</p>
+        </header>
+        <nav class="main-nav">
+            <ul class="navbar-nav">
+                <li><a href="#">Lien 1</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Lien 2</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Lien 3</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Lien 4</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Lien 5</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <section id="content">
+            <h1>Dernières nouvelles</h1>
+            <article>
+                <header>
+                    <p class="pubdate">23 Septembre 2014</p>
+                    <h3>La sémantique</h3>
+                </header>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Fusce mollis, est vel eleifend tempus, risus erat sodales felis, a egestas elit sem ut velit.</p>
+                <p>Integer eget turpis sit amet felis vehicula semper et nec odio.</p>
+            </article>
+            <article>
+                <header>
+                    <p class="pubdate">23 Septembre 2014</p>
+                    <h3>Formulaires</h3>
+                </header>
+                <form method="post">
+                    <label for="search">Recherche</label>
+                    <!-- identique à type="text" sauf que le navigateur peut générer un affichage différent -->
+                    <input type="search" name="search" id="search" placeholder="Rechercher" />
+                
+                    <input type="submit" value="Envoyer" />
+                    <input type="reset" value="Annuler" />
+                </form>
+                <p>On peut donner du style au bouton.</p>
+            </article>
+            <article>
+                <header>
+                    <p class="pubdate">23 Septembre 2014</p>
+                    <h3>Tableaux</h3>
+                </header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pratchett</td>
+                            <td>Terry</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article>
+                <header>
+                    <p class="pubdate">23 Septembre 2014</p>
+                    <h3>Media</h3>
+                </header>
+                <article class="media">
+                    <img src="http://lorempixel.com/100/100/nature/" />
+                    <h4>Titre du media</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </article>
+                <article class="media">
+                    <img src="http://lorempixel.com/100/100/city/" />
+                    <h4>Titre du media 2</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis, est vel eleifend tempus, risus erat sodales felis, a egestas elit sem ut velit. Integer eget turpis sit amet felis vehicula semper et nec odio. Mauris enim est, aliquet hendrerit sollicitudin sit amet, aliquam at purus. In hac habitasse platea dictumst. In eleifend quam vel leo fringilla at congue nisi convallis. Duis vel nisi quis eros blandit vehicula id non ante. Ut pulvinar, velit sit amet fermentum venenatis, leo dolor ullamcorper sem, vel faucibus elit tellus a augue.</p>
+                </article>
+            </article>
+        </section>
+        <aside>
+            <h2>Informations pratiques</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis, est vel eleifend tempus, risus erat sodales felis, a egestas elit sem ut velit. Integer eget turpis sit amet felis vehicula semper et nec odio. Mauris enim est, aliquet hendrerit sollicitudin sit amet, aliquam at purus. In hac habitasse platea dictumst. In eleifend quam vel leo fringilla at congue nisi convallis. Duis vel nisi quis eros blandit vehicula id non ante. Ut pulvinar, velit sit amet fermentum venenatis, leo dolor ullamcorper sem, vel faucibus elit tellus a augue."</p>
+        </aside>
+        <footer>
+            <h2>Pied de page</h2>
+            <section id="enonce">
+                <div>
+                    <h3>TP HTML5 / CSS3</h3>
+                    <ol>
+                        <li>Corriger les erreurs HTML.</li>
+                        <li>Insérer la feuille de style <a href="http://necolas.github.io/normalize.css/">normalize.css</a></li>
+                        <li>Rendre le menu déroulant horizontal avec effet transition, et ombre sur les menu hover.</li>
+                        <li>Menu pied de page, chaque bloc sont cote à cote.</li>
+                        <li>Faire en sorte que la section nouvelles soit sur 3 colonnes, et que le dernier élément fasse 100% de large.</li>
+                        <li>La partie aside doit occuper 1/4 de la page, la section content 3/4</li>
+                        <li>Polices sur le titres avec google font.</li>
+                        <li>Ne laisser les blocs cote à cote qu'à partir de 900px.</li>
+                    </ol>
+                    <h3>TP bootstrap</h3>
+                    <ol>
+                        <li>Utiliser le HTML de bootstrap pour les éléments media, rendre les vignettes arrondies</li>
+                        <li>Utiliser le HTML pour le formulaire, rendre le bouton "envoyer" vert et "reset" rouge.</li>
+                        <li>Créer un carousel</li>
+                        <li>Faire de ces TP des boites dépliables (collapsible)</li>
+                    </ol>
+                </div>
+            </section>
+            <ul class="nav">
+                <li><a href="#">Lien 1</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Lien 2</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Lien 3</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </footer>
+    </body>
+</html>

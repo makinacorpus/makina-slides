@@ -1,0 +1,85 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <title>formulaires</title>
+        <meta charset="utf8" />
+        <script src="js/modernizr.js"></script>
+        <link rel="stylesheet" href="css/basic.css">
+    </head>
+    <body>
+        <h1>Formulaires</h1>
+        <form>
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" placeholder="veuillez saisir votre nom" value="" autofocus required autocomplete="off"/>
+            </div>
+
+            <div class="form-group">
+                <label for="ville">Ville</label>
+                <input type="text" name="ville" list="villes"/>
+                <datalist id="villes">
+                    <option value="Albi">
+                    <option value="Cahors">
+                    <option value="Montauban">
+                    <option value="Toulouse">
+                </datalist>
+            </div>
+
+            <div class="form-group">
+                <label for="search">Recherche</label>
+                <!-- identique à type="text" sauf que le navigateur peut générer un affichage différent -->
+                <input type="search" name="search" value="recherche" />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Courriel</label>
+                <input type="email" name="email" />
+            </div>
+
+            <div class="form-group">
+                <label for="tel">Teléphone</label>
+                <input type="tel" name="tel" />
+            </div>
+
+
+            <div class="form-group">
+                <label for="url">url</label>
+                <input type="url" name="url" />
+            </div>
+
+
+            <div class="form-group">
+                <label for="range">range</label>
+                <input type="range" name="range" min="10" max="100" step="5" value="15"/>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="number">number</label>
+                <input type="number" name="number" min="10" max="100" step="5" value="15"/>
+            </div>
+
+            <div class="form-group">
+                <label for="color">color</label>
+                <input type="color" name="color" />
+            </div>
+
+            <div class="form-group">
+                <!-- autres types: date, time, month, week -->
+                <label for="datetime">date and time</label>
+                <input type="date" name="datetime" />
+            </div>
+
+            <div class="form-group">
+                <label for="pattern">pattern</label>
+                <input type="text" name="pattern" pattern="[a-z]{2}[0-9]{2}" value="" placeholder="aa99" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="valider" />
+                <input type="reset" value="remise à zéro" />
+            </div>
+        </form>
+    </body>
+</html>

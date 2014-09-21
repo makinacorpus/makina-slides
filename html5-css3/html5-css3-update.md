@@ -5,7 +5,19 @@
 
 ----
 
-# HTML5 / CSS3
+## Présentation
+
+**Emmanuelle Helly**
+
+* Intégratrice HTML/CSS depuis 2008
+* Plone, Drupal
+* emmanuelle.helly@makina-corpus.net
+
+----
+
+# Jour 1 : HTML5 / CSS3
+
+## HTML5
 
 * _Intro : le WorldWideWeb_
 * Doctype
@@ -16,33 +28,18 @@
 * Drag & Drop
 * Localstorage
 
+----
 
-## Presenter notes
+## CSS3
 
-* _Intro : le WorldWideWeb_ (10 min)
-* Doctype (5min)
-* Sémantique (15min)
-* Formulaires (30min)
-  * exercice (15min)
-* Media (figure, audio, video) (30min)
-  * exercice (15min)
-* Canvas et SVG (15min)
-* Drag & Drop (15min)
-* Localstorage (15min)
-
-### plan CDC
-
-1. Introduction à HTML5 (nouveau Doctype, nouveaux éléments sémantiques, audio, video, canvas, géolocalisation, drag and drop, localstorage)
-2. Introduction à CSS3 (propriétés, sélecteurs, préfixes, médias, transitions, transformations, Internet Explorer)
-3. Syntaxe, préfixes et usages CSS3
-4. Valeurs, fonctions et unités
-5. La gestion des médias avec Media-Queries
-6. Propriétés de texte et de contenu
-7. Propriétés décoratives CSS3
-8. Le positionnement en CSS3
-9. La sélection d'éléments en CSS3
-10. Les transformations
-11. Les transitions et animations 
+* Mise en forme
+* Sélecteurs
+* Unités relatives et absolues
+* Positionnement
+* Mise en page (Grid layout)
+* Media-queries
+* Transformations
+* Effets et animations
 
 ----
 
@@ -122,8 +119,6 @@ Scission au sein du W3C : le **WHATWG** (Web Hypertext Application Technology Wo
     * officielle [w3c.org/TR/html5](http://www.w3.org/TR/html5/)
     * compréhensible [developer.mozilla.org](https://developer.mozilla.org/fr/)
 
-.fx: larger
-
 ----
 
 # Partie 1 : HTML5
@@ -160,16 +155,74 @@ Scission au sein du W3C : le **WHATWG** (Web Hypertext Application Technology Wo
 
 ## Balises
 
+* Inline : `<mark>`, `<time>`, `<meter>`, `<progress>`
 * Section : `<article>`, `<aside>`, `<nav>`, `<section>`, `<header>`, `<footer>`
 * Grouper : `<figure>`, `<figcaption>`
 
+Code plus clair, page mieux structurée sémantiquement : un meilleur référencement.
+
 <!-- Voir [tinytypo.tetue.net](http://tinytypo.tetue.net/tinytypo.html) -->
+
+--- 
+
+## Structure d'une page
+
+    !html
+    <body>
+        <header>
+            <nav data-role="menu">
+                <ul>
+                ...
+                </ul>
+            </nav>
+        </header>
+        <div id="main">
+            <aside>
+            ...
+            </aside>
+            <section id="content">
+                <article>
+                    <figure><img src="__mon__url__" /></figure>
+                    <p>Texte</p>
+                </article>
+            </section>
+        </div>
+        <footer>
+        ...
+        </footer>
+    </body>
+
+.fx: smaller
+
+----
 
 ## Microdatas
 
-voir [schema.org](http://schema.org/docs/gs.html)
+Voir [schema.org](http://schema.org/docs/gs.html)
+
+    !html
+    <div itemscope itemtype="http://schema.org/Person">
+        <div itemprop="name"><strong>Boris Vian</strong></div>
+        <div itemscope 
+            itemtype="http://schema.org/Organization">
+        <a itemprop="url" href="www.letabou.com">
+          <span itemprop="name">le Tabou</span></a>
+        </div>
+        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+          <div itemprop="streetAddress">le Tabou<br>
+                Saint Germain des Prés</div>
+          <div>
+            <span itemprop="postalCode">75006</span>
+            <span itemprop="addressLocality">Paris</span>
+          </div>
+          <div itemprop="addressCountry">France</div>
+        </div>
+        <div itemprop="telephone">0149687368</div>
+    </div>
 
 Autres implémentations : microformats, RDFa
+
+.fx: smaller
 
 ----
 
@@ -189,68 +242,199 @@ Autres implémentations : microformats, RDFa
 * pattern
 * autocomplete
 * min, max, step (pour date, time, number et range)
+* list
 
-----
+--- 
+
+## Code
+
+Url avec placeholder
+
+    !html
+    <input type="url" name="url"   placeholder="Votre site Web" />
+
+Range
+
+    !html
+    <input type="range" name="range" 
+        min="10" max="100" step="5" value="15"/>
+
+Pattern
+
+    !html
+    <input type="text" name="pattern"   pattern="[a-z]{2}[0-9]{2}" />
+
+Liste
+
+    !html
+    <input type="text" name="ville" list="villes"/>
+    <datalist id="villes">
+        <option value="Albi">
+        <option value="Cahors">
+    </datalist>
+
+.fx: smaller
+
+---
 
 ## Exercice
 
+* Créez un formulaire avec les champs suivants : 
+    * Nom complet, 
+    * Téléphone, 
+    * Date de naissance, 
+    * Couleur préférée, 
+    * Ville (parmi quelques villes)
 
+[Exemple complet](https://github.com/numahell/html5-css3/blob/master/html/forms.html)
 
 ----
 
 # Media et Éléments embarqués
 
+## `<embed>` et `<object`>
+
+Pour embarquer des objets flash par exemple.
+
 ## `<audio>` et `<video>`
 
-    <audio id="musique" controls>
-        <source src="donjon-episode31.ogg"></source>
-        <source src="donjon-crom.mp3"></source>
-    </audio>
+    !html
+    <audio src="./donjon-crom.mp3" controls></audio>
+    <video src="video.ogg" controls 
+        poster="video.jpg" width="640" height="480">
 
-Les limites : 
+Les limites : formats de fichiers différents / navigateurs
 
-* pas de DRM, les ayant-droits souhaitant ajouter du DRM dans HTML5 ("Hollyweb")
-* streaming compliqué
-* formats de fichiers différents / navigateurs
-    * ogg -> Firefox
-    * webm -> Chrome
-    * mp4 -> Chrome, IE 
+* ogg -> Firefox
+* webm -> Chrome
+* mp4 -> Chrome, IE 
 
 ----
 
-# CANVAS et SVG
+## Code
 
-* Canvas vs. SVG
-* Web gl
-* Flash n’est pas (tout à fait) mort
+On peut inclure plusieurs formats de media
+
+    !html
+    <video controls poster="video.jpg" width="640" height="480">
+        <source src="video.ogg" />
+        <source src="video.avi" />
+        <source src="video.mp4" />
+    </video>
+
+## Exercice
+
+Essayer la balise `<video>` avec différentes sources, en ouvrant la page dans différents navigateurs.
+
+----
+
+## `<figure>`
+
+Permet d'illustrer et ajouter une légende à une image, un schéma.
+
+    !html
+    <figure>
+      <img src="image.jpg" alt="" />
+      <figcaption>Légende de l'image</figcaption>
+    </figure>
+
+Peut contenir autre chose que des images : du code ou une vidéo par exemple.
+
+## `<iframe>`
+
+Peut embarquer un autre site, un éditeur de texte riche par example.
+
+----
+
+# Effets et 3D
+
+## CANVAS
+
+* surface de pixels contrôlés en JavaScript, API disponible
+* Fonctionnement en "boite noire"
+
+Le "Paint" du web
+
+    !html
+    <html>
+     <head>
+      <script type="application/x-javascript">
+        function draw() {
+         var canvas = document.getElementById("canvas");
+         var ctx = canvas.getContext("2d");
+
+         ctx.fillStyle = "rgb(200,0,0)";
+         ctx.fillRect (10, 10, 55, 50);
+        }
+      </script>
+     </head>
+     <body onload="draw()">
+       <canvas id="canvas" width="300" height="300"></canvas>
+     </body>
+    </html>
+
+.fx: smaller
+
+----
+
+## SVG
+
+Dessiner en 2D vectorielle via XML
+
+* Accès aux éléments d'un SVG depuis le DOM
+* CSS applicables
+* Peut être chargé depuis un fichier externe ou en ligne dans un document HTML
+* L’arbre des données est conservé en mémoire
+
+### Example
+
+    !html
+    <svg>
+      <circle id="circle1" cx="40" cy="40" r="24" />
+    </svg>
+
+Voir aussi [css-tricks.com/using-svg](http://css-tricks.com/using-svg/)
+
+----
+
+## WebGL
+
+Un peu plus que bablutiant : de plus en plus de navigateurs le supportent, mais pas toujours les cartes vidéos.
+
+Voir [Les interfaces de demain](http://fr.slideshare.net/makinacorpus/petit-djeuner-html5-et-css3-les-interfaces-de-demain) pour plus de détails.
+
+## Flash ?
+
+Il n’est pas (tout à fait) mort, mais n'est plus supporté par les Iphone et Ipad
 
 ----
 
 # Application web en HTML5
 
-## Stockage
+## Drag&Drop
 
-* App Cache
-* LOCALSTORAGE
-* INDEXED DB
-* Limites & USAGES
-
+## Local Stockage
 
 ## File API
 
-
 ## Server-Sent Events
-
-* Web Sockets
-
-## Threads et requests
-
-* WEB workers
-* XMLHTTPREQUEST 2
 
 ----
 
 # Partie 2 : CSS3
+
+----
+
+## Sommaire
+
+* Mise en forme
+* Sélecteurs
+* Unités relatives et absolues
+* Positionnement
+* Mise en page (Grid layout)
+* Media-queries
+* Transformations
+* Effets et animations
 
 ----
 
@@ -267,42 +451,100 @@ Les limites :
 
 ----
 
-## Sélecteurs
+## Font-Face
 
-### Sélecteurs CSS2 maintenant implémentés :
+    !css
+    /* roboto bold */
+    @font-face {
+        font-family: 'roboto';
+        src: url('roboto/Roboto-Bold-webfont.eot');
+        src: url('roboto/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+             url('roboto/Roboto-Bold-webfont.woff') format('woff'),
+             url('roboto/Roboto-Bold-webfont.ttf') format('truetype'),
+             url('roboto/Roboto-Bold-webfont.svg#robotobold') format('svg');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+* Trouvez des fonts sur [fontsquirrel.com](http://www.fontsquirrel.com/)
+* Possibilité de faire un import des fonts depuis [www.google.com/fonts](http://www.google.com/fonts/)
+
+Attention à la qualité des glyphes, peuvent être mal positionnés sur la ligne de base.
+
+----
+
+## Extensions spécifiques des navigateurs
+
+Les navigateurs principaux
+
+<table border=1>
+    <tbody>
+        <tr>
+            <td>Safari / Chrome</td>
+            <td>-webkit-</td>
+        </tr>
+        <tr>
+            <td>Firefox</td>
+            <td>-moz-</td>
+        </tr>
+        <tr>
+            <td>Opera</td>
+            <td>-o-</td>
+        </tr>
+        <tr>
+            <td>Internet Explorer</td>
+            <td>-ms-</td>
+        </tr>
+    </tbody>
+</table>
+
+----
+
+# Sélecteurs
+
+## Sélecteurs CSS2
+
+Sont maintenant implémentés par les navigateurs modernes
 
 par attribut
 
+    !css
     a[attribut~="valeur"]
 
 par élément fils direct
 
+    !css
     a > b
 
 par élément frère
 
+    !css
     a + b
 
 ----
 
-### Sélecteurs CSS3
+## Sélecteurs CSS3
 
 par attribut
 
+    !css
     a[attribut^="valeur"]
 
 par fils premier, dernier ou tous les x éléments
 
+    !css
     a:first-child
     a:last-child
     a:nth-child(expression)
 
 négation
 
+    !css
     a:not(.class)
 
 première lettre, première ligne
 
+    !css
     ::first-letter
     ::first-line
 
@@ -313,33 +555,93 @@ première lettre, première ligne
 
 ----
 
-# Grid Layout
+# Unités
 
-flexbox
+## Absolues
+
+px, pt
+
+## Relatives
+
+* em, %
+* rem (root em), relative à la taille attibuée au document
 
 ----
 
-## Font-Face
+# Positionnement
 
-[fontsquirrel.com](http://www.fontsquirrel.com/)
+    !css
+    position: absolute;
+    top: 10%;
+    left: 50px;
+
+* L'élément sort du flux
+* Position relatif au document ou à l'élément parent le plus proche positionné en relatif
+
+----
+
+# Mise en page
+
+## Flexbox
+
+    !css
+    .flex { display: flex; }
+
+    !html
+    <div class="flex">
+        <div>texte 1</div>
+        <div>texte 2</div>
+    </div>
+
+Relativement bien supporté par les navigateurs (IE>=11), très bientôt utilisable.
+
+## Colonne
+
+    !css
+    div {
+        column-count: 2;
+        column-width: 12em;
+    }
+
+Supporté par les navigateurs actuels en utilisant les préfixes (voir caniuse.com)
+
+.fx: smaller
 
 ----
 
 # Media-queries
 
-Le responsive webdesign en image
-Orientation et Localisation
-Device api
+    @media (min-width: 700px) and (orientation: landscape) {…}
+
+* Orientation (`portrait` ou `landscape`) et Localisation
+* Device api (`screen`, `print`, `tv`, )
 
 ----
 
 # CSS animé
 
-## Transitions / Animations
+## Transitions
+
+    a:hover {
+        transition color 200ms ease;
+    }
+
+Sur les propriété `height`, `width`, `color`, `background`
+
+----
 
 ## Transformations
 
-## Extensions spécifiques des navigateurs
+Rotation, translations
+
+----
+
+# TP Mise en page
+
+* Créer une page structurée
+* Ajouter un menu horizontal déroulant
+* Ajouter une image de fond positionnée
+* Responsive
 
 ---- 
 
@@ -416,6 +718,7 @@ this is notes
 
 ## variables
 
+    !css
     @nice-blue: #5B83AD;
     @light-blue: @nice-blue + #111;
 
@@ -425,24 +728,116 @@ this is notes
 
 Résultat :
 
+    !css
     #header {
       color: #6c94be;
     }
 
+Un gain de temps inestimable pour l'intégration front-end
+
+----
+
 ## imbrication de code
 
+    !css
+    #header {
+      color: black;
+      .navigation {
+        font-size: 12px;
+      }
+      .logo {
+        width: 300px;
+      }
+    }
+
 ----
 
-# mixins et fonctions
+# Mixins et fonctions
 
+    !css
+    .a, #b {
+      color: red;
+    }
+    .mixin-class {
+      .a();
+    }
+    .mixin-id {
+      #b();
+    }
+
+Résultat :
+
+    !css
+    .a, #b {
+      color: red;
+    }
+    .mixin-class {
+      color: red;
+    }
+    .mixin-id {
+      color: red;
+    }
 
 ----
 
-# importation de fichier
+# Import de fichier
+
+    !css
+    @import (option) "fichier";
+
+Les options
+
+* `reference`: importe en tant que fichier less sans l'inclure dans la sortie css. Très utilisé pour les fichiers de fonctions less.
+* `inline`: inclue le fichier sans le compiler
+* `less`: traite le fichier en tant que less, quelque soit l'extension
+* `css`: traite le fichier en tant que css
+* `once`: n'importe le fichier qu'une seule fois (comportement par défaut)
+* `multiple`: importe le fichier plusieurs fois
+
 
 ----
 
 # TP : un thème avec LessCSS et Bootstrap
+
+----
+
+## Intégrer un design simple
+
+1. Créer l'arborescence du projet
+1. Créer une structure de page d'accueil en utilisant les fonctionnalités de bootstrap
+
+----
+
+## Arborescence type d'un thème
+
+    !console
+    mon_projet
+    ├── base.html
+    └── mon_theme
+        ├── bootstrap -> /chemin/vers/dossier/bibliotheques/bootstrap/
+        ├── css
+        ├── fonts
+        ├── img
+        ├── js
+        └── less
+            ├── components/
+            │   ├── search.less
+            │   ├── nav.less
+            │   └── forms.less
+            ├── bootstrap.less
+            ├── content.less
+            ├── footer.less
+            ├── header.less
+            ├── style.less
+            ├── mixins_project.less
+            ├── variables_project.less
+            └── variables.less
+
+Compiler vos fichiers
+
+    lessc less/style.less css/style.css
+
+.fx: smaller
 
 ----
 

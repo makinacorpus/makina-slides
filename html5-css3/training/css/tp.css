@@ -1,0 +1,85 @@
+/* Styles */
+/* (et au fait) */
+img:not([alt]) {
+  border: 5px solid red;
+}
+/* Menu déroulant horizontal */
+section {
+  clear: both;
+}
+body {
+  padding-top: 3em;
+}
+nav.main-nav {
+  position: fixed;
+  top: 0;
+}
+.navbar-nav {
+  list-style: none;
+  clear: both;
+  margin: 0;
+}
+.navbar-nav > li {
+  float: left;
+}
+.navbar-nav > li > a {
+  padding: 10px;
+  background-color: #CCC;
+  display: block;
+}
+.navbar-nav > li > ul {
+  display: block;
+  position: absolute;
+  list-style: none;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  background-color: #FFF;
+  box-shadow: 1px 1px 3px #666;
+}
+.navbar-nav > li:hover > ul {
+  height: 60px;
+  min-height: auto;
+  padding: 5px;
+  transition: height 600ms ease;
+}
+/* Sections en 4 colonnes */
+section#content > article {
+  float: left;
+  width: 33%;
+}
+section#content > article:last-of-type {
+  width: 100%;
+  background-color: #EEE;
+}
+/* aside */
+section#content,
+aside {
+  float: left;
+}
+section#content {
+  width: 75%;
+}
+aside {
+  width: 25%;
+  background-color: #CCC;
+}
+aside > * {
+  margin: 10px;
+}
+footer {
+  clear: both;
+}
+/* image media */
+.media {
+  clear: both;
+}
+.media img {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 1em;
+}
+/* footer */
+footer .nav > li {
+  display: inline-block;
+}
