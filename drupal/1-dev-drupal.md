@@ -24,9 +24,9 @@
   * Créer un module
   * Créer un profil d'installation
 # Prérequis
-  * Connaitre un minimum la syntaxe PHP
+  * Connaitre PHP et avoir développé quelques scripts
   * Avoir construit un site avec Drupal
-  * Notions de HTML, CSS, JavaScript et PHP/MySQL.
+  * Notions de HTML, CSS, JavaScript et requêtes SQL.
 
 --------------------------------------------------------------------------------
 
@@ -113,6 +113,22 @@
     * SublimeText
     * Vim
 
+.notes: Autocomplétion - XDebug - Refactoring - Erreurs de syntaxe
+
+--------------------------------------------------------------------------------
+
+# Les standards de codage
+
+  * Indentation, espaces
+
+  * Nommage des fonctions, constantes
+
+  * Tags `<?php`
+
+  * A connaître pour comprendre et être compris
+
+<center><https://drupal.org/coding-standards></center>
+
 --------------------------------------------------------------------------------
 
 # TP: Configuration de Netbeans
@@ -129,20 +145,6 @@
   * XDebug 
 
 .fx: tp
-
---------------------------------------------------------------------------------
-
-# Les standards de codage
-
-  * Indentation, espaces
-
-  * Nommage des fonctions, constantes
-
-  * Tags `<?php`
-
-  * A connaître pour comprendre et être compris
-
-<center><https://drupal.org/coding-standards></center>
 
 --------------------------------------------------------------------------------
 
@@ -173,9 +175,10 @@
 
 # Git et la gestion de versions
 
-  * Utilisé par beaucoup de développeur dans le milieu du web
+  * Utilisé par beaucoup de développeurs dans le milieu du web
 
-  * Très utile ppour patcher des modules
+  * Très utile pour patcher des modules car utilisé pas la communauté Drupal et
+  sur drupal.org
 
   * Une connaissance basique de quelques commandes suffit
 
