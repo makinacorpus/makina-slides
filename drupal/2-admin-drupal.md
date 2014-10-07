@@ -66,6 +66,37 @@
 
 --------------------------------------------------------------------------------
 
+# Quelques références mondiales
+
+  * Tesla
+  * Washington Post
+  * Twitter Documentation
+  * Economist.com
+  * Harvard community
+  * Stanford school
+  * Grammy.com
+  * Amnesty.org
+  * LinkedIn developer documentation
+  * Nvidia developer documentation
+  * Danone
+
+--------------------------------------------------------------------------------
+
+# Quelques références françaises
+
+  * Guerlain
+  * McDonalds
+  * Cartier
+  * Symfony
+  * Parti socialiste / UMP
+  * Gouvernement.fr / Senat.fr / Sites des minstères
+  * Eurostar
+  * Orange Business Services
+  * Rue89
+  * Mediapart
+
+--------------------------------------------------------------------------------
+
 # Installation
 
   * Pré-requis
@@ -102,7 +133,7 @@
   * Accéder à l'application via un navigateur
   * Dérouler le processus d'installation
 
-![][21]
+![][22]
 
 .fx: tp
 
@@ -218,8 +249,7 @@ Thèmes intégrés au cœur de Drupal
 
   * Installer les modules Workbench modération, Views et WYSIWYG.
   * Configurer WYSIWYG.
-    * librairie TinyMCE / FCK Editor / CKEditor
-  * Module Media
+    * librairies TinyMCE, FCK Editor ou CKEditor
   * Configuration > Formats de texte
   * Configuration > profils WYSIWYG
 
@@ -290,10 +320,15 @@ puisse modérer ces pages.
 
 # Pour aller plus loin...
 
-  * Content Access / ACL
+  * Content Access / ACL / Simple access
     * Accès par rôle ou par utilisateur a 1 un contenu
+
   * Workbench Access
     * Accès par rôle ou par utilisateur a 1 rubrique
+
+  * Maestro
+
+  * Reconstruction des droits d'accès
 
 --------------------------------------------------------------------------------
 
@@ -319,8 +354,8 @@ puisse modérer ces pages.
     * Par des modules
   * Paramètres
     * Réglages des commentaires
-    * Mode de publication
-  * Libelle du titre
+    * Options de publication (Publié, Épinglé, Promu en page d'accueil)
+  * Libellé du titre
   * ...
 
 --------------------------------------------------------------------------------
@@ -379,10 +414,54 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Pour aller plus loin
+# Les modes d'affichage
 
-  * Panels
-  * Display suite
+  * Définissent si un champ doit apparaitre et comment il doit apparaitre
+  (via un de ses formatter)
+  * Les modes d'affichages sont fournis par les modules
+  * Drupal Core
+    * _Par défaut_
+    * Full
+    * Teaser
+    * RSS
+    * Résultat de recherche
+
+> Si le mode d'affichage n'est pas défini pour un type de contenu, celui par défaut sera pris en compte
+
+--------------------------------------------------------------------------------
+
+# Panels
+
+  * Permet de structurer les nœuds et les contenus entre eux
+  * En fonction de condition
+  * Interface complexe
+  * Peut vite devenir une "usine à gaz"
+  * Préférable de ne pas penser à Panels tout de suite
+
+![][23]
+
+--------------------------------------------------------------------------------
+
+# Display suite
+
+  * structurer les champs dans un noeud
+  * créer des nouveaux modes d'affichage
+
+![][24]
+
+--------------------------------------------------------------------------------
+
+# Exercices Display Suite
+
+  * Créer plusieurs displays pour le livre
+    * 2 colonnes
+      * image seule à gauche
+      * tout à droite
+    * 2 colonnes
+      * tout à gauche
+      * body à droite
+
+.fx: tp
 
 --------------------------------------------------------------------------------
 
@@ -400,7 +479,42 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-![][13]
+# La taxonomie
+
+  * Catégorise le contenu
+    * notion de vocabulaire
+    * termes de taxonomie
+  * Possibilité de créer plusieurs vocabulaires, qui peuvent être partagés par
+  plusieurs types de contenu
+
+![][25]
+
+--------------------------------------------------------------------------------
+
+# La taxonomie
+
+  * Attacher un ou plusieurs vocabulaires via un champ à paramètrer dans
+  le type de contenu
+  * À la création d'un terme, création d'une page associée qui affiche la
+  liste des contenus associes à un terme
+  * Possibilité de créer des termes à la volée (tagging)
+  * Ou de choisir parmi un liste définie (selection)
+
+![][26]
+
+--------------------------------------------------------------------------------
+
+# L'organisation du contenu - Exercice
+
+  * Définir un vocabulaire ('Genre') et rajouter des termes ('Science
+Fiction', 'Policier'...)
+  * L'appliquer au type de contenu 'livre' et catégoriser les livres crées
+précédemment
+  * Créer un item de menu (menu principal) pour chaque terme crée
+  * Créer un bloc 'À la une' avec un texte décrivant un livre. Afficher
+uniquement sur la page d'accueil dans la région de droite.
+
+--------------------------------------------------------------------------------
 
 # Les menus
 
@@ -408,23 +522,38 @@ puisse modérer ces pages.
     * Menu principal
     * User menu
     * Navigation / Management
-  * Création d'un menu
-    * Par l'administration
-    * À la création d'un noeud
+  * Possibilité de créer des menus personnalisés
+  * Chaque menu crée un bloc correspondant
+
+![][13]
 
 --------------------------------------------------------------------------------
 
-# La taxonomie
+# Les menus
 
-  * Catégorise le contenu
-    * vocabulaires (crée un champ supplémentaire)
-    * termes (liste des termes proposes par le champ)
+  * Création d'un élément de menu
+    * Par l'administration
+    * À la création d'un noeud
+  * Possibilité de désactiver les éléments de menu
+  * Possibilité de hierarchiser les éléments de menu
+  * Création de séparateurs ou d'éléments sans lien -> _Special Menu Items_
+  * Synchronisation entre une taxnomie et un menu -> _Taxonomy Menu_
 
-  * A paramètre dans le type de contenu
+<br><br><br><br>
+> Les éléments de menus sont affichés à l'utilisateur seulement s'il a les
+permissions d'accèder à sa cible
 
-  * À la création d'un terme, création d'une page associée
-    * Affichage de la liste des contenus associes a un terme
-> Structure > Taxonomie
+--------------------------------------------------------------------------------
+
+# Les menus - Exercice
+
+  * Installer le module _Nice menus_
+  * Ajouter quelques liens externes et internes
+  * Organiser entre parents et enfants
+
+_La suite après les blocs_
+
+.fx: tp
 
 --------------------------------------------------------------------------------
 
@@ -442,8 +571,6 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-![][14]
-
 # La gestion des blocs
 
   * Structure > Blocs
@@ -452,42 +579,46 @@ puisse modérer ces pages.
   * Attribution a une région par la liste de sélection
   * Modifier l'ordre par glisser/déposer
 
+![][14]
+
 --------------------------------------------------------------------------------
 
-# La gestion des blocs
+# La gestion des blocs - Configuration
 
-  * Configuration d'un bloc :
-    * Choix du positionnement pour chaque thème actif
-    * Paramètres d'affichage:
-      * Par rôle,
-      * Type de contenu,
-      * URL
-
-![][15]
+  * Choix du positionnement pour chaque thème actif
+  * Paramètres d'affichage:
+    * Par rôle,
+    * Type de contenu,
+    * URL
 
 ![][16]
 
 --------------------------------------------------------------------------------
 
-# L'organisation du contenu
+# La gestion des blocs - Exercice
 
-  * Exercice
-    * Définir un vocabulaire ('Genre') et rajouter des termes ('Science
-Fiction', 'Policier'...)
-  * L'appliquer au type de contenu 'livre' et catégoriser les livres crées
-précédemment
-  * Créer un item de menu (menu principal) pour chaque terme crée
-  * Créer un bloc 'À la une' avec un texte décrivant un livre. Afficher
-uniquement sur la page d'accueil dans la région de droite.
+  * Placer notre Nice menu principal en sidebar
+    * Seulement pour autres pages que la page d'accueil
+
+  * Afficher qui est connecté pour les utilisateurs connectés dans le footer
+
+  * Afficher le bloc RSS sur les contenus
+
+.fx: tp
 
 --------------------------------------------------------------------------------
 
 # Les vues (views)
 
   * Listing de contenu
+
   * 2 étapes :
     * Récupération et filtrage des données
     * Choix du plug-in d'affichage
+
+  * Permet de créer bloc, pages, RSS, excel, JSON, cartes, etc.
+
+  * Les modules peuvent fournir des vues par défaut (ex: _Administration Views_)
 
 --------------------------------------------------------------------------------
 
@@ -505,7 +636,7 @@ uniquement sur la page d'accueil dans la région de droite.
     * Données a afficher
   * Filtrer les données
     * Type de contenu, Taxonomie...
-  * Filtre expose
+  * Filtre exposé
   * Ordre de tri
     * date de publication, titre...
   * Relations
@@ -525,9 +656,9 @@ uniquement sur la page d'accueil dans la région de droite.
   * messages d'en-tête / pied de page / texte de page vide
   * Mode d'affichage
     * Page
-  * Bloc
-  * Flux RSS
-  * ''Fichier attaché''
+    * Bloc
+    * Flux RSS
+    * ''Fichier attaché''
 
 --------------------------------------------------------------------------------
 
@@ -571,12 +702,11 @@ cochée sur toutes les pages du site
 
   * Habillage graphique front-office et back-office
     * [http://drupal.org/project/themes][18]
-
-  * Dans sites/all/themes > Apparence
-
+  * Dans sites/all/themes
   * Paramètrage différent selon le thème
-
   * Possible intégration avec le module color
+  * Chaque thème ajoute son propre CSS avec celui des modules et surcharge les
+  templates par défaut des modules grâce aux suggestions
 
 --------------------------------------------------------------------------------
 
@@ -682,6 +812,14 @@ cette page comme page d'accueil.
 
    [21]: img/druplicon-logo.png
 
-   [21]: img/installed.png
+   [22]: img/installed.png
+
+   [23]: img/panels.png
+
+   [24]: img/ds.jpg
+
+   [25]: img/taxonomy.png
+
+   [26]: img/taxonomy_field.png
 
 
