@@ -127,12 +127,17 @@ div.blackheading h1 {color: black !important;}
 
 /***************************************************************************/
 /* Slide transition */
+.slide {
+  position: relative;
+  z-index: 0;
+}
 .slide.past {
   opacity: 0;
 }
 
 .slide.current {
   opacity: 1;
+  z-index: 1;
   -webkit-transition: opacity 0.75s ease;
   -moz-transition: opacity 0.75s ease;
   -o-transition: opacity 0.75s ease;
@@ -616,6 +621,10 @@ div.slide div.presenter_notes {
   display: none;
 }
 
+a {
+  color: #c9015a;
+}
+
 .slide.tp h1,
 .slide.tp h2,
 .slide.tp h3,
@@ -624,3 +633,13 @@ div.slide div.presenter_notes {
 .slide.tp h6 {
   color: #F08A00;
 }
+.slide.progress h1 {
+  color: #c9015a;
+}
+.slide.progress ul li {
+  color: #aaa;
+}
+.slide.progress ul li strong {
+  color: #fff;
+}
+

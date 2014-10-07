@@ -1,18 +1,17 @@
---------------------------------------------------------------------------------
 
-Objectifs de la formation - Les fonctionnalités avancées
+# Objectifs de la formation - Les fonctionnalités avancées
 
-  * Administration (Tâches d'administration, Mises à jour,  sauvegarde,
-Multi-sites, ldap, performance)
+  * __Administration (Tâches d'administration, Mises à jour,  sauvegarde, Multi-sites, ldap, performance)__
   * Référencement (urls, meta-tags, sitemap.xml)
   * Fonctionnalités de contenu (multilinguisme, panels, display suite)
   * Autres contenus (vidéos, newsletters, formulaires
   * Modules du coeur (aggregator, poll, search)
 
+.fx: progress
 
 --------------------------------------------------------------------------------
 
-Tâches d'administration
+# Tâches d'administration
 
   * Configurer > Personnes : Paramétrage/blocage de comptes
   * Configurer > Système : Informations et Cron
@@ -21,19 +20,18 @@ Tâches d'administration
 
 --------------------------------------------------------------------------------
 
-Mises à jour
+# Mises à jour
 
   * Rapport > Mises à jour disponible (module Update status)
 
-ATTENTION : Toujours faire une sauvegarde des fichiers et de la base de
-données de façon préalable.
+# ATTENTION : Toujours faire une sauvegarde des fichiers et de la base de données de façon préalable.
 
 ![][1]
 
 
 --------------------------------------------------------------------------------
 
-Mises à jour des modules
+# Mises à jour des modules
 
   * Télécharger la nouvelle version
   * Supprimer l'ancienne version
@@ -48,7 +46,7 @@ apparait.
 
 --------------------------------------------------------------------------------
 
-Mises à jour du cœur
+# Mises à jour du cœur
 
   * Télécharger la nouvelle version
   * Copier/coller sur l'ancienne version
@@ -62,7 +60,7 @@ apparaît.
 
 --------------------------------------------------------------------------------
 
-DRUpal SHell
+# DRUpal SHell
 
   * [http://drupal.org/project/drush][2]
   * Exécution d'installation et de mise à jour en ligne de commande
@@ -73,7 +71,7 @@ DRUpal SHell
 
 --------------------------------------------------------------------------------
 
-Sauvegardes
+# Sauvegardes
 
   * Sauvegarde de la base de données
     * module backup_migrate
@@ -84,7 +82,7 @@ Sauvegardes
 
 --------------------------------------------------------------------------------
 
-Installation multi-sites
+# Installation multi-sites
 
 ![][4]
 
@@ -97,7 +95,7 @@ Installation multi-sites
 
 --------------------------------------------------------------------------------
 
-Installation multi-sites
+# Installation multi-sites
 
   * Module Domain access
     * Basé sur 1 instance (même base de données,  même code)
@@ -107,19 +105,20 @@ Installation multi-sites
 
 --------------------------------------------------------------------------------
 
-Objectifs de la formation
+# Objectifs de la formation
 
   * Administration (Tâches d'administration, Mises à jour,  sauvegarde,
 Multi-sites, ldap, performance)
-  * Référencement (urls, meta-tags, sitemap.xml)
+  * __Référencement (urls, meta-tags, sitemap.xml)__
   * Fonctionnalités de contenu (multilinguisme, panels, display suite)
   * Autres contenus (vidéos, newsletters, formulaires
   * Modules du coeur (aggregator, poll, search)
 
+.fx: progress
 
 --------------------------------------------------------------------------------
 
-Ré-écriture des urls
+# Ré-écriture des urls
 
   * Module path (core) et pathauto
   * Recherche et métadonnées > Alias d'urls
@@ -127,29 +126,23 @@ Ré-écriture des urls
     * Selon les types de contenu
     * Selon la taxonomie
   * Régénération d'urls en batch
-    * > contenu
-
-
---------------------------------------------------------------------------------
-
-## Le référencement
-
-### Module meta-tag
-  * Méta-données intégrées dans le code HTML des pages du site
-    * à définir pour chaque contenu
-    * paramétrage page d'accueil
-
+  * Création à partir de tokens
 
 --------------------------------------------------------------------------------
 
-## Le référencement
+# Le référencement
 
-### Module XMLsitemap
+## Module meta-tag
 
-  * Génération d'un fichier sitemap.xml à la racine avec les urls du
-site (parsing par les robots de référencement)
-  * dans les formulaires d'édition, paramètrage pour définir quelles pages sont
-à inclure / exclure
+  * Méta-données intégrées dans le code HTML des pages du site
+  * à définir pour chaque contenu
+  * paramétrage pour la page d'accueil
+
+
+## Module XMLsitemap
+
+  * Génération d'un fichier sitemap.xml à la racine avec les urls du site (parsing par les robots de référencement)
+  * dans les formulaires d'édition, paramètrage pour définir quelles pages sont à inclure / exclure
   * Reconstruction automatique au lancement du cron
 
 ![][5]
@@ -157,7 +150,7 @@ site (parsing par les robots de référencement)
 
 --------------------------------------------------------------------------------
 
-Objectifs de la formation
+# Objectifs de la formation
 
   * Administration (Tâches d'administration, Mises à jour,  sauvegarde,
 Multi-sites, ldap, performance)
@@ -168,7 +161,7 @@ Multi-sites, ldap, performance)
 
 --------------------------------------------------------------------------------
 
-Le multilinguisme
+# Le multilinguisme
 
   * Installation du module I18n (Internationalization)
   * Activation du module et sous-modules
@@ -178,7 +171,7 @@ Le multilinguisme
 
 --------------------------------------------------------------------------------
 
-Traduire les noeuds
+# Traduire les noeuds
 
   * Onglet Traduire pour chaque contenu
     * Tableau de synthèse du statut de traduction pour toutes les langues
@@ -192,9 +185,9 @@ Traduire les noeuds
 
 --------------------------------------------------------------------------------
 
-Traduire les blocs
+# Traduire les blocs
 
-Traduction d'un bloc
+# Traduction d'un bloc
 
   * Choix de la langue
   * Paramètres de visibilité : Spécifier les chemins des contenus traduits où
@@ -205,7 +198,7 @@ Traduction d'un bloc
 
 --------------------------------------------------------------------------------
 
-Traduire l'interface
+# Traduire l'interface
 
 ![][8]
 
@@ -216,7 +209,7 @@ Traduire l'interface
 
 --------------------------------------------------------------------------------
 
-Traduire les menus
+# Traduire les menus
 
   * 2 possibilités :
 
@@ -229,7 +222,7 @@ Traduire les menus
 
 --------------------------------------------------------------------------------
 
-Mise en page composite
+# Mise en page composite
 
   * Module Panels
 
@@ -240,21 +233,17 @@ Mise en page composite
 
 --------------------------------------------------------------------------------
 
-Mise en page composite
+# Mise en page composite
 
   * Module Display suite
-
     * Création de gabarits
-
       * Choix d'un layout
-
-
       * Positionnement des champs
 
 
 --------------------------------------------------------------------------------
 
-Exercices Display Suite
+# Exercices Display Suite
 
   * Créer plusieurs displays pour le livre
 
@@ -273,7 +262,7 @@ Exercices Display Suite
 
 --------------------------------------------------------------------------------
 
-Objectifs de la formation
+# Objectifs de la formation
 
   * Les CMS et Drupal
   * L'architecture Drupal
@@ -282,21 +271,17 @@ Objectifs de la formation
   * L'organisation du contenu
   * Les thèmes
   * Les fonctionnalités avancées
-  * - Administration (Mises à jour, Multi-sites, sauvegarde, cron, ldap,
+    * Administration (Mises à jour, Multi-sites, sauvegarde, cron, ldap,
 performance, architecture)
-
-- Référencement (urls, meta-tags, sitemap.xml)
-
-- Fonctionnalités de contenu (multilinguisme, panels, display suite)
-
-- Autres contenus (vidéos, newsletters, formulaires
-
-- Modules du coeur (aggregator, poll, search)
+    * Référencement (urls, meta-tags, sitemap.xml)
+    * Fonctionnalités de contenu (multilinguisme, panels, display suite)
+    * Autres contenus (vidéos, newsletters, formulaires
+    * Modules du coeur (aggregator, poll, search)
 
 
 --------------------------------------------------------------------------------
 
-Media dans l'éditeur wysiwyg
+# Media dans l'éditeur wysiwyg
 
   * Module Media
   * Gestion centralisé de tous les médias (images, vidéos, audio, flash)
@@ -308,7 +293,7 @@ Media dans l'éditeur wysiwyg
 
 --------------------------------------------------------------------------------
 
-Autres modules de media
+# Autres modules de media
 
   * Module Video
 
@@ -320,7 +305,7 @@ Autres modules de media
 
 --------------------------------------------------------------------------------
 
-Newsletter
+# Newsletter
 
   * Module Simplenews
   * Gestion des abonnements
@@ -330,7 +315,7 @@ Newsletter
 
 --------------------------------------------------------------------------------
 
-Formulaires
+# Formulaires
 
   * Module Webform
   * Création/Gestion intuitive des champs
@@ -343,7 +328,7 @@ Formulaires
 
 --------------------------------------------------------------------------------
 
-Objectifs de la formation
+# Objectifs de la formation
 
   * Les CMS et Drupal
   * L'architecture Drupal
@@ -366,7 +351,7 @@ performance, architecture)
 
 --------------------------------------------------------------------------------
 
-Modules du coeur de Drupal
+# Modules du coeur de Drupal
 
   *     * Aggregator (Flux RSS)
 
@@ -383,14 +368,7 @@ Modules du coeur de Drupal
 
 --------------------------------------------------------------------------------
 
-Questions ?
-
-Pour toute question complémentaire, contactez-nous sur :
-
-
-formation@makina-corpus.com
-
-Merci de votre présence et bonne pratique !
+# Questions ?
 
 
    [1]: data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAA3IAAAHRCAYAAAAvwIuIAAAAAX
