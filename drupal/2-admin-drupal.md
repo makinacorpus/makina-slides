@@ -247,9 +247,10 @@ Thèmes intégrés au cœur de Drupal
 
 ## Exercice
 
-  * Installer les modules Workbench modération, Views et WYSIWYG.
-  * Configurer WYSIWYG.
-    * librairies TinyMCE, FCK Editor ou CKEditor
+  * Installer les modules Workbench modération, Views et CKEditor.
+  * CKEditor ne nécessite pas de configuration.
+    * L'alternative WYSIWYG existe:
+      Support des librairies TinyMCE, CKEditor et d'autres
   * Configuration > Formats de texte
   * Configuration > profils WYSIWYG
 
