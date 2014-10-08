@@ -284,11 +284,20 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
+## Rôles et permissions
+
+  * Un droit = une _permission_
+  * Un role = un _ensemble de permissions_
+  * Une personne est _liée à un ou plusieurs roles_
+  * Les permissions sont _définies par les modules_
+  * Les roles sont _définis par l'administrateur_
+
+--------------------------------------------------------------------------------
+
 ## Droits d'accès
 
   * Ensemble de droits gérés par l'administrateur
-    * Personnes > Droits
-    * Personnes > Droits > Rôles
+  * Personnes > Droits > Rôles
 
 ![][9]
 
