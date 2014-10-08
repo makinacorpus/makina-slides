@@ -514,6 +514,8 @@ précédemment
   * Créer un bloc 'À la une' avec un texte décrivant un livre. Afficher
 uniquement sur la page d'accueil dans la région de droite.
 
+.fx: tp
+
 --------------------------------------------------------------------------------
 
 ## Les menus
