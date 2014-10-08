@@ -252,7 +252,7 @@ Thèmes intégrés au cœur de Drupal
     * L'alternative WYSIWYG existe:
       Support des librairies TinyMCE, CKEditor et d'autres
   * Configuration > Formats de texte
-  * Configuration > profils WYSIWYG
+  * Configuration > CKeditor
 
 .fx: tp
 
