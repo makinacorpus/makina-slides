@@ -11,7 +11,7 @@
 
 --------------------------------------------------------------------------------
 
-# Tâches d'administration
+## Tâches d'administration
 
   * _Configurer > Personnes_ : Paramétrage/blocage de comptes
   * _Configurer > Système_ : Informations et Cron
@@ -24,18 +24,18 @@
 
 --------------------------------------------------------------------------------
 
-# Mises à jour
+## Mises à jour
 
   * Rapport > Mises à jour disponibles (module _Update status_)
 
-# ATTENTION : Toujours faire une sauvegarde des fichiers et de la base de données de façon préalable.
+ATTENTION : Toujours faire une sauvegarde des fichiers et de la base de données de façon préalable.
 
 ![][1]
 
 
 --------------------------------------------------------------------------------
 
-# Mises à jour des modules
+## Mises à jour des modules
 
   * Télécharger la nouvelle version
   * Supprimer l'ancienne version
@@ -50,7 +50,7 @@ apparait.
 
 --------------------------------------------------------------------------------
 
-# Mises à jour du cœur
+## Mises à jour du cœur
 
   * Télécharger la nouvelle version
   * Copier/coller sur l'ancienne version
@@ -64,7 +64,7 @@ apparaît.
 
 --------------------------------------------------------------------------------
 
-# DRUpal SHell
+## DRUpal SHell
 
   * [https://github.com/drush-ops/drush][2]
 
@@ -82,7 +82,7 @@ apparaît.
 
 --------------------------------------------------------------------------------
 
-# Sauvegardes
+## Sauvegardes
 
   * Module _Backup & Migrate_
     * Sauvegarde de la base de données
@@ -99,7 +99,7 @@ apparaît.
 
 --------------------------------------------------------------------------------
 
-# Installation multi-sites
+## Installation multi-sites
 
   * Traditionnel - Partage des modules
     * Décompresser Drupal
@@ -115,7 +115,7 @@ apparaît.
 
 --------------------------------------------------------------------------------
 
-# Performance
+## Performance
 
   * Activer le cache - Activer l'aggrégation
     * Fonctionne très bien pour les anonymes
@@ -142,7 +142,7 @@ Multi-sites, ldap, performance)
 
 --------------------------------------------------------------------------------
 
-# Ré-écriture des urls
+## Ré-écriture des urls
 
   * Module path (core) et pathauto
   * Recherche et métadonnées > Alias d'urls
@@ -154,7 +154,7 @@ Multi-sites, ldap, performance)
 
 --------------------------------------------------------------------------------
 
-# Module Token
+## Module Token
 
   * Sorte de variables affichant certaines données en fonction d'un contexte
   * Global
@@ -220,7 +220,7 @@ Multi-sites, ldap, performance)
 
 --------------------------------------------------------------------------------
 
-# Le multilinguisme
+## Le multilinguisme
 
   * Installation du module I18n (Internationalization)
     * Activation du module et sous-modules
@@ -238,7 +238,7 @@ Multi-sites, ldap, performance)
 
 --------------------------------------------------------------------------------
 
-# Traduire les noeuds
+## Traduire les noeuds
 
   * Onglet Traduire pour chaque contenu
     * Tableau de synthèse du statut de traduction pour toutes les langues
@@ -251,7 +251,7 @@ Multi-sites, ldap, performance)
 
 --------------------------------------------------------------------------------
 
-# Traduire les blocs
+## Traduire les blocs
 
   * Choix de la langue
   * Paramètres de visibilité : Spécifier les chemins des contenus traduits où
@@ -261,7 +261,7 @@ Multi-sites, ldap, performance)
 
 --------------------------------------------------------------------------------
 
-# Traduire l'interface
+## Traduire l'interface
 
   * Configuration > Régionalisation et langues > Traduction de l'interface
   * Traduction de l'interface différent de la traduction du contenu
@@ -270,13 +270,13 @@ Multi-sites, ldap, performance)
 
 --------------------------------------------------------------------------------
 
-# Traduire les menus
+## Traduire les menus
 
   * 2 possibilités :
     * Créer un menu par langue
     * Dans un menu, pour chaque item, ajouter un item par langue
 
-# Traduire les variables
+## Traduire les variables
 
   * Nom du site
   * Slogan
@@ -297,7 +297,7 @@ performance, architecture)
 
 --------------------------------------------------------------------------------
 
-# Media dans l'éditeur wysiwyg
+## Media dans l'éditeur wysiwyg
 
   * Module Media
   * Gestion centralisée de tous les médias (images, vidéos, audio, flash)
@@ -309,7 +309,7 @@ performance, architecture)
 
 --------------------------------------------------------------------------------
 
-# Autres modules de media
+## Autres modules de media
 
   * Alternative à Media
     * Scald
@@ -324,7 +324,7 @@ performance, architecture)
 
 --------------------------------------------------------------------------------
 
-# Newsletter
+## Newsletter
 
   * Module Simplenews
     * Gestion des abonnements
@@ -337,7 +337,7 @@ performance, architecture)
 
 --------------------------------------------------------------------------------
 
-# Formulaires
+## Formulaires
 
   * Module Webform
   * Création/Gestion intuitive des champs
@@ -363,7 +363,7 @@ performance, architecture)
 
 --------------------------------------------------------------------------------
 
-# Modules du coeur de Drupal
+## Modules du coeur de Drupal
 
   * Aggregator (Flux RSS)
     * Feeds pour aller plus loin

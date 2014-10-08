@@ -17,7 +17,7 @@
 
 --------------------------------------------------------------------------------
 
-# Historique
+## Historique
 
   * Sites statiques en HTML, création page par page
     * fastidieux à maintenir
@@ -30,7 +30,7 @@
 
 --------------------------------------------------------------------------------
 
-# Quelques autres CMS
+## Quelques autres CMS
 
   * Wordpress
     * grande communauté
@@ -42,7 +42,7 @@
 
 --------------------------------------------------------------------------------
 
-# Quelques autres CMS
+## Quelques autres CMS
 
   * Joomla
     * plugins nombreux mais peu maintenus
@@ -52,11 +52,11 @@
 
 --------------------------------------------------------------------------------
 
-# Définitions
+## Définitions
 
 > Content Management Framework
 
-## Drupal = CMS + framework
+### Drupal = CMS + framework
 
   * environ 9500 modules disponibles pour Drupal 7
   * communauté active ([http://drupal.org][1] & [http://drupalfr.org][2])
@@ -66,7 +66,7 @@
 
 --------------------------------------------------------------------------------
 
-# Quelques références mondiales
+## Quelques références mondiales
 
   * Tesla
   * Washington Post
@@ -82,7 +82,7 @@
 
 --------------------------------------------------------------------------------
 
-# Quelques références françaises
+## Quelques références françaises
 
   * Guerlain
   * McDonalds
@@ -97,7 +97,7 @@
 
 --------------------------------------------------------------------------------
 
-# Installation
+## Installation - Pré-requis
 
   * Pré-requis
     * Environnement Apache/Mysql/Php
@@ -113,7 +113,7 @@
 
 --------------------------------------------------------------------------------
 
-# Installation
+## Installation
 
   * Créer une base de données vide
   * Décompresser l'archive Drupal dans le répertoire serveur
@@ -126,7 +126,7 @@
 
 --------------------------------------------------------------------------------
 
-# Installation - Exercice
+## Installation - Exercice
 
   * Via PhpMyAdmin, créer une base de données vide
   * Décompresser l'archive Drupal dans le répertoire pré-configuré du serveur
@@ -153,7 +153,7 @@
 
 --------------------------------------------------------------------------------
 
-# Architecture fichiers
+## Architecture fichiers
 
 <img src="img/archi_fichiers.png" style="float:left;padding:.5em 1em 0"/>
 
@@ -172,7 +172,7 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
-# Principales fonctionnalités - Modules du core
+## Principales fonctionnalités - Modules du core
 
   * _System, User_ -> prérequis
   * _Node, Field, Comment, File, Image_ -> création de contenu
@@ -188,7 +188,7 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
-# Choix des modules
+## Choix des modules
 
   * Choisir le module : [http://drupal.org/project/modules][5]
   * Version courante (alpha, beta, dev, stable)
@@ -205,13 +205,13 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
-# Versions des modules
+## Versions des modules
 
   * Exemple avec 7.x-2.1
     * 7.x-2.1 => Pour Drupal 7
-    * 7.x-2.1 => Version majeure du module
+    * 7.x-2.1 => Version 2.x majeure du module
       * Changement d'API par rapport à la 1.x
-    * 7.x-2.1 => Version mineure du module
+    * 7.x-2.1 => Version 1 mineure du module
       * Bug fixing par rapport à la 2.0
   * 4 dénominations essentielles
     * Dev : module en développement
@@ -221,7 +221,7 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
-# Installation de modules
+## Installation de modules
 
   * Méthodes : ![][6]
     * Décompresser dans /sites/all/modules
@@ -235,7 +235,7 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
-# Architecture des interfaces
+## Architecture des interfaces
 
   * Structure du menu d'administration
   * Raccourcis
@@ -245,7 +245,7 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
-# Exercice
+## Exercice
 
   * Installer les modules Workbench modération, Views et WYSIWYG.
   * Configurer WYSIWYG.
@@ -271,7 +271,7 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
-# Gérer les utilisateurs
+## Gérer les utilisateurs
 
   * Paramètrage de création de compte
     * Configuration > Personnes > Paramètres de compte
@@ -283,7 +283,7 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
-# Droits d'accès
+## Droits d'accès
 
   * Ensemble de droits gérés par l'administrateur
     * Personnes > Droits
@@ -293,7 +293,7 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
-# Workflow
+## Workflow
 
   * Workbench moderation
     * Paramètrage des droits.
@@ -305,7 +305,7 @@ Thèmes intégrés au cœur de Drupal
 
 --------------------------------------------------------------------------------
 
-# Gérer les utilisateurs - Exercice
+## Gérer les utilisateurs - Exercice
 
   * Créer un rôle 'Modérateur'
   * Créer un rôle 'Rédacteur'
@@ -318,7 +318,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Pour aller plus loin...
+## Pour aller plus loin...
 
   * Content Access / ACL / Simple access
     * Accès par rôle ou par utilisateur a 1 un contenu
@@ -346,7 +346,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Les types de contenu
+## Les types de contenu
 
   * Article / Page... Actualité / Partenaire...
   * Créés
@@ -360,7 +360,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Les types de contenu
+## Les types de contenu
 
   * Gestion des champs
     * Paramètres d'affichage des champs
@@ -376,7 +376,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Création de contenu
+## Création de contenu
 
   * Contenu > Créer un contenu
 
@@ -390,7 +390,7 @@ puisse modérer ces pages.
 
 ![][12]
 
-# La gestion du contenu
+## La gestion du contenu
 
   * Liste des contenus (noeuds)
     * Filtre par type de contenu / statut / langue
@@ -401,7 +401,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# La gestion du contenu - Exercice
+## La gestion du contenu - Exercice
 
   * Créer un type de contenu 'livre'.
   * Permettre l'affichage de commentaires
@@ -414,7 +414,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Les modes d'affichage
+## Les modes d'affichage
 
   * Définissent si un champ doit apparaitre et comment il doit apparaitre
   (via un de ses formatter)
@@ -430,7 +430,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Panels
+## Panels
 
   * Permet de structurer les nœuds et les contenus entre eux
   * En fonction de condition
@@ -442,7 +442,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Display suite
+## Display suite
 
   * structurer les champs dans un noeud
   * créer des nouveaux modes d'affichage
@@ -451,7 +451,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Exercices Display Suite
+## Exercices Display Suite
 
   * Créer plusieurs displays pour le livre
     * 2 colonnes
@@ -479,7 +479,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# La taxonomie
+## La taxonomie
 
   * Catégorise le contenu
     * notion de vocabulaire
@@ -491,7 +491,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# La taxonomie
+## La taxonomie
 
   * Attacher un ou plusieurs vocabulaires via un champ à paramètrer dans
   le type de contenu
@@ -504,7 +504,7 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# L'organisation du contenu - Exercice
+## L'organisation du contenu - Exercice
 
   * Définir un vocabulaire ('Genre') et rajouter des termes ('Science
 Fiction', 'Policier'...)
@@ -516,7 +516,7 @@ uniquement sur la page d'accueil dans la région de droite.
 
 --------------------------------------------------------------------------------
 
-# Les menus
+## Les menus
 
   * Menus basiques
     * Menu principal
@@ -529,7 +529,7 @@ uniquement sur la page d'accueil dans la région de droite.
 
 --------------------------------------------------------------------------------
 
-# Les menus
+## Les menus
 
   * Création d'un élément de menu
     * Par l'administration
@@ -545,7 +545,7 @@ permissions d'accèder à sa cible
 
 --------------------------------------------------------------------------------
 
-# Les menus - Exercice
+## Les menus - Exercice
 
   * Installer le module _Nice menus_
   * Ajouter quelques liens externes et internes
@@ -557,7 +557,7 @@ _La suite après les blocs_
 
 --------------------------------------------------------------------------------
 
-# La gestion des blocs
+## La gestion des blocs
 
   * Les régions d'un thème
   * Création de blocs :
@@ -571,7 +571,7 @@ _La suite après les blocs_
 
 --------------------------------------------------------------------------------
 
-# La gestion des blocs
+## La gestion des blocs
 
   * Structure > Blocs
     * Choix du thème
@@ -583,7 +583,7 @@ _La suite après les blocs_
 
 --------------------------------------------------------------------------------
 
-# La gestion des blocs - Configuration
+## La gestion des blocs - Configuration
 
   * Choix du positionnement pour chaque thème actif
   * Paramètres d'affichage:
@@ -595,7 +595,7 @@ _La suite après les blocs_
 
 --------------------------------------------------------------------------------
 
-# La gestion des blocs - Exercice
+## La gestion des blocs - Exercice
 
   * Placer notre Nice menu principal en sidebar
     * Seulement pour autres pages que la page d'accueil
@@ -608,7 +608,7 @@ _La suite après les blocs_
 
 --------------------------------------------------------------------------------
 
-# Les vues (views)
+## Les vues (views)
 
   * Listing de contenu
 
@@ -622,7 +622,7 @@ _La suite après les blocs_
 
 --------------------------------------------------------------------------------
 
-# Les vues
+## Les vues
 
   * Interface simplifiée
   
@@ -630,7 +630,7 @@ _La suite après les blocs_
 
 --------------------------------------------------------------------------------
 
-# Les vues
+## Les vues
 
   * Champs
     * Données a afficher
@@ -646,7 +646,7 @@ _La suite après les blocs_
 
 --------------------------------------------------------------------------------
 
-# Les vues
+## Les vues
 
   * Gestion de l'affichage
     * Style = mise en forme
@@ -662,7 +662,7 @@ _La suite après les blocs_
 
 --------------------------------------------------------------------------------
 
-# L'organisation du contenu - Exercice
+## L'organisation du contenu - Exercice
 
   * Bloc
     * Ajouter une case a cocher 'Mettre à la une' au type de contenu 'livre'
@@ -698,7 +698,7 @@ cochée sur toutes les pages du site
 
 --------------------------------------------------------------------------------
 
-# Les thèmes
+## Les thèmes
 
   * Habillage graphique front-office et back-office
     * [http://drupal.org/project/themes][18]
@@ -710,7 +710,7 @@ cochée sur toutes les pages du site
 
 --------------------------------------------------------------------------------
 
-# Les thèmes
+## Les thèmes
 
   * Création d'un thème
   * Utiliser un « starter » thème
@@ -726,7 +726,7 @@ cochée sur toutes les pages du site
 
 --------------------------------------------------------------------------------
 
-# Les thèmes
+## Les thèmes
 
   * Templates
     * page.tpl.php, node.tpl.php, block.tpl.php
@@ -734,13 +734,13 @@ cochée sur toutes les pages du site
     * views-views--<nom de la vue>.tpl.php
     * views-view-field--<nom du champ>.tpl.php
 
-# Exercice
+## Exercice
 
   * Installer le thème Rubik
 
 --------------------------------------------------------------------------------
 
-# L'organisation du contenu - Exercice récapitulatif
+## L'organisation du contenu - Exercice récapitulatif
 
   * Créer un type de contenu auteur : nom, présentation, photo (image)
   * Ajouter une référence (references) vers l'auteur dans le type de contenu
