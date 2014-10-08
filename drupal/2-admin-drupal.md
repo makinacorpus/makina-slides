@@ -442,7 +442,8 @@ puisse modérer ces pages.
 
 ## Panels
 
-  * Permet de structurer les nœuds et les contenus entre eux
+  * Permet de créer des affichages complexes (blocs, views, contenus, ...)
+  * Sur la base d'un _layout_
   * En fonction de condition
   * Interface complexe
   * Peut vite devenir une "usine à gaz"
