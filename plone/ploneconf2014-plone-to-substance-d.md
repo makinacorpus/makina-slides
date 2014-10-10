@@ -1,7 +1,7 @@
 # Running a Plone product on Substance D
 ## Éric Bréhault - PloneConf 2014
 
-.fx: larger
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -9,7 +9,7 @@
 
 "running" is not "migrating".
 
-.fx: larger
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@
 
 No obvious reason.
 
-.fx: larger
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ No obvious reason.
 - It sounds fun.
 - It might be a good experiment for the future of Plone.
 
-.fx: larger
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ No obvious reason.
 
 "Substance D owes much of its spirit to the Zope application server" (sic)
 
-.fx: larger
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -49,29 +49,43 @@ PLUS
 - stores data in a ZODB,
 - provides a management interface (the SDI).
 
-.fx: larger
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Good things in Substance D
 
+<img src="img/monkey_d_luffy.jpg" class="float-right" />
+
 The D initial!
 
 "So it still lives... The will of D."
 
-<img src="img/monkey_d_luffy.jpg" />
-
-.fx: larger
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# The experiment case: Rapido
+# First attempt to integrate Plone
+
+    !console
+    $ pcreate -s substanced ./plone
+
+Make sure to load everything in `__init__.py`:
+
+    !python
+    config.load_zcml("plone-d.zcml")
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# The real experiment case: Rapido
 
 Rapido is the next Plomino version.
 
 It is a complete rewrite.
 
-.fx: larger
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -83,9 +97,9 @@ Still based on Archetypes.
 
 Stores data into CMF objects.
 
-Uses Extensively ZCatalog and PythonScript.
+Uses *extensively* ZCatalog and PythonScript.
 
-.fx: larger
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -95,9 +109,55 @@ Uses Extensively ZCatalog and PythonScript.
  
 Based on Dexterity.
 
-With a quite regular structure.
+.fx: extra-large
 
-.fx: larger
+--------------------------------------------------------------------------------
+
+# Rapido structure 
+
+`rapido.core`
+
+- totally independent on Plone
+- provides adapters able to produce the expected behaviors
+- requires a storage service
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Rapido structure 
+
+`rapido.souper`
+
+- provides a storage service based on Souper
+- (Souper does work on Plone AND Pyramid)
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Rapido structure 
+
+`rapido.plone`
+
+- standard **Dexterity** contents
+- adapts them using `rapido.core`
+- (ideally) uses nothing but `plone.api`
+
+.fx: extra-large
+
+
+--------------------------------------------------------------------------------
+
+# Rapido structure 
+
+`rapido.substanced`
+
+- standard <s>Dexterity</s> **substanced.content** classes
+- adapts them using `rapido.core`
+- uses nothing but <s>`plone.api`</s> **Substance D API**
+
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 # Thank you!

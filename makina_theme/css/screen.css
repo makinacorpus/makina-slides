@@ -100,6 +100,18 @@ blockquote q:after  { content: '\2019'; }
   font-size: 28px;
 }
 
+.extra-large section {
+  font-size: 46px;
+}
+
+.extra-large div h1 {
+  font-size: 80px;
+}
+
+.extra-large section pre {
+  font-size: 32px;
+}
+
 /* titleslide: displaying a title(h1) and subtitle(h2) on the same slide */
 div.titleslide { text-align: center; }
 div.titleslide h1 { padding-top: 140px; font-size: 80px; font-weight: bold;}
