@@ -223,7 +223,8 @@ Une ``factory`` retourne le service demandé.
     * Injection et mocks
 
 --------------------------------------------------------------------------------
-* Tests End to End
+
+# Tests End to End
 
 --------------------------------------------------------------------------------
     * Protractor
@@ -232,13 +233,114 @@ Une ``factory`` retourne le service demandé.
     * Simuler un serveur HTTP
 
 --------------------------------------------------------------------------------
-* Directive
+
+# Directive
 
 --------------------------------------------------------------------------------
-    * Créer ses directives
+
+# Définitions
+
+Une directive permet d'étendre le language HTML. Les formes les plus courantes de directives sont les suivantes :
+
+    !html
+    <div my-directive></div>
+    <my-directive></my-directive>
+
+    <div my-directive="value"></div>
 
 --------------------------------------------------------------------------------
-    * Vers des composants réutilisables
+
+# Créer ses directives
+
+    !javascript
+    angular.module('myApp', [])
+      .directive('myDirective', function() {
+        return {
+          // Options
+        };
+      });
+
+--------------------------------------------------------------------------------
+
+# Options
+
+* ``restrict`` : Indique de quelle manière une directive peut être utilisé. ``A`` pour attribut et ``E`` pour element.
+* ``template``/``templateUrl`` : Template ou url vers le template à utiliser.
+* ``replace`` : Si ``true``, le template remplace le block plutot que d'etre ajouté.
+* ``scope`` : Si ``true``, un nouveau scope sera créer pour la directive.
+* ``controller`` : Le contrôleur à utiliser pour gérer la directive.
+* ...
+
+--------------------------------------------------------------------------------
+
+# Exemple
+
+Fichier JS :
+
+    !javascript
+    angular.module('myApp', [])
+      .directive('myDirective', function() {
+        return {
+          restrict: 'AE',
+          template: '<a href="google.com">Google</a>',
+          replace: true,
+        };
+      });
+
+Fichier HTML :
+
+    !html
+    <div my-directive></div>
+
+--------------------------------------------------------------------------------
+
+# Exemple
+
+Fichier JS :
+
+    !javascript
+    angular.module('myApp', [])
+      .directive('myDirective', function() {
+        return {
+          restrict: 'E',
+          templateUrl: 'partials/my-directive.html',
+          replace: true,
+          controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
+            $scope.value = $attrs.value;
+          }],
+        };
+      });
+
+Fichier HTML :
+
+    !html
+    <my-directive value="foobar"></my-directive>
+
+Fichier my-directive.html :
+
+    <div>{{ value }}</div>
+
+--------------------------------------------------------------------------------
+
+# Vers des composants réutilisables
+
+Les directives permettent d'étendre le langage HTML.
+
+Les filtres permettent de modifier la manière dont les données sont affichées.
+
+Les services mettent à disposition du code métier.
+
+Plus un composant est générique, plus il est réutilisable. Au contraire, un composant qui n'est utilisé qu'une fois n'a pas besoin d'être générique. Il faut trouver le juste milieu.
+
+Voir le dossier ``components`` de ``angular-seed``.
+
+--------------------------------------------------------------------------------
+
+# TP - Création d'une TODO-list
+
+* Créer une directive permettant l'affichage d'une tache. Elle doit :
+    * Prendre en paramètre l'id de la tache et la methode d'affichage de la date.
+* Remplacer le listing des taches et l'affichage d'une tache simple par cette directive.
 
 --------------------------------------------------------------------------------
 
