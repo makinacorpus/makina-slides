@@ -1,4 +1,4 @@
-# Introduction à AngularJS
+# AngularJS
 
 --------------------------------------------------------------------------------
 
@@ -29,24 +29,24 @@
 --------------------------------------------------------------------------------
 
 * Les principes de base
-  * Rappel JavaScript et jQuery
-  * Les frameworks MV*
-  * Le fonctionnement interne
+    * Rappel JavaScript et jQuery
+    * Les frameworks MV*
+    * Le fonctionnement interne
 * Les premiers pas
-  * Commencer un projet avec AngularJS
-  * Intégrer la librairie
-  * Data Binding
-  * Templating
+    * Commencer un projet avec AngularJS
+    * Intégrer la librairie
+    * Data Binding
+    * Templating
 * Contrôleur
-  * Notion de scope
-  * Propagation des événements
+    * Notion de scope
+    * Propagation des événements
 * Filtres
-  * Les filtres disponibles
-  * Créer ses propres filtres
+    * Les filtres disponibles
+    * Créer ses propres filtres
 * Routage
-  * Configuration des routes
-  * Gestion de l'historique
-  * Traitement avant affichage
+    * Configuration des routes
+    * Gestion de l'historique
+    * Traitement avant affichage
 
 --------------------------------------------------------------------------------
 
@@ -58,6 +58,7 @@
 
 ## Objets JavaScript
 
+    !javascript
     var obj = {'foo': 'bar'};
     obj.foo == obj['foo'];
     obj.foobar = 42;
@@ -74,10 +75,6 @@
 Ou comment ne plus utiliser jQuery
 
 * Ne pas créer une page pour manipuler son DOM
-<!---
-In jQuery, you design a page, and then you make it dynamic.
-This is because jQuery was designed for augmentation and has grown incredibly from that simple premise.
--->
 * Ne pas augmenter jQuery avec AngularJS
 * Les directives ne sont pas des modules jQuery
 * Penser en terme d'architecture (service, contrôleur, ...)
@@ -89,10 +86,6 @@ This is because jQuery was designed for augmentation and has grown incredibly fr
 --------------------------------------------------------------------------------
 
 # Les frameworks MV*
-
-<!---
-The central component of MVC, the model, captures the behavior of the application in terms of its problem domain, independent of the user interface.[5] The model directly manages the data, logic and rules of the application. A view can be any output representation of information, such as a chart or a diagram; multiple views of the same information are possible, such as a bar chart for management and a tabular view for accountants. The third part, the controller, accepts input and converts it to commands for the model or view.
--->
 
 ![Modèle MVC](http://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg)
 
@@ -134,31 +127,27 @@ AngularJS est un framework JavaScript qui permet :
 # Commencer un projet avec AngularJS
 
 * [angular-seed](https://github.com/angular/angular-seed) (projet minimal avec les tests)
-* Angular Yeoman generator (générateur de projet JavaScript) <!--- Jour 3 -->
-
-<!--- Pas plus de précisions pour angular-seed, voir le README, les procédures peuvent changer. -->
+* Angular Yeoman generator (générateur de projet JavaScript)
 
 --------------------------------------------------------------------------------
 
 # Déployer un projet AngularJS
 
 * Resources statiques
-  * Simple serveur HTTP
-<!-- AngularJS est un framework JavaScript, vous avez donc juste à servir les ressources statiques par un simple serveur HTTP (apache / nginx). -->
+    * Simple serveur HTTP
 * Minifier les script pour la production
-<!-- L'idéal est de passer par une phase de 'build' pour minifier les ressources. -->
 
 --------------------------------------------------------------------------------
 
 # Intégrer la librairie
 
+    !javascript
     <script src="chemin/vers/angular.js"></script>
-
-<!--- Il est conseillé de rajouter ses balises ``<script>`` à la fin du ``<body>``, et ceux afin que le contenus soit entierement chargé avant l'initialisation d'AngularJS. -->
 
 ## ng-app
 
-   <html ng-app="myApp">
+    !html
+    <html ng-app="myApp">
 
 --------------------------------------------------------------------------------
 # Data Binding
@@ -182,6 +171,7 @@ Basé sur des fichiers ``partials``.
 
 Voici quelques expressions valides :
 
+    !html
     {{ 1 + 2 }}
     {{ a + b }}
     {{ user.name }}
@@ -204,13 +194,13 @@ Voici quelques expressions valides :
 # TP - Création d'une TODO-list
 
 * Créer un nouveau projet AngularJS grâce à angular-seed.
-  * Cloner le projet avec ``git``.
-  * Installer les dépendances.
-  * Lancer l'application.
-  * Tester sur son navigateur en utilisant ``npm start`` !
+    * Cloner le projet avec ``git``.
+    * Installer les dépendances.
+    * Lancer l'application.
+    * Tester sur son navigateur en utilisant ``npm start`` !
 * Modifier ``view1`` pour :
-  * Afficher un template avec un ``input``.
-  * Afficher un paragraphe affichant la valeur de cette ``input``.
+    * Afficher un template avec un ``input``.
+    * Afficher un paragraphe affichant la valeur de cette ``input``.
 
 --------------------------------------------------------------------------------
 
@@ -234,29 +224,34 @@ Un contrôleur :
 
 # Notion de scope
 
+Un scope :
+
 * Apporte la visibilité des modèles à une vue.
-* Simple objet JavaScript attaché à l'application
-  * Définis en tant que ``$scope`` sur chaque contrôleur.
+* Est un simple objet JavaScript.
+* Est définis en tant que ``$scope`` sur chaque contrôleur.
+* Ou en tant que ``$rootScope`` pour le scope de l'application.
 
 Quelque caractéristiques :
 
 * Contexte d'exécution {{username}} -> $scope.username
 * Hiérachique (hérite des propriétés des scopes parents)
-* $scope.$apply/$scope.$broadcast (propager les changements qui ont lieu en dehors d'AngularJS)
+* ``$scope.$apply``/``$scope.$broadcast`` (propager les changements qui ont lieu en dehors d'AngularJS)
 
 --------------------------------------------------------------------------------
 
 # Création
 
-Fichier JS::
+Fichier JS :
 
-    angular.module('myApp.view1', []) <!-- module et injection de dépendance = Jour 2 -->
+    !javascript
+    angular.module('myApp.view1', [])
       .controller('View1Controller', [function($scope) {
         $scope.name = 'Toto';
       }]);
 
-Fichier HTML::
+Fichier HTML :
 
+    !html
     <div ng-controller="View1Controller">
       {{ name }}
     </div>
@@ -264,6 +259,9 @@ Fichier HTML::
 
 # Hiérarchie
 
+Fichier JS :
+
+    !javascript
     angular.module('myApp.view1', [])
       .controller('View1Controller', function($scope) {
         $scope.name = 'Toto';
@@ -274,7 +272,9 @@ Fichier HTML::
         $scope.name = 'Tutu';
       });
 
+Fichier HTML :
 
+    !html
     <div ng-controller="View1Controller">
       {{ welcome }} {{ name }}
       <div ng-controller="View2Controller">
@@ -302,6 +302,9 @@ Propage l'événement vers le haut. L'événement peut être arrêté.
 
 # Exemple
 
+Fichier JS :
+
+    !javascript
     angular.module('eventExample', [])
       .controller('EventController', ['$scope', function($scope) {
           $scope.count = 0;
@@ -310,6 +313,9 @@ Propage l'événement vers le haut. L'événement peut être arrêté.
         });
       }]);
 
+Fichier HTML :
+
+    !html
     <div ng-controller="EventController">
       Root scope <tt>MyEvent</tt> count: {{count}}
       <ul>
@@ -332,17 +338,15 @@ Propage l'événement vers le haut. L'événement peut être arrêté.
 # TP - Création d'une TODO-list
 
 * Supprimer les dossiers ``components``, ``view1`` et ``view2``.
-  * Vider le ``body`` en ne laissant que les scripts ``angular.js`` et ``app.js``.
+    * Vider le ``body`` en ne laissant que les scripts ``angular.js`` et ``app.js``.
 * Vider le fichier ``app.js`` et recréer un module ``todo`` avec un controlleur ``TodoController``.
-  * Pensez à mettre ``ng-app`` égale à ``todo``.
+    * Pensez à mettre ``ng-app`` égale à ``todo``.
+* Ajouter une liste d'objet au scope du module ``todo`` de la forme donné (``id`` doit etre différent pour chaque objet).
 
-* Ajouter une liste d'objet au scope du module ``todo`` de la forme (``id`` doit etre différent pour chaque objet) ::
+        !javascript
+        {'id' : 1, 'date': Date, 'title': 'Finir le TP', 'done': false}
 
-    {'id' : 1, 'date': Date.now(), 'title': 'Finir le TP', 'done': false}
-
-* Afficher la liste de taches avec :
-  * Le titre.
-  * Si la tache a été faite ou non.
+* Afficher la liste de taches avec le titre et le statut de chaque tache (``done``).
 * Permettre la validation de taches.
 * Permettre l'ajout et la suppression de taches.
 
@@ -371,18 +375,17 @@ Un filtre :
 * json
 * currency
 
---------------------------------------------------------------------------------
-
-# Exemples
-
-    {{ [3, 2, 1, 4] | limitTo:2 }}
-
-    {{ "Bonjour" | lowercase }}
+        !html
+        {{ [3, 2, 1, 4] | limitTo:2 }}
+        {{ "Bonjour" | lowercase }}
 
 --------------------------------------------------------------------------------
 
 # Créer ses propres filtres
 
+Fichier JS :
+
+    !javascript
     angular.module('myApp.filters', [])
       .filter('capitalize', function(){
         return function(input) {
@@ -392,26 +395,31 @@ Un filtre :
         }
       });
 
+
+Fichier HTML :
+
+    !html
     {{ 'Je SuiS un TeXte uN peU biZaRRe' | lowercase | capitalize }}
 
 --------------------------------------------------------------------------------
 
 # $filter
 
-$filter permet d'utiliser les filtres en javascript ::
+$filter est un service permettant d'utiliser les filtres en javascript :
 
-     var upercase = $filter('upercase');
-     var uper = upercase('Bonjour');  // uper === 'BONJOUR'
+    !javascript
+    var upercase = $filter('upercase');
+    var uper = upercase('Bonjour');  // uper === 'BONJOUR'
 
 --------------------------------------------------------------------------------
 
 # TP - Création d'une TODO-list
 
-* Afficher le jour et le mois de la création de la tache.
+* Afficher le jour et le mois de la date de création de la tache.
 * Trier les taches par ordre alphabétique.
 * Créer une section de recherche permettant de :
-  * Afficher les taches faites ou non.
-  * Faire une recherche plein texte sur les taches.
+    * Afficher les taches faites ou non.
+    * Faire une recherche plein texte sur les taches.
 
 --------------------------------------------------------------------------------
 
@@ -424,40 +432,33 @@ $filter permet d'utiliser les filtres en javascript ::
 Une route :
 
 * Permet de définir une vue avec :
-  * Son template (partial).
-  * Son contrôleur.
+    * Son template (``partial``).
+    * Son contrôleur.
 * Peut contenir des paramètres.
 
 --------------------------------------------------------------------------------
 
 # Configuration des routes
 
+    !javascript
     angular.module('myApp', ['ngRoute'])
       .config(['$routeProvider', function($routeProvider){
         $routeProvider
           .when('/', {
             templateUrl: 'partials/home.html',
           });
+          .when('/todo/:id', {
+            templateUrl: 'partials/todo.html',
+            controller: 'TodoController',
+          });
+          .otherwise({redirectTo: '/'});
       }]);
-
---------------------------------------------------------------------------------
-
-# Configuration des routes
-
-    $routeProvider
-      .when('/', {
-        templateUrl: 'partials/home.html',
-      });
-      .when('/todo/:id', {
-        templateUrl: 'partials/todo.html',
-        controller: 'TodoController',
-      });
-      .otherwise({redirectTo: '/'});
 
 --------------------------------------------------------------------------------
 
 # $routeParams
 
+    !javascript
     angular.module('todo', [])
       .controller('TodoController', function($scope, $routeParams) {
         $scope.id = $routeParams.id;
@@ -468,24 +469,27 @@ Une route :
 
 # Configuration des templates
 
-* index.html ::
+* index.html :
 
-    <html ng-app="myApp">
-      <head>[...]</head>
-      <body>
-        [...]
-        <div ng-view></div>
-        [...]
-      </body>
-    </html>
+        !html
+        <html ng-app="myApp">
+          <head>[...]</head>
+          <body>
+            [...]
+            <div ng-view></div>
+            [...]
+          </body>
+        </html>
 
-* partials/home.html ::
+* partials/home.html :
 
-    <h1>Bienvenue !</h1>
+        !html
+        <h1>Bienvenue !</h1>
 
-* partials/todo.html ::
+* partials/todo.html :
 
-    <h1>{{ todo.name }}</h1>
+        !html
+        <h1>{{ todo.name }}</h1>
 
 --------------------------------------------------------------------------------
 
@@ -494,6 +498,7 @@ Une route :
 ## Mode Hashbang
 
 * De la forme ``/#!/todo/42``.
+* Supporté par tout les navigateurs.
 * Activé par défaut.
 
 ## Mode HTML5
@@ -506,6 +511,7 @@ Une route :
 
 # Activer le mode HTML5
 
+    !javascript
     angular.module('myApp', ['ngRoute'])
       .config(['$locationProvider'], function($locationProvider) {
         $locationProvider.html5Mode(true);
@@ -515,12 +521,12 @@ Une route :
 
 # Gestion de l'historique
 
-$location permet de récuperer ou de changer l'url actuelle. Il utilise l'api d'historique d'HTML5 si activée et disponible.
+``$location`` permet de récuperer ou de changer l'url actuelle. Il utilise l'api d'historique d'HTML5 si activée et disponible.
 
-* .path()
-* .search()
-* .hash()
-* .url()
+* ``.path()``
+* ``.search()``
+* ``.hash()``
+* ``.url()``
 
 ![$location](https://code.angularjs.org/1.2.26/docs/img/guide/hashbang_vs_regular_url.jpg)
 
@@ -530,21 +536,21 @@ $location permet de récuperer ou de changer l'url actuelle. Il utilise l'api d'
 
 Quatre événements sont propagés par le service ``$route``.
 
-* $routeChangeStart : Avant la résolution de l'URL.
-* $routeChangeSuccess : Après la résolution de l'URL.
-* $routeChangeError : En cas d'erreur.
-* $routeUpdate : ``reloadOnSearch`` est mis à ``false``, et le contrôleur est le même.
+* ``$routeChangeStart`` : Avant la résolution de l'URL.
+* ``$routeChangeSuccess`` : Après la résolution de l'URL.
+* ``$routeChangeError`` : En cas d'erreur.
+* ``$routeUpdate`` : Si ``reloadOnSearch`` est mis à ``false``, et si le contrôleur est le même.
 
 --------------------------------------------------------------------------------
 
 # TP - Création d'une TODO-list
 
-* Inclure ngRoutes.
+* Inclure ``ngRoutes``.
 * Créer une route pour la TODO-list.
 * Créer une route permettant l'affichage d'une tache en détail avec :
-  * Date à la seconde.
-  * Titre.
-  * Status.
+    * Date à la seconde.
+    * Titre.
+    * Statut.
 
 --------------------------------------------------------------------------------
 
