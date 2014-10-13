@@ -1,4 +1,4 @@
-# AngularJS
+# AngularJS - Jour 1
 
 --------------------------------------------------------------------------------
 
@@ -8,15 +8,13 @@
 * github: Gagaro
 * email: yann.fouillat@makina-corpus.com
 
---------------------------------------------------------------------------------
-
 # Makina Corpus
 
 * Société de Services en Logiciels Libres, indépendante, créée en 2001
 * 35 collaborateurs dans 4 agences (Paris, Nantes, Toulouse, Pau)
 * SIG / Portails / Système et réseaux
 * Valeurs : Logiciel libre, OpenData, agilité, développement durable
-
+* [www.makina-corpus.com](http://www.makina-corpus.com)
 --------------------------------------------------------------------------------
 
 # AngularJS
@@ -33,10 +31,10 @@
     * Les frameworks MV*
     * Le fonctionnement interne
 * Les premiers pas
-    * Commencer un projet avec AngularJS
     * Intégrer la librairie
     * Data Binding
     * Templating
+    * Commencer un projet avec AngularJS
 * Contrôleur
     * Notion de scope
     * Propagation des événements
@@ -124,21 +122,6 @@ AngularJS est un framework JavaScript qui permet :
 
 --------------------------------------------------------------------------------
 
-# Commencer un projet avec AngularJS
-
-* [angular-seed](https://github.com/angular/angular-seed) (projet minimal avec les tests)
-* Angular Yeoman generator (générateur de projet JavaScript)
-
---------------------------------------------------------------------------------
-
-# Déployer un projet AngularJS
-
-* Resources statiques
-    * Simple serveur HTTP
-* Minifier les script pour la production
-
---------------------------------------------------------------------------------
-
 # Intégrer la librairie
 
     !javascript
@@ -188,6 +171,21 @@ Voici quelques expressions valides :
 * ngRepeat
 * ngClick
 * ...
+
+--------------------------------------------------------------------------------
+
+# Commencer un projet avec AngularJS
+
+* [angular-seed](https://github.com/angular/angular-seed) (projet minimal avec les tests)
+* Angular Yeoman generator (générateur de projet JavaScript)
+
+--------------------------------------------------------------------------------
+
+# Déployer un projet AngularJS
+
+* Resources statiques
+    * Simple serveur HTTP
+* Minifier les script pour la production
 
 --------------------------------------------------------------------------------
 
