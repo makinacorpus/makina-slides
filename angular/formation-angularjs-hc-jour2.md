@@ -217,20 +217,356 @@ Une ``factory`` retourne le service demandé.
 # Tests Unitaires
 
 --------------------------------------------------------------------------------
-    * Karma et Jasmine
+
+# Karma
+
+* Application NodeJS créer pour AngularJS.
+* Tests unitaires.
+* Detecte les modifications du code.
+* Relance automatiquement les tests.
+* Utilise les navigateurs pour faire tourner les tests. Karma peut :
+    * Lancer automatiquement les navigateurs au démarrage.
+    * Accepter les connexions de navigateurs distant (simplifie grandement les tests sur mobile, tablette, IE, ...).
+* Plusieurs frameworks de tests disponible.
 
 --------------------------------------------------------------------------------
-    * Injection et mocks
+
+# Karma - Installation, configuration et lancement
+
+    !console
+    npm install karma karma-chrome-launcher
+    ./node_modules/.bin/karma init karma.conf.js
+    ./node_modules/.bin/karma start
+
+    sudo npm install -g karma-cli
+    karma start
+
+    # Ou avec angular-seed
+    npm test
+
+--------------------------------------------------------------------------------
+
+# Jasmine
+
+* Framework de test.
+* "behavior-driven".
+* Facile d'installation :
+
+        !console
+        npm install karma-jasmine
+
+--------------------------------------------------------------------------------
+
+# Jasmine - Suites
+
+    !javascript
+    describe('Unit test: TodoController', function(){
+      // Specs go in here
+    });
+
+
+    describe('Unit test: TodoController', function(){
+      describe('list', function(){
+        // Specs go in here
+      });
+    });
+
+--------------------------------------------------------------------------------
+
+# Jasmine - Specs, Expectations
+
+    !javascript
+    describe('Unit test: TodoController', function(){
+      it('should be true', function() {
+        expect(true).toBe(true);
+      });
+    });
+
+    describe('Unit test: TodoController', function(){
+      var a;
+
+      it('should be true', function() {
+        a = true;
+
+        expect(a).toBe(true);
+      });
+    });
+
+https://github.com/pivotal/jasmine/wiki/Matchers
+
+--------------------------------------------------------------------------------
+
+# Jasmine - Setup, Teardown
+
+    !javascript
+    describe("A spec (with setup and tear-down)", function() {
+      var foo;
+
+      beforeEach(function() {
+        foo = 0;
+        foo += 1;
+      });
+
+      afterEach(function() {
+        foo = 0;
+      });
+
+      it("is just a function, so it can contain any code", function() {
+        expect(foo).toEqual(1);
+      });
+
+      it("can have more than one expectation", function() {
+        expect(foo).toEqual(1);
+        expect(true).toEqual(true);
+      });
+    });
+
+--------------------------------------------------------------------------------
+
+# Injection et mocks
+
+Un mock permet de tester et de simuler le fonctionnement d'un composant métier.
+Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
+
+    !javascript
+    angular.module('myApp', [])
+        .value('version', 'v1.0.1');
+
+    describe('MyApp', function() {
+      beforeEach(module('myApp'));
+
+      it('should provide a version', inject(function(version) {
+        expect(version).toEqual('v1.0.1');
+      }));
+    });
+
+    describe('MyApp', function() {
+      var version;
+
+      beforeEach(module('myApp'));
+      beforeEach(inject(function(_version_){
+        version = _version_;
+      }));
+
+      it('should provide a version', inject(function(version) {
+        expect(version).toEqual('v1.0.1');
+      }));
+    });
+
+    describe('MyApp', function() {
+      beforeEach(module(function($provide) {
+        $provide.value('version', 'VERSION');
+      }));
+
+      it('should provide a version', inject(function(version) {
+        expect(version).toEqual('VERSION');
+      }));
+    });
+
+--------------------------------------------------------------------------------
+
+# Tester les différents composants - Contrôleur
+
+    !javascript
+    describe('Unit test: controller', function(){
+      var MyController, scope;
+
+      beforeEach(module('myApp'));
+      beforeEach(inject(function($controller, $rootScope){
+        scope = $rootScope;
+        MyController = $controller('MyController', {$scope: scope});
+      }));
+    });
+
+--------------------------------------------------------------------------------
+
+# Tester les différents composants - Service
+
+    !javascript
+    describe('Unit test: Service', function(){
+      var service;
+
+      beforeEach(module('myApp'));
+      beforeEach(inject(function(_service_){
+        service = _service_;
+      });
+    });
+
+--------------------------------------------------------------------------------
+
+# Tester les différents composants - Filtres
+
+    !javascript
+    describe('Unit test: Service', function(){
+      var filter;
+
+      beforeEach(module('myApp'));
+      beforeEach(inject(function($filter){
+        service = $filter;
+      });
+      it('should works', function(){
+        expect(filter('number')(123, 2).toEqual('123.00'));
+      });
+    });
+
+--------------------------------------------------------------------------------
+
+# Tester les différents composants - Directives
+
+    !javascript
+    describe('Unit test: Service', function(){
+      var element, scope;
+
+      beforeEach(module('myApp'));
+      beforeEach(inject(function($compile, $rootScope){
+        scope = $rootScope;
+        element = angular.element('<my-directive></my-directive>');
+        $compile(element)(scope);
+        scope.$apply();
+      });
+      it('should works', function(){
+        scope.$apply(function(){
+          scope.value = 'new value';
+        });
+        expect(element.html()).toContain('new value');
+      });
+    });
+
+--------------------------------------------------------------------------------
+
+# TP - Création d'une TODO-list
+
+* Écrire une série de tests unitaires pour l'application ``todo``.
 
 --------------------------------------------------------------------------------
 
 # Tests End to End
 
 --------------------------------------------------------------------------------
-    * Protractor
+
+# Protractor
+
+* Application NodeJS créer pour AngularJS.
+* Tests fonctionnels.
+* Basé sur WebDriverJS.
+* Utilise les navigateurs pour faire tourner les tests.
+* Plusieurs frameworks de tests disponible.
 
 --------------------------------------------------------------------------------
-    * Simuler un serveur HTTP
+
+# Protractor - Installation
+
+    !console
+    npm install protractor
+    ./node_modules/.bin/webdriver-manager update
+
+--------------------------------------------------------------------------------
+
+# Protractor - Configuration
+
+    !javascript
+    exports.config = {
+      specs: [
+        '*.js'
+      ],
+
+      capabilities: {
+        'browserName': 'chrome',
+        // A partir de chrome 35
+        'chromeOptions': {
+              args: ['--test-type']
+        },
+      },
+
+      baseUrl: 'http://localhost:8000/app/',
+
+      framework: 'jasmine',
+    };
+
+--------------------------------------------------------------------------------
+
+# Protractor - Lancement
+
+    !console
+    # Le serveur doit être lancé pour pouvoir lancer les tests fonctionnels
+    ./node_modules/.bin/protractor protractor.conf.js
+
+    # Ou avec angular-seed
+    npm run-script protractor
+
+--------------------------------------------------------------------------------
+
+# Jasmine - End to End
+
+    !javascript
+    describe('angularjs homepage', function() {
+      var firstNumber = element(by.model('first'));
+      var secondNumber = element(by.model('second'));
+      var goButton = element(by.id('gobutton'));
+      var latestResult = element(by.binding('latest'));
+      var history = element.all(by.repeater('result in memory'));
+
+      function add(a, b) {
+        firstNumber.sendKeys(a);
+        secondNumber.sendKeys(b);
+        goButton.click();
+      }
+
+      beforeEach(function() {
+        browser.get('http://juliemr.github.io/protractor-demo/');
+      });
+
+      it('should have a history', function() {
+        add(1, 2);
+        add(3, 4);
+
+        expect(history.count()).toEqual(2);
+
+        add(5, 6);
+
+        expect(history.count()).toEqual(3);
+      });
+    });
+
+http://angular.github.io/protractor/#/locators
+
+
+--------------------------------------------------------------------------------
+
+# Simuler un serveur HTTP
+
+Dans le cas des tests unitaires, il faut pouvoir simuler un serveur HTTP pour ne tester que la fonctionnalité recherchée et pas la connexion ou le serveur distant.
+
+    !javascript
+    describe('Unit Test: HTTP', function() {
+      var $httpBackend, myService;
+
+      beforeEach(inject(function(_$httpBackend_, _myService_){
+        $httpBackend = _$httpBackend_;
+        // Imaginons que myService est un service faisant des requêtes pour nous.
+        myService = _myService_;
+      }));
+
+      afterEach(function(){
+        // Il faut s'assurer qu'il ne reste pas de requêtes ou d'attentes à la fin de chaque test.
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+      });
+
+      it('should make a request', function(){
+        $httpBackend.expect('GET', '/v1/api/current_user').respond(100, {userId: 123});
+        myService.getCurrentUser();
+        $httpBackend.flush();
+      });
+    });
+
+https://code.angularjs.org/1.2.26/docs/api/ngMock/service/$httpBackend
+
+--------------------------------------------------------------------------------
+
+# TP - Création d'une TODO-list
+
+* Écrire une série de tests fonctionnels pour l'application ``todo``.
 
 --------------------------------------------------------------------------------
 
