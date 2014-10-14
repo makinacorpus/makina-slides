@@ -146,7 +146,6 @@ Based on Dexterity.
 
 .fx: extra-large
 
-
 --------------------------------------------------------------------------------
 
 # Rapido structure 
@@ -157,6 +156,123 @@ Based on Dexterity.
 - adapts them using `rapido.core`
 - uses nothing but <s>`plone.api`</s> **Substance D API**
 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# DEMO (the real one)
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# How does that work
+
+In core, only use components working in both Plone and Substance D.
+ 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# TTW scripting
+
+TTW scripting is what Rapido is about.
+
+(more globally, a rich TTW experience is vital to any CMS)
+
+PythonScript ➜ zope.untrustedpython
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Catalog
+
+Substance D has its own catalog, and Plone too...
+
+➜ `repoze.catalog` is just fine.
+ 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Content persistence
+
+`souper`
+ 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Settings persistence
+
+Sharing schemas between Plone and Substance D sounds scary.
+
+➜ **Annotations!!**
+
+Both Plone and Substance D contents can be `IAttributeAnnotatable`.
+ 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Forms & widgets
+
+Deform is not rich enough.
+
+I did not considered running z3c.form on Substance D.
+
+➜ **client-side rendering!!** with Angular Schema Form
+ 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Access control
+
+Both systems have a granular ACL service.
+
+Probably possible to support them transparently from core, but for now:
+
+**custom security implementation**
+ 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# My experience with Substance D
+
+PROS:
+
+- Fun!!
+- Happy to find all the good ingredients.
+ 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# My experience with Substance D
+
+CONS:
+
+Not 100% ZCA-ready.
+
+Need to call `config.hook_zca()`, works fine, no problem.
+
+Just not confortable with the "hook" term here.
+ 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Conclusion about Plone future
+
+Can we easily migrate to Substance D?
+**No**
+
+Should we migrate to something else?
+**No**
+ 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
