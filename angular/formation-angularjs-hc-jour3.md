@@ -374,8 +374,8 @@ https://www.npmjs.org/doc/cli/npm-install.html
 
 # Installer les dépendances web avec Bower
 
-``Bower`` est une application Node.js permettant de gerer les dépendances web.
-Un fichier ``bower.json`` contient les dépendances.
+``Bower`` est une application Node.js permettant de gerer les dépendances client.
+Un fichier ``bower.json`` contient les dépendances. Un fichier ``.bowerrc`` permet la configuration.
 
 * Frameworks
 * Bibliothèques
@@ -481,22 +481,105 @@ http://gulpjs.com/
 # Builder son projet avec Gulp - Gulpfile.js
 
 var gulp = require('gulp');
+var concat = require('gulp-concat');
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 
-gulp.task('default', function() {
-  TODO
+gulp.task('js', function () {
+  return gulp.src(['app/**/*.js', 'app/bower_components/angular/angular.min.js'])
+    .pipe(concat('app/app.js'))
+    .pipe(gulp.dest('./app/'))
+    .pipe(uglify())
+    .pipe(rename('app.min.js'))
+    .pipe(gulp.dest('./app/'))
+});
+
+gulp.task('default', ['js']);
+
+gulp.task('watch', function () {
+  gulp.watch(['./app/**/*.js'], ['js']);
 });
 
 --------------------------------------------------------------------------------
 
 # Yeoman
 
-TODO
+``Yeoman`` facilite la création d'un projet et des différents composants.
+
+    !console
+    npm install -g yeoman
+    yo
+
+http://yeoman.io/
 
 --------------------------------------------------------------------------------
 
-# TP - Créer un nouveau projet avec Yeoman et minifier les ressources
+# Yeoman - Générateurs
 
-TODO
+* Permet de générer un projet avec un workflow particulier.
+
+* ``angular-generator``
+    * Bower + Grunt + Angular
+* ``generator-gulp-angular``
+    * Bower + Gulp + Angular
+
+       !console
+       yo
+       > Install a generator
+       # ou
+       npm install -g angular-generator
+
+http://yeoman.io/codelab.html
+https://github.com/Swiip/generator-gulp-angular
+
+--------------------------------------------------------------------------------
+
+# Yeoman - Création du projet
+
+    !console
+    mkdir myapp
+    cd myapp
+    yo
+    > Run the Angular generator
+    # ou
+    yo angular
+    grunt serve
+    grunt test
+
+--------------------------------------------------------------------------------
+
+# Yeoman - Création des composants
+
+    !console
+    yo --help
+    yo angular:route myRoute
+    yo angular:controller myController
+    yo angular:directive myDirective
+    yo angular:filter myFilter
+    yo angular:view myView
+    yo angular:service myService
+    yo angular:factory myService
+    yo angular:value myService
+    yo angular:constant myService
+
+--------------------------------------------------------------------------------
+
+# Yeoman - Mise en production
+
+    !console
+    grunt build
+    ls dist
+
+--------------------------------------------------------------------------------
+
+# TP - Création d'une TODO-list
+
+* Installer Bootstrap en utilisant Bower.
+    * Ajouter le également au fichier ``bower.json``.
+* Automatiser la minification de tout les fichier javascript en utilisant ``Grunt`` ou ``gulp``.
+    * N'oublier pas de modifier les fichiers javascript inclus dans votre ``index.html``.
+
+http://getbootstrap.com/
 
 --------------------------------------------------------------------------------
 
@@ -524,5 +607,5 @@ TODO
 * Form validation
 * Jasmine Spy
 * Animation
-* ngMin
+* ng-annotate
 * Restangular
