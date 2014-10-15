@@ -143,6 +143,30 @@ http://www.restapitutorial.com/lessons/httpmethods.html
 
 --------------------------------------------------------------------------------
 
+# Utiliser un backend REST - Restangular
+
+Service plus avancé pour la gestion des backend REST. Ajoute des dépendances (``Lodash``).
+
+    !javascript
+    // GET /users
+    Restangular.all('users').getList().then(function(users){
+      $scope.users = users;
+    });
+
+    // GET /users/123
+    Restangular.one('users', 123).get().then(function(user){
+      $scope.user = user;
+    });
+
+    // GET /users/123/friends
+    Restangular.one('users', 123).all('friends').getList().then(function(friends){
+      $scope.user = user;
+    });
+
+https://github.com/mgonto/restangular
+
+--------------------------------------------------------------------------------
+
 # WebSockets
 
 * Permet à un client et un serveur d'échanger en temps réél.
@@ -574,25 +598,413 @@ https://github.com/Swiip/generator-gulp-angular
 
 # TP - Création d'une TODO-list
 
-* Installer Bootstrap en utilisant Bower.
-    * Ajouter le également au fichier ``bower.json``.
-* Automatiser la minification de tout les fichier javascript en utilisant ``Grunt`` ou ``gulp``.
-    * N'oublier pas de modifier les fichiers javascript inclus dans votre ``index.html``.
+* Installer Font Awesome en utilisant Bower.
+    * Ajouter le également au fichier ``bower.json`` (``--save``).
+* L'inclure dans l'application.
+* Ajouter quelques icones.
 
-http://getbootstrap.com/
+* Automatiser la minification de tout les fichiers JavaScript en utilisant ``Grunt`` ou ``gulp``.
+    * Surveiller la modification des fichiers JavaScript pour minifier automatiquement.
+    * N'oublier pas de modifier les fichiers JavaScript inclus dans votre ``index.html``. Il ne doit rester que le fichier minifié.
+* (Notez qu'il est également possible d'automatiser la minification des fichiers CSS).
+
+http://fortawesome.github.io/Font-Awesome/
 
 --------------------------------------------------------------------------------
 
-* Debugger
-    * Méthodes utiles
-    * Batarang
-* Modules indispensables
-    * Internationalisation
-    * Bootstrap
-    * Router
-* Aller plus loin
-    * Dirty Checking
-    * Astuces
+# Debugger
+
+--------------------------------------------------------------------------------
+
+# Méthodes utiles - JavaScript
+
+    !javascript
+    console.log();
+    console.table();
+    debugger;
+
+--------------------------------------------------------------------------------
+
+# Méthodes utiles - AngularJS
+
+## Récuperer l'élément angular
+
+    !javascript
+    var rootEle = document.querySelector("html");
+    var ele = angular.element(rootEle);
+    // Ou bien, avec l'inspecteur
+    var ele = angular.element($0);
+
+## L'utiliser
+
+    !javascript
+    ele.scope();
+    ele.controller();
+    ele.inheritedData();
+
+--------------------------------------------------------------------------------
+
+# Batarang
+
+Extension Chrome permettant d'inspecter :
+
+* Les modèles ($scope).
+* Les performances.
+* Les dépendances des services entre eux.
+
+https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk
+
+--------------------------------------------------------------------------------
+
+# TP - Création d'une TODO-list
+
+* Ajouter des ``console.log()`` pour afficher les taches à leur création.
+* Utiliser Batarang pour observer les différents scopes.
+
+--------------------------------------------------------------------------------
+
+# Modules indispensables
+
+--------------------------------------------------------------------------------
+
+# Internationalisation - angular-translate
+
+Fichier JS :
+
+    !javascript
+    app = angular.module('myApp', ['pascalprecht.translate']);
+
+    app.config(function($translateProvider){
+      $translateProvider.translations('en', {
+        WELCOME: 'Welcome',
+      });
+      $translateProvider.translations('fr', {
+        WELCOME: 'Bienvenue',
+      });
+      $translateProvider.preferredLanguage('fr');
+    });
+
+    app.controller('TranslateController', function($translate, $scope){
+      $scope.changeLanguage = function(lang) {
+        $translate.uses(lang);
+      };
+    });
+
+Fichier HTML :
+
+    !html
+    <h1>{{ 'WELCOME' | translate }}</h1>
+    <div ng-controller="TranslateController">
+      <button ng-click="changeLanguage('en')">English</button>
+      <button ng-click="changeLanguage('fr')">Français</button>
+    </div>
+
+--------------------------------------------------------------------------------
+
+# Internationalisation - angular-translate - Loaders
+
+## angular-translate-loader-url
+
+    !javascript
+    app.config(function($translateProvider){
+      $translateProvider.useUrlLoader('/locales/translations.json');
+      $translateProvider.preferredLanguage('fr');
+      // Will get '/locales/tranlsations.json?lang=fr'
+    });
+
+
+## angular-translate-loader-static-files
+
+    !javascript
+    app.config(function($translateProvider){
+      $translateProvider.useStaticFilesLoader({
+        prefix: '/locales/',
+        suffix: '.json',
+      });
+      $translateProvider.preferredLanguage('fr');
+      // Will get '/locales/fr.json'
+    });
+
+--------------------------------------------------------------------------------
+
+# Internationalisation - angular-gettext
+
+Fichier JS :
+
+    !javascript
+    app = angular.module('myApp', ['gettext']);
+
+    app.config(function(gettextCatalog){
+      gettextCatalog.setCurrentLanguage('fr');
+      // Vérifier que toutes les traductions soit présentes.
+      // Les éléments non traduits auront "[MISSING]:" de préfixé.
+      gettextCatalog.debug = true;
+    });
+
+    app.controller('TranslateController', function($scope, gettextCatalog){
+      $scope.changeLanguage = function(lang) {
+        gettextCatalog.setCurrentLanguage(lang);
+      };
+    });
+
+    app.controller('ExampleController', function($scope, gettextCatalog){
+      $scope.persons = 2;
+      $scope.name = "Foo";
+    });
+
+Fichier HTML :
+
+    !html
+    <div ng-controller="ExampleController">
+      <h1 translate>Welcome</h1>
+      <input type="text" placeholder="{{ 'Username' | translate }}" />
+      <div translate translate-n="personsCount" translate-plural="{{$count}} persons">One person</div>
+      <div translate-comment="Hello message" translate>Hello {{ name }}</div>
+    </div>
+
+    <div ng-controller="TranslateController">
+      <button ng-click="changeLanguage('en')">English</button>
+      <button ng-click="changeLanguage('fr')">Français</button>
+    </div>
+
+--------------------------------------------------------------------------------
+
+# Internationalisation - angular-gettext - Le workflow
+
+1. Extraction (``.pot``)
+2. Mise à jour du fichier de langue (``.po``)
+3. Compilation (``.js``)
+
+--------------------------------------------------------------------------------
+
+# Internationalisation - angular-gettext - Extraction
+
+## ``grunt-angular-gettext``
+
+    !javascript
+    nggettext_extract: {
+      pot: {
+        files: {
+          'po/template.pot': ['src/views/*.html']
+        }
+      },
+    },
+
+## ``gulp-angular-gettext``
+
+    !javascrip
+    gulp.task('pot', function () {
+      return gulp.src(['src/views/*.html'])
+        .pipe(gettext.extract('template.pot'))
+        .pipe(gulp.dest('po'));
+    });
+
+--------------------------------------------------------------------------------
+
+# Internationalisation - angular-gettext - Traduction
+
+``poedit`` permet de modifier les fichiers ``.po``.
+
+# Créer un fichier de traduction à partir du ``.pot``
+
+![File/New Catalog from POT File...](https://angular-gettext.rocketeer.be/dev-guide/translate/new-catalog.png)
+![](https://angular-gettext.rocketeer.be/dev-guide/translate/catalog-properties.png)
+
+* Traduire
+* Sauvegarder
+
+# Mettre à jour un fichier de traduction à partir du ``.pot``
+
+![Catalog/Update from POT File...](https://angular-gettext.rocketeer.be/dev-guide/translate/update.png)
+
+--------------------------------------------------------------------------------
+
+# Internationalisation - angular-gettext - Compilation
+
+## ``grunt-angular-gettext``
+
+    !javascript
+    nggettext_compile: {
+      all: {
+        files: {
+          'src/js/translations.js': ['po/*.po']
+        }
+      },
+    },
+
+## ``gulp-angular-gettext``
+
+    !javascrip
+    gulp.task('po', function () {
+      return gulp.src(['po/*.po'])
+        .pipe(gettext.compile())
+        .pipe(gulp.dest('src/js/'));
+    });
+
+--------------------------------------------------------------------------------
+
+# Bootstrap
+
+Bootstrap sans jQuery et avec des directives.
+
+## angular-bootstrap
+
+    !html
+    <progressbar class="progress-striped" value="22" type="warning">22%</progressbar>
+    <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep"
+                minute-step="mstep" show-meridian="ismeridian"></timepicker>
+
+http://angular-ui.github.io/bootstrap/
+
+## angular-strap
+
+    !html
+    <input type="text" class="form-control" size="8" ng-model="time" name="time" bs-timepicker>
+
+http://mgcrea.github.io/angular-strap/
+
+--------------------------------------------------------------------------------
+
+# Router - angular-ui-router
+
+## index.html
+
+    !html
+    <body>
+      <div ui-view></div>
+      <!-- We'll also add some navigation: -->
+      <a ui-sref="state1">State 1</a>
+      <a ui-sref="state2">State 2</a>
+    </body>
+
+## partials/state1.html
+
+    !html
+    <h1>State 1</h1>
+    <hr/>
+    <a ui-sref="state1.list">Show List</a>
+    <div ui-view></div>
+
+## partials/state2.html
+
+    !html
+    <h1>State 2</h1>
+    <hr/>
+    <a ui-sref="state2.list">Show List</a>
+    <div ui-view></div>
+
+## partials/state1.list.html
+
+    !html
+    <h3>List of State 1 Items</h3>
+    <ul>
+      <li ng-repeat="item in items">{{ item }}</li>
+    </ul>
+
+## partials/state2.list.html
+
+    !html
+    <h3>List of State 2 Things</h3>
+    <ul>
+      <li ng-repeat="thing in things">{{ thing }}</li>
+    </ul>
+
+https://github.com/angular-ui/ui-router
+
+--------------------------------------------------------------------------------
+
+# Router - angular-ui-router
+
+    !javascript
+    myApp.config(function($stateProvider, $urlRouterProvider) {
+      $urlRouterProvider.otherwise("/state1");
+      $stateProvider
+        .state('state1', {
+          url: "/state1",
+          templateUrl: "partials/state1.html"
+        })
+        .state('state1.list', {
+          url: "/list",
+          templateUrl: "partials/state1.list.html",
+          controller: function($scope) {
+            $scope.items = ["A", "List", "Of", "Items"];
+          }
+        })
+        .state('state2', {
+          url: "/state2",
+          templateUrl: "partials/state2.html"
+        })
+        .state('state2.list', {
+          url: "/list",
+          templateUrl: "partials/state2.list.html",
+          controller: function($scope) {
+            $scope.things = ["A", "Set", "Of", "Things"];
+          }
+      });
+    });
+
+--------------------------------------------------------------------------------
+
+# Router - angular-ui-router
+
+## Fichier HTML :
+
+    !html
+    <body>
+      <div ui-view="viewA"></div>
+      <div ui-view="viewB"></div>
+      <a ui-sref="route1">Route 1</a>
+      <a ui-sref="route2">Route 2</a>
+    </body>
+
+## Fichier JS :
+
+    myApp.config(function($stateProvider) {
+      $stateProvider
+        .state('index', {
+          url: "",
+          views: {
+            "viewA": { template: "index.viewA" },
+            "viewB": { template: "index.viewB" }
+          }
+        })
+        .state('route1', {
+          url: "/route1",
+          views: {
+            "viewA": { template: "route1.viewA" },
+            "viewB": { template: "route1.viewB" }
+          }
+        })
+        .state('route2', {
+          url: "/route2",
+          views: {
+            "viewA": { template: "route2.viewA" },
+            "viewB": { template: "route2.viewB" }
+          }
+      });
+    });
+
+--------------------------------------------------------------------------------
+
+# TP - Création d'une TODO-list
+
+* Traduire l'application en utilisant ``angular-gettext``.
+
+--------------------------------------------------------------------------------
+
+# Aller plus loin
+
+--------------------------------------------------------------------------------
+
+# Dirty Checking
+
+TODO
+
+--------------------------------------------------------------------------------
+
+# Astuces
+
+TODO
 
 --------------------------------------------------------------------------------
 
@@ -606,6 +1018,4 @@ http://getbootstrap.com/
 * jQlite / jQuery
 * Form validation
 * Jasmine Spy
-* Animation
 * ng-annotate
-* Restangular
