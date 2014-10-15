@@ -998,13 +998,83 @@ https://github.com/angular-ui/ui-router
 
 # Dirty Checking
 
-TODO
+Surveille les modifications de variables et les propages dans l'application.
+
+* La boucle "$digest"
+    * $watch
+    * $evalAsync
+
+# $watch
+
+En HTML :
+
+    !html
+    <input ng-model="name" type="text" />
+
+Ou en JS :
+
+    !javascript
+    $scope.name = 'Toto';
+    var unregister = $scope.$watch('name', function(newVal, oldVal){
+      console.log('name changed : '+ oldVal +' => '+ newVal);
+    });
+    // Remove the $watch
+    unregister();
+
+# $evalAsync
+
+Execute une fonction plus tard.
+
+    !javascript
+    $scope.$evalAsync(function(){
+      console.log('evalAsync');
+    });
+
 
 --------------------------------------------------------------------------------
 
 # Astuces
 
-TODO
+## angular.foreach
+
+    !javascript
+    angular.forEach([1, 2, 3, 4], function(value){
+      console.log(value);
+    });
+    angular.forEach({firstname: 'Foo', lastname: 'Bar'}, function(value, key){
+      console.log(key +' = '+ value);
+    });
+
+## angular.fromJson / angular.toJson
+
+    !javascript
+    var json = angular.toJson({firstname: 'Foo', lastname: 'Bar'});
+    var obj = angular.fromJson("{firstname: 'Foo', lastname: 'Bar'}");
+
+## angular.is*
+
+* Array
+* Date
+* Defined
+* Element
+* Function
+* Number
+* Object
+* String
+* Undefined
+
+        !javascript
+        if (angular.isArray([1, 2, 3])) {
+          console.log('OK !');
+        }
+
+## angular.copy
+
+    !javascript
+    var obj = {firstname: 'Foo', lastname: 'Bar'};
+    var newObj = angular.copy(obj);
+    newObj.name = "Toto";
+    obj.name == "Foo"; // OK
 
 --------------------------------------------------------------------------------
 
