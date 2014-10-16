@@ -27,7 +27,8 @@
 
 # Presenter Notes
 
-AngularJS 2.0 utilisera pleinement ECMAScript6, qui est la prochaine standardisation du JavaScript.
+AngularJS 2.0 utilisera pleinement ECMAScript6, qui est la prochaine standardisation du JavaScript
+(et utilisera un compilateur EM6 => EM5 pour la compatibilité).
 
 --------------------------------------------------------------------------------
 
@@ -130,7 +131,7 @@ AngularJS est un framework JavaScript qui permet :
 
 .fx: tighter
 
-* IE < 9
+* IE < 8
 * SEO
 * Courbe d'apprentissage
 
@@ -187,7 +188,7 @@ Le "Scope" contient les modèles.
 ``ng-model`` permet de lier un champs de formulaire à une valeur du modèle.
 {{ qty * cost }} est une expression permettant l'affichage de valeur, également mis à jour automatiquement.
 
-[jsfiddle](http://jsfiddle.net/LLx2f7k8/)
+[jsfiddle](http://jsfiddle.net/LLx2f7k8/2/)
 
 --------------------------------------------------------------------------------
 # Templating
@@ -222,6 +223,8 @@ Voici quelques expressions valides :
         !javascript
         <input ng-model="cost" />
 
+[Liste des directives](https://docs.angularjs.org/api/ng/directive).
+
 # Presenter Notes
 
 Permet de modifier le DOM. Définis une nouvelle balise ou un nouvel attribut HTML.
@@ -247,18 +250,29 @@ Les directives s'écrivent en camelCase mais s'utilisent en lower-case.
     * Simple serveur HTTP.
 * Minifier les script pour la production.
 
+# Presenter Notes
+
+Apache, nginx, ...
+Grunt, gulp.
+
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list - 1
+# TP - Création d'une ToDo List - 1
 
 * Créer un nouveau projet AngularJS grâce à angular-seed.
     * Cloner le projet avec ``git``.
-    * Installer les dépendances.
-    * Lancer l'application.
-    * Tester sur son navigateur en utilisant ``npm start`` !
-* Modifier ``view1`` pour :
-    * Afficher un template avec un ``input``.
+    * Installer les dépendances (``npm install``).
+    * Lancer l'application (``npm start``).
+    * Tester l'application (``http://localhost:8000/app/``).
+* Modifier ``view1`` (``app/view1/view1.html``) pour :
+    * Afficher un ``input``.
     * Afficher un paragraphe affichant la valeur de cette ``input``.
+
+.notes: Lier l'input à une valeur en utilisant ``ng-model``.
+
+# Presenter Notes
+
+Expliquer les dossier ``node_modules`` et ``bower_components``.
 
 --------------------------------------------------------------------------------
 
@@ -270,13 +284,25 @@ Les directives s'écrivent en camelCase mais s'utilisent en lower-case.
 
 Un contrôleur :
 
-* Est un contrôleur au sens MVC
-* Fait le lien entre les données / services et les vues
+.fx: tighter
+
+* Est un contrôleur au sens MVC.
+* Fait le lien entre les données / services et les vues.
 * Orchestre l'exécution de l'application.
 * Contient le ``scope`` de l'application.
 * S'occupe d'une partie spécifique de l'application.
 
 ![controller](https://docs.angularjs.org/img/guide/concepts-databinding2.png)
+
+# Presenter Notes
+
+Un service permet de réutiliser du code métier.
+Le scope est vu à la prochaine slide.
+
+S'occupe d'une partie de l'application, il y aura donc plusieurs controleur.
+Un controleur peut etre inclus dans un autre pour s'occuper d'une sous-partie spécifique.
+
+[jsfiddle](http://jsfiddle.net/k8nz4tkf/1/)
 
 --------------------------------------------------------------------------------
 
@@ -291,9 +317,9 @@ Un scope :
 
 Quelque caractéristiques :
 
-* Contexte d'exécution {{username}} -> $scope.username
-* Hiérachique (hérite des propriétés des scopes parents)
-* ``$scope.$apply``/``$scope.$broadcast`` (propager les changements qui ont lieu en dehors d'AngularJS)
+* Contexte d'exécution ``{{ username }}`` -> ``$scope.username``.
+* Hiérachique (hérite des propriétés des scopes parents).
+* ``$scope.$apply`` / ``$scope.$broadcast`` (propager les changements qui ont lieu en dehors d'AngularJS).
 
 --------------------------------------------------------------------------------
 
@@ -303,9 +329,9 @@ Fichier JS :
 
     !javascript
     angular.module('myApp.view1', [])
-      .controller('View1Controller', [function($scope) {
+      .controller('View1Controller', function($scope) {
         $scope.name = 'Toto';
-      }]);
+      });
 
 Fichier HTML :
 
@@ -313,6 +339,7 @@ Fichier HTML :
     <div ng-controller="View1Controller">
       {{ name }}
     </div>
+
 --------------------------------------------------------------------------------
 
 # Hiérarchie
@@ -356,46 +383,17 @@ Propage l'événement vers le bas. L'événement ne peut pas être arrêté.
 
 Propage l'événement vers le haut. L'événement peut être arrêté.
 
---------------------------------------------------------------------------------
+# Presenter Notes
 
-# Exemple
-
-Fichier JS :
-
-    !javascript
-    angular.module('eventExample', [])
-      .controller('EventController', ['$scope', function($scope) {
-          $scope.count = 0;
-        $scope.$on('MyEvent', function() {
-              $scope.count++;
-        });
-      }]);
-
-Fichier HTML :
-
-    !html
-    <div ng-controller="EventController">
-      Root scope <tt>MyEvent</tt> count: {{count}}
-      <ul>
-        <li ng-repeat="i in [1]" ng-controller="EventController">
-          <button ng-click="$emit('MyEvent')">$emit('MyEvent')</button>
-          <button ng-click="$broadcast('MyEvent')">$broadcast('MyEvent')</button>
-          <br>
-          Middle scope <tt>MyEvent</tt> count: {{count}}
-          <ul>
-            <li ng-repeat="item in [1, 2]" ng-controller="EventController">
-              Leaf scope <tt>MyEvent</tt> count: {{count}}
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+[Plunker](http://plnkr.co/edit/WLUDuoKUOf6RQMHkfFzR?p=preview)
 
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list
+# TP - Création d'une ToDo List - 2
 
-* Supprimer les dossiers ``components``, ``view1`` et ``view2``.
+.fx: tighter
+
+* Supprimer les dossiers ``components``, ``view1`` et ``view2`` dans ``app``.
     * Vider le ``body`` en ne laissant que les scripts ``angular.js`` et ``app.js``.
 * Vider le fichier ``app.js`` et recréer un module ``todo`` avec un controlleur ``TodoController``.
     * Pensez à mettre ``ng-app`` égale à ``todo``.
@@ -407,6 +405,12 @@ Fichier HTML :
 * Afficher la liste de taches avec le titre et le statut de chaque tache (``done``).
 * Permettre la validation de taches.
 * Permettre l'ajout et la suppression de taches.
+
+.notes: Utiliser ``ng-repeat`` pour lister les taches. Utiliser un bouton avec ``ng-click`` pour les actions.
+
+# Presenter Notes
+
+[Trouver des caractères Unicode](http://shapecatcher.com/)
 
 --------------------------------------------------------------------------------
 
@@ -437,6 +441,8 @@ Un filtre :
         {{ [3, 2, 1, 4] | limitTo:2 }}
         {{ "Bonjour" | lowercase }}
 
+[Documentation](https://docs.angularjs.org/api/ng/filter).
+
 --------------------------------------------------------------------------------
 
 # Créer ses propres filtres
@@ -459,6 +465,10 @@ Fichier HTML :
     !html
     {{ 'Je SuiS un TeXte uN peU biZaRRe' | lowercase | capitalize }}
 
+# Presenter Notes
+
+[jsfiddle](http://jsfiddle.net/9zyajwg5/1/)
+
 --------------------------------------------------------------------------------
 
 # $filter
@@ -471,7 +481,7 @@ $filter est un service permettant d'utiliser les filtres en javascript :
 
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list
+# TP - Création d'une ToDo List - 3
 
 * Afficher le jour et le mois de la date de création de la tache.
 * Trier les taches par ordre alphabétique.
@@ -601,10 +611,10 @@ Quatre événements sont propagés par le service ``$route``.
 
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list
+# TP - Création d'une ToDo List
 
 * Inclure ``ngRoutes``.
-* Créer une route pour la TODO-list.
+* Créer une route pour la ToDo List.
 * Créer une route permettant l'affichage d'une tache en détail avec :
     * Date à la seconde.
     * Titre.
