@@ -471,9 +471,9 @@ Fichier HTML :
 
 --------------------------------------------------------------------------------
 
-# $filter
+# ``$filter``
 
-$filter est un service permettant d'utiliser les filtres en javascript :
+``$filter`` est un service permettant d'utiliser les filtres en javascript :
 
     !javascript
     var upercase = $filter('upercase');
@@ -483,11 +483,13 @@ $filter est un service permettant d'utiliser les filtres en javascript :
 
 # TP - Création d'une ToDo List - 3
 
-* Afficher le jour et le mois de la date de création de la tache.
+* Afficher le jour et le mois de la date de création de la tache au format "jour/mois".
 * Trier les taches par ordre alphabétique.
 * Créer une section de recherche permettant de :
-    * Afficher les taches faites ou non.
     * Faire une recherche plein texte sur les taches.
+    * Filtrer les taches faites ou non.
+
+.notes: Utiliser les filtres ``date``, ``orderBy`` et ``filter``.
 
 --------------------------------------------------------------------------------
 
@@ -500,9 +502,11 @@ $filter est un service permettant d'utiliser les filtres en javascript :
 Une route :
 
 * Permet de définir une vue avec :
+    * Son URL.
     * Son template (``partial``).
     * Son contrôleur.
-* Peut contenir des paramètres.
+* Peut contenir des paramètres dans l'URL.
+    * Exemple : ``/user/123``
 
 --------------------------------------------------------------------------------
 
@@ -510,32 +514,38 @@ Une route :
 
     !javascript
     angular.module('myApp', ['ngRoute'])
-      .config(['$routeProvider', function($routeProvider){
+      .config(function($routeProvider){
         $routeProvider
           .when('/', {
             templateUrl: 'partials/home.html',
-          });
+          })
           .when('/todo/:id', {
             templateUrl: 'partials/todo.html',
             controller: 'TodoController',
-          });
+          })
           .otherwise({redirectTo: '/'});
-      }]);
+      });
 
---------------------------------------------------------------------------------
-
-# $routeParams
+# ``$routeParams``
 
     !javascript
     angular.module('todo', [])
       .controller('TodoController', function($scope, $routeParams) {
         $scope.id = $routeParams.id;
-        $scope.todo = ...;
+        // ...
       });
+
+# Presenter Notes
+
+``ngRoute`` est un module à part et doit être ajouté aux dépendances de l'application.
+Une route n'a pas forcément de contrôleur associé, ni de template.
+
 
 --------------------------------------------------------------------------------
 
 # Configuration des templates
+
+.fx: tighter
 
 * index.html :
 
@@ -546,6 +556,9 @@ Une route :
             [...]
             <div ng-view></div>
             [...]
+            <script src="angular.js"></script>
+            <script src="angular-route.js"></script>
+            <script src="app.js"></script>
           </body>
         </html>
 
@@ -559,13 +572,20 @@ Une route :
         !html
         <h1>{{ todo.name }}</h1>
 
+# Presenter Notes
+
+``ng-view`` indique l'endroit ou les ``partials`` seront affichés.
+C'est comme cela que ``view1`` et ``view2`` sont gérées dans ``angular-seed``.
+
 --------------------------------------------------------------------------------
 
 # URLs
 
+.fx: tighter
+
 ## Mode Hashbang
 
-* De la forme ``/#!/todo/42``.
+* De la forme ``/#/todo/42``.
 * Supporté par tout les navigateurs.
 * Activé par défaut.
 
@@ -575,8 +595,6 @@ Une route :
 * Utilise le mode hashbang si le navigateur ne le supporte pas.
 * Configuration du serveur nécessaire.
 
---------------------------------------------------------------------------------
-
 # Activer le mode HTML5
 
     !javascript
@@ -584,6 +602,10 @@ Une route :
       .config(['$locationProvider'], function($locationProvider) {
         $locationProvider.html5Mode(true);
       });
+
+# Presenter Notes
+
+Le serveur doit rediriger toutes les requêtes vers l'``index.html``.
 
 --------------------------------------------------------------------------------
 
@@ -598,6 +620,11 @@ Une route :
 
 ![$location](https://code.angularjs.org/1.2.26/docs/img/guide/hashbang_vs_regular_url.jpg)
 
+# Presenter Notes
+
+Les changements de ``#`` sont naturellements sauvegardé par le navigateur.
+En mode HTML5, l'api de l'historique est utilisé.
+
 --------------------------------------------------------------------------------
 
 # Traitement avant affichage
@@ -609,9 +636,11 @@ Quatre événements sont propagés par le service ``$route``.
 * ``$routeChangeError`` : En cas d'erreur.
 * ``$routeUpdate`` : Si ``reloadOnSearch`` est mis à ``false``, et si le contrôleur est le même.
 
+# Presenter Notes
+
 --------------------------------------------------------------------------------
 
-# TP - Création d'une ToDo List
+# TP - Création d'une ToDo List - 4
 
 * Inclure ``ngRoutes``.
 * Créer une route pour la ToDo List.
@@ -619,6 +648,8 @@ Quatre événements sont propagés par le service ``$route``.
     * Date à la seconde.
     * Titre.
     * Statut.
+
+.notes: Utiliser le ``$rootScope`` pour stocker les taches afin de les avoir sur tout les controleurs. (Mauvaise pratique ! Un service devrait etre utilisé à la place).
 
 --------------------------------------------------------------------------------
 

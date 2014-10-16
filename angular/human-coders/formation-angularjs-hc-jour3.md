@@ -1076,6 +1076,18 @@ Execute une fonction plus tard.
     newObj.name = "Toto";
     obj.name == "Foo"; // OK
 
+## Désactiver les infos de débug
+
+Infos nécessaire pour ``Protractor`` ou ``Batarang``. À n'utiliser qu'en production.
+
+    !javascript
+    app.config(['$compileProvider', function ($compileProvider) {
+      $compileProvider.debugInfoEnabled(false);
+    }]);
+
+    // Réactiver avec :
+    angular.reloadWithDebugInfo();
+
 --------------------------------------------------------------------------------
 
 # Questions ?
