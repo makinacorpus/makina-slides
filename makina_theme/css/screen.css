@@ -76,6 +76,14 @@ blockquote q:after  { content: '\2019'; }
 /* Specific clases for use with the .fx: macro */
 
 /* smaller and larger */
+.tighter li {
+  padding: 5px 0;
+}
+
+.white-background-image img {
+  background-color: white;
+}
+
 .smaller section {
   font-size: 30px;
 }
@@ -118,12 +126,12 @@ div.titleslide h1 { padding-top: 140px; font-size: 80px; font-weight: bold;}
 
 /* imageslide: covering a whole slide with an image */
 div.slides div.imageslide {margin: 0; width: 1024px; height: 768px;}
-div.imageslide img { 
-  position: absolute; 
-  top: 0; left: 0; 
-  width: 1024px; 
+div.imageslide img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1024px;
   max-width: 1024px; max-height: 768px;
-  z-index: 0; 
+  z-index: 0;
 }
 
 div.imageslide h1 { position: absolute; z-index: 3; left: 40px; top: 0; }
@@ -317,7 +325,7 @@ body.expose div.slides {
 body.expose div.slide {
   display                 : block;
   width                   : 864px;
-  height                  : 688px;  
+  height                  : 688px;
   float                   : left;
   position                : relative;
   left                    : auto !important;
@@ -328,7 +336,7 @@ body.expose div.slide {
   padding                 : 10px !important;
   -webkit-transition      : none;
   -moz-transition         : none;
-  -o-transition           : none;  
+  -o-transition           : none;
   -moz-transform          : scale(.30, .30);
   -moz-transform-origin   : 0 0;
   -webkit-transform       : scale(.30, .30);
@@ -654,4 +662,3 @@ a {
 .slide.progress ul li strong {
   color: #fff;
 }
-
