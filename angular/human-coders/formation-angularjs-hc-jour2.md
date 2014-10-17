@@ -2,6 +2,8 @@
 
 --------------------------------------------------------------------------------
 
+.fx: tighter
+
 * Module et Injection de dépendance
     * Principe de l'injection de dépendance
     * Notion de module
@@ -33,21 +35,27 @@ Comment AngularJS sait-il quelles services doivent-être passés au contrôleur 
     angular.module('todo', [])
       .controller('TodoController', function($scope, $routeParams) {
         $scope.id = $routeParams.id;
-        $scope.todo = ...;
+        // ...
       });
 
 Et en cas de minification ?
-
---------------------------------------------------------------------------------
 
 # Injection explicite
 
     !javascript
     angular.module('todo', [])
-      .controller('TodoController', ['$scope', '$routeParams', function($scope, $routeParams) {
+      .controller('TodoController',
+                  ['$scope', '$routeParams', function($scope, $routeParams) {
         $scope.id = $routeParams.id;
-        $scope.todo = ...;
+        // ...
       }]);
+
+# Presenter Notes
+
+Le service ``$injector`` s'occupe de repérer les dépendances nécessaire.
+En cas de minifaction, le nom des variable est modifié pour être raccourci. Il faut donc préciser les services nécessaires.
+
+Écriture explicite préféré pour être sur de ses dépendances.
 
 --------------------------------------------------------------------------------
 
@@ -62,28 +70,41 @@ Une application :
 
 * Peut contenir plusieurs modules.
 
---------------------------------------------------------------------------------
-
 # Définir un module
 
     !javascript
-    // Créer le module 'nom', le deuxième paramètre est la liste des dépendances du module.
+    // Créer le module 'nom'
+    // Le deuxième paramètre est la liste des dépendances du module.
     angular.module('nom', []);
 
-    // Récupère le module.
+    // Récupèrer le module.
     angular.module('nom');
+
+# Presenter Notes
+
+Exemple de dépendances : ``ngRoute``.
 
 --------------------------------------------------------------------------------
 
 # Découper son application
 
+.fx: tighter
+
 ``angular-seed`` est un bon modèle :
 
 * Les fichiers de description (README, LICENSE, ...) et de configuration des outils du projet sont à la racine.
-* L'applicaion en elle-même est contenue dans un dossier.
+* L'application en elle-même est contenue dans un dossier.
 * Chaque partie logique de l'application est mis dans son propre module. Chaque module a son propre dossier.
     * Un module décrit ses propres contrôleurs, routes et templates.
     * Les directives et les filtres peuvent être mis dans des modules à part si ils sont réutilisable.
+
+# Presenter Notes
+
+``angular-seed`` a un dossier ``components`` comprenants les filtres et directives.
+
+--------------------------------------------------------------------------------
+
+# Architecture
 
     !console
     README
@@ -105,13 +126,13 @@ Une application :
 
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list
+# TP - Création d'une ToDo List - 5
 
 * Re-cloner ``angular-seed``.
     * Regarder l'architecture du projet.
     * Regarder les fichier app.js, view1.js et view2.js.
     * Comprendre le découpage de l'application.
-* Découper l'application de TODO-list pour reproduire la même architecture.
+* Découper l'application de ToDo List pour reproduire la même architecture.
 
 --------------------------------------------------------------------------------
 
@@ -124,14 +145,20 @@ Une application :
 Un service :
 
 * Est un singleton.
+* Est un objet, une chaine de caractères, une valeur.
 * Permet de partager du code métier et/ou des objets entre contrôleurs.
 
         !javascript
         angular.module('todo', [])
-          .controller('TodoController', ['$scope', '$routeParams', function($scope, $routeParams) {
-            $scope.id = $routeParams.id;
-            $scope.todo = ...;
+          .controller('TodoController',
+                      ['$routeParams', function($routeParams) {
+            // ...
           }]);
+
+# Presenter Notes
+
+Un singleton est un objet qui n'est créé qu'une fois. Il n'est donc présent qu'une fois en mémoire et c'est le même qui est toujours utilisé.
+``$routeParams`` est un service. ``$scope`` est un cas particulier.
 
 --------------------------------------------------------------------------------
 
@@ -146,7 +173,11 @@ Les services du core commencent par ``$``.
 * ``$q`` : Faire des promesses.
 * ``$rootScope``
 * ``$document``, ``$window``, ``$timeout``, ``$interval``
-* ...
+* [...](https://docs.angularjs.org/api/ng/service)
+
+# Presenter Notes
+
+``$document``, ``$window``, ``$timeout``, ``$interval`` sont des wrappers pour leur équivalent JS.
 
 --------------------------------------------------------------------------------
 
@@ -158,6 +189,7 @@ Ou comment créer un service.
 
 Une ``factory`` retourne le service demandé.
 
+    !javascript
     angular.module('myApp', [])
       .factory('hello', function() {
         return {
@@ -167,10 +199,15 @@ Une ``factory`` retourne le service demandé.
         };
       });
 
+--------------------------------------------------------------------------------
+
+# Services vs Factory
+
 ## Service
 
 ``service`` peut être utilisé en tant que constructeur du service.
 
+    !javascript
     angular.module('myApp', [])
       .service('hello', function() {
         this.hello: function(name) {
@@ -178,18 +215,24 @@ Une ``factory`` retourne le service demandé.
           };
       });
 
+# Presenter Notes
+
+Service déjà créer et accessible par ``this``.
+
 --------------------------------------------------------------------------------
 
 # Constant et Value
 
+    !javascript
     angular.module('myApp', [])
       .constant('version', '0.1');
 
     angular.module('myApp', [])
       .value('version', '0.1');
 
-``constant`` peut être utilisé dans un ``config``. ``value`` ne peut pas.
+``constant`` peut être utilisé lors d'un ``config`` alors que ``value`` ne peut pas.
 
+    !javascript
     angular.module('myApp', [])
       .constant('version', '0.1');
       .config(['version', function(version) {
@@ -204,13 +247,14 @@ Une ``factory`` retourne le service demandé.
 
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list
+# TP - Création d'une ToDo List - 6
 
 * Créer un service permettant de :
-    * Stocker la TODO-list.
+    * Stocker la ToDo List.
     * Récuperer la liste.
     * Manipuler la liste (ajouter/supprimer).
     * Récuperer une tache par son ``id``.
+* Utiliser ce service dans les contrôleurs.
 
 --------------------------------------------------------------------------------
 
@@ -236,13 +280,22 @@ Une ``factory`` retourne le service demandé.
     !console
     npm install karma karma-chrome-launcher
     ./node_modules/.bin/karma init karma.conf.js
-    ./node_modules/.bin/karma start
+    ./node_modules/.bin/karma start karma.conf.js
 
     sudo npm install -g karma-cli
     karma start
 
     # Ou avec angular-seed
     npm test
+
+# Presenter Notes
+
+``npm install`` permet d'installer les paquets Node.js.
+Les paquets sont installé dans ``node_modules`` et les binaires se retrouvent dans ``node_modules/.bin``.
+
+``karma-cli`` permet d'avoir un executable ``karma`` qui va chercher le binaire karma courant.
+
+``npm test`` permet de lancer le script ``test`` qui se trouve dans ``package.json``.
 
 --------------------------------------------------------------------------------
 
@@ -254,6 +307,10 @@ Une ``factory`` retourne le service demandé.
 
         !console
         npm install karma-jasmine
+
+# Presenter Notes
+
+"behavior-driven" signifie que l'on décrit les composants à tester, ce qu'il devrait faire et ce que l'on attends d'eux.
 
 --------------------------------------------------------------------------------
 
@@ -292,7 +349,7 @@ Une ``factory`` retourne le service demandé.
       });
     });
 
-https://github.com/pivotal/jasmine/wiki/Matchers
+[Plus d'"expectation"](https://github.com/pivotal/jasmine/wiki/Matchers).
 
 --------------------------------------------------------------------------------
 
@@ -317,9 +374,13 @@ https://github.com/pivotal/jasmine/wiki/Matchers
 
       it("can have more than one expectation", function() {
         expect(foo).toEqual(1);
-        expect(true).toEqual(true);
+        expect(true).toBeTruthy();
       });
     });
+
+# Presenter Notes
+
+Effectuer certaines taches avant et/ou après chaque test.
 
 --------------------------------------------------------------------------------
 
@@ -335,10 +396,22 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
     describe('MyApp', function() {
       beforeEach(module('myApp'));
 
-      it('should provide a version', inject(function(version) {
+      it('should provide a version', angular.mock.inject(function(version) {
         expect(version).toEqual('v1.0.1');
       }));
     });
+
+# Presenter Notes
+
+``beforeEach(module('myApp'));`` permet de définir les modules contenants les composants à injecter.
+Il est possible d'injecter des composants en utilisant ``angular.mock.inject``.
+
+--------------------------------------------------------------------------------
+
+# Injection et mocks
+
+    !javascript
+    angular.module('myApp', []).value('version', 'v1.0.1');
 
     describe('MyApp', function() {
       var version;
@@ -348,20 +421,30 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
         version = _version_;
       }));
 
-      it('should provide a version', inject(function(version) {
+      it('should provide a version', function() {
         expect(version).toEqual('v1.0.1');
-      }));
+      });
     });
 
-    describe('MyApp', function() {
-      beforeEach(module(function($provide) {
-        $provide.value('version', 'VERSION');
-      }));
+    describe('MyApp - $provide', function() {
+      it('should provide a version', function(version) {
+        module(function($provide) {
+          $provide.value('version', 'VERSION');
+        })
 
-      it('should provide a version', inject(function(version) {
-        expect(version).toEqual('VERSION');
-      }));
+        inject(function(version) {
+          expect(version).toEqual('VERSION');
+        });
+      });
     });
+
+# Presenter Notes
+
+
+``inject`` est également présent sur ``window`` et peut donc être accédé directement.
+On peut utiliser ``inject`` dans un ``beforeEach`` pour avoir le composant dans tout les tests.
+Pour ne pas surcharger la variable local, le service peut être injécté avec des "_" autour.
+``$provide`` permet de remplacer un service.
 
 --------------------------------------------------------------------------------
 
@@ -372,11 +455,16 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
       var MyController, scope;
 
       beforeEach(module('myApp'));
-      beforeEach(inject(function($controller, $rootScope){
-        scope = $rootScope;
+      beforeEach(inject(function($controller, $rootScope) {
+        scope = $rootScope.$new();
         MyController = $controller('MyController', {$scope: scope});
       }));
     });
+
+# Presenter Notes
+
+Le service ``$controller`` permet de créer un nouveau contrôleur.
+Les services injecté peuvent être passé en paramètres afin de les contrôler.
 
 --------------------------------------------------------------------------------
 
@@ -392,6 +480,10 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
       });
     });
 
+# Presenter Notes
+
+Le service sera injecté dans tout les tests.
+
 --------------------------------------------------------------------------------
 
 # Tester les différents composants - Filtres
@@ -402,12 +494,16 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
 
       beforeEach(module('myApp'));
       beforeEach(inject(function($filter){
-        service = $filter;
+        filter = $filter;
       });
       it('should works', function(){
         expect(filter('number')(123, 2).toEqual('123.00'));
       });
     });
+
+# Presenter Notes
+
+``$filter`` est utilisé pour récupérer tout les filtres.
 
 --------------------------------------------------------------------------------
 
@@ -419,7 +515,7 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
 
       beforeEach(module('myApp'));
       beforeEach(inject(function($compile, $rootScope){
-        scope = $rootScope;
+        scope = $rootScope.$new();
         element = angular.element('<my-directive></my-directive>');
         $compile(element)(scope);
         scope.$apply();
@@ -432,11 +528,20 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
       });
     });
 
+# Presenter Notes
+
+Créer un nouvel element HTML avec angular.
+``$compile`` nous permet de transformer le texte HTML avec angular.
+``$apply`` permet d'executer du code dans angular en dehors du framework.
+Il execute aussi les divers méthodes de ``watch`` (``$digest``) et permet donc de mettre à jour les élements compilés.
+
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list
+# TP - Création d'une ToDo List - 7
 
+* Lire la configuration karma d'``angular-seed``.
 * Écrire une série de tests unitaires pour l'application ``todo``.
+* Faire tourner les tests.
 
 --------------------------------------------------------------------------------
 
@@ -452,6 +557,10 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
 * Utilise les navigateurs pour faire tourner les tests.
 * Plusieurs frameworks de tests disponible.
 
+# Presenter Notes
+
+Le serveur doit tourner pour permettre de tester comme un véritable utilisateur.
+
 --------------------------------------------------------------------------------
 
 # Protractor - Installation
@@ -460,9 +569,15 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
     npm install protractor
     ./node_modules/.bin/webdriver-manager update
 
+# Presenter Notes
+
+Met à jour les drivers utilisés pour contrôler les navigateurs.
+
 --------------------------------------------------------------------------------
 
 # Protractor - Configuration
+
+``protractor.conf.js``
 
     !javascript
     exports.config = {
@@ -483,6 +598,12 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
       framework: 'jasmine',
     };
 
+# Presenter Notes
+
+``specs`` : fichier de tests protractor (Il n'y a plus d'accès direct aux fichiers de l'application).
+``capabilities`` : les navigateurs sur lesquelles tester.
+``baseUrl`` : L'URL de l'application.
+
 --------------------------------------------------------------------------------
 
 # Protractor - Lancement
@@ -491,12 +612,15 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
     # Le serveur doit être lancé pour pouvoir lancer les tests fonctionnels
     ./node_modules/.bin/protractor protractor.conf.js
 
+    !console
     # Ou avec angular-seed
     npm run-script protractor
 
 --------------------------------------------------------------------------------
 
 # Jasmine - End to End
+
+[Locators](http://angular.github.io/protractor/#/locators)
 
     !javascript
     describe('angularjs homepage', function() {
@@ -521,21 +645,18 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
         add(3, 4);
 
         expect(history.count()).toEqual(2);
-
-        add(5, 6);
-
-        expect(history.count()).toEqual(3);
       });
     });
 
-http://angular.github.io/protractor/#/locators
+# Presenter Notes
 
+Les ``locators`` sont des méthodes permettant de récuperer les éléments de la page HTML.
+Bonne pratique de préparer les elements avant et de faire des fonctions pour les parties logiques réutilisées.
+Les éléments ne seront trouvé qu'au moment de l'action.
 
 --------------------------------------------------------------------------------
 
 # Simuler un serveur HTTP
-
-Dans le cas des tests unitaires, il faut pouvoir simuler un serveur HTTP pour ne tester que la fonctionnalité recherchée et pas la connexion ou le serveur distant.
 
     !javascript
     describe('Unit Test: HTTP', function() {
@@ -548,25 +669,38 @@ Dans le cas des tests unitaires, il faut pouvoir simuler un serveur HTTP pour ne
       }));
 
       afterEach(function(){
-        // Il faut s'assurer qu'il ne reste pas de requêtes ou d'attentes à la fin de chaque test.
+        // Il faut s'assurer qu'il ne reste pas de requêtes
+        // ou d'attentes à la fin de chaque test.
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
       });
 
       it('should make a request', function(){
-        $httpBackend.expect('GET', '/v1/api/current_user').respond(100, {userId: 123});
+        $httpBackend.expect('GET', '/v1/api/current_user')
+          .respond(200, {userId: 123});
         myService.getCurrentUser();
         $httpBackend.flush();
       });
     });
 
-https://code.angularjs.org/1.2.26/docs/api/ngMock/service/$httpBackend
+[``$httpBackend``](https://code.angularjs.org/1.2.26/docs/api/ngMock/service/$httpBackend)
+
+# Presenter Notes
+
+Dans le cas des tests unitaires, il faut pouvoir simuler un serveur HTTP pour ne tester que la fonctionnalité recherchée et pas la connexion ou le serveur distant.
+
+``$httpBackend.expect()`` vérifie que la requête soit bien partis et permet de gérer la réponse.
+``$httpBackend.flush()`` permet de s'assurer que les réponses soit bien envoyées.
+
+``$httpBackend.verifyNoOutstandingExpectation()`` et ``$httpBackend.verifyNoOutstandingRequest()`` vont s'occuper de ces vérifications.
 
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list
+# TP - Création d'une ToDo List - 8
 
+* Lire la configuration protractor et les tests e2e d'``angular-seed``.
 * Écrire une série de tests fonctionnels pour l'application ``todo``.
+* Faire tourner les tests.
 
 --------------------------------------------------------------------------------
 
@@ -576,17 +710,17 @@ https://code.angularjs.org/1.2.26/docs/api/ngMock/service/$httpBackend
 
 # Définitions
 
-Une directive permet d'étendre le language HTML. Les formes les plus courantes de directives sont les suivantes :
+Une directive permet d'étendre le language HTML.
+
+Les formes les plus courantes de directives sont les suivantes :
 
     !html
+    <div my-directive="value"></div>
     <div my-directive></div>
+
     <my-directive></my-directive>
 
-    <div my-directive="value"></div>
-
---------------------------------------------------------------------------------
-
-# Créer ses directives
+## Créer une directive
 
     !javascript
     angular.module('myApp', [])
@@ -601,11 +735,11 @@ Une directive permet d'étendre le language HTML. Les formes les plus courantes 
 # Options
 
 * ``restrict`` : Indique de quelle manière une directive peut être utilisé. ``A`` pour attribut et ``E`` pour element.
-* ``template``/``templateUrl`` : Template ou url vers le template à utiliser.
-* ``replace`` : Si ``true``, le template remplace le block plutot que d'etre ajouté.
+* ``template``/``templateUrl`` : Template ou url vers le template ("partial") à utiliser.
+* ``replace`` : Si ``true``, le template remplace le block plutot que d'etre ajouté à la fin.
 * ``scope`` : Si ``true``, un nouveau scope sera créer pour la directive. Peut également être un objet décrivant les valeurs du scope.
 * ``controller`` : Le contrôleur à utiliser pour gérer la directive.
-* ...
+* [...](https://docs.angularjs.org/guide/directive)
 
 --------------------------------------------------------------------------------
 
@@ -627,6 +761,17 @@ Fichier HTML :
 
     !html
     <div my-directive></div>
+    <my-directive></my-directive>
+
+Résultat :
+
+    !html
+    <a href="google.com">Google</a>
+    <a href="google.com">Google</a>
+
+# Presenter Notes
+
+Noter que la directive est créer en camelCase mais est utilisé en lower-case.
 
 --------------------------------------------------------------------------------
 
@@ -651,9 +796,15 @@ Fichier HTML :
     !html
     <my-directive value="'foobar'"></my-directive>
 
-Fichier my-directive.html :
+Fichier ``partials/my-directive.html`` :
 
+    !html
     {{ value }}
+
+Résultat :
+
+    !html
+    <my-directive value="'foobar'">foobar</my-directive>
 
 --------------------------------------------------------------------------------
 
@@ -665,13 +816,17 @@ Les filtres permettent de modifier la manière dont les données sont affichées
 
 Les services mettent à disposition du code métier.
 
-Plus un composant est générique, plus il est réutilisable. Au contraire, un composant qui n'est utilisé qu'une fois n'a pas besoin d'être générique. Il faut trouver le juste milieu.
+Plus un composant est générique, plus il est réutilisable. Au contraire, un composant métier qui n'est utilisé qu'une fois n'a pas besoin d'être générique. Il faut trouver le juste milieu.
 
 Voir le dossier ``components`` de ``angular-seed``.
 
+# Presenter Notes
+
+Composants générique = plus de temps de dév la première fois et moins les suivantes.
+
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list
+# TP - Création d'une ToDo List - 9
 
 * Créer une directive permettant l'affichage d'une tache. Elle doit :
     * Prendre en paramètre la tache et la methode d'affichage de la date.
