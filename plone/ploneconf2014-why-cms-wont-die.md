@@ -7,14 +7,6 @@
 
 --------------------------------------------------------------------------------
 
-# This is about future
-
-100% guaranteed
-
-.fx: extra-large
-
---------------------------------------------------------------------------------
-
 # Our world: the web
 
 **Something new every minute!!**
@@ -67,23 +59,150 @@ Grumpy but sharp!
 
 --------------------------------------------------------------------------------
 
-# No newcomers
+# But we keep them
 
-# Nobody knows about CMS but us (CMSistas)
+**BECAUSE USERS NEED CMS!!!**
 
-# CMS is huge project
-
-# Users still needs CMS badly
-
-# Wordpress = 60%
-100% ? no way
-never saw any WP at any of my customers
-
-# Nobody promises it will be easy
-Is Plone too complex to survive?
-All CMS are complex
-
-We are good at some points (eg: Drupal still not on github)
+.fx: extra-large
 
 --------------------------------------------------------------------------------
+
+# OK, no-CMS is possible
+
+<img src="img/new-car.jpg" />
+
+At the beginning, users probably just want to edit few pages.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# But...
+
+They will also need to manage medias.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# But...
+
+A validation workflow would be nice.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# But...
+
+Hence we have to manage access rights.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# But...
+
+Newsletter is a must-have
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# But...
+
+Plus a document sharing restricted area.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# But...
+
+Multilingual.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# But...
+
+Subsites, which are all identical but 2 or 3 things.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Next thing you know...
+
+<img src="img/old-car.jpg" />
+
+.fx: extra-large
+
+
+--------------------------------------------------------------------------------
+
+# Face it, you need a CMS
+
+<img src="img/bus.jpg" />
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# And there will be no young newcomers
+
+<img src="img/young-old.jpg" style="width: 50%;" />
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# because CMS are special
+
+Nobody knows about CMS but us (CMSistas)
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# because CMS are huge projects
+
+It cannot be managed and developed just like any project.
+
+Example: who needs `buildout` in Python but us?
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Wordpress = 60%
+
+100% tomorrow? No way!
+
+Never saw any WP at any of my customers.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Nobody promises it will be easy
+
+Is Plone too complex to survive?
+
+**All CMS are complex**
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# 2 major issues
+
+- make it **usable**,
+- **frontend / backend** dichotomy.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
 # Thank you!
