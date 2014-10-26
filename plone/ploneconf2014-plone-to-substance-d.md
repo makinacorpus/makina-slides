@@ -31,23 +31,15 @@ No obvious reason.
 
 --------------------------------------------------------------------------------
 
-# Substance D
-
-"Substance D owes much of its spirit to the Zope application server" (sic)
-
-.fx: extra-large
-
---------------------------------------------------------------------------------
-
 # Good things in Substance D
 
 All the good things from Pyramid
 
 PLUS 
 
-- built on Pyramid,
 - stores data in a ZODB,
-- provides a management interface (the SDI).
+- provides a management interface (the SDI),
+- "Substance D owes much of its spirit to the Zope application server" (sic)
 
 .fx: extra-large
 
@@ -74,6 +66,8 @@ Make sure to load everything in `__init__.py`:
 
     !python
     config.load_zcml("plone-d.zcml")
+
+DEMO!
 
 .fx: extra-large
 
@@ -257,9 +251,20 @@ CONS:
 
 Not 100% ZCA-ready.
 
-Need to call `config.hook_zca()`, works fine, no problem.
+Need to call `config.hook_zca()`, it works fine, no problem.
 
 Just not confortable with the "hook" term here.
+
+We would probably need a local registry.
+ 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Conclusion about Plone future
+
+- **ZCA + buildout + ZODB** makes our **identity**, we must preserve it.
+- We can find clever approaches to **avoid a full rewrite**.
  
 .fx: extra-large
 
@@ -276,4 +281,5 @@ Should we migrate to something else?
 .fx: extra-large
 
 --------------------------------------------------------------------------------
+
 # Thank you!
