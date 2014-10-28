@@ -650,10 +650,15 @@ a {
 .slide.tp h3,
 .slide.tp h4,
 .slide.tp h5,
-.slide.tp h6 {
+.slide.tp h6,
+.slide.tp header {
   color: #F08A00;
 }
-.slide.progress h1 {
+.slide.progress section > p:first-child {
+  font-weight: normal;
+  letter-spacing: 0;
+  font-size: 2em;
+  margin: .67em 0;
   color: #c9015a;
 }
 .slide.progress ul li {

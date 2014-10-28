@@ -390,3 +390,6 @@ aside.source {
 div.presentation {
   -webkit-transform: scale(1) !important;
 }
+li > p {
+  margin: 0;
+}
