@@ -2606,15 +2606,19 @@ Un controleur peut etre inclus dans un autre pour s'occuper d'une sous-partie sp
   {{ welcome }} {{ name }}
   <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;View2Controller&quot;</span><span class="nt">&gt;</span>
     {{ welcome }} {{ name }}
+    {{ welcome }} {{ $parent.name }}
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></div>
+
 </section>
             
           </div>
           <div class="presenter_notes">
             <header><h1>Notes</h1></header>
             <section>
+            
+              <p><a href="http://jsfiddle.net/p21Loo4r/">JSfiddle</a></p>
             
             </section>
           </div>
