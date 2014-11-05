@@ -364,8 +364,13 @@ Fichier HTML :
       {{ welcome }} {{ name }}
       <div ng-controller="View2Controller">
         {{ welcome }} {{ name }}
+        {{ welcome }} {{ $parent.name }}
       </div>
     </div>
+
+# Presenter Notes
+
+[JSfiddle](http://jsfiddle.net/p21Loo4r/)
 
 --------------------------------------------------------------------------------
 

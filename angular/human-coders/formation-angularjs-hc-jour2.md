@@ -210,7 +210,7 @@ Une ``factory`` retourne le service demandé.
     !javascript
     angular.module('myApp', [])
       .service('hello', function() {
-        this.hello: function(name) {
+        this.hello = function(name) {
             return "Hello " + name;
           };
       });
@@ -247,6 +247,36 @@ Service déjà créer et accessible par ``this``.
 
 --------------------------------------------------------------------------------
 
+# provider et $provide
+
+Un provider n'est accessible que durant la phase de configuration (et donc dans les ``.config()``).
+``$provide`` permet de définir ou redéfinir un service dynamiquement.
+
+    !javascript
+    angular.module('myApp', [])
+      .provider('ServiceProvider', function () {
+
+        this.$get = function () {
+          return {
+            myService: True,
+          };
+        };
+      });
+
+      .run('TestController', function($provide) {
+        $provide.factory('ServiceProvider', function() {
+          return {
+            myService: False,
+          };
+        });
+      })
+
+# Presenter Notes
+
+``provider`` est utilisé par les autres systemes de création de services.
+
+--------------------------------------------------------------------------------
+
 # TP - Création d'une ToDo List - 6
 
 * Créer un service permettant de :
@@ -255,6 +285,7 @@ Service déjà créer et accessible par ``this``.
     * Manipuler la liste (ajouter/supprimer).
     * Récuperer une tache par son ``id``.
 * Utiliser ce service dans les contrôleurs.
+* Utiliser le localStorage dans ce service pour stocker la liste.
 
 --------------------------------------------------------------------------------
 
@@ -384,6 +415,47 @@ Effectuer certaines taches avant et/ou après chaque test.
 
 --------------------------------------------------------------------------------
 
+# Jasmine - Spies
+
+L'API a changé entre Jasmine 1.x et 2.x !
+Permet de simuler des fonctions/objets le temps d'un ``describe``/``it``.
+
+    !javascript
+    // Jasmine 2.0
+    service = {
+       test: function(foo, bar) {
+          return 42;
+       }
+    };
+    SpyOn(service, 'test');
+    service.test(1, 2);
+    expect(service.test).toHaveBeenCalled();
+    expect(service.test).toHaveBeenCalledWith(1, 2);
+
+    SpyOn(service, 'test').and.returnValue(21);
+    var test = service.test(1, 2);
+    expect(test).toEqual(21);
+
+
+--------------------------------------------------------------------------------
+
+# Jasmine - Spies
+
+    !javascript
+    // Jasmine 2.0
+    jasmine.createSpy('foobar');
+    foobar('foo', 'bar');
+    expect(foobar).toHaveBeenCalledWith('foo', 'bar');
+
+    // Créer un objet avec plusieurs spies
+    jasmine.createSpy('service', ['create', 'update', 'delete']);
+    service.create();
+    expect(service.create).toHaveBeenCalled();
+
+[Documentation Spies](http://jasmine.github.io/2.0/introduction.html#section-Spies)
+
+--------------------------------------------------------------------------------
+
 # Injection et mocks
 
 Un mock permet de tester et de simuler le fonctionnement d'un composant métier.
@@ -394,9 +466,11 @@ Pensez à inclure ``angular-mocks.js`` dans la configuration de ``karma``.
         .value('version', 'v1.0.1');
 
     describe('MyApp', function() {
+      // Charger le module 'myApp'
       beforeEach(module('myApp'));
 
-      it('should provide a version', angular.mock.inject(function(version) {
+      // Puis injecter le service 'version'
+      it('should provide a version', inject(function(version) {
         expect(version).toEqual('v1.0.1');
       }));
     });
@@ -831,6 +905,7 @@ Composants générique = plus de temps de dév la première fois et moins les su
 * Créer une directive permettant l'affichage d'une tache. Elle doit :
     * Prendre en paramètre la tache et la methode d'affichage de la date.
 * Remplacer le listing des taches et l'affichage d'une tache simple par cette directive.
+* Tester cette directive.
 
 --------------------------------------------------------------------------------
 

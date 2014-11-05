@@ -987,6 +987,12 @@ Pensez à inclure le fichier JS ainsi créer dans l'application.
 
 --------------------------------------------------------------------------------
 
+# TP - Création d'une ToDo List - 13
+
+* Traduire l'application en utilisant ``angular-gettext``.
+
+--------------------------------------------------------------------------------
+
 # Bootstrap
 
 [Bootstrap](http://getbootstrap.com/) sans jQuery et avec des directives.
@@ -1040,6 +1046,7 @@ Pas forcément les meme composant d'implémentés. Logique différente (directiv
 # Presenter Notes
 
 Permet de faire des vues dans des vues ainsi que des vues multiples sur la même page.
+Permet également de nommer ses vues.
 
 --------------------------------------------------------------------------------
 
@@ -1143,9 +1150,9 @@ Permet de faire des vues dans des vues ainsi que des vues multiples sur la même
 
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list - 13
+# TP - Création d'une ToDo List - 14
 
-* Traduire l'application en utilisant ``angular-gettext``.
+* Modifier l'application TODO pour avoir les deux vues sur la meme page.
 
 --------------------------------------------------------------------------------
 
@@ -1270,7 +1277,6 @@ Infos nécessaire pour ``Protractor`` ou ``Batarang``. À n'utiliser qu'en produ
 * $cache
 * jQlite / jQuery
 * [Form validation](http://www.yearofmoo.com/2014/09/taming-forms-in-angularjs-1-3.html)
-* Jasmine Spy
 * ng-annotate
 * [One-way binding](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html)
 
