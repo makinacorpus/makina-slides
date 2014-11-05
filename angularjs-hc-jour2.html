@@ -1691,7 +1691,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              1/45
+              1/48
             </aside>
           </footer>
         </div>
@@ -1746,7 +1746,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              2/45
+              2/48
             </aside>
           </footer>
         </div>
@@ -1774,7 +1774,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              3/45
+              3/48
             </aside>
           </footer>
         </div>
@@ -1826,7 +1826,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              4/45
+              4/48
             </aside>
           </footer>
         </div>
@@ -1876,7 +1876,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              5/45
+              5/48
             </aside>
           </footer>
         </div>
@@ -1918,7 +1918,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              6/45
+              6/48
             </aside>
           </footer>
         </div>
@@ -1965,7 +1965,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              7/45
+              7/48
             </aside>
           </footer>
         </div>
@@ -2003,7 +2003,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              8/45
+              8/48
             </aside>
           </footer>
         </div>
@@ -2031,7 +2031,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              9/45
+              9/48
             </aside>
           </footer>
         </div>
@@ -2077,7 +2077,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              10/45
+              10/48
             </aside>
           </footer>
         </div>
@@ -2120,7 +2120,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              11/45
+              11/48
             </aside>
           </footer>
         </div>
@@ -2162,7 +2162,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              12/45
+              12/48
             </aside>
           </footer>
         </div>
@@ -2180,7 +2180,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
 <p><code>service</code> peut être utilisé en tant que constructeur du service.</p>
 <div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">,</span> <span class="p">[])</span>
   <span class="p">.</span><span class="nx">service</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">hello</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">hello</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
       <span class="p">};</span>
   <span class="p">});</span>
@@ -2204,7 +2204,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              13/45
+              13/48
             </aside>
           </footer>
         </div>
@@ -2254,7 +2254,60 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              14/45
+              14/48
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: formation-angularjs-hc-jour2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>provider et $provide</h1></header>
+            
+            
+            <section><p>Un provider n'est accessible que durant la phase de configuration (et donc dans les <code>.config()</code>).
+<code>$provide</code> permet de définir ou redéfinir un service dynamiquement.</p>
+<div class="highlight"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">provider</span><span class="p">(</span><span class="s1">&#39;ServiceProvider&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">$get</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">myService</span><span class="o">:</span> <span class="nx">True</span><span class="p">,</span>
+      <span class="p">};</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+
+  <span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;TestController&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$provide</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$provide</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;ServiceProvider&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">myService</span><span class="o">:</span> <span class="nx">False</span><span class="p">,</span>
+      <span class="p">};</span>
+    <span class="p">});</span>
+  <span class="p">})</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+              <p><code>provider</code> est utilisé par les autres systemes de création de services.</p>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="formation-angularjs-hc-jour2.md">formation-angularjs-hc-jour2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/48
             </aside>
           </footer>
         </div>
@@ -2277,6 +2330,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
 </ul>
 </li>
 <li>Utiliser ce service dans les contrôleurs.</li>
+<li>Utiliser le localStorage dans ce service pour stocker la liste.</li>
 </ul></section>
             
           </div>
@@ -2293,7 +2347,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              15/45
+              16/48
             </aside>
           </footer>
         </div>
@@ -2321,7 +2375,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              16/45
+              17/48
             </aside>
           </footer>
         </div>
@@ -2362,7 +2416,7 @@ En cas de minifaction, le nom des variable est modifié pour être raccourci. Il
             </aside>
             
             <aside class="page_number">
-              17/45
+              18/48
             </aside>
           </footer>
         </div>
@@ -2408,7 +2462,7 @@ Les paquets sont installé dans <code>node_modules</code> et les binaires se ret
             </aside>
             
             <aside class="page_number">
-              18/45
+              19/48
             </aside>
           </footer>
         </div>
@@ -2448,7 +2502,7 @@ Les paquets sont installé dans <code>node_modules</code> et les binaires se ret
             </aside>
             
             <aside class="page_number">
-              19/45
+              20/48
             </aside>
           </footer>
         </div>
@@ -2489,7 +2543,7 @@ Les paquets sont installé dans <code>node_modules</code> et les binaires se ret
             </aside>
             
             <aside class="page_number">
-              20/45
+              21/48
             </aside>
           </footer>
         </div>
@@ -2536,7 +2590,7 @@ Les paquets sont installé dans <code>node_modules</code> et les binaires se ret
             </aside>
             
             <aside class="page_number">
-              21/45
+              22/48
             </aside>
           </footer>
         </div>
@@ -2591,7 +2645,95 @@ Les paquets sont installé dans <code>node_modules</code> et les binaires se ret
             </aside>
             
             <aside class="page_number">
-              22/45
+              23/48
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: formation-angularjs-hc-jour2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Jasmine - Spies</h1></header>
+            
+            
+            <section><p>L'API a changé entre Jasmine 1.x et 2.x !
+Permet de simuler des fonctions/objets le temps d'un <code>describe</code>/<code>it</code>.</p>
+<div class="highlight"><pre><span class="c1">// Jasmine 2.0</span>
+<span class="nx">service</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="nx">test</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">42</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">SpyOn</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">);</span>
+<span class="nx">service</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">test</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">test</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="nx">SpyOn</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">).</span><span class="nx">and</span><span class="p">.</span><span class="nx">returnValue</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="nx">service</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">test</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="formation-angularjs-hc-jour2.md">formation-angularjs-hc-jour2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/48
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: formation-angularjs-hc-jour2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Jasmine - Spies</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="c1">// Jasmine 2.0</span>
+<span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;foobar&#39;</span><span class="p">);</span>
+<span class="nx">foobar</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">foobar</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+
+<span class="c1">// Créer un objet avec plusieurs spies</span>
+<span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;service&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">]);</span>
+<span class="nx">service</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">create</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+</pre></div>
+
+<p><a href="http://jasmine.github.io/2.0/introduction.html#section-Spies">Documentation Spies</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="formation-angularjs-hc-jour2.md">formation-angularjs-hc-jour2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              25/48
             </aside>
           </footer>
         </div>
@@ -2611,9 +2753,11 @@ Pensez à inclure <code>angular-mocks.js</code> dans la configuration de <code>k
     <span class="p">.</span><span class="nx">value</span><span class="p">(</span><span class="s1">&#39;version&#39;</span><span class="p">,</span> <span class="s1">&#39;v1.0.1&#39;</span><span class="p">);</span>
 
 <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;MyApp&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Charger le module &#39;myApp&#39;</span>
   <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">));</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should provide a version&#39;</span><span class="p">,</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">version</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Puis injecter le service &#39;version&#39;</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should provide a version&#39;</span><span class="p">,</span> <span class="nx">inject</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">version</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">version</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;v1.0.1&#39;</span><span class="p">);</span>
   <span class="p">}));</span>
 <span class="p">});</span>
@@ -2638,7 +2782,7 @@ Il est possible d'injecter des composants en utilisant <code>angular.mock.inject
             </aside>
             
             <aside class="page_number">
-              23/45
+              26/48
             </aside>
           </footer>
         </div>
@@ -2701,7 +2845,7 @@ Pour ne pas surcharger la variable local, le service peut être injécté avec d
             </aside>
             
             <aside class="page_number">
-              24/45
+              27/48
             </aside>
           </footer>
         </div>
@@ -2745,7 +2889,7 @@ Les services injecté peuvent être passé en paramètres afin de les contrôler
             </aside>
             
             <aside class="page_number">
-              25/45
+              28/48
             </aside>
           </footer>
         </div>
@@ -2787,7 +2931,7 @@ Les services injecté peuvent être passé en paramètres afin de les contrôler
             </aside>
             
             <aside class="page_number">
-              26/45
+              29/48
             </aside>
           </footer>
         </div>
@@ -2832,7 +2976,7 @@ Les services injecté peuvent être passé en paramètres afin de les contrôler
             </aside>
             
             <aside class="page_number">
-              27/45
+              30/48
             </aside>
           </footer>
         </div>
@@ -2886,7 +3030,7 @@ Il execute aussi les divers méthodes de <code>watch</code> (<code>$digest</code
             </aside>
             
             <aside class="page_number">
-              28/45
+              31/48
             </aside>
           </footer>
         </div>
@@ -2920,7 +3064,7 @@ Il execute aussi les divers méthodes de <code>watch</code> (<code>$digest</code
             </aside>
             
             <aside class="page_number">
-              29/45
+              32/48
             </aside>
           </footer>
         </div>
@@ -2948,7 +3092,7 @@ Il execute aussi les divers méthodes de <code>watch</code> (<code>$digest</code
             </aside>
             
             <aside class="page_number">
-              30/45
+              33/48
             </aside>
           </footer>
         </div>
@@ -2987,7 +3131,7 @@ Il execute aussi les divers méthodes de <code>watch</code> (<code>$digest</code
             </aside>
             
             <aside class="page_number">
-              31/45
+              34/48
             </aside>
           </footer>
         </div>
@@ -3023,7 +3167,7 @@ Il execute aussi les divers méthodes de <code>watch</code> (<code>$digest</code
             </aside>
             
             <aside class="page_number">
-              32/45
+              35/48
             </aside>
           </footer>
         </div>
@@ -3077,7 +3221,7 @@ Il execute aussi les divers méthodes de <code>watch</code> (<code>$digest</code
             </aside>
             
             <aside class="page_number">
-              33/45
+              36/48
             </aside>
           </footer>
         </div>
@@ -3114,7 +3258,7 @@ Il execute aussi les divers méthodes de <code>watch</code> (<code>$digest</code
             </aside>
             
             <aside class="page_number">
-              34/45
+              37/48
             </aside>
           </footer>
         </div>
@@ -3175,7 +3319,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              35/45
+              38/48
             </aside>
           </footer>
         </div>
@@ -3236,7 +3380,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              36/45
+              39/48
             </aside>
           </footer>
         </div>
@@ -3270,7 +3414,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              37/45
+              40/48
             </aside>
           </footer>
         </div>
@@ -3298,7 +3442,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              38/45
+              41/48
             </aside>
           </footer>
         </div>
@@ -3344,7 +3488,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              39/45
+              42/48
             </aside>
           </footer>
         </div>
@@ -3381,7 +3525,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              40/45
+              43/48
             </aside>
           </footer>
         </div>
@@ -3434,7 +3578,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              41/45
+              44/48
             </aside>
           </footer>
         </div>
@@ -3488,7 +3632,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              42/45
+              45/48
             </aside>
           </footer>
         </div>
@@ -3525,7 +3669,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              43/45
+              46/48
             </aside>
           </footer>
         </div>
@@ -3545,6 +3689,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
 </ul>
 </li>
 <li>Remplacer le listing des taches et l'affichage d'une tache simple par cette directive.</li>
+<li>Tester cette directive.</li>
 </ul></section>
             
           </div>
@@ -3561,7 +3706,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              44/45
+              47/48
             </aside>
           </footer>
         </div>
@@ -3589,7 +3734,7 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
             </aside>
             
             <aside class="page_number">
-              45/45
+              48/48
             </aside>
           </footer>
         </div>
@@ -3689,188 +3834,206 @@ Les éléments ne seront trouvé qu'au moment de l'action.</p>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">TP - Création d'une ToDo List - 6</a></th>
+        <th><a href="#slide15">provider et $provide</a></th>
         <td><a href="#slide15">15</a></td>
       </tr>
       
       
       <tr id="toc-row-16">
-        <th><a href="#slide16">Tests Unitaires</a></th>
+        <th><a href="#slide16">TP - Création d'une ToDo List - 6</a></th>
         <td><a href="#slide16">16</a></td>
       </tr>
       
       
       <tr id="toc-row-17">
-        <th><a href="#slide17">Karma</a></th>
+        <th><a href="#slide17">Tests Unitaires</a></th>
         <td><a href="#slide17">17</a></td>
       </tr>
       
       
       <tr id="toc-row-18">
-        <th><a href="#slide18">Karma - Installation, configuration et lancement</a></th>
+        <th><a href="#slide18">Karma</a></th>
         <td><a href="#slide18">18</a></td>
       </tr>
       
       
       <tr id="toc-row-19">
-        <th><a href="#slide19">Jasmine</a></th>
+        <th><a href="#slide19">Karma - Installation, configuration et lancement</a></th>
         <td><a href="#slide19">19</a></td>
       </tr>
       
       
       <tr id="toc-row-20">
-        <th><a href="#slide20">Jasmine - Suites</a></th>
+        <th><a href="#slide20">Jasmine</a></th>
         <td><a href="#slide20">20</a></td>
       </tr>
       
       
       <tr id="toc-row-21">
-        <th><a href="#slide21">Jasmine - Specs, Expectations</a></th>
+        <th><a href="#slide21">Jasmine - Suites</a></th>
         <td><a href="#slide21">21</a></td>
       </tr>
       
       
       <tr id="toc-row-22">
-        <th><a href="#slide22">Jasmine - Setup, Teardown</a></th>
+        <th><a href="#slide22">Jasmine - Specs, Expectations</a></th>
         <td><a href="#slide22">22</a></td>
       </tr>
       
       
       <tr id="toc-row-23">
-        <th><a href="#slide23">Injection et mocks</a></th>
+        <th><a href="#slide23">Jasmine - Setup, Teardown</a></th>
         <td><a href="#slide23">23</a></td>
       </tr>
       
       
       <tr id="toc-row-24">
-        <th><a href="#slide24">Injection et mocks</a></th>
+        <th><a href="#slide24">Jasmine - Spies</a></th>
         <td><a href="#slide24">24</a></td>
       </tr>
       
       
       <tr id="toc-row-25">
-        <th><a href="#slide25">Tester les différents composants - Contrôleur</a></th>
+        <th><a href="#slide25">Jasmine - Spies</a></th>
         <td><a href="#slide25">25</a></td>
       </tr>
       
       
       <tr id="toc-row-26">
-        <th><a href="#slide26">Tester les différents composants - Service</a></th>
+        <th><a href="#slide26">Injection et mocks</a></th>
         <td><a href="#slide26">26</a></td>
       </tr>
       
       
       <tr id="toc-row-27">
-        <th><a href="#slide27">Tester les différents composants - Filtres</a></th>
+        <th><a href="#slide27">Injection et mocks</a></th>
         <td><a href="#slide27">27</a></td>
       </tr>
       
       
       <tr id="toc-row-28">
-        <th><a href="#slide28">Tester les différents composants - Directives</a></th>
+        <th><a href="#slide28">Tester les différents composants - Contrôleur</a></th>
         <td><a href="#slide28">28</a></td>
       </tr>
       
       
       <tr id="toc-row-29">
-        <th><a href="#slide29">TP - Création d'une ToDo List - 7</a></th>
+        <th><a href="#slide29">Tester les différents composants - Service</a></th>
         <td><a href="#slide29">29</a></td>
       </tr>
       
       
       <tr id="toc-row-30">
-        <th><a href="#slide30">Tests End to End</a></th>
+        <th><a href="#slide30">Tester les différents composants - Filtres</a></th>
         <td><a href="#slide30">30</a></td>
       </tr>
       
       
       <tr id="toc-row-31">
-        <th><a href="#slide31">Protractor</a></th>
+        <th><a href="#slide31">Tester les différents composants - Directives</a></th>
         <td><a href="#slide31">31</a></td>
       </tr>
       
       
       <tr id="toc-row-32">
-        <th><a href="#slide32">Protractor - Installation</a></th>
+        <th><a href="#slide32">TP - Création d'une ToDo List - 7</a></th>
         <td><a href="#slide32">32</a></td>
       </tr>
       
       
       <tr id="toc-row-33">
-        <th><a href="#slide33">Protractor - Configuration</a></th>
+        <th><a href="#slide33">Tests End to End</a></th>
         <td><a href="#slide33">33</a></td>
       </tr>
       
       
       <tr id="toc-row-34">
-        <th><a href="#slide34">Protractor - Lancement</a></th>
+        <th><a href="#slide34">Protractor</a></th>
         <td><a href="#slide34">34</a></td>
       </tr>
       
       
       <tr id="toc-row-35">
-        <th><a href="#slide35">Jasmine - End to End</a></th>
+        <th><a href="#slide35">Protractor - Installation</a></th>
         <td><a href="#slide35">35</a></td>
       </tr>
       
       
       <tr id="toc-row-36">
-        <th><a href="#slide36">Simuler un serveur HTTP</a></th>
+        <th><a href="#slide36">Protractor - Configuration</a></th>
         <td><a href="#slide36">36</a></td>
       </tr>
       
       
       <tr id="toc-row-37">
-        <th><a href="#slide37">TP - Création d'une ToDo List - 8</a></th>
+        <th><a href="#slide37">Protractor - Lancement</a></th>
         <td><a href="#slide37">37</a></td>
       </tr>
       
       
       <tr id="toc-row-38">
-        <th><a href="#slide38">Directive</a></th>
+        <th><a href="#slide38">Jasmine - End to End</a></th>
         <td><a href="#slide38">38</a></td>
       </tr>
       
       
       <tr id="toc-row-39">
-        <th><a href="#slide39">Définitions</a></th>
+        <th><a href="#slide39">Simuler un serveur HTTP</a></th>
         <td><a href="#slide39">39</a></td>
       </tr>
       
       
       <tr id="toc-row-40">
-        <th><a href="#slide40">Options</a></th>
+        <th><a href="#slide40">TP - Création d'une ToDo List - 8</a></th>
         <td><a href="#slide40">40</a></td>
       </tr>
       
       
       <tr id="toc-row-41">
-        <th><a href="#slide41">Exemple</a></th>
+        <th><a href="#slide41">Directive</a></th>
         <td><a href="#slide41">41</a></td>
       </tr>
       
       
       <tr id="toc-row-42">
-        <th><a href="#slide42">Exemple</a></th>
+        <th><a href="#slide42">Définitions</a></th>
         <td><a href="#slide42">42</a></td>
       </tr>
       
       
       <tr id="toc-row-43">
-        <th><a href="#slide43">Vers des composants réutilisables</a></th>
+        <th><a href="#slide43">Options</a></th>
         <td><a href="#slide43">43</a></td>
       </tr>
       
       
       <tr id="toc-row-44">
-        <th><a href="#slide44">TP - Création d'une ToDo List - 9</a></th>
+        <th><a href="#slide44">Exemple</a></th>
         <td><a href="#slide44">44</a></td>
       </tr>
       
       
       <tr id="toc-row-45">
-        <th><a href="#slide45">Questions ?</a></th>
+        <th><a href="#slide45">Exemple</a></th>
         <td><a href="#slide45">45</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-46">
+        <th><a href="#slide46">Vers des composants réutilisables</a></th>
+        <td><a href="#slide46">46</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-47">
+        <th><a href="#slide47">TP - Création d'une ToDo List - 9</a></th>
+        <td><a href="#slide47">47</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-48">
+        <th><a href="#slide48">Questions ?</a></th>
+        <td><a href="#slide48">48</a></td>
       </tr>
       
       
