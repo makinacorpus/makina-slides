@@ -2309,6 +2309,8 @@ Utilise les promesses.</p>
 
 <span class="c1">// Informe sur le status de la promesse</span>
 <span class="nx">deferred</span><span class="p">.</span><span class="nx">notify</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+
+<span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>
 </pre></div>
 
 <ul>
@@ -2399,7 +2401,7 @@ Utilise les promesses.</p>
           <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
         <span class="p">});</span>
 
-        <span class="k">return</span> <span class="nx">deferred</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>
       <span class="p">},</span>
     <span class="p">};</span>
   <span class="p">}]);</span>
