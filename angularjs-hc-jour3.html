@@ -2564,8 +2564,7 @@ puis récupérer les informations de toutes les villes.</p>
             <section><ul>
 <li>Créer un nouveau module sur l'application <code>todo</code> avec :<ul>
 <li>Une route pour <code>/github</code>.</li>
-<li>Un contrôleur.</li>
-<li>Un template.</li>
+<li>Un contrôleur et un template.</li>
 </ul>
 </li>
 <li>Récuperer la liste des projets de l'organisation <code>angular</code> avec <code>$http</code>.<ul>
@@ -2574,7 +2573,10 @@ puis récupérer les informations de toutes les villes.</p>
 </ul>
 </li>
 <li>Ajouter une route pour <code>/github/:project</code>.<ul>
-<li>Ajouter <code>angular-resource</code> au fichier <code>bower.json</code>.</li>
+<li>Installer <code>angular-resource</code><ul>
+<li><code>bower install --save angular-resource</code></li>
+</ul>
+</li>
 <li>Ajouter <code>angular-resource.js</code> dans <code>index.html</code>.</li>
 <li>Affiche le détail d'un projet (nom, description, lien vers la page GitHub) (utiliser <code>$resource</code>).<ul>
 <li><code>https://api.github.com/repos/angular/{projet}</code></li>
