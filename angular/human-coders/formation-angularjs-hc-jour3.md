@@ -299,6 +299,8 @@ Imaginont un service User permettant de récuperer un utilisateur.
     // Informe sur le status de la promesse
     deferred.notify(value);
 
+    return deferred.promise;
+
 * ``$q.all(promises)``
 * ``$q.reject(reason)``
 * ``$q.when(value)``
@@ -340,7 +342,7 @@ Imaginont un service User permettant de récuperer un utilisateur.
               deferred.reject(err);
             });
 
-            return deferred;
+            return deferred.promise;
           },
         };
       }]);
@@ -434,13 +436,13 @@ L'erreur remonte jusqu'a la promesse qui pourra la gérer.
 
 * Créer un nouveau module sur l'application ``todo`` avec :
     * Une route pour ``/github``.
-    * Un contrôleur.
-    * Un template.
+    * Un contrôleur et un template.
 * Récuperer la liste des projets de l'organisation ``angular`` avec ``$http``.
     * ``https://api.github.com/orgs/angular/repos``
     * Lister les projets
 * Ajouter une route pour ``/github/:project``.
-    * Ajouter ``angular-resource`` au fichier ``bower.json``.
+    * Installer ``angular-resource``
+        * ``bower install --save angular-resource``
     * Ajouter ``angular-resource.js`` dans ``index.html``.
     * Affiche le détail d'un projet (nom, description, lien vers la page GitHub) (utiliser ``$resource``).
         * ``https://api.github.com/repos/angular/{projet}``
@@ -632,12 +634,26 @@ Les taches sont enregistré dans un fichier ``gulpfile.js``.
 
 --------------------------------------------------------------------------------
 
+# TP - Création d'une TODO-list - 11
+
+* Installer Font Awesome en utilisant Bower.
+    * Ajouter le également au fichier ``bower.json`` (``--save``).
+* L'inclure dans l'application.
+* Ajouter quelques icones.
+    * ``http://fortawesome.github.io/Font-Awesome/examples/``
+* Automatiser la minification de tout les fichiers JavaScript en utilisant ``Grunt`` puis ``gulp``.
+    * Ajouter une tache permettant de surveiller la modification des fichiers JavaScript pour minifier automatiquement.
+    * N'oublier pas de modifier les fichiers JavaScript inclus dans votre ``index.html``. Il ne doit rester que le fichier minifié.
+* (Notez qu'il est également possible d'automatiser la minification des fichiers CSS).
+
+--------------------------------------------------------------------------------
+
 # Yeoman
 
 ``Yeoman`` facilite la création d'un projet et des différents composants.
 
     !console
-    npm install -g yeoman
+    npm install -g yo
     yo
 
 [![Yeoman](http://yeoman.io/assets/img/yeoman-02.901d.png)](http://yeoman.io/)
@@ -703,17 +719,10 @@ Les taches sont enregistré dans un fichier ``gulpfile.js``.
 
 --------------------------------------------------------------------------------
 
-# TP - Création d'une TODO-list - 11
+# TP - Création d'une application avec Yeoman
 
-* Installer Font Awesome en utilisant Bower.
-    * Ajouter le également au fichier ``bower.json`` (``--save``).
-* L'inclure dans l'application.
-* Ajouter quelques icones.
-    * ``http://fortawesome.github.io/Font-Awesome/examples/``
-* Automatiser la minification de tout les fichiers JavaScript en utilisant ``Grunt`` ou ``gulp``.
-    * Ajouter une tache permettant de surveiller la modification des fichiers JavaScript pour minifier automatiquement.
-    * N'oublier pas de modifier les fichiers JavaScript inclus dans votre ``index.html``. Il ne doit rester que le fichier minifié.
-* (Notez qu'il est également possible d'automatiser la minification des fichiers CSS).
+* Générer un nouveau projet avec Yeoman.
+* Essayer de reproduire l'application ToDo en utilisant les différents générateur.
 
 --------------------------------------------------------------------------------
 
@@ -727,6 +736,10 @@ Les taches sont enregistré dans un fichier ``gulpfile.js``.
     console.log();
     console.table();
     debugger;
+
+On va aussi pouvoir mettre des breakpoints directement dans la console de debug de différente manières.
+
+[Chrome tips and tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks)
 
 --------------------------------------------------------------------------------
 
@@ -798,6 +811,7 @@ Fichier HTML :
 
     !html
     <h1>{{ 'WELCOME' | translate }}</h1>
+    <h1 translate>WELCOME</h1>
     <div ng-controller="TranslateController">
       <button ng-click="changeLanguage('en')">English</button>
       <button ng-click="changeLanguage('fr')">Français</button>
@@ -805,7 +819,7 @@ Fichier HTML :
 
 # Presenter Notes
 
-Fournit un filtre ``translate``. Les traductions sont en JSON.
+Fournit un filtre et une directive ``translate``. Les traductions sont en JSON.
 Peu pratique pour des applications complexes.
 
 --------------------------------------------------------------------------------
@@ -847,7 +861,7 @@ Fichier JS :
     !javascript
     app = angular.module('myApp', ['gettext']);
 
-    app.config(function(gettextCatalog){
+    app.run(function(gettextCatalog){
       gettextCatalog.setCurrentLanguage('fr');
       // Vérifier que toutes les traductions soit présentes.
       // Les éléments non traduits auront "[MISSING]:" de préfixés.

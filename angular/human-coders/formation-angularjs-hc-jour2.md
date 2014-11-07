@@ -813,7 +813,8 @@ Les formes les plus courantes de directives sont les suivantes :
 * ``replace`` : Si ``true``, le template remplace le block plutot que d'etre ajouté à la fin.
 * ``scope`` : Si ``true``, un nouveau scope sera créer pour la directive. Peut également être un objet décrivant les valeurs du scope.
 * ``controller`` : Le contrôleur à utiliser pour gérer la directive.
-* [...](https://docs.angularjs.org/guide/directive)
+
+[Options possible](https://docs.angularjs.org/api/ng/service/$compile#directive-definition-object)
 
 --------------------------------------------------------------------------------
 
@@ -906,6 +907,7 @@ Composants générique = plus de temps de dév la première fois et moins les su
     * Prendre en paramètre la tache et la methode d'affichage de la date.
 * Remplacer le listing des taches et l'affichage d'une tache simple par cette directive.
 * Tester cette directive.
+* Rajouter les boutons de modification/suppression dans cette directive.
 
 --------------------------------------------------------------------------------
 
