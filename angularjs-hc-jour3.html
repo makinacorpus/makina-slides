@@ -3610,7 +3610,7 @@ Peu pratique pour des applications complexes.</p>
             <section><p>Fichier JS :</p>
 <div class="highlight"><pre><span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;gettext&#39;</span><span class="p">]);</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">gettextCatalog</span><span class="p">){</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">gettextCatalog</span><span class="p">){</span>
   <span class="nx">gettextCatalog</span><span class="p">.</span><span class="nx">setCurrentLanguage</span><span class="p">(</span><span class="s1">&#39;fr&#39;</span><span class="p">);</span>
   <span class="c1">// Vérifier que toutes les traductions soit présentes.</span>
   <span class="c1">// Les éléments non traduits auront &quot;[MISSING]:&quot; de préfixés.</span>
