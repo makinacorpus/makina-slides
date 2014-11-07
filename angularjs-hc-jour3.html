@@ -3516,6 +3516,7 @@ Il se base sur un syst√®me de plugins permettant une gestion souple des taches √
 
 <p>Fichier HTML :</p>
 <div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>{{ &#39;WELCOME&#39; | translate }}<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">translate</span><span class="nt">&gt;</span>WELCOME<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;TranslateController&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;changeLanguage(&#39;en&#39;)&quot;</span><span class="nt">&gt;</span>English<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;changeLanguage(&#39;fr&#39;)&quot;</span><span class="nt">&gt;</span>Fran√ßais<span class="nt">&lt;/button&gt;</span>
@@ -3529,7 +3530,7 @@ Il se base sur un syst√®me de plugins permettant une gestion souple des taches √
             <header><h1>Notes</h1></header>
             <section>
             
-              <p>Fournit un filtre <code>translate</code>. Les traductions sont en JSON.
+              <p>Fournit un filtre et une directive <code>translate</code>. Les traductions sont en JSON.
 Peu pratique pour des applications complexes.</p>
             
             </section>
