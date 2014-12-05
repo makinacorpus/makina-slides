@@ -196,10 +196,12 @@ Is Plone too complex to survive?
 
 --------------------------------------------------------------------------------
 
-# 2 major issues
+# Recipe to survive?
 
-- make it **usable**,
-- **frontend / backend** dichotomy.
+My 2 cents:
+
+- make it always more **usable**,
+- clear **frontend / backend** dichotomy.
 
 .fx: extra-large
 

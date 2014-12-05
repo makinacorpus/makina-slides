@@ -193,6 +193,8 @@ Substance D has its own catalog, and Plone too...
 # Content persistence
 
 `souper`
+
+<img src="img/Souper-64.png" width="33%" />
  
 .fx: extra-large
 
