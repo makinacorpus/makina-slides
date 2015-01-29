@@ -64,7 +64,7 @@
 <center>
 # Slides disponibles en ligne
 
-# <http://git.io/LrEKVG>
+# <http://git.io/LrEKVg>
 </center>
 
 --------------------------------------------------------------------------------
