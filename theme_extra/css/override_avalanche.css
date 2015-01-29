@@ -48,6 +48,10 @@ pre, tt, code, kbd, samp {
 .slide header:only-child h1 {
   font-weight: normal;
 }
+.slide section h1:only-child {
+  font-weight: bold;
+  font-size: 80px;
+}
 
 blockquote {
   text-indent: 0
@@ -104,4 +108,10 @@ div.slide.quoteslide cite {
 
 li > p {
   margin: 0;
+}
+
+img.single-image {
+  max-height: 690px;
+  max-width: 100%;
+  margin-top: -25px;
 }

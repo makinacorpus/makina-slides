@@ -1,6 +1,8 @@
 
 # Formation Développement Drupal
 
+.fx: larger
+
 --------------------------------------------------------------------------------
 
 # Qui suis-je ?
@@ -55,6 +57,16 @@
   * Créer un thème basique
   * Les profils d'installation
 
+<br/>
+<br/>
+<br/>
+
+<center>
+# Slides disponibles en ligne
+
+# <http://git.io/LrEKVG>
+</center>
+
 --------------------------------------------------------------------------------
 
 # Environnement de développement
@@ -67,7 +79,6 @@
 
   * xAMP (Apache, MySQL, PHP) conseillé
   * D'autres possibilités : Oracle, IIS, PostgreSQL
-
   * Liste des languages utilisés :
     * SQL
     * PHP
@@ -75,13 +86,16 @@
     * HTML
     * CSS
 
-.notes: faire un tour de table des compétences et de l'expérience PHP
+On utilisera dans cette formation Acquia Dev Desktop qui permet d'installer un
+environnement de développement avec tous les pré-requis Drupal.
+
+.notes: faire un tour de table des compétences et de l'expérience PHP, présenter Acquia, Dries et pourquoi AcquiaDevDesktop est pratique
 
 --------------------------------------------------------------------------------
 
 # TP: Installer Drupal 7
 
-  * Télécharger la dernière version française depuis <http://drupalfr.org>
+  * Choisir la distribution Drupal 7.x simple dans Acquia Dev Desktop
   * Installer le profil d'installation Standard
   * Paramètres
     * Nom du site : Formation
@@ -93,19 +107,22 @@
     * overlay
     * shortcut
     * color
+    * dashboard
 
 .fx: tp
+.notes: présenter les distributions
 
 --------------------------------------------------------------------------------
 
 # L'éditeur de code
 
   * Le meilleur est celui que vous maitrisez
-
-  * Différence IDE/Editeur
-
+  * Différence IDE/Editeur simple :
+    * Autocomplétion
+    * XDebug
+    * Refactoring
+    * Erreurs de syntaxe
   * Possibilité de télécharger des configurations
-
   * Exemples
     * Eclipse
     * Netbeans
@@ -113,36 +130,40 @@
     * SublimeText
     * Vim
 
-.notes: Autocomplétion - XDebug - Refactoring - Erreurs de syntaxe
+--------------------------------------------------------------------------------
+
+# Les standards de codage*
+
+  * Indentation, espaces : lisibilité du code
+  * Nommage, toujours commencer par le nom système : éviter les conflits
+    * fonctions
+    * constantes
+    * variables persistantes
+    * classes
+    * fichiers
+  * Tags `<?php` non fermés : éviter l'envoi du buffer
+
+<strong>A connaître pour comprendre et être compris</strong>
+
+<center>
+# <https://drupal.org/coding-standards>
+</center>
+
+\* <small>basés sur le standard PEAR</small>
 
 --------------------------------------------------------------------------------
 
-# Les standards de codage
+# TP: Configuration de PHPStorm
+  * Ouvrir le dossier Drupal dans PHPStorm
+  * Affichier les messages de journal de PHPStorm
+  * Cliquer sur "Enable Drupal support" et configurer le chemin
+  * Cliquer sur "Fix extensions"
 
-  * Indentation, espaces
+Avantages :
 
-  * Nommage des fonctions, constantes
-
-  * Tags `<?php`
-
-  * A connaître pour comprendre et être compris
-
-<center><https://drupal.org/coding-standards></center>
-
---------------------------------------------------------------------------------
-
-# TP: Configuration de Netbeans
-  * General -> Content Types -> Text -> PHP Content type 
-    * *.engine, *.theme, *.install, *.inc, *.module, *.test 
-  * General -> Editors -> Text Editors 
-    * « Insert Spaces for tabs » 
-  * PHP -> Code Style -> Formatter 
-    * « Tab policy » : spaces 
-    * « Indentation size » : 2 
-  * Properties 
-    * « Text File Encoding » : UTF-8 
-    * « New text file delimiter » : Unix 
-  * XDebug 
+  * code style implémenté
+  * navigation dans les hooks (appels et déclarations)
+  * installation d'XDebug facile
 
 .fx: tp
 
@@ -158,16 +179,18 @@
   * _LESS_ : Le CSS en plus simple
   * _Admin Menu_ : flusher les caches rapidement
   * _Masquerade_ : changer d'utilisateur sans se déconnecter
-  * _Example_ : démonstrations de l'utilisation de l'API
+  * _Examples for developpers_ : démonstrations de l'utilisation de l'API
 
 --------------------------------------------------------------------------------
 
 # TP: Drush
-  * Installer Drush 
+  * Lancer Drush 
   * Regarder la liste des commandes 
   * Installer un module (features) 
   * Regarder à nouveau la liste des commandes 
   * Sauvegarder la base de données 
+  * Installer les modules utiles au développement : devel, masquerade, admin_menu, examples
+  * Desactiver le module toolbar
 
 .fx: tp
 
@@ -188,6 +211,8 @@
     * git reset
     * git diff
 
+  * Possibilité d'avoir une interface graphique : SourceTree, GitX, GitEye, Github
+
 --------------------------------------------------------------------------------
 
 # L'architecture de Drupal
@@ -198,28 +223,50 @@
 
 # Présentation de l'arborescence
 
-  * profils d'installation
-  * modules du core
-  * sites
-  * themes du core
+<img src="img/archi_fichiers.png" style="float:left;padding:.5em 1em 0"/>
+<div style="font-size: 0.95em;line-height: 1.25em;padding-top: 0.6em;">
+-<br>
+-<br>
+Modules intégrés au coeur de Drupal<br>
+Profils d'installations<br>
+-<br>
+-<br>
+-<br>
+Thèmes de tous les sites<br>
+Modules de tous les sites<br>
+Répertoire spécifique au site<br>
+Répertoire d'upload par défaut<br>
+Fichiers de configuration<br>
+-<br>
+Thèmes intégrés au cœur de Drupal
+</div>
+<br><br>
+Où travailler ? Dans un profil d'installation custom ou dans un
+sous-repertoire `contrib`
 
-Où travailler ?
+<center>
+## <u>/!\</u> Le hack du core et l'avenir des chatons
+</center>
 
-Le hack du core et l'avenir des chatons
+--------------------------------------------------------------------------------
 
-.fx:larger
+<img src="img/lifecycle.jpg" class="single-image"/>
 
 --------------------------------------------------------------------------------
 
 # Les modules du core
-  * Les requis : _Node, User, Field_ (+storage), _System, Filter, Text_
 
-  * Les quasi-requis : Block, Locale, Image, Menu, Path
+  * `System, User` -> prérequis
+  * `Node, Field, Comment, File, Image` -> création de contenu
+  * `Text, List, Options, Number` -> types de champs
+  * `Menu, Block, Taxonomie` -> structuration
+  * `Toolbar, Shortcut, Dashboard, Color, Overlay, Contextual` -> interface
+  * `Book, Blog, Forum, Poll` -> structuration avancée
+  * `Contact, Aggregator, Tracker, Update, OpenID` -> fonctions spécifiques
+  * `Path, RDF` -> SEO
+  * `Locale, Content Translation` -> traduction
 
-  * Les utiles : Comment, Content translation, Contextual links,
-  Field UI, Database Logging, File, List, Options, Number, Taxonomy, Update
-
-  * Les autres
+> Drupal sans ses modules contrib ne permet que de faire des sites simples.
 
 --------------------------------------------------------------------------------
 
@@ -264,20 +311,21 @@ Pour une version plus récente, utiliser le module jQuery Update
 
 --------------------------------------------------------------------------------
 
-# Fil rouge : le module gold
+# Fil rouge : le module gold, une fonctionnalité Premium
 
-  * Administrer les types de contenus concernés par le statut gold
-  * Affecter un statut gold à contenu
-  * Lister les contenus avec le statut gold
   * Créer deux permissions pour les rôles, une pouvant affecter le status gold
   aux contenus et l'autre le voir
-  * Créer un style d'image pour illustrer les contenus gold
   * Créer un bloc affichant si l'utilisateur a la permission de voir les
   contenus gold
+  * Administrer les types de contenus concernés par le statut gold
   * Altérer le formulaire d'édition de nœud pour ajouter le statut gold
   * Envoyer un mail aux utilisateurs ayant la permission de voir les contenus
   gold lorsque qu'un nouveau contenu gold apparait sur le site
+  * Lister les contenus avec le statut gold
+  * Créer un style d'image pour illustrer les contenus gold
   * Créer une fonction de theme pour afficher le statut gold d'un nœud
+  * Notifier les utilisateurs premium lors de la création d'un nouveau contenu
+  gold
   * Créer des tests pour vérifier le bon fonctionnement du module
 
 Créer ce module : il doit apparaître dans la liste des modules.
@@ -296,16 +344,60 @@ Créer ce module : il doit apparaître dans la liste des modules.
 
 ## Votre bible : api.drupal.org
 
-## Votre guide : modules `example`
+  Recense toutes les fonctions de Drupal, et leur documentation. Un IDE aura
+  cette même documentation dans le code.
+
+  Aborde certains topics en profondeur : form API, schema API, hooks, etc
+
+<br>
+## Votre guide : modules `examples`
+
+  Pour chaque concept de Drupal, des exemples concrets d'utilisation (ajax, form,
+  blocks, cache, render, cron, dbtng, email, menu, node_access, theming, ...).
+
+  Ils sont fonctionnels : on peut les activer et voir leur impact en terme
+  d'interface.
+
+  Très bien documentés, ne pas hésiter à lire, comprendre et reprendre le code
+  de ces modules.
+
+--------------------------------------------------------------------------------
+
+# Bonus: Installation d'XDebug
+
+- Aller chercher php.ini C:\Windows\Program Files\devdestkop\php_53
+- Decommenter la ligne commençant par _zend_extension=_
+- Rajouter en fin de php.ini
+<pre><code>
+    [xdebug]
+    xdebug.remote_enable=1
+</pre></code>
+- Aller verifier cette DLL dans le dossier (copier ou renommer)
+- Redemarrer AcquiaDevDesktop
+- Instaler l'extension navigateur, la configurer, l'activer sur localhost
+- Start listening dans PHPstorm + point d'arret
+- Recharger la page
+
+.fx: tp
+
+--------------------------------------------------------------------------------
 
 # Les hooks 
+
+  * Implémenter `hook_form_alter()` donnera `mon_module_form_alter()`
+
   * Poids des modules et altération
   * Répondent à des déclencheurs
-  * Implémenter `hook_form_alter()` donnera `mon_module_form_alter()`
   * Liste des hooks implémentés grâce à `Devel`
-  * Les implémentations sont mise en cache
   * Des hooks peuvent être déclarés par des modules contrib
   * Rappel: on ne « hack » JAMAIS le code <small>(sauf en cas de module buggué)</small>
+  * 3 types de hooks : déclaratif, évenementiel, d'altération
+  * Les implémentations sont mise en cache
+  * Les hooks déclaratifs sont généralement mis en cache
+
+Liste des hooks <https://api.drupal.org/api/drupal/includes%21module.inc/group/hooks/7>
+
+Plus de 350 hooks disponibles dans le cœur de Drupal
 
 --------------------------------------------------------------------------------
 
@@ -327,8 +419,9 @@ Créer ce module : il doit apparaître dans la liste des modules.
 
 --------------------------------------------------------------------------------
 
-# Création d'un bloc
+# Les blocs
     !php
+    // Déclaration -> apparait dans la liste des blocks
     function hook_block_info() {
       $blocks['syndicate'] = array(
         'info' => t('Syndicate'),
@@ -336,6 +429,8 @@ Créer ce module : il doit apparaître dans la liste des modules.
       );
       return $blocks;
     }
+
+    // Visualisation
     function hook_block_view($delta = '') {
       if ($delta == 'syndicate') {
         return array(
@@ -344,30 +439,166 @@ Créer ce module : il doit apparaître dans la liste des modules.
         );
       }
     }
+
+    // Altération
     function hook_block_view_alter(&$data, $block) {}
     function hook_block_view_MODULE_DELTA_alter(&$data, $block) {}
 
 --------------------------------------------------------------------------------
 
-# Fonctions de theme et Render Arrays
-  * Exemples de fonctions de `theme()` ([liste complete](
-https://api.drupal.org/api/drupal/modules%21system%21theme.api.php/group/themeable/7))
-    * table
-    * item_list
-    * pager
-    * links
-  * Render array: Association de données et d'une fonction de thème
+
+# TP: Notre premier bloc
+
+Créer un bloc :
+
+  - dont le titre côté administration est "Statut premium de l'utilisateur"
+  - dont le delta (nom machine) est `gold-status`
+  - qui affiche "Vous êtes un utilisateur premium" ou "Vous n'êtes pas un
+  utilisateur premium" entouré d'un `h3>`
+
+Rappel: user_access() pour vérifier les permissions
+
+Attention au cache d'implementations
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# Render Arrays
+
+Les render arrays sont les blocs constituant une page Drupal. Ce sont des arrays
+PHP qui définissent des données (c-a-d la structure) ; par souci de modularité,
+on essaiera toujours de produire des render arrays.
+Ceci afin qu'ils soient puissent être modifiés via les hooks d'altérations ou
+par la couche de theming.
+
+Les propriétés sont toujours préfixées par un `#` et la propriété par défaut
+est `#markup`, elle permet d'indiquer du balisage simple.
+Un render array est converti en HTML avec la fonction `render();`
+
+    !php
+    // Un render array simple
+    'ma_cle1' => array(
+      '#markup' => "<h2>Du texte basique</h2>",
+    ),
+
+    // Des propriétés utiles
+    'ma_cle2' => array(
+      '#markup' => "Du texte basique",
+      '#prefix' => '<h2>',
+      '#suffix' => '</h2>',
+    ),
+
+
+--------------------------------------------------------------------------------
+
+# Paramètres du render array et propriétés
+
+Une fonction de `#theme` peut être renseignée ainsi que ses paramètres.
+
+    !php
+    // Un render array qui produit un tableau HTML
+    'ma_cle1' => array(
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#empty' => "Aucune donnée pour ce tableau",
+    ),
+
+Des propriétés utiles :
+
+  - `#cache`: mise en cache du render array
+  - `#pre_render`: agit sur l'array avant le rendering
+  - `#post_render`: agit sur le markup après le rendering
+  - `#weight`: donne un poids à l'élément
+  - `#attached`: lier à un ou des CSS/JS
+  - `#access`: desactive l'élément si == FALSE
+
+--------------------------------------------------------------------------------
+
+# Fonctions de theme
+
+Exemples de fonctions de `theme()` :
+
+  * table
+  * item_list
+  * pager
+  * links
+  * image
+
+[Liste complete des implementation de theme du cœur](
+https://api.drupal.org/api/drupal/modules%21system%21theme.api.php/group/themeable/7)
+
+    !php
+    $table_element = array(
+        '#theme'  => 'image',
+        '#path' => drupal_get_path('module', 'monmodule') . '/monimage.png',
+    );
+    print drupal_render($table_element); // Quasi-automatiquement appelé
+                                         // par les hooks
+
+Documentation <http://drupal.org/node/930760> et le module `render_example`
+
+--------------------------------------------------------------------------------
+
+# TP: Privilégier les render arrays
+
+  - Convertir le contenu du bloc render array
+  - Altérer le bloc dans un `hook_block_view_alter()` afin de changer le
+  `<h3>` en `<h4>`
+
+Ne pas hésiter à rendre le code lisible en utilisant des constantes pour les
+permissions
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# Système de menus
+  * Différence routage / lien de menu
+  * Différence path / alias 
+  * Permissions -> `'access calllback'`, `'access arguments'`
+  * Arguments pouvant être chargés à la volée -> `*_load()`
+  * Type de menu
+    * `MENU_NORMAL_ITEM` -> lien de menu dans l'arborescence
+    * `MENU_LOCAL_TASK` -> onglet
+    * `MENU_CALLBACK` -> url simple
+  * Possibilité de placer la `page callback` dans un fichier `.inc`
 
         !php
-        $table_element = array(
-            '#theme'  => 'table', // Propriété préfixée par # sinon élément enfant
-            '#header' => $header,
-            '#rows'   => $rows,
-            '#empty'  => t('Your table is empty'),
-        );
-        print drupal_render($table_element); // Quasi-automatiquement appelé
-                                             // par les hooks
-Documentation <http://drupal.org/node/930760> et le module `render_example`
+        function mymodule_menu() {
+          $items['abc/def'] = array(
+            'page callback' => 'mymodule_abc_view',
+          );
+          return $items;
+        }
+
+--------------------------------------------------------------------------------
+
+# TP: Création de page
+
+Créer une page _Suis-je Premium ?_ reproduisant le comportement du bloc
+
+  - url : suis-je-gold
+
+Créer une page _Est-il Premium ?_ affichant la même chose, mais avec en
+argument l'uid de l'utilisateur
+
+  - url d'exemple : est-il-gold/2
+
+Créer une page _Page Premium_ avec du contenu "Lorem Ipsum" et ne
+s'affichant que si l'utilisateur courant à la permission de voir le contenu
+premium
+
+  - url : page-gold
+
+S'inspirer de la docummentation du `hook_menu()`
+
+Placer toutes les callback dans un autre fichier que le `.module`
+
+Attention au cache de menu
+
+.fx: tp
 
 --------------------------------------------------------------------------------
 
@@ -385,48 +616,30 @@ Quelques globales et fonctions de l'API à connaitre :
 
 --------------------------------------------------------------------------------
 
-# TP: Création d'un bloc
-
-  * Créer un bloc _Accès premium_ qui affiche le nom de l'utilisateur actuellement
-  connecté ainsi que son accès au contenu gold
-
-  * Faire une version sans render array, puis avec en l'entourant d'une balise
-  `<h2>`
-
-  * Le placer dans la sidebar pour tester
-
-  * Attention au cache
-
-.fx: tp
-
---------------------------------------------------------------------------------
-
-# Système de menus
-  * Différence path / alias 
-  * Différence lien de menu / routage
-  * Permissions 
-  * Arguments pouvant être chargés à la volée
-  * Type de menu 
-    * `MENU_NORMAL_ITEM` (~ lien) 
-    * `MENU_LOCAL_TASK` (~ onglet) 
-    * `MENU_CALLBACK` (~ url)
-  * Fichier d'emplacement
-
-        !php
-        function mymodule_menu() {
-          $items['abc/def'] = array(
-            'page callback' => 'mymodule_abc_view',
-          );
-          return $items;
-        }
-
---------------------------------------------------------------------------------
-
 # Gestion de la base de données
-  * `db_query()` permet d'exécuter du SQL directement mais utiliser
-    * `{table_name}`qui permet la gestion de prefixe
-    * les placeholders pour les failles de sécurité
-  * Utiliser `foreach()` pour parcourir les résultats
+
+## SQL statique
+La fonction `db_query()` permet d'exécuter du SQL directement mais utiliser des
+accolades autour des noms de table `{table_name}` (permet la gestion de
+prefixe) et les placeholders pour passer des arguments (pour les failles de
+sécurité). Utiliser ensuite `foreach()` pour parcourir les résultats.
+
+    !php
+    $result = db_query("SELECT some_col FROM {my_table}
+      WHERE some_col IN (:my_ids)", array(':my_ids' => $my_ids));
+    foreach ($result as $record) {
+      print_r($record);
+    }
+
+## DBTNG
+
+Permet de faire des requêtes dynamiques grâce à une API en POO, donc sans
+manipuler de chaînes.
+
+[Documentation complète](https://api.drupal.org/api/drupal/includes%21database%21database.inc/group/database/7),
+voir également les commentaires sur chaque fonction sur <https://api.drupal.org>
+
+--------------------------------------------------------------------------------
 
 ## DBTNG
     !php
@@ -434,12 +647,21 @@ Quelques globales et fonctions de l'API à connaitre :
                   ->fields('c')
                   ->condition('created', REQUEST_TIME)
                   ->execute()
-                  ->fetchAssoc();
+                  ->fetchAllAssoc();
     foreach ($results as $result) {
       // faire qqch
     }
-    // db_insert()
-    // db_delete() 
+
+Voir aussi `db_insert()`, `db_delete()`, `db_update()` et `db_merge()`
+
+Récupération de résultats :
+
+  - fetchField() : la première colonne du premier résultat
+  - fetchCol() : la première colonne sous forme d'array
+  - fetchAssoc() : le premier résultat sous forme d'objet
+  - fetchAllAssoc() : tous les résultats sous forme d'objet
+  - fetchAllKeyed() : tous les résultats sous forme de tableau indexé par la
+  1ere colonne avec pour valeur la 2e
 
 --------------------------------------------------------------------------------
 
@@ -447,18 +669,20 @@ Quelques globales et fonctions de l'API à connaitre :
 
 Quelques globales et fonctions de l'API à connaitre :
 
-  * `global $base_url` et `base_path()`
-  * `url()` et `l()`
-  * `drupal_goto()`
-  * `drupal_get_destination()`
-  * `drupal_get_path()` (module, theme) 
+  * `url()` -> '<front>' ou 'node/1'
+  * `l()` -> lien avec texte (`<a href=''>`)
+  * `drupal_goto()` -> redirection
+  * `global $base_url` -> http://monsite.com
+  * `base_path()` -> `/` ou `/mon-dossier-drupal`
+  * `drupal_get_path()` (module, theme) -> chemin vers un module ou un thème
+  `drupal_get_path('module', 'devel')` donne _sites/all/modules/devel_
 
 --------------------------------------------------------------------------------
 
 # TP: Création de page
 
 Créer une page _Utilisateurs premium_ listant les utilisateurs du site ayant un
-accès premium dans un tableau avec _Identifiant_, _Nom_, _Lien vers son profil_
+accès premium.
 
   * Créer une page
 
@@ -466,7 +690,10 @@ accès premium dans un tableau avec _Identifiant_, _Nom_, _Lien vers son profil_
 
   * Récupérer les utilisateurs ayant ces rôles
 
-  * Les afficher dans un tableau
+  * Les afficher d'abord dans une liste
+
+  * Modifier pour les afficher dans un tableau avec _Identifiant_,
+  _Nom_, _Lien vers son profil_
 
 Les callback doivent être situées dans un autre fichier que le .module
 
@@ -527,11 +754,11 @@ les autres modules.
   ecrire de JS
   * \#autocomplete_path 
 
-Schéma de workflow complet : https://drupal.org/files/fapi_workflow_7.x_v1.1.png
+Schéma de workflow complet : <https://drupal.org/files/fapi_workflow_7.x_v1.1.png>
 
 --------------------------------------------------------------------------------
 
-# Gestion de variables globales
+# Gestion de variables persistantes
   * `variable_set('name', value)` pour définir
   * `variable_get('name', default_value)` pour récupérer
   * `variable_del('name')` pour supprimer
@@ -540,12 +767,26 @@ Schéma de workflow complet : https://drupal.org/files/fapi_workflow_7.x_v1.1.pn
 
 # TP : Form API
 
-  * Créer un formulaire listant les types de contenu associés à une checkbox
+But: définir pour quels types de contenu la fonctionnalité premium est activée.
+C'est-à-dire, sur quels types on affichera l'option "Contenu premium" dans les
+formulaires de création ou de modification de nœud.
 
-  * Valider le fait qu'un contenu doit au moins être coché
+  * Créer un formulaire listant les types de contenu avec pour chaque une
+  checkbox
 
-  * A la soumission enregistrer les valeurs dans une variable globale et les
-  réafficher
+<p style="margin-left:2em"><code>
+<label>Types de contenu pour lesquels activer la fonctionnalité Premium :</label><br/>
+<input type="checkbox"> Article <br/>
+<input type="checkbox"> Page de base <br/><br/>
+<button>Enregistrer</button>
+</code></p>
+
+  * Valider le fait qu'on ne peut pas choisir le type de contenu _Page de base_
+
+  * A la soumission enregistrer les valeurs dans une variable persistante
+  `'gold_types'`
+
+  * Cocher les checkbox par défaut lorsque le type de contenu est activé
 
 .fx: tp
 
@@ -623,6 +864,8 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 Celui-ci nous servira pour les images qui seront sur les articles gold
 
+.fx: tp
+
 --------------------------------------------------------------------------------
 
 # Schema API
@@ -637,48 +880,61 @@ Celui-ci nous servira pour les images qui seront sur les articles gold
   les données
   * Très utile pour les mises à jour en production, et le test de celles-ci
 
-
 --------------------------------------------------------------------------------
 
-# TP: Créer une table gold
+# TP: Enregistrer les statuts
 
-Via l'API
+## Déclarer une table gold
 
-Deux colonnes :
+Via l'API, déclarer une table avec deux colonnes, nid etstatus.
+Installer cette table via un `hook_update_N()` ou réinstaller le module.
 
-  * nid
-  * status
+## Altérer le formulaire de noeuds
 
---------------------------------------------------------------------------------
-
-# TP: Altérer le formulaire de noeuds
-  * Ajouter la checkbox
+  * Ajouter la checkbox au dessus du titre
 
   * Enregistrer la valeur dans notre table à l'enregistrement
 
-  * Rappels 
-    * `hook_form_alter(&$form, $form_state, $form_id)`
-    * Debug : `drupal_set_message('<pre>'.print_r($var, 1).'</pre>')`
+  * La mettre à sa valeur par défaut à l'affichage du formulaire
+
+Rappels 
+
+  * `hook_form_alter(&$form, $form_state, $form_id)`
+  * `hook_node_update()` et `hook_node_insert()`
+  * Debug : `drupal_set_message('<pre>'.print_r($var, 1).'</pre>')`
 
 .fx: tp
 
 --------------------------------------------------------------------------------
 
-# TP : Accès aux nœuds
+# TP : Contrôler l'accès aux nœuds
 
-  * L'API Node Access
+Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/modules!node!node.module/group/node_access/7))
 
-  * Déclarer notre hook_node_access()`
+Déclarer notre hook_node_access()` et ne retourner NODE_ACCESS_DENY que si les 4
+conditions sont réunies :
 
+  1. je suis en train de voir le nœud
+  2. son type a la foncitonnalité premium activé
+  3. c'est un contenu premium
+  4.   je n'ai pas la permission de voir les contenu premium
+
+<u>Attention:</u> ne fonctionnera pas pour les listes (dont la page d'accueil)
+pour des raisons de performances, il faudrait declarer `hook_node_grants()`.
+Rester simple et ne controler l'accès qu'à un nœud complet.
+
+De même `hook_node_access()` n'est pas appelé pour le superadmin.
+
+.fx: tp
 
 --------------------------------------------------------------------------------
 
 # Envoi de mails
 
     !php
+    // Déclaration du contenu du mail.
     function hook_mail($key, &$message, $params) {
       $account = $params['account'];
-      $context = $params['context'];
       $node = $params['node'];
       $variables += array(
         '%uid' => $node->uid,
@@ -696,22 +952,53 @@ Deux colonnes :
 
 Notion de tokens (jetons)
 
---------------------------------------------------------------------------------
-
-# Le thème
-
-  * hook_theme() 
-
-  * Ajouter un fichier CSS / JS à votre module 
-
-  * Le javascript dans Drupal 
-
-  * Créer un thème
+Envoi du mail avec `drupal_mail($module, $key,  $to, $language, $params = array())`;
 
 --------------------------------------------------------------------------------
 
+# TP
 
-# hook_theme()
+## Notification par mail
+
+Envoyer un mail à tous les utilisateurs premium :
+
+<pre>
+Sujet: Nouveau contenu premium
+
+Bonjour _Nom d'utilisateur_,
+Un nouveau _Type de contenu_ premium a été créé, il s'intitule _Titre_
+Vous pouvez le consulter ici : _URL_
+Cordialement,
+L'équipe du site _Nom du site_
+</pre>
+
+## Affichage du statut premium sur le nœud
+
+  - Trouver un hook qui permettrait d'ajouter un message `<strong>Contenu premium/strong>`
+  sur chaque contenu premium
+  - L'implementer avec #markup
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# Le partie thème d'un module
+
+Le module fournit **toujours** le markup par défaut.
+
+Le `hook_theme()` définit des hooks/clés qui pourront ensuite être utilisés via
+la propriété `#theme` des render arrays. Ces _theme hooks_   généreront ensuite
+le markup HTML soit via une fonction, soit via un template.
+
+On peut fournir des variables à ces _theme hooks_. Des fonctions preprocess et
+process peuvent ajouter ou modifier des variables, et également ajouter des
+suggestions de templates.
+
+<https://www.drupal.org/files/theme_flow_6_1.pdf> (pour Drupal 6)
+
+--------------------------------------------------------------------------------
+
+## Déclaration et appel
 
     !php
     function forum_theme() {
@@ -721,32 +1008,72 @@ Notion de tokens (jetons)
     			'variables' => array(
     				'forums' => NULL,
     				'topics' => NULL,
-    				'parents' => NULL,
-    				'tid' => NULL,
-  					'sortby' => NULL,
-    				'forum_per_page' => NULL,
     			),
     		),
     	);
     }
 
-    $output = theme('forums', $forums, $topics, $parents, 17, 'ASC', 25);
+    $html_output = theme('forums', array(
+      'forums' => $forums,
+      'topics' => $topics,
+    ));
+
+    // Mais toujours privilégier les render arrays, car altérables
+    $build['forums'] = array(
+      '#theme' => 'forums',
+      '#forums' => $forums,
+      '#topics' => $topics,
+    );
 
 --------------------------------------------------------------------------------
 
+# TP: Créer un template pour gold
+
+Convertir le render array utilisé dans `hook_node_view()` pour utiliser un
+_theme hook_ qui se base sur un template.
+
+Passer en paramètre le nœud et transformer "Contenu premium" en "_Titre du nœud_
+est un contenu premium".
+
+Ajouter une image de médaille dans ce template.
+
+Créer un preprocess pour transformer cette image en variable.
+
+Dans le preprocess, transformer l'image en render array, et utiliser la fonciton
+render() dans le template.
+
+Ajouter des suggestions pour ce template.
+
+.fx: tp
+
+--------------------------------------------------------------------------------
 
 # Ajout de JS / CSS
 
-  * drupal_add_js() 
-    * OU module.info (scripts[]) 
-    * hook_js_alter() 
-  * drupal_add_css() 
-  * drupal_add_library
-  * \#attached[]
+  * 3 techniques d'ajout
+    * dans le `.info` -> global
+    * drupal_add_* -> au moment de l'appel
+    * \#attached[] -> au moment du rendering
+  * hook_(js/css)_alter() 
+  * drupal_add_library() également pour jQuery UI et autres
   * Notion de groupes 
     * JS (JS_LIBRARY, JS_DEFAULT, JS_THEME)
     * CSS (CSS_SYSTEM, CSS_DEFAULT, CSS_THEME)
 
+--------------------------------------------------------------------------------
+
+# TP: Faire flotter l'image à droite
+
+Ajouter une classe à l'image et créer un fichier CSS:
+
+    !css
+    img.gold-icon {
+      float: right;
+    }
+
+L'ajouter lorsqu'un noœud gold est affiché.
+
+.fx: tp
 
 --------------------------------------------------------------------------------
 
@@ -763,6 +1090,7 @@ Notion de tokens (jetons)
     * Comportements dégradés 
     * Accessibilité 
 
+Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
