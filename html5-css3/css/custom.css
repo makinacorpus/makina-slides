@@ -18,10 +18,19 @@ div.presentation, div.slide {
     border-radius: 0;
     background-color: #232f39; /* colour of the slide */
 }
+div.slide.current {
+    z-index: 10;
+}
 pre {
     padding: 10px;
     background-color: #222;
     font-size: 20px;
+}
+code {
+    background-color: #222;
+    font-size: 22px;
+    padding: 2px;
+    font-family: Monaco,Courier,monospace;
 }
 
 p {
@@ -57,10 +66,10 @@ a {
     font-size: 20px;
 }
 .smaller section pre {
-    font-size: 18px;
+    font-size: 16px;
 }
 .smaller div h1 {
-    font-size: 40px;
+    font-size: 36px;
 }
 
 /* Larger */
