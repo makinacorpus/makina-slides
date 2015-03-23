@@ -20,7 +20,7 @@
 
 * Créé en 2003, basé sur le langage Python créé en 1990
 * Rendu Open Source (BSD) en 2005
-* Version actuelle : Django 1.6, sortie en novembre 2013
+* Version actuelle : Django 1.7, sortie en septembre 2014
 * Aujourd'hui utilisé par de très nombreuses entreprises : Mozilla, Instagram, Pinterest, Disqus, ...
 
 --------------------------------------------------------------------------------
@@ -58,8 +58,8 @@ La documentation précise certaines conventions de codage spécifiques à Django
 
 # Environnement
 
-* Django 1.6
-* Python : 2.6 / 2.7 / 3.2 / 3.3
+* Django 1.7
+* Python : 2.6 / 2.7 / 3.2 / 3.3 / 3.4
 * Base de données : SQLite, PostgreSQL, MySQL
 * Il est préférable de travailler dans un environnement virtualisé (*virtualenv*)
 
@@ -88,23 +88,23 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 ## Création et activation du *virtualenv*
 
     !console
-    $ virtualenv --no-site-packages venv_todoproject
-    $ source venv_todoproject/bin/activate
+    $ virtualenv --no-site-packages venv_library
+    $ source venv_library/bin/activate
 
 ## Installation de Django
 
     !console
-    $ pip install django==1.6
+    $ pip install django==1.7.7
 
 ## Création du projet
 
     !console
-    $ django-admin.py startproject todoproject
+    $ django-admin.py startproject library
 
 ## Lancement du serveur de développement
 
     !console
-    $ cd todoproject
+    $ cd library
     $ ./manage.py runserver
 
 --------------------------------------------------------------------------------
@@ -120,20 +120,20 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 # Le projet créé
 
     !console
-    ├── todoproject
+    ├── library
     │   ├── manage.py
-    │   └── todoproject
+    │   └── library
     │       ├── __init__.py
     │       ├── settings.py
     │       ├── urls.py
     │       └── wsgi.py
 
-* ``/todoproject`` : conteneur du projet (le nom est sans importance)
+* ``/library`` : conteneur du projet (le nom est sans importance)
 * ``/manage.py`` : utilitaire en ligne de commande permettant différentes actions sur le projet
-* ``/todoproject/todoproject`` : paquet Python effectif du projet
-* ``/todoproject/settings.py`` : réglages et configuration du projet
-* ``/todoproject/urls.py`` : déclaration des URLs du projet
-* ``/todoproject/wsgi.py`` : point d'entrée pour déployer le projet avec WSGI
+* ``/library/library`` : paquet Python effectif du projet
+* ``/library/settings.py`` : réglages et configuration du projet
+* ``/library/urls.py`` : déclaration des URLs du projet
+* ``/library/wsgi.py`` : point d'entrée pour déployer le projet avec WSGI
 
 --------------------------------------------------------------------------------
 
@@ -146,8 +146,8 @@ Voici un exemple de configuration pour une base Postgresql :
     DATABASES = {
       'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'todoproject_db',
-        'USER': 'todoproject_user',
+        'NAME': 'library_db',
+        'USER': 'library_user',
         'PASSWORD': 'Cx12%a03oa',
         'HOST': 'localhost'
       }
@@ -156,7 +156,7 @@ Voici un exemple de configuration pour une base Postgresql :
 ## Création de la structure de la base de données
 
     !console
-    $ ./manage.py syncdb
+    $ ./manage.py migrate
 
 --------------------------------------------------------------------------------
 
@@ -188,7 +188,7 @@ Il est important de différencier la notion de **projet** et d'**application**.
 ## L'application créée
 
     !console
-     ├── todo
+     ├── books
      │   ├── admin.py
      │   ├── __init__.py
      │   ├── models.py
@@ -212,13 +212,13 @@ Il est important de différencier la notion de **projet** et d'**application**.
     # models.py
     from django.db import models
 
-    class Task(models.Model):
-        name = models.CharField(max_length=100)
-        deadline = models.DateField(blank=True, null=True)
-        done = models.BooleanField(default=False)
+    class Book(models.Model):
+        title = models.CharField(max_length=100)
+        release = models.DateField(blank=True, null=True)
+        borrowed = models.BooleanField(default=False)
 
         def __unicode__(self):
-            return self.name
+            return self.title
 
 --------------------------------------------------------------------------------
 
@@ -227,14 +227,14 @@ Il est important de différencier la notion de **projet** et d'**application**.
 L'ajout de la classe ``Meta`` dans un modèle permet de déclarer des *options de métadonnées* sur le modèle. Exemple :
 
     !python
-    class Task(models.Model):
+    class Book(models.Model):
         ...
 
         class Meta:
-            db_table = 'task'
-            verbose_name = 'Task'
-            verbose_name_plural = 'Tasks'
-            ordering = ('-deadline', )
+            db_table = 'book'
+            verbose_name = 'Book'
+            verbose_name_plural = 'Books'
+            ordering = ('-released', )
 
 
 D'autres options permettent par exemple de :
@@ -268,7 +268,7 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
     INSTALLED_APPS = (
       'django.contrib.admin',
       ...
-      'todo',
+      'books',
     )
 
 ## Création de la table en base de données
@@ -281,9 +281,9 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
     !python
     # admin.py
     from django.contrib import admin
-    from todo.models import Task
+    from books.models import Book
 
-    admin.site.register(Task)
+    admin.site.register(Book)
 
 --------------------------------------------------------------------------------
 
@@ -301,7 +301,7 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
 
 --------------------------------------------------------------------------------
 
-# Un exemple complet de vue : la liste des tâches
+# Un exemple complet de vue : la liste des livres
 
 --------------------------------------------------------------------------------
 
@@ -309,27 +309,40 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
 
     !python
     # views.py
-    from django.views.generic import ListView
-    from todo.models import Task
+    from django.shortcuts import render
+    from books.models import Book
 
-    class TaskList(ListView):
-        model = Task
+    def book_list(request):
+
+        books = Book.objects.all()
+
+        context = {
+            'books': books
+        }
+    
+        return render(
+            request,
+            'books/book_list.html',
+            context
+        )
 
 --------------------------------------------------------------------------------
 
 # 2. Création d'une template
 
     !html
-    {# todo/templates/todo/task_list.html #}
-    <h1>Liste des tâches</h1>
-    {% if object_list %}
-      <ul>
-        {% for task in object_list %}
-          <li>{{ task }}</li>
-        {% endfor %}
-      </ul>
+    {# books/templates/books/book_list.html #}
+    
+    <h1>Liste des livres</h1>
+    
+    {% if books %}
+        <ul>
+            {% for book in books %}
+            <li>{{ book }}</li>
+            {% endfor %}
+        </ul>
     {% else %}
-      <p>Aucune tâche !</p>
+        <p>Aucun livre !</p>
     {% endif %}
 
 
@@ -340,21 +353,20 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
 ## Déclaration d'une URL
 
     !python
-    # todo/urls.py
+    # books/urls.py
     from django.conf.urls import patterns, include, url
-    from todo.views import TaskList
-    urlpatterns = patterns('',
-        url(r'^task_list$', TaskList.as_view(), name='task_list'),
+    urlpatterns = patterns('books.views',
+        url(r'^book_list$', 'book_list, name='book_list'),
     )
 
 ## Inclusion des URLs de l'application au projet
 
     !python
-    # todoproject/urls.py
+    # library/urls.py
     ...
     urlpatterns = patterns('',
         ...
-        url(r'^todo/', include('todo.urls')),
+        url(r'^books/', include('books.urls')),
     )
     
 --------------------------------------------------------------------------------
@@ -389,48 +401,6 @@ Ces vues sont généralement écrites dans le fichier ``views.py`` de l'applicat
 
 --------------------------------------------------------------------------------
 
-# Class-based views
-
-Une vue *basée sur une classe* Django permet de **structurer le code et de le réutiliser** en exploitant notamment l'héritage et les *mixins*.
-
-Django fournit de multiples socles plus ou moins avancés pour construire ce type de vues.
-
-Ces vues sont aussi généralement écrites dans le fichier ``views.py`` de l'application.
-
-## Un exemple tiré de la documention Django
-
-    !python
-    # some_app/views.py
-    from django.views.generic import TemplateView
-
-    class AboutView(TemplateView):
-        template_name = "about.html"
-
-## Les classes fournies par Django
-
-Un excellent site permettant d'avoir un aperçu complet : http://ccbv.co.uk/
-
---------------------------------------------------------------------------------
-
-# Function-based vs. Class-based views
-
-## Class-based views
-
-Il faut probablement utiliser une vue basée sur une classe ... 
-
-* si une des classes de vues génériques fournies par Django s'approche vraiment du besoin
-* si la vue peut être créée par héritage d'une autre en surchargeant seulement des attributs
-* si la vue à créer peut être réutilisée par héritage et avec peu de modifications par la suite
-
-## Function-based views
-
-Il faut probablement utiliser une vue basée sur une fonction ... 
-
-* si une implémentation basée sur une classe semble complexe
-* si la vue n'a pas vocation à être réutilisée
-
---------------------------------------------------------------------------------
-
 # Le moteur de template
 
 --------------------------------------------------------------------------------
@@ -441,11 +411,15 @@ C'est un simple fichier texte qui peut générer n'importe quel format de texte 
 
 Une template a accès à des **variables** qui lui auront été passées via un **contexte** par la vue.
 
-## Où écrire ses templates ?
+--------------------------------------------------------------------------------
 
-Les templates peuvent être écrites dans chaque application, dans un répertoire ``<application>/templates/<application>``.
+# Où écrire ses templates ?
 
-Le mécanisme de Django ``template loader`` découvre et charge ces templates automatiquement.
+Django possède un mécanisme capable de retrouver les templates d'un projet, configurable via le réglage ``TEMPLATE_LOADERS``.
+
+Le plus souvent on stocke les templates :
+* dans chaque application, en suivant l'arborescence ``<application>/templates/<application>``. Ils seront retrouvés grâce au django.template.loaders.app_directories.Loader, activé par défaut.
+* dans un répertoire ``templates/`` à la racine du projet qu'il faudra déclarer dans un réglage ``TEMPLATE_DIRS``. Ils seront retrouvés grâce au ``django.template.loaders.filesystem.Loader``, activé lui aussi par défaut.
 
 --------------------------------------------------------------------------------
 
@@ -535,25 +509,63 @@ Dans une template *enfant*, la balise ``{% extends %}`` permet de préciser de q
 # Exemple de template *enfant*
 
     !html
-    {# todo/templates/todo/task_list.html #}
+    {# books/templates/books/book_list.html #}
 
     {% extends "base.html" %}
 
     {% block title %}
-      Liste des tâches
+      Liste des livres
     {% endblock %}
 
     {% block content %}
-      {% if object_list %}
+      {% if books %}
         <ul>
-          {% for task in object_list %}
-            <li>{{ task }}</li>
+          {% for book in books %}
+            <li>{{ book }}</li>
           {% endfor %}
         </ul>
       {% else %}
-        <p>Aucune tâche !</p>
+        <p>Aucun livre !</p>
       {% endif %}
     {% endblock %}
+
+--------------------------------------------------------------------------------
+
+# L'inclusion de template
+
+L'intérêt de l'inclusion de template est de pouvoir factoriser du code de template :
+* pour éviter d'avoir des fichiers de templates trop long
+* pour le réutiliser facilement tout en évitant la duplication de code
+
+Cela peut être utile dans différents cas :
+* pour certains éléments communs de la page (menu, entête, pied de page, ...)
+* pour certaines macros réutilisables (structure d'onglets, affichage en liste d'éléments, structure HTML d'une pop-in, ...)
+
+--------------------------------------------------------------------------------
+
+# Exemple de template *appelant*
+
+    !html
+    {# templates/base.html #}
+    <html>
+      <head>
+        <title>
+          {% block title %}
+            ...
+          {% endblock %}
+        </title>
+        <link href="styles.css" rel="stylesheet" />
+      </head>
+      <body>
+        { % include ''templates/header.html'' %}
+        <section>
+          {% block content %}
+            ...
+          {% endblock %}
+        </section>
+        { % include ''templates/footer.html'' %}
+      </body>
+    </html>
 
 --------------------------------------------------------------------------------
 
@@ -578,11 +590,10 @@ Le module *URLconf* est un fichier ``urls.py`` contenant une variable ``urlpatte
     !python
     # urls.py
     from django.conf.urls import patterns, url
-    from myapp.views import MyView
-    urlpatterns = patterns('',
-        url(r'^myview$', MyView.as_view(), name='myview'),
+    urlpatterns = patterns('myapp.views',
+        url(r'^myview$', 'my_view', name='my_view'),
         ...
-    )
+      )
 
 ## Inclusion d'*URLconf*
 
@@ -603,7 +614,7 @@ Souvent, l'*URLconf* racine inclura les modules URLconf de chaque application :
 ## URL sans paramètre
     
     !python
-    url(r'^myview$', MyView.as_view(), name='myview')
+    url(r'^myview$', 'my_view', name='my_view')
 
 La vue aura en argument seulement l'objet ``HttpRequest``.
 
@@ -615,31 +626,6 @@ La vue aura en argument seulement l'objet ``HttpRequest``.
         name='myview_by_month'),
 
 La vue aura en argument l'objet ``HttpRequest``, puis les valeurs trouvées dans l'expression régulière (ex: ``request, year=2014, month=12``).
-
---------------------------------------------------------------------------------
-
-# Syntaxe de déclaration d'une URL
-
-## Mapping vers une *class-based view*
-
-    !python
-    # urls.py
-    from django.conf.urls import patterns, url
-    from myapp.views import MyView
-    urlpatterns = patterns('',
-        url(r'^myview$', MyView.as_view()),
-        ...
-    )
-
-## Mapping vers une *function-based view*
-
-    !python
-    # urls.py
-    from django.conf.urls import patterns, url
-    urlpatterns = patterns('myapp.views',
-        url(r'^myview$', 'myview'),
-        ...
-    )
 
 --------------------------------------------------------------------------------
 
@@ -686,6 +672,20 @@ Les concepts principaux sont les suivants:
 
 --------------------------------------------------------------------------------
 
+# Les champs de formulaire
+
+La bibliothèque django.forms fournit plus de 20 types de champs différents, dont voici les principaux :
+* Les champs pur texte : CharField , TextField
+* Les champs pour les nombres : FloatField, IntegerField
+* Les champs booléens : BooleanField, NullBooleandField
+* Les champs de sélection : ChoiceField, MultipleChoiceField
+* Les champs pour la gestion des dates : DateField, DateTimeField, TimeField
+* Les champs pour la gestion des fichiers : FileField, FilePathField, ImageField
+
+Certains modules annexes fournissent leurs propres champs et il est possible d'écrire des champs personnalisés.
+
+--------------------------------------------------------------------------------
+
 # Utilisation d'un formulaire dans une ``function-based view``
 
     !python
@@ -706,28 +706,6 @@ Les concepts principaux sont les suivants:
         return render(request, 'contact.html', {
             'form': form,
         })
-
---------------------------------------------------------------------------------
-
-# Utilisation d'un formulaire dans une ``class-based view``
-
-    !python
-    from myapp.forms import ContactForm
-    from django.views.generic.edit import FormView
-
-    class ContactView(FormView):
-        template_name = 'contact.html'
-        form_class = ContactForm
-        success_url = '/thanks/'
-
-        def form_valid(self, form):
-            # Process the data in form.cleaned_data and redirect
-            # This method is called when valid form data has been POSTed.
-            # It should return an HttpResponse.
-            # ...
-            return super(ContactView, self).form_valid(form)
-
-La classe ``FormView`` fournit d'autres méthodes pour personnaliser la gestion du formulaire dans la vue comme ``form_invalid``, ``get_initial``, ...
 
 --------------------------------------------------------------------------------
 
@@ -894,6 +872,17 @@ La même méthode ``save`` est utilisée pour enregistrer en base de données de
 
 --------------------------------------------------------------------------------
 
+# Suppression d'une instance
+
+Pour supprimer une instance, il suffit d'appeler la méthode delete qui permet de supprimer directement la ligne en base de données.
+
+    >>> b = Book(name='Two scoops of django',
+              release=date(2013, 08, 31))
+    >>> b.save()
+    >>> b.delete()
+
+--------------------------------------------------------------------------------
+
 # Les concepts ``Manager`` & ``Queryset``
 
 Pour récupérer une ou plusieurs instances, il faut construire un ``Queryset`` via un ``Manager`` associé au modèle.
@@ -997,9 +986,6 @@ Supprimer l'association de livres à une catégorie :
 
 # Quelques modules indispensables
 
-## Gestion de la base de données
-* ``south`` : migration de schéma et de données pour les évolutions de base de données
-
 ## Outils
 * ``django_extensions`` : plusieurs extensions et outils d'administration très pratiques
 * ``django_debug_toolbar`` : une barre latérale permettant de faire du *debug* et du *profiling* page par page
@@ -1020,6 +1006,7 @@ Supprimer l'association de livres à une catégorie :
 * ``django_modeltranslation`` : gestion de modèles multilingues
 * ``easy_thumbnails`` : gestion de miniatures pour les images
 * ``django_tinymce`` : intégration d'un *widget* TinyMCE
+* ...
 
 --------------------------------------------------------------------------------
 

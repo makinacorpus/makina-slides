@@ -472,6 +472,25 @@ Grâce aux modèles *proxy*, il est possible de modifier le comportement d'un ob
 
 # Les vues basées sur des classes
 
+Une vue *basée sur une classe* Django permet de **structurer le code et de le réutiliser** en exploitant notamment l'héritage et les *mixins*.
+
+Django fournit de multiples socles plus ou moins avancés pour construire ce type de vues.
+
+Ces vues sont aussi généralement écrites dans le fichier ``views.py`` de l'application.
+
+## Un exemple tiré de la documention Django
+
+    !python
+    # some_app/views.py
+    from django.views.generic import TemplateView
+
+    class AboutView(TemplateView):
+        template_name = "about.html"
+
+--------------------------------------------------------------------------------
+
+# Les vues basées sur des classes
+
 Les vues basées sur des classes possèdent des avantages sur les vues classiques :
 
 * possibilité d'organiser le code dans différentes méthodes (notamment selon la méthode HTTP entrante) ;
@@ -486,6 +505,25 @@ Django propose une biobliothèque riche permettant de travailler avec des vues b
 * Cette méthode instancie la classe et appelle la méthode ``dispatch()`` de l'instance créée ;
 * Celle-ci appelle la méthode ``get()``, ``post()``, ... en fonction de la méthode HTTP entrante (GET, POST, ...) ;
 * Le traitement qui suit dépend du cas d'utilisation, puis une ``HttpResponse`` est relayée par ``dispatch()``.
+
+--------------------------------------------------------------------------------
+
+# Function-based vs. Class-based views
+
+## Class-based views
+
+Il faut probablement utiliser une vue basée sur une classe ... 
+
+* si une des classes de vues génériques fournies par Django s'approche vraiment du besoin
+* si la vue peut être créée par héritage d'une autre en surchargeant seulement des attributs
+* si la vue à créer peut être réutilisée par héritage et avec peu de modifications par la suite
+
+## Function-based views
+
+Il faut probablement utiliser une vue basée sur une fonction ... 
+
+* si une implémentation basée sur une classe semble complexe
+* si la vue n'a pas vocation à être réutilisée
 
 --------------------------------------------------------------------------------
 
@@ -546,6 +584,10 @@ Dans ``django.views.generic.edit`` :
 
 * ``CreateView`` et ``UpdateView`` sont très utiles pour la création/modification d'instance, de l'affichage du formulaire jusqu'à l'enregistrement de l'instance.
 * ``DeleteView`` facilite l'implémentation de vues pour la suppression d'intance.
+
+## Les classes fournies par Django
+
+Un excellent site permettant d'avoir un aperçu complet : http://ccbv.co.uk/
 
 --------------------------------------------------------------------------------
 
@@ -773,7 +815,7 @@ charger les filtres au niveau des templates.
 Un filtre personnalisé est une simple fonctions python qui prend un ou deux arguments :
 
 * la valeur de la variable dont on veut modifier l'affichage (pas nécessairement
-une chaîne de caractère)
+une chaîne de caractères)
 * un argument optionnel (qui peut avoir une valeur par défaut ou non)
 
 Un filtre sera sans argument supplémentaire sera appelé de la manière suivante :
@@ -816,7 +858,7 @@ et un filtre avec argument sera utilisé ainsi :
 
 # Enregistrement du filtre personnalisé
 
-La class ``Library`` permet d'ajouter les filtres personnalisés à la bibliothèque
+La classe ``Library`` permet d'ajouter les filtres personnalisés à la bibliothèque
 de filtres Django pour pouvoir ensuite les charger et les utiliser dans les
 templates. Deux solutions :
 
@@ -1005,7 +1047,7 @@ Exemple :
 
 # Introduction à la gestion des fichiers statiques
 
-Les sites web ont très souvent besoin de servir des fichier dits *statiques*, 
+Les sites web ont très souvent besoin de servir des fichiers dits *statiques*, 
 principalement des images, CSS et JS.
 
 Django fournit un module ``django.contrib.staticfiles`` qui facilite cette gestion.
@@ -1038,11 +1080,10 @@ statiques seront disponibles.
 Les fichiers statiques doivent être stockés dans un répertoire ``static`` de
 l'application. Les scripts par défaut configurés dans ``STATICFILES_FINDERS`` (cf ``settings.py``) pourront alors retrouver les fichiers statiques de chaque application.
 
-Il est aussi possible de stocker des fichiers statiques dans d'autres dossiers. 
-Il faut alors ceux-ci dans un réglage particulier : ``STATICFILES_DIRS``.
+Il est aussi possible de stocker des fichiers statiques dans d'autres dossiers, 
+il faut alors ceux-ci dans un réglage particulier : ``STATICFILES_DIRS``.
 
-La commande ``collectstatic`` permet d'aggréger ces fichiers dans un répoertoire
-unique à la racine du projet :
+La commande ``collectstatic`` permet d'aggréger ces fichiers dans un répertoire unique défini par ``STATIC_ROOT`` :
 
     !console
     $ ./manage.py collecstatic
@@ -1079,8 +1120,8 @@ Exemple pour un CSS :
 
 ## En développement
 
-En cours de développement (``DEBUG = True``), la serveur *standalone* de Django
-se charge de servir les fichier statiques lui-même via une vue dédie : 
+En cours de développement (``DEBUG = True``), le serveur *standalone* de Django
+se charge de servir les fichiers statiques lui-même via une vue dédiée : 
 ``django.contrib.staticfiles.views.serve``.
 
 Cette méthode est peu efficace et peu sécurisée, et ne doit pas être utilisée
@@ -1089,12 +1130,12 @@ en production
 ## En production
 
 Un réglage supplémentaire, ``STATIC_ROOT``, permet de spécifier le chemin vers
-le répertoire des fichier statiques sur le système de fichiers.
+le répertoire des fichiers statiques sur le système de fichiers.
 
-Grâce à ce réglage, la commande ``collectstatic`` copie tous les fichier statiques
+Grâce à ce réglage, la commande ``collectstatic`` copie tous les fichiers statiques
 vers le chemin précisé.
 
-Il suffit ensuite de paramétrer le serveur web pour qu'il serve lui-meme ces fichiers.
+Il suffit ensuite de paramétrer le serveur web pour qu'il serve lui-même ces fichiers.
 
 --------------------------------------------------------------------------------
 
@@ -1162,7 +1203,7 @@ Il  est donc très facile d'obtenir un champ d'upload dans un formulaire.
         my_file = forms.FileField()
 
 
-L'utilisation de ce type de formulaire impliquent quelques spécificités.
+L'utilisation de ce type de formulaire implique quelques spécificités.
 Dans la vue, l'objet ``request.FILES`` doit être fourni à l'initialisation du
 formulaire :
 
@@ -1197,6 +1238,7 @@ fonctionnalités liées à l'internationalisation et la localisation :
 * ``USE_TZ`` : active ou non la gestion des fuseaux horaires
 * ``LANGUAGE_CODE`` : langue par défaut
 * ``LANGUAGES`` : liste des langues connues par l'application
+* ``LOCALE_PATHS`` : chemins vers les fichiers de traduction
 
 
 --------------------------------------------------------------------------------
@@ -1265,9 +1307,10 @@ sont disponibles :
 
 ## Le tag {% trans %}
 
-Il permet de traduire une chaine de caractère simple ou le contenu d'une variable.
+Il permet de traduire une chaine de caractères simple ou le contenu d'une variable.
 
     !html
+    {% load i18n %}
     <title>{% trans "List of books" %}</title>
     <title>{% trans page_title %}</title>
 
@@ -1276,6 +1319,7 @@ Il permet de traduire une chaine de caractère simple ou le contenu d'une variab
 Il permet de mixer chaînes de caractères et variables pour traduire des chaînes complexes.
 
     !html
+    {% load i18n %}
     {% blocktrans with book_t=book|title author_t=author|title %}
     <p>This is {{ book_t }} by {{ author_t }}</p>
     {% endblocktrans %}
@@ -1355,15 +1399,15 @@ Les commandes doivent être des fichiers Python placés dans une module
     │   ├── models.py
     │   ├── management
     │   │   ├── __init__.py
-    │   │   ├── command
+    │   │   ├── commands
     │   │   │   ├── __init__.py
-    │   │   │   ├── my_command.py
+    │   │   │   ├── my_test_command.py
 
 --------------------------------------------------------------------------------
 
 # Structure d'une commande d'administration
 
-Pour créer une commande personnalisée, il faut écrire une classe qui hérite
+Pour créer une commande personnalisée, il faut écrire une classe ``Command`` qui hérite
 de ``django.core.management.base.BaseCommand``.
 
     !python
@@ -1378,9 +1422,9 @@ de ``django.core.management.base.BaseCommand``.
 
         def handle(self, *args, **options):
 
-            self.stdout.write('Command started")
+            self.stdout.write('Command started')
             # Traitements
-            self.stdout.write('Command ended")
+            self.stdout.write('Command ended')
 
 --------------------------------------------------------------------------------
 
@@ -1389,7 +1433,7 @@ de ``django.core.management.base.BaseCommand``.
 ## Éxécution manuelle
 
 Il est bien sûr possible de lancer une commande personnalisée à la main, tout
-simple en utilisant directement dans le terminal le point d'entrée ``./manage.py`` :
+simplement en utilisant directement dans le terminal le point d'entrée ``./manage.py`` :
 
     !python
     $ ./manage.py my_test_command
@@ -1466,7 +1510,7 @@ personnaliser son comportement :
 
 Les propriétés ``list_display`` et ``list_display_links`` permettent respectivement
 de spécifier les colonnes que l'on souhaite voir apparaitre dans la liste et de préciser
-lesquels d'entre elles doivent être cliquables.
+lesquelles d'entre elles doivent être cliquables.
 
 ## Personnaliser le filtrage
 
@@ -1681,7 +1725,7 @@ initiale pour le champ ``begin``).
             # Test witht 'begin' initial value
             initial = {'begin': date(2014, 01, 01)}
             f = PeriodForm(initial=initial)
-            self.assertEqual(f.initial.get('end'), date(2014, 01, 01))
+            self.assertEqual(f.initial.get('end'), date(2014, 02, 01))
 
 --------------------------------------------------------------------------------
 
@@ -1692,11 +1736,11 @@ initiale pour le champ ``begin``).
 Voici un exemple de vue assez basique, une liste de *nouveaux* livres :
 
     !python
-    from django.core.exceptions import PermissionDenied
+    from django.shortcuts import render
 
     def new_book_list(request):
         
-        results = Book.objects.filter(release__lte=date(2014, 01, 01))
+        results = Book.objects.filter(release__gte=date(2014, 01, 01))
         
         return render(
             'books/book_list.html',
@@ -1729,7 +1773,7 @@ est ici intéressant de vérifier :
             b2 = Book.objects.create(title='Bar', release=date(2014, 02, 01))
 
             url = reverse('book_list')
-            self.client.get(url)
+            resp = self.client.get(url)
 
             # HTTP response is OK
             self.assertEqual(resp.status_code, 200)
