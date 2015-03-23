@@ -1130,7 +1130,7 @@ div.presentation, div.slide {
   background-color: #000; /* colour of the slide */
 }
 
-div.slide h1{
+div.slide h1 {
   color: #bece12;
   font-weight: normal;
   letter-spacing: 0px;
@@ -1138,9 +1138,12 @@ div.slide h1{
 
 div.slide h2, div.slide h3, div.slide h4, div.slide h5, div.slide h6  {
   color: #fff; /* #ef4e70 */
-  letter-spacing: 0px;
+  letter-spacing: 0;
 }
-
+div.slide header h1,
+div.slide header h2 {
+  color: #bece12;
+}
 div.presentation, div.slide {
   border-radius: 20px;
 }
@@ -1153,6 +1156,10 @@ pre, tt, code, kbd, samp {
 /* A title slide is a single header */
 .slide header:only-child h1 {
   font-weight: normal;
+}
+.slide section h1:only-child {
+  font-weight: bold;
+  font-size: 80px;
 }
 
 blockquote {
@@ -1206,6 +1213,16 @@ div.slide.quoteslide blockquote p {
 div.slide.quoteslide cite {
   float: right;
   font-style: normal;
+}
+
+li > p {
+  margin: 0;
+}
+
+img.single-image {
+  max-height: 690px;
+  max-width: 100%;
+  margin-top: -25px;
 }
 
       </style>
