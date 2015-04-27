@@ -1,9 +1,7 @@
 # HTML5 / CSS3
 
- 22-23 Septembre 2014
+ 28-29 avril 2015
  CNFPT
-
-----
 
 ## Présentation
 
@@ -75,9 +73,9 @@
 
 **World Wide Web Consortium**, dirigé par *Tim Berners Lee*
 
-* **389** membres (au 15 septembre 2014)
+* **396** membres (au 27 avril 2015)
 * Définit les spécifications (HTML, XML, accessibilité, mobile)
-* Groupes de travail
+* Fonctionne par groupes de travail
 
 [w3.org/Consortium](http://www.w3.org/Consortium/)
 
@@ -101,6 +99,7 @@ Scission au sein du W3C : le **WHATWG** (Web Hypertext Application Technology Wo
 
 * 2008 : "First Public Working Draft" du **HTML5** présentée par le **WHATWG**
 * 2012 : **HTML5** passe en "Candidate Recommandation"
+* fin 2014 : **HTML5** est un standard du W3C
 
 [fr.wikipedia.org/wiki/World_Wide_Web](http://fr.wikipedia.org/wiki/World_Wide_Web)
 
@@ -110,10 +109,10 @@ Scission au sein du W3C : le **WHATWG** (Web Hypertext Application Technology Wo
 
 # Les outils de développement
 
-* Éditeur de code : [Notepad++](http://notepad-plus-plus.org/), Sublime Text
+* Éditeur de code : [Notepad++](http://notepad-plus-plus.org/), Sublime Text, Geany, [Atom](https://atom.io/)
 * Navigateur : **éviter IE** !! Firefox ou Chrome, et leurs plugins d'inspection de code (voir [Liste de puglins](http://makina-corpus.com/blog/metier/2013/extensions-firefox-pour-le-developpement-web))
 * Test et validation
-    * [validator.w3.org](http://validator.w3.org/)
+    * [validator.w3.org](http://validator.w3.org/) respect des standards
     * [opquast.com](http://opquast.com/fr/) pour la qualité du code, l'accessibilité
 * Documentation
     * officielle [w3c.org/TR/html5](http://www.w3.org/TR/html5/)
@@ -137,17 +136,35 @@ Scission au sein du W3C : le **WHATWG** (Web Hypertext Application Technology Wo
 
 ----
 
-## Le HTML 5 est-il prêt ?
+## HTML5, standard depuis le 28 octobre 2014
 
-* En "Candidate Recommandation" depuis 2012
 * Implémentation variable selon les navigateurs : voir [caniuse.com](http://caniuse.com/)
 * Compatible avec IE9, du moins en partie, des outils permettent une "régression en douceur" (graceful degradation)
+* [Différences avec HTML4](http://www.w3.org/TR/html5-diff/)
 
 ## DocType
 
-`<!DOCTYPE html>`
+`<!DOCTYPE html>` ... tout simplement
 
-... tout simplement
+## Encodage
+
+Ajouter dans les entêtes `<meta charset="UTF-8">`
+
+----
+
+## Exemple 1 : Pour commencer
+
+    !html
+    <!doctype html>
+    <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Example document</title>
+      </head>
+      <body>
+        <p>Example paragraph</p>
+      </body>
+    </html>
 
 ----
 
@@ -156,7 +173,7 @@ Scission au sein du W3C : le **WHATWG** (Web Hypertext Application Technology Wo
 ## Balises
 
 * Inline : `<mark>`, `<time>`, `<meter>`, `<progress>`
-* Section : `<article>`, `<aside>`, `<nav>`, `<section>`, `<header>`, `<footer>`
+* [Section](https://developer.mozilla.org/fr/docs/Web/HTML/Sections_and_Outlines_of_an_HTML5_document) : `<section>`, `<article>`, `<main>`, `<aside>`, `<nav>`, `<header>`, `<footer>`
 * Grouper : `<figure>`, `<figcaption>`
 
 Code plus clair, page mieux structurée sémantiquement : un meilleur référencement.
@@ -165,34 +182,47 @@ Code plus clair, page mieux structurée sémantiquement : un meilleur référenc
 
 --- 
 
-## Structure d'une page
+## Exemple 2 : Structure sémantique d'une page
 
     !html
     <body>
         <header>
             <nav data-role="menu">
                 <ul>
-                ...
+                …
                 </ul>
             </nav>
         </header>
-        <div id="main">
-            <aside>
-            ...
-            </aside>
-            <section id="content">
-                <article>
+        <main role="main">
+            <article>
+                <section>
+                  <h1>éléphants de forêt</h1>
+                  <p>Dans cette section, nous discutons des éléphants de forêt moins connus.
+                       Ce paragraphe continue…</p>
+                  <section>
+                    <h2>Habitat</h2>
+                    <p>Les éléphants de forêt ne vivent pas dans les arbres mais parmi eux.
+                       Ce paragraphe continue…</p>
                     <figure><img src="__mon__url__" /></figure>
                     <p>Texte</p>
-                </article>
-            </section>
-        </div>
+                  </section>
+                </section>
+            </article>
+            <aside>
+            … barre latérale …
+            </aside>
+        </main>
         <footer>
-        ...
+        …
         </footer>
     </body>
 
 .fx: smaller
+
+# presenter notes
+
+`header` et `footer` désignent l'entête et le pied de page, mais ne sont pas forcément en haut ou en bas de la page.
+Peuvent être à l'intérieur d'un article.
 
 ----
 
@@ -226,6 +256,81 @@ Autres implémentations : microformats, RDFa
 
 ----
 
+# Media et éléments embarqués
+
+## `<embed>`
+
+* Pour embarquer une application externe (un plugin par exemple). 
+* Déjà existants en HTML4 : 
+
+    * `<object>`
+    * `<iframe>` : Peut embarquer un autre site, un éditeur de texte riche ou une carte par exemple.
+
+----
+
+## [`<audio>` et `<video>`](https://developer.mozilla.org/fr/docs/Web/HTML/Utilisation_d%27audio_et_video_en_HTML5)
+
+    !html
+    <audio src="./donjon-crom.mp3" controls></audio>
+    <video src="video.ogg" controls 
+        poster="video.jpg" width="640" height="480">
+
+### Formats audio et vidéo / navigateurs
+
+* ogg -> Chrome, Firefox, Opera
+* webm -> Chrome, Firefox, Opera
+* MPEG-4/H.264 -> Chrome, Firefox, Opera, Safari, IE
+
+### Code
+
+On peut inclure plusieurs formats de media
+
+    !html
+    <video controls poster="video.jpg" width="640" height="480">
+        <source src="video.ogg" />
+        <source src="video.avi" />
+        <source src="video.mp4" />
+    </video>
+
+### Exercice
+
+Essayer la balise `<video>` avec différentes sources, en ouvrant la page dans différents navigateurs.
+
+----
+
+## Image, nouveaux attributs `srcset` et `sizes`
+
+`src` est ignoré pour les user-agent supportant srcset.
+
+    !html
+    <img src="img/eilean-donnan-castle-200.jpg" 
+      alt="Clock" 
+      srcset="img/eilean-donnan-castle-200.jpg 200w, img/eilean-donnan-castle-400.jpg 400w"
+      sizes="(min-width: 800px) 400px, 50vw" />
+
+Si (min-width: 600px) :
+
+* alors image de largeur 200px
+* sinon 50 % de la largeur viewport
+
+Fonctionne avec Chrome, et firefox à partir de la version 38.
+
+----
+
+## Conteneur `<figure>`
+
+Permet d'illustrer et ajouter une légende à une image, un schéma.
+
+    !html
+    <figure>
+      <img src="image.jpg" alt="" />
+      <figcaption>Légende de l'image</figcaption>
+    </figure>
+
+Peut contenir autre chose que des images : du code ou une vidéo par exemple.
+
+----
+
 # Formulaires
 
 ## Nouveaux contrôles
@@ -251,7 +356,7 @@ Autres implémentations : microformats, RDFa
 Url avec placeholder
 
     !html
-    <input type="url" name="url"   placeholder="Votre site Web" />
+    <input type="url" name="url" placeholder="Votre site Web" />
 
 Range
 
@@ -262,7 +367,7 @@ Range
 Pattern
 
     !html
-    <input type="text" name="pattern"   pattern="[a-z]{2}[0-9]{2}" />
+    <input type="text" name="pattern" pattern="[a-z]{2}[0-9]{2}" />
 
 Liste
 
@@ -290,61 +395,6 @@ Liste
 
 ----
 
-# Media et Éléments embarqués
-
-## `<embed>` et `<object`>
-
-Pour embarquer des objets flash par exemple.
-
-## `<audio>` et `<video>`
-
-    !html
-    <audio src="./donjon-crom.mp3" controls></audio>
-    <video src="video.ogg" controls 
-        poster="video.jpg" width="640" height="480">
-
-Les limites : formats de fichiers différents / navigateurs
-
-* ogg -> Firefox
-* webm -> Chrome
-* mp4 -> Chrome, IE 
-
-----
-
-## Code
-
-On peut inclure plusieurs formats de media
-
-    !html
-    <video controls poster="video.jpg" width="640" height="480">
-        <source src="video.ogg" />
-        <source src="video.avi" />
-        <source src="video.mp4" />
-    </video>
-
-## Exercice
-
-Essayer la balise `<video>` avec différentes sources, en ouvrant la page dans différents navigateurs.
-
-----
-
-## `<figure>`
-
-Permet d'illustrer et ajouter une légende à une image, un schéma.
-
-    !html
-    <figure>
-      <img src="image.jpg" alt="" />
-      <figcaption>Légende de l'image</figcaption>
-    </figure>
-
-Peut contenir autre chose que des images : du code ou une vidéo par exemple.
-
-## `<iframe>`
-
-Peut embarquer un autre site, un éditeur de texte riche par example.
-
-----
 
 # Effets et 3D
 
@@ -405,7 +455,7 @@ Voir [Les interfaces de demain](http://fr.slideshare.net/makinacorpus/petit-djeu
 
 ## Flash ?
 
-Il n’est pas (tout à fait) mort, mais n'est plus supporté par les Iphone et Ipad
+Flash n'est plus supporté par les Iphone et Ipad, GNU/Linux et Android depuis Jelly Bean. Oubliez-le.
 
 ----
 
@@ -559,12 +609,13 @@ première lettre, première ligne
 
 ## Absolues
 
-px, pt
+* px : pour les supports écran
+* pt : pour les supports imprimés
 
 ## Relatives
 
 * em, %
-* rem (root em), relative à la taille attibuée au document
+* rem (root em), relative à la taille attibuée au document (nouveau !)
 
 ----
 
@@ -593,7 +644,7 @@ px, pt
         <div>texte 2</div>
     </div>
 
-Relativement bien supporté par les navigateurs (IE>=11), très bientôt utilisable.
+Supporté par les navigateurs modernes, mais l'implémentation est parfois différente. Fonctionnel mais à utiliser à bon escient.
 
 ## Colonne
 
@@ -655,6 +706,8 @@ Rotation, translations
 * La grille bootstrap
 * Composants
 
+[Des exemples](http://getbootstrap.com/getting-started/#examples)
+
 ----
 
 ##  Mise en forme CSS
@@ -687,11 +740,15 @@ Rotation, translations
 * Media (groupe d'image + texte)
 * Vignettes
 
-.notes: notse
+----
 
-### Presenter Notes
+## TP Bootstrap
 
-this is notes
+(voir fichiers)
+
+[Exemples de parallaxe](http://www.alsacreations.com/tuto/lire/1417-zoom-sur-effet-parallaxe.html)
+
+[Générateur d'images](http://lorempixel.com/)
 
 ----
 
@@ -707,10 +764,25 @@ this is notes
 * mixins
 * importation de fichier
 
+----
+
 ## Installer LessCSS
 
 * Dans windows : [winless.org](http://winless.org/)
 * Pour utiliser plus de fonctionnalités de nodejs : [nodejs.org](http://nodejs.org/download/)
+* [Installer nodejs sous Ubuntu / debian](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions)
+
+Sur Ubuntu:
+
+    curl -sL https://deb.nodesource.com/setup | sudo bash -
+
+Installation du paquet:
+
+    sudo apt-get install -y nodejs
+
+Installer less
+
+    sudo npm install -g less
 
 ----
 
@@ -794,7 +866,6 @@ Les options
 * `once`: n'importe le fichier qu'une seule fois (comportement par défaut)
 * `multiple`: importe le fichier plusieurs fois
 
-
 ----
 
 # TP : un thème avec LessCSS et Bootstrap
@@ -804,7 +875,15 @@ Les options
 ## Intégrer un design simple
 
 1. Créer l'arborescence du projet
-1. Créer une structure de page d'accueil en utilisant les fonctionnalités de bootstrap
+1. Créer une structure de page d'accueil en utilisant les fonctionnalités de bootstrap. On doit retrouver les éléments suivants :
+
+    * Logo et nom du site
+    * Barre de navigation
+    * Diaporama
+    * Liste d'articles
+    * Complément d'information sous forme d'accordéon
+
+Voir [les exemples](http://getbootstrap.com/getting-started/#examples) pour l'inspiration.
 
 ----
 
@@ -823,6 +902,7 @@ Les options
             ├── components/
             │   ├── search.less
             │   ├── nav.less
+            │   ├── fonts.less
             │   └── forms.less
             ├── bootstrap.less
             ├── content.less
@@ -841,4 +921,106 @@ Compiler vos fichiers
 
 ----
 
+# Bonus
+
+----
+
+# Gulp, outil d'automatisation
+
+Met en place des tâches qui peuvent remplir plusieurs fonctions
+
+* automatiser la génération des fichiers css à partir des fichiers less,
+* minifier les CSS et les JS
+* ....
+
+## Installation
+
+Prérequis : installer nodejs
+
+Installer `gulp` globalement
+ 
+    !console
+    npm install -g gulp
+
+Installer les dépendances du projet et les ajouter au fichier `package.json`
+
+    !console
+    cd /dossier/de/montheme
+    npm install --sav-dev gulp-less
+
+Lancer l'installation des paquets indiqués dans `package.json` :
+
+    !console
+    npm install
+
+.fx: smaller
+
+----
+
+## Initialisation
+
+Copier `gulpfile.js` dans le dossier de thème
+
+    !console
+    var gulp = require('gulp');
+    var less = require('gulp-less');
+    var rename = require('gulp-rename');
+    var notify = require('gulp-notify');
+    var minifyCSS = require('gulp-minify-css');
+    var dsource = "./src/";
+    var ddest = "./www/";
+
+    var lessfiles = [dsource+'less/styles.less'];
+    var lessfiles_watch = [dsource+'less/**/*.less'];
+
+    w = process.cwd();
+    styles = gulp.task(
+      'styles',
+      function() {
+        return gulp.src(lessfiles)
+        .pipe(less())
+        .pipe(rename("styles.css"))
+        .pipe(gulp.dest(ddest+'css/'))
+        .pipe(notify({message: 'Styles task complete'}))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest(ddest+'css/'))
+      });
+
+
+.fx: smaller
+
+----
+
+## Usage
+
+    !console
+    gulp <nom_de_tache_définie>
+    gulp styles # compile les fichiers less et minifie les CSS
+
+## Resources
+
+* Site officiel [gulpjs](http://gulpjs.com/)
+* Tutoriel (en) sur [Site Point](http://www.sitepoint.com/introduction-gulp-js/)
+* Erreur courante [Erreur ENOSPC](http://stackoverflow.com/questions/16748737/grunt-watch-error-waiting-fatal-error-watch-enospc)
+
+----
+
+# Autres ressources
+
+## Outils
+
+* [Yeoman](http://yeoman.io/)
+* [HTML Shiv](https://github.com/aFarkas/html5shiv)
+* [Polyfill](https://remysharp.com/2010/10/08/what-is-a-polyfill)
+
+## Exemples de code
+
+* [Codeopen](http://codepen.io)
+* [Codedrops](http://tympanus.net/codrops/)
+
+
+----
+
 # Questions ?
+

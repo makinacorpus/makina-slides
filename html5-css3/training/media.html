@@ -4,7 +4,9 @@
         <title>Audio et vidéo</title>
         <meta charset="utf8"></meta>
     </head>
+
     <body>
+
         <h1>Audio element</h1>
         <audio id="musique" controls>
             <source src="donjon-episode31.ogg"></source>
@@ -16,12 +18,20 @@
         <button onclick="document.getElementById('musique').pause()">Pause audio</button>
 
         <h1>Vidéo</h1>
-        <video  controls poster="bbb.jpg" width="640" height="480">
+        <video  controls poster="img/eilean-donnan-castle-200.jpg" width="640" height="480">
             <source src="http://mirrorblender.top-ix.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_stereo.ogg" />
             <source src="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi" />
         </video>
 
-        
-        
+        <h2>Image</h2>
+        <img src="img/eilean-donnan-castle-200.jpg" 
+          alt="Clock" 
+          srcset="img/eilean-donnan-castle-200.jpg 200w, img/eilean-donnan-castle-400.jpg 400w"
+          sizes="(min-width: 800px) 400px, 50vw" />
+
+<figure>
+  <img src="img/eilean-donnan-castle-400.jpg" alt="" />
+  <figcaption>Légende de l'image</figcaption>
+</figure>
     </body>
 </html>
