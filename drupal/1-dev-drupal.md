@@ -155,7 +155,7 @@ environnement de développement avec tous les pré-requis Drupal.
 
 # TP: Configuration de PHPStorm
   * Ouvrir le dossier Drupal dans PHPStorm
-  * Affichier les messages de journal de PHPStorm
+  * Afficher les messages de journal de PHPStorm
   * Cliquer sur "Enable Drupal support" et configurer le chemin
   * Cliquer sur "Fix extensions"
 
@@ -454,7 +454,7 @@ Créer un bloc :
   - dont le titre côté administration est "Statut premium de l'utilisateur"
   - dont le delta (nom machine) est `gold-status`
   - qui affiche "Vous êtes un utilisateur premium" ou "Vous n'êtes pas un
-  utilisateur premium" entouré d'un `h3>`
+  utilisateur premium" entouré d'un `<h3>`
 
 Rappel: user_access() pour vérifier les permissions
 
