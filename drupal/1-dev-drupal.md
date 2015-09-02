@@ -555,23 +555,84 @@ permissions
 --------------------------------------------------------------------------------
 
 # Système de menus
-  * Différence routage / lien de menu
-  * Différence path / alias 
+
+## Quelques définitions :
+  * routage : faire pointer une route (`node/%`) à une action (afficher un noeud)
+  * chemin (ou path) : route dont les arguments sont définis (ex: `node/123` est 
+  un chemin, pointant vers la route `node/%` où l'argument est 123)
+  * lien de menu : Texte (ou titre) pointant vers un chemin
+  * alias : associe un chemin système (`node/123`) vers un chemin arbitraire 
+  renseigné par le contributeur (`mon-noeud`)
+
+
+## Les propriétés d'une route
   * Permissions -> `'access calllback'`, `'access arguments'`
-  * Arguments pouvant être chargés à la volée -> `*_load()`
-  * Type de menu
+  * Arguments peuvent être bruts '`%`' ou nommés '`%node`' pour être chargés 
+  à la volée avec `*_load()` -> `node_load()`
+
+--------------------------------------------------------------------------------
+
+  * Type d'élément de menu
     * `MENU_NORMAL_ITEM` -> lien de menu dans l'arborescence
     * `MENU_LOCAL_TASK` -> onglet
     * `MENU_CALLBACK` -> url simple
-  * Possibilité de placer la `page callback` dans un fichier `.inc`
+  * Possibilité de placer la `page callback` dans un fichier `.inc` (file path + file)
+  * La route `abc/def` est enfant de la route `abc` si celle-ci est définie
+  * <u>/!\</u> Il y a toujours un *s* à `arguments` : utiliser un `array()`
+  * <u>/!\</u> Il y n'a pas d'underscore dans le nom des propriétés :
+  <del>`page_callback`</del>
 
-        !php
-        function mymodule_menu() {
-          $items['abc/def'] = array(
-            'page callback' => 'mymodule_abc_view',
-          );
-          return $items;
-        }
+<table>
+  <tr>
+    <th>Propriété</th>
+    <th>Valeur par défaut</th>
+  </tr>
+  <tr>
+    <td>page callback</th>
+    <td>celle du parent</td>
+  </tr>
+  <tr>
+    <td>access callback</th>
+    <td>user_access ou celle du parent</td>
+  </tr>
+  <tr>
+    <td>file path</th>
+    <td>le chemin du module</td>
+  </tr>
+  <tr>
+    <td>menu_name</th>
+    <td>navigation</td>
+  </tr>
+  <tr>
+    <td>type</th>
+    <td>MENU_NORMAL_ITEM</td>
+  </tr>
+</table>
+
+--------------------------------------------------------------------------------
+
+<h2>Exemple</h2>
+
+    !php
+    function mymodule_menu() {
+      $items['abc/def'] = array(
+        'title' => "My ABC page",
+        'page callback' => 'mymodule_abc_view',
+        'page arguments' => array(1),
+        'access callback' => 'mymodule_verify_access',
+        'page arguments' => array('une chaine'),
+        'file' => 'mymodule.pages.inc',
+      );
+      return $items;
+    }
+    
+    function mymodule_abc_view($def) {
+      return "Mon contenu";
+    }
+    
+    function mymodule_verify_access($string) {
+      return $string == 'une chaine';
+    }
 
 --------------------------------------------------------------------------------
 
@@ -686,9 +747,10 @@ accès premium.
 
   * Créer une page
 
-  * Récupérer les roles ayant la permission de voir le contenu gold
+  * Récupérer les rôles ayant la permission de voir le contenu gold (dans la
+  table `role_permission`)
 
-  * Récupérer les utilisateurs ayant ces rôles
+  * Récupérer les utilisateurs ayant ces rôles (dans la table `users_roles`)
 
   * Les afficher d'abord dans une liste
 
@@ -872,7 +934,7 @@ Celui-ci nous servira pour les images qui seront sur les articles gold
 
   * Gère la base de données
   * Se situe dans le fichier .install
-  * `hook_schema()` -> crée une base
+  * `hook_schema()` -> crée une ou plusieurs tables
   * `hook_schema_alter()` déclare une modification (mais ne la réalise pas)
   * API de la structure <https://drupal.org/node/146866>
   * Fonctions de l'API <https://drupal.org/node/150223>
@@ -932,27 +994,27 @@ De même `hook_node_access()` n'est pas appelé pour le superadmin.
 # Envoi de mails
 
     !php
-    // Déclaration du contenu du mail.
-    function hook_mail($key, &$message, $params) {
+    // Déclaration du contenu du mail avec hook_mail().
+    function monmodule_mail($key, &$message, $params) {
       $account = $params['account'];
       $node = $params['node'];
-      $variables += array(
-        '%uid' => $node->uid,
-        '%node_url' => url('node/' . $node->nid, array('absolute' => TRUE)),
-        '%node_type' => node_type_get_name($node),
-        '%title' => $node->title,
-        '%teaser' => $node->teaser,
-        '%body' => $node->body,
-      );
-      $subject = strtr($context['subject'], $variables);
-      $body = strtr($context['message'], $variables);
-      $message['subject'] .= str_replace(array("\r", "\n"), '', $subject);
-      $message['body'][] = drupal_html_to_text($body);
+      $message['subject'] = "Bonjour " . format_username($account);
+      $message['body'][] = "Le noeud {$node->title} a été créé";
+      $message['body'][] = "A bientot";
     }
+    
+    // Envoi du mail.
+    drupal_mail('monmodule', 'maclé', 'toto@example.com', 'fr-FR', array(
+      'node' => node_load(123),
+      'user' => user_load_by_name('toto'),
+    );
 
-Notion de tokens (jetons)
+On peut utiliser la notion de tokens (jetons) ou la fonction strtr(). 
+'`body`' est un tableau de lignes.
 
 Envoi du mail avec `drupal_mail($module, $key,  $to, $language, $params = array())`;
+
+La clé permet à un module de gérer plusieurs types de mail.
 
 --------------------------------------------------------------------------------
 
