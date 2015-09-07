@@ -432,8 +432,8 @@ Plus de 350 hooks disponibles dans le cœur de Drupal
     function hook_block_view($delta = '') {
       if ($delta == 'syndicate') {
         return array(
-          subject => '',
-          content => '', // (Render array ou HTML) 
+          'subject' => '',
+          'content' => '', // (Render array ou HTML) 
         );
       }
     }
