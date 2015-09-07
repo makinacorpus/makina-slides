@@ -242,7 +242,7 @@ Thèmes intégrés au cœur de Drupal
 </div>
 <br><br>
 Où travailler ? Dans un profil d'installation custom ou dans un
-sous-repertoire `contrib`
+sous-repertoire `custom`
 
 <center>
 ## <u>/!\</u> Le hack du core et l'avenir des chatons
