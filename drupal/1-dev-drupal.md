@@ -324,8 +324,6 @@ Pour une version plus récente, utiliser le module jQuery Update
   * Lister les contenus avec le statut gold
   * Créer un style d'image pour illustrer les contenus gold
   * Créer une fonction de theme pour afficher le statut gold d'un nœud
-  * Notifier les utilisateurs premium lors de la création d'un nouveau contenu
-  gold
   * Créer des tests pour vérifier le bon fonctionnement du module
 
 Créer ce module : il doit apparaître dans la liste des modules.
