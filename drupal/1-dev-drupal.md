@@ -564,7 +564,7 @@ permissions
 
 
 ## Les propriétés d'une route
-  * Permissions -> `'access calllback'`, `'access arguments'`
+  * Permissions -> `'access callback'`, `'access arguments'`
   * Arguments peuvent être bruts '`%`' ou nommés '`%node`' pour être chargés 
   à la volée avec `*_load()` -> `node_load()`
 
@@ -618,7 +618,7 @@ permissions
         'page callback' => 'mymodule_abc_view',
         'page arguments' => array(1),
         'access callback' => 'mymodule_verify_access',
-        'page arguments' => array('une chaine'),
+        'access arguments' => array('une chaine'),
         'file' => 'mymodule.pages.inc',
       );
       return $items;
