@@ -706,7 +706,7 @@ voir également les commentaires sur chaque fonction sur <https://api.drupal.org
                   ->fields('c')
                   ->condition('created', REQUEST_TIME)
                   ->execute()
-                  ->fetchAllAssoc();
+                  ->fetchAllAssoc('cid');
     foreach ($results as $result) {
       // faire qqch
     }
