@@ -56,7 +56,7 @@
 
 Attention à la liste des OS proposés par chaque plugin!
 
-Vous développez vos propres plugins.
+Vous pouvez développer vos propres plugins.
 
 .fx: extra-large
 
@@ -140,10 +140,6 @@ Mettre le code dans le dossier monApp/www.
 --------------------------------------------------------------------------------
 
 # Cas réels
-
-    !console
-    $ npm install ionic
-    $ ionic monApp sidemen
 
 .fx: extra-large
 
