@@ -142,6 +142,11 @@ Prérequis:
 Faire un développement web frontend classique.
 Mettre le code dans le dossier monApp/www.
 
+Dans index.html, ajouter:
+
+    !html
+    <script src="cordova.js"></script>
+
 .fx: extra-large
 
 --------------------------------------------------------------------------------
@@ -151,6 +156,15 @@ Mettre le code dans le dossier monApp/www.
     !console
     $ cordova build
     $ cordova run
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Lancer sans terminal
+
+- VM sous Android
+- émulateurs
 
 .fx: extra-large
 
@@ -308,6 +322,16 @@ le cap de la boussole.
 
 --------------------------------------------------------------------------------
 
+# Bonnes pratiques
+
+**Crosswalk**
+
+Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4.3.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
 # Ionic
 
 - un maximum de bonnes pratiques
@@ -332,6 +356,25 @@ le cap de la boussole.
 
     !console
     $ ionic start myApp sidemenu
+    $ ionic platform add android
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Ionic: lancer en local
+
+    !console
+    $ ionic serve -l
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Crosswalk sur ionic
+
+    !console
+    $ ionic browser add crosswalk
 
 .fx: extra-large
 
