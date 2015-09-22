@@ -173,7 +173,8 @@ Dans index.html, ajouter:
 # Ajouter un plugin
 
     !console
-    $ plugman --platform android --project .
+    $ plugman install --platform android
+        --project .
         --plugin cordova-plugin-camera
 
 ou
@@ -380,6 +381,51 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
 
 --------------------------------------------------------------------------------
 
+# Exercice: cas métier
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Capture d'image
+
+- soumission directe: champ `input file`
+- obtention du fichier en local: plugin camera
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Publier une app sur le PlayStore
+
+- créer un compte Google developer,
+- rédiger la fiche de l'app,
+- uploader une APK signé et aligné.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Publier une app sur l'AppStore
+
+- créer un compte Apple developer,
+- déclarer l'app,
+- obtenir les différents certificats,
+- packager avec Xcode et uploader.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Publier via des services tiers
+
+- PhoneGap
+- ionic.io
+- Fastlane (pour iOS)
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
 1. Introduction générale
 
 Différences entre application mobile, site web mobile et WebApp
