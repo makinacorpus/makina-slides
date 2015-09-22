@@ -58,7 +58,7 @@
 
 # Pharmakon
 
-φαρμακός: medecine, drug, poison
+φάρμακον: medecine, drug, poison
 
 **Any medecine is also a poison.**
 
