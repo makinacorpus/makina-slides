@@ -5,6 +5,12 @@
 
 --------------------------------------------------------------------------------
 
+# Introduction
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
 # App / WebApp / site mobile
 
 - **app** : binaire éxécuté par l'OS du téléphone
@@ -104,9 +110,13 @@
 
 --------------------------------------------------------------------------------
 
-# Installation
+# Installation / premiers pas
 
-Prérequis:
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Prérequis
 
 - Java
 - NodeJS
@@ -247,7 +257,11 @@ le cap de la boussole.
 
 # Bonnes pratiques
 
-**Utiliser un framework JS**
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Utiliser un framework JS
 
 - Angular
 - Backbone
@@ -257,9 +271,7 @@ le cap de la boussole.
 
 --------------------------------------------------------------------------------
 
-# Bonnes pratiques
-
-**Utiliser un framework CSS**
+# Utiliser un framework CSS
 
 - Bootstrap
 - Foundation
@@ -268,9 +280,7 @@ le cap de la boussole.
 
 --------------------------------------------------------------------------------
 
-# Bonnes pratiques
-
-**Utiliser un compilateur CSS**
+# Utiliser un compilateur CSS
 
 - LESS
 - SASS
@@ -279,9 +289,7 @@ le cap de la boussole.
 
 --------------------------------------------------------------------------------
 
-# Bonnes pratiques
-
-**Utiliser un gestionnaire de dépendances**
+# Utiliser un gestionnaire de dépendances
 
 - NPM
 - NPM + Bower
@@ -290,9 +298,7 @@ le cap de la boussole.
 
 --------------------------------------------------------------------------------
 
-# Bonnes pratiques
-
-**Utiliser un builder**
+# Utiliser un builder
 
 - Grunt
 - Gulp
@@ -301,9 +307,7 @@ le cap de la boussole.
 
 --------------------------------------------------------------------------------
 
-# Bonnes pratiques
-
-**Utiliser un gestionnaire de sources**
+# Utiliser un gestionnaire de sources
 
 - Git
 
@@ -311,9 +315,7 @@ le cap de la boussole.
 
 --------------------------------------------------------------------------------
 
-# Bonnes pratiques
-
-**Avoir des tests automatiques**
+# Avoir des tests automatiques
 
 - Jasmine (ou autre),
 - CasperJS ou Selenium,
@@ -323,11 +325,15 @@ le cap de la boussole.
 
 --------------------------------------------------------------------------------
 
-# Bonnes pratiques
-
-**Crosswalk**
+# Crosswalk
 
 Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4.3.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Ionic
 
 .fx: extra-large
 
@@ -381,7 +387,7 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
 
 --------------------------------------------------------------------------------
 
-# Exercice: cas métier
+# Les plugins
 
 .fx: extra-large
 
@@ -389,29 +395,202 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
 
 # Capture d'image
 
-- soumission directe: champ `input file`
+- soumission directe: champ `<input type="file" capture="camera" />`
 - obtention du fichier en local: plugin camera
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Publier une app sur le PlayStore
+# Système de fichier
 
-- créer un compte Google developer,
-- rédiger la fiche de l'app,
-- uploader une APK signé et aligné.
+- `cordova-plugin-file`,
+- FileSystem HTML5,
+- url en `cdvfile://`,
+- ngCordova fournit `$cordovaFile`.
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Publier une app sur l'AppStore
+# Système de fichier
+
+    !javascript
+    $cordovaFile.writeFile(
+        cordova.file.dataDirectory,
+        "file.txt", "text", true)
+    .then(function (success) {
+        // success
+    }, function (error) {
+        // error
+    });
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Zip
+
+https://github.com/MobileChromeApps/zip
+
+    !javascript
+    zip.unzip(zipLocalPath, toPath, callback)
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# SQLite
+
+- WebSQL standard HTML5,
+- https://github.com/brodysoft/Cordova-SQLitePlugin : pas de limite de taille, pas de soucis au nettoyage de cache.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Local notification
+
+- `https://github.com/katzer/cordova-plugin-local-notifications.git`,
+- ngCordova fournit `$cordovaLocalNotificationSource`.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Notification
+
+`https://github.com/Telerik-Verified-Plugins/PushNotification`
+
+Le backend doit pousser les notifications vers GCM et APN.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# InAppBrowser
+
+    !console
+    $ cordova plugin add cordova-plugin-inappbrowser
+
+et on peut ouvrir des pages externes avec:
+
+    !javascript
+    cordova.InAppBrowser.open(url);
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Les tests
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Tests unitaires
+
+    !console
+    $ npm install gulp-jasmine
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Tests unitaires
+
+    !javascript
+    var jasmine = require('gulp-jasmine');
+     
+    gulp.task('default', function () {
+        return gulp.src('tests/test.js')
+            .pipe(jasmine());
+    });
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Robotframework
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Cas métier
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# La publication
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Les icons et splashcreens
+
+    !console
+    $ ionic resources
+
+--------------------------------------------------------------------------------
+
+# Signature Android
+
+- créer un keystore (avec keytool ou le studio),
+- ajouter un fichier `./platforms/android/ant.properties`:
+
+    key.store=/chemin/vers/le/keystore
+    key.alias=la_clef
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Release
+
+    !console:
+    $ cordova build --release
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Publier l'app sur le PlayStore
+
+- créer un compte Google developer,
+- rédiger la fiche de l'app,
+- uploader l'APK signé.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Préparer la fiche sur l'AppStore
 
 - créer un compte Apple developer,
 - déclarer l'app,
 - obtenir les différents certificats,
 - packager avec Xcode et uploader.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# XCode
+
+- importer le projet XCode généré dans `./platforms/ios`,
+- saisir manuellement la target version (5.1.1 alors que la valeur minimale proposée est 6.0),
+- puis Products / Archive pour produire l'archive.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Mises en garde pour XCode
+
+On doit valider régulièrement les notifications sur le compte AppleDev, sinon la publication est bloquée.
 
 .fx: extra-large
 
@@ -424,38 +603,5 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
 - Fastlane (pour iOS)
 
 .fx: extra-large
-
---------------------------------------------------------------------------------
-1. Introduction générale
-
-Différences entre application mobile, site web mobile et WebApp
-Introduction aux cross plate-formes mobiles
-Avantages du développement mobile multiplate-formes
-
-2. PhoneGap
-
-Présentation générale
-Architecture
-Langages de programmation
-APIs PhoneGap
-Installation de l'environnement de développement pour Android
-Installation de l'environnement de développement pour iOS
-
-3. HTML5, Responsive Web Design et expérience utilisateur
-
-HTML5 / CSS3
-RWD (Media-Queries...)
-Expérience utilisateur
-
-4. PhoneGap avancée
-
-Application 1 : Utilisation de SQLite et Jquery mobile dans PhoneGap
-Application 2 : Géolocalisation et affichage de la position de l'utilisateur sur Google Maps / OpenStreet Map (Leaflet JS)
-Application 3 : Consommation d'un WS Service PHP REST / JSON
-
-5. PhoneGap : une plate-forme extensible ?
-
-À travers des bibliothèques JavaScript disponible
-À travers des plugins en natif
 
 --------------------------------------------------------------------------------
