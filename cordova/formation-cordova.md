@@ -5,6 +5,44 @@
 
 --------------------------------------------------------------------------------
 
+# Plan
+
+- Introduction
+    - App, WebApp ou site mobile
+    - Application hybride ou native
+    - PhoneGap ou Cordova ?
+    - Le principe
+    - Les plugins officiels
+- Installation / premiers pas
+    - Prérequis
+    - Installation
+    - Générer une app simple
+    - Débugger
+- Bonnes pratiques
+    - Les bonnes pratiques front-end
+    - Gestionnaire de sources
+    - Crosswalk
+- Ionic
+    - Installation
+    - Utiliser les outils du client
+    - La grille CSS et les composants
+    - L'API
+- Utilisation des plugins
+    - camera
+    - file
+    - local notification
+    - push notification
+    - InAppBrowser
+    - SQLite
+- Tests
+    - tests unitaires
+    - tests d'acceptance
+- Publication
+    - Google PlayStore
+    - AppStore
+
+--------------------------------------------------------------------------------
+
 # Introduction
 
 .fx: extra-large
@@ -198,7 +236,7 @@ ou
 
 # Débugger
 
-Débugging front: **inspecteur Chrome**.
+Débugging front: **inspecteur Chrome** chrome://inspect/#devices
 
 Débugging système:
 
@@ -471,12 +509,18 @@ Le backend doit pousser les notifications vers GCM et APN.
 # InAppBrowser
 
     !console
-    $ cordova plugin add cordova-plugin-inappbrowser
+    $ cordova plugin add
+        cordova-plugin-inappbrowser
 
 et on peut ouvrir des pages externes avec:
 
     !javascript
-    cordova.InAppBrowser.open(url);
+    cordova.InAppBrowser.open(url, "_system");
+
+ou:
+
+    !html
+    <a href="..." target="_system">
 
 .fx: extra-large
 
@@ -491,7 +535,9 @@ et on peut ouvrir des pages externes avec:
 # Tests unitaires
 
     !console
-    $ npm install gulp-jasmine
+    $ npm install jasmine-core karma
+        karma-chrome-launcher karma-jasmine
+        --save-dev
 
 .fx: extra-large
 
@@ -500,14 +546,50 @@ et on peut ouvrir des pages externes avec:
 # Tests unitaires
 
     !javascript
-    var jasmine = require('gulp-jasmine');
-     
-    gulp.task('default', function () {
-        return gulp.src('tests/test.js')
-            .pipe(jasmine());
+    module.exports = function(config){
+      config.set({
+        basePath : './',
+        files : [
+          'www/lib/ionic/js/ionic.bundle.js',
+          'www/lib/angular-mocks/angular-mocks.js',
+          'www/js/app.js',
+          'www/js/controllers.js',
+          'www/js/app_test.js'
+        ],
+        autoWatch : true,
+        frameworks: ['jasmine'],
+        browsers : ['Chrome'],
+        plugins : [
+                'karma-chrome-launcher',
+                'karma-jasmine'
+                ],
+      });
+    };
+
+--------------------------------------------------------------------------------
+
+# Tests unitaires
+
+    !javascript
+    describe('MainCtrl', function() {
+    var controller, scope;
+
+    beforeEach(module('starter'));
+    beforeEach(module('starter.controllers'));
+
+    beforeEach(inject(function($controller, $rootScope) {
+        scope = $rootScope.$new();
+        controller = $controller('AppCtrl', {
+            $scope: scope
+        });
+    }));
+
+    it('should have scope to be defined', function() {
+        expect(controller).toBeDefined();
     });
 
-.fx: extra-large
+});
+
 
 --------------------------------------------------------------------------------
 
