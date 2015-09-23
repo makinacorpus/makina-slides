@@ -572,28 +572,35 @@ ou:
 
     !javascript
     describe('MainCtrl', function() {
-    var controller, scope;
+        var controller, scope;
 
-    beforeEach(module('starter'));
-    beforeEach(module('starter.controllers'));
+        beforeEach(module('starter'));
+        beforeEach(module('starter.controllers'));
 
-    beforeEach(inject(function($controller, $rootScope) {
-        scope = $rootScope.$new();
-        controller = $controller('AppCtrl', {
-            $scope: scope
+        beforeEach(inject(function($controller, $rootScope) {
+            scope = $rootScope.$new();
+            controller = $controller('AppCtrl', {
+                $scope: scope
+            });
+        }));
+
+        it('should have scope to be defined', function() {
+            expect(controller).toBeDefined();
         });
-    }));
 
-    it('should have scope to be defined', function() {
-        expect(controller).toBeDefined();
     });
-
-});
 
 
 --------------------------------------------------------------------------------
 
 # Robotframework
+
+    !console
+    $ pip install robotframework
+    $ pip install robotframework-selenium2library
+    $ pip install robotframework-debuglibrary
+
+ChromeDriver http://chromedriver.storage.googleapis.com/index.html?path=2.19/
 
 .fx: extra-large
 
@@ -615,6 +622,8 @@ ou:
 
     !console
     $ ionic resources
+
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
