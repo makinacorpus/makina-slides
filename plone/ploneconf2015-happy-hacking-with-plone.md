@@ -25,6 +25,7 @@
 # The users
 
 <img src="img/users.jpg" width="100%" />
+<p style="font-size: 16px">from "Les Vacances du Petit Nicolas" by Laurent Tirard</p>
 
 .fx: extra-large
 
@@ -48,7 +49,7 @@
 
 --------------------------------------------------------------------------------
 
-# Let's retaliate
+# We retaliate
 
 <img src="img/nuclear-plant.jpg" width="100%" />
 
@@ -103,6 +104,96 @@ It must be **provided as a tool**.
 
 # The Plone Theming editor!!
 
+Already a "hacking" tool:
+
+**non-Plone experts can change the entire theme**.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Diazo theory
+
+**We Write XSLT, So You Don't Have To**
+
+<img src="img/diazo-1.png" height="100%" />
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Diazo reality
+
+**Guess what? I am writing tons of XSLT!!**
+
+<img src="img/diazo-2.png" height="100%" />
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# What we need
+
+<img src="img/diazo-3.png" height="100%" />
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Content-to-content 
+
+On-the-fly content changes with `<before/>` and `<after/>`.
+
+    !xml
+    <before css:content="#content-core">
+        <a href="mailto:contact@diazo.org">
+            Ask for help
+        </a>
+    </before>
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Content-to-content 
+
+On-the-fly content insertion.
+
+    !xml
+    <before css:content-children="#main">
+        <include css:content="#breadcrumbs" />
+    </before>
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Content-to-content 
+
+On-the-fly remote content insertion.
+
+    !xml
+    <before css:content-children="#main">
+        <include href="/news"
+            css:content="#breadcrumbs" />
+    </before>
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# We want more 
+
+- create our own chuncks of content
+- implement our own scripts
+
+with basic knowledge of **HTML and Python**.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Rapido 
 
 
 .fx: extra-large
