@@ -36,8 +36,6 @@
 <video src="video/users.mp4" poster="none.jpg" width="100%" controls="true"></video>
 <p style="font-size: 16px">from "Les Vacances du Petit Nicolas" by Laurent Tirard</p>
 
-.fx: extra-large
-
 --------------------------------------------------------------------------------
 
 # The conflict
@@ -85,10 +83,12 @@ It must be **provided as a tool**.
 
 --------------------------------------------------------------------------------
 
-# A hacking tool
+# A hacking tool...
 
 - to change or add whatever we want in our Plone site
 - through a modern and pleasant web interface
+
+# ... not a hackable system
 
 .fx: extra-large
 
@@ -114,7 +114,7 @@ Already a "hacking" tool:
 
 # Diazo theory
 
-**We Write XSLT, So You Don't Have To**
+**"We Write XSLT, So You Don't Have To"**
 
 <img src="img/diazo-1.png" height="100%" />
 
@@ -187,14 +187,67 @@ On-the-fly remote content insertion.
 - create our own chuncks of content
 - implement our own scripts
 
-with basic knowledge of **HTML and Python**.
+## with basic knowledge of **HTML and Python**
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Rapido 
+# Rapido
 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# It lives in the theme 
+
+- Editable **through the Plone interface**...
+- ...or **in the sources**.
+- We use **Diazo** to inject it in Plone.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Dead simple 
+
+- no ZCA stuff,
+- no ZPT (or any templating language),
+- no JBOT,
+
+## Just HTML and Python
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Demo #1
+
+##Simple form
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Demo #2
+
+##Create records
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Demo #3
+
+##REST backend
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Demo #4
+
+##Mosaic
 
 .fx: extra-large
 
