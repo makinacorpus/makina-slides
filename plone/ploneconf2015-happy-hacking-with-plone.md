@@ -221,48 +221,68 @@ On-the-fly remote content insertion.
 
 --------------------------------------------------------------------------------
 
-# Demo #1
-
-##Simple form
+# Demo
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Demo #2
+# What do we get in our context?
 
-##Create records
-
-.fx: extra-large
-
---------------------------------------------------------------------------------
-
-# Demo #3
-
-##REST backend
+- `context.app`
+- `context.request`
+- `context.portal`
+- `context.content`
+- `context.api` (the Plone API!!)
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Demo #4
+# Is it secure?
 
-##Mosaic
+Python scripts are executed by `zope.security.untrustedpython`.
+
+All the regular security stack is applied, like:
+
+- current user privileges,
+- CSRF policy (`@PostOnly` for instance).
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-Montrer un super chateau de sable.
-Users want to play.
-Montrer comment les enfants le cassent (Petit Nicolas)
-montrer ce qu'on a fait: une centrale nucléaire
-That's solid, but nobody wants to play with a nuclear plant (if some wants, they are most likely terrorists)
-A solution is often its own poison.
-montrer la solution: un chateau gonflable (solid, we can play with, does not attract terrorists). But that's a metaphor.
-Hackability is not flaw, it is a feature.
-It needs to be provided as a tool.
-(Montrer la ZMI: it has frameset!! who ever developed an app involving frameset ? parler des digital native)
-Montrer rapido avec diazo: assez cool (ref IEEE 589.2 cool-level official measurement)
-(demo: un petit formualaire Do you want a Willy Waller 2006? How many Willy Waller  do you want ? + demo stupid captcha où on enlève l'ACTION du form avec diazo)
-puis montrer rapido dans mosaic
+# Battery included
+
+Rapido comes with a complete **REST API**.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Demo
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Battery included
+
+Rapido is **Mosaic compliant**.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Demo
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Thank you!
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
