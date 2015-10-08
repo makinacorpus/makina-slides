@@ -1695,7 +1695,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              1/15
+              1/20
             </aside>
           </footer>
         </div>
@@ -1726,7 +1726,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              2/15
+              2/20
             </aside>
           </footer>
         </div>
@@ -1758,7 +1758,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              3/15
+              3/20
             </aside>
           </footer>
         </div>
@@ -1792,7 +1792,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              4/15
+              4/20
             </aside>
           </footer>
         </div>
@@ -1820,7 +1820,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              5/15
+              5/20
             </aside>
           </footer>
         </div>
@@ -1854,7 +1854,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              6/15
+              6/20
             </aside>
           </footer>
         </div>
@@ -1888,7 +1888,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              7/15
+              7/20
             </aside>
           </footer>
         </div>
@@ -1923,7 +1923,7 @@ back a reference to the existing object.</p>
             </aside>
             
             <aside class="page_number">
-              8/15
+              8/20
             </aside>
           </footer>
         </div>
@@ -1958,7 +1958,7 @@ integers x</p>
             </aside>
             
             <aside class="page_number">
-              9/15
+              9/20
             </aside>
           </footer>
         </div>
@@ -1991,7 +1991,7 @@ integers x</p>
             </aside>
             
             <aside class="page_number">
-              10/15
+              10/20
             </aside>
           </footer>
         </div>
@@ -2036,7 +2036,7 @@ integers x</p>
             </aside>
             
             <aside class="page_number">
-              11/15
+              11/20
             </aside>
           </footer>
         </div>
@@ -2075,7 +2075,7 @@ integers x</p>
             </aside>
             
             <aside class="page_number">
-              12/15
+              12/20
             </aside>
           </footer>
         </div>
@@ -2103,7 +2103,178 @@ integers x</p>
             </aside>
             
             <aside class="page_number">
-              13/15
+              13/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            
+            <section><p>On crée un fonction qui prends une liste vide comme paramètre par défaut :</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">add_to_shopping_list</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">shopping_list</span><span class="o">=</span><span class="p">[]):</span>
+<span class="gp">... </span>    <span class="n">shopping_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">shopping_list</span>
+<span class="gp">...</span>
+</pre></div>
+
+<p>On s'en sert pour créer une liste de livres à acheter :</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">reading_list</span> <span class="o">=</span> <span class="n">add_to_shopping_list</span><span class="p">(</span><span class="s">&quot;Python Cookbook&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_to_shopping_list</span><span class="p">(</span><span class="s">&quot;Node.js pour les nuls&quot;</span><span class="p">,</span> <span class="n">reading_list</span><span class="p">)</span>
+<span class="go">[&#39;Python Cookbook&#39;, &#39;Node.js pour les nuls&#39;]</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="index.md">index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            
+            <section><p>Puis pour nos courses d'alimentation :</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">alimentation</span> <span class="o">=</span> <span class="n">add_to_shopping_list</span><span class="p">(</span><span class="s">&quot;Camembert&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_to_shopping_list</span><span class="p">(</span><span class="s">&quot;Pain&quot;</span><span class="p">,</span> <span class="n">alimentation</span><span class="p">)</span>
+<span class="go">???</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="index.md">index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            
+            <section><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">alimentation</span>
+<span class="go">[&#39;Python Cookbook&#39;, &#39;Node.js pour les nuls&#39;, &#39;Camembert&#39;, &#39;Pain&#39;]</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="index.md">index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            
+            <section><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">add_to_shopping_list</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">reading_list</span><span class="o">=</span><span class="p">[]):</span>
+<span class="gp">... </span>    <span class="n">reading_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">reading_list</span>
+<span class="gp">... </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_to_shopping_list</span><span class="o">.</span><span class="n">__defaults__</span>
+<span class="go">([],)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_to_shopping_list</span><span class="o">.</span><span class="n">__defaults__</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;Java pour les nuls&#39;</span><span class="p">)</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="index.md">index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            
+            <section><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">add_to_shopping_list</span><span class="p">(</span><span class="s">&quot;Two Scoops of Django&quot;</span><span class="p">)</span>
+<span class="go">[&#39;Java pour les nuls&#39;, &#39;Two Scoops of Django&#39;]</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="index.md">index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/20
             </aside>
           </footer>
         </div>
@@ -2131,7 +2302,7 @@ integers x</p>
             </aside>
             
             <aside class="page_number">
-              14/15
+              19/20
             </aside>
           </footer>
         </div>
@@ -2159,7 +2330,7 @@ integers x</p>
             </aside>
             
             <aside class="page_number">
-              15/15
+              20/20
             </aside>
           </footer>
         </div>
@@ -2181,7 +2352,7 @@ integers x</p>
           <footer>
             
             <aside class="page_number">
-              /15
+              /20
             </aside>
           </footer>
         </div>
@@ -2275,14 +2446,44 @@ integers x</p>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">Portée</a></th>
+        <th><a href="#slide14">-</a></th>
         <td><a href="#slide14">14</a></td>
       </tr>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">Typage</a></th>
+        <th><a href="#slide15">-</a></th>
         <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">-</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">-</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">-</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Portée</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Typage</a></th>
+        <td><a href="#slide20">20</a></td>
       </tr>
       
       

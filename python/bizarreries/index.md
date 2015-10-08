@@ -127,6 +127,57 @@ est équivalent à :
 
 --------------------------------------------------------------------------------
 
+On crée un fonction qui prends une liste vide comme paramètre par défaut :
+
+
+    !pycon
+    >>> def add_to_shopping_list(item, shopping_list=[]):
+    ...     shopping_list.append(item)
+    ...     return shopping_list
+    ... 
+
+On s'en sert pour créer une liste de livres à acheter :
+
+    !pycon
+    >>> reading_list = add_to_shopping_list("Python Cookbook")
+    >>> add_to_shopping_list("Node.js pour les nuls", reading_list)
+    ['Python Cookbook', 'Node.js pour les nuls']
+
+--------------------------------------------------------------------------------
+
+Puis pour nos courses d'alimentation :
+
+    !pycon
+    >>> alimentation = add_to_shopping_list("Camembert")
+    >>> add_to_shopping_list("Pain", alimentation)
+    ???
+
+--------------------------------------------------------------------------------
+
+    !pycon
+    >>> alimentation
+    ['Python Cookbook', 'Node.js pour les nuls', 'Camembert', 'Pain']
+
+
+--------------------------------------------------------------------------------
+
+    !pycon
+    >>> def add_to_shopping_list(item, reading_list=[]):
+    ...     reading_list.append(item)
+    ...     return reading_list
+    ... 
+    >>> add_to_shopping_list.__defaults__
+    ([],)
+    >>> add_to_shopping_list.__defaults__[0].append('Java pour les nuls')
+
+--------------------------------------------------------------------------------
+
+    !pycon
+    >>> add_to_shopping_list("Two Scoops of Django")
+    ['Java pour les nuls', 'Two Scoops of Django']
+
+--------------------------------------------------------------------------------
+
 # Portée
 
 --------------------------------------------------------------------------------
