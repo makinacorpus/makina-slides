@@ -278,6 +278,8 @@ Rapido provides a **Plone Content Rules action**.
 
 Rapido is **Mosaic compliant**.
 
+(but it does not depend on it)
+
 .fx: extra-large
 
 --------------------------------------------------------------------------------
