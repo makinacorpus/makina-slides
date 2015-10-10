@@ -268,6 +268,14 @@ Rapido comes with a complete **REST API**.
 
 # Battery included
 
+Rapido provides a **Plone Content Rules action**.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Battery included
+
 Rapido is **Mosaic compliant**.
 
 .fx: extra-large
