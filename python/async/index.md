@@ -1,24 +1,37 @@
 # Démystifier les entrées/sorties asynchrones
 
-La programmation basée sur les entrées/sorties asynchrones en Python : cas d'utilisations, fonctionnement interne, contraintes et styles de programmation.
+La programmation basée sur les entrées/sorties asynchrones en Python : cas
+d'utilisations, fonctionnement interne, contraintes et styles de programmation.
+
+![](img/petit_dej.jpg)
 
 ---
 
 # CPU-bound
 
-Calculs bruts, encodage de données, etc. **→ l'asynchrone ne sert à rien**
+Temps d'exécution limité par le processeur.
 
-![](img/lager.jpg)
+Calculs bruts, encodage de données, etc.
 
-Pour aller plus vite, optimiser les algorithmes, rajouter des processus, etc.
+**↪ l'asynchrone ne sert à rien**
+
+Pour aller plus vite :
+
+ * optimiser les algorithmes
+ * rajouter des processus
 
 ---
 
 # I/O bound
 
-Requêtes base de données, services REST externes, fork de processus externes. **→ l'asynchrone peut être utile**
+Temps d'exécution limité par les entrées/sorties
 
-![](img/stout-beer.jpg)
+ * requêtes base de données
+ * services REST externes
+ * fork de processus externes
+ * accès au système de fichiers
+
+**↪ l'asynchrone peut être utile**
 
 ---
 
@@ -38,7 +51,7 @@ Nos processus passent leur temps à attendre ? Plus assez d'espace (mémoire) po
 
 Nos processus travaillent ?
 
-**↪ Les passer en asynchrone ne va pas aider...**
+**↪ Les passer en asynchrone ne va pas aider.**
 
 On peut par contre envisager d'externaliser ce travail pour les passer en asynchrone.
 
@@ -163,7 +176,7 @@ Enregistrement des handlers :
 
 ---
 
-# Callbacks en Python
+# Callbacks
 
     !python
     class MainHandler(tornado.web.RequestHandler):
@@ -197,7 +210,7 @@ Enregistrement des handlers :
 
 ---
 
-# Coroutines en Python
+# Coroutines
 
     !python
     class MainHandler(tornado.web.RequestHandler):
@@ -225,7 +238,7 @@ Enregistrement des handlers :
 
 ---
 
-# Parallélisme en Python
+# Parallélisme
 
     !python
     class MainHandler(tornado.web.RequestHandler):
@@ -256,15 +269,30 @@ Enregistrement des handlers :
 
 ---
 
-# async/await à partir de Python 3.5
+# Depuis Python 3.5 : async/await
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 ---
 
-# Exemple : Circus
+# Cas d'utilisation réel 1 : Circus
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 ---
 
-# Exemple : THR
+# Cas d'utilisation réel 2 : THR
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 ---
 
@@ -274,10 +302,11 @@ Quand utiliser de l'asynchrone ?
 
   1. le traitement des requêtes est ralenti par l'accès à des ressources externes : base de données, service externe, connexion persistante avec le navigateur, etc.
   2. pas assez de mémoire pour simplement rajouter des processus ou des threads
+  3. On veut éviter les threads et les mécanismes d'exclusion mutuelle qui vont avec
 
 Comment coder en asynchrone ?
 
-  * utiliser une plateforme ou une bibliothèque faite pour ça
+  * utiliser une plateforme ou une bibliothèque faite pour ça (Tornado, Twisted, asyncio, etc.)
   * callbacks
   * generateurs
   * async/await
