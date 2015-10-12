@@ -271,28 +271,48 @@ Enregistrement des handlers :
 
 # Depuis Python 3.5 : async/await
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    !py3
+    class MainHandler(tornado.web.RequestHandler):
+
+        async def get(self):
+            http_client = tornado.httpclient.AsyncHTTPClient()
+            cursor, response = await tornado.gen.multi([
+                self.application.db.execute('SELECT 42, pg_sleep(0.300)'),
+                http_client.fetch('http://127.0.0.1:8000/')
+            ])
+            db_value = cursor.fetchone()[0]
+            json_data = json.loads(response.body.decode())
+            result = db_value - json_data['value']
+            self.write("Result: %s" % result)
+            self.finish()
 
 ---
 
-# Cas d'utilisation réel 1 : Circus
+# Cas d'utilisation réel 1 : [Circus](http://circus.readthedocs.org/)
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Passage en asynchrone pour gérer les arrêts propres de manière non-bloquante.
+
+    !py
+    @gen.coroutine
+    def _stop_watchers(self, close_output_streams=False,
+                       watcher_iter_func=None, for_shutdown=False):
+        if watcher_iter_func is None:
+            watchers = self.iter_watchers(reverse=False)
+        else:
+            watchers = watcher_iter_func(reverse=False)
+        yield [w._stop(close_output_streams, for_shutdown)
+               for w in watchers]
+
+
 
 ---
 
-# Cas d'utilisation réel 2 : THR
+# Cas d'utilisation réel 2 : [THR](http://thr.readthedocs.org/)
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-no sea takimata sanctus est Lorem ipsum dolor sit amet.
+* nombreuses connections simultanées à la prise de poste des prévisionistes
+* traitement des requêtes parfois lent
+* THR utilise Tornado pour fournir un frontal asynchrone devant une application Django classique
+
 
 ---
 
@@ -302,11 +322,11 @@ Quand utiliser de l'asynchrone ?
 
   1. le traitement des requêtes est ralenti par l'accès à des ressources externes : base de données, service externe, connexion persistante avec le navigateur, etc.
   2. pas assez de mémoire pour simplement rajouter des processus ou des threads
-  3. On veut éviter les threads et les mécanismes d'exclusion mutuelle qui vont avec
+  3. on veut éviter les threads et les mécanismes d'exclusion mutuelle qui vont avec
 
 Comment coder en asynchrone ?
 
-  * utiliser une plateforme ou une bibliothèque faite pour ça (Tornado, Twisted, asyncio, etc.)
+  * utiliser une bibliothèque faite pour ça
   * callbacks
   * generateurs
   * async/await
