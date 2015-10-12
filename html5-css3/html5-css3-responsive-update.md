@@ -1,61 +1,88 @@
+% Formation HTML5 / CSS3
+% Emmanuelle Helly, intégratrice chez Makina Corpus
+
 # HTML5 / CSS3
 
- 28-29 avril 2015
- CNFPT
+ 6-8 octobre 2015
+
 
 ## Présentation
 
 **Emmanuelle Helly**
 
 * Intégratrice HTML/CSS depuis 2008
-* Plone, Drupal
+* Plone, Drupal, Django
 * emmanuelle.helly@makina-corpus.net
 
 ----
 
-# Jour 1 : HTML5 / CSS3
+# Partie 1 : HTML5
 
-## HTML5
+* Intro : le _WorldWideWeb_, les outils de développement web
 
-* _Intro : le WorldWideWeb_
+## La structure
+
 * Doctype
-* Sémantique
-* Formulaires
+* Nouvelles balises sémantiques
+
+## Les Media
+
 * Media (figure, audio, video)
-* Canvas et SVG
-* Drag & Drop
-* Localstorage
+* Intégrer un SVG
+
+## Les formulaires
+
+* Types de champs
+* Attributs
+
+.fx: smaller
 
 ----
 
-## CSS3
+# Partie 2 : CSS3
 
-* Mise en forme
-* Sélecteurs
-* Unités relatives et absolues
+## Rappels CSS
+
+* Sélecteurs, hiérarchie des styles
+* Comportement des éléments
+* Modèle de boite
 * Positionnement
-* Mise en page (Grid layout)
-* Media-queries
-* Transformations
-* Effets et animations
+
+## La forme
+
+* Mise en forme CSS3
+* Polices embarquées (font-face)
+
+## Disposition et Grille
+
+* Disposition du texte : Multicolonne
+* Méthodes : float, inline-block, table-cell, flexbox
+* Grid Flexbox
+
+.fx: smaller
 
 ----
 
-# Jour 2 : Bootstrap, LessCSS
+# Partie 3 : Responsive design
 
-## BOOTSTRAP 3
+* Introduction
+* Media-queries
+* Grille responsive
+* Outils de développement
 
-* Mise en forme du contenu : texte, tableaux, formulaires, boutons, images et la mise en page
-* Mise en page avec la grille adaptative de Bootstrap : pour des sites Responsive Web Design
-* Composants Bootstrap : barres de navigation, pagination, boutons, etc.
+----
 
-## LessCSS
+# Partie 4 : Frameworks
 
-* variables
-* mixins
-* heritages
-* pseudo-classes
-* importation de fichier
+* Découverte framework avec ou sans UI
+* Étude de cas avec Bootstrap3
+
+# _Bonus :_ SASS ou LessCSS
+
+* Avantages d'un pre-compileur
+* Variables et imbrications
+* Fonctions et imports
+* Installation et utilisation
 
 ----
 
@@ -78,8 +105,6 @@
 * Fonctionne par groupes de travail
 
 [w3.org/Consortium](http://www.w3.org/Consortium/)
-
-.fx: larger
 
 ----
 
@@ -113,7 +138,7 @@ Scission au sein du W3C : le **WHATWG** (Web Hypertext Application Technology Wo
 * Navigateur : **éviter IE** !! Firefox ou Chrome, et leurs plugins d'inspection de code (voir [Liste de puglins](http://makina-corpus.com/blog/metier/2013/extensions-firefox-pour-le-developpement-web))
 * Test et validation
     * [validator.w3.org](http://validator.w3.org/) respect des standards
-    * [opquast.com](http://opquast.com/fr/) pour la qualité du code, l'accessibilité
+    * [opquast.com](http://opquast.com/fr/) pour la qualité du code, l'accessibilité : module Firefox en cours de refonte
 * Documentation
     * officielle [w3c.org/TR/html5](http://www.w3.org/TR/html5/)
     * compréhensible [developer.mozilla.org](https://developer.mozilla.org/fr/)
@@ -124,17 +149,15 @@ Scission au sein du W3C : le **WHATWG** (Web Hypertext Application Technology Wo
 
 ----
 
-## Sommaire
+# Sommaire
 
-* Doctype
-* Sémantique
+* Structure : Doctype et balises sémantiques
+* Media (figure, audio, video, SVG)
 * Formulaires
-* Media (figure, audio, video)
-* Canvas et SVG
-* Drag & Drop
-* Localstorage
 
 ----
+
+# Structure
 
 ## HTML5, standard depuis le 28 octobre 2014
 
@@ -180,7 +203,7 @@ Code plus clair, page mieux structurée sémantiquement : un meilleur référenc
 
 <!-- Voir [tinytypo.tetue.net](http://tinytypo.tetue.net/tinytypo.html) -->
 
---- 
+---
 
 ## Exemple 2 : Structure sémantique d'une page
 
@@ -196,7 +219,7 @@ Code plus clair, page mieux structurée sémantiquement : un meilleur référenc
         <main role="main">
             <article>
                 <section>
-                  <h1>éléphants de forêt</h1>
+                  <h1>Éléphants de forêt</h1>
                   <p>Dans cette section, nous discutons des éléphants de forêt moins connus.
                        Ce paragraphe continue…</p>
                   <section>
@@ -206,7 +229,7 @@ Code plus clair, page mieux structurée sémantiquement : un meilleur référenc
                     <figure><img src="__mon__url__" /></figure>
                     <p>Texte</p>
                   </section>
-                </section>
+                </section>2
             </article>
             <aside>
             … barre latérale …
@@ -226,42 +249,12 @@ Peuvent être à l'intérieur d'un article.
 
 ----
 
-## Microdatas
-
-Voir [schema.org](http://schema.org/docs/gs.html)
-
-    !html
-    <div itemscope itemtype="http://schema.org/Person">
-        <div itemprop="name"><strong>Boris Vian</strong></div>
-        <div itemscope 
-            itemtype="http://schema.org/Organization">
-        <a itemprop="url" href="www.letabou.com">
-          <span itemprop="name">le Tabou</span></a>
-        </div>
-        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-          <div itemprop="streetAddress">le Tabou<br>
-                Saint Germain des Prés</div>
-          <div>
-            <span itemprop="postalCode">75006</span>
-            <span itemprop="addressLocality">Paris</span>
-          </div>
-          <div itemprop="addressCountry">France</div>
-        </div>
-        <div itemprop="telephone">0149687368</div>
-    </div>
-
-Autres implémentations : microformats, RDFa
-
-.fx: smaller
-
-----
-
 # Media et éléments embarqués
 
 ## `<embed>`
 
-* Pour embarquer une application externe (un plugin par exemple). 
-* Déjà existants en HTML4 : 
+* Pour embarquer une application externe (un plugin par exemple).
+* Déjà existants en HTML4 :
 
     * `<object>`
     * `<iframe>` : Peut embarquer un autre site, un éditeur de texte riche ou une carte par exemple.
@@ -272,16 +265,8 @@ Autres implémentations : microformats, RDFa
 
     !html
     <audio src="./donjon-crom.mp3" controls></audio>
-    <video src="video.ogg" controls 
+    <video src="video.ogg" controls
         poster="video.jpg" width="640" height="480">
-
-### Formats audio et vidéo / navigateurs
-
-* ogg -> Chrome, Firefox, Opera
-* webm -> Chrome, Firefox, Opera
-* MPEG-4/H.264 -> Chrome, Firefox, Opera, Safari, IE
-
-### Code
 
 On peut inclure plusieurs formats de media
 
@@ -292,9 +277,14 @@ On peut inclure plusieurs formats de media
         <source src="video.mp4" />
     </video>
 
-### Exercice
+### Formats audio et vidéo / navigateurs
 
-Essayer la balise `<video>` avec différentes sources, en ouvrant la page dans différents navigateurs.
+* ogg -> Chrome, Firefox, Opera
+* webm -> Chrome, Firefox, Opera
+* MPEG-4/H.264 -> tous les navigateurs sauf IE8 et Opera mini
+* MP3 reconnu par tous les navigateurs
+
+Voir sur [CanIUse](http://caniuse.com/#search=video%20format)
 
 ----
 
@@ -303,17 +293,25 @@ Essayer la balise `<video>` avec différentes sources, en ouvrant la page dans d
 `src` est ignoré pour les user-agent supportant srcset.
 
     !html
-    <img src="img/eilean-donnan-castle-200.jpg" 
-      alt="Clock" 
-      srcset="img/eilean-donnan-castle-200.jpg 200w, img/eilean-donnan-castle-400.jpg 400w"
-      sizes="(min-width: 800px) 400px, 50vw" />
+    <img src="small.jpg"
+         srcset="large.jpg 1024w, medium.jpg 640w, small.jpg 320w"
+         sizes="(min-width: 360px) 33.3vw, (min-width: 980px) 980px, 100vw"
+         alt="A rad wolf">
 
-Si (min-width: 600px) :
+`sizes`
 
-* alors image de largeur 200px
-* sinon 50 % de la largeur viewport
+* Si (min-width: 360px) alors image de largeur 33.3% de la taille de la fenêtre
+* Si (min-width: 980px) alors l'image de largeur 980px de la taille de la fenêtre
+* sinon 100% de la largeur de la fenêtre
+
+`srcset` propose plusieurs fichiers correspondant à des largeurs différente.
+Le navigateur choisit le fichier en fonction de la taille de l'emplacement de l'image'.
 
 Fonctionne avec Chrome, et firefox à partir de la version 38.
+
+Liens utiles : [Balise img sur la doc Mozilla](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Img), [Responsive image community group](http://responsiveimages.org/)
+
+.fx: smaller
 
 ----
 
@@ -328,102 +326,6 @@ Permet d'illustrer et ajouter une légende à une image, un schéma.
     </figure>
 
 Peut contenir autre chose que des images : du code ou une vidéo par exemple.
-
-----
-
-# Formulaires
-
-## Nouveaux contrôles
-
-`<input>` de type text, mais aussi :
-
-* tel, url, email, search
-* date, time, number, range
-* color
-
-## Nouveaux attributs
-
-* placeholder
-* pattern
-* autocomplete
-* min, max, step (pour date, time, number et range)
-* list
-
---- 
-
-## Code
-
-Url avec placeholder
-
-    !html
-    <input type="url" name="url" placeholder="Votre site Web" />
-
-Range
-
-    !html
-    <input type="range" name="range" 
-        min="10" max="100" step="5" value="15"/>
-
-Pattern
-
-    !html
-    <input type="text" name="pattern" pattern="[a-z]{2}[0-9]{2}" />
-
-Liste
-
-    !html
-    <input type="text" name="ville" list="villes"/>
-    <datalist id="villes">
-        <option value="Albi">
-        <option value="Cahors">
-    </datalist>
-
-.fx: smaller
-
----
-
-## Exercice
-
-* Créez un formulaire avec les champs suivants : 
-    * Nom complet, 
-    * Téléphone, 
-    * Date de naissance, 
-    * Couleur préférée, 
-    * Ville (parmi quelques villes)
-
-[Exemple complet](https://github.com/numahell/html5-css3/blob/master/html/forms.html)
-
-----
-
-
-# Effets et 3D
-
-## CANVAS
-
-* surface de pixels contrôlés en JavaScript, API disponible
-* Fonctionnement en "boite noire"
-
-Le "Paint" du web
-
-    !html
-    <html>
-     <head>
-      <script type="application/x-javascript">
-        function draw() {
-         var canvas = document.getElementById("canvas");
-         var ctx = canvas.getContext("2d");
-
-         ctx.fillStyle = "rgb(200,0,0)";
-         ctx.fillRect (10, 10, 55, 50);
-        }
-      </script>
-     </head>
-     <body onload="draw()">
-       <canvas id="canvas" width="300" height="300"></canvas>
-     </body>
-    </html>
-
-.fx: smaller
 
 ----
 
@@ -447,27 +349,98 @@ Voir aussi [css-tricks.com/using-svg](http://css-tricks.com/using-svg/)
 
 ----
 
+## Exercice: bannière différente selon la définition d'écran
+
+* Insérez une bannière de taille différente selon la définition d'écran en utilisant srcset.
+* Insérez un logo en SVG
+
+----
+
+## CANVAS
+
+* Surface de pixels contrôlés en JavaScript, API disponible
+* Fonctionnement en "boite noire" : le **"Paint" du web**
+
 ## WebGL
 
-Un peu plus que bablutiant : de plus en plus de navigateurs le supportent, mais pas toujours les cartes vidéos.
+Prend de l'ampleur, mais non encore complètement [supporté par tous les navigateurs](http://rando.ecrins-parcnational.fr/fr/boucle-du-pigeonnier-dans-le-cirque-du-gioberney) ni les drivers vidéos.
 
-Voir [Les interfaces de demain](http://fr.slideshare.net/makinacorpus/petit-djeuner-html5-et-css3-les-interfaces-de-demain) pour plus de détails.
+* De très belles expérimentations sur [Chrome Experience](https://www.chromeexperiments.com/webgl)
+* Affichage 3D de randonnées dans l'application [Geotrek](http://geotrek.fr/), à voir sur [Rando Écrins](http://rando.ecrins-parcnational.fr/fr/boucle-du-pigeonnier-dans-le-cirque-du-gioberney)
+* Voir aussi [Les interfaces de demain](http://fr.slideshare.net/makinacorpus/petit-djeuner-html5-et-css3-les-interfaces-de-demain) pour plus de détails
 
 ## Flash ?
 
 Flash n'est plus supporté par les Iphone et Ipad, GNU/Linux et Android depuis Jelly Bean. Oubliez-le.
 
+.fx: smaller
+
 ----
 
-# Application web en HTML5
+# Formulaires
 
-## Drag&Drop
+## Nouveaux contrôles
 
-## Local Stockage
+`<input>` de type text, mais aussi :
 
-## File API
+* tel, url, email, search
+* date, time, number, range
+* color
 
-## Server-Sent Events
+## Nouveaux attributs
+
+* placeholder
+* pattern
+* autocomplete
+* min, max, step (pour date, time, number et range)
+* list
+
+---
+
+## Code
+
+Url avec placeholder
+
+    !html
+    <input type="url" name="url" placeholder="Votre site Web" />
+
+Range
+
+    !html
+    <input type="range" name="range"
+        min="10" max="100" step="5" value="15"/>
+
+Pattern
+
+    !html
+    <input type="text" name="pattern" pattern="[a-z]{2}[0-9]{2}" />
+
+Liste
+
+    !html
+    <input type="text" name="ville" list="villes"/>
+    <datalist id="villes">
+        <option value="Albi">
+        <option value="Cahors">
+    </datalist>
+
+.fx: smaller
+
+---
+
+## Exercice
+
+Créez un formulaire avec les champs suivants :
+
+* Nom complet,
+* Téléphone,
+* Date de naissance,
+* Couleur préférée,
+* Ville (parmi quelques villes)
+
+Utilisez Chrome (ou Chromium) et Firefox pour afficher ce formulaire.
+
+[Exemple complet](https://github.com/numahell/html5-css3/blob/master/html/forms.html)
 
 ----
 
@@ -475,57 +448,25 @@ Flash n'est plus supporté par les Iphone et Ipad, GNU/Linux et Android depuis J
 
 ----
 
-## Sommaire
+# Sommaire
 
-* Mise en forme
-* Sélecteurs
-* Unités relatives et absolues
+## Rappels CSS
+
+* Sélecteurs, hiérarchie des styles
+* Comportement des éléments
+* Modèle de boite
 * Positionnement
-* Mise en page (Grid layout)
-* Media-queries
-* Transformations
-* Effets et animations
+
+## La forme
+
+* Mise en forme CSS3
+* Polices embarquées (font-face)
 
 ----
 
-# Mise en forme
+# Compatibilité
 
-## Propriétés
-
-* `background-size`, `border-radius`, `box-shadow`, `opacity`, 
-* dégradés
-* arrière-plan multiples
-* transparence pour la couleur de fond
-
-[css3generator.com](http://css3generator.com/)
-
-----
-
-## Font-Face
-
-    !css
-    /* roboto bold */
-    @font-face {
-        font-family: 'roboto';
-        src: url('roboto/Roboto-Bold-webfont.eot');
-        src: url('roboto/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-             url('roboto/Roboto-Bold-webfont.woff') format('woff'),
-             url('roboto/Roboto-Bold-webfont.ttf') format('truetype'),
-             url('roboto/Roboto-Bold-webfont.svg#robotobold') format('svg');
-        font-weight: bold;
-        font-style: normal;
-    }
-
-* Trouvez des fonts sur [fontsquirrel.com](http://www.fontsquirrel.com/)
-* Possibilité de faire un import des fonts depuis [www.google.com/fonts](http://www.google.com/fonts/)
-
-Attention à la qualité des glyphes, peuvent être mal positionnés sur la ligne de base.
-
-----
-
-## Extensions spécifiques des navigateurs
-
-Les navigateurs principaux
+## Préfixes des navigateurs
 
 <table border=1>
     <tbody>
@@ -547,6 +488,8 @@ Les navigateurs principaux
         </tr>
     </tbody>
 </table>
+
+En général les frameworks implémentent les préfixes.
 
 ----
 
@@ -605,21 +548,45 @@ première lettre, première ligne
 
 ----
 
+## Hiérarchie des styles
+
+Vers le plus important
+
+Implémentation du navigateur > Styles <link ...> > Styles définis dans <styles> dans la page HTML > style défini dans la balise
+
+### Hiérarchie de sélecteurs
+
+sélecteur de classe > Sélecteur de balise > Sélecteur d'id
+
+----
+
+## Exercice
+
+Déroulez le tutoriel [flukeout.github.io](http://flukeout.github.io/)
+
+----
+
 # Unités
 
 ## Absolues
 
-* px : pour les supports écran
-* pt : pour les supports imprimés
+* `px` : pour les supports écran
+* `pt` : pour les supports imprimés
 
 ## Relatives
 
-* em, %
-* rem (root em), relative à la taille attibuée au document (nouveau !)
+* `em`, `%`
+* `rem` (root em), relative à la taille attibuée au document (nouveau !)
+
+## Bonne pratique
+
+Définir la taille de référence pour le `<body>`, puis définir les autres tailles en `em` ou `rem`
 
 ----
 
 # Positionnement
+
+## Absolute
 
     !css
     position: absolute;
@@ -629,14 +596,87 @@ première lettre, première ligne
 * L'élément sort du flux
 * Position relatif au document ou à l'élément parent le plus proche positionné en relatif
 
+## Fixed
+
+
+    !css
+    position: fixed;
+    top: 10%;
+    right: 20px;
+
+* L'élément sort du flux
+* Positionnement fixé par rapport à la partie visible du navigateur
+
+.fx: smaller
+
 ----
 
-# Mise en page
+# Mise en forme
+
+## Propriétés
+
+* `background-size`, `border-radius`, `opacity`,
+* `box-shadow` : [exemples](http://codepen.io/ericbutler555/pen/ogJdMg) [sur codepen](http://codepen.io/thomasjwicker/pen/jzbHt)
+* dégradés
+* arrière-plan multiples
+* transparence pour la couleur de fond
+
+[css3generator.com](http://css3generator.com/)
+
+----
+
+# Disposition
+
+## Flottant
+
+    #sidebar {
+        width: 33%;
+        float: left;
+    }
+    #content {
+        width: 76%;
+        float: left;
+    }
+
+## Hybride inline et block
+
+    #sidebar {
+        width: 33%;
+        display: inline-block;
+    }
+    #content {
+        width: 76%;
+        display: inline-block;
+    }
+
+.fx: smaller
+
+----
+
+## Comportement cellule de table
+
+    #sidebar {
+        width: 33%;
+        display: table-cell;
+    }
+    #content {
+        width: 76%;
+        display: table-cell;
+
+## Flexbox
+
+Nouveauté en CSS3.
+
+----
+
+# Mise en page en CSS3
 
 ## Flexbox
 
     !css
-    .flex { display: flex; }
+    .flex {
+        display: flex;
+    }
 
     !html
     <div class="flex">
@@ -646,7 +686,17 @@ première lettre, première ligne
 
 Supporté par les navigateurs modernes, mais l'implémentation est parfois différente. Fonctionnel mais à utiliser à bon escient.
 
-## Colonne
+[Toutes les directives flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
+Exemples de code : [système de grille](http://codepen.io/uxc/pen/xwxZZg), [Justify-content](http://codepen.io/chrisnager/pen/wBoXLE)
+
+Amusant : [Générateur de Mondrian](http://codepen.io/phantomesse/pen/KmxBI)
+
+----
+
+## Texte en colonne
+
+Plutôt pour le contenu que pour la disposition
 
     !css
     div {
@@ -660,6 +710,86 @@ Supporté par les navigateurs actuels en utilisant les préfixes (voir caniuse.c
 
 ----
 
+## La grille en CSS
+
+La grille, héritage du print (gouttière, colonnage)
+
+* Les avantages et les limites (ex : design très élaborés ne rentrent pas toujours dans une grille)
+* Comment penser son design en fonction d'une grille
+
+----
+
+## Font-Face
+
+    !css
+    /* roboto bold */
+    @font-face {
+        font-family: 'roboto';
+        src: url('roboto/Roboto-Bold-webfont.eot');
+        src: url('roboto/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+             url('roboto/Roboto-Bold-webfont.woff') format('woff'),
+             url('roboto/Roboto-Bold-webfont.ttf') format('truetype'),
+             url('roboto/Roboto-Bold-webfont.svg#robotobold') format('svg');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+* Trouvez des fonts sur [fontsquirrel.com](http://www.fontsquirrel.com/)
+* Possibilité de faire un import des fonts depuis [www.google.com/fonts](http://www.google.com/fonts/)
+
+Attention à la qualité des glyphes, peuvent être mal positionnés sur la ligne de base.
+
+----
+
+# TP Mise en page
+
+Mettre en page la page tp-mise-en-page.html qui contient
+
+* un entête
+* une barre latérale
+* le contenu
+* un pied de page
+
+À faire:
+
+1. Cherchez et corrigez les erreurs HTML
+1. Disposez la barre latérale à droite du contenu- La partie aside doit occuper 1/4 de la page, la section content 3/4
+1. Fixez la navigation en bas sur toute la largeur
+1. Dans le menu pied de page, chaque bloc doivent être côte à côte
+1. Changez la polices des titres avec google font.
+1. Responsive : Ne laisser les blocs cote à cote qu’à partir de 900px.
+
+.fx: smaller
+
+----
+
+# Partie 3 : Responsive design
+
+----
+
+# Sommaire
+
+* Introduction
+* Media-queries
+
+----
+
+# Introduction
+
+Quantité de modèles de smartphones, de version de Android, IOS ou Windows Phone, de navigateurs et leurs versions, surchargés par les opérateurs ...
+Impossible de tout couvrir.
+
+## Responsive vs site dédié
+
+Si le site web est une application métier, préférable de développer une application native, ou une version full mobile.
+
+## Organisation et contenu responsive
+
+* Organisation responsive : disposition varie en fonction de la définition d'écran
+* Contenu responsive : certains contenus peuvent être affichés ou non selon la définition d'écran
+
+----
+
 # Media-queries
 
     @media (min-width: 700px) and (orientation: landscape) {…}
@@ -667,38 +797,74 @@ Supporté par les navigateurs actuels en utilisant les préfixes (voir caniuse.c
 * Orientation (`portrait` ou `landscape`) et Localisation
 * Device api (`screen`, `print`, `tv`, )
 
+Importance de définir des points d'arrêt pertinents en fonction des terminaux les plus utilisés.
+
 ----
 
-# CSS animé
+## Approche mobile first
 
-## Transitions
-
-    a:hover {
-        transition color 200ms ease;
+    #sidebar {
+        padding: 15px;
+    }
+    @media (min-width: 700px) {
+        #sidebar {
+            width: 33%;
+            float: left;
+        }
+    }
+    @media (min-width: 1040px) {
+        #sidebar {
+            width: 25%;
+            float: left;
+        }
     }
 
-Sur les propriété `height`, `width`, `color`, `background`
+.fx: smaller
 
 ----
 
-## Transformations
+# Outils de développements
 
-Rotation, translations
+* Dimension des équipements (http://screensiz.es/phone)
+* Afficher différentes définitions [Responsinator](http://www.responsinator.com/) et [Responsive.is](http://responsive.is/typecast.com)
+* Mesurer le temps de chargement et poids des éléments
+* Équipements virtualisés : service Browserstack
+* Tester sur des équipements physiques
+
+## Autres ressources
+
+* [HTML Shiv](https://github.com/aFarkas/html5shiv) permet d'utiliser les balises HTML5 dans IE < 9
+* [Modernizr](https://modernizr.com/)
+* [Polyfill](https://remysharp.com/2010/10/08/what-is-a-polyfill)
+
+----
+
+# Partie 4 : Frameworks
 
 ----
 
-# TP Mise en page
+# Sommaire
 
-* Créer une page structurée
-* Ajouter un menu horizontal déroulant
-* Ajouter une image de fond positionnée
-* Responsive
-
----- 
-
-# Partie 3 : Bootstrap 3
+* Découverte framework avec ou sans UI
+* Étude de cas avec Bootstrap3
 
 ----
+
+# Frameworks
+
+## Sans UI
+
+* [SimpleGrid](http://getsimplegrid.com/)
+* [KNACSS](http://knacss.com/) par Raphaël Goetter et AlsaCreations
+
+## Avec UI et composants animés
+
+* [Bootstrap](http://getbootstrap.com/)
+* [Foundation](http://foundation.zurb.com/)
+
+----
+
+# Bootstrap 3
 
 ## Sommaire
 
@@ -742,9 +908,18 @@ Rotation, translations
 
 ----
 
-## TP Bootstrap
+## TP Bootstrap : Intégrer un design simple
 
-(voir fichiers)
+Reprendre le fichier `tp-mise-en-page.html`
+
+1.  Utilisez les classe Bootstrap pour mettre en oeuvre la grille
+2.  Utiliser le HTML de bootstrap pour les éléments media, rendre les
+    vignettes arrondies
+3.  Utiliser le HTML pour le formulaire, rendre le bouton “envoyer” vert
+    et “reset” rouge.
+4.  Créer un carousel
+
+Voir [les exemples](http://getbootstrap.com/getting-started/#examples) pour l'inspiration.
 
 [Exemples de parallaxe](http://www.alsacreations.com/tuto/lire/1417-zoom-sur-effet-parallaxe.html)
 
@@ -769,20 +944,13 @@ Rotation, translations
 ## Installer LessCSS
 
 * Dans windows : [winless.org](http://winless.org/)
-* Pour utiliser plus de fonctionnalités de nodejs : [nodejs.org](http://nodejs.org/download/)
-* [Installer nodejs sous Ubuntu / debian](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions)
+* Pour utiliser plus de fonctionnalités de nodejs : [nodejs.org](http://nodejs.org/)
+* [Installer nodejs sous Ubuntu / debian](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
+* [Installer nodejs à l'aide de nvm](https://github.com/creationix/nvm#install-script)
 
-Sur Ubuntu:
+Puis installer [LessCSS](http://lesscss.org/)
 
-    curl -sL https://deb.nodesource.com/setup | sudo bash -
-
-Installation du paquet:
-
-    sudo apt-get install -y nodejs
-
-Installer less
-
-    sudo npm install -g less
+    npm install -g less
 
 ----
 
@@ -868,25 +1036,6 @@ Les options
 
 ----
 
-# TP : un thème avec LessCSS et Bootstrap
-
-----
-
-## Intégrer un design simple
-
-1. Créer l'arborescence du projet
-1. Créer une structure de page d'accueil en utilisant les fonctionnalités de bootstrap. On doit retrouver les éléments suivants :
-
-    * Logo et nom du site
-    * Barre de navigation
-    * Diaporama
-    * Liste d'articles
-    * Complément d'information sous forme d'accordéon
-
-Voir [les exemples](http://getbootstrap.com/getting-started/#examples) pour l'inspiration.
-
-----
-
 ## Arborescence type d'un thème
 
     !console
@@ -921,91 +1070,6 @@ Compiler vos fichiers
 
 ----
 
-# Bonus
-
-----
-
-# Gulp, outil d'automatisation
-
-Met en place des tâches qui peuvent remplir plusieurs fonctions
-
-* automatiser la génération des fichiers css à partir des fichiers less,
-* minifier les CSS et les JS
-* ....
-
-## Installation
-
-Prérequis : installer nodejs
-
-Installer `gulp` globalement
- 
-    !console
-    npm install -g gulp
-
-Installer les dépendances du projet et les ajouter au fichier `package.json`
-
-    !console
-    cd /dossier/de/montheme
-    npm install --sav-dev gulp-less
-
-Lancer l'installation des paquets indiqués dans `package.json` :
-
-    !console
-    npm install
-
-.fx: smaller
-
-----
-
-## Initialisation
-
-Copier `gulpfile.js` dans le dossier de thème
-
-    !console
-    var gulp = require('gulp');
-    var less = require('gulp-less');
-    var rename = require('gulp-rename');
-    var notify = require('gulp-notify');
-    var minifyCSS = require('gulp-minify-css');
-    var dsource = "./src/";
-    var ddest = "./www/";
-
-    var lessfiles = [dsource+'less/styles.less'];
-    var lessfiles_watch = [dsource+'less/**/*.less'];
-
-    w = process.cwd();
-    styles = gulp.task(
-      'styles',
-      function() {
-        return gulp.src(lessfiles)
-        .pipe(less())
-        .pipe(rename("styles.css"))
-        .pipe(gulp.dest(ddest+'css/'))
-        .pipe(notify({message: 'Styles task complete'}))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(minifyCSS())
-        .pipe(gulp.dest(ddest+'css/'))
-      });
-
-
-.fx: smaller
-
-----
-
-## Usage
-
-    !console
-    gulp <nom_de_tache_définie>
-    gulp styles # compile les fichiers less et minifie les CSS
-
-## Resources
-
-* Site officiel [gulpjs](http://gulpjs.com/)
-* Tutoriel (en) sur [Site Point](http://www.sitepoint.com/introduction-gulp-js/)
-* Erreur courante [Erreur ENOSPC](http://stackoverflow.com/questions/16748737/grunt-watch-error-waiting-fatal-error-watch-enospc)
-
-----
-
 # Autres ressources
 
 ## Outils
@@ -1019,8 +1083,15 @@ Copier `gulpfile.js` dans le dossier de thème
 * [Codeopen](http://codepen.io)
 * [Codedrops](http://tympanus.net/codrops/)
 
+## Autres
+
+* [Font Awesome](http://fortawesome.github.io/Font-Awesome/icons/)
+
 
 ----
 
 # Questions ?
 
+----
+
+# Merci !
