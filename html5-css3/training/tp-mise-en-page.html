@@ -3,53 +3,22 @@
     <head>
         <meta charset="utf-8" />
         <title>Mon village</title>
-        <link rel="stylesheet" href="css/tp.css" />
+        <link rel="stylesheet" href="css/tp-mise-en-page.css" />
     </head>
     <body>
         <header>
             <h1>Mon village</h1>
-            <p class="tagline">Super village !</p>
+            <strong><p class="tagline">Super village !</p></strong>
+            <nav class="main-nav">
+                <ul class="navbar-nav">
+                    <li><a href="#">Lien 1</a></li>
+                    <li><a href="#">Lien 2</a></li>
+                    <li><a href="#">Lien 3</a></li>
+                    <li><a href="#">Lien 4</a></li>
+                </ul>
+            </nav>
         </header>
-        <nav class="main-nav">
-            <ul class="navbar-nav">
-                <li><a href="#">Lien 1</a>
-                    <ul>
-                        <li><a href="#">Lien 1</a></li>
-                        <li><a href="#">Lien 2</a></li>
-                        <li><a href="#">Lien 3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Lien 2</a>
-                    <ul>
-                        <li><a href="#">Lien 1</a></li>
-                        <li><a href="#">Lien 2</a></li>
-                        <li><a href="#">Lien 3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Lien 3</a>
-                    <ul>
-                        <li><a href="#">Lien 1</a></li>
-                        <li><a href="#">Lien 2</a></li>
-                        <li><a href="#">Lien 3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Lien 4</a>
-                    <ul>
-                        <li><a href="#">Lien 1</a></li>
-                        <li><a href="#">Lien 2</a></li>
-                        <li><a href="#">Lien 3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Lien 5</a>
-                    <ul>
-                        <li><a href="#">Lien 1</a></li>
-                        <li><a href="#">Lien 2</a></li>
-                        <li><a href="#">Lien 3</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <section id="content">
+        <main id="content">
             <h1>Dernières nouvelles</h1>
             <article>
                 <header>
@@ -111,7 +80,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis, est vel eleifend tempus, risus erat sodales felis, a egestas elit sem ut velit. Integer eget turpis sit amet felis vehicula semper et nec odio. Mauris enim est, aliquet hendrerit sollicitudin sit amet, aliquam at purus. In hac habitasse platea dictumst. In eleifend quam vel leo fringilla at congue nisi convallis. Duis vel nisi quis eros blandit vehicula id non ante. Ut pulvinar, velit sit amet fermentum venenatis, leo dolor ullamcorper sem, vel faucibus elit tellus a augue.</p>
                 </article>
             </article>
-        </section>
+        </main>
         <aside>
             <h2>Informations pratiques</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis, est vel eleifend tempus, risus erat sodales felis, a egestas elit sem ut velit. Integer eget turpis sit amet felis vehicula semper et nec odio. Mauris enim est, aliquet hendrerit sollicitudin sit amet, aliquam at purus. In hac habitasse platea dictumst. In eleifend quam vel leo fringilla at congue nisi convallis. Duis vel nisi quis eros blandit vehicula id non ante. Ut pulvinar, velit sit amet fermentum venenatis, leo dolor ullamcorper sem, vel faucibus elit tellus a augue."</p>
@@ -122,21 +91,20 @@
                 <div>
                     <h3>TP HTML5 / CSS3</h3>
                     <ol>
-                        <li>Corriger les erreurs HTML.</li>
-                        <li>Insérer la feuille de style <a href="http://necolas.github.io/normalize.css/">normalize.css</a></li>
-                        <li>Rendre le menu déroulant horizontal avec effet transition, et ombre sur les menu hover.</li>
-                        <li>Menu pied de page, chaque bloc sont cote à cote.</li>
-                        <li>Faire en sorte que la section nouvelles soit sur 3 colonnes, et que le dernier élément fasse 100% de large.</li>
-                        <li>La partie aside doit occuper 1/4 de la page, la section content 3/4</li>
-                        <li>Polices sur le titres avec google font.</li>
-                        <li>Ne laisser les blocs cote à cote qu'à partir de 900px.</li>
+                        <li>Cherchez les erreurs HTML</li>
+                        <li>Disposez la barre latérale à droite du contenu<br />
+                            La partie aside doit occuper 1/4 de la page, la section content 3/4</li>
+                        <li>Fixez la navigation en bas sur toute la largeur</li>
+                        <li>Dans le menu pied de page, chaque bloc doivent être côte à côte</li>
+                        <li>Changez la polices des titres avec google font.</li>
+                        <li>Responsive : Ne laisser les blocs cote à cote qu'à partir de 900px.</li>
                     </ol>
                     <h3>TP bootstrap</h3>
                     <ol>
+                        <li>Utilisez les classe Bootstrap pour mettre en oeuvre la grille</li>
                         <li>Utiliser le HTML de bootstrap pour les éléments media, rendre les vignettes arrondies</li>
                         <li>Utiliser le HTML pour le formulaire, rendre le bouton "envoyer" vert et "reset" rouge.</li>
                         <li>Créer un carousel</li>
-                        <li>Faire de ces TP des boites dépliables (collapsible)</li>
                     </ol>
                 </div>
             </section>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>Mon village</title>
+        <!-- <link rel="stylesheet" href="css/tp-mise-en-page.css" /> -->
+        <!-- <link rel="stylesheet" href="bootstrap-dist/css/bootstrap.css" /> -->
+        <link rel="stylesheet" href="css/tp-bootstrap-less.css" />
+        <style>
+        body {
+            padding-bottom: 150px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="header-wrapper">
+            <div class="container">
+                <header class="row">
+                    <h1>Mon village</h1>
+                    <strong><p class="tagline">Super village !</p></strong>
+                    <nav class="main-nav navbar navbar-default">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">Lien 1</a></li>
+                            <li><a href="#">Lien 2</a></li>
+                            <li><a href="#">Lien 3</a></li>
+                            <li><a href="#">Lien 4</a></li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
+        </div>
+        <div class="container">
+        <div  class="row">
+        <main id="content" class="col-sm-8 col-md-9">
+            <h1>Dernières nouvelles</h1>
+            <div class="row">
+            <article class="col-md-4">
+                <header>
+                    <p class="pubdate">23 Septembre 2014</p>
+                    <h3>La sémantique</h3>
+                </header>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Fusce mollis, est vel eleifend tempus, risus erat sodales felis, a egestas elit sem ut velit.</p>
+                <p>Integer eget turpis sit amet felis vehicula semper et nec odio.</p>
+                <button class="btn btn-truc">Mon bouton truc</button>
+            </article>
+            <article class="col-md-4">
+                <header>
+                    <p class="pubdate">23 Septembre 2014</p>
+                    <h3>Formulaires</h3>
+                </header>
+                <form method="post">
+                    <div class="form-group">
+                        <label for="search">Recherche</label>
+                        <!-- identique à type="text" sauf que le navigateur peut générer un affichage différent -->
+                        <input class="form-control" type="search" name="search" id="search" placeholder="Rechercher" />
+                    </div>
+                    <input type="submit" class="btn btn-primary" class="" value="Envoyer" />
+                    <input type="reset" class="btn btn-default" value="Annuler" />
+                </form>
+                <p>On peut donner du style au bouton.</p>
+            </article>
+            <article class="col-md-4">
+                <header>
+                    <p class="pubdate">23 Septembre 2014</p>
+                    <h3>Tableaux</h3>
+                </header>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pratchett</td>
+                            <td>Terry</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article class="col-md-12">
+                <header>
+                    <p class="pubdate">23 Septembre 2014</p>
+                    <h3>Media</h3>
+                </header>
+                <div class="row">
+                    <div class="col-md-4">
+                        <article class="thumbnail">
+                            <img src="http://lorempixel.com/100/100/nature/" />
+                            <h4>Titre du media</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="thumbnail">
+                            <img src="http://lorempixel.com/100/100/city/"  class="img-circle" />
+                            <h4>Titre du media 2</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis, est vel eleifend tempus, risus erat sodales felis, a egestas elit sem ut velit. Integer eget turpis sit amet felis vehicula semper et nec odio. Mauris enim est, aliquet hendrerit sollicitudin sit amet, aliquam at purus. In hac habitasse platea dictumst. In eleifend quam vel leo fringilla at congue nisi convallis. Duis vel nisi quis eros blandit vehicula id non ante. Ut pulvinar, velit sit amet fermentum venenatis, leo dolor ullamcorper sem, vel faucibus elit tellus a augue.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="thumbnail">
+                            <img src="http://lorempixel.com/100/100/city/" class="img-rounded"/>
+                            <h4>Titre du media 2</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis, est vel eleifend tempus, risus erat sodales felis, a egestas elit sem ut velit. Integer eget turpis sit amet felis vehicula semper et nec odio. Mauris enim est, aliquet hendrerit sollicitudin sit amet, aliquam at purus. In hac habitasse platea dictumst. In eleifend quam vel leo fringilla at congue nisi convallis. Duis vel nisi quis eros blandit vehicula id non ante. Ut pulvinar, velit sit amet fermentum venenatis, leo dolor ullamcorper sem, vel faucibus elit tellus a augue.</p>
+                        </article>
+                    </div>
+                </div>
+            </article>
+            </div>
+        </main>
+        <aside class="col-sm-4 col-md-3">
+            <div class="well">
+                <h2>Informations pratiques</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis, est vel eleifend tempus, risus erat sodales felis, a egestas elit sem ut velit. Integer eget turpis sit amet felis vehicula semper et nec odio. Mauris enim est, aliquet hendrerit sollicitudin sit amet, aliquam at purus. In hac habitasse platea dictumst. In eleifend quam vel leo fringilla at congue nisi convallis. Duis vel nisi quis eros blandit vehicula id non ante. Ut pulvinar, velit sit amet fermentum venenatis, leo dolor ullamcorper sem, vel faucibus elit tellus a augue."</p>
+            </div>
+        </aside>
+    </div>
+            <h2>Pied de page</h2>
+            <section id="enonce">
+                <div>
+                    <h3>TP bootstrap</h3>
+                    <ol>
+                        <li>Utilisez les classe Bootstrap pour mettre en oeuvre la grille</li>
+                        <li>Utiliser le HTML de bootstrap pour les éléments media, rendre les vignettes arrondies</li>
+                        <li>Utiliser le HTML pour le formulaire, rendre le bouton "envoyer" vert et "reset" rouge.</li>
+                        <li>Créer un carousel</li>
+                    </ol>
+                </div>
+            </section>
+            <nav class="navbar-inverse navbar navbar-fixed-bottom">
+                <div class="container">
+            <ul class="nav navbar-nav ">
+                <li><a href="#">Lien 1</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Lien 2</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Lien 3</a>
+                    <ul>
+                        <li><a href="#">Lien 1</a></li>
+                        <li><a href="#">Lien 2</a></li>
+                        <li><a href="#">Lien 3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </footer>
+    </div>
+
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
