@@ -526,7 +526,7 @@ est équivalent à :
 
 # Inspiration
 
-Une présentation en anglais de Amy Halton : [Investigating Python Wats](http://mathamy.com/pycon-recording-investigating-python-wats.html)
+Une présentation en anglais de Amy Hanlon : [Investigating Python Wats](http://mathamy.com/pycon-recording-investigating-python-wats.html)
 
 .fx: extra-large
 
