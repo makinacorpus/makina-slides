@@ -102,7 +102,7 @@ It must be **provided as a tool**.
 
 --------------------------------------------------------------------------------
 
-# The Plone Theming editor!!
+# The Plone Theming editor!
 
 Already a "hacking" tool:
 
@@ -256,6 +256,10 @@ All the regular security stack is applied, like:
 
 Rapido comes with a complete **REST API**.
 
+GET / POST / DELETE / PUT / PATCH
+
+It is a **ready-to-use JSON backend**.
+
 .fx: extra-large
 
 --------------------------------------------------------------------------------
@@ -269,6 +273,8 @@ Rapido comes with a complete **REST API**.
 # Battery included
 
 Rapido provides a **Plone Content Rules action**.
+
+We can hook our scripts to **any Plone event**.
 
 .fx: extra-large
 
