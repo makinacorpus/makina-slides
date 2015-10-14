@@ -1970,6 +1970,7 @@ d'utilisations, fonctionnement interne, contraintes et styles de programmation.<
 
     <span class="nd">@tornado.web.asynchronous</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Ancienne API de Momoko</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
             <span class="s">&#39;SELECT 42, pg_sleep(0.300)&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_done</span><span class="p">)</span>
 
@@ -1988,7 +1989,6 @@ d'utilisations, fonctionnement interne, contraintes et styles de programmation.<
 <p>20 requêtes par lots de 10 :</p>
 <div class="highlight"><pre><span class="gp">$</span> ab -n <span class="m">20</span> -c <span class="m">10</span> http://127.0.0.1:8888/
 <span class="go">Time taken for tests:   0.622 seconds</span>
-<span class="go">Complete requests:      20</span>
 <span class="go">Requests per second:    32.18 [#/sec] (mean)</span>
 <span class="go">Time per request:       310.756 [ms] (mean)</span>
 </pre></div>
@@ -2091,6 +2091,7 @@ d'utilisations, fonctionnement interne, contraintes et styles de programmation.<
             <span class="n">http_client</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpclient</span><span class="o">.</span><span class="n">AsyncHTTPClient</span><span class="p">()</span>
             <span class="n">http_client</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;http://127.0.0.1:8000/&#39;</span><span class="p">,</span> <span class="n">handle_http</span><span class="p">)</span>
 
+        <span class="c"># Ancienne API de Momoko</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
             <span class="s">&#39;SELECT 42, pg_sleep(0.300)&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">handle_db</span><span class="p">)</span>
 </pre></div>
@@ -2098,7 +2099,6 @@ d'utilisations, fonctionnement interne, contraintes et styles de programmation.<
 <p>20 requêtes par lots de 10 :</p>
 <div class="highlight"><pre><span class="gp">$</span> ab -c <span class="m">10</span> -n <span class="m">20</span> http://127.0.0.1:8888/
 <span class="go">Time taken for tests:   1.260 seconds</span>
-<span class="go">Complete requests:      20</span>
 <span class="go">Requests per second:    15.88 [#/sec] (mean)</span>
 <span class="go">Time per request:       629.834 [ms] (mean)</span>
 </pre></div>
@@ -2136,8 +2136,7 @@ d'utilisations, fonctionnement interne, contraintes et styles de programmation.<
 
     <span class="nd">@tornado.gen.coroutine</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">cursor</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">momoko</span><span class="o">.</span><span class="n">Op</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">,</span>
-                                 <span class="s">&#39;SELECT 42, pg_sleep(0.300)&#39;</span><span class="p">)</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&#39;SELECT 42, pg_sleep(0.300)&#39;</span><span class="p">)</span>
         <span class="n">db_value</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">http_client</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpclient</span><span class="o">.</span><span class="n">AsyncHTTPClient</span><span class="p">()</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">http_client</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;http://127.0.0.1:8000/&#39;</span><span class="p">)</span>
@@ -2150,7 +2149,6 @@ d'utilisations, fonctionnement interne, contraintes et styles de programmation.<
 <p>20 requêtes par lots de 10 :</p>
 <div class="highlight"><pre><span class="gp">$</span> ab -c <span class="m">10</span> -n <span class="m">20</span> http://127.0.0.1:8888/
 <span class="go">Time taken for tests:   1.281 seconds</span>
-<span class="go">Complete requests:      20</span>
 <span class="go">Requests per second:    15.61 [#/sec] (mean)</span>
 <span class="go">Time per request:       640.527 [ms] (mean)</span>
 </pre></div>
@@ -2191,8 +2189,7 @@ d'utilisations, fonctionnement interne, contraintes et styles de programmation.<
         <span class="n">http_client</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpclient</span><span class="o">.</span><span class="n">AsyncHTTPClient</span><span class="p">()</span>
         <span class="c"># Lancement des requêtes en parallèle</span>
         <span class="n">cursor</span><span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="k">yield</span> <span class="p">[</span>
-            <span class="n">momoko</span><span class="o">.</span><span class="n">Op</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">,</span>
-                      <span class="s">&#39;SELECT 42, pg_sleep(0.300)&#39;</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&#39;SELECT 42, pg_sleep(0.300)&#39;</span><span class="p">),</span>
             <span class="n">http_client</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;http://127.0.0.1:8000/&#39;</span><span class="p">),</span>
         <span class="p">]</span>
         <span class="n">db_value</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
@@ -2205,7 +2202,6 @@ d'utilisations, fonctionnement interne, contraintes et styles de programmation.<
 <p>20 requêtes par lots de 10 :</p>
 <div class="highlight"><pre><span class="gp">$</span> ab -c <span class="m">10</span> -n <span class="m">20</span> http://127.0.0.1:8888/
 <span class="go">Time taken for tests:   0.663 seconds</span>
-<span class="go">Complete requests:      20</span>
 <span class="go">Requests per second:    30.15 [#/sec] (mean)</span>
 <span class="go">Time per request:       331.638 [ms] (mean)</span>
 </pre></div>
@@ -2239,7 +2235,8 @@ d'utilisations, fonctionnement interne, contraintes et styles de programmation.<
             <header><h1>Depuis Python 3.5 : async/await</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+            <section><div class="highlight"><pre><span class="c"># Nécessite tornado==4.3.dev1</span>
+<span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
 
     <span class="n">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">http_client</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpclient</span><span class="o">.</span><span class="n">AsyncHTTPClient</span><span class="p">()</span>
@@ -2252,6 +2249,13 @@ d'utilisations, fonctionnement interne, contraintes et styles de programmation.<
         <span class="n">result</span> <span class="o">=</span> <span class="n">db_value</span> <span class="o">-</span> <span class="n">json_data</span><span class="p">[</span><span class="s">&#39;value&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Result: %s&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+</pre></div>
+
+<p>20 requêtes par lots de 10 :</p>
+<div class="highlight"><pre><span class="gp">$</span> ab -c <span class="m">10</span> -n <span class="m">20</span> http://127.0.0.1:8888/
+<span class="go">Time taken for tests:   0.706 seconds</span>
+<span class="go">Requests per second:    28.35 [#/sec] (mean)</span>
+<span class="go">Time per request:       352.756 [ms] (mean)</span>
 </pre></div>
 </section>
             

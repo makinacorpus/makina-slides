@@ -9,8 +9,7 @@ class MainHandler(tornado.web.RequestHandler):
 
     @tornado.gen.coroutine
     def get(self):
-        cursor = yield momoko.Op(self.application.db.execute,
-                                 'SELECT 42, pg_sleep(0.300)')
+        cursor = yield self.application.db.execute('SELECT 42, pg_sleep(0.300)')
         db_value = cursor.fetchone()[0]
         http_client = tornado.httpclient.AsyncHTTPClient()
         response = yield http_client.fetch('http://127.0.0.1:8000/')
@@ -26,6 +25,12 @@ application = tornado.web.Application([
 
 if __name__ == "__main__":
     print("Serve http://127.0.0.1:8888/")
-    application.db = momoko.Pool(dsn='dbname=al user=al', size=10)
+    ioloop = tornado.ioloop.IOLoop.instance()
+    application.db = momoko.Pool(dsn='dbname=al user=al password=al',
+                                 size=10, ioloop=ioloop)
+    future = application.db.connect()
+    ioloop.add_future(future, lambda f: ioloop.stop())
+    ioloop.start()
+    future.result()  # raises exception on connection error
     application.listen(8888)
     tornado.ioloop.IOLoop.instance().start()

@@ -28,7 +28,7 @@ application = tornado.web.Application([
 if __name__ == "__main__":
     print("Serve http://127.0.0.1:8888/")
     ioloop = tornado.ioloop.IOLoop.instance()
-    application.db = momoko.Pool(dsn='dbname=al user=al', size=10, ioloop=ioloop)
+    application.db = momoko.Pool(dsn='dbname=al user=al password=al', size=10, ioloop=ioloop)
     future = application.db.connect()
     ioloop.add_future(future, lambda f: ioloop.stop())
     ioloop.start()

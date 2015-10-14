@@ -121,6 +121,7 @@ On peut par contre envisager d'externaliser ce travail pour les passer en asynch
 
         @tornado.web.asynchronous
         def get(self):
+            # Ancienne API de Momoko
             self.application.db.execute(
                 'SELECT 42, pg_sleep(0.300)', callback=self._done)
 
@@ -141,7 +142,6 @@ On peut par contre envisager d'externaliser ce travail pour les passer en asynch
     !console
     $ ab -n 20 -c 10 http://127.0.0.1:8888/
     Time taken for tests:   0.622 seconds
-    Complete requests:      20
     Requests per second:    32.18 [#/sec] (mean)
     Time per request:       310.756 [ms] (mean)
 
@@ -196,6 +196,7 @@ Enregistrement des handlers :
                 http_client = tornado.httpclient.AsyncHTTPClient()
                 http_client.fetch('http://127.0.0.1:8000/', handle_http)
 
+            # Ancienne API de Momoko
             self.application.db.execute(
                 'SELECT 42, pg_sleep(0.300)', callback=handle_db)
 
@@ -204,7 +205,6 @@ Enregistrement des handlers :
     !console
     $ ab -c 10 -n 20 http://127.0.0.1:8888/
     Time taken for tests:   1.260 seconds
-    Complete requests:      20
     Requests per second:    15.88 [#/sec] (mean)
     Time per request:       629.834 [ms] (mean)
 
@@ -217,8 +217,7 @@ Enregistrement des handlers :
 
         @tornado.gen.coroutine
         def get(self):
-            cursor = yield momoko.Op(self.application.db.execute,
-                                     'SELECT 42, pg_sleep(0.300)')
+            cursor = yield self.application.db.execute('SELECT 42, pg_sleep(0.300)')
             db_value = cursor.fetchone()[0]
             http_client = tornado.httpclient.AsyncHTTPClient()
             response = yield http_client.fetch('http://127.0.0.1:8000/')
@@ -232,7 +231,6 @@ Enregistrement des handlers :
     !console
     $ ab -c 10 -n 20 http://127.0.0.1:8888/
     Time taken for tests:   1.281 seconds
-    Complete requests:      20
     Requests per second:    15.61 [#/sec] (mean)
     Time per request:       640.527 [ms] (mean)
 
@@ -248,8 +246,7 @@ Enregistrement des handlers :
             http_client = tornado.httpclient.AsyncHTTPClient()
             # Lancement des requêtes en parallèle
             cursor, response = yield [
-                momoko.Op(self.application.db.execute,
-                          'SELECT 42, pg_sleep(0.300)'),
+                self.application.db.execute('SELECT 42, pg_sleep(0.300)'),
                 http_client.fetch('http://127.0.0.1:8000/'),
             ]
             db_value = cursor.fetchone()[0]
@@ -263,7 +260,6 @@ Enregistrement des handlers :
     !console
     $ ab -c 10 -n 20 http://127.0.0.1:8888/
     Time taken for tests:   0.663 seconds
-    Complete requests:      20
     Requests per second:    30.15 [#/sec] (mean)
     Time per request:       331.638 [ms] (mean)
 
@@ -272,6 +268,7 @@ Enregistrement des handlers :
 # Depuis Python 3.5 : async/await
 
     !py3
+    # Nécessite tornado==4.3.dev1
     class MainHandler(tornado.web.RequestHandler):
 
         async def get(self):
@@ -285,6 +282,14 @@ Enregistrement des handlers :
             result = db_value - json_data['value']
             self.write("Result: %s" % result)
             self.finish()
+
+20 requêtes par lots de 10 :
+
+    !console
+    $ ab -c 10 -n 20 http://127.0.0.1:8888/
+    Time taken for tests:   0.706 seconds
+    Requests per second:    28.35 [#/sec] (mean)
+    Time per request:       352.756 [ms] (mean)
 
 ---
 

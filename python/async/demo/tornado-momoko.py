@@ -7,6 +7,7 @@ class MainHandler(tornado.web.RequestHandler):
 
     @tornado.web.asynchronous
     def get(self):
+        # Ancienne API de Momoko
         self.application.db.execute(
             'SELECT 42, pg_sleep(0.300)', callback=self._done)
 
