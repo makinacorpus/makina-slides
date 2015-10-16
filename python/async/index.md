@@ -121,6 +121,7 @@ On peut par contre envisager d'externaliser ce travail pour les passer en asynch
 
         @tornado.web.asynchronous
         def get(self):
+            # Ancienne API de Momoko
             self.application.db.execute(
                 'SELECT 42, pg_sleep(0.300)', callback=self._done)
 
@@ -141,7 +142,6 @@ On peut par contre envisager d'externaliser ce travail pour les passer en asynch
     !console
     $ ab -n 20 -c 10 http://127.0.0.1:8888/
     Time taken for tests:   0.622 seconds
-    Complete requests:      20
     Requests per second:    32.18 [#/sec] (mean)
     Time per request:       310.756 [ms] (mean)
 
@@ -196,6 +196,7 @@ Enregistrement des handlers :
                 http_client = tornado.httpclient.AsyncHTTPClient()
                 http_client.fetch('http://127.0.0.1:8000/', handle_http)
 
+            # Ancienne API de Momoko
             self.application.db.execute(
                 'SELECT 42, pg_sleep(0.300)', callback=handle_db)
 
@@ -204,7 +205,6 @@ Enregistrement des handlers :
     !console
     $ ab -c 10 -n 20 http://127.0.0.1:8888/
     Time taken for tests:   1.260 seconds
-    Complete requests:      20
     Requests per second:    15.88 [#/sec] (mean)
     Time per request:       629.834 [ms] (mean)
 
@@ -217,8 +217,7 @@ Enregistrement des handlers :
 
         @tornado.gen.coroutine
         def get(self):
-            cursor = yield momoko.Op(self.application.db.execute,
-                                     'SELECT 42, pg_sleep(0.300)')
+            cursor = yield self.application.db.execute('SELECT 42, pg_sleep(0.300)')
             db_value = cursor.fetchone()[0]
             http_client = tornado.httpclient.AsyncHTTPClient()
             response = yield http_client.fetch('http://127.0.0.1:8000/')
@@ -232,7 +231,6 @@ Enregistrement des handlers :
     !console
     $ ab -c 10 -n 20 http://127.0.0.1:8888/
     Time taken for tests:   1.281 seconds
-    Complete requests:      20
     Requests per second:    15.61 [#/sec] (mean)
     Time per request:       640.527 [ms] (mean)
 
@@ -248,8 +246,7 @@ Enregistrement des handlers :
             http_client = tornado.httpclient.AsyncHTTPClient()
             # Lancement des requêtes en parallèle
             cursor, response = yield [
-                momoko.Op(self.application.db.execute,
-                          'SELECT 42, pg_sleep(0.300)'),
+                self.application.db.execute('SELECT 42, pg_sleep(0.300)'),
                 http_client.fetch('http://127.0.0.1:8000/'),
             ]
             db_value = cursor.fetchone()[0]
@@ -263,7 +260,6 @@ Enregistrement des handlers :
     !console
     $ ab -c 10 -n 20 http://127.0.0.1:8888/
     Time taken for tests:   0.663 seconds
-    Complete requests:      20
     Requests per second:    30.15 [#/sec] (mean)
     Time per request:       331.638 [ms] (mean)
 
@@ -272,6 +268,7 @@ Enregistrement des handlers :
 # Depuis Python 3.5 : async/await
 
     !py3
+    # Nécessite tornado==4.3.dev1
     class MainHandler(tornado.web.RequestHandler):
 
         async def get(self):
@@ -286,33 +283,103 @@ Enregistrement des handlers :
             self.write("Result: %s" % result)
             self.finish()
 
+20 requêtes par lots de 10 :
+
+    !console
+    $ ab -c 10 -n 20 http://127.0.0.1:8888/
+    Time taken for tests:   0.706 seconds
+    Requests per second:    28.35 [#/sec] (mean)
+    Time per request:       352.756 [ms] (mean)
+
+
+
 ---
 
-# Cas d'utilisation réel 1 : [Circus](http://circus.readthedocs.org/)
+# Exemple d'utilisation : [THR](http://thr.readthedocs.org/)
 
-Passage en asynchrone pour gérer les arrêts propres de manière non-bloquante.
+## Contexte
+
+* connections simultanées à la prise de poste des prévisionistes
+* traitement des requêtes assez lourd
+
+## Besoins
+
+* quotas
+* gestion de priorités
+* authentification / autorisation
+
+↪ THR utilise Tornado pour fournir un frontal asynchrone devant une application Django
+
+---
+
+# THR
+
+![](img/thr.jpg)
+
+* http2redis pose des requêtes sur de files d'attente Redis
+* redis2http dépile les requêtes et les passe à Django
+
+---
+
+# Configuration de THR
+
+Exemple : limiter le nombre de requêtes simultanées comportant un entête HTTP donné
+
+    !py
+    def limit_foo(request):
+        return request.headers.get('Foo') or 'none'
+
+    add_max_limit('limit_foo_header', limit_foo, "bar", 2)
+
+
+Requêtes ne correspondant pas au critère de limitation :
+
+    !console
+    $ ab -c10 -n10 -H "Foo: baz" http://127.0.0.1:8888/|grep 'Time taken'
+    Time taken for tests:   1.045 seconds
+
+Requêtes correspondant au critère :
+
+    !console
+    $ ab -c10 -n10 -H "Foo: bar" http://127.0.0.1:8888/|grep 'Time taken'
+    Time taken for tests:   5.055 seconds
+
+Note : le service sous-jacent met une seconde à répondre dans les deux cas.
+
+
+---
+
+# Exemple d'utilisation : [Circus](http://circus.readthedocs.org/)
+
+![](img/circus-medium.png)
+
+## Contexte
+
+Des dizaines de processus assimilant des données d'origines diverses : satellites, radars, observations, super-calculateurs...
+
+## Contrainte
+
+Arrêter et expirer les processus sans interrompre le travail en cours.
+
+---
+
+# Circus
+
+* gestionnaire de processus en Python
+* se base sur la boucle d'entrée/sortie de Tornado pour manipuler les processus de manière non-bloquante (contribution de [Fabien Marty](https://blog.mozilla.org/services/2013/11/05/circus-0-10-released/))
+
+Extrait du code :
 
     !py
     @gen.coroutine
-    def _stop_watchers(self, close_output_streams=False,
-                       watcher_iter_func=None, for_shutdown=False):
-        if watcher_iter_func is None:
-            watchers = self.iter_watchers(reverse=False)
-        else:
-            watchers = watcher_iter_func(reverse=False)
-        yield [w._stop(close_output_streams, for_shutdown)
-               for w in watchers]
+    def _stop_watchers(self, close_output_streams=False, for_shutdown=False):
+        watchers = watcher_iter_func(reverse=False)
+        yield [
+            watcher._stop(close_output_streams, for_shutdown)
+            for watcher in watchers
+        ]
 
-
-
----
-
-# Cas d'utilisation réel 2 : [THR](http://thr.readthedocs.org/)
-
-* nombreuses connections simultanées à la prise de poste des prévisionistes
-* traitement des requêtes parfois lent
-* THR utilise Tornado pour fournir un frontal asynchrone devant une application Django classique
-
+Note : ici l'asynchrone est utilisé comme une alternative aux threads. 
 
 ---
 
@@ -320,13 +387,19 @@ Passage en asynchrone pour gérer les arrêts propres de manière non-bloquante.
 
 Quand utiliser de l'asynchrone ?
 
-  1. le traitement des requêtes est ralenti par l'accès à des ressources externes : base de données, service externe, connexion persistante avec le navigateur, etc.
-  2. pas assez de mémoire pour simplement rajouter des processus ou des threads
-  3. on veut éviter les threads et les mécanismes d'exclusion mutuelle qui vont avec
+  1. traitement des requêtes ralenti par l'accès à des ressources externes : base de données, service externe, etc.
+  2. connexion persistante avec le navigateur
+  3. pas assez de mémoire pour simplement rajouter des processus ou des threads
+  4. on veut éviter les threads et les mécanismes d'exclusion mutuelle qui vont avec
+
+---
+
+# En conclusion
 
 Comment coder en asynchrone ?
 
-  * utiliser une bibliothèque faite pour ça
+  * utiliser une bibliothèque : Tornado, asyncio ou Twisted
   * callbacks
-  * generateurs
-  * async/await
+  * coroutines
+    * generators
+    * async/await
