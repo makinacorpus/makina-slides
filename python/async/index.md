@@ -75,7 +75,6 @@ On peut par contre envisager d'externaliser ce travail pour les passer en asynch
     ])
 
     if __name__ == "__main__":
-        print("Serve http://127.0.0.1:8888/")
         application.listen(8888)
         tornado.ioloop.IOLoop.instance().start()
 
@@ -86,6 +85,7 @@ On peut par contre envisager d'externaliser ce travail pour les passer en asynch
     Time taken for tests:   6.706 seconds
     Complete requests:      10000
     Requests per second:    1491.25 [#/sec] (mean)
+    Time per request:       67.058 [ms] (mean)
 
 ---
 
@@ -214,7 +214,8 @@ Enregistrement des handlers :
 
         @tornado.gen.coroutine
         def get(self):
-            cursor = yield self.application.db.execute('SELECT 42, pg_sleep(0.300)')
+            cursor = yield self.application.db.execute(
+                'SELECT 42, pg_sleep(0.300)')
             db_value = cursor.fetchone()[0]
             http_client = tornado.httpclient.AsyncHTTPClient()
             response = yield http_client.fetch('http://127.0.0.1:8000/')
@@ -390,7 +391,8 @@ Extrait du code :
 
     !py
     @gen.coroutine
-    def _stop_watchers(self, close_output_streams=False, for_shutdown=False):
+    def _stop_watchers(self, close_output_streams=False,
+                       for_shutdown=False):
         watchers = watcher_iter_func(reverse=False)
         yield [
             watcher._stop(close_output_streams, for_shutdown)
