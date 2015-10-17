@@ -86,7 +86,6 @@ On peut par contre envisager d'externaliser ce travail pour les passer en asynch
     Time taken for tests:   6.706 seconds
     Complete requests:      10000
     Requests per second:    1491.25 [#/sec] (mean)
-    Time per request:       67.058 [ms] (mean)
 
 ---
 
@@ -130,18 +129,12 @@ On peut par contre envisager d'externaliser ce travail pour les passer en asynch
             self.write("Result: %s" % result[0])
             self.finish()
 
-    if __name__ == "__main__":
-        application = tornado.web.Application([(r"/", MainHandler)])
-        application.db = momoko.Pool(dsn='dbname=al user=al', size=10)
-        application.listen(8888)
-        ioloop.IOLoop.instance().start()
-
-
 20 requêtes par lots de 10 :
 
     !console
     $ ab -n 20 -c 10 http://127.0.0.1:8888/
     Time taken for tests:   0.622 seconds
+    Complete requests:      20
     Requests per second:    32.18 [#/sec] (mean)
     Time per request:       310.756 [ms] (mean)
 
@@ -199,6 +192,10 @@ Enregistrement des handlers :
             # Ancienne API de Momoko
             self.application.db.execute(
                 'SELECT 42, pg_sleep(0.300)', callback=handle_db)
+
+---
+
+# Callbacks : mesure
 
 20 requêtes par lots de 10 :
 
@@ -297,22 +294,36 @@ Enregistrement des handlers :
 
 # Exemple d'utilisation : [THR](http://thr.readthedocs.org/)
 
-## Contexte
-
-* connections simultanées à la prise de poste des prévisionistes
-* traitement des requêtes assez lourd
-
-## Besoins
-
-* quotas
-* gestion de priorités
-* authentification / autorisation
-
-↪ THR utilise Tornado pour fournir un frontal asynchrone devant une application Django
+ * Tornado HTTP Router
+ * Tornado HTTP over Redis
+ * Toulouse HTTP Router
 
 ---
 
-# THR
+# THR - Contexte
+
+* connections simultanées à la prise de poste des prévisionistes
+* traitements de certaines requêtes assez lourd
+* application web *classique* en Django donc pas asynchrone
+
+---
+
+# THR - Besoins
+
+* lissage des *bursts* avec files d'attente transparentes pour le client
+* quotas avec régulation transparente
+* gestion de priorités des requêtes HTTP
+* authentification / autorisation via appel à service externes
+
+**↪ THR utilise Tornado pour protéger et réguler une appli Django par des mécanismes asynchrones**
+
+## Presenter Notes
+50 à 100 personnes prennent leur service en même temps et bombardent le système de requêtes
+THR utilise Tornado pour protéger et réguler un cluster django synchrone (CPU bound) par des mécanismes asynchrones tout en continuant de répondre de façon synchrone aux requêtes HTTP des clients.
+
+---
+
+# THR - Schema
 
 ![](img/thr.jpg)
 
@@ -321,7 +332,7 @@ Enregistrement des handlers :
 
 ---
 
-# Configuration de THR
+# THR - Exemple
 
 Exemple : limiter le nombre de requêtes simultanées comportant un entête HTTP donné
 
@@ -357,9 +368,16 @@ Note : le service sous-jacent met une seconde à répondre dans les deux cas.
 
 Des dizaines de processus assimilant des données d'origines diverses : satellites, radars, observations, super-calculateurs...
 
+* une centaine de processus
+* 10 fichiers / seconde en moyenne
+* 300 Go quotidien 
+
 ## Contrainte
 
 Arrêter et expirer les processus sans interrompre le travail en cours.
+
+## Presenter Notes
+L'intérêt de Tornado pour circus est l'utilisation des coroutines qui permet de sortir du "callback hell" dans lequel j'étais tombé à ma première tentative. Le code est bien plus lisible et bien moins bugué !
 
 ---
 
