@@ -17,14 +17,16 @@
 
 # We, Plone developers
 
-<video src="video/architect.mp4" poster="none.jpg" width="100%" controls="true"></video>
+<img src="img/movie-1.png" width="70%" />
+<!--<video src="video/architect.mp4" poster="none.jpg" width="70%" controls="true"></video>-->
 <p style="font-size: 16px">from "Les Vacances du Petit Nicolas" by Laurent Tirard</p>
 
+.fx: extra-large
 --------------------------------------------------------------------------------
 
 # The users
 
-<img src="img/users.jpg" width="100%" />
+<img src="img/users.jpg" width="70%" />
 <p style="font-size: 16px">from "Les Vacances du Petit Nicolas" by Laurent Tirard</p>
 
 .fx: extra-large
@@ -33,8 +35,11 @@
 
 # The users play
 
-<video src="video/users.mp4" poster="none.jpg" width="100%" controls="true"></video>
+<img src="img/movie-2.png" width="70%" />
+<!--<video src="video/users.mp4" poster="none.jpg" width="70%" controls="true"></video>-->
 <p style="font-size: 16px">from "Les Vacances du Petit Nicolas" by Laurent Tirard</p>
+
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -49,7 +54,7 @@
 
 # We retaliate
 
-<img src="img/nuclear-plant.jpg" width="100%" />
+<img src="img/nuclear-plant.jpg" width="70%" />
 
 .fx: extra-large
 
@@ -67,7 +72,7 @@
 
 # My solution
 
-<img src="img/inflatable-castle.jpg" width="100%" />
+<img src="img/inflatable-castle.jpg" width="70%" />
 
 .fx: extra-large
 
@@ -96,7 +101,7 @@ It must be **provided as a tool**.
 
 # ZMI?
 
-<img src="img/zmi.png" width="100%" />
+<img src="img/zmi.png" width="70%" />
 
 .fx: extra-large
 
@@ -116,7 +121,7 @@ Already a "hacking" tool:
 
 **"We Write XSLT, So You Don't Have To"**
 
-<img src="img/diazo-1.png" height="100%" />
+<img src="img/diazo-1.png" width="60%" />
 
 .fx: extra-large
 
@@ -126,7 +131,7 @@ Already a "hacking" tool:
 
 **Guess what? I am writing tons of XSLT!!**
 
-<img src="img/diazo-2.png" height="100%" />
+<img src="img/diazo-2.png" width="60%" />
 
 .fx: extra-large
 
@@ -134,7 +139,7 @@ Already a "hacking" tool:
 
 # What we need
 
-<img src="img/diazo-3.png" height="100%" />
+<img src="img/diazo-3.png" width="60%" />
 
 .fx: extra-large
 
