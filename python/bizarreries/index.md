@@ -71,6 +71,11 @@ http://makina-corpus.com
     ([],)
     >>> func()
     ['PyConFr']
+    >>> func.__defaults__[0].append(
+    ... 'Django Carrots')
+    >>> func()
+    ['PyConFr', 'Django Carrots', 'PyConFr']
+
 
 .fx: extra-large
 
@@ -300,6 +305,21 @@ Python Programming FAQ:
 Python Programming FAQ: [Why am I getting an UnboundLocalError when the variable has a value?](https://docs.python.org/2/faq/programming.html#why-am-i-getting-an-unboundlocalerror-when-the-variable-has-a-value)
 
 > when you make an assignment to a variable in a scope, that variable becomes local to that scope and shadows any similarly named variable in the outer scope
+
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+    !pycon
+    >>> x = 10
+    >>> def foo():
+    ...     global x
+    ...     print(x)
+    ...     x += 1
+    ... 
+    >>> foo()
+    10
 
 
 .fx: extra-large

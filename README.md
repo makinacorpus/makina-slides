@@ -6,3 +6,8 @@
 # Slide generation
 
 	lanslide maconfig.cfg
+
+# Publishing
+
+Place your HTML output in the www directory, commit and push to the gh-pages branch.
+It will get served under http://makinacorpus.github.io/makina-slides/
