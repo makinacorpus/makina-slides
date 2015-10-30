@@ -630,10 +630,14 @@ ChromeDriver http://chromedriver.storage.googleapis.com/index.html?path=2.19/
 # Signature Android
 
 - créer un keystore (avec keytool ou le studio),
-- ajouter un fichier `./platforms/android/ant.properties`:
+- ajouter un fichier `./release-signing.properties`:
 
-    key.store=/chemin/vers/le/keystore
-    key.alias=la_clef
+    storeFile=/chemin/vers/monkeystore.keystore
+    storeType=jks
+    keyAlias=ma-clef
+    // optionnel (evite de resaisir à chaque fois)
+    keyPassword=your-key-password
+    storePassword=your-store-password
 
 .fx: extra-large
 
