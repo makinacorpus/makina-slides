@@ -158,16 +158,37 @@ D15;ELECTIONS DEPARTEMENTALES 2015;2;20150329;bu;111;Groupe Scolaire Echange;;1;
 
 # Quelques bons élèves
 
-TODO: Tableau des villes
+<TABLE>
+<THEAD>
+<TR><TH>Ville</TH><TH>Découpage</TH><TH>Résultats</TH></TR>
+</THEAD>
+<TBODY>
+<TR><TD>Rennes</TD><TD>Points</TD><TD>CSV</TD>
+</TR><TR><TD>Rouen</TD><TD></TD><TD></TD>
+</TR><TR style="color: #FF0000;"><TD>Toulouse</TD><TD>GeoJSON</TD><TD>CSV (dès le lundi matin)</TD>
+</TR><TR><TD>Bordeaux</TD><TD></TD><TD></TD>
+</TR><TR><TD>Paris</TD><TD>Pas d'élection</TD><TD>Pas d'élection</TD>
+</TR><TR><TD>Lyon</TD><TD>Pas d'élection</TD><TD>Pas d'élection</TD>
+</TR><TR><TD>Marseille</TD><TD>Pas de plateforme</TD><TD>Pas de plateforme</TD>
+</TR><TR><TD>Nantes</TD><TD>Shapefile & KML</TD><TD>CSV (par canton)</TD>
+</TR><TR><TD>Lille</TD><TD>Pas de plateforme</TD><TD>Pas de plateforme</TD>
+</TR><TR><TD>Montpellier</TD><TD>GeoJSON</TD><TD>CSV (plus tard)</TD>
+</TR><TR><TD>Poitiers</TD><TD>Pas de plateforme</TD><TD>Sur data.gouv.fr</TD>
+</TR><TR><TD>Départements/Régions</TD><TD></TD><TD></TD>
+</TR>
+</TBODY>
+</TABLE>
+
+.fx: tp
 
 --------------------------------------------------------------------------------
 
-# Conclusion
-Informations électorales au niveau national :
+#Conclusion
+Informationsélectoralesauniveaunational :
 
-  * incomplètes
-  * publiées tardivement
-  * difficiles d'accès
+*incomplètes
+*publiéestardivement
+*difficilesd'accès
   * formats disparates
   * publiées à de trop nombreux endroits différents
   * exigent de bonnes compétences techniques
@@ -186,10 +207,9 @@ Pourtant, beaucoup de temps perdu, des refus, des incompréhensions
 Impossible de faire des représentations des résultats bureau par bureau, rapidement et automatiquement !
 
 .fx: alternate
-
 .notes: les informatoins sont complètes par commune, pas par bureau de vote
-Mauvaise volonté dans la diffusion des bureaux de votes ?
-Le service XML du min est une plaisanterie
+        Mauvaise volonté dans la diffusion des bureaux de votes ?
+        Le service XML du min est une plaisanterie
 
 --------------------------------------------------------------------------------
 
