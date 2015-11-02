@@ -183,12 +183,12 @@ D15;ELECTIONS DEPARTEMENTALES 2015;2;20150329;bu;111;Groupe Scolaire Echange;;1;
 
 --------------------------------------------------------------------------------
 
-#Conclusion
-Informationsélectoralesauniveaunational :
+# Conclusion
+Informations électorales au niveau national :
 
-*incomplètes
-*publiéestardivement
-*difficilesd'accès
+* incomplètes
+* publiées tardivement
+* difficiles d'accès
   * formats disparates
   * publiées à de trop nombreux endroits différents
   * exigent de bonnes compétences techniques
@@ -207,9 +207,7 @@ Pourtant, beaucoup de temps perdu, des refus, des incompréhensions
 Impossible de faire des représentations des résultats bureau par bureau, rapidement et automatiquement !
 
 .fx: alternate
-.notes: les informatoins sont complètes par commune, pas par bureau de vote
-        Mauvaise volonté dans la diffusion des bureaux de votes ?
-        Le service XML du min est une plaisanterie
+.notes: les informatoins sont complètes par commune, pas par bureau de vote / Mauvaise volonté dans la diffusion des bureaux de votes ? / Le service XML du min est une plaisanterie
 
 --------------------------------------------------------------------------------
 
