@@ -4,7 +4,7 @@
   * __Administration (Tâches d'administration, Mises à jour, sauvegarde, Multi-sites, performance)__
   * Référencement (urls, meta-tags, sitemap.xml)
   * Multilinguisme
-  * Autres contenus (vidéos, newsletters, formulaires
+  * Autres contenus (vidéos, newsletters, formulaires)
   * Modules du coeur (aggregator, poll, search)
 
 .fx: progress
