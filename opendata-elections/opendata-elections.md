@@ -9,9 +9,12 @@
 
 # Objectif
 
-## Créer une carte interactive des résultats des élections régionales de décembre 2015 pour chacun des bureaux de vote en France
+## Réaliser une carte interactive
+## des résultats des élections régionales de décembre 2015 
+## pour chacun des bureaux de vote en France
 
 .fx: alternate
+.fx:larger
 .notes: cela semble assez simple...
 
 --------------------------------------------------------------------------------
@@ -21,7 +24,7 @@ Favoriser l'action citoyenne
 
   * Mettre à la disposition du plus grand nombre les données les plus précises possibles
   * Permettre la création d'outils pour explorer les données
-
+.fx:larger
 .notes: Permettre d'explorer les votes au niveau le plus détaillé possibles, dès le soir des élections, croiser avec d'autres données
 
 --------------------------------------------------------------------------------
@@ -33,7 +36,8 @@ Favoriser l'action citoyenne
   * analystes politiques
   * chercheurs
   * partis politiques, militants
-
+  * ...
+.fx:larger
 .notes: De nombreux publics sont intéressés et demandeurs (exemple des parties politiques qui nous ont demandé des cartes par parti lors des municipales de 2014)
 
 --------------------------------------------------------------------------------
@@ -42,16 +46,16 @@ Favoriser l'action citoyenne
   * Les électeurs s'inscrivent sur les **listes électorales**
   * Un **bureau de vote** leur est attribué en fonction de leur adresse
   * Un **lieu de vote** est associé à chaque bureau de vote
-
+.fx:larger
 --------------------------------------------------------------------------------
 
 # Rappel du fonctionnement – après le vote
-  * Dans chaque bureau de vote les suffrages pour les différentes listes sont reportés sur un procès-verbal [@JPO à vérifier]
+  * Dans chaque bureau de vote les suffrages pour les différentes listes sont reportés sur un procès-verbal
   * Le soir de l'élection, les PV sont transmis par les communes à leur préfecture
-  * les préfectures remontent les informations au ministère de l'Intérieur
-  * la préfecture diffuse en temps réel les informations à des représentants de la presse
-  * le ministère de l'Intérieur transmet les résultats définitifs à la presse puis au public
-
+  * Les préfectures remontent les informations au ministère de l'Intérieur
+  * La préfecture diffuse en temps réel les informations à des représentants de la presse
+  * Le ministère de l'Intérieur transmet les résultats définitifs à la presse puis au public
+.fx:larger
 --------------------------------------------------------------------------------
 
 # Les données
