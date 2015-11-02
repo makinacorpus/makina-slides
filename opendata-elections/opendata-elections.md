@@ -1,7 +1,7 @@
 
-# Open Data, cartographie
-# et
-# élections
+# Open Data, <BR/>
+cartographie et <BR/>
+élections
 
 .fx: extra-large
 
@@ -10,11 +10,13 @@
 # Objectif
 
 ## Réaliser une carte interactive
-## des résultats des élections régionales de décembre 2015 
-## pour chacun des bureaux de vote en France
+   ## des résultats des élections régionales de décembre 2015 
+      ## pour chacun des bureaux de vote en France
 
 .fx: alternate
-.fx:larger
+
+.fx: extra-large
+
 .notes: cela semble assez simple...
 
 --------------------------------------------------------------------------------
@@ -24,7 +26,9 @@ Favoriser l'action citoyenne
 
   * Mettre à la disposition du plus grand nombre les données les plus précises possibles
   * Permettre la création d'outils pour explorer les données
+
 .fx:larger
+
 .notes: Permettre d'explorer les votes au niveau le plus détaillé possibles, dès le soir des élections, croiser avec d'autres données
 
 --------------------------------------------------------------------------------
@@ -37,7 +41,9 @@ Favoriser l'action citoyenne
   * chercheurs
   * partis politiques, militants
   * ...
-.fx:larger
+
+.fx: extra-large
+
 .notes: De nombreux publics sont intéressés et demandeurs (exemple des parties politiques qui nous ont demandé des cartes par parti lors des municipales de 2014)
 
 --------------------------------------------------------------------------------
@@ -46,7 +52,9 @@ Favoriser l'action citoyenne
   * Les électeurs s'inscrivent sur les **listes électorales**
   * Un **bureau de vote** leur est attribué en fonction de leur adresse
   * Un **lieu de vote** est associé à chaque bureau de vote
-.fx:larger
+
+.fx: extra-large
+
 --------------------------------------------------------------------------------
 
 # Rappel du fonctionnement – après le vote
@@ -55,10 +63,17 @@ Favoriser l'action citoyenne
   * Les préfectures remontent les informations au ministère de l'Intérieur
   * La préfecture diffuse en temps réel les informations à des représentants de la presse
   * Le ministère de l'Intérieur transmet les résultats définitifs à la presse puis au public
-.fx:larger
+
+.fx: extra-large
+
+.notes: seules les transmissions des préfectures au ministère sont standardisés.
+communes vers préfectures : télétransmission par logiciel, email, téléphone...
+préfectures vers journalistes : papier ?
 --------------------------------------------------------------------------------
 
 # Les données
+
+.fx: extra-large
 
 .fx: alternate
 
@@ -66,56 +81,83 @@ Favoriser l'action citoyenne
 
 # Les données intéressantes
 
-  * listes électorales (nom, prénoms, adresse, date et lieu de naissance, [bureau de vote?])
+  * listes électorales
   * listes de candidats : n°, noms des candidats, nuance politique, circonscription d'élections
-  * définition des bureau de vote : soit contour soit liste des rues
+  * définition des bureau de vote : soit contour soit liste des voies
   * éventuellement lieu de vote
   * résultats au niveau des bureaux de vote
+
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Où trouver les listes de candidats ?
-Liste du 1er tour déposées du 2 au 9/11 : elles devraient être disponibles quelques jours plus tard
-Liste du 2nd tour déposées 7 au 8/12 : elles devraient être disponibles quelques heures plus tard
+Liste du 1er tour déposées du 2 au 9/11
+Liste du 2nd tour déposées du 7 au 8/12
 
-Probablement publiées sur elections.interieur.gouv.fr dès leur disponibilités sous forme de pages web difficiles à exploiter
-Probablement publiées sur www.data.gouv.fr en xls dès leur disponibilités
+Probablement publiées sur elections.interieur.gouv.fr<br/>
+   quelques heures après clôture des dépôts<br/>
+      sous forme de pages web difficiles à exploiter
+
+Probablement publiées sur www.data.gouv.fr<br/>
+   quelques heures après clôture des dépôts<br/>
+      en xls
+
 Il n'y a cependant pas de certitudes
 Pb : difficile de connaître les modes de diffusion et le format avant la publication
+
+.fx:larger
 
 .notes: Le ministère de l'Intérieur a public les listes rapidement lors des précédentes élections.
 
 --------------------------------------------------------------------------------
 
-# Où trouver les contours des bureaux de vote ?
-
+# Forme de l'information "bureaux de vote"
 Les bureaux de vote sont définis dans des arrêtés préfectoraux<br/>
-Article L17 du code électroral « A chaque bureau de vote est affecté un périmètre géographique ».<br/>
-Disponibles sur demande auprès de chaque préfecture, parfois sur le site web.<br/>
+Article L17 du code électroral « A chaque bureau de vote est affecté un périmètre géographique ».
+
 Des modes de définitions variés :
 
   * listes de voies composant le périmètre du bureau
   * listes exhaustive des voies comprises dans le bureau
-  * parfois des contours tracés sur des cartes
+  * contours tracés sur des cartes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+# Où trouver les contours des bureaux de vote ?
+
+
+Disponibles sur demande auprès de chaque préfecture, parfois sur le site web.
 
 Aucune format de diffusion standard :
 
   * Souvent livrés en pdf voire pdf d'un document scanné
   * Beaucoup d'énergie nécessaire pour obtenir les fichiers dans un format réutilisable
-  * Aucune préfecture ne diffuse un vrai document réutilisable.
-  * il y a des changements de bureaux de vote entre chaque élection, il faut donc recommencer les démarches à chaque fois
+  * Aucune préfecture ne diffuse un vrai document réutilisable
+
+
+Toujours des bureaux de vote changés entre chaque élection
+Démarches à renouveler à chaque fois
+
+.fx:larger
 
 --------------------------------------------------------------------------------
 
+
 # Où trouver les résultats ?
 
-* Résultats locaux disponibles dans les bureaux de vote : cela impose d'être présent
-* Résultats à l'échelle du département disponibles dans les préfectures; le soir de chaque tour.
-* _mais_ diffusés seulement auprès de la presse, manuellement (pas d'API) [À vérifier auprès de préfecture et journalistes. Existe-t-il des fichiers, des API…?]
-* _résutats fournis par commune, pas par bureaux de vote_
-* Résultats à l'échelle nationale disponibles auprès du Min de l'intérieur au fur et à mesure de la validation :
-  - API destinée à la presse
-  - diffusion sur le site du Ministère, délai important
+* Résultats locaux disponibles dans les bureaux de vote : impose d'être présent
+* Résultats à l'échelle du département disponibles dans les préfectures, le soir de chaque tour.
+    * _mais_ diffusés seulement auprès de la presse, manuellement (pas d'API)
+    * _résutats fournis par commune, pas par bureaux de vote_
+* Résultats à l'échelle nationale disponibles auprès du min. de l'Intérieur au fur et à mesure de la validation :
+    * API destinée à la presse
+    * diffusion sur le site du Ministère, délai important
+
+.fx:larger
+
+.notes:
 (Le ministère procédant à des vérifications, ses résultats sont publiés tardivement)
 (La presse récupère les résultats en préfecture quitte à corriger en cas d'erreur.
 (Le ministère publie les résultats à des niveaux aggrégés par commune)
@@ -128,12 +170,18 @@ Aucune format de diffusion standard :
   * Certaines villes publient les définitions des bureaux de vote ainsi que les résultats en open data (Toulouse, Nantes, Rennes, Montpellier...)
   * Ces publications sont souvent rapides (lendemain) mais pas assez pour la presse.
   * Cependant, les formats sont différents d'une ville à l'autre…
-  * Problème de pertinence de la zone publiée : au sein d'une même circonscription électorale, il peut y avoir des données publiées et d'autres pas. Pour les départementales, des cantons sont à cheval sur des villes open data et sur des villes muettes.
+  * Problème de pertinence de la zone publiée par rapport aux circonscriptions électorales
+
+.notes: au sein d'une même circonscription électorale, il peut y avoir des données publiées et d'autres pas. Pour les départementales, des cantons sont à cheval sur des villes open data et sur des villes muettes.
+
+.fx:larger
 
 --------------------------------------------------------------------------------
 
 # Toulouse
 <img src="img/Toulouse_polygones.png" class="single-image"/>
+
+.notes: dans le canton du sud-est de l'agglomération, Ramonville-Saint-Agne ne publie pas.
 
 --------------------------------------------------------------------------------
 
@@ -143,7 +191,7 @@ Aucune format de diffusion standard :
 --------------------------------------------------------------------------------
 
 # Fougères
-<img src="img/Fougeres_lignes.png" class="single-image"/>
+<img src="img/Fougeres_bv.jpg" class="single-image"/>
 
 --------------------------------------------------------------------------------
 
@@ -162,25 +210,20 @@ D15;ELECTIONS DEPARTEMENTALES 2015;2;20150329;bu;111;Groupe Scolaire Echange;;1;
 
 --------------------------------------------------------------------------------
 
-# Quelques bons élèves
+# Quelques bons élèves... et d'autres
 
 <TABLE>
 <THEAD>
 <TR><TH>Ville</TH><TH>Découpage</TH><TH>Résultats</TH></TR>
 </THEAD>
 <TBODY>
-<TR><TD>Rennes</TD><TD>Points</TD><TD>CSV</TD>
-</TR><TR><TD>Rouen</TD><TD></TD><TD></TD>
 </TR><TR style="color: #FF0000;"><TD>Toulouse</TD><TD>GeoJSON</TD><TD>CSV (dès le lundi matin)</TD>
-</TR><TR><TD>Bordeaux</TD><TD></TD><TD></TD>
-</TR><TR><TD>Paris</TD><TD>Pas d'élection</TD><TD>Pas d'élection</TD>
-</TR><TR><TD>Lyon</TD><TD>Pas d'élection</TD><TD>Pas d'élection</TD>
-</TR><TR><TD>Marseille</TD><TD>Pas de plateforme</TD><TD>Pas de plateforme</TD>
 </TR><TR><TD>Nantes</TD><TD>Shapefile & KML</TD><TD>CSV (par canton)</TD>
-</TR><TR><TD>Lille</TD><TD>Pas de plateforme</TD><TD>Pas de plateforme</TD>
+<TR><TD>Rennes</TD><TD>Points, puis polygones Shapefile</TD><TD>CSV</TD>
 </TR><TR><TD>Montpellier</TD><TD>GeoJSON</TD><TD>CSV (plus tard)</TD>
-</TR><TR><TD>Poitiers</TD><TD>Pas de plateforme</TD><TD>Sur data.gouv.fr</TD>
-</TR><TR><TD>Départements/Régions</TD><TD></TD><TD></TD>
+</TR><TR><TD>Marseille</TD><TD>Pas de plate-forme</TD><TD>Pas de plate-forme</TD>
+</TR><TR><TD>Lille</TD><TD>Pas de plate-forme</TD><TD>Pas de plate-forme</TD>
+</TR><TR><TD>Poitiers</TD><TD>Pas de plate-forme</TD><TD>Sur data.gouv.fr</TD>
 </TR>
 </TBODY>
 </TABLE>
@@ -195,10 +238,15 @@ Informations électorales au niveau national :
 * incomplètes
 * publiées tardivement
 * difficiles d'accès
-  * formats disparates
-  * publiées à de trop nombreux endroits différents
-  * exigent de bonnes compétences techniques
+    * formats disparates
+    * publiées à de trop nombreux endroits différents
+    * exigent de bonnes compétences techniques
 
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Conclusion (suite)
 Dans les faits, les informations au niveau du bureau de vote sont difficilement exploitables dans la majorité des cas.
 Travail manuel demandé trop intensif ; à recommencer à chaque élection
 
@@ -207,17 +255,23 @@ En octobre 2015, la situation est déplorable
   * toujours pas de visualisations proposées
   * contours SIG des bureaux de vote majoritairement indisponibles
   * pas d'API REST
+  * pas d'historiques
 
-Ces données sont pourtant publiques.
+Ces données sont censées être publiques.
 Pourtant, beaucoup de temps perdu, des refus, des incompréhensions
 Impossible de faire des représentations des résultats bureau par bureau, rapidement et automatiquement !
+Impossible de réaliser des analyses d'évolutions historiques
+
+.fx: extra-large
 
 .fx: alternate
+
 .notes: les informatoins sont complètes par commune, pas par bureau de vote / Mauvaise volonté dans la diffusion des bureaux de votes ? / Le service XML du min est une plaisanterie
 
 --------------------------------------------------------------------------------
 
-# Exploitation des données par Makina Corpus lors de précendentes élections
+# Makina Corpus<BR/>
+Exploitation des données par lors de précédentes élections
 
 .fx: alternate
 
@@ -252,13 +306,13 @@ Quelques villes fournissent les contours dans un format géomatique sous forme d
 
   * Toulouse :
 
-    - (CSV, JSON, Excel)-> bizarre pour des polygones, en fait, ces fichiers représentent les lieux sous formes de points, GeoJSON, Shapefile (projection non précisée -> c'est du WGS84)
+    - GeoJSON, Shapefile (WGS84)
 
   * Nantes :
 
-    - Aucune donnée
+    - SHP, KMZ
 
-.notes: fichiers shp ou GeoJSON, faciles à traiter (mais traitement nécessaire selon la projection / le format, ou tout simplement pour optimiser le fichier...)
+.notes: fichiers shp ou GeoJSON, faciles à traiter (mais traitements nécessaires selon la projection / le format, ou tout simplement pour optimiser le fichier...)
 
 ------------------------------------------------------------------------------
 
@@ -274,7 +328,7 @@ Certains villages ont transmis un dessin ou une photo de la carte papier du pér
 
 # Travaux de création des fichiers SIG des bureaux de vote
 
-<iframe src="http://cartes-elections.makina-corpus.net/lectoure/" style="width:100%;height:550px;"></iframe>
+<img src="img/Lectoure_bv.png" class="single-image"/>
 
 --------------------------------------------------------------------------------
 
@@ -286,7 +340,9 @@ Parfois :
   * site des villes
   * certaines villes publient sur data.gouv.fr
   * contacter les villes une par une
-  * envoi par des journalistes les ayant obtenues en préfectures
+  * envoi par des journalistes les ayant obtenus en préfectures
+
+.fx: extra-large
 
 ------------------------------------------------------------------------------
 
@@ -300,11 +356,11 @@ Parfois :
 
 # Création d'une bibliothèque JavaScript : election.js
 
-  * 1 seul fichier javascript
-  * Extrait toute la technique (création de la carte, tri des candidats, choix de la couleur, ...)
-  * 2 choses à lui fournir :
+  * 1 seul fichier JavaScript
+  * Extrait toute la technique (création de la carte, tri des candidats, choix de la couleur...)
+  * Deux données à lui fournir :
     * le découpage (format GeoJSON, WGS84)
-    * l'algorithme de récupération des données en fonction du fichier de résultats (dépendant de l'élection)
+    * l'algorithme de récupération des données en fonction du fichier de résultats<BR/> (dépendant de l'élection)
   * Voir l'[article de blog](http://makina-corpus.com/blog/metier/2015/elections-js-genere-des-cartes-pour-vous)
   * Permet d'obtenir une carte des résultats en ~ 1h
 
@@ -329,14 +385,15 @@ Parfois :
 
 # Conclusion
 
-Nous n'avons pu réaliser que quelques villes car la recherche et le traitement de données est coûteux en temps
-Selon l'état des données, il faut une heure à plus d'une journée de réalisation pour la carte d'une ville.
+Cartes réalisées pour quelques villes seulement car la recherche et le traitement de données sont coûteux en temps
+
+Selon l'état des données, il faut une heure à plus d'une journée de travail pour la carte d'une ville.
 
 De plus, la majorité des données ne sont pas disponibles.
 
 --------------------------------------------------------------------------------
 
-# Les initiatives correctives
+# Les initiatives pour faire bouger la situation
 
 .fx: alternate
 
@@ -349,12 +406,14 @@ Programme de recherche Cartelec
 * Plus à jour depuis au moins 2012
 * Dépassé techniquement 
 
+
 Regards Citoyens
 
 * tentative de contribution collaborative
 * abandon
 
 .fx: alternate
+.fx:larger
 .notes :Pas mis à jour car fruit d'un travail manuel.
 
 ------------------------------------------------------------------------------
@@ -366,9 +425,13 @@ Ministère de l'Intérieur
 
 ------------------------------------------------------------------------------
 # Rappel de l'Objectif
-Créer une carte interactive des résultats des élections régionales de décembre 2015 pour chacun des bureaux de vote en France
+** Créer une carte interactive des résultats des élections régionales de décembre 2015 pour chacun des bureaux de vote en France**
 
 C'est un travail titanesque requérant des ressources et des budgets importants.
+
+style="color: #FF0000;"Échec
+
+.fx:larger
 
 .fx: alternate
 
@@ -377,9 +440,3 @@ C'est un travail titanesque requérant des ressources et des budgets importants.
 # Discussion
 
 > Comment faire mieux ?
-
-.fx: alternate
-
---------------------------------------------------------------------------------
-
-# Merci
