@@ -11,8 +11,8 @@
 
 ## Réaliser une carte interactive des résultats des élections régionales de décembre 2015 pour chacun des bureaux de vote en France
 
-.fx: alternate
-.fx: extra-large
+.fx: alternate extra-large
+
 .notes: cela semble assez simple...
 
 --------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ Favoriser l'action citoyenne
   * Mettre à la disposition du plus grand nombre les données les plus précises possibles
   * Permettre la création d'outils pour explorer les données
 
-.fx:larger
+.fx: larger
 
 .notes: Permettre d'explorer les votes au niveau le plus détaillé possibles, dès le soir des élections, croiser avec d'autres données
 
@@ -39,6 +39,7 @@ Favoriser l'action citoyenne
   * ...
 
 .fx: larger
+
 .notes: De nombreux publics sont intéressés et demandeurs (exemple des parties politiques qui nous ont demandé des cartes par parti lors des municipales de 2014)
 
 --------------------------------------------------------------------------------
@@ -65,8 +66,7 @@ Favoriser l'action citoyenne
 
 # Les données
 
-.fx: extra-large
-.fx: alternate
+.fx: extra-large alternate
 
 --------------------------------------------------------------------------------
 
@@ -150,7 +150,7 @@ Démarches à renouveler à chaque fois
 
 .notes: au sein d'une même circonscription électorale, il peut y avoir des données publiées et d'autres pas. Pour les départementales, des cantons sont à cheval sur des villes open data et sur des villes muettes.
 
-.fx:larger
+.fx: larger
 
 --------------------------------------------------------------------------------
 
@@ -385,9 +385,7 @@ Regards Citoyens
 * tentative de contribution collaborative
 * abandon
 
-.fx: alternate
-.fx:larger
-.notes :Pas mis à jour car fruit d'un travail manuel.
+.notes: Pas mis à jour car fruit d'un travail manuel.
 
 ------------------------------------------------------------------------------
 # Initiatives nationales pour les résultats
@@ -395,6 +393,8 @@ Ministère de l'Intérieur
 
 * Publication en octobre 2015 des résultats par bureaux de vote
 * En temps réel aux prochaines élections ?
+
+.fx: larger
 
 ------------------------------------------------------------------------------
 # Rappel de l'Objectif
@@ -404,8 +404,7 @@ C'est un travail titanesque requérant des ressources et des budgets importants.
 
 <span style="color: #FF0000;">Échec</span>
 
-.fx:larger
-.fx: alternate
+.fx: larger
 
 --------------------------------------------------------------------------------
 
