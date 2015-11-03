@@ -1,7 +1,7 @@
 
-# Open Data, <BR/>
-cartographie et <BR/>
-élections
+# Open Data,
+# cartographie et 
+# élections
 
 .fx: extra-large
 
@@ -9,14 +9,10 @@ cartographie et <BR/>
 
 # Objectif
 
-## Réaliser une carte interactive
-   ## des résultats des élections régionales de décembre 2015 
-      ## pour chacun des bureaux de vote en France
+## Réaliser une carte interactive des résultats des élections régionales de décembre 2015 pour chacun des bureaux de vote en France
 
 .fx: alternate
-
 .fx: extra-large
-
 .notes: cela semble assez simple...
 
 --------------------------------------------------------------------------------
@@ -42,8 +38,7 @@ Favoriser l'action citoyenne
   * partis politiques, militants
   * ...
 
-.fx: extra-large
-
+.fx: larger
 .notes: De nombreux publics sont intéressés et demandeurs (exemple des parties politiques qui nous ont demandé des cartes par parti lors des municipales de 2014)
 
 --------------------------------------------------------------------------------
@@ -64,17 +59,13 @@ Favoriser l'action citoyenne
   * La préfecture diffuse en temps réel les informations à des représentants de la presse
   * Le ministère de l'Intérieur transmet les résultats définitifs à la presse puis au public
 
-.fx: extra-large
+.notes: seules les transmissions des préfectures au ministère sont standardisés. communes vers préfectures : télétransmission par logiciel, email, téléphone... préfectures vers journalistes : papier ?
 
-.notes: seules les transmissions des préfectures au ministère sont standardisés.
-communes vers préfectures : télétransmission par logiciel, email, téléphone...
-préfectures vers journalistes : papier ?
 --------------------------------------------------------------------------------
 
 # Les données
 
 .fx: extra-large
-
 .fx: alternate
 
 --------------------------------------------------------------------------------
@@ -106,8 +97,6 @@ Probablement publiées sur www.data.gouv.fr<br/>
 Il n'y a cependant pas de certitudes
 Pb : difficile de connaître les modes de diffusion et le format avant la publication
 
-.fx:larger
-
 .notes: Le ministère de l'Intérieur a public les listes rapidement lors des précédentes élections.
 
 --------------------------------------------------------------------------------
@@ -122,11 +111,9 @@ Des modes de définitions variés :
   * listes exhaustive des voies comprises dans le bureau
   * contours tracés sur des cartes
 
-.fx: extra-large
-
 --------------------------------------------------------------------------------
-# Où trouver les contours des bureaux de vote ?
 
+# Où trouver les contours des bureaux de vote ?
 
 Disponibles sur demande auprès de chaque préfecture, parfois sur le site web.
 
@@ -136,14 +123,10 @@ Aucune format de diffusion standard :
   * Beaucoup d'énergie nécessaire pour obtenir les fichiers dans un format réutilisable
   * Aucune préfecture ne diffuse un vrai document réutilisable
 
-
 Toujours des bureaux de vote changés entre chaque élection
 Démarches à renouveler à chaque fois
 
-.fx:larger
-
 --------------------------------------------------------------------------------
-
 
 # Où trouver les résultats ?
 
@@ -155,14 +138,7 @@ Démarches à renouveler à chaque fois
     * API destinée à la presse
     * diffusion sur le site du Ministère, délai important
 
-.fx:larger
-
-.notes:
-(Le ministère procédant à des vérifications, ses résultats sont publiés tardivement)
-(La presse récupère les résultats en préfecture quitte à corriger en cas d'erreur.
-(Le ministère publie les résultats à des niveaux aggrégés par commune)
-
-.notes: Innovation 2015 : le Min a publié sur data.gouv.fr les résultats par BV début octobre 2015, plusieurs mois après les élections. Peut-on espérer une publication plus rapide pour les Régionales ?
+.notes: (Le ministère procédant à des vérifications, ses résultats sont publiés tardivement) (La presse récupère les résultats en préfecture quitte à corriger en cas d'erreur. (Le ministère publie les résultats à des niveaux aggrégés par commune) Innovation 2015 : le Min a publié sur data.gouv.fr les résultats par BV début octobre 2015, plusieurs mois après les élections. Peut-on espérer une publication plus rapide pour les Régionales ?
 
 --------------------------------------------------------------------------------
 
@@ -262,16 +238,11 @@ Pourtant, beaucoup de temps perdu, des refus, des incompréhensions
 Impossible de faire des représentations des résultats bureau par bureau, rapidement et automatiquement !
 Impossible de réaliser des analyses d'évolutions historiques
 
-.fx: extra-large
-
-.fx: alternate
-
 .notes: les informatoins sont complètes par commune, pas par bureau de vote / Mauvaise volonté dans la diffusion des bureaux de votes ? / Le service XML du min est une plaisanterie
 
 --------------------------------------------------------------------------------
 
-# Makina Corpus<BR/>
-Exploitation des données par lors de précédentes élections
+# Exploitation des données lors de précédentes élections
 
 .fx: alternate
 
@@ -340,9 +311,9 @@ Parfois :
   * site des villes
   * certaines villes publient sur data.gouv.fr
   * contacter les villes une par une
-  * envoi par des journalistes les ayant obtenus en préfectures
+  * envoi (journalistes les ayant obtenus en préfectures)
 
-.fx: extra-large
+.fx: larger
 
 ------------------------------------------------------------------------------
 
@@ -391,6 +362,8 @@ Selon l'état des données, il faut une heure à plus d'une journée de travail 
 
 De plus, la majorité des données ne sont pas disponibles.
 
+.fx: extra-large
+
 --------------------------------------------------------------------------------
 
 # Les initiatives pour faire bouger la situation
@@ -429,10 +402,9 @@ Ministère de l'Intérieur
 
 C'est un travail titanesque requérant des ressources et des budgets importants.
 
-style="color: #FF0000;"Échec
+<span style="color: #FF0000;">Échec</span>
 
 .fx:larger
-
 .fx: alternate
 
 --------------------------------------------------------------------------------
