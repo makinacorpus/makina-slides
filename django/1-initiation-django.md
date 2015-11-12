@@ -20,7 +20,7 @@
 
 * Créé en 2003, basé sur le langage Python créé en 1990
 * Rendu Open Source (BSD) en 2005
-* Version actuelle : Django 1.7, sortie en septembre 2014
+* Version actuelle : Django 1.8, sortie en avril 2015
 * Aujourd'hui utilisé par de très nombreuses entreprises : Mozilla, Instagram, Pinterest, Disqus, ...
 
 --------------------------------------------------------------------------------
@@ -58,8 +58,8 @@ La documentation précise certaines conventions de codage spécifiques à Django
 
 # Environnement
 
-* Django 1.7
-* Python : 2.6 / 2.7 / 3.2 / 3.3 / 3.4
+* Django 1.8
+* Python : 2.7 / 3.x
 * Base de données : SQLite, PostgreSQL, MySQL
 * Il est préférable de travailler dans un environnement virtualisé (*virtualenv*)
 
@@ -88,13 +88,13 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 ## Création et activation du *virtualenv*
 
     !console
-    $ virtualenv --no-site-packages venv_library
-    $ source venv_library/bin/activate
+    $ virtualenv venv
+    $ source venv/bin/activate
 
 ## Installation de Django
 
     !console
-    $ pip install django==1.7.7
+    $ pip install django==1.8.5
 
 ## Création du projet
 
@@ -120,9 +120,9 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 # Le projet créé
 
     !console
-    ├── library
+    ├── library/
     │   ├── manage.py
-    │   └── library
+    │   └── library/
     │       ├── __init__.py
     │       ├── settings.py
     │       ├── urls.py
@@ -183,22 +183,25 @@ Il est important de différencier la notion de **projet** et d'**application**.
 # Création d'une application
 
     !console
-    $ ./manage.py startapp todo
+    $ ./manage.py startapp books
 
 ## L'application créée
 
     !console
-     ├── books
-     │   ├── admin.py
-     │   ├── __init__.py
-     │   ├── models.py
-     │   ├── tests.py
-     │   └── views.py
+    ├── library/
+        ├── books/
+        │   ├── admin.py
+        │   ├── __init__.py
+        │   ├── models.py
+        │   ├── tests.py
+        │   ├── migrations/
+        │   └── views.py
 
 * ``models.py`` : déclaration des modèles de l'application
 * ``views.py`` : écriture des vues de l'application
 * ``admin.py`` : comportement de l'application dans l'interface d'administration
 * ``tests.py`` : Il. Faut. Tester.
+* ``migrations``: modifications successives du schéma de la base de donnée
 
 --------------------------------------------------------------------------------
 
@@ -217,7 +220,7 @@ Il est important de différencier la notion de **projet** et d'**application**.
         release = models.DateField(blank=True, null=True)
         borrowed = models.BooleanField(default=False)
 
-        def __unicode__(self):
+        def __unicode__(self):  # ou __str__ en python 3
             return self.title
 
 --------------------------------------------------------------------------------
@@ -271,10 +274,15 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
       'books',
     )
 
-## Création de la table en base de données
+## Création de la migration qui permet d'ajouter la table en base de données
 
     !console
-    $ ./manage.py syncdb
+    $ ./manage.py makemigrations
+
+## Application de la migration
+
+    !console
+    $ ./manage.py migrate
 
 ## Déclaration dans l'interface d'administration
 
@@ -355,19 +363,19 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
     !python
     # books/urls.py
     from django.conf.urls import patterns, include, url
-    urlpatterns = patterns('books.views',
-        url(r'^book_list$', 'book_list, name='book_list'),
-    )
+    urlpatterns = [
+        url(r'^book_list$', 'books.views.book_list, name='book_list'),
+    ]
 
 ## Inclusion des URLs de l'application au projet
 
     !python
     # library/urls.py
     ...
-    urlpatterns = patterns('',
+    urlpatterns = [
         ...
         url(r'^books/', include('books.urls')),
-    )
+    ]
     
 --------------------------------------------------------------------------------
 
@@ -418,8 +426,8 @@ Une template a accès à des **variables** qui lui auront été passées via un 
 Django possède un mécanisme capable de retrouver les templates d'un projet, configurable via le réglage ``TEMPLATE_LOADERS``.
 
 Le plus souvent on stocke les templates :
-* dans chaque application, en suivant l'arborescence ``<application>/templates/<application>``. Ils seront retrouvés grâce au django.template.loaders.app_directories.Loader, activé par défaut.
-* dans un répertoire ``templates/`` à la racine du projet qu'il faudra déclarer dans un réglage ``TEMPLATE_DIRS``. Ils seront retrouvés grâce au ``django.template.loaders.filesystem.Loader``, activé lui aussi par défaut.
+* dans chaque application, en suivant l'arborescence ``<application>/templates/<application>``. Ils seront retrouvés grâce au loader django.template.backends.django.DjangoTemplates, activé par défaut.
+* dans un répertoire ``templates/`` à la racine du projet qu'il faudra déclarer dans la clé ``DIRS`` du réglage ``TEMPLATES``.
 
 --------------------------------------------------------------------------------
 
@@ -590,10 +598,10 @@ Le module *URLconf* est un fichier ``urls.py`` contenant une variable ``urlpatte
     !python
     # urls.py
     from django.conf.urls import patterns, url
-    urlpatterns = patterns('myapp.views',
-        url(r'^myview$', 'my_view', name='my_view'),
+    urlpatterns = [,
+        url(r'^myview$', 'myapp.views.my_view', name='my_view'),
         ...
-      )
+      ]
 
 ## Inclusion d'*URLconf*
 
@@ -602,10 +610,10 @@ Souvent, l'*URLconf* racine inclura les modules URLconf de chaque application :
     !python
     # urls.py
     from django.conf.urls import patterns, url
-    urlpatterns = patterns('',
+    urlpatterns = [
         url(r'^myapp/', include('myapp.urls')),
         ...
-    )
+    ]
 
 --------------------------------------------------------------------------------
 
@@ -691,7 +699,7 @@ Certains modules annexes fournissent leurs propres champs et il est possible d'�
     !python
     from django.shortcuts import render
     from django.http import HttpResponseRedirect
-    from myapp.forms import ContactForm    
+    from myapp.forms import ContactForm
 
     def contact(request):
         if request.method == 'POST':
@@ -747,7 +755,7 @@ Le fonctionnement est assez semblable à celui des formulaires classiques à que
     class AddBookForm(forms.ModelForm):
         class Meta:
             model = Book
-            exclude = ('borrowed', )
+            fields = ('title', 'release')
 
     # views.py
     def add_book(request):
@@ -1015,6 +1023,9 @@ Supprimer l'association de livres à une catégorie :
 ## Les sites
 * http://www.djangoproject.com [EN]
 * http://www.django-fr.org/ [FR]
+* http://docs.djangoproject.com [EN]
+* http://docs.djangoproject.com/fr [FR]
+* http://stackoverflow.com/questions/tagged/django
 
 ## Les planètes
 * http://www.planetdjango.org/ [EN]
