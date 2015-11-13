@@ -94,7 +94,7 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 ## Installation de Django
 
     !console
-    $ pip install django==1.8.5
+    $ pip install django==1.8.6
 
 ## Création du projet
 
