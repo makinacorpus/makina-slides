@@ -303,7 +303,7 @@ le cap de la boussole.
 
 - Angular
 - Backbone
-- React (avec ReactNative)
+- React
 
 .fx: extra-large
 
@@ -330,7 +330,8 @@ le cap de la boussole.
 # Utiliser un gestionnaire de dépendances
 
 - NPM
-- NPM + Bower
+- NPM + WebPack
+- NPM + Bower (bientôt obsolète)
 
 .fx: extra-large
 
@@ -340,6 +341,7 @@ le cap de la boussole.
 
 - Grunt
 - Gulp
+- scripts NPM
 
 .fx: extra-large
 
@@ -402,6 +404,7 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
     !console
     $ ionic start myApp sidemenu
     $ ionic platform add android
+    $ npm install
 
 .fx: extra-large
 
@@ -526,6 +529,18 @@ ou:
 
 --------------------------------------------------------------------------------
 
+# WhiteList
+
+Autoriser l'accès à un backend
+
+    !xml
+    <access origin="*" />
+    <allow-intent href="*" />
+    <allow-navigation href="*" />
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'" />
+
+--------------------------------------------------------------------------------
+
 # Les tests
 
 .fx: extra-large
@@ -538,12 +553,13 @@ ou:
     $ npm install jasmine-core karma
         karma-chrome-launcher karma-jasmine
         --save-dev
+    $ bower install angular-mocks
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Tests unitaires
+# Tests unitaires - karma.conf.js
 
     !javascript
     module.exports = function(config){
@@ -552,9 +568,9 @@ ou:
         files : [
           'www/lib/ionic/js/ionic.bundle.js',
           'www/lib/angular-mocks/angular-mocks.js',
-          'www/js/app.js',
-          'www/js/controllers.js',
-          'www/js/app_test.js'
+          'www/lib/DEPENDANCE_1',
+          'www/lib/DEPENDANCE_2',
+          'www/js/*.js'
         ],
         autoWatch : true,
         frameworks: ['jasmine'],
@@ -568,7 +584,7 @@ ou:
 
 --------------------------------------------------------------------------------
 
-# Tests unitaires
+# Tests unitaires - app_test.js
 
     !javascript
     describe('MainCtrl', function() {
@@ -590,17 +606,86 @@ ou:
 
     });
 
+--------------------------------------------------------------------------------
+
+# Tests unitaires
+
+    !console
+    $ ./node_modules/karma/bin/karma start
+
+.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Robotframework
 
     !console
+    $ easy_install pip
     $ pip install robotframework
     $ pip install robotframework-selenium2library
     $ pip install robotframework-debuglibrary
 
-ChromeDriver http://chromedriver.storage.googleapis.com/index.html?path=2.19/
+ChromeDriver à ajouter dans le dossier bin:
+http://chromedriver.storage.googleapis.com
+/index.html?path=2.19/
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Robotframework - resources.robot
+
+    *** Settings ***
+    Documentation     A resource file with reusable keywords and variables.
+
+    Library           Selenium2Library
+
+    *** Variables ***
+    ${SERVER}         localhost:8100
+    ${BROWSER}        Chrome
+    ${DELAY}          0
+    ${START_URL}      http://${SERVER}/
+
+    *** Keywords ***
+
+    Open Application
+        Open Browser    ${START_URL}    ${BROWSER}
+        Set Selenium Speed    ${DELAY}
+
+    Page should be home
+        Wait Until Page Contains Element    css=#home-page
+        Page should contain element    css=#home-page
+
+    Click '${title}' menu
+        Click Element               css=a.menu-${title}
+
+    Go back
+        Sleep           200milliseconds
+        Click Element                css=.back-button
+
+--------------------------------------------------------------------------------
+
+# Robotframework - scenarios.robot
+
+    *** Settings ***
+    Documentation     A test suite with basic tests
+    Resource          Resources.robot
+
+    *** Test Cases ***
+    Read home page
+        Open Application
+        Page should be home
+        Click 'search' menu
+        Go back
+        Page should be home
+        [Teardown]    Close Browser
+
+--------------------------------------------------------------------------------
+
+# Robotframework
+
+    !console
+    $ pybot scenarios.robot
 
 .fx: extra-large
 
@@ -645,7 +730,7 @@ ChromeDriver http://chromedriver.storage.googleapis.com/index.html?path=2.19/
 
 # Release
 
-    !console:
+    !console
     $ cordova build --release
 
 .fx: extra-large
