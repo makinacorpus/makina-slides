@@ -285,6 +285,8 @@ Chaque type de champs possède ses propres propriétés. Cependant, certaines so
     !console
     $ ./manage.py migrate
 
+--------------------------------------------------------------------------------
+
 ## Déclaration dans l'interface d'administration
 
     !python
