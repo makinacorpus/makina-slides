@@ -305,8 +305,8 @@ Pour une version plus récente, utiliser le module jQuery Update
     * `description`
   * `.module`
   * `.install` facultatif
-  * `.test` facultatif
-  * les fichiers `.inc`
+  * les fichiers `.test` facultatif
+  * les fichiers `.inc` facultatif
 
 
 --------------------------------------------------------------------------------
