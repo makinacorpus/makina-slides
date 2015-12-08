@@ -8,11 +8,11 @@
 # Qui suis-je ?
 
 <center>
-<h2>Sébastien Corbin</h2>
+<h2>Pierre RINEAU</h2>
 
-<h2>@SebCorbin sur le web</h2>
+<h2>@pounard sur le web</h2>
 
-<h2>Développeur Drupal depuis 2009</h2>
+<h2>Développeur Drupal depuis 2008</h2>
 </center>
 
 .fx: larger
