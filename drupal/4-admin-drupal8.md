@@ -45,7 +45,7 @@
 # Quelques autres CMS
 
   * Joomla
-    * plugins nombreux mais peu maintenus
+    * plugins nombreux mais peu maintenus / payants
     * communauté moindre
 
 ![][20]
@@ -87,7 +87,7 @@
   * Guerlain
   * McDonalds
   * Cartier
-  * Gouvernement.fr / Senat.fr / Sites des minstères
+  * Gouvernement.fr / Senat.fr / Sites des ministères
   * SNCF
   * Eurostar
   * Orange Business Services
@@ -104,11 +104,10 @@
       * Linux : LAMP
   * alternatives : Nginx, Microsoft IIS, PostgreSQL, SQLite
   * versions :
-      * Apache 1.3 ou 2.x
+      * Apache 2.x (avec mod_rewrite)
       * MySQL > 5.5.3
-      * PHP > 5.4.5
-  * clean URL : mod_rewrite
-    * [http://drupal.org/requirements][3]
+      * PHP > 5.5.9
+  * [http://drupal.org/requirements][3]
 
 --------------------------------------------------------------------------------
 
@@ -246,7 +245,7 @@ Thèmes communs à tous les sites
 
 # Exercice
 
-  * Installer le module Webprofiler
+  * Installer le module Devel
 
 .fx: tp
 
@@ -290,8 +289,11 @@ Thèmes communs à tous les sites
 
 # Workflow
 
-  * Prévu pour la 8.1
-    * ... ?
+  * Prévu pour la 8.1 (via le module Drafty)
+  * Plusieurs modules disponibles en attendant
+    * Workflow (-beta)
+    * Workbench moderation (-dev)
+    * Multiversion ?
 
 --------------------------------------------------------------------------------
 
@@ -310,7 +312,8 @@ puisse modérer ces pages.
 
 # Pour aller plus loin...
 
-  * Modules contrib ?
+  * Modules de la communauté
+    * Content Access
 
   * Reconstruction des droits d'accès
 
@@ -352,11 +355,11 @@ puisse modérer ces pages.
 
   * La gestion des commentaires
 
-  * Modules complémentaires :
+  * Compléments :
     * Installer de nouveaux champs : date, références...
     * Voir la configuration de cKEditor
 
-  * Création de noeuds (nodes)
+  * Création de nœuds (nodes)
 
 --------------------------------------------------------------------------------
 
@@ -374,7 +377,7 @@ puisse modérer ces pages.
 
 # La gestion du contenu
 
-  * Liste des contenus (noeuds)
+  * Liste des contenus (nœuds)
     * Filtre par type de contenu / statut / langue
     * Actions batch
     * Filtrer la liste
@@ -388,7 +391,7 @@ puisse modérer ces pages.
   * Créer un type de contenu 'livre'.
   * Permettre l'affichage de commentaires
   * Champs: Titre, résumé, référence, auteur.
-  * Masquer la référence à l'affichage du noeud et de l'accroche.
+  * Masquer la référence à l'affichage du nœud et de l'accroche.
   * Afficher le label auteur sur la même ligne que la valeur du champ.
   * Créer au moins deux livres
 
@@ -432,9 +435,9 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Display suite (pas encore prêt)
+# Display suite
 
-  * structurer les champs dans un noeud
+  * structurer les champs dans un nœud
 
 ![][24]
 
@@ -521,7 +524,7 @@ uniquement sur la page d'accueil dans la région de droite.
 
   * Création d'un élément de menu
     * Par l'administration
-    * À la création d'un noeud
+    * À la création d'un nœud
   * Possibilité de désactiver les éléments de menu
   * Possibilité de hierarchiser les éléments de menu
   * Création de séparateurs ou d'éléments sans lien -> _Special Menu Items_ (pas encore en D8)
@@ -596,6 +599,13 @@ _La suite après les blocs_
 
 --------------------------------------------------------------------------------
 
+# La gestion des blocs - Types de blocs
+
+  * Comme les types de contenu, il y a des types de blocs
+    * Blocs de publicité, bloc vidéo, ...
+
+--------------------------------------------------------------------------------
+
 # Les vues (views)
 
   * Listing de contenu
@@ -653,10 +663,9 @@ _La suite après les blocs_
 # L'organisation du contenu - Exercice
 
   * Bloc
-    * Ajouter une case a cocher 'Mettre à la une' au type de contenu 'livre'
-    * Pour un des livres enregistrés, cocher la case
-    * Afficher un bloc qui affiche le livre dont la case 'Mettre à la une' est
-cochée sur toutes les pages du site
+    * Pour un des livres enregistrés, cocher la case 'Promu en page d'accueil'
+    * Afficher un bloc qui affiche le livre dont la case 'Promu en page 
+d'accueil' est cochée sur toutes les pages du site
 
 
   * Page
@@ -668,7 +677,6 @@ cochée sur toutes les pages du site
     * Créer un menu ''Tous les livres'' vers cette page
 
 .fx: tp
-
 
 --------------------------------------------------------------------------------
 
