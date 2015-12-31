@@ -313,10 +313,9 @@ sous-repertoire `custom`
     * `core`
     * `description`
   * `.module` (souvent vide en D8)
-  * `.install` facultatif (configuration indépendante)
-  * les fichiers `.test` facultatif
-  * les fichiers `.inc` facultatif
+  * `.install` facultatif (configuration désormais indépendante)
   * répertoire "config/install" pour la configuration
+  * répertoire "src" pour les Plugins, Controller, Form, ...
 
 --------------------------------------------------------------------------------
 
@@ -445,7 +444,7 @@ Créer un bloc :
   - qui affiche "Vous êtes un utilisateur premium" ou "Vous n'êtes pas un
   utilisateur premium" entouré d'un `<h3>`
 
-Rappel: user_access() pour vérifier les permissions
+Rappel: \Drupal::currentUser()->hasPermission(); pour vérifier les permissions
 
 Attention au cache d'implementations
 
@@ -456,10 +455,10 @@ Attention au cache d'implementations
 # Render Arrays
 
 Les render arrays sont les blocs constituant une page Drupal. Ce sont des arrays
-PHP qui définissent des données (c-a-d la structure) ; par souci de modularité,
-on essaiera toujours de produire des render arrays.
-Ceci afin qu'ils soient puissent être modifiés via les hooks d'altérations ou
-par la couche de theming.
+PHP qui définissent des données (c-a-d la structure) ; On est obligés de
+produire des render arrays.
+Ceci afin qu'ils puissent être modifiés via les hooks d'altérations ou par la
+couche de theming.
 
 Les propriétés sont toujours préfixées par un `#` et la propriété par défaut
 est `#markup`, elle permet d'indiquer du balisage simple.
@@ -507,7 +506,7 @@ Des propriétés utiles :
 
 # Fonctions de theme
 
-Exemples de fonctions de `theme()` :
+Exemples d'utilisations de `theme()` :
 
   * table
   * item_list
@@ -516,7 +515,7 @@ Exemples de fonctions de `theme()` :
   * image
 
 [Liste complete des implementation de theme du cœur](
-https://api.drupal.org/api/drupal/modules%21system%21theme.api.php/group/themeable/7)
+https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/group/themeable/8)
 
     !php
     $table_element = array(
@@ -526,18 +525,15 @@ https://api.drupal.org/api/drupal/modules%21system%21theme.api.php/group/themeab
     print drupal_render($table_element); // Quasi-automatiquement appelé
                                          // par les hooks
 
-Documentation <http://drupal.org/node/930760> et le module `render_example`
+Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
+<https://www.drupal.org/developing/api/8/render/pipeline#html-main-content-renderer-pipeline>
 
 --------------------------------------------------------------------------------
 
-# TP: Privilégier les render arrays
+# TP: Manipuler les render arrays
 
-  - Convertir le contenu du bloc render array
-  - Altérer le bloc dans un `hook_block_view_alter()` afin de changer le
+  Altérer le bloc dans un `hook_block_view_alter()` afin de changer le
   `<h3>` en `<h4>`
-
-Ne pas hésiter à rendre le code lisible en utilisant des constantes pour les
-permissions
 
 .fx: tp
 
@@ -546,30 +542,30 @@ permissions
 # Système de menus
 
 ## Quelques définitions :
-  * routage : faire pointer une route (`node/%`) à une action (afficher un noeud)
+  * routage : faire pointer une route (`node/{node}`) à une action (afficher un noeud)
   * chemin (ou path) : route dont les arguments sont définis (ex: `node/123` est 
-  un chemin, pointant vers la route `node/%` où l'argument est 123)
+  un chemin, pointant vers la route `node/{node}` où l'argument est 123)
   * lien de menu : Texte (ou titre) pointant vers un chemin
+  * tâche : ~ onglet
   * alias : associe un chemin système (`node/123`) vers un chemin arbitraire 
   renseigné par le contributeur (`mon-noeud`)
 
 
 ## Les propriétés d'une route
   * Permissions -> `'access callback'`, `'access arguments'`
-  * Arguments peuvent être bruts '`%`' ou nommés '`%node`' pour être chargés 
-  à la volée avec `*_load()` -> `node_load()`
+  * Les arguments sont nommés `{node}` et peuvent être chargés dans le
+  Controller (en les typant avec une classe)
+  * Vous pouvez passer des paramètres fixes au controller en les indiquant
+  dans la route
 
 --------------------------------------------------------------------------------
 
   * Type d'élément de menu
-    * `MENU_NORMAL_ITEM` -> lien de menu dans l'arborescence
-    * `MENU_LOCAL_TASK` -> onglet
-    * `MENU_CALLBACK` -> url simple
-  * Possibilité de placer la `page callback` dans un fichier `.inc` (file path + file)
-  * La route `abc/def` est enfant de la route `abc` si celle-ci est définie
-  * <u>/!\</u> Il y a toujours un *s* à `arguments` : utiliser un `array()`
-  * <u>/!\</u> Il y n'a pas d'underscore dans le nom des propriétés :
-  <del>`page_callback`</del>
+    * *.routing.yml -> définit une URL
+    * *.links.menu.yml -> lien de menu dans l'arborescence
+    * *.links.task.yml -> onglet
+    * *.links.action.yml -> 
+  * TODO: La route `abc/def` est enfant de la route `abc` si celle-ci est définie
 
 <table>
   <tr>
@@ -602,26 +598,14 @@ permissions
 
 <h2>Exemple</h2>
 
-    !php
-    function mymodule_menu() {
-      $items['abc/def'] = array(
-        'title' => "My ABC page",
-        'page callback' => 'mymodule_abc_view',
-        'page arguments' => array(1),
-        'access callback' => 'mymodule_verify_access',
-        'access arguments' => array('une chaine'),
-        'file' => 'mymodule.pages.inc',
-      );
-      return $items;
-    }
-    
-    function mymodule_abc_view($def) {
-      return "Mon contenu";
-    }
-    
-    function mymodule_verify_access($string) {
-      return $string == 'une chaine';
-    }
+    !yaml
+    mymodule.abc_view:
+      path: '/abc/def'
+      defaults:
+        _title: "My ABC page"
+        _controller: "\Drupal\mymodule\Controller\MyModuleController::abc_view"
+      requirements:
+        _permission: 'access my module'
 
 --------------------------------------------------------------------------------
 
@@ -642,26 +626,19 @@ premium
 
   - url : page-gold
 
-S'inspirer de la docummentation du `hook_menu()`
-
-Placer toutes les callback dans un autre fichier que le `.module`
-
-Attention au cache de menu
-
 .fx: tp
 
 --------------------------------------------------------------------------------
 
 # Gestion des nodes et des users
 
-Quelques globales et fonctions de l'API à connaitre :
+Quelques fonctions de l'API à connaitre :
 
-  * `global $user` : utilisateur actuellement connecté
+  * `\Drupal::currentUser()` : utilisateur actuellement connecté
 <small>(modifier avec prudence !)</small>
   * `node_load()` et `node_load_multiple()` pour charger des nœuds
-  * `node_save()` pour enregistrer un nœud
   * `user_load()` et `user_load_multiple()` pour charger des utilisateurs
-  * `user_save()` pour enregistrer un utilisateur
+  * $entity->save() pour enregistrer un nœud, un utilisateur, ...
   * `REQUEST_TIME` : timestamp à l'appel de la page
 
 --------------------------------------------------------------------------------
@@ -686,7 +663,7 @@ sécurité). Utiliser ensuite `foreach()` pour parcourir les résultats.
 Permet de faire des requêtes dynamiques grâce à une API en POO, donc sans
 manipuler de chaînes.
 
-[Documentation complète](https://api.drupal.org/api/drupal/includes%21database%21database.inc/group/database/7),
+[Documentation complète](https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Database!database.api.php/group/database/8),
 voir également les commentaires sur chaque fonction sur <https://api.drupal.org>
 
 --------------------------------------------------------------------------------
@@ -719,13 +696,13 @@ Récupération de résultats :
 
 Quelques globales et fonctions de l'API à connaitre :
 
-  * `url()` -> '<front>' ou 'node/1'
-  * `l()` -> lien avec texte (`<a href=''>`)
-  * `drupal_goto()` -> redirection
+  * use Drupal\Core\Url; $url = Url::fromRoute('book.admin');
+  * $link = \Drupal::l(t('Book admin'), $url); 
+  * $this->redirect('book.admin'); -> redirection
   * `global $base_url` -> http://monsite.com
   * `base_path()` -> `/` ou `/mon-dossier-drupal`
   * `drupal_get_path()` (module, theme) -> chemin vers un module ou un thème
-  `drupal_get_path('module', 'devel')` donne _sites/all/modules/devel_
+  `drupal_get_path('module', 'devel')` donne _modules/devel_
 
 --------------------------------------------------------------------------------
 
@@ -746,8 +723,6 @@ accès premium.
   * Modifier pour les afficher dans un tableau avec _Identifiant_,
   _Nom_, _Lien vers son profil_
 
-Les callback doivent être situées dans un autre fichier que le .module
-
 Attention au cache
 
 .fx: tp
@@ -755,6 +730,8 @@ Attention au cache
 --------------------------------------------------------------------------------
 
 # La Form API
+
+<https://www.drupal.org/node/2117411>
 
 .fx: alternate
 
@@ -766,23 +743,26 @@ création ou la modification de formulaire rapide et sécurisée.
 
 
 Référentiel des composants disponibles [sur api.drupal.org](
-http://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/7)
+https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/8)
 
     !php
-    $form = drupal_get_form('my_module_example_form'); // Appel
+    \Drupal::formBuilder()->getForm('Drupal\mymodule\MyModuleForm');
 
     // Déclaration
-    function my_module_example_form($form, &$form_state) {
+    public function getFormId() {
+      return 'my_module_form';
+    }
+    public function build(array $form, FormStateInterface $form_state) {
       $form['submit'] = array(
         '#type' => 'submit',
         '#value' => t('Submit'),
       );
       return $form;
     }
-    function my_module_example_form_validate($form, &$form_state) {
+    public function validate(array &$form, FormStateInterface $form_state) {
       // Logique de validation.
     }
-    function my_module_example_form_submit($form, &$form_state) {
+    public function submit(array &$form, FormStateInterface $form_state) {
       // Traitement des données soumises.
     }
 
@@ -790,10 +770,10 @@ http://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/7)
 
 # Traitement des données
 
-Les données soumises et validées sont contenues dans `$form_state['values']`.
+Les données soumises et validées sont contenues dans `$form_state->getValue('key')`.
 
 Après exécution du `_submit()`, l'utilisateur est redirigé vers le formulaire
-vidé de ses valeurs, ou bien vers une page définie par `$form_state['redirect']`
+vidé de ses valeurs, ou bien vers une route définie par `$form_state['redirect']`
 
 Chaque formulaire a un identifiant unique qui permet de l'altérer facilement par
 les autres modules.
@@ -809,10 +789,16 @@ Schéma de workflow complet : <https://drupal.org/files/fapi_workflow_7.x_v1.1.p
 
 --------------------------------------------------------------------------------
 
-# Gestion de variables persistantes
-  * `variable_set('name', value)` pour définir
-  * `variable_get('name', default_value)` pour récupérer
-  * `variable_del('name')` pour supprimer
+# Gestion de la configuration
+  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
+  * $config->set('name', value)->save();` pour définir
+  * $config = \Drupal::config('monmodule.settings');
+  * $config->get('name');` pour récupérer
+  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
+  * $config->clear('name')->save();` pour supprimer une valeur
+  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings')->delete();
+
+Documentation sur <https://www.drupal.org/node/1809490>
 
 --------------------------------------------------------------------------------
 
