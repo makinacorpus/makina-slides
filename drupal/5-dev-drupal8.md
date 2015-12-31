@@ -781,9 +781,9 @@ les autres modules.
   * Possibilité de créer des formulaires multi-étapes.
   * Validation par élément
   * Possibilité de créer de nouveaux type d'éléments
-  * \#ajax (<http://drupal.org/node/752056>) permet de faire de l'Ajax sans
-  ecrire de JS
-  * \#autocomplete_path 
+  * \#ajax (<https://api.drupal.org/api/drupal/core!core.api.php/group/ajax/8>)
+  permet de faire de l'Ajax sans ecrire de JS
+  * \#autocomplete_path
 
 Schéma de workflow complet : <https://drupal.org/files/fapi_workflow_7.x_v1.1.png>
 
@@ -843,7 +843,7 @@ Différence entre fichiers gérés et non gérés
 
 Différence entre fichiers privés et fichiers publics
 
-API complète <https://api.drupal.org/api/drupal/includes%21file.inc/group/file/7>
+API complète <https://api.drupal.org/api/drupal/core!includes!file.inc/group/file/8>
 
 ## Les streams wrappers
 
@@ -854,46 +854,22 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 --------------------------------------------------------------------------------
 
-# Fournir un effet sur les images
-
-    !php
-    function hook_image_effect_info() {
-      $effects['mymodule_resize'] = array(
-        'label' => t('Resize'),
-        'help' => t('Resize an image to an exact set of dimensions.'),
-        'effect callback' => 'mymodule_resize_effect',
-        'dimensions callback' => 'mymodule_resize_dimensions',
-        'form callback' => 'mymodule_resize_form',
-        'summary theme' => 'mymodule_resize_summary',
-      );
-
-      return $effects;
-    }
-
-
---------------------------------------------------------------------------------
-
 # Fournir un style par défaut
 
-    !php
-    function hook_image_default_styles() {
-      $styles['mymodule_preview'] = array(
-        'label' => 'My module preview',
-        'effects' => array(
-          array(
-            'name' => 'image_scale',
-            'data' => array(
-              'width' => 400,
-              'height' => 400,
-              'upscale' => 1,
-            ),
-            'weight' => 0,
-          ),
-        ),
-      );
+  Dans un fichier de configuration '/config/install/image.style.mon_style.yml'
+  (l'exporter depuis l'interface)
 
-      return $styles;
-    }
+    !yaml
+    status: true
+    dependencies: {  }
+    name: mon_style
+    label: 'mon style'
+    effects:
+      mon_style_desaturate:
+        uuid: mon_style_desaturate
+        id: image_desaturate
+        weight: 1
+        data: {  }
 
 --------------------------------------------------------------------------------
 
@@ -923,7 +899,7 @@ Celui-ci nous servira pour les images qui seront sur les articles gold
 
 ## Déclarer une table gold
 
-Via l'API, déclarer une table avec deux colonnes, nid etstatus.
+Via l'API, déclarer une table avec deux colonnes, nid et status.
 Installer cette table via un `hook_update_N()` ou réinstaller le module.
 
 ## Altérer le formulaire de noeuds
