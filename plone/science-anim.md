@@ -46,6 +46,10 @@ history.pushState
 
 Outillage Gulp
 
+Module pattern en javascript
+
+BEM en scss
+
 .fx: extra-large
 
 --------------------------------------------------------------------------------
