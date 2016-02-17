@@ -48,7 +48,15 @@ Outillage Gulp
 
 Module pattern en javascript
 
-BEM en scss
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# BEM en scss
+
+Un module JS = Un 'block' css
+
+.block__module--modifier
 
 .fx: extra-large
 
