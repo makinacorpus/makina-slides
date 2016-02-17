@@ -18,9 +18,9 @@
 
 ## Historique
 
-* Créé en 2003, basé sur le langage Python créé en 1990
+* Créé en 2003 par le journal local de Lawrence (Kansas, USA), basé sur le langage Python créé en 1990
 * Rendu Open Source (BSD) en 2005
-* Version actuelle : Django 1.8, sortie en avril 2015
+* Version actuelle : Django 1.9, sortie en décembre 2015
 * Aujourd'hui utilisé par de très nombreuses entreprises : Mozilla, Instagram, Pinterest, Disqus, ...
 
 --------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ La documentation précise certaines conventions de codage spécifiques à Django
 
 # Environnement
 
-* Django 1.8
+* Django 1.9
 * Python : 2.7 / 3.x
 * Base de données : SQLite, PostgreSQL, MySQL
 * Il est préférable de travailler dans un environnement virtualisé (*virtualenv*)
@@ -94,7 +94,7 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 ## Installation de Django
 
     !console
-    $ pip install django==1.8.5
+    $ pip install django==1.9
 
 ## Création du projet
 
@@ -190,12 +190,13 @@ Il est important de différencier la notion de **projet** et d'**application**.
     !console
     ├── library/
         ├── books/
-        │   ├── admin.py
         │   ├── __init__.py
+        │   ├── admin.py
+        |   ├── apps.py
+        │   ├── migrations/
         │   ├── models.py
         │   ├── tests.py
-        │   ├── migrations/
-        │   └── views.py
+        │   ├── views.py
 
 * ``models.py`` : déclaration des modèles de l'application
 * ``views.py`` : écriture des vues de l'application
@@ -251,7 +252,7 @@ D'autres options permettent par exemple de :
 
 # Quelques options pour les champs
 
-Chaque type de champ possède ses propres propriétés. Cependant, certaines sont communes et souvent utilisées comme : 
+Chaque type de champs possède ses propres propriétés. Cependant, certaines sont communes et souvent utilisées comme : 
 
 * ``verbose_name``: label du champ
 * ``null`` : valeur NULL autorisée ou non en base de données
@@ -283,6 +284,8 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
 
     !console
     $ ./manage.py migrate
+
+--------------------------------------------------------------------------------
 
 ## Déclaration dans l'interface d'administration
 
@@ -317,7 +320,7 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
 
     !python
     # views.py
-    from django.shortcuts import render
+    from django.shortcuts import render_to_response
     from books.models import Book
 
     def book_list(request):
@@ -328,8 +331,7 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
             'books': books
         }
     
-        return render(
-            request,
+        return render_to_response(
             'books/book_list.html',
             context
         )
@@ -364,7 +366,7 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
     # books/urls.py
     from django.conf.urls import patterns, include, url
     urlpatterns = [
-        url(r'^book_list$', 'books.views.book_list, name='book_list'),
+        url(r'^book_list$', 'books.views.book_list', name='book_list'),
     ]
 
 ## Inclusion des URLs de l'application au projet
@@ -374,7 +376,7 @@ Chaque type de champ possède ses propres propriétés. Cependant, certaines son
     ...
     urlpatterns = [
         ...
-        url(r'^books/', include('books.urls')),
+        url(r'^books/', include('books.urls', namespace="books")),
     ]
     
 --------------------------------------------------------------------------------
@@ -407,6 +409,25 @@ Ces vues sont généralement écrites dans le fichier ``views.py`` de l'applicat
         html = "<html><body>It is now %s.</body></html>" % now
         return HttpResponse(html)
 
+--------------------------------------------------------------------------------
+
+# Class-based views
+
+Une vue *basée sur une classe* Django est simplement une classe Python préformatée qui prend en entrée une **requête HTTP** et retourne une **réponse HTTP**.
+
+
+## Un exemple tiré de la documention Django
+
+    !python
+    # some_app/views.py
+    from django.http import HttpResponse
+	from django.views.generic import View
+
+	class CurrentDatetimeView(View):
+		def get(self, request, * args, ** kwargs):
+			now = datetime.datetime.now()
+			html = "<html><body>It is now %s.</body></html>" % now
+			return HttpResponse(html)
 --------------------------------------------------------------------------------
 
 # Le moteur de template
@@ -472,7 +493,7 @@ Les **tags** sont plus complexes que les variables, ils peuvent créer du texte 
 ### Un lien avec *url* :
 
     !html
-    <a href="{% url 'book_detail' book.pk %}">Django book</a>
+    <a href="{% url 'books:book_detail' book.pk %}">Django book</a>
 
 Django fournit aussi plusieurs tags nativement et il est possible d'écrire ses propres tags.
 
@@ -565,13 +586,13 @@ Cela peut être utile dans différents cas :
         <link href="styles.css" rel="stylesheet" />
       </head>
       <body>
-        { % include ''templates/header.html'' %}
+        {% include 'templates/header.html' %}
         <section>
           {% block content %}
             ...
           {% endblock %}
         </section>
-        { % include ''templates/footer.html'' %}
+        {% include 'templates/footer.html' %}
       </body>
     </html>
 
@@ -611,7 +632,7 @@ Souvent, l'*URLconf* racine inclura les modules URLconf de chaque application :
     # urls.py
     from django.conf.urls import patterns, url
     urlpatterns = [
-        url(r'^myapp/', include('myapp.urls')),
+        url(r'^myapp/', include('myapp.urls', namespace='myapp')),
         ...
     ]
 
@@ -697,7 +718,7 @@ Certains modules annexes fournissent leurs propres champs et il est possible d'�
 # Utilisation d'un formulaire dans une ``function-based view``
 
     !python
-    from django.shortcuts import render
+    from django.shortcuts import render_to_response
     from django.http import HttpResponseRedirect
     from myapp.forms import ContactForm
 
@@ -711,9 +732,10 @@ Certains modules annexes fournissent leurs propres champs et il est possible d'�
         else:
             form = ContactForm()
         # Render form
-        return render(request, 'contact.html', {
-            'form': form,
-        })
+        return render_to_response(
+            'contact.html',
+            {'form': form,}
+        )
 
 --------------------------------------------------------------------------------
 
@@ -763,7 +785,7 @@ Le fonctionnement est assez semblable à celui des formulaires classiques à que
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/books/')
-        return render(request, 'add_book.html', {'form': form})
+        return render_to_response('add_book.html', {'form': form,})
 
 --------------------------------------------------------------------------------
 
@@ -885,7 +907,7 @@ La même méthode ``save`` est utilisée pour enregistrer en base de données de
 Pour supprimer une instance, il suffit d'appeler la méthode delete qui permet de supprimer directement la ligne en base de données.
 
     >>> b = Book(name='Two scoops of django',
-              release=date(2013, 08, 31))
+                 release=date(2013, 08, 31))
     >>> b.save()
     >>> b.delete()
 
@@ -1030,6 +1052,8 @@ Supprimer l'association de livres à une catégorie :
 ## Les planètes
 * http://www.planetdjango.org/ [EN]
 * http://www.django-fr.org/planete/ [FR]
+
+--------------------------------------------------------------------------------
 
 ## Les outils de développement
 * Le *bug tracker* : http://code.djangoproject.com

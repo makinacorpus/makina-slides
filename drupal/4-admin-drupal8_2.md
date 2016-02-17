@@ -33,7 +33,6 @@
 
 ![][1]
 
-
 --------------------------------------------------------------------------------
 
 # Mises à jour des modules
@@ -48,7 +47,6 @@ apparait.
 
   * Cliquez sur le lien et suivre les instructions
 
-
 --------------------------------------------------------------------------------
 
 # Mises à jour du cœur
@@ -61,7 +59,6 @@ apparait.
 apparaît.
 
   * Cliquez sur le lien et suivre les instructions
-
 
 --------------------------------------------------------------------------------
 
@@ -80,7 +77,6 @@ apparaît.
 
   * Relativement supporté sur Windows
 
-
 --------------------------------------------------------------------------------
 
 # Sauvegardes
@@ -97,7 +93,6 @@ apparaît.
     * drush sql-dump
     * drush sql-client
 
-
 --------------------------------------------------------------------------------
 
 # Installation multi-sites
@@ -112,7 +107,6 @@ apparaît.
     * Basé sur 1 instance (même base de données,  même code)
     * Facilité d'administration
     * Partage de contenus, utilisateurs, blocks, etc.
-
 
 --------------------------------------------------------------------------------
 
@@ -175,7 +169,9 @@ Et bien d'autres
   * paramétrage pour la page d'accueil
   * possibilité d'ajouter de nombreux tag
 
-## Module XML sitemap
+--------------------------------------------------------------------------------
+
+## Module Simple sitemap
 
   * Génération d'un fichier sitemap.xml à la racine avec les urls du site (parsing par les robots de référencement)
   * Paramétrage pour définir quelles pages sont à inclure / exclure
@@ -194,9 +190,7 @@ Et bien d'autres
   * Metadonnées pour l'affichage dans les résultats de recherche
   * Inclus dans le cœur de Drupal (module RDF)
 
-## Module Search 404
-
-## Redirect & Global Redirect
+## Redirect
 
 --------------------------------------------------------------------------------
 
@@ -215,19 +209,8 @@ Multi-sites, ldap, performance)
 
 # Le multilinguisme
 
-  * Installation du module I18n (Internationalization)
-    * Activation du module et sous-modules
-    * Ajout d'une langue et configuration
-    * Configuration > Régionalisation et langues > Langues
-
-> Traduction au niveau du contenu
-
-  * Autre possibilité : Entity translation
-    * Pratique pour les noeuds
-    * Moins pour les menus, blocs, taxonomie, ...
-    * Inclus dans D8
-
-> Traduction au niveau des champs
+  * Inclus dans le cœur depuis Drupal 8
+  * A REFAIRE !!!!!
 
 --------------------------------------------------------------------------------
 
@@ -290,30 +273,11 @@ performance, architecture)
 
 --------------------------------------------------------------------------------
 
-# Media dans l'éditeur wysiwyg
+# Gestion des médias 
 
-  * Module Media
-  * Gestion centralisée de tous les médias (images, vidéos, audio, flash)
-  * Accès à la bibliothèque pour ré-utilisation
-  * Facilité d'utilisation
-
+  * A REFAIRE !!!
 
 ![][11]
-
---------------------------------------------------------------------------------
-
-# Autres modules de media
-
-  * Alternative à Media
-    * Scald
-    * Asset
-
-  * Module Video
-    * Fournit un champ vidéo à ajouter dans les types de contenu
-
-  * Module MediaFront
-    * Champ video et customisation du player.
-
 
 --------------------------------------------------------------------------------
 
@@ -331,7 +295,7 @@ performance, architecture)
 
 # Formulaires
 
-  * Module Webform
+  * Module Webform (pas encore prêt...)
   * Création/Gestion intuitive des champs
   * Visualisation/export des soumissions
 
@@ -343,25 +307,20 @@ performance, architecture)
 
 # Objectifs de la formation - Les fonctionnalités avancées
 
+  * Multilinguisme
   * Administration (Mises à jour, Multi-sites, sauvegarde, cron, ldap,
 performance, architecture)
   * Référencement (urls, meta-tags, sitemap.xml)
-  * Multilinguisme
   * Autres contenus (vidéos, newsletters, formulaires)
-  * __Modules du coeur (aggregator, poll, search)__
+  * __Recherche__
 
 .fx: progress
 
-
 --------------------------------------------------------------------------------
 
-# Modules du coeur de Drupal
+# La recherche
 
-  * Aggregator (Flux RSS)
-    * Feeds pour aller plus loin
-
-  * Search
-      * Search API, Solr, ...
+  * Search API, Solr, ...
 
 --------------------------------------------------------------------------------
 

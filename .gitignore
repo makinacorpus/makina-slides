@@ -4,3 +4,6 @@
 
 # Vim
 *.sw?
+
+# Eclipse (et oui)
+.project
