@@ -603,7 +603,11 @@ _La suite après les blocs_
 
   * Comme les types de contenu, il y a des types de blocs
     * Blocs de publicité, bloc vidéo, ...
-
+    * Bloc contenant une vue
+    * Bloc contenant un menu
+    * Bloc contenant un formulaire
+    * Blocs systèmes (connexion, utilisateurs connectés...)
+    
 --------------------------------------------------------------------------------
 
 # Les vues (views)
@@ -688,7 +692,7 @@ d'accueil' est cochée sur toutes les pages du site
   * Gestion du contenu
   * L'organisation du contenu
   * __Les thèmes__
-  * Créer une vue permettant de voir la liste des livres sous forme de
+  * Les fonctionnalités avancées
 
 .fx: progress
 

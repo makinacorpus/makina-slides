@@ -209,9 +209,12 @@ Multi-sites, ldap, performance)
 
 # Le multilinguisme
 
-  * Inclus dans le cœur depuis Drupal 8
-  * A REFAIRE !!!!!
-
+  * Activation des 4 modules présents dans le coeur depuis la version 8
+    * Configuration Translation (traduction de la configuration)
+    * Content Translation (traduction du contenu)
+    * Interface Translation (interface complète de traduction de tous champs)
+    * Language (gestion des langues du site)
+    
 --------------------------------------------------------------------------------
 
 # Traduire les noeuds
@@ -219,9 +222,9 @@ Multi-sites, ldap, performance)
   * Onglet Traduire pour chaque contenu
     * Tableau de synthèse du statut de traduction pour toutes les langues
   * Ajout d'une traduction :
-    * par le lien ''ajouter une traduction''
-    * par la création d'un contenu puis ajouter sa référence dans la partie
-    ''Select translations for...''
+    * par le lien ''Ajouter''
+    * par la création d'un contenu puis ajouter sa langue avec le champ
+    ''Language''
 
 ![][6]
 
@@ -229,8 +232,9 @@ Multi-sites, ldap, performance)
 
 # Traduire les blocs
 
-  * Choix de la langue
-  * Paramètres de visibilité : Spécifier les chemins des contenus traduits où
+  * Pour chaque bloc dans l'onglet ''Configurer le bloc''
+  * Sélection de la langue
+  * Pages : Spécifier les chemins des contenus traduits où
   le bloc doit apparaître.
 
 ![][7]
@@ -239,8 +243,9 @@ Multi-sites, ldap, performance)
 
 # Traduire l'interface
 
-  * Configuration > Régionalisation et langues > Traduction de l'interface
+  * Configuration > Régionalisation et langues > Traduction de l'interface utilisateur
   * Traduction de l'interface différent de la traduction du contenu
+  * Traduction de l'interface aussi différent de la traduction de configuration
 
 ![][8]
 
@@ -275,7 +280,11 @@ performance, architecture)
 
 # Gestion des médias 
 
-  * A REFAIRE !!!
+  * Media Initiative
+    * <http://www.drupalmedia.org>
+    * Suite de modules (Entity Browser, Media entity, DropzoneJS ...)
+    * Fichiers image, vidéo, audio, ...
+    
 
 ![][11]
 
@@ -320,7 +329,13 @@ performance, architecture)
 
 # La recherche
 
-  * Search API, Solr, ...
+  * Search API
+  * Apache Solr
+    * module Apache Solr Search non porté sur Drupal 8
+    * remplacé par Search API Solr Search
+  * ElasticSearch
+    * Elasticsearch Connector 
+  * ...
 
 --------------------------------------------------------------------------------
 
