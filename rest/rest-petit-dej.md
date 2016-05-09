@@ -8,7 +8,7 @@
 
 <img src="../tests/img/officier-des-transmissions-morse-1914.jpg" />
 
-(avant) SOAP, (avant avant) CORBA
+(avant) SOAP et (avant avant) CORBA
 
 .fx: extra-large
 
@@ -63,7 +63,7 @@ PATCH: modifie partiellement une ressource (non-safe, idempotent)
 
 En général du JSON.
 
-Avec des **liens** (hypermedia).
+Avec des **<u>liens</u>** (hypermedia).
 
 .fx: extra-large
 
@@ -94,12 +94,23 @@ Avec des **liens** (hypermedia).
 
 --------------------------------------------------------------------------------
 
+# Les pièges
+
+- API incompréhensible,
+- API non-comminiquable,
+- failles de sécurité,
+- inadéquation avec les attentes front.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
 # REST n'est PAS SQL
 
 On expose des services, pas des tables.
 
-    !console:
-    GET /accounts?id=eric => TRES FAIBLE
+    !console
+    GET /accounts?id=eric => TRÈS FAIBLE
     GET /accounts/eric => FAIBLE
     GET /myaccount => FORT
 
@@ -119,12 +130,31 @@ Mais...
 
 # La désintoxication post-ORM
 
+Évitons le ORM-over-IP
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Penser ressources
+
+Les objets métiers du fullback deviennent des ressources REST.
+
+Donc pas de:
+
+    !console
+    POST /store
+    {"type": "order", id": 56, "customer": 98}
+
+En général, les URLs contiennent **des noms**, pas des verbes.
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # La sécurité dans des couches trop hautes
+
+En fullback, pas de contrainte (fondamentale) pour gérer la sécurité sur la couche qu'on souhaite.
 
 .fx: extra-large
 
@@ -134,16 +164,24 @@ Mais...
 
 Là où un seul pouvait tout faire, on va avoir 2 personnes.
 
-L'API REST devient leur contrat mutuel. Il faut établir un consensus.
+L'API REST devient leur contrat mutuel :
 
-Il faut que ce soit documenté, testable, etc.
+- établir un consensus,
+- API documentée,
+- testée et testable.
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-Avec l'avènement du développement front-end, exposer ses fonctionnalités métiers via une API REST est devenu un enjeu critique.
+# Conclusion
 
-Trop souvent influencé par les architectures logicielles back-end traditionnelles ou par les bases de données relationnelles, les API REST sont parfois maladroites voire même contre-productives.
+Rien ne change, on garde les bonnes pratiques d'hier.
 
-Vous souhaitez designer une API REST équilibrée et efficace et connaître les pièges à éviter ?
+Mais maintenant elles ne sont plus optionnelles.
+
+Donc tout change.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
