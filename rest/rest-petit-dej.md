@@ -31,15 +31,13 @@ GET: donne l'état d'une ressource (safe, idempotent)
 
 POST: ajoute une ressource non nommée (non-safe, non-idempotent)
 
-POST (2): modifie une ressource nommée (non-safe, idempotent)
-
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Les verbes
 
-PUT: ajoute une ressource nommée (non-safe, idempotent)
+PUT: modifie une ressource nommée (non-safe, idempotent)
 
 DELETE: supprime une resource (non-safe, idempotent)
 
