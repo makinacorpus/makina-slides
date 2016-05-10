@@ -47,7 +47,6 @@ PATCH: modifie partiellement une ressource (non-safe, idempotent)
 
 .fx: extra-large
 
-
 --------------------------------------------------------------------------------
 
 # Les URLs
@@ -64,6 +63,8 @@ PATCH: modifie partiellement une ressource (non-safe, idempotent)
 En général du JSON.
 
 Avec des **<u>liens</u>** (hypermedia).
+
+Un endpoint c'est une page web !!
 
 .fx: extra-large
 
@@ -86,6 +87,38 @@ Avec des **<u>liens</u>** (hypermedia).
 
 --------------------------------------------------------------------------------
 
+# Exemples
+
+    !console
+    {
+        "id": 1234 ,
+        "customers": [
+            {"id": 8769, "weight": 100},
+            {"id": 3877, "weight": 52},
+            ... TROP LONG ...
+            {"id": 85, "weight": 56},
+            {"id": 64, "weight": 112}
+        ]
+    }
+
+devient ...
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Exemples
+
+    !console
+    {
+        "id": 1234 ,
+        "customers": "/customers/1234"
+    }
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
 # Les pièges
 
 <img src="img/boom.gif" />
@@ -97,7 +130,7 @@ Avec des **<u>liens</u>** (hypermedia).
 # Les pièges
 
 - API incompréhensible,
-- API non-comminiquable,
+- API non-communiquable,
 - failles de sécurité,
 - inadéquation avec les attentes front.
 
