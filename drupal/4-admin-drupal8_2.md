@@ -18,8 +18,8 @@
   * _Configurer > Développement_ : Erreurs et Maintenance
   * _Rapports > Rapport d'état_ : monitorer son site
   * _Rapports > Erreurs récentes_ : monitorer son site
-  * _Rapports > Statistiques_ : Module _Statistics_ du cœur prend beaucoup de
-  ressources, préférer _Google Analytics_
+  * _Rapports > Statistiques_ : Module _Statistics_ du cœur (mais il ne couvre pas
+  ce qu'attendent les gens, préférer _Google Analytics_)
 
 ![][4]
 
@@ -75,7 +75,7 @@ apparaît.
 
   * Disponible sous Linux
 
-  * Relativement supporté sur Windows
+  * Relativement supporté sur Windows (pour Drupal 8, installer avec Composer)
 
 --------------------------------------------------------------------------------
 
@@ -84,6 +84,7 @@ apparaît.
   * Module _Backup & Migrate_
     * Sauvegarde de la base de données
     * Sauvegarde des fichiers
+    * Pas encore stable pour D8
 
   * Script shell maison
 
@@ -103,7 +104,7 @@ apparaît.
     * Copier le contenu de /sites/default dans les sous-répertoires.
     * Lancer l'installation classique via le navigateur
 
-  * Module Domain access (pas encore prêt en D8) - Partage des données
+  * Module Domain access (en cours de port D8) - Partage des données
     * Basé sur 1 instance (même base de données,  même code)
     * Facilité d'administration
     * Partage de contenus, utilisateurs, blocks, etc.
@@ -115,7 +116,7 @@ apparaît.
   * Cache activé par défaut
     * Fonctionne très bien pour les anonymes
 
-  * Intégration Varnish, Redis (par Makina Corpus), Memcache, CDN, etc.
+  * Intégration Varnish, Redis, Memcache, CDN, etc.
 
 --------------------------------------------------------------------------------
 
@@ -125,7 +126,7 @@ apparaît.
 Multi-sites, ldap, performance)
   * __Référencement (urls, meta-tags, sitemap.xml)__
   * Multilinguisme
-  * Autres contenus (vidéos, newsletters, formulaires
+  * Autres contenus (vidéos, newsletters, formulaires)
   * Modules du coeur (aggregator, poll, search)
 
 .fx: progress
@@ -171,7 +172,7 @@ Et bien d'autres
 
 --------------------------------------------------------------------------------
 
-## Module Simple sitemap
+## Module XMLSitemap
 
   * Génération d'un fichier sitemap.xml à la racine avec les urls du site (parsing par les robots de référencement)
   * Paramétrage pour définir quelles pages sont à inclure / exclure
@@ -192,6 +193,8 @@ Et bien d'autres
 
 ## Redirect
 
+  * Gestion des redirections
+
 --------------------------------------------------------------------------------
 
 # Objectifs de la formation - Les fonctionnalités avancées
@@ -200,7 +203,7 @@ Et bien d'autres
 Multi-sites, ldap, performance)
   * Référencement (urls, meta-tags, sitemap.xml)
   * __Multilinguisme__
-  * Autres contenus (vidéos, newsletters, formulaires
+  * Autres contenus (vidéos, newsletters, formulaires)
   * Modules du coeur (aggregator, poll, search)
 
 .fx: progress
@@ -209,11 +212,11 @@ Multi-sites, ldap, performance)
 
 # Le multilinguisme
 
-  * Activation des 4 modules présents dans le coeur depuis la version 8
+  * 4 modules présents dans le coeur
+    * Language (gestion des langues du site)
+    * Interface Translation (interface de traduction, administration du site en FR)
     * Configuration Translation (traduction de la configuration)
     * Content Translation (traduction du contenu)
-    * Interface Translation (interface complète de traduction de tous champs)
-    * Language (gestion des langues du site)
     
 --------------------------------------------------------------------------------
 
