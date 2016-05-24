@@ -4,8 +4,8 @@
   * __Administration (Tâches d'administration, Mises à jour, sauvegarde, Multi-sites, performance)__
   * Référencement (urls, meta-tags, sitemap.xml)
   * Multilinguisme
-  * Autres contenus (vidéos, newsletters, formulaires)
-  * Modules du coeur (aggregator, poll, search)
+  * Autres contenus (médias, newsletters, formulaires)
+  * Recherche
 
 .fx: progress
 
@@ -126,8 +126,8 @@ apparaît.
 Multi-sites, ldap, performance)
   * __Référencement (urls, meta-tags, sitemap.xml)__
   * Multilinguisme
-  * Autres contenus (vidéos, newsletters, formulaires)
-  * Modules du coeur (aggregator, poll, search)
+  * Autres contenus (médias, newsletters, formulaires)
+  * Recherche
 
 .fx: progress
 
@@ -135,7 +135,7 @@ Multi-sites, ldap, performance)
 
 # Ré-écriture des urls
 
-  * Module path (core) et pathauto
+  * Module path (core) et __Pathauto__
   * Recherche et métadonnées > Alias d'urls
   * Gestion de la ré-écriture automatique
     * Selon les types de contenu
@@ -203,8 +203,8 @@ Et bien d'autres
 Multi-sites, ldap, performance)
   * Référencement (urls, meta-tags, sitemap.xml)
   * __Multilinguisme__
-  * Autres contenus (vidéos, newsletters, formulaires)
-  * Modules du coeur (aggregator, poll, search)
+  * Autres contenus (médias, newsletters, formulaires)
+  * Recherche
 
 .fx: progress
 
@@ -217,54 +217,108 @@ Multi-sites, ldap, performance)
     * Interface Translation (interface de traduction, administration du site en FR)
     * Configuration Translation (traduction de la configuration)
     * Content Translation (traduction du contenu)
+
+![][14]
     
 --------------------------------------------------------------------------------
 
-# Traduire les noeuds
+# La langue
 
-  * Onglet Traduire pour chaque contenu
+  * Ajout de langage
+  * Gère également si la langue s'écrit de gauche à droite
+
+![][15]
+    
+--------------------------------------------------------------------------------
+
+# La langue
+
+  * Activé automatiquement si on choisit l'installation dans une autre langue
+  * Permet de combiner différentes méthodes de détection de langue
+
+![][16]
+    
+--------------------------------------------------------------------------------
+
+# Traduction de l'interface
+
+  * Interface de traduction du back-office
+
+![][17]
+ 
+![][18]
+
+--------------------------------------------------------------------------------
+
+# Traduction du contenu
+
+  * Module "Content Translation"
+  * "Contenu" = 
+    * Nœuds
+    * Blocs
+    * Menus
+    * Taxonomie
+    * Utilisateurs
+ 
+![][19]
+
+--------------------------------------------------------------------------------
+
+# Traduction du contenu
+
+  * Activation du multilinguisme sur le type de contenu
+    * (ou utilisateur, vocabulaire, ...)
+  * Stratégie de langage par défaut (selon les profils, droits, ...)
+
+![][20]
+
+--------------------------------------------------------------------------------
+
+# Traduction du contenu
+
+  * Onglet "Traduire" pour chaque contenu
     * Tableau de synthèse du statut de traduction pour toutes les langues
-  * Ajout d'une traduction :
-    * par le lien ''Ajouter''
-    * par la création d'un contenu puis ajouter sa langue avec le champ
-    ''Language''
+    * Ajout d'une traduction par langue
 
 ![][6]
+
+--------------------------------------------------------------------------------
+
+# Traduction du contenu
+
+  * Attention, il faut paramétrer les champs qui peuvent se traduire !
+  * Administration > Configuration > Langue et région > Langue du contenu et traduction
+
+![][21]
 
 --------------------------------------------------------------------------------
 
 # Traduire les blocs
 
   * Pour chaque bloc dans l'onglet ''Configurer le bloc''
-  * Sélection de la langue
-  * Pages : Spécifier les chemins des contenus traduits où
-  le bloc doit apparaître.
+    * Restriction du bloc à certains langages
 
 ![][7]
 
 --------------------------------------------------------------------------------
 
-# Traduire l'interface
-
-  * Configuration > Régionalisation et langues > Traduction de l'interface utilisateur
-  * Traduction de l'interface différent de la traduction du contenu
-  * Traduction de l'interface aussi différent de la traduction de configuration
+# Traduire la configuration
 
 ![][8]
+
+  * Tout le reste du site...
+  * Page d'accueil, 404, ...
+  * Administration > Configuration > Langue et région > Traduction de la configuration
+
+![][22]
 
 --------------------------------------------------------------------------------
 
 # Traduire les menus
 
-  * 2 possibilités :
+  * 2 stratégies :
     * Créer un menu par langue
-    * Dans un menu, pour chaque item, ajouter un item par langue
-
-# Traduire les variables
-
-  * Nom du site
-  * Slogan
-  * Mails
+    * Traduire un menu, qui comprendra alors des éléments de chaque langue (pas tous affichés)
 
 --------------------------------------------------------------------------------
 
@@ -274,8 +328,8 @@ Multi-sites, ldap, performance)
 performance, architecture)
   * Référencement (urls, meta-tags, sitemap.xml)
   * Multilinguisme
-  * __Autres contenus (vidéos, newsletters, formulaires)__
-  * Modules du coeur (aggregator, poll, search)
+  * __Autres contenus (médias, newsletters, formulaires)__
+  * Recherche
 
 .fx: progress
 
@@ -287,9 +341,9 @@ performance, architecture)
     * <http://www.drupalmedia.org>
     * Suite de modules (Entity Browser, Media entity, DropzoneJS ...)
     * Fichiers image, vidéo, audio, ...
-    
+  * Pas complètement stable !
+    * Mais en développement actif, sera bientôt prêt
 
-![][11]
 
 --------------------------------------------------------------------------------
 
@@ -299,21 +353,23 @@ performance, architecture)
     * Gestion des abonnements
     * Gestion des envois instantanés ou asynchrones
     * Gestion de plusieurs catégories de newsletters
+    * Pas tout à fait finalisé pour Drupal 8
 
   * Gestion des souscriptions seules
-    * Service externe : _Mailchimp_
+    * Service externe : _Mailchimp_ (ou d'autres, Mailjet, ...)
+    * Solution recommandée aujourd'hui
 
 --------------------------------------------------------------------------------
 
 # Formulaires
 
-  * Module Webform (pas encore prêt...)
-  * Création/Gestion intuitive des champs
-  * Visualisation/export des soumissions
-
-![][12]
-
-![][13]
+  * Référence Drupal : module Webform
+    * Mais pas prêt du tout pour Drupal 8
+    * Création/Gestion intuitive des champs
+    * Visualisation/export des soumissions
+  * Utilisation du module __Contact__
+    * Avec Contact Storage
+    * et d'autres éventuellement (pour l'export CSV)
 
 --------------------------------------------------------------------------------
 
@@ -323,7 +379,7 @@ performance, architecture)
   * Administration (Mises à jour, Multi-sites, sauvegarde, cron, ldap,
 performance, architecture)
   * Référencement (urls, meta-tags, sitemap.xml)
-  * Autres contenus (vidéos, newsletters, formulaires)
+  * Autres contenus (médias, newsletters, formulaires)
   * __Recherche__
 
 .fx: progress
@@ -333,11 +389,8 @@ performance, architecture)
 # La recherche
 
   * Search API
-  * Apache Solr
-    * module Apache Solr Search non porté sur Drupal 8
-    * remplacé par Search API Solr Search
-  * ElasticSearch
-    * Elasticsearch Connector 
+    * Lien Apache Solr (module __Search API Solr Search__)
+    * Lien ElasticSearch (module __Elasticsearch Connector__)
   * ...
 
 --------------------------------------------------------------------------------
@@ -378,7 +431,7 @@ Pour le développement
 
    [7]: img/block_translation.png
 
-   [8]: img/string_traduction.png
+   [8]: img/configuration_translation.png
 
    [9]: img/panel.png
 
@@ -389,4 +442,22 @@ Pour le développement
    [12]: img/webform.png
 
    [13]: img/export_webform.png
+
+   [14]: img/multilinguisme.png
+
+   [15]: img/add_language.png
+
+   [16]: img/language_detection.png
+
+   [17]: img/interface_translation.png
+
+   [18]: img/user_interface_translation.png
+
+   [19]: img/content_translation.png
+
+   [20]: img/content_type_translation.png
+
+   [21]: img/language_field_translation.png
+
+   [22]: img/system_information_translation.png
 
