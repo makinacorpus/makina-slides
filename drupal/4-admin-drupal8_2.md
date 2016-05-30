@@ -41,10 +41,9 @@
   * Supprimer l'ancienne version
   * Ajouter la nouvelle version
   * Aller dans « Rapports > tableau de bord »
-  * Repérer la ligne Mise à jour de la base de données
-  * Si une mise à jour est nécessaire, suite aux modifications, un lien
+  * Repérer la ligne "Mise à jour de la base de données"
+  * Si une mise à jour est nécessaire suite aux modifications, un lien
 apparait.
-
   * Cliquez sur le lien et suivre les instructions
 
 --------------------------------------------------------------------------------
@@ -53,16 +52,15 @@ apparait.
 
   * Télécharger la nouvelle version
   * Copier/coller sur l'ancienne version
-  * Aller dans « Rapports > tableau de bord »
-  * Repérer la ligne Mise à jour de la base de données
-  * Si une mise à jour est nécessaire, suite aux modifications, un lien
-apparaît.
+  * Aller dans « Rapports > tableau de bord » et repérer la ligne "Mise à jour de la base de données"
+  * Si une mise à jour est nécessaire suite aux modifications, un lien
+apparaît. Cliquez sur le lien et suivre les instructions
 
-  * Cliquez sur le lien et suivre les instructions
+![][24]
 
 --------------------------------------------------------------------------------
 
-# DRUpal SHell (remplacer par console ?)
+# DRUpal SHell
 
   * [https://github.com/drush-ops/drush][2]
 
@@ -108,6 +106,8 @@ apparaît.
     * Basé sur 1 instance (même base de données,  même code)
     * Facilité d'administration
     * Partage de contenus, utilisateurs, blocks, etc.
+
+  * [https://www.palantir.net/blog/multi-headed-drupal][23]
 
 --------------------------------------------------------------------------------
 
@@ -460,4 +460,8 @@ Pour le développement
    [21]: img/language_field_translation.png
 
    [22]: img/system_information_translation.png
+
+   [23]: https://www.palantir.net/blog/multi-headed-drupal
+
+   [24]: img/original_release_schedule.png
 
