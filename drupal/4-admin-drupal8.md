@@ -137,6 +137,54 @@
 
 --------------------------------------------------------------------------------
 
+# Sélection de la langue
+
+![][28]
+
+--------------------------------------------------------------------------------
+
+# Profil d'installation
+
+![][29]
+
+--------------------------------------------------------------------------------
+
+# Configuration de la base de données
+
+![][30]
+
+--------------------------------------------------------------------------------
+
+# Installation de modules
+
+![][31]
+
+--------------------------------------------------------------------------------
+
+# Configuration du site
+
+![][32]
+
+--------------------------------------------------------------------------------
+
+# Compte administateur
+
+![][33]
+
+--------------------------------------------------------------------------------
+
+# Paramètres régionaux
+
+![][34]
+
+--------------------------------------------------------------------------------
+
+# Vérification automatique des mises à jour
+
+![][35]
+
+--------------------------------------------------------------------------------
+
 # Objectifs de la formation
 
   * Les CMS et Drupal
@@ -811,4 +859,18 @@ cette page comme page d'accueil.
 
    [27]: img/block_types.png
 
+   [28]: img/install_1_language_selection.png
 
+   [29]: img/install_2_installation_profile.png
+
+   [30]: img/install_3_database_configuration.png
+
+   [31]: img/install_4_module_installation.png
+
+   [32]: img/install_5_site_configuration.png
+
+   [33]: img/install_6_admin_account.png
+
+   [34]: img/install_7_regional_settings.png
+
+   [35]: img/install_8_update_settings.png
