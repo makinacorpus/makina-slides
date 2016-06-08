@@ -118,12 +118,14 @@ apparaît. Cliquez sur le lien et suivre les instructions
 
   * Intégration Varnish, Redis, Memcache, CDN, etc.
 
+  * Passez à PHP7 et MySQL 5.6 !
+
 --------------------------------------------------------------------------------
 
 # Objectifs de la formation - Les fonctionnalités avancées
 
   * Administration (Tâches d'administration, Mises à jour,  sauvegarde,
-Multi-sites, ldap, performance)
+Multi-sites, performance)
   * __Référencement (urls, meta-tags, sitemap.xml)__
   * Multilinguisme
   * Autres contenus (médias, newsletters, formulaires)
@@ -200,7 +202,7 @@ Et bien d'autres
 # Objectifs de la formation - Les fonctionnalités avancées
 
   * Administration (Tâches d'administration, Mises à jour,  sauvegarde,
-Multi-sites, ldap, performance)
+Multi-sites, performance)
   * Référencement (urls, meta-tags, sitemap.xml)
   * __Multilinguisme__
   * Autres contenus (médias, newsletters, formulaires)
@@ -324,7 +326,7 @@ Multi-sites, ldap, performance)
 
 # Objectifs de la formation - Les fonctionnalités avancées
 
-  * Administration (Mises à jour, Multi-sites, sauvegarde, cron, ldap,
+  * Administration (Mises à jour, Multi-sites, sauvegarde, cron,
 performance, architecture)
   * Référencement (urls, meta-tags, sitemap.xml)
   * Multilinguisme
@@ -376,7 +378,7 @@ performance, architecture)
 # Objectifs de la formation - Les fonctionnalités avancées
 
   * Multilinguisme
-  * Administration (Mises à jour, Multi-sites, sauvegarde, cron, ldap,
+  * Administration (Mises à jour, Multi-sites, sauvegarde, cron,
 performance, architecture)
   * Référencement (urls, meta-tags, sitemap.xml)
   * Autres contenus (médias, newsletters, formulaires)
