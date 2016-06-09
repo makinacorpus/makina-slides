@@ -645,6 +645,15 @@ a {
   color: #c9015a;
 }
 
+.slide.important section {
+  padding: 0.5em 1em;
+  font-size: 1.2em;
+  border: 2px solid #302728;
+  border-radius: 16px;
+  color: #F6413C;
+  background-color: #110202;
+}
+
 .slide.tp h1,
 .slide.tp h2,
 .slide.tp h3,
