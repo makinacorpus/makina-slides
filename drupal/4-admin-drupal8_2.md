@@ -416,6 +416,34 @@ Pour le développement
 
 --------------------------------------------------------------------------------
 
+# Procédure de construction d'un site
+
+   * Configuration initiale (multilinguisme, workflow, metatag, ...)
+   * Formats d'images, directement à partir des maquettes
+   * Types de contenu
+   * Views
+   * Mise en page (blocs, panels ou display suite ou ...)
+   * Intégration graphique
+   * Développements spécifiques ou modules additionnels (flags, rules, ...)
+
+   * __Problème__ : aucune intégration graphique avant la fin => incompatible avec une livraison régulière...
+
+![][25]
+
+--------------------------------------------------------------------------------
+
+# Procédure de construction d'un site
+
+   * Configuration initiale => style guide, charte graphique par défaut
+   * Formats d'images
+   * Types de contenu => templates de contenu
+   * Views => templates de Views
+   * Mise en page => finition du template
+   * Développements spécifiques ou modules additionnels (flags, rules, ...)
+   * Intégration graphique des derniers modules
+
+--------------------------------------------------------------------------------
+
 # Questions ?
 
 
@@ -466,4 +494,6 @@ Pour le développement
    [23]: https://www.palantir.net/blog/multi-headed-drupal
 
    [24]: img/original_release_schedule.png
+
+   [25]: https://makina-corpus.com/blog/metier/2016/comment-creer-un-site-web-avec-drupal
 
