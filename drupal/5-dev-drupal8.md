@@ -23,8 +23,7 @@
   * Environnement de développement
   * Quelques outils utiles (Drush, Git, Devel)
   * Bonnes pratiques, standards de code, documentation
-  * Architecture de Drupal
-  * Les concepts de base
+  * Architecture de Drupal & concepts de base
   * Création du squelette d'un module
   * Les premiers hooks
 # 2ème jour
@@ -68,7 +67,7 @@
     * PSR-1 : normes de codage de base (Drupal les suit presque)
     * PSR-2 : normes de codage plus poussées (Drupal les suit presque)
     * PSR-3 : interface du logger (pas implémentée dans Drupal)
-    * PSR-4 : autoloader amélioré (choisi par Drupal) : https://www.drupal.org/node/2156625
+    * PSR-4 : autoloader amélioré (choisi par Drupal) : <https://www.drupal.org/node/2156625>
 
 --------------------------------------------------------------------------------
 
@@ -81,10 +80,13 @@
 
 --------------------------------------------------------------------------------
 
-# YAML
+<h2>YAML</h2>
 
-  * Fichier texte
-  * 'key: value'
+    !yaml
+    key: 'value'
+    tableau:
+      - valeur 1
+      - valeur 2
 
 --------------------------------------------------------------------------------
 
@@ -130,19 +132,15 @@ environnement de développement avec tous les pré-requis Drupal.
 
 --------------------------------------------------------------------------------
 
-# TP: Installer Drupal 7
+# TP: Installer Drupal 8
 
-  * Choisir la distribution Drupal 7.x simple dans Acquia Dev Desktop
+  * Choisir la distribution Drupal 8.x simple dans Acquia Dev Desktop
   * Installer le profil d'installation Standard
   * Paramètres
     * Nom du site : Formation
     * Adresse de courriel : formation@example.org
     * Utilisateur : admin
     * Mot de passe : admin
-  * Désactiver les modules
-    * update
-    * shortcut
-    * color
 
 .fx: tp
 .notes: présenter les distributions
@@ -209,7 +207,7 @@ Avantages :
   * _Devel_ : debug et informations sur les données
   * _Drupal Console_ : générateur de code
   * _Drush_ : administration (DRUpal SHell)
-  * _Drush Make_ : téléchargement de modules et librairies
+  * _Drush Make_ (intégré dans _Drush_) : téléchargement de modules et librairies
   * _Coder_ : revue de code
   * _Masquerade_ : changer d'utilisateur sans se déconnecter
   * _Examples for developpers_ : démonstrations de l'utilisation de l'API
@@ -223,6 +221,7 @@ Avantages :
   * Regarder à nouveau la liste des commandes 
   * Sauvegarder la base de données 
   * Installer les modules utiles au développement : devel, masquerade, examples
+  * Installer le module Console [TO DO]
   * Desactiver le module help
 
 .fx: tp
@@ -233,7 +232,7 @@ Avantages :
 
   * Utilisé par beaucoup de développeurs dans le milieu du web
 
-  * Très utile pour patcher des modules car utilisé pas la communauté Drupal et
+  * Très utile pour patcher des modules car utilisé par la communauté Drupal et
   sur drupal.org
 
   * Une connaissance basique de quelques commandes suffit
@@ -243,7 +242,7 @@ Avantages :
     * git commit
     * git diff
 
-  * Possibilité d'avoir une interface graphique : SourceTree, GitX, GitEye, Github
+  * Possibilité d'avoir une interface graphique : SourceTree, Gitg, GitLab, GitHub
 
 --------------------------------------------------------------------------------
 
@@ -281,6 +280,7 @@ sous-repertoire `custom`
 --------------------------------------------------------------------------------
 
 <img src="img/lifecycle.jpg" class="single-image"/>
+[TO DO: Trouver pour D8]
 
 --------------------------------------------------------------------------------
 
@@ -296,11 +296,8 @@ sous-repertoire `custom`
 #TP: Jetons un œil à la base de données
 
   * se familiariser avec PhpMyAdmin
-
   * identifier les tables des modules actuellement activés
-
   * identifier les autres : cache, variable, registry
-
   * identifier la table contenant la configuration
 
 .fx: tp
@@ -546,13 +543,12 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
   * chemin (ou path) : route dont les arguments sont définis (ex: `node/123` est 
   un chemin, pointant vers la route `node/{node}` où l'argument est 123)
   * lien de menu : Texte (ou titre) pointant vers un chemin
-  * tâche : ~ onglet
   * alias : associe un chemin système (`node/123`) vers un chemin arbitraire 
   renseigné par le contributeur (`mon-noeud`)
 
 
 ## Les propriétés d'une route
-  * Permissions -> `'access callback'`, `'access arguments'`
+  * _Permissions
   * Les arguments sont nommés `{node}` et peuvent être chargés dans le
   Controller (en les typant avec une classe)
   * Vous pouvez passer des paramètres fixes au controller en les indiquant
@@ -564,35 +560,7 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
     * *.routing.yml -> définit une URL
     * *.links.menu.yml -> lien de menu dans l'arborescence
     * *.links.task.yml -> onglet
-    * *.links.action.yml -> 
-  * TODO: La route `abc/def` est enfant de la route `abc` si celle-ci est définie
-
-<table>
-  <tr>
-    <th>Propriété</th>
-    <th>Valeur par défaut</th>
-  </tr>
-  <tr>
-    <td>page callback</th>
-    <td>celle du parent</td>
-  </tr>
-  <tr>
-    <td>access callback</th>
-    <td>user_access ou celle du parent</td>
-  </tr>
-  <tr>
-    <td>file path</th>
-    <td>le chemin du module</td>
-  </tr>
-  <tr>
-    <td>menu_name</th>
-    <td>navigation</td>
-  </tr>
-  <tr>
-    <td>type</th>
-    <td>MENU_NORMAL_ITEM</td>
-  </tr>
-</table>
+    * *.links.action.yml -> "action" (back-office)
 
 --------------------------------------------------------------------------------
 
@@ -603,7 +571,7 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
       path: '/abc/def'
       defaults:
         _title: "My ABC page"
-        _controller: "\Drupal\mymodule\Controller\MyModuleController::abc_view"
+        _controller: "\Drupal\module\Controller\ModuleController::abc_view"
       requirements:
         _permission: 'access my module'
 
@@ -636,8 +604,8 @@ Quelques fonctions de l'API à connaitre :
 
   * `\Drupal::currentUser()` : utilisateur actuellement connecté
 <small>(modifier avec prudence !)</small>
-  * `node_load()` et `node_load_multiple()` pour charger des nœuds
-  * `user_load()` et `user_load_multiple()` pour charger des utilisateurs
+  * `Node::load()` et `node_load_multiple()` pour charger des nœuds [TO DO]
+  * `User::load()` et `user_load_multiple()` pour charger des utilisateurs
   * $entity->save() pour enregistrer un nœud, un utilisateur, ...
   * `REQUEST_TIME` : timestamp à l'appel de la page
 
@@ -696,7 +664,7 @@ Récupération de résultats :
 
 Quelques globales et fonctions de l'API à connaitre :
 
-  * use Drupal\Core\Url; $url = Url::fromRoute('book.admin');
+  * use Drupal\Core\Url; $url = Url::fromRoute('book.admin')->toString();
   * $link = \Drupal::l(t('Book admin'), $url); 
   * $this->redirect('book.admin'); -> redirection
   * `global $base_url` -> http://monsite.com
