@@ -1008,6 +1008,115 @@ suggestions de templates.
 
 --------------------------------------------------------------------------------
 
+# Twig
+
+  * Un template engine pour PHP
+  * Créé par Fabien Potencier (Symfony)
+  * [Documentation](http://twig.sensiolabs.org)
+  * Très sécurisé
+  * Extensible
+
+--------------------------------------------------------------------------------
+
+# Exemple de syntaxe
+
+    !twig
+    <!DOCTYPE html>
+    <html lang="{{ language.language }}" dir="{{ language.dir }}">
+      <head>
+        <meta charset="utf-8">
+        {{ head }}
+        <title>{{ head_title }}</title>
+        {{ styles }}
+      </head>
+      <body class="{{ classes }}" {{ attributes }}>
+        {{ page_top }}
+        {{ page }}
+        {{ scripts }}
+        {{ page_bottom }}
+      </body>
+    </html>
+
+--------------------------------------------------------------------------------
+
+# 3 syntaxes à connaître
+
+  * {{ afficher }}
+  * {# commenter #}
+  * {% "programmer" %}
+
+--------------------------------------------------------------------------------
+
+# Afficher
+
+![][1]
+
+--------------------------------------------------------------------------------
+
+# Programmer
+
+  * {% if expr %} {% else %} {% endif %}
+  * {% for item in items %} ({% else %}) {% endfor %}
+
+--------------------------------------------------------------------------------
+
+# Les filtres
+
+  * {{ messages | join(', ') }}
+  * {{ "now" | date('d/m/Y H:i') }}
+  * {{ 'Home' | t }} (ajouté par Drupal)
+  * Sur toute une section : {% filter upper %} Texte {% endfilter %}
+
+  * abs, batch, capitalize, convert_encoding, date, date_modify, default, escape, first, format, join, json_encode, keys, last, length, lower, merge, nl2br, number_format, raw, replace, reverse, round, slice, sort, split, striptags, title, trim, upper, url_encode
+
+--------------------------------------------------------------------------------
+
+# Les fonctions
+
+  * dump(node)
+  * {{ max(1, 3, 2) }}
+  * {{ random(['pomme', 'orange', 'citron']) }}
+
+--------------------------------------------------------------------------------
+
+# Inclusion de template
+
+  * {% include 'page.html.twig' with {'foo': 'bar', 'baz': 'bat'} %}
+
+--------------------------------------------------------------------------------
+
+# Héritage de template
+
+    !twig
+    {# Template A #}
+    {% block foo %}
+      <p>Mon premier paragraphe</p>
+    {% endblock %}
+
+    {# Template B #}
+    {% extends 'TemplateA' %}
+    {% block foo %}
+      {{ parent() }}
+        <p>Mon deuxième paragraphe</p>
+    {% endblock %}
+
+    {# Rendu Template B #}
+    <p>Mon premier paragraphe</p>
+    <p>Mon deuxième paragraphe</p>
+
+--------------------------------------------------------------------------------
+
+# Debug Twig dans Drupal
+
+    !yaml
+    parameters:
+      twig.config:
+        debug: true
+
+dans sites/default/services.yml
+
+--------------------------------------------------------------------------------
+
 # TP: Créer un template pour gold
 
 Convertir le render array utilisé dans `hook_node_view()` pour utiliser un
@@ -1096,3 +1205,5 @@ Features
 --------------------------------------------------------------------------------
 
 # Merci
+
+   [1]: img/twig_resolution.jpg
