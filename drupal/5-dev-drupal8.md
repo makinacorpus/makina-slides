@@ -299,6 +299,7 @@ sous-repertoire `custom`
   * identifier les tables des modules actuellement activés
   * identifier les autres : cache, variable, registry
   * identifier la table contenant la configuration
+  * <https://www.drupal.org/node/1785994>
 
 .fx: tp
 
@@ -313,6 +314,14 @@ sous-repertoire `custom`
   * `.install` facultatif (configuration désormais indépendante)
   * répertoire "config/install" pour la configuration
   * répertoire "src" pour les Plugins, Controller, Form, ...
+
+--------------------------------------------------------------------------------
+
+# Structure d'un module
+
+![][2]
+
+<center><https://www.drupal.org/node/2560405></center>
 
 --------------------------------------------------------------------------------
 
@@ -1207,3 +1216,5 @@ Features
 # Merci
 
    [1]: img/twig_resolution.jpg
+
+   [2]: img/module_structure.png
