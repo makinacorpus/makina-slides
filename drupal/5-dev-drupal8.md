@@ -53,7 +53,7 @@
 
 # Rappels PHP
 
-<center> <https://www.drupal.org/getting-started-d8-bkg-prereq> </center>
+<center>TO DO:<https://www.drupal.org/getting-started-d8-bkg-prereq></center>
 
 .fx: alternate
 
@@ -76,7 +76,8 @@
   * Le plus populaire des frameworks PHP aujourd'hui
   * Ensemble de composants réutilisables
   * Certains sont réutilisés par Drupal
-    * <http://symfony.com/projects/drupal>
+
+![][3]
 
 --------------------------------------------------------------------------------
 
@@ -196,7 +197,7 @@ Avantages :
 
   * code style implémenté
   * navigation dans les hooks (appels et déclarations)
-  * installation d'XDebug facile
+  * installation d'XDebug facile (<http://redcrackle.com/blog/drupal-8/phpstorm>)
 
 .fx: tp
 
@@ -211,6 +212,7 @@ Avantages :
   * _Coder_ : revue de code
   * _Masquerade_ : changer d'utilisateur sans se déconnecter
   * _Examples for developpers_ : démonstrations de l'utilisation de l'API
+  * Ne pas utiliser les caches durant le développement (<https://www.drupal.org/node/2598914>)
 
 --------------------------------------------------------------------------------
 
@@ -221,8 +223,17 @@ Avantages :
   * Regarder à nouveau la liste des commandes 
   * Sauvegarder la base de données 
   * Installer les modules utiles au développement : devel, masquerade, examples
-  * Installer le module Console [TO DO]
   * Desactiver le module help
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+#TP : Console
+  * Intaller la console Drupal
+  * Vérifier que c'est correctement installé
+  * Regarder la liste des commandes (drupal list)
+  * TO DO: Image (liste commandes)
 
 .fx: tp
 
@@ -340,7 +351,7 @@ sous-repertoire `custom`
   * Créer une fonction de theme pour afficher le statut gold d'un nœud
   * Créer des tests pour vérifier le bon fonctionnement du module
 
-Créer ce module : il doit apparaître dans la liste des modules.
+Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 .fx: tp
 
@@ -361,6 +372,8 @@ Créer ce module : il doit apparaître dans la liste des modules.
 
   Aborde certains topics en profondeur : form API, schema API, hooks, etc
 
+  <https://api.drupal.org/api/drupal/core%21core.api.php/group/extending/8.2.x>
+
 <br>
 ## Votre guide : modules `examples`
 
@@ -377,35 +390,25 @@ Créer ce module : il doit apparaître dans la liste des modules.
 
 # Les hooks 
 
+  * Concept historique Drupal
   * Implémenter `hook_form_alter()` donnera `mon_module_form_alter()`
-
   * Poids des modules et altération
   * Répondent à des déclencheurs
   * Des hooks peuvent être déclarés par des modules contrib
   * Rappel: on ne « hack » JAMAIS le code <small>(sauf en cas de module bogué)</small>
-  * 3 types de hooks : déclaratif, évenementiel, d'altération
+  * Tend à disparaître avec Drupal 8 (Plugins, yml, events), mais existe encore...
   * Les implémentations sont mise en cache
-  * Les hooks déclaratifs sont généralement mis en cache
-
-Liste des hooks <https://api.drupal.org/api/drupal/core!core.api.php/group/hooks/8>
-
-BEAUCOUP de hooks disponibles dans le cœur de Drupal
-En Drupal 8, des hooks ont été transformés (en plugin, en fichier .yml, ...)
+  * Liste des hooks <https://api.drupal.org/api/drupal/core!core.api.php/group/hooks/8>
 
 --------------------------------------------------------------------------------
 
 # Les permissions
 
   * Créer un fichier `.permissions.yml`
-
   * Créer les deux permissions
-
   * Vider le cache
-
   * Créer un role contributeur pouvant affecter le statut gold
-
   * Créer un role premium pouvant voir le statut gold
-
   * Créer un utilisateur pour chaque rôle
 
 .fx: tp
@@ -620,7 +623,7 @@ Quelques fonctions de l'API à connaitre :
 
 --------------------------------------------------------------------------------
 
-# Gestion de la base de données
+# Gestion de la base de données TO DO (QueryFactory, ...)
 
 ## SQL statique
 La fonction `db_query()` permet d'exécuter du SQL directement mais utiliser des
@@ -750,7 +753,7 @@ https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/8)
 Les données soumises et validées sont contenues dans `$form_state->getValue('key')`.
 
 Après exécution du `_submit()`, l'utilisateur est redirigé vers le formulaire
-vidé de ses valeurs, ou bien vers une route définie par `$form_state['redirect']`
+vidé de ses valeurs, ou bien vers une route définie par `$form_state['redirect']` TO DO
 
 Chaque formulaire a un identifiant unique qui permet de l'altérer facilement par
 les autres modules.
@@ -803,6 +806,13 @@ formulaires de création ou de modification de nœud.
   * Cocher les checkbox par défaut lorsque le type de contenu est activé
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+# Manipuler les "Form Modes"
+
+    !php
+    $this->entityFormBuilder()->getForm($form_id, 'form_mode');
 
 --------------------------------------------------------------------------------
 
@@ -1151,15 +1161,20 @@ Ajouter des suggestions pour ce template.
 
 # Ajout de JS / CSS
 
-  * 3 techniques d'ajout
-    * dans le `.info` -> global
-    * drupal_add_* -> au moment de l'appel
-    * \#attached[] -> au moment du rendering
-  * hook_(js/css)_alter() 
-  * drupal_add_library() également pour jQuery UI et autres
-  * Notion de groupes 
-    * JS (JS_LIBRARY, JS_DEFAULT, JS_THEME)
-    * CSS (CSS_SYSTEM, CSS_DEFAULT, CSS_THEME)
+    !yaml
+    global-styling:
+      css:
+        theme:
+          css/style.min.css
+      js:
+        js/theme.js
+      dependencies:
+        - core/jquery
+        - core/drupal.ajax
+
+  * Tout est sous forme de bibliothèque
+  * \#attached[] -> au moment du rendering
+  * drupal_add_library()
 
 --------------------------------------------------------------------------------
 
@@ -1195,23 +1210,27 @@ Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
-# Les profils d'installation
+# Les migrations : le module Migrate
 
-Quelques exemples
-
-Une bonne pratique de développement
-
-TP: créer un profil avec notre module gold
+  * Depuis Drupal : TO DO
+  * Depuis n'importe quoi : TO DO
 
 --------------------------------------------------------------------------------
 
-# Aller plus loin
+# Industrialistion
 
-Drush make
+  * Les profils d'installation
+  * L'outil drush make
+  * La gestion de la configuration
+  * Features
 
-Les performances
+--------------------------------------------------------------------------------
 
-Features
+# composer drupal project TO DO
+
+--------------------------------------------------------------------------------
+
+# Le cache TO DO
 
 --------------------------------------------------------------------------------
 
@@ -1220,3 +1239,5 @@ Features
    [1]: img/twig_resolution.jpg
 
    [2]: img/module_structure.png
+
+   [3]: img/symfony_components.png

@@ -106,13 +106,13 @@
 
   * Pré-requis
     * Environnement Apache/Mysql/Php
-      * Windows : Easyphp/Xampp/Wamp
+      * Windows : Easyphp/Xampp/Wamp -> Acquia Dev Desktop plus intégré
       * Linux : LAMP
-  * alternatives : Nginx, Microsoft IIS, PostgreSQL, SQLite
+  * alternatives : Nginx (ou Microsoft IIS), PostgreSQL, SQLite (ou Oracle, MSSQL)
   * versions :
       * Apache 2.x (avec mod_rewrite)
-      * MySQL > 5.5.3
-      * PHP > 5.5.9
+      * MySQL > 5.5.3 / MariaDB > 5.5.20
+      * PHP > 5.5.9, préférez les versions plus récentes (PHP 7)
   * [http://drupal.org/requirements][3]
 
 --------------------------------------------------------------------------------
