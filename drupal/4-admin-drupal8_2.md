@@ -370,7 +370,7 @@ performance, architecture)
     * Création/Gestion intuitive des champs
     * Visualisation/export des soumissions
   * Utilisation du module __Contact__
-    * Avec Contact Storage
+    * Avec Contact Storage (voir <http://flocondetoile.fr/blog/drupal-8-injecter-un-formulaire-de-contact-dans-un-contenu-en-5-etapes>)
     * et d'autres éventuellement (pour l'export CSV)
 
 --------------------------------------------------------------------------------
@@ -404,15 +404,15 @@ Transférer fichiers et données
 Pour le passage en production
 
   * Attention au fichier settings.php, services.yml
-  * Et surtout la configuration (dans /files)
-  * Versionnement (Git approprié)
   * Pathologic pour réparer les chemins cassés
+  * <https://microserve.io/blogs/drupal-go-live-checklist-revisited>
 
 Pour le développement
 
   * Stage File Proxy
   * Désactiver les mails _Reroute Email_
   * Se faire passer pour un utilisateur _Masquerade_
+  * Une URL à connaître : /core/rebuild.php (vide les caches)
 
 --------------------------------------------------------------------------------
 

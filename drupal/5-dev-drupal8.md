@@ -1,6 +1,8 @@
 
 # Formation Développement Drupal
 
+![][4]
+
 .fx: larger
 
 --------------------------------------------------------------------------------
@@ -1097,6 +1099,7 @@ suggestions de templates.
   * dump(node)
   * {{ max(1, 3, 2) }}
   * {{ random(['pomme', 'orange', 'citron']) }}
+  * + celles fournies par Drupal : <https://www.drupal.org/node/2486991>
 
 --------------------------------------------------------------------------------
 
@@ -1241,3 +1244,6 @@ Voir les modules `example`
    [2]: img/module_structure.png
 
    [3]: img/symfony_components.png
+
+   [4]: img/d8_learning_curve.jpg
+
