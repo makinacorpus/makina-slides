@@ -114,6 +114,7 @@
       * MySQL > 5.5.3 / MariaDB > 5.5.20
       * PHP > 5.5.9, préférez les versions plus récentes (PHP 7)
   * [http://drupal.org/requirements][3]
+  * <http://jayl.ee/blog/2015/11/19/how-to-solve-drupal-8.0.0's-requirements-problem-on-wampserver>
 
 --------------------------------------------------------------------------------
 
