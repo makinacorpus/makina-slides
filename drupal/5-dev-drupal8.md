@@ -1213,6 +1213,17 @@ Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
+# La sécurité
+
+  * "Valider les entrées, filtrer les sorties"
+  * URL : Html::escape(UrlHelper::stripDangerousProtocols($uri));
+  * Texte brut : Html::escape($string);
+  * Texte riche : check_markup($text, $format_id = NULL, $langcode = '', $filter_types_to_skip = array());
+  * HTML : Xss::filter($string, array $html_tags = NULL);
+  * Sinon, on considère que le texte est validé
+
+--------------------------------------------------------------------------------
+
 # Les migrations : le module Migrate
 
   * Depuis Drupal : TO DO
