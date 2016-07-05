@@ -585,6 +585,7 @@ uniquement sur la page d'accueil dans la région de droite.
   * Possibilité de hierarchiser les éléments de menu
   * Création d'éléments sans lien -> Dans le cœur en 8.2 (novembre 2016)
   * Synchronisation entre une taxnomie et un menu -> _Taxonomy Menu_
+  * Ajout d'attributs ('target', ...) : _Link Attributes widget_
 
 <br><br><br><br>
 > Les éléments de menus sont affichés à l'utilisateur seulement s'il a les

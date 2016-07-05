@@ -393,7 +393,23 @@ performance, architecture)
   * Search API
     * Lien Apache Solr (module __Search API Solr Search__)
     * Lien ElasticSearch (module __Elasticsearch Connector__)
-  * ...
+  * Gestion des facets, des fichiers, ...
+
+--------------------------------------------------------------------------------
+
+# La roadmap de Drupal
+
+  * <https://www.drupal.org/strategic-initiatives#active>
+  * Aujourd'hui :
+    * Workflow
+    * Migration
+  * Dans le futur :
+    * Blocs & mise en page
+    * Utilisation de composants dans le thème
+  * Peut-être :
+    * Media
+    * Modèle de données
+    * Cross-channel
 
 --------------------------------------------------------------------------------
 
