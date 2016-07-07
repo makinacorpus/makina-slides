@@ -10,64 +10,70 @@
   <meta name="twitter:title" content="Supports de formation de Makina Corpus">
   <meta name="twitter:description" content="Les supports de formation Makina Corpus sous licence Creative Commons">
   <meta name="twitter:creator" content="@makina_corpus">
+  <link rel="stylesheet" type="text/css" href="./makina-slides.css">
 </head>
+
 <body>
-<header>
-  <h1 class="head-title">Supports de formation de Makina Corpus</h1>
-  <a href="http://www.makina-corpus.com" target="_blank">
-    <img id="logo" src="http://makina-corpus.com/++theme++plonetheme.makinacorpuscom/images/logo.png">
-  </a>
-  <p>Pour consulter nos plans de formation, rendez-vous sur notre site principal, rubrique "<a href="http://makina-corpus.com/formations">Formations</a>".</p>
-</header>
-<main>
-<ul>
-  <li><strong>Python</strong>
-    <ul>
-      <li><a href="1-initiation-django.html">Initiation Django</a></li>
-      <li><a href="2-django-intermediate.html">Django perfectionnement</a></li>
-    </ul>
-  </li>
-  <li><strong>AngularJS</strong>
-    <ul>
-      <li><a href="angular-introduction.html">AngularJS : introduction</a></li>
-      <li><a href="angularjs-hc-jour1.html">AngularJS : jour 1</a></li>
-      <li><a href="angularjs-hc-jour2.html">AngularJS : jour 2</a></li>
-      <li><a href="angularjs-hc-jour3.html">AngularJS : jour 3</a></li>
-    </ul>
-  </li>
-  <li><strong>Drupal</strong>
-    <ul>
-      <li><a href="drupal8-admin.html">Drupal 8 : administrateur</a></li>
-      <li><a href="drupal8-dev.html">Drupal 8 : développeur</a></li>
-      <li><a href="webmaster-orsys.html">Drupal 7 : webmaster (Orsys)</a></li>
-      <li><a href="drupal-admin.html">Drupal, administrateur</a></li>
-      <li><a href="drupal-dev.html">Drupal, développeur</a></li>
-      <li><a href="drupal-dev-barbu.html">Drupal, dévelopeur (barbu)</a></li>
-    </ul>
-  </li>
-  <!--
-  <li><strong>Autres</strong>
-    <ul>
-      <li><a href="opendata-elections.html">OpenData : cartographie et élections</a></li>
-      <li><a href="produit-gmao.html">GMAO : Gestion et maintenance d'un parc d'équipements industriels</a></li>
-      <li><a href="pyconfr2015-async.html">PyConfr2015 : Démystifier les entrées/sorties asynchrones</a></li>
-      <li><a href="pyconfr2015-pieges-et-bizarrerie.html">PyConfr2015 : Pièges et bizarreries de (C)Python</a></li>
-      <li><a href="talend-dejeuner.html">Présentation de Talend Open Studio for Data Integration</a></li>
-    </ul>
-  </li>
-  -->
-</ul>
-</main>
-<footer>
-  <p>N'hésitez pas à nous contacter pour des formations personnalisées : <a href="mailto:formation@makina-corpus.com">formation@makina-corpus.com</a></p>
-</footer>                                                                                                                                          
-<script>
+    <div id="header">
+      <a href="http://makina-corpus.com"><img id="logo" src="http://makina-corpus.com/++theme++plonetheme.makinacorpuscom/images/logo.png"></a>
+      <div id="title">Supports de formation de Makina Corpus
+        <div id="subtitle">Pour consulter nos plans de formation, rendez-vous sur notre site principal, rubrique <a href="http://makina-corpus.com/formations">Formations</a>.</div>
+      </div>
+    </div>
+    <div class=container>
+        <div id="python" class="card">
+            <h2>Python</h2>
+            <div class="img-wrapper">
+                <img src="https://pixees.fr/wp-content/uploads/2015/11/david_roche_dr_11.png" alt="Just Background">
+            </div>
+            <a href="http://makinacorpus.github.io/makina-slides/1-initiation-django.html">
+                <div class="detail">Initiation Django</div>
+            </a>
+            <a href="http://makinacorpus.github.io/makina-slides/1-initiation-django.html">
+                <div class="detail">Django perfectionnement</div>
+            </a>
+        </div>
+        <div id="angularjs" class="card">
+            <h2>AngularJS</h2>
+            <div class="img-wrapper">
+                <img src="http://res.cloudinary.com/buddahbelly/image/upload/v1423072364/brilliantbritz/angular-js.png" alt="Just Background">
+            </div>
+            <a href="http://makinacorpus.github.io/makina-slides/angular-introduction.html">
+                <div class="detail">AngularJS : introduction</div>
+            </a>
+            <a href="http://makinacorpus.github.io/makina-slides/angularjs-hc-jour1.html">
+                <div class="detail">AngularJS : jour 1</div>
+            </a>
+            <a href="http://makinacorpus.github.io/makina-slides/angularjs-hc-jour2.html">
+                <div class="detail">AngularJS : jour 2</div>
+            </a>
+            <a href="http://makinacorpus.github.io/makina-slides/angularjs-hc-jour3.html">
+                <div class="detail">AngularJS : jour 3</div>
+            </a>
+        </div>
+        <div id="drupal" class="card">
+            <h2>Drupal</h2>
+            <div class="img-wrapper">
+                <img src="https://munierprojects.files.wordpress.com/2013/02/drupal-logo.gif" alt="Just Background">
+            </div>
+            <a href="http://makinacorpus.github.io/makina-slides/drupal8-admin.html">
+                <div class="detail">Drupal 8 : administrateur</div>
+            </a>
+            <a href="http://makinacorpus.github.io/makina-slides/drupal8-dev.html">
+                <div class="detail">Drupal 8 : développeur</div>
+            </a>
+        </div>
+    </div>
+    <div id="footer">
+      <div> N'hésitez pas à nous contacter pour des formations personnalisées : formation@makina-corpus.com</div>
+    </div>
+    <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-49309002-1', 'makinacorpus.github.io');
 ga('send', 'pageview');
-</script>
-</body>
+    </script>
+  </body>
 </html>
