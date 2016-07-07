@@ -50,11 +50,11 @@ apparait.
 
 # Mises à jour du cœur
 
-  * Télécharger la nouvelle version
-  * Copier/coller sur l'ancienne version
-  * Aller dans « Rapports > tableau de bord » et repérer la ligne "Mise à jour de la base de données"
-  * Si une mise à jour est nécessaire suite aux modifications, un lien
-apparaît. Cliquez sur le lien et suivre les instructions
+  * Instructions sur <https://www.drupal.org/node/2700999>
+  * Mettre le site en mode "maintenance"
+  * Supprimer les fichiers dans /code, /vendor, et à la racine du site
+  * Remplacer par les nouveaux fichiers
+  * Décompresser la nouvelle version du cœur
 
 ![][24]
 
