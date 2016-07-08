@@ -111,7 +111,7 @@ a {
     color: white;
 }
 
-#header {
+header {
     width: 100%;
     color: white;
     height: 75px;
@@ -121,7 +121,7 @@ a {
     margin-bottom: 5px;
 }
 
-#footer {
+footer {
     width: 100%;
     height: 40px;
     background-color: #37474F;
@@ -129,17 +129,22 @@ a {
     justify-content: center;
     align-items: center;
     margin-top: 5px;
+    color: white;
+    text-align: center;
 }
 
 #logo {
     margin-left: 25px;
 }
 
-#title {
+h1 {
     font-size: 24px;
+    font-weight: 600;
+}
+
+#title {
     display: inline-block;
     margin-left: 25px;
-    font-weight: 600;
 }
 
 #subtitle {
@@ -150,11 +155,6 @@ a {
 #subtitle a {
     color: white;
     text-decoration: underline;
-}
-
-#footer div {
-    color: white;
-    text-align: center;
 }
 
 
