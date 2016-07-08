@@ -10,7 +10,7 @@ body {
     flex-wrap: wrap;
     align-items: center;
     height: auto;
-    min-height: calc(100% - 125px);
+    min-height: calc(100vh - 125px);
 }
 
 .card {
