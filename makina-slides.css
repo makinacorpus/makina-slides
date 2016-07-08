@@ -158,6 +158,9 @@ h1 {
     text-decoration: underline;
 }
 
+.paddingText{
+    padding:8px;
+}
 
 /*some responsive rules*/
 
