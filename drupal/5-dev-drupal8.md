@@ -55,7 +55,11 @@
 
 # Rappels PHP
 
-<center>TO DO:<https://www.drupal.org/getting-started-d8-bkg-prereq></center>
+  * PHP 5.5.9 minimum (<http://www.phptherightway.com/>)
+  * Programmation orientée Object (<http://lornajane.net/posts/2012/introduction-to-php-oop>)
+  * Namespaces (<https://www.sitepoint.com/php-53-namespaces-basics/>)
+  * Annotations
+  * Injection de dépendances
 
 .fx: alternate
 
@@ -75,7 +79,7 @@
 
 # Symfony (<http://symfony.com/>)
 
-  * Le plus populaire des frameworks PHP aujourd'hui
+  * Le plus populaire des frameworks PHP aujourd'hui (<http://symfony.com/doc/current/index.html>)
   * Ensemble de composants réutilisables
   * Certains sont réutilisés par Drupal
 
@@ -159,12 +163,7 @@ environnement de développement avec tous les pré-requis Drupal.
     * Refactoring
     * Erreurs de syntaxe
   * Possibilité de télécharger des configurations
-  * Exemples
-    * PHPStorm
-    * Eclipse
-    * Netbeans
-    * Atom
-    * Vim
+  * Exemples : PHPStorm / Eclipse / Netbeans / Atom / Vim
 
 --------------------------------------------------------------------------------
 
@@ -209,8 +208,7 @@ Avantages :
   * _Features_: transférer la configuration dans le code
   * _Devel_ : debug et informations sur les données
   * _Drupal Console_ : générateur de code
-  * _Drush_ : administration (DRUpal SHell)
-  * _Drush Make_ (intégré dans _Drush_) : téléchargement de modules et librairies
+  * _Drush_ : administration (DRUpal SHell) & téléchargement de modules et librairies
   * _Coder_ : revue de code
   * _Masquerade_ : changer d'utilisateur sans se déconnecter
   * _Examples for developpers_ : démonstrations de l'utilisation de l'API
@@ -235,7 +233,8 @@ Avantages :
   * Intaller la console Drupal
   * Vérifier que c'est correctement installé
   * Regarder la liste des commandes (drupal list)
-  * TO DO: Image (liste commandes)
+
+![][5]
 
 .fx: tp
 
@@ -292,17 +291,11 @@ sous-repertoire `custom`
 
 --------------------------------------------------------------------------------
 
-<img src="img/lifecycle.jpg" class="single-image"/>
-[TO DO: Trouver pour D8]
+<img src="img/render_pipeline.png" class="single-image"/>
 
 --------------------------------------------------------------------------------
 
-# Les librairies JS
-
-  * jQuery
-  * jQuery UI
-  * Backbone
-  * Underscore
+<img src="img/render_pipeline_high_level.png" class="single-image"/>
 
 --------------------------------------------------------------------------------
 
@@ -374,7 +367,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
   Aborde certains topics en profondeur : form API, schema API, hooks, etc
 
-  <https://api.drupal.org/api/drupal/core%21core.api.php/group/extending/8.2.x>
+  <https://api.drupal.org/api/drupal/core%21core.api.php/group/extending/8.1.x>
 
 <br>
 ## Votre guide : modules `examples`
@@ -417,6 +410,14 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 --------------------------------------------------------------------------------
 
+# Les plugins & les annotations
+
+  * Plugins : <https://www.drupal.org/node/2087839>
+  * Annotations très utilisé dans le cœur : pour tous le plugins (block, entre autres)
+  * <https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.1.x>
+
+--------------------------------------------------------------------------------
+
 # Les blocs
 
   * fichier src/Plugin/Block/TestBlock.php
@@ -452,8 +453,8 @@ Créer un bloc :
 
   - dont le titre côté administration est "Statut premium de l'utilisateur"
   - dont le delta (nom machine) est `gold-status`
-  - qui affiche "Vous êtes un utilisateur premium" ou "Vous n'êtes pas un
-  utilisateur premium" entouré d'un `<h3>`
+  - qui affiche "Vous pouvez voir les contenus premium" ou "Vous ne pouvez pas
+  voir les contenus premium"
 
 Rappel: \Drupal::currentUser()->hasPermission(); pour vérifier les permissions
 
@@ -815,6 +816,19 @@ formulaires de création ou de modification de nœud.
 
     !php
     $this->entityFormBuilder()->getForm($form_id, 'form_mode');
+
+--------------------------------------------------------------------------------
+
+# Les services
+
+  * <https://api.drupal.org/api/drupal/services/8.1.x>
+  * Les services à connaître :
+    * router.admin_context (->isAdminRoute())
+    * path.matcher (->isFrontPage() / ->match())
+    * plugin.manager.mail (->mail())
+    * title_resolver (->getTitle())
+    * entity_type.manager (->getStorage())
+    * ...
 
 --------------------------------------------------------------------------------
 
@@ -1213,6 +1227,15 @@ Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
+# Les librairies JS fournies avec le cœur
+
+  * jQuery
+  * jQuery UI
+  * Backbone
+  * Underscore
+
+--------------------------------------------------------------------------------
+
 # La sécurité
 
   * "Valider les entrées, filtrer les sorties"
@@ -1257,4 +1280,6 @@ Voir les modules `example`
    [3]: img/symfony_components.png
 
    [4]: img/d8_learning_curve.jpg
+
+   [5]: img/console.png
 
