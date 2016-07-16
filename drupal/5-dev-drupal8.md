@@ -331,19 +331,19 @@ sous-repertoire `custom`
 
 --------------------------------------------------------------------------------
 
-# Fil rouge : le module gold, une fonctionnalité Premium
+# Fil rouge : le module Premium
 
-  * Créer deux permissions pour les rôles, une pouvant affecter le status gold
+  * Créer deux permissions pour les rôles, une pouvant affecter le status premium
   aux contenus et l'autre le voir
   * Créer un bloc affichant si l'utilisateur a la permission de voir les
-  contenus gold
-  * Administrer les types de contenus concernés par le statut gold
-  * Altérer le formulaire d'édition de nœud pour ajouter le statut gold
+  contenus premium
+  * Administrer les types de contenus concernés par le statut premium
+  * Altérer le formulaire d'édition de nœud pour ajouter le statut premium
   * Envoyer un mail aux utilisateurs ayant la permission de voir les contenus
-  gold lorsque qu'un nouveau contenu gold apparait sur le site
-  * Lister les contenus avec le statut gold
-  * Créer un style d'image pour illustrer les contenus gold
-  * Créer une fonction de theme pour afficher le statut gold d'un nœud
+  premium lorsque qu'un nouveau contenu premium apparait sur le site
+  * Lister les contenus avec le statut premium
+  * Créer un style d'image pour illustrer les contenus premium
+  * Créer une fonction de theme pour afficher le statut premium d'un nœud
   * Créer des tests pour vérifier le bon fonctionnement du module
 
 Créer ce module : il doit simplement apparaître dans la liste des modules.
@@ -402,8 +402,8 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
   * Créer un fichier `.permissions.yml`
   * Créer les deux permissions
   * Vider le cache
-  * Créer un role contributeur pouvant affecter le statut gold
-  * Créer un role premium pouvant voir le statut gold
+  * Créer un role contributeur pouvant affecter le statut premium
+  * Créer un role premium pouvant voir le statut premium
   * Créer un utilisateur pour chaque rôle
 
 .fx: tp
@@ -452,7 +452,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 Créer un bloc :
 
   - dont le titre côté administration est "Statut premium de l'utilisateur"
-  - dont le delta (nom machine) est `gold-status`
+  - dont le delta (nom machine) est `premium-status`
   - qui affiche "Vous pouvez voir les contenus premium" ou "Vous ne pouvez pas
   voir les contenus premium"
 
@@ -596,18 +596,18 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
 
 Créer une page _Suis-je Premium ?_ reproduisant le comportement du bloc
 
-  - url : suis-je-gold
+  - url : suis-je-premium
 
 Créer une page _Est-il Premium ?_ affichant la même chose, mais avec en
 argument l'uid de l'utilisateur
 
-  - url d'exemple : est-il-gold/2
+  - url d'exemple : est-il-premium/2
 
 Créer une page _Page Premium_ avec du contenu "Lorem Ipsum" et ne
 s'affichant que si l'utilisateur courant à la permission de voir le contenu
 premium
 
-  - url : page-gold
+  - url : page-premium
 
 .fx: tp
 
@@ -696,7 +696,7 @@ accès premium.
 
   * Créer une page
 
-  * Récupérer les rôles ayant la permission de voir le contenu gold (dans la
+  * Récupérer les rôles ayant la permission de voir le contenu premium (dans la
   table `role_permission`)
 
   * Récupérer les utilisateurs ayant ces rôles (dans la table `users_roles`)
@@ -804,7 +804,7 @@ formulaires de création ou de modification de nœud.
   * Valider le fait qu'on ne peut pas choisir le type de contenu _Page de base_
 
   * A la soumission enregistrer les valeurs dans une variable persistante
-  `'gold_types'`
+  `'premium_types'`
 
   * Cocher les checkbox par défaut lorsque le type de contenu est activé
 
@@ -876,9 +876,9 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 --------------------------------------------------------------------------------
 
-# TP: Créer un style d'image pour nos contenus gold
+# TP: Créer un style d'image pour nos contenus premium
 
-Celui-ci nous servira pour les images qui seront sur les articles gold
+Celui-ci nous servira pour les images qui seront sur les articles premium
 
 .fx: tp
 
@@ -900,7 +900,7 @@ Celui-ci nous servira pour les images qui seront sur les articles gold
 
 # TP: Enregistrer les statuts
 
-## Déclarer une table gold
+## Déclarer une table premium
 
 Via l'API, déclarer une table avec deux colonnes, nid et status.
 Installer cette table via un `hook_update_N()` ou réinstaller le module.
@@ -1155,7 +1155,7 @@ dans sites/default/services.yml
 
 --------------------------------------------------------------------------------
 
-# TP: Créer un template pour gold
+# TP: Créer un template pour premium
 
 Convertir le render array utilisé dans `hook_node_view()` pour utiliser un
 _theme hook_ qui se base sur un template.
@@ -1200,11 +1200,11 @@ Ajouter des suggestions pour ce template.
 Ajouter une classe à l'image et créer un fichier CSS:
 
     !css
-    img.gold-icon {
+    img.premium-icon {
       float: right;
     }
 
-L'ajouter lorsqu'un noœud gold est affiché.
+L'ajouter lorsqu'un noœud premium est affiché.
 
 .fx: tp
 
