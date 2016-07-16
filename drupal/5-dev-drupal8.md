@@ -424,7 +424,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
   * Déclaration
 
 <code><pre>
-    namespace Drupal\fax\Plugin\Block;
+    namespace Drupal\mon_module\Plugin\Block;
     use Drupal\Core\Block\BlockBase;
     /**
      * Provides a 'Test' block.
@@ -445,7 +445,6 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
     function hook_block_build_BASE_BLOCK_ID_alter(&$build, $block) {}
 
 --------------------------------------------------------------------------------
-
 
 # TP: Notre premier bloc
 
@@ -494,7 +493,7 @@ Un render array est converti en HTML avec la fonction `render();`
 
 # Paramètres du render array et propriétés
 
-Une fonction de `#theme` peut être renseignée ainsi que ses paramètres.
+Une fonction de `#theme` peut être renseignée ainsi que ses paramètres (<https://www.drupal.org/developing/api/8/render/arrays>)
 
     !php
     // Un render array qui produit un tableau HTML
@@ -507,38 +506,19 @@ Une fonction de `#theme` peut être renseignée ainsi que ses paramètres.
 
 Des propriétés utiles :
 
-  - `#cache`: mise en cache du render array
-  - `#pre_render`: agit sur l'array avant le rendering
-  - `#post_render`: agit sur le markup après le rendering
-  - `#weight`: donne un poids à l'élément
-  - `#attached`: lier à un ou des CSS/JS
-  - `#access`: desactive l'élément si == FALSE
+  - `#type`: Le type d'élement
+  - `#cache`: contexts, tags, ... /!\
+  - `#markup`: Pour fournir directement de l'HTML
+  - `#pre_render` / `#post_render`: agit sur le tableau
+  - `#prefix` / `#suffix`, `#weight`, `#attached`, `#access`, ...
 
 --------------------------------------------------------------------------------
 
-# Fonctions de theme
+# TP
 
-Exemples d'utilisations de `theme()` :
+Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
-  * table
-  * item_list
-  * pager
-  * links
-  * image
-
-[Liste complete des implementation de theme du cœur](
-https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/group/themeable/8)
-
-    !php
-    $table_element = array(
-        '#theme'  => 'image',
-        '#path' => drupal_get_path('module', 'monmodule') . '/monimage.png',
-    );
-    print drupal_render($table_element); // Quasi-automatiquement appelé
-                                         // par les hooks
-
-Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
-<https://www.drupal.org/developing/api/8/render/pipeline#html-main-content-renderer-pipeline>
+.fx: tp
 
 --------------------------------------------------------------------------------
 
@@ -551,7 +531,7 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
 
 --------------------------------------------------------------------------------
 
-# Système de menus
+# Système de routage / menus
 
 ## Quelques définitions :
   * routage : faire pointer une route (`node/{node}`) à une action (afficher un noeud)
@@ -564,10 +544,31 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
 
 ## Les propriétés d'une route
   * _Permissions
-  * Les arguments sont nommés `{node}` et peuvent être chargés dans le
+  * Les arguments sont nommés (`{node}`) et peuvent être chargés dans le
   Controller (en les typant avec une classe)
   * Vous pouvez passer des paramètres fixes au controller en les indiquant
   dans la route
+
+--------------------------------------------------------------------------------
+
+# Les controllers
+
+  * fichier src/Controller/ModuleController.php
+  * Déclaration
+
+<code><pre>
+    namespace Drupal\mon_module\Controller;
+    use Drupal\Core\Controller\ControllerBase;
+    /**
+     * Provides a 'Test' block.
+     */
+    class ModuleController extends ControllerBase {
+      public function abc_view() {
+        return array('#markup' => '',);
+      }
+    }
+</pre></code>
+
 
 --------------------------------------------------------------------------------
 
@@ -582,6 +583,7 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
 <h2>Exemple</h2>
 
     !yaml
+    #.routing.yml
     mymodule.abc_view:
       path: '/abc/def'
       defaults:
@@ -589,6 +591,19 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
         _controller: "\Drupal\module\Controller\ModuleController::abc_view"
       requirements:
         _permission: 'access my module'
+
+    #.links.menu.yml
+    mymodule.abc_view_tab:
+      title: 'My ABC page'
+      route_name: mymodule.abc_view
+      description: 'Displays my ABC page'
+      parent: mymodule.abc_view
+
+    #.links.task.yml
+    mymodule.abc_view_edit:
+      title: 'Edit'
+      route_name: mymodule.abc_view_edit
+      base_route: mymodule.abc_view
 
 --------------------------------------------------------------------------------
 
@@ -1040,6 +1055,38 @@ suggestions de templates.
       '#forums' => $forums,
       '#topics' => $topics,
     );
+
+--------------------------------------------------------------------------------
+
+# Fonctions de theme
+
+Exemples d'utilisations de `theme()` :
+
+  * table
+  * item_list
+  * pager
+  * links
+  * image
+
+[Liste complete des implementation de theme du cœur](
+https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/group/themeable/8)
+
+    !php
+    $table_element = array(
+        '#theme'  => 'image',
+        '#path' => drupal_get_path('module', 'monmodule') . '/monimage.png',
+    );
+    print drupal_render($table_element); // Quasi-automatiquement appelé
+                                         // par les hooks
+
+<https://www.drupal.org/developing/api/8/render/pipeline#html-main-content-renderer-pipeline>
+
+--------------------------------------------------------------------------------
+
+# Implémentation du hook_theme()
+
+  * Fonction template_preprocess_forums
+  * fichier forums.html.twig
 
 --------------------------------------------------------------------------------
 
