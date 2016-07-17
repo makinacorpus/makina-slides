@@ -578,9 +578,11 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
     * *.links.task.yml -> onglet
     * *.links.action.yml -> "action" (back-office)
 
+  * Paramètres de routage : <https://www.drupal.org/node/2092643>
+
 --------------------------------------------------------------------------------
 
-<h2>Exemple</h2>
+# Exemples
 
     !yaml
     #.routing.yml
@@ -634,50 +636,44 @@ Quelques fonctions de l'API à connaitre :
 
   * `\Drupal::currentUser()` : utilisateur actuellement connecté
 <small>(modifier avec prudence !)</small>
-  * `Node::load()` et `node_load_multiple()` pour charger des nœuds [TO DO]
-  * `User::load()` et `user_load_multiple()` pour charger des utilisateurs
+  * `Node::load()` et `Node::loadMultiple()` pour charger des nœuds
+  * `User::load()` et `User::loadMultiple()` pour charger des utilisateurs
   * $entity->save() pour enregistrer un nœud, un utilisateur, ...
-  * `REQUEST_TIME` : timestamp à l'appel de la page
 
 --------------------------------------------------------------------------------
 
-# Gestion de la base de données TO DO (QueryFactory, ...)
+# Gestion de la base de données /!\ en cours de modification /!\
 
-## SQL statique
-La fonction `db_query()` permet d'exécuter du SQL directement mais utiliser des
-accolades autour des noms de table `{table_name}` (permet la gestion de
-prefixe) et les placeholders pour passer des arguments (pour les failles de
-sécurité). Utiliser ensuite `foreach()` pour parcourir les résultats.
+## Requête en base de données
 
     !php
-    $result = db_query("SELECT some_col FROM {my_table}
-      WHERE some_col IN (:my_ids)", array(':my_ids' => $my_ids));
-    foreach ($result as $record) {
-      print_r($record);
-    }
+    $db = \Drupal::database();
+    $result = db->select();
+    $result = db->insert();
+    $result = db->delete();
+    $result = db->udpate();
+    $result = db->merge();
 
-## DBTNG
+## Requête sur le modèle objet
 
-Permet de faire des requêtes dynamiques grâce à une API en POO, donc sans
-manipuler de chaînes.
+    !php
+    $ids = \Drupal::entityQuery('user')->condition('name', 'test')->execute();
+    $users = User::loadMultiple($ids);
 
-[Documentation complète](https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Database!database.api.php/group/database/8),
-voir également les commentaires sur chaque fonction sur <https://api.drupal.org>
+[Documentation complète](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Database%21database.api.php/group/database/8.1.x)
 
 --------------------------------------------------------------------------------
 
-## DBTNG
+## DBTNG : DataBase The Next Generation (issu de Drupal 7)
     !php
-    $results = db_select('contact', 'c')
+    $results = $db->select('contact', 'c')
                   ->fields('c')
                   ->condition('created', REQUEST_TIME)
-                  ->execute()
-                  ->fetchAllAssoc('cid');
+                  ->execute() // ->fetch*()
+                  ;
     foreach ($results as $result) {
       // faire qqch
     }
-
-Voir aussi `db_insert()`, `db_delete()`, `db_update()` et `db_merge()`
 
 Récupération de résultats :
 
@@ -692,15 +688,20 @@ Récupération de résultats :
 
 # Gestion des URLs et des paths
 
-Quelques globales et fonctions de l'API à connaitre :
+## Quelques fonctions
 
-  * use Drupal\Core\Url; $url = Url::fromRoute('book.admin')->toString();
-  * $link = \Drupal::l(t('Book admin'), $url); 
-  * $this->redirect('book.admin'); -> redirection
+  * $this->redirect('contact.site_page'); -> redirection
   * `global $base_url` -> http://monsite.com
   * `base_path()` -> `/` ou `/mon-dossier-drupal`
-  * `drupal_get_path()` (module, theme) -> chemin vers un module ou un thème
-  `drupal_get_path('module', 'devel')` donne _modules/devel_
+  * `drupal_get_path()` (module, theme) -> chemin vers un module ou un thème (`drupal_get_path('module', 'devel')` donne _modules/devel_)
+
+## L'objet URL
+    !php
+    use Drupal\Core\Url;
+    $url = Url::fromRoute('contact.site_page', array())->toString();
+    $url = Url::fromUserInput('/contact')->toString();
+    $url = Url::fromUri('internal:/contact')->toString();
+    $link = \Drupal::l(t('Contact'), $url);
 
 --------------------------------------------------------------------------------
 
@@ -759,6 +760,7 @@ https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/8)
     }
     public function validate(array &$form, FormStateInterface $form_state) {
       // Logique de validation.
+      $form_state->setErrorByName('form_field', 'message');
     }
     public function submit(array &$form, FormStateInterface $form_state) {
       // Traitement des données soumises.
@@ -771,32 +773,25 @@ https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/8)
 Les données soumises et validées sont contenues dans `$form_state->getValue('key')`.
 
 Après exécution du `_submit()`, l'utilisateur est redirigé vers le formulaire
-vidé de ses valeurs, ou bien vers une route définie par `$form_state['redirect']` TO DO
+vidé de ses valeurs, ou bien vers une route définie par `$form_state->setRedirectUrl($url)`
 
 Chaque formulaire a un identifiant unique qui permet de l'altérer facilement par
 les autres modules.
 
-  * Possibilité de créer des formulaires multi-étapes.
-  * Validation par élément
-  * Possibilité de créer de nouveaux type d'éléments
+  * Validation par élément (`#element_validate`)
   * \#ajax (<https://api.drupal.org/api/drupal/core!core.api.php/group/ajax/8>)
   permet de faire de l'Ajax sans ecrire de JS
-  * \#autocomplete_path
-
-Schéma de workflow complet : <https://drupal.org/files/fapi_workflow_7.x_v1.1.png>
+  * \#autocomplete_route_name
 
 --------------------------------------------------------------------------------
 
-# Gestion de la configuration
-  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
-  * $config->set('name', value)->save();` pour définir
-  * $config = \Drupal::config('monmodule.settings');
-  * $config->get('name');` pour récupérer
-  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
-  * $config->clear('name')->save();` pour supprimer une valeur
-  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings')->delete();
-
-Documentation sur <https://www.drupal.org/node/1809490>
+# Appeler un formulaire directement depuis le routage
+    !yaml
+    example.form:
+      path: '/example-form'
+      defaults:
+        _title: 'Example form'
+        _form: '\Drupal\mymodule\Form\ExampleForm'
 
 --------------------------------------------------------------------------------
 
@@ -816,59 +811,77 @@ formulaires de création ou de modification de nœud.
 <button>Enregistrer</button>
 </code></p>
 
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# TP : Form API
+
   * Valider le fait qu'on ne peut pas choisir le type de contenu _Page de base_
-
-  * A la soumission enregistrer les valeurs dans une variable persistante
-  `'premium_types'`
-
-  * Cocher les checkbox par défaut lorsque le type de contenu est activé
 
 .fx: tp
 
 --------------------------------------------------------------------------------
 
-# Manipuler les "Form Modes"
+# Gestion de la configuration
+
+  * <https://www.drupal.org/node/1905070>
+  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
+  * `$config->set('name', value)->save();` pour définir
+  * $config = \Drupal::config('monmodule.settings');
+  * `$config->get('name');` pour récupérer
+  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
+  * `$config->clear('name')->save();` pour supprimer une valeur
+  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings')->delete();
+
+Documentation de l'API sur <https://www.drupal.org/node/1809490>
+
+--------------------------------------------------------------------------------
+
+# Déclaration de la configuration
+
+  * /config/install/mon_module.settings.yml -> initialisation à l'installation
+  * /config/optionnal/module1.type1.name1.yml -> si module1 est activé
+  * /config/schema/mon_module.schema.yml -> schéma de la configuration de votre module
+
+## Exemple de fichier
+
+    !yaml
+    mon_module.settings:
+      type: config_object
+      mapping:
+        settings_1:
+          type: boolean
+          label: 'Settings 1'
+        settings_2:
+          type: string
+          label: 'Settings 2'
+
+--------------------------------------------------------------------------------
+
+# TP : Form API
+
+  * A la soumission enregistrer les valeurs dans une variable persistante
+  `'premium_types'`
+  * Attention, il faut désinstaller et réinstaller votre module pour que Drupal connaisse votre configuration
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# TP : Form API
+
+  * Cocher les checkbox par défaut lorsque le type de contenu est activé
+  (en lisant depuis la configuration)
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# En bonus, Manipuler les "Form Modes"
 
     !php
     $this->entityFormBuilder()->getForm($form_id, 'form_mode');
-
---------------------------------------------------------------------------------
-
-# Les services
-
-  * <https://api.drupal.org/api/drupal/services/8.1.x>
-  * Les services à connaître :
-    * router.admin_context (->isAdminRoute())
-    * path.matcher (->isFrontPage() / ->match())
-    * plugin.manager.mail (->mail())
-    * title_resolver (->getTitle())
-    * entity_type.manager (->getStorage())
-    * ...
-
---------------------------------------------------------------------------------
-
-# Manipuler les fichiers et les images
-
-.fx: alternate
-
---------------------------------------------------------------------------------
-
-# La File API
-
-Un fichier n'est pas une entité ! (malheureusement)
-
-Différence entre fichiers gérés et non gérés
-
-Différence entre fichiers privés et fichiers publics
-
-API complète <https://api.drupal.org/api/drupal/core!includes!file.inc/group/file/8>
-
-## Les streams wrappers
-
-Un stream est un chemin, une URI, vers un fichier interne ou externe :
-
-  * public://
-  * private://
 
 --------------------------------------------------------------------------------
 
@@ -899,7 +912,14 @@ Celui-ci nous servira pour les images qui seront sur les articles premium
 
 --------------------------------------------------------------------------------
 
-# Schema API
+# Le stockage
+
+  * Ancienne méthode (D7) : on créé ses propres tables manuellement
+  * Méthode Drupal 8 : on créé une _entité_ (2 types : configuration ou contenu)
+
+--------------------------------------------------------------------------------
+
+# Schema API (~ méthode Drupal 7)
 
   * Gère la base de données
   * Se situe dans le fichier .install
@@ -910,6 +930,13 @@ Celui-ci nous servira pour les images qui seront sur les articles premium
   * Les `hook_update_N()` servent à réaliser des actions sur la structure ou
   les données
   * Très utile pour les mises à jour en production, et le test de celles-ci
+
+--------------------------------------------------------------------------------
+
+# Génération d'entité
+
+  * Recommandation : utiliser la console pour générer l'entité
+  * drupal generate:entity:content (ou drupal generate:entity:config)
 
 --------------------------------------------------------------------------------
 
@@ -1283,9 +1310,50 @@ Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
+# Les services
+
+  * <https://api.drupal.org/api/drupal/services/8.1.x>
+  * Les services à connaître :
+    * router.admin_context (->isAdminRoute())
+    * path.matcher (->isFrontPage() / ->match())
+    * plugin.manager.mail (->mail())
+    * title_resolver (->getTitle())
+    * entity_type.manager (->getStorage())
+    * ...
+
+--------------------------------------------------------------------------------
+
+# Manipuler les fichiers
+
+.fx: alternate
+
+--------------------------------------------------------------------------------
+
+# La File API
+
+Un fichier n'est pas une entité ! (malheureusement)
+
+Différence entre fichiers gérés et non gérés
+
+Différence entre fichiers privés et fichiers publics
+
+API complète <https://api.drupal.org/api/drupal/core!includes!file.inc/group/file/8>
+
+## Les streams wrappers
+
+Un stream est un chemin, une URI, vers un fichier interne ou externe :
+
+  * public://
+  * private://
+
+--------------------------------------------------------------------------------
+
 # La sécurité
 
+## À retenir
   * "Valider les entrées, filtrer les sorties"
+
+## Concrètement
   * URL : Html::escape(UrlHelper::stripDangerousProtocols($uri));
   * Texte brut : Html::escape($string);
   * Texte riche : check_markup($text, $format_id = NULL, $langcode = '', $filter_types_to_skip = array());
