@@ -959,7 +959,7 @@ Rappels 
 
   * `hook_form_alter(&$form, $form_state, $form_id)`
   * `hook_node_update()` et `hook_node_insert()`
-  * Debug : `drupal_set_message('<pre>'.print_r($var, 1).'</pre>')`
+  * Debug : module Devel + `dpm($var)`
 
 .fx: tp
 
@@ -967,15 +967,15 @@ Rappels 
 
 # TP : Contrôler l'accès aux nœuds
 
-Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/modules!node!node.module/group/node_access/7))
+Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.1.x))
 
-Déclarer notre hook_node_access()` et ne retourner NODE_ACCESS_DENY que si les 4
+Déclarer le `hook_node_access()` et ne retourner NODE_ACCESS_DENY que si les 4
 conditions sont réunies :
 
-  1. je suis en train de voir le nœud
-  2. son type a la foncitonnalité premium activé
-  3. c'est un contenu premium
-  4.   je n'ai pas la permission de voir les contenu premium
+  1. Je suis en train de voir le nœud
+  2. Son type a la foncitonnalité premium activé
+  3. C'est un contenu premium
+  4. Je n'ai pas la permission de voir les contenu premium
 
 <u>Attention:</u> ne fonctionnera pas pour les listes (dont la page d'accueil)
 pour des raisons de performances, il faudrait declarer `hook_node_grants()`.
@@ -1000,15 +1000,13 @@ De même `hook_node_access()` n'est pas appelé pour le superadmin.
     }
     
     // Envoi du mail.
-    drupal_mail('monmodule', 'maclé', 'toto@example.com', 'fr-FR', array(
+    $mailManager = \Drupal::service('plugin.manager.mail');
+    $mailManager->mail('monmodule', 'my_key', 'toto@example.com', 'fr-FR', array(
       'node' => node_load(123),
-      'user' => user_load_by_name('toto'),
+      'account' => user_load_by_name('toto'),
     );
 
-On peut utiliser la notion de tokens (jetons) ou la fonction strtr(). 
-'`body`' est un tableau de lignes.
-
-Envoi du mail avec `drupal_mail($module, $key,  $to, $language, $params = array())`;
+On peut utiliser la notion de tokens (jetons). '`body`' est un tableau de lignes.
 
 La clé permet à un module de gérer plusieurs types de mail.
 
@@ -1045,14 +1043,12 @@ L'équipe du site _Nom du site_
 Le module fournit **toujours** le markup par défaut.
 
 Le `hook_theme()` définit des hooks/clés qui pourront ensuite être utilisés via
-la propriété `#theme` des render arrays. Ces _theme hooks_   généreront ensuite
-le markup HTML soit via une fonction, soit via un template.
+la propriété `#theme` des render arrays. Ces _theme hooks_ généreront ensuite
+le markup HTML via un template.
 
-On peut fournir des variables à ces _theme hooks_. Des fonctions preprocess et
-process peuvent ajouter ou modifier des variables, et également ajouter des
+On peut fournir des variables à ces _theme hooks_. Des fonctions preprocess
+peuvent ajouter ou modifier des variables, et également ajouter des
 suggestions de templates.
-
-<https://www.drupal.org/files/theme_flow_6_1.pdf> (pour Drupal 6)
 
 --------------------------------------------------------------------------------
 
@@ -1099,12 +1095,11 @@ Exemples d'utilisations de `theme()` :
 https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/group/themeable/8)
 
     !php
-    $table_element = array(
+    $image = array(
         '#theme'  => 'image',
         '#path' => drupal_get_path('module', 'monmodule') . '/monimage.png',
     );
-    print drupal_render($table_element); // Quasi-automatiquement appelé
-                                         // par les hooks
+    print drupal_render($image); // Quasi-automatiquement appelé par les hooks
 
 <https://www.drupal.org/developing/api/8/render/pipeline#html-main-content-renderer-pipeline>
 
@@ -1112,7 +1107,7 @@ https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/grou
 
 # Implémentation du hook_theme()
 
-  * Fonction template_preprocess_forums
+  * Fonction template_preprocess_forums()
   * fichier forums.html.twig
 
 --------------------------------------------------------------------------------
@@ -1187,7 +1182,11 @@ https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/grou
   * dump(node)
   * {{ max(1, 3, 2) }}
   * {{ random(['pomme', 'orange', 'citron']) }}
-  * + celles fournies par Drupal : <https://www.drupal.org/node/2486991>
+  * \+ celles fournies par Drupal : <https://www.drupal.org/node/2486991>
+    * link()
+    * path()
+    * url()
+    * attach_library()
 
 --------------------------------------------------------------------------------
 
@@ -1241,7 +1240,7 @@ Ajouter une image de médaille dans ce template.
 
 Créer un preprocess pour transformer cette image en variable.
 
-Dans le preprocess, transformer l'image en render array, et utiliser la fonciton
+Dans le preprocess, transformer l'image en render array, et utiliser la fonction
 render() dans le template.
 
 Ajouter des suggestions pour ce template.
@@ -1310,6 +1309,27 @@ Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
+# Création de theme avec un my_theme.info.yml
+
+    !yaml
+    name: My Theme
+    type: theme
+    version: 0.1
+    core: 8.x
+    regions:
+      branding: "Branding"
+      header: "Header"
+      breadcrumb: "Breadcrumb"
+      content: "Content"
+      footer: "Footer"
+    regions_hidden:
+      - sidebar_first
+      - sidebar_second
+    libraries:
+      - my_theme/global_styling
+
+--------------------------------------------------------------------------------
+
 # Les services
 
   * <https://api.drupal.org/api/drupal/services/8.1.x>
@@ -1323,21 +1343,11 @@ Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
-# Manipuler les fichiers
-
-.fx: alternate
-
---------------------------------------------------------------------------------
-
 # La File API
 
-Un fichier n'est pas une entité ! (malheureusement)
-
-Différence entre fichiers gérés et non gérés
-
-Différence entre fichiers privés et fichiers publics
-
-API complète <https://api.drupal.org/api/drupal/core!includes!file.inc/group/file/8>
+  * Différence entre fichiers gérés et non gérés
+  * Différence entre fichiers privés et fichiers publics
+  * API complète <https://api.drupal.org/api/drupal/core!includes!file.inc/group/file/8>
 
 ## Les streams wrappers
 
@@ -1348,9 +1358,36 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 --------------------------------------------------------------------------------
 
+# Fonctionnalités avancées
+
+.fx: alternate
+
+--------------------------------------------------------------------------------
+
+# Le cache
+
+  * Les clés : comment identifier ce cache
+  * Les contextes : Qu'est ce qui fait varier ce cache ('language', 'user.permissions', 'user.role', 'url')
+  * Les tags : à quoi est associé ce cache ('node:X', `EntityInterface::getCacheTags()`)
+  * La durée de conservation (si on veut la forcer), avec 2 valeurs spéciales :
+    * 0 (ne pas conserver en cache)
+    * Cache::PERMANENT (ne pas expirer selon le temps, uniquement selon les tags)
+
+## Comment l'implémenter
+    !php
+    $build['#cache'] = array(
+      'keys' => 'my_cache',
+      'contexts' => 'url',
+      'tags' => array(),
+      'max-age' => Cache::PERMANENT,
+    );
+
+Directement dans le render array
+
+--------------------------------------------------------------------------------
+
 # La sécurité
 
-## À retenir
   * "Valider les entrées, filtrer les sorties"
 
 ## Concrètement
@@ -1360,29 +1397,135 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
   * HTML : Xss::filter($string, array $html_tags = NULL);
   * Sinon, on considère que le texte est validé
 
+## En bonus, déplacez les fichiers
+  * <https://www.drupal.org/node/2767907>
+
+--------------------------------------------------------------------------------
+
+# Les Web Services
+
+## Appel (avec Guzzle)
+    !php
+    // GET
+    $request = \Drupal::service('http_default_client')->get($url, [
+      'auth' => ['username','password']
+    ]);
+    $status = $request->getStatusCode();
+    $response = $request->getBody();
+    // POST
+    $request = $client->post($url, [
+      'json' => [
+        'id'=> 'data-explorer'
+      ]
+    ]);
+    $response = json_decode($request->getBody());
+
+  * Exceptions dans ./vendor/guzzlehttp/guzzle/src/Exception
+  * Documentation sur <http://docs.guzzlephp.org/en/latest/>
+
+--------------------------------------------------------------------------------
+
+# Les Web Services
+
+## Réponse (dans un Controller)
+    !php
+    return new JsonResponse($values);
+
+--------------------------------------------------------------------------------
+
+# Intégrer des données à Views
+
+## Des entités
+
+  * C'est (presque) natif !
+  * Drupal console le génère pour vous.
+
+## Des tables "legacy"
+
+  * Utiliser le hook_views_data()
+  * [documentation](https://api.drupal.org/api/drupal/core!modules!views!views.api.php/function/hook_views_data/8.1.x)
+
+--------------------------------------------------------------------------------
+
+# Modifier des données de Views
+
+## Les données elles-mêmes
+
+  * hook_views_data_alter()
+
+## Leur affichage
+
+  * Views utilise des Plugins :
+    * Field
+    * Sort
+    * Filter
+    * ...
+
 --------------------------------------------------------------------------------
 
 # Les migrations : le module Migrate
 
-  * Depuis Drupal : TO DO
-  * Depuis n'importe quoi : TO DO
+## Depuis Drupal
+  * Drupal fait le plus gros du boulot
+  * Voir [la conf d'Aurelien Navarre](http://www.slideshare.net/AurelienNavarre/drupalcamp-nantes-2016-migrer-un-site-drupal-6-ou-drupal-7-vers-drupal-8)
+
+## Depuis autre chose
+  * CSV, XML, JSON supportés par des plugins
+  * Une migration est un fichier YAML
+  * On ne code que si on a besoin de faire des traitements spécifiques
+  * [Exemple détaillé](https://blog.liip.ch/archive/2016/05/04/using-the-new-drupal-8-migration-api-module.html)
+  * [Exemple SQL](https://www.sitepoint.com/your-first-drupal-8-migration/)
+  * /!\ Support des traductions dans la 8.2.x /!\
 
 --------------------------------------------------------------------------------
 
-# Industrialistion
+# Exemple de migration
+    !yaml
+    id: basics
+    label: Import articles
+    migration_groups:
+      - mon_groupe
+    source:
+      plugin: csv
+      path: '/path/to/file/data.csv'
+      header_row_count: 1
+      keys:
+        - Id
 
-  * Les profils d'installation
-  * L'outil drush make
+    process:
+      title: title
+      body: body
+      type:
+        plugin: default_value
+        default_value: article
+
+    destination:
+      plugin: entity:node
+
+--------------------------------------------------------------------------------
+
+# Industrialisation
+
   * La gestion de la configuration
-  * Features
+  * Features... et le reste
+  * Les profils d'installation et les distributions
+  * L'outil drush make
+  * Son évolution https://github.com/drupal-composer/drupal-project
+
+--------------------------------------------------------------------------------
+
+# Les profils d'installation
+
+## Qu'est ce que c'est
+
+  * Simplement une pré-configuration de Drupal.
+  * Peut contenir vos propres modules, et votre propre configuration !
+
+## Quelques exemples de distribution Drupal 8
 
 --------------------------------------------------------------------------------
 
 # composer drupal project TO DO
-
---------------------------------------------------------------------------------
-
-# Le cache TO DO
 
 --------------------------------------------------------------------------------
 
