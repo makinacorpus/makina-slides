@@ -56,7 +56,8 @@
 # Rappels PHP
 
   * PHP 5.5.9 minimum (<http://www.phptherightway.com/>)
-  * Programmation orientée Object (<http://lornajane.net/posts/2012/introduction-to-php-oop>)
+  * Programmation orientée Object
+  (<http://lornajane.net/posts/2012/introduction-to-php-oop>)
   * Namespaces (<https://www.sitepoint.com/php-53-namespaces-basics/>)
   * Annotations
   * Injection de dépendances
@@ -73,13 +74,15 @@
     * PSR-1 : normes de codage de base (Drupal les suit presque)
     * PSR-2 : normes de codage plus poussées (Drupal les suit presque)
     * PSR-3 : interface du logger (pas implémentée dans Drupal)
-    * PSR-4 : autoloader amélioré (choisi par Drupal) : <https://www.drupal.org/node/2156625>
+    * PSR-4 : autoloader amélioré (choisi par Drupal) :
+    <https://www.drupal.org/node/2156625>
 
 --------------------------------------------------------------------------------
 
 # Symfony (<http://symfony.com/>)
 
-  * Le plus populaire des frameworks PHP aujourd'hui (<http://symfony.com/doc/current/index.html>)
+  * Le plus populaire des frameworks PHP aujourd'hui
+  (<http://symfony.com/doc/current/index.html>)
   * Ensemble de composants réutilisables
   * Certains sont réutilisés par Drupal
 
@@ -132,10 +135,8 @@
     * HTML
     * CSS
 
-On utilisera dans cette formation Acquia Dev Desktop qui permet d'installer un
+On utilisera dans cette formation _Acquia Dev Desktop_ qui permet d'installer un
 environnement de développement avec tous les pré-requis Drupal.
-
-.notes: faire un tour de table des compétences et de l'expérience PHP, présenter Acquia, Dries et pourquoi AcquiaDevDesktop est pratique
 
 --------------------------------------------------------------------------------
 
@@ -198,7 +199,8 @@ Avantages :
 
   * code style implémenté
   * navigation dans les hooks (appels et déclarations)
-  * installation d'XDebug facile (<http://redcrackle.com/blog/drupal-8/phpstorm>)
+  * installation d'XDebug facile
+  (<http://redcrackle.com/blog/drupal-8/phpstorm>)
 
 .fx: tp
 
@@ -208,11 +210,13 @@ Avantages :
   * _Features_: transférer la configuration dans le code
   * _Devel_ : debug et informations sur les données
   * _Drupal Console_ : générateur de code
-  * _Drush_ : administration (DRUpal SHell) & téléchargement de modules et librairies
+  * _Drush_ : administration (DRUpal SHell) & téléchargement de modules et
+  librairies
   * _Coder_ : revue de code
   * _Masquerade_ : changer d'utilisateur sans se déconnecter
   * _Examples for developpers_ : démonstrations de l'utilisation de l'API
-  * Ne pas utiliser les caches durant le développement (<https://www.drupal.org/node/2598914>)
+  * Ne pas utiliser les caches durant le développement
+  (<https://www.drupal.org/node/2598914>)
 
 --------------------------------------------------------------------------------
 
@@ -254,7 +258,8 @@ Avantages :
     * git commit
     * git diff
 
-  * Possibilité d'avoir une interface graphique : SourceTree, Gitg, GitLab, GitHub
+  * Possibilité d'avoir une interface graphique : SourceTree, Gitg, GitLab,
+  GitHub
 
 --------------------------------------------------------------------------------
 
@@ -333,8 +338,8 @@ sous-repertoire `custom`
 
 # Fil rouge : le module Premium
 
-  * Créer deux permissions pour les rôles, une pouvant affecter le status premium
-  aux contenus et l'autre le voir
+  * Créer deux permissions pour les rôles, une pouvant affecter le status
+  premium aux contenus et l'autre le voir
   * Créer un bloc affichant si l'utilisateur a la permission de voir les
   contenus premium
   * Administrer les types de contenus concernés par le statut premium
@@ -372,8 +377,9 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 <br>
 ## Votre guide : modules `examples`
 
-  Pour chaque concept de Drupal, des exemples concrets d'utilisation (ajax, form,
-  blocks, cache, render, cron, dbtng, email, menu, node_access, theming, ...).
+  Pour chaque concept de Drupal, des exemples concrets d'utilisation (ajax,
+  form, blocks, cache, render, cron, dbtng, email, menu, node_access,
+  theming, ...).
 
   Ils sont fonctionnels : on peut les activer et voir leur impact en terme
   d'interface.
@@ -390,10 +396,12 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
   * Poids des modules et altération
   * Répondent à des déclencheurs
   * Des hooks peuvent être déclarés par des modules contrib
-  * Rappel: on ne « hack » JAMAIS le code <small>(sauf en cas de module bogué)</small>
+  * Rappel: on ne « hack » JAMAIS le code <small>(sauf en cas de module
+  bogué)</small>
   * Tend à disparaître avec Drupal 8 (Plugins, yml, events), mais existe encore...
   * Les implémentations sont mise en cache
-  * Liste des hooks <https://api.drupal.org/api/drupal/core!core.api.php/group/hooks/8>
+  * Liste des hooks
+  <https://api.drupal.org/api/drupal/core!core.api.php/group/hooks/8>
 
 --------------------------------------------------------------------------------
 
@@ -413,7 +421,8 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 # Les plugins & les annotations
 
   * Plugins : <https://www.drupal.org/node/2087839>
-  * Annotations très utilisé dans le cœur : pour tous le plugins (block, entre autres)
+  * Annotations très utilisé dans le cœur : pour tous le plugins (block, entre
+  autres)
   * <https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.1.x>
 
 --------------------------------------------------------------------------------
@@ -493,7 +502,8 @@ Un render array est converti en HTML avec la fonction `render();`
 
 # Paramètres du render array et propriétés
 
-Une fonction de `#theme` peut être renseignée ainsi que ses paramètres (<https://www.drupal.org/developing/api/8/render/arrays>)
+Une fonction de `#theme` peut être renseignée ainsi que ses paramètres
+(<https://www.drupal.org/developing/api/8/render/arrays>)
 
     !php
     // Un render array qui produit un tableau HTML
@@ -534,7 +544,8 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
 # Système de routage / menus
 
 ## Quelques définitions :
-  * routage : faire pointer une route (`node/{node}`) à une action (afficher un noeud)
+  * routage : faire pointer une route (`node/{node}`) à une action (afficher un
+  noeud)
   * chemin (ou path) : route dont les arguments sont définis (ex: `node/123` est 
   un chemin, pointant vers la route `node/{node}` où l'argument est 123)
   * lien de menu : Texte (ou titre) pointant vers un chemin
@@ -693,7 +704,8 @@ Récupération de résultats :
   * $this->redirect('contact.site_page'); -> redirection
   * `global $base_url` -> http://monsite.com
   * `base_path()` -> `/` ou `/mon-dossier-drupal`
-  * `drupal_get_path()` (module, theme) -> chemin vers un module ou un thème (`drupal_get_path('module', 'devel')` donne _modules/devel_)
+  * `drupal_get_path()` (module, theme) -> chemin vers un module ou un thème
+  (`drupal_get_path('module', 'devel')` donne _modules/devel_)
 
 ## L'objet URL
     !php
@@ -770,10 +782,12 @@ https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/8)
 
 # Traitement des données
 
-Les données soumises et validées sont contenues dans `$form_state->getValue('key')`.
+Les données soumises et validées sont contenues dans
+`$form_state->getValue('key')`.
 
 Après exécution du `_submit()`, l'utilisateur est redirigé vers le formulaire
-vidé de ses valeurs, ou bien vers une route définie par `$form_state->setRedirectUrl($url)`
+vidé de ses valeurs, ou bien vers une route définie par
+`$form_state->setRedirectUrl($url)`
 
 Chaque formulaire a un identifiant unique qui permet de l'altérer facilement par
 les autres modules.
@@ -842,7 +856,8 @@ Documentation de l'API sur <https://www.drupal.org/node/1809490>
 
   * /config/install/mon_module.settings.yml -> initialisation à l'installation
   * /config/optionnal/module1.type1.name1.yml -> si module1 est activé
-  * /config/schema/mon_module.schema.yml -> schéma de la configuration de votre module
+  * /config/schema/mon_module.schema.yml -> schéma de la configuration de votre
+  module
 
 ## Exemple de fichier
 
@@ -863,7 +878,8 @@ Documentation de l'API sur <https://www.drupal.org/node/1809490>
 
   * A la soumission enregistrer les valeurs dans une variable persistante
   `'premium_types'`
-  * Attention, il faut désinstaller et réinstaller votre module pour que Drupal connaisse votre configuration
+  * Attention, il faut désinstaller et réinstaller votre module pour que Drupal
+  connaisse votre configuration
 
 .fx: tp
 
@@ -1030,8 +1046,8 @@ L'équipe du site _Nom du site_
 
 ## Affichage du statut premium sur le nœud
 
-  - Trouver un hook qui permettrait d'ajouter un message `<strong>Contenu premium/strong>`
-  sur chaque contenu premium
+  - Trouver un hook qui permettrait d'ajouter un message
+  `<strong>Contenu premium/strong>` sur chaque contenu premium
   - L'implementer avec #markup
 
 .fx: tp
@@ -1091,8 +1107,7 @@ Exemples d'utilisations de `theme()` :
   * links
   * image
 
-[Liste complete des implementation de theme du cœur](
-https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/group/themeable/8)
+[Liste complete des implementation de theme du cœur](https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/group/themeable/8)
 
     !php
     $image = array(
@@ -1170,10 +1185,14 @@ https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/grou
   * {{ "now" | date('d/m/Y H:i') }}
   * {{ 'Home' | t }} (ajouté par Drupal)
   * {{ 'Home' | format_date('short') }} (ajouté par Drupal)
-  * Voir core/lib/Drupal/Core/Template/TwigExtension.php pour la liste des rajouts Drupal
+  * Voir core/lib/Drupal/Core/Template/TwigExtension.php pour la liste des
+  rajouts Drupal
   * Sur toute une section : {% filter upper %} Texte {% endfilter %}
 
-  * abs, batch, capitalize, convert_encoding, date, date_modify, default, escape, first, format, join, json_encode, keys, last, length, lower, merge, nl2br, number_format, raw, replace, reverse, round, slice, sort, split, striptags, title, trim, upper, url_encode
+  * abs, batch, capitalize, convert_encoding, date, date_modify, default, escape,
+  first, format, join, json_encode, keys, last, length, lower, merge, nl2br,
+  number_format, raw, replace, reverse, round, slice, sort, split, striptags,
+  title, trim, upper, url_encode
 
 --------------------------------------------------------------------------------
 
@@ -1367,8 +1386,10 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 # Le cache
 
   * Les clés : comment identifier ce cache
-  * Les contextes : Qu'est ce qui fait varier ce cache ('language', 'user.permissions', 'user.role', 'url')
-  * Les tags : à quoi est associé ce cache ('node:X', `EntityInterface::getCacheTags()`)
+  * Les contextes : Qu'est ce qui fait varier ce cache ('language',
+  'user.permissions', 'user.role', 'url')
+  * Les tags : à quoi est associé ce cache ('node:X',
+  `EntityInterface::getCacheTags()`)
   * La durée de conservation (si on veut la forcer), avec 2 valeurs spéciales :
     * 0 (ne pas conserver en cache)
     * Cache::PERMANENT (ne pas expirer selon le temps, uniquement selon les tags)
@@ -1391,10 +1412,11 @@ Directement dans le render array
   * "Valider les entrées, filtrer les sorties"
 
 ## Concrètement
-  * URL : Html::escape(UrlHelper::stripDangerousProtocols($uri));
-  * Texte brut : Html::escape($string);
-  * Texte riche : check_markup($text, $format_id = NULL, $langcode = '', $filter_types_to_skip = array());
-  * HTML : Xss::filter($string, array $html_tags = NULL);
+  * URL : `Html::escape(UrlHelper::stripDangerousProtocols($uri));`
+  * Texte brut : `Html::escape($string);`
+  * Texte riche : `check_markup($text, $format_id = NULL, $langcode = '',
+  $filter_types_to_skip = array());`
+  * HTML : `Xss::filter($string, array $html_tags = NULL);`
   * Sinon, on considère que le texte est validé
 
 ## En bonus, déplacez les fichiers
@@ -1467,7 +1489,7 @@ Directement dans le render array
 
 ## Depuis Drupal
   * Drupal fait le plus gros du boulot
-  * Voir [la conf d'Aurelien Navarre](http://www.slideshare.net/AurelienNavarre/drupalcamp-nantes-2016-migrer-un-site-drupal-6-ou-drupal-7-vers-drupal-8)
+  * Voir [la conférence d'Aurelien Navarre](http://www.slideshare.net/AurelienNavarre/drupalcamp-nantes-2016-migrer-un-site-drupal-6-ou-drupal-7-vers-drupal-8)
 
 ## Depuis autre chose
   * CSV, XML, JSON supportés par des plugins
@@ -1506,11 +1528,13 @@ Directement dans le render array
 
 # Industrialisation
 
-  * La gestion de la configuration
-  * Features... et le reste
   * Les profils d'installation et les distributions
-  * L'outil drush make
-  * Son évolution https://github.com/drupal-composer/drupal-project
+  * Le packaging du site
+    * Drush make
+    * composer
+  * La gestion de la configuration
+    * CMI
+    * Features
 
 --------------------------------------------------------------------------------
 
@@ -1523,9 +1547,73 @@ Directement dans le render array
 
 ## Quelques exemples de distribution Drupal 8
 
+  * [Lightning](https://www.drupal.org/project/lightning) (avec Roadmap) ~
+  sert de démo pour les capacités de Drupal 8
+  * [Commerce](https://www.drupal.org/project/commerce) 2.x (en alpha) :
+  refonte complète par rapport à la version Drupal 7
+  * [OpenSocial](https://www.drupal.org/project/social) (en alpha), avec
+  [prototype](http://goalgorilla.github.io/drupal_social/prototype.html)
+  disponible
+
 --------------------------------------------------------------------------------
 
-# composer drupal project TO DO
+# Les installeurs
+
+## Drush make
+
+  * Hérité de Drupal 6, puis 7
+  * Permet de récupérer modules, thèmes, patchs, bibliothèques JS
+  * Par requête HTTP, Git, SVN, ...
+
+# Utilisation de Composer
+
+  * Et notamment de
+  [_Drupal Project_](https://github.com/drupal-composer/drupal-project)
+  * `composer create-project drupal-composer/drupal-project`
+  * `composer require drupal/devel:8.*`
+  * Solution probablement à privilégier pour Drupal 8, la communauté continue
+  d'évoluer
+
+--------------------------------------------------------------------------------
+
+# La gestion de la configuration
+
+## CMI
+
+  * Nouveauté Drupal 8 : tout ce qui n'est pas du contenu est exportable
+  indépendamment du reste du site
+
+## Problème
+
+  * Actuellement, on ne peut le réimporter que sur une même "version" du site
+  (un site dont l'installation s'est faite à partir d'une copie de la base de
+  données du site)
+  * En cours de résolution
+
+## Des solutions possibles fournies par la communauté
+
+  * _Config devel_
+  * _Features_
+
+--------------------------------------------------------------------------------
+
+# Features
+
+  * Sert à créer des modules sur un même sujet
+  * Récupère *automagiquement* la configuration associée
+  * Fournit des commandes drush (drush fu / drush fr)
+
+--------------------------------------------------------------------------------
+
+# TP : Feature
+
+Exporter le type de contenu et la Views réalisées précédemment dans une Feature
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# Questions ?
 
 --------------------------------------------------------------------------------
 
