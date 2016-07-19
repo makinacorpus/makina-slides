@@ -53,6 +53,15 @@
 
 --------------------------------------------------------------------------------
 
+# /!\ Avertissement /!\
+
+  * Drupal 8 est une solution "jeune"
+  * Tout a changé depuis Drupal 7
+  * Peu de retours d'expérience
+  * En phase de stabilisation sur les implémentations ou process
+
+--------------------------------------------------------------------------------
+
 # Rappels PHP
 
   * PHP 5.5.9 minimum (<http://www.phptherightway.com/>)
@@ -737,6 +746,68 @@ accès premium.
 Attention au cache
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+# Altérer le comportement des modules existants
+
+## "Ancienne solution" : les hooks
+
+  * `hook_XXXXXXX_alter()` : permettent de _modifier_ des données créés par
+  d'autres modules
+  * [Liste des hooks](https://api.drupal.org/api/drupal/core%21core.api.php/group/hooks/8.1.x)
+
+## Solution "Drupal 8" : les Events symfony
+
+  * On "s'inscrit" à un événement pour que le système nous appelle
+  automatiquement et qu'on puisse _réagir_
+  * Sera probablement encore plus utilisée en Drupal 9
+  * [Liste des Events](https://api.drupal.org/api/drupal/core%21core.api.php/group/events/8.1.x)
+
+
+--------------------------------------------------------------------------------
+
+# Concrètement
+
+## Une classe pour la réponse à l'évènement
+    !php
+    namespace Drupal\my_module\EventSubscriber;
+    use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+    use Symfony\Component\HttpKernel\KernelEvents;
+    class MyModuleSubscriber implements EventSubscriberInterface {
+      static function getSubscribedEvents() {
+        $events[KernelEvents::REQUEST][] = array('my_function');
+        return $events;
+      }
+      function my_function(GetResponseEvent $event) {
+        $event->setResponse(new RedirectResponse('http://example.com/'));
+      }
+    }
+
+## Un service (fichier `my_module.services.yml`)
+    !yaml
+    services:
+      my_module.redirect_all:
+        class: Drupal\my_module\EventSubscriber\MyModuleSubscriber
+        tags:
+          - {name: event_subscriber}
+
+--------------------------------------------------------------------------------
+
+# TP : Events
+
+Déconnecter automatiquement un utilisateur quand il se connecte (inutile, mais
+puissant ;-))
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# Bonus : déclencher des évènements
+
+    !php
+    $dispatcher = \Drupal::service('event_dispatcher');
+    $dispatcher->dispatch('my_object.my_event', $params);
 
 --------------------------------------------------------------------------------
 
@@ -1601,7 +1672,10 @@ Directement dans le render array
 
   * Sert à créer des modules sur un même sujet
   * Récupère *automagiquement* la configuration associée
-  * Fournit des commandes drush (drush fu / drush fr)
+  * Fournit des commandes drush
+    * `drush fu` met à jour _votre code_ depuis le site
+    * `drush fr` met à jour _le site_ depuis votre code
+    * `drush fd` (features-diff) compare le code et le site
 
 --------------------------------------------------------------------------------
 
