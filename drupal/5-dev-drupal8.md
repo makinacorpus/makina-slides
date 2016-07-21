@@ -472,7 +472,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 </pre></code>
 
     // Altération
-    function hook_block_build_BASE_BLOCK_ID_alter(&$build, $block) {}
+    function hook_block_view_BLOCK_ID_alter(&$build, $block) {}
 
 --------------------------------------------------------------------------------
 
@@ -555,8 +555,8 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
 # TP: Manipuler les render arrays
 
-  Altérer le bloc dans un `hook_block_build_BLOC_BASE_ID_alter()` afin de
-  changer le `<h3>` en `<h4>`
+  Altérer le bloc dans un `hook_block_view_BASE_ID_alter()` afin de changer le
+  `<h3>` en `<h4>`
 
 .fx: tp
 
@@ -680,11 +680,11 @@ Quelques fonctions de l'API à connaitre :
 
     !php
     $db = \Drupal::database();
-    $result = db->select();
-    $result = db->insert();
-    $result = db->delete();
-    $result = db->udpate();
-    $result = db->merge();
+    $result = $db->select();
+    $result = $db->insert();
+    $result = $db->delete();
+    $result = $db->udpate();
+    $result = $db->merge();
 
 ## Requête sur le modèle objet
 
