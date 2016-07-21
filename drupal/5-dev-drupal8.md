@@ -55,6 +55,8 @@
 
 # /!\ Avertissement /!\
 
+## "Going off the island"
+
   * Drupal 8 est une solution "jeune"
   * Tout a changé depuis Drupal 7
   * Peu de retours d'expérience
@@ -242,7 +244,7 @@ Avantages :
 
 --------------------------------------------------------------------------------
 
-#TP : Console
+# TP : Console
   * Intaller la console Drupal
   * Vérifier que c'est correctement installé
   * Regarder la liste des commandes (drupal list)
@@ -250,6 +252,16 @@ Avantages :
 ![][5]
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+# Exemples de commandes souvent utilisées
+
+  * `drupal site:mode dev`
+  * `drupal generate:module`
+  * `drupal generate:plugin:block`
+  * `drupal generate:routesubscriber`
+  * `drupal generate:form:config`
 
 --------------------------------------------------------------------------------
 
@@ -329,7 +341,7 @@ sous-repertoire `custom`
   * `.info.yml` (<https://www.drupal.org/node/2000204>)
     * `name`
     * `core`
-    * `description`
+    * `type: module` /!\
   * `.module` (souvent vide en D8)
   * `.install` facultatif (configuration désormais indépendante)
   * répertoire "config/install" pour la configuration
@@ -543,8 +555,8 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
 # TP: Manipuler les render arrays
 
-  Altérer le bloc dans un `hook_block_view_alter()` afin de changer le
-  `<h3>` en `<h4>`
+  Altérer le bloc dans un `hook_block_build_BLOC_BASE_ID_alter()` afin de
+  changer le `<h3>` en `<h4>`
 
 .fx: tp
 
@@ -965,6 +977,12 @@ Documentation de l'API sur <https://www.drupal.org/node/1809490>
 
 --------------------------------------------------------------------------------
 
+# Formulaire de configuration
+
+  * Utiliser ConfigFormBase
+
+--------------------------------------------------------------------------------
+
 # En bonus, Manipuler les "Form Modes"
 
     !php
@@ -1307,6 +1325,19 @@ Exemples d'utilisations de `theme()` :
 
 --------------------------------------------------------------------------------
 
+# Hiérarchie des templates Drupal
+
+TO DO
+
+--------------------------------------------------------------------------------
+
+# Le nommage des templates
+
+  * <https://www.drupal.org/node/2354645>
+  * Pour Views : <http://redcrackle.com/blog/drupal-8/theme-views-templates>
+
+--------------------------------------------------------------------------------
+
 # Debug Twig dans Drupal
 
     !yaml
@@ -1315,6 +1346,8 @@ Exemples d'utilisations de `theme()` :
         debug: true
 
 dans sites/default/services.yml
+
++ `{{ dump(_context|keys) }}` pour voir tout ce qui est disponible
 
 --------------------------------------------------------------------------------
 
@@ -1445,6 +1478,19 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
   * public://
   * private://
+
+--------------------------------------------------------------------------------
+
+# En résumé : la vie d'une page Drupal
+
+  * Request : appel d'index.php / event `kernel.request`
+  * Routage et contrôle d'accès
+  * Appel du contrôleur / event `kernel.controller`
+  * event `kernel.view`
+  * Principal abonné : appel du "Renderer" (ici HtmlRenderer)
+  * => Le `render array` est généré
+  * Appel de Twig
+  * Response / event `kernel.response`
 
 --------------------------------------------------------------------------------
 
