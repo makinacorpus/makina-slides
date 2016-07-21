@@ -439,6 +439,14 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 --------------------------------------------------------------------------------
 
+# Et pour des permissions dynamiques ?
+
+    !yaml
+    permission_callbacks:
+      - \Drupal\my_module\MyClass::myFunction
+
+--------------------------------------------------------------------------------
+
 # Les plugins & les annotations
 
   * Plugins : <https://www.drupal.org/node/2087839>
@@ -558,6 +566,10 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
   Altérer le bloc dans un `hook_block_view_BASE_ID_alter()` afin de changer le
   `<h3>` en `<h4>`
 
+  -> Impossible à faire directement... Il faut ajouter un #pre_render dans le
+  hook_block_view_alter(), et la fonction appelée dans le pre_render aura accès
+  au $build du contenu du bloc.
+
 .fx: tp
 
 --------------------------------------------------------------------------------
@@ -614,7 +626,7 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
 --------------------------------------------------------------------------------
 
-# Exemples
+# Exemples de routage
 
     !yaml
     #.routing.yml
@@ -626,6 +638,23 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
       requirements:
         _permission: 'access my module'
 
+    # , = ET
+      requirements:
+        _permission: 'access my module,access content'
+    # + = OU
+      requirements:
+        _permission: 'access my module+access content'
+    # Personnalisé
+      requirements:
+        _custom_access: '\Drupal\my_module\MyClass::my_function'
+
+La function renvoit alors AccessResult::allowed() ou AccessResult::forbidden()
+
+--------------------------------------------------------------------------------
+
+# Ajout de liens / onglets
+
+    !yaml
     #.links.menu.yml
     mymodule.abc_view_tab:
       title: 'My ABC page'
@@ -638,6 +667,8 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
       title: 'Edit'
       route_name: mymodule.abc_view_edit
       base_route: mymodule.abc_view
+
+    #.links.action.yml pour les actions
 
 --------------------------------------------------------------------------------
 
@@ -671,6 +702,7 @@ Quelques fonctions de l'API à connaitre :
   * `Node::load()` et `Node::loadMultiple()` pour charger des nœuds
   * `User::load()` et `User::loadMultiple()` pour charger des utilisateurs
   * $entity->save() pour enregistrer un nœud, un utilisateur, ...
+  * $user->getDisplayName() pour afficher un nom d'utilisateur
 
 --------------------------------------------------------------------------------
 
@@ -731,9 +763,11 @@ Récupération de résultats :
 ## L'objet URL
     !php
     use Drupal\Core\Url;
+    // Récupérer une Url.
     $url = Url::fromRoute('contact.site_page', array())->toString();
     $url = Url::fromUserInput('/contact')->toString();
-    $url = Url::fromUri('internal:/contact')->toString();
+    // Ou générer un lien.
+    $url = Url::fromUri('internal:/contact'); // Pas de toString() !
     $link = \Drupal::l(t('Contact'), $url);
 
 --------------------------------------------------------------------------------
@@ -745,17 +779,13 @@ accès premium.
 
   * Créer une page
 
-  * Récupérer les rôles ayant la permission de voir le contenu premium (dans la
-  table `role_permission`)
+  * Récupérer les utilisateurs ayant un rôle permettant de voir le contenu
+  premium (->condition('roles', '...'))
 
-  * Récupérer les utilisateurs ayant ces rôles (dans la table `users_roles`)
+  * Les afficher d'abord dans une liste ('#theme' => 'item_list')
 
-  * Les afficher d'abord dans une liste
-
-  * Modifier pour les afficher dans un tableau avec _Identifiant_,
-  _Nom_, _Lien vers son profil_
-
-Attention au cache
+  * Modifier pour les afficher dans un tableau ('#theme' => 'table') avec
+  _Identifiant_, _Nom_, _Lien vers son profil_
 
 .fx: tp
 
@@ -763,17 +793,16 @@ Attention au cache
 
 # Altérer le comportement des modules existants
 
-## "Ancienne solution" : les hooks
+## Solution "historique" : les hooks
 
   * `hook_XXXXXXX_alter()` : permettent de _modifier_ des données créés par
   d'autres modules
   * [Liste des hooks](https://api.drupal.org/api/drupal/core%21core.api.php/group/hooks/8.1.x)
 
-## Solution "Drupal 8" : les Events symfony
+## "Nouveauté" Drupal 8 : les Events symfony
 
-  * On "s'inscrit" à un événement pour que le système nous appelle
-  automatiquement et qu'on puisse _réagir_
-  * Sera probablement encore plus utilisée en Drupal 9
+  * On "s'inscrit" à un événement (via un service) pour que le système nous
+  appelle automatiquement et qu'on puisse _réagir_
   * [Liste des Events](https://api.drupal.org/api/drupal/core%21core.api.php/group/events/8.1.x)
 
 
@@ -806,10 +835,37 @@ Attention au cache
 
 --------------------------------------------------------------------------------
 
+# Exemple : modification du routage des autres modules
+    !php
+    use Drupal\Core\Routing\RouteSubscriberBase;
+    use Symfony\Component\Routing\RouteCollection;
+
+    class RouteSubscriber extends RouteSubscriberBase {
+      public function alterRoutes(RouteCollection $collection) {
+        if ($route = $collection->get('user.login')) {
+          $route->setPath('/login');
+        }
+        if ($route = $collection->get('user.logout')) {
+          $route->setRequirement('_access', 'FALSE');
+        }
+      }
+    }
+
+## C'est un event...
+    !yaml
+    services:
+      example.route_subscriber:
+        class: Drupal\example\Routing\RouteSubscriber
+          tags:
+            - { name: event_subscriber }
+
+<https://www.drupal.org/node/2187643>
+
+--------------------------------------------------------------------------------
+
 # TP : Events
 
-Déconnecter automatiquement un utilisateur quand il se connecte (inutile, mais
-puissant ;-))
+Empêcher d'accéder à l'édition du profil d'un utilisateur (/user/{user}/edit)
 
 .fx: tp
 
@@ -1572,6 +1628,21 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
+# Utilisation des APIs de Web Services du cœur
+
+    !php
+    $output = $this->serializer->serialize($entity, 'json');
+    $entity = $this->serializer->deserialize($output,
+    \Drupal\node\Entity\Node::class, 'json');
+
+<https://www.drupal.org/developing/api/8/serialization>
+
+<https://www.drupal.org/node/1899288>
+
+![][6]
+
+--------------------------------------------------------------------------------
+
 # Intégrer des données à Views
 
 ## Des entités
@@ -1748,4 +1819,6 @@ Exporter le type de contenu et la Views réalisées précédemment dans une Feat
    [4]: img/d8_learning_curve.jpg
 
    [5]: img/console.png
+
+   [6]: img/serialization.png
 
