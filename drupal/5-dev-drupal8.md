@@ -1,6 +1,8 @@
 
 # Formation Développement Drupal
 
+![][4]
+
 .fx: larger
 
 --------------------------------------------------------------------------------
@@ -23,8 +25,7 @@
   * Environnement de développement
   * Quelques outils utiles (Drush, Git, Devel)
   * Bonnes pratiques, standards de code, documentation
-  * Architecture de Drupal
-  * Les concepts de base
+  * Architecture de Drupal & concepts de base
   * Création du squelette d'un module
   * Les premiers hooks
 # 2ème jour
@@ -52,9 +53,23 @@
 
 --------------------------------------------------------------------------------
 
+# /!\ Avertissement /!\
+
+  * Drupal 8 est une solution "jeune"
+  * Tout a changé depuis Drupal 7
+  * Peu de retours d'expérience
+  * En phase de stabilisation sur les implémentations ou process
+
+--------------------------------------------------------------------------------
+
 # Rappels PHP
 
-<center> <https://www.drupal.org/getting-started-d8-bkg-prereq> </center>
+  * PHP 5.5.9 minimum (<http://www.phptherightway.com/>)
+  * Programmation orientée Object
+  (<http://lornajane.net/posts/2012/introduction-to-php-oop>)
+  * Namespaces (<https://www.sitepoint.com/php-53-namespaces-basics/>)
+  * Annotations
+  * Injection de dépendances
 
 .fx: alternate
 
@@ -68,23 +83,29 @@
     * PSR-1 : normes de codage de base (Drupal les suit presque)
     * PSR-2 : normes de codage plus poussées (Drupal les suit presque)
     * PSR-3 : interface du logger (pas implémentée dans Drupal)
-    * PSR-4 : autoloader amélioré (choisi par Drupal) : https://www.drupal.org/node/2156625
+    * PSR-4 : autoloader amélioré (choisi par Drupal) :
+    <https://www.drupal.org/node/2156625>
 
 --------------------------------------------------------------------------------
 
 # Symfony (<http://symfony.com/>)
 
   * Le plus populaire des frameworks PHP aujourd'hui
+  (<http://symfony.com/doc/current/index.html>)
   * Ensemble de composants réutilisables
   * Certains sont réutilisés par Drupal
-    * <http://symfony.com/projects/drupal>
+
+![][3]
 
 --------------------------------------------------------------------------------
 
-# YAML
+<h2>YAML</h2>
 
-  * Fichier texte
-  * 'key: value'
+    !yaml
+    key: 'value'
+    tableau:
+      - valeur 1
+      - valeur 2
 
 --------------------------------------------------------------------------------
 
@@ -123,26 +144,20 @@
     * HTML
     * CSS
 
-On utilisera dans cette formation Acquia Dev Desktop qui permet d'installer un
+On utilisera dans cette formation _Acquia Dev Desktop_ qui permet d'installer un
 environnement de développement avec tous les pré-requis Drupal.
-
-.notes: faire un tour de table des compétences et de l'expérience PHP, présenter Acquia, Dries et pourquoi AcquiaDevDesktop est pratique
 
 --------------------------------------------------------------------------------
 
-# TP: Installer Drupal 7
+# TP: Installer Drupal 8
 
-  * Choisir la distribution Drupal 7.x simple dans Acquia Dev Desktop
+  * Choisir la distribution Drupal 8.x simple dans Acquia Dev Desktop
   * Installer le profil d'installation Standard
   * Paramètres
     * Nom du site : Formation
     * Adresse de courriel : formation@example.org
     * Utilisateur : admin
     * Mot de passe : admin
-  * Désactiver les modules
-    * update
-    * shortcut
-    * color
 
 .fx: tp
 .notes: présenter les distributions
@@ -158,12 +173,7 @@ environnement de développement avec tous les pré-requis Drupal.
     * Refactoring
     * Erreurs de syntaxe
   * Possibilité de télécharger des configurations
-  * Exemples
-    * PHPStorm
-    * Eclipse
-    * Netbeans
-    * Atom
-    * Vim
+  * Exemples : PHPStorm / Eclipse / Netbeans / Atom / Vim
 
 --------------------------------------------------------------------------------
 
@@ -199,6 +209,7 @@ Avantages :
   * code style implémenté
   * navigation dans les hooks (appels et déclarations)
   * installation d'XDebug facile
+  (<http://redcrackle.com/blog/drupal-8/phpstorm>)
 
 .fx: tp
 
@@ -208,11 +219,13 @@ Avantages :
   * _Features_: transférer la configuration dans le code
   * _Devel_ : debug et informations sur les données
   * _Drupal Console_ : générateur de code
-  * _Drush_ : administration (DRUpal SHell)
-  * _Drush Make_ : téléchargement de modules et librairies
+  * _Drush_ : administration (DRUpal SHell) & téléchargement de modules et
+  librairies
   * _Coder_ : revue de code
   * _Masquerade_ : changer d'utilisateur sans se déconnecter
   * _Examples for developpers_ : démonstrations de l'utilisation de l'API
+  * Ne pas utiliser les caches durant le développement
+  (<https://www.drupal.org/node/2598914>)
 
 --------------------------------------------------------------------------------
 
@@ -229,11 +242,22 @@ Avantages :
 
 --------------------------------------------------------------------------------
 
+#TP : Console
+  * Intaller la console Drupal
+  * Vérifier que c'est correctement installé
+  * Regarder la liste des commandes (drupal list)
+
+![][5]
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
 # Git et la gestion de versions
 
   * Utilisé par beaucoup de développeurs dans le milieu du web
 
-  * Très utile pour patcher des modules car utilisé pas la communauté Drupal et
+  * Très utile pour patcher des modules car utilisé par la communauté Drupal et
   sur drupal.org
 
   * Une connaissance basique de quelques commandes suffit
@@ -243,7 +267,8 @@ Avantages :
     * git commit
     * git diff
 
-  * Possibilité d'avoir une interface graphique : SourceTree, GitX, GitEye, Github
+  * Possibilité d'avoir une interface graphique : SourceTree, Gitg, GitLab,
+  GitHub
 
 --------------------------------------------------------------------------------
 
@@ -280,28 +305,21 @@ sous-repertoire `custom`
 
 --------------------------------------------------------------------------------
 
-<img src="img/lifecycle.jpg" class="single-image"/>
+<img src="img/render_pipeline.png" class="single-image"/>
 
 --------------------------------------------------------------------------------
 
-# Les librairies JS
-
-  * jQuery
-  * jQuery UI
-  * Backbone
-  * Underscore
+<img src="img/render_pipeline_high_level.png" class="single-image"/>
 
 --------------------------------------------------------------------------------
 
 #TP: Jetons un œil à la base de données
 
   * se familiariser avec PhpMyAdmin
-
   * identifier les tables des modules actuellement activés
-
   * identifier les autres : cache, variable, registry
-
   * identifier la table contenant la configuration
+  * <https://www.drupal.org/node/1785994>
 
 .fx: tp
 
@@ -319,22 +337,30 @@ sous-repertoire `custom`
 
 --------------------------------------------------------------------------------
 
-# Fil rouge : le module gold, une fonctionnalité Premium
+# Structure d'un module
 
-  * Créer deux permissions pour les rôles, une pouvant affecter le status gold
-  aux contenus et l'autre le voir
+![][2]
+
+<center><https://www.drupal.org/node/2560405></center>
+
+--------------------------------------------------------------------------------
+
+# Fil rouge : le module Premium
+
+  * Créer deux permissions pour les rôles, une pouvant affecter le status
+  premium aux contenus et l'autre le voir
   * Créer un bloc affichant si l'utilisateur a la permission de voir les
-  contenus gold
-  * Administrer les types de contenus concernés par le statut gold
-  * Altérer le formulaire d'édition de nœud pour ajouter le statut gold
+  contenus premium
+  * Administrer les types de contenus concernés par le statut premium
+  * Altérer le formulaire d'édition de nœud pour ajouter le statut premium
   * Envoyer un mail aux utilisateurs ayant la permission de voir les contenus
-  gold lorsque qu'un nouveau contenu gold apparait sur le site
-  * Lister les contenus avec le statut gold
-  * Créer un style d'image pour illustrer les contenus gold
-  * Créer une fonction de theme pour afficher le statut gold d'un nœud
+  premium lorsque qu'un nouveau contenu premium apparait sur le site
+  * Lister les contenus avec le statut premium
+  * Créer un style d'image pour illustrer les contenus premium
+  * Créer une fonction de theme pour afficher le statut premium d'un nœud
   * Créer des tests pour vérifier le bon fonctionnement du module
 
-Créer ce module : il doit apparaître dans la liste des modules.
+Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 .fx: tp
 
@@ -355,11 +381,14 @@ Créer ce module : il doit apparaître dans la liste des modules.
 
   Aborde certains topics en profondeur : form API, schema API, hooks, etc
 
+  <https://api.drupal.org/api/drupal/core%21core.api.php/group/extending/8.1.x>
+
 <br>
 ## Votre guide : modules `examples`
 
-  Pour chaque concept de Drupal, des exemples concrets d'utilisation (ajax, form,
-  blocks, cache, render, cron, dbtng, email, menu, node_access, theming, ...).
+  Pour chaque concept de Drupal, des exemples concrets d'utilisation (ajax,
+  form, blocks, cache, render, cron, dbtng, email, menu, node_access,
+  theming, ...).
 
   Ils sont fonctionnels : on peut les activer et voir leur impact en terme
   d'interface.
@@ -371,38 +400,39 @@ Créer ce module : il doit apparaître dans la liste des modules.
 
 # Les hooks 
 
+  * Concept historique Drupal
   * Implémenter `hook_form_alter()` donnera `mon_module_form_alter()`
-
   * Poids des modules et altération
   * Répondent à des déclencheurs
   * Des hooks peuvent être déclarés par des modules contrib
-  * Rappel: on ne « hack » JAMAIS le code <small>(sauf en cas de module bogué)</small>
-  * 3 types de hooks : déclaratif, évenementiel, d'altération
+  * Rappel: on ne « hack » JAMAIS le code <small>(sauf en cas de module
+  bogué)</small>
+  * Tend à disparaître avec Drupal 8 (Plugins, yml, events), mais existe encore...
   * Les implémentations sont mise en cache
-  * Les hooks déclaratifs sont généralement mis en cache
-
-Liste des hooks <https://api.drupal.org/api/drupal/core!core.api.php/group/hooks/8>
-
-BEAUCOUP de hooks disponibles dans le cœur de Drupal
-En Drupal 8, des hooks ont été transformés (en plugin, en fichier .yml, ...)
+  * Liste des hooks
+  <https://api.drupal.org/api/drupal/core!core.api.php/group/hooks/8>
 
 --------------------------------------------------------------------------------
 
 # Les permissions
 
   * Créer un fichier `.permissions.yml`
-
   * Créer les deux permissions
-
   * Vider le cache
-
-  * Créer un role contributeur pouvant affecter le statut gold
-
-  * Créer un role premium pouvant voir le statut gold
-
+  * Créer un role contributeur pouvant affecter le statut premium
+  * Créer un role premium pouvant voir le statut premium
   * Créer un utilisateur pour chaque rôle
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+# Les plugins & les annotations
+
+  * Plugins : <https://www.drupal.org/node/2087839>
+  * Annotations très utilisé dans le cœur : pour tous le plugins (block, entre
+  autres)
+  * <https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.1.x>
 
 --------------------------------------------------------------------------------
 
@@ -412,7 +442,7 @@ En Drupal 8, des hooks ont été transformés (en plugin, en fichier .yml, ...)
   * Déclaration
 
 <code><pre>
-    namespace Drupal\fax\Plugin\Block;
+    namespace Drupal\mon_module\Plugin\Block;
     use Drupal\Core\Block\BlockBase;
     /**
      * Provides a 'Test' block.
@@ -434,15 +464,14 @@ En Drupal 8, des hooks ont été transformés (en plugin, en fichier .yml, ...)
 
 --------------------------------------------------------------------------------
 
-
 # TP: Notre premier bloc
 
 Créer un bloc :
 
   - dont le titre côté administration est "Statut premium de l'utilisateur"
-  - dont le delta (nom machine) est `gold-status`
-  - qui affiche "Vous êtes un utilisateur premium" ou "Vous n'êtes pas un
-  utilisateur premium" entouré d'un `<h3>`
+  - dont le delta (nom machine) est `premium-status`
+  - qui affiche "Vous pouvez voir les contenus premium" ou "Vous ne pouvez pas
+  voir les contenus premium"
 
 Rappel: \Drupal::currentUser()->hasPermission(); pour vérifier les permissions
 
@@ -482,7 +511,8 @@ Un render array est converti en HTML avec la fonction `render();`
 
 # Paramètres du render array et propriétés
 
-Une fonction de `#theme` peut être renseignée ainsi que ses paramètres.
+Une fonction de `#theme` peut être renseignée ainsi que ses paramètres
+(<https://www.drupal.org/developing/api/8/render/arrays>)
 
     !php
     // Un render array qui produit un tableau HTML
@@ -495,38 +525,19 @@ Une fonction de `#theme` peut être renseignée ainsi que ses paramètres.
 
 Des propriétés utiles :
 
-  - `#cache`: mise en cache du render array
-  - `#pre_render`: agit sur l'array avant le rendering
-  - `#post_render`: agit sur le markup après le rendering
-  - `#weight`: donne un poids à l'élément
-  - `#attached`: lier à un ou des CSS/JS
-  - `#access`: desactive l'élément si == FALSE
+  - `#type`: Le type d'élement
+  - `#cache`: contexts, tags, ... /!\
+  - `#markup`: Pour fournir directement de l'HTML
+  - `#pre_render` / `#post_render`: agit sur le tableau
+  - `#prefix` / `#suffix`, `#weight`, `#attached`, `#access`, ...
 
 --------------------------------------------------------------------------------
 
-# Fonctions de theme
+# TP
 
-Exemples d'utilisations de `theme()` :
+Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
-  * table
-  * item_list
-  * pager
-  * links
-  * image
-
-[Liste complete des implementation de theme du cœur](
-https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/group/themeable/8)
-
-    !php
-    $table_element = array(
-        '#theme'  => 'image',
-        '#path' => drupal_get_path('module', 'monmodule') . '/monimage.png',
-    );
-    print drupal_render($table_element); // Quasi-automatiquement appelé
-                                         // par les hooks
-
-Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
-<https://www.drupal.org/developing/api/8/render/pipeline#html-main-content-renderer-pipeline>
+.fx: tp
 
 --------------------------------------------------------------------------------
 
@@ -539,24 +550,45 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
 
 --------------------------------------------------------------------------------
 
-# Système de menus
+# Système de routage / menus
 
 ## Quelques définitions :
-  * routage : faire pointer une route (`node/{node}`) à une action (afficher un noeud)
+  * routage : faire pointer une route (`node/{node}`) à une action (afficher un
+  noeud)
   * chemin (ou path) : route dont les arguments sont définis (ex: `node/123` est 
   un chemin, pointant vers la route `node/{node}` où l'argument est 123)
   * lien de menu : Texte (ou titre) pointant vers un chemin
-  * tâche : ~ onglet
   * alias : associe un chemin système (`node/123`) vers un chemin arbitraire 
   renseigné par le contributeur (`mon-noeud`)
 
 
 ## Les propriétés d'une route
-  * Permissions -> `'access callback'`, `'access arguments'`
-  * Les arguments sont nommés `{node}` et peuvent être chargés dans le
+  * _Permissions
+  * Les arguments sont nommés (`{node}`) et peuvent être chargés dans le
   Controller (en les typant avec une classe)
   * Vous pouvez passer des paramètres fixes au controller en les indiquant
   dans la route
+
+--------------------------------------------------------------------------------
+
+# Les controllers
+
+  * fichier src/Controller/ModuleController.php
+  * Déclaration
+
+<code><pre>
+    namespace Drupal\mon_module\Controller;
+    use Drupal\Core\Controller\ControllerBase;
+    /**
+     * Provides a 'Test' block.
+     */
+    class ModuleController extends ControllerBase {
+      public function abc_view() {
+        return array('#markup' => '',);
+      }
+    }
+</pre></code>
+
 
 --------------------------------------------------------------------------------
 
@@ -564,48 +596,36 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
     * *.routing.yml -> définit une URL
     * *.links.menu.yml -> lien de menu dans l'arborescence
     * *.links.task.yml -> onglet
-    * *.links.action.yml -> 
-  * TODO: La route `abc/def` est enfant de la route `abc` si celle-ci est définie
+    * *.links.action.yml -> "action" (back-office)
 
-<table>
-  <tr>
-    <th>Propriété</th>
-    <th>Valeur par défaut</th>
-  </tr>
-  <tr>
-    <td>page callback</th>
-    <td>celle du parent</td>
-  </tr>
-  <tr>
-    <td>access callback</th>
-    <td>user_access ou celle du parent</td>
-  </tr>
-  <tr>
-    <td>file path</th>
-    <td>le chemin du module</td>
-  </tr>
-  <tr>
-    <td>menu_name</th>
-    <td>navigation</td>
-  </tr>
-  <tr>
-    <td>type</th>
-    <td>MENU_NORMAL_ITEM</td>
-  </tr>
-</table>
+  * Paramètres de routage : <https://www.drupal.org/node/2092643>
 
 --------------------------------------------------------------------------------
 
-<h2>Exemple</h2>
+# Exemples
 
     !yaml
+    #.routing.yml
     mymodule.abc_view:
       path: '/abc/def'
       defaults:
         _title: "My ABC page"
-        _controller: "\Drupal\mymodule\Controller\MyModuleController::abc_view"
+        _controller: "\Drupal\module\Controller\ModuleController::abc_view"
       requirements:
         _permission: 'access my module'
+
+    #.links.menu.yml
+    mymodule.abc_view_tab:
+      title: 'My ABC page'
+      route_name: mymodule.abc_view
+      description: 'Displays my ABC page'
+      parent: mymodule.abc_view
+
+    #.links.task.yml
+    mymodule.abc_view_edit:
+      title: 'Edit'
+      route_name: mymodule.abc_view_edit
+      base_route: mymodule.abc_view
 
 --------------------------------------------------------------------------------
 
@@ -613,18 +633,18 @@ Documentation <https://www.drupal.org/developing/api/8/render/arrays> et
 
 Créer une page _Suis-je Premium ?_ reproduisant le comportement du bloc
 
-  - url : suis-je-gold
+  - url : suis-je-premium
 
 Créer une page _Est-il Premium ?_ affichant la même chose, mais avec en
 argument l'uid de l'utilisateur
 
-  - url d'exemple : est-il-gold/2
+  - url d'exemple : est-il-premium/2
 
 Créer une page _Page Premium_ avec du contenu "Lorem Ipsum" et ne
 s'affichant que si l'utilisateur courant à la permission de voir le contenu
 premium
 
-  - url : page-gold
+  - url : page-premium
 
 .fx: tp
 
@@ -636,50 +656,44 @@ Quelques fonctions de l'API à connaitre :
 
   * `\Drupal::currentUser()` : utilisateur actuellement connecté
 <small>(modifier avec prudence !)</small>
-  * `node_load()` et `node_load_multiple()` pour charger des nœuds
-  * `user_load()` et `user_load_multiple()` pour charger des utilisateurs
+  * `Node::load()` et `Node::loadMultiple()` pour charger des nœuds
+  * `User::load()` et `User::loadMultiple()` pour charger des utilisateurs
   * $entity->save() pour enregistrer un nœud, un utilisateur, ...
-  * `REQUEST_TIME` : timestamp à l'appel de la page
 
 --------------------------------------------------------------------------------
 
-# Gestion de la base de données
+# Gestion de la base de données /!\ en cours de modification /!\
 
-## SQL statique
-La fonction `db_query()` permet d'exécuter du SQL directement mais utiliser des
-accolades autour des noms de table `{table_name}` (permet la gestion de
-prefixe) et les placeholders pour passer des arguments (pour les failles de
-sécurité). Utiliser ensuite `foreach()` pour parcourir les résultats.
+## Requête en base de données
 
     !php
-    $result = db_query("SELECT some_col FROM {my_table}
-      WHERE some_col IN (:my_ids)", array(':my_ids' => $my_ids));
-    foreach ($result as $record) {
-      print_r($record);
-    }
+    $db = \Drupal::database();
+    $result = db->select();
+    $result = db->insert();
+    $result = db->delete();
+    $result = db->udpate();
+    $result = db->merge();
 
-## DBTNG
+## Requête sur le modèle objet
 
-Permet de faire des requêtes dynamiques grâce à une API en POO, donc sans
-manipuler de chaînes.
+    !php
+    $ids = \Drupal::entityQuery('user')->condition('name', 'test')->execute();
+    $users = User::loadMultiple($ids);
 
-[Documentation complète](https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Database!database.api.php/group/database/8),
-voir également les commentaires sur chaque fonction sur <https://api.drupal.org>
+[Documentation complète](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Database%21database.api.php/group/database/8.1.x)
 
 --------------------------------------------------------------------------------
 
-## DBTNG
+## DBTNG : DataBase The Next Generation (issu de Drupal 7)
     !php
-    $results = db_select('contact', 'c')
+    $results = $db->select('contact', 'c')
                   ->fields('c')
                   ->condition('created', REQUEST_TIME)
-                  ->execute()
-                  ->fetchAllAssoc('cid');
+                  ->execute() // ->fetch*()
+                  ;
     foreach ($results as $result) {
       // faire qqch
     }
-
-Voir aussi `db_insert()`, `db_delete()`, `db_update()` et `db_merge()`
 
 Récupération de résultats :
 
@@ -694,15 +708,21 @@ Récupération de résultats :
 
 # Gestion des URLs et des paths
 
-Quelques globales et fonctions de l'API à connaitre :
+## Quelques fonctions
 
-  * use Drupal\Core\Url; $url = Url::fromRoute('book.admin');
-  * $link = \Drupal::l(t('Book admin'), $url); 
-  * $this->redirect('book.admin'); -> redirection
+  * $this->redirect('contact.site_page'); -> redirection
   * `global $base_url` -> http://monsite.com
   * `base_path()` -> `/` ou `/mon-dossier-drupal`
   * `drupal_get_path()` (module, theme) -> chemin vers un module ou un thème
-  `drupal_get_path('module', 'devel')` donne _modules/devel_
+  (`drupal_get_path('module', 'devel')` donne _modules/devel_)
+
+## L'objet URL
+    !php
+    use Drupal\Core\Url;
+    $url = Url::fromRoute('contact.site_page', array())->toString();
+    $url = Url::fromUserInput('/contact')->toString();
+    $url = Url::fromUri('internal:/contact')->toString();
+    $link = \Drupal::l(t('Contact'), $url);
 
 --------------------------------------------------------------------------------
 
@@ -713,7 +733,7 @@ accès premium.
 
   * Créer une page
 
-  * Récupérer les rôles ayant la permission de voir le contenu gold (dans la
+  * Récupérer les rôles ayant la permission de voir le contenu premium (dans la
   table `role_permission`)
 
   * Récupérer les utilisateurs ayant ces rôles (dans la table `users_roles`)
@@ -726,6 +746,68 @@ accès premium.
 Attention au cache
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+# Altérer le comportement des modules existants
+
+## "Ancienne solution" : les hooks
+
+  * `hook_XXXXXXX_alter()` : permettent de _modifier_ des données créés par
+  d'autres modules
+  * [Liste des hooks](https://api.drupal.org/api/drupal/core%21core.api.php/group/hooks/8.1.x)
+
+## Solution "Drupal 8" : les Events symfony
+
+  * On "s'inscrit" à un événement pour que le système nous appelle
+  automatiquement et qu'on puisse _réagir_
+  * Sera probablement encore plus utilisée en Drupal 9
+  * [Liste des Events](https://api.drupal.org/api/drupal/core%21core.api.php/group/events/8.1.x)
+
+
+--------------------------------------------------------------------------------
+
+# Concrètement
+
+## Une classe pour la réponse à l'évènement
+    !php
+    namespace Drupal\my_module\EventSubscriber;
+    use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+    use Symfony\Component\HttpKernel\KernelEvents;
+    class MyModuleSubscriber implements EventSubscriberInterface {
+      static function getSubscribedEvents() {
+        $events[KernelEvents::REQUEST][] = array('my_function');
+        return $events;
+      }
+      function my_function(GetResponseEvent $event) {
+        $event->setResponse(new RedirectResponse('http://example.com/'));
+      }
+    }
+
+## Un service (fichier `my_module.services.yml`)
+    !yaml
+    services:
+      my_module.redirect_all:
+        class: Drupal\my_module\EventSubscriber\MyModuleSubscriber
+        tags:
+          - {name: event_subscriber}
+
+--------------------------------------------------------------------------------
+
+# TP : Events
+
+Déconnecter automatiquement un utilisateur quand il se connecte (inutile, mais
+puissant ;-))
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# Bonus : déclencher des évènements
+
+    !php
+    $dispatcher = \Drupal::service('event_dispatcher');
+    $dispatcher->dispatch('my_object.my_event', $params);
 
 --------------------------------------------------------------------------------
 
@@ -761,6 +843,7 @@ https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/8)
     }
     public function validate(array &$form, FormStateInterface $form_state) {
       // Logique de validation.
+      $form_state->setErrorByName('form_field', 'message');
     }
     public function submit(array &$form, FormStateInterface $form_state) {
       // Traitement des données soumises.
@@ -770,35 +853,30 @@ https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/8)
 
 # Traitement des données
 
-Les données soumises et validées sont contenues dans `$form_state->getValue('key')`.
+Les données soumises et validées sont contenues dans
+`$form_state->getValue('key')`.
 
 Après exécution du `_submit()`, l'utilisateur est redirigé vers le formulaire
-vidé de ses valeurs, ou bien vers une route définie par `$form_state['redirect']`
+vidé de ses valeurs, ou bien vers une route définie par
+`$form_state->setRedirectUrl($url)`
 
 Chaque formulaire a un identifiant unique qui permet de l'altérer facilement par
 les autres modules.
 
-  * Possibilité de créer des formulaires multi-étapes.
-  * Validation par élément
-  * Possibilité de créer de nouveaux type d'éléments
+  * Validation par élément (`#element_validate`)
   * \#ajax (<https://api.drupal.org/api/drupal/core!core.api.php/group/ajax/8>)
   permet de faire de l'Ajax sans ecrire de JS
-  * \#autocomplete_path
-
-Schéma de workflow complet : <https://drupal.org/files/fapi_workflow_7.x_v1.1.png>
+  * \#autocomplete_route_name
 
 --------------------------------------------------------------------------------
 
-# Gestion de la configuration
-  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
-  * $config->set('name', value)->save();` pour définir
-  * $config = \Drupal::config('monmodule.settings');
-  * $config->get('name');` pour récupérer
-  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
-  * $config->clear('name')->save();` pour supprimer une valeur
-  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings')->delete();
-
-Documentation sur <https://www.drupal.org/node/1809490>
+# Appeler un formulaire directement depuis le routage
+    !yaml
+    example.form:
+      path: '/example-form'
+      defaults:
+        _title: 'Example form'
+        _form: '\Drupal\mymodule\Form\ExampleForm'
 
 --------------------------------------------------------------------------------
 
@@ -818,39 +896,79 @@ formulaires de création ou de modification de nœud.
 <button>Enregistrer</button>
 </code></p>
 
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# TP : Form API
+
   * Valider le fait qu'on ne peut pas choisir le type de contenu _Page de base_
-
-  * A la soumission enregistrer les valeurs dans une variable persistante
-  `'gold_types'`
-
-  * Cocher les checkbox par défaut lorsque le type de contenu est activé
 
 .fx: tp
 
 --------------------------------------------------------------------------------
 
-# Manipuler les fichiers et les images
+# Gestion de la configuration
 
-.fx: alternate
+  * <https://www.drupal.org/node/1905070>
+  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
+  * `$config->set('name', value)->save();` pour définir
+  * $config = \Drupal::config('monmodule.settings');
+  * `$config->get('name');` pour récupérer
+  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
+  * `$config->clear('name')->save();` pour supprimer une valeur
+  * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings')->delete();
+
+Documentation de l'API sur <https://www.drupal.org/node/1809490>
 
 --------------------------------------------------------------------------------
 
-# La File API
+# Déclaration de la configuration
 
-Un fichier n'est pas une entité ! (malheureusement)
+  * /config/install/mon_module.settings.yml -> initialisation à l'installation
+  * /config/optionnal/module1.type1.name1.yml -> si module1 est activé
+  * /config/schema/mon_module.schema.yml -> schéma de la configuration de votre
+  module
 
-Différence entre fichiers gérés et non gérés
+## Exemple de fichier
 
-Différence entre fichiers privés et fichiers publics
+    !yaml
+    mon_module.settings:
+      type: config_object
+      mapping:
+        settings_1:
+          type: boolean
+          label: 'Settings 1'
+        settings_2:
+          type: string
+          label: 'Settings 2'
 
-API complète <https://api.drupal.org/api/drupal/core!includes!file.inc/group/file/8>
+--------------------------------------------------------------------------------
 
-## Les streams wrappers
+# TP : Form API
 
-Un stream est un chemin, une URI, vers un fichier interne ou externe :
+  * A la soumission enregistrer les valeurs dans une variable persistante
+  `'premium_types'`
+  * Attention, il faut désinstaller et réinstaller votre module pour que Drupal
+  connaisse votre configuration
 
-  * public://
-  * private://
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# TP : Form API
+
+  * Cocher les checkbox par défaut lorsque le type de contenu est activé
+  (en lisant depuis la configuration)
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# En bonus, Manipuler les "Form Modes"
+
+    !php
+    $this->entityFormBuilder()->getForm($form_id, 'form_mode');
 
 --------------------------------------------------------------------------------
 
@@ -873,15 +991,22 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 --------------------------------------------------------------------------------
 
-# TP: Créer un style d'image pour nos contenus gold
+# TP: Créer un style d'image pour nos contenus premium
 
-Celui-ci nous servira pour les images qui seront sur les articles gold
+Celui-ci nous servira pour les images qui seront sur les articles premium
 
 .fx: tp
 
 --------------------------------------------------------------------------------
 
-# Schema API
+# Le stockage
+
+  * Ancienne méthode (D7) : on créé ses propres tables manuellement
+  * Méthode Drupal 8 : on créé une _entité_ (2 types : configuration ou contenu)
+
+--------------------------------------------------------------------------------
+
+# Schema API (~ méthode Drupal 7)
 
   * Gère la base de données
   * Se situe dans le fichier .install
@@ -895,9 +1020,16 @@ Celui-ci nous servira pour les images qui seront sur les articles gold
 
 --------------------------------------------------------------------------------
 
+# Génération d'entité
+
+  * Recommandation : utiliser la console pour générer l'entité
+  * drupal generate:entity:content (ou drupal generate:entity:config)
+
+--------------------------------------------------------------------------------
+
 # TP: Enregistrer les statuts
 
-## Déclarer une table gold
+## Déclarer une table premium
 
 Via l'API, déclarer une table avec deux colonnes, nid et status.
 Installer cette table via un `hook_update_N()` ou réinstaller le module.
@@ -914,7 +1046,7 @@ Rappels 
 
   * `hook_form_alter(&$form, $form_state, $form_id)`
   * `hook_node_update()` et `hook_node_insert()`
-  * Debug : `drupal_set_message('<pre>'.print_r($var, 1).'</pre>')`
+  * Debug : module Devel + `dpm($var)`
 
 .fx: tp
 
@@ -922,15 +1054,15 @@ Rappels 
 
 # TP : Contrôler l'accès aux nœuds
 
-Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/modules!node!node.module/group/node_access/7))
+Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.1.x))
 
-Déclarer notre hook_node_access()` et ne retourner NODE_ACCESS_DENY que si les 4
+Déclarer le `hook_node_access()` et ne retourner NODE_ACCESS_DENY que si les 4
 conditions sont réunies :
 
-  1. je suis en train de voir le nœud
-  2. son type a la foncitonnalité premium activé
-  3. c'est un contenu premium
-  4.   je n'ai pas la permission de voir les contenu premium
+  1. Je suis en train de voir le nœud
+  2. Son type a la foncitonnalité premium activé
+  3. C'est un contenu premium
+  4. Je n'ai pas la permission de voir les contenu premium
 
 <u>Attention:</u> ne fonctionnera pas pour les listes (dont la page d'accueil)
 pour des raisons de performances, il faudrait declarer `hook_node_grants()`.
@@ -955,15 +1087,13 @@ De même `hook_node_access()` n'est pas appelé pour le superadmin.
     }
     
     // Envoi du mail.
-    drupal_mail('monmodule', 'maclé', 'toto@example.com', 'fr-FR', array(
+    $mailManager = \Drupal::service('plugin.manager.mail');
+    $mailManager->mail('monmodule', 'my_key', 'toto@example.com', 'fr-FR', array(
       'node' => node_load(123),
-      'user' => user_load_by_name('toto'),
+      'account' => user_load_by_name('toto'),
     );
 
-On peut utiliser la notion de tokens (jetons) ou la fonction strtr(). 
-'`body`' est un tableau de lignes.
-
-Envoi du mail avec `drupal_mail($module, $key,  $to, $language, $params = array())`;
+On peut utiliser la notion de tokens (jetons). '`body`' est un tableau de lignes.
 
 La clé permet à un module de gérer plusieurs types de mail.
 
@@ -987,8 +1117,8 @@ L'équipe du site _Nom du site_
 
 ## Affichage du statut premium sur le nœud
 
-  - Trouver un hook qui permettrait d'ajouter un message `<strong>Contenu premium/strong>`
-  sur chaque contenu premium
+  - Trouver un hook qui permettrait d'ajouter un message
+  `<strong>Contenu premium/strong>` sur chaque contenu premium
   - L'implementer avec #markup
 
 .fx: tp
@@ -1000,14 +1130,12 @@ L'équipe du site _Nom du site_
 Le module fournit **toujours** le markup par défaut.
 
 Le `hook_theme()` définit des hooks/clés qui pourront ensuite être utilisés via
-la propriété `#theme` des render arrays. Ces _theme hooks_   généreront ensuite
-le markup HTML soit via une fonction, soit via un template.
+la propriété `#theme` des render arrays. Ces _theme hooks_ généreront ensuite
+le markup HTML via un template.
 
-On peut fournir des variables à ces _theme hooks_. Des fonctions preprocess et
-process peuvent ajouter ou modifier des variables, et également ajouter des
+On peut fournir des variables à ces _theme hooks_. Des fonctions preprocess
+peuvent ajouter ou modifier des variables, et également ajouter des
 suggestions de templates.
-
-<https://www.drupal.org/files/theme_flow_6_1.pdf> (pour Drupal 6)
 
 --------------------------------------------------------------------------------
 
@@ -1040,7 +1168,157 @@ suggestions de templates.
 
 --------------------------------------------------------------------------------
 
-# TP: Créer un template pour gold
+# Fonctions de theme
+
+Exemples d'utilisations de `theme()` :
+
+  * table
+  * item_list
+  * pager
+  * links
+  * image
+
+[Liste complete des implementation de theme du cœur](https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!theme.api.php/group/themeable/8)
+
+    !php
+    $image = array(
+        '#theme'  => 'image',
+        '#path' => drupal_get_path('module', 'monmodule') . '/monimage.png',
+    );
+    print drupal_render($image); // Quasi-automatiquement appelé par les hooks
+
+<https://www.drupal.org/developing/api/8/render/pipeline#html-main-content-renderer-pipeline>
+
+--------------------------------------------------------------------------------
+
+# Implémentation du hook_theme()
+
+  * Fonction template_preprocess_forums()
+  * fichier forums.html.twig
+
+--------------------------------------------------------------------------------
+
+# Twig
+
+  * Un template engine pour PHP
+  * Créé par Fabien Potencier (Symfony)
+  * [Documentation](http://twig.sensiolabs.org)
+  * Très sécurisé
+  * Extensible
+
+--------------------------------------------------------------------------------
+
+# Exemple de syntaxe
+
+    !twig
+    <!DOCTYPE html>
+    <html lang="{{ language.language }}" dir="{{ language.dir }}">
+      <head>
+        <meta charset="utf-8">
+        {{ head }}
+        <title>{{ head_title }}</title>
+        {{ styles }}
+      </head>
+      <body class="{{ classes }}" {{ attributes }}>
+        {{ page_top }}
+        {{ page }}
+        {{ scripts }}
+        {{ page_bottom }}
+      </body>
+    </html>
+
+--------------------------------------------------------------------------------
+
+# 3 syntaxes à connaître
+
+  * {{ afficher }}
+  * {# commenter #}
+  * {% "programmer" %}
+
+--------------------------------------------------------------------------------
+
+# Afficher
+
+![][1]
+
+--------------------------------------------------------------------------------
+
+# Programmer
+
+  * {% if expr %} {% else %} {% endif %}
+  * {% for item in items %} ({% else %}) {% endfor %}
+
+--------------------------------------------------------------------------------
+
+# Les filtres
+
+  * {{ messages | join(', ') }}
+  * {{ "now" | date('d/m/Y H:i') }}
+  * {{ 'Home' | t }} (ajouté par Drupal)
+  * {{ 'Home' | format_date('short') }} (ajouté par Drupal)
+  * Voir core/lib/Drupal/Core/Template/TwigExtension.php pour la liste des
+  rajouts Drupal
+  * Sur toute une section : {% filter upper %} Texte {% endfilter %}
+
+  * abs, batch, capitalize, convert_encoding, date, date_modify, default, escape,
+  first, format, join, json_encode, keys, last, length, lower, merge, nl2br,
+  number_format, raw, replace, reverse, round, slice, sort, split, striptags,
+  title, trim, upper, url_encode
+
+--------------------------------------------------------------------------------
+
+# Les fonctions
+
+  * dump(node)
+  * {{ max(1, 3, 2) }}
+  * {{ random(['pomme', 'orange', 'citron']) }}
+  * \+ celles fournies par Drupal : <https://www.drupal.org/node/2486991>
+    * link()
+    * path()
+    * url()
+    * attach_library()
+
+--------------------------------------------------------------------------------
+
+# Inclusion de template
+
+  * {% include 'page.html.twig' with {'foo': 'bar', 'baz': 'bat'} %}
+
+--------------------------------------------------------------------------------
+
+# Héritage de template
+
+    !twig
+    {# Template A #}
+    {% block foo %}
+      <p>Mon premier paragraphe</p>
+    {% endblock %}
+
+    {# Template B #}
+    {% extends 'TemplateA' %}
+    {% block foo %}
+      {{ parent() }}
+        <p>Mon deuxième paragraphe</p>
+    {% endblock %}
+
+    {# Rendu Template B #}
+    <p>Mon premier paragraphe</p>
+    <p>Mon deuxième paragraphe</p>
+
+--------------------------------------------------------------------------------
+
+# Debug Twig dans Drupal
+
+    !yaml
+    parameters:
+      twig.config:
+        debug: true
+
+dans sites/default/services.yml
+
+--------------------------------------------------------------------------------
+
+# TP: Créer un template pour premium
 
 Convertir le render array utilisé dans `hook_node_view()` pour utiliser un
 _theme hook_ qui se base sur un template.
@@ -1052,7 +1330,7 @@ Ajouter une image de médaille dans ce template.
 
 Créer un preprocess pour transformer cette image en variable.
 
-Dans le preprocess, transformer l'image en render array, et utiliser la fonciton
+Dans le preprocess, transformer l'image en render array, et utiliser la fonction
 render() dans le template.
 
 Ajouter des suggestions pour ce template.
@@ -1063,15 +1341,20 @@ Ajouter des suggestions pour ce template.
 
 # Ajout de JS / CSS
 
-  * 3 techniques d'ajout
-    * dans le `.info` -> global
-    * drupal_add_* -> au moment de l'appel
-    * \#attached[] -> au moment du rendering
-  * hook_(js/css)_alter() 
-  * drupal_add_library() également pour jQuery UI et autres
-  * Notion de groupes 
-    * JS (JS_LIBRARY, JS_DEFAULT, JS_THEME)
-    * CSS (CSS_SYSTEM, CSS_DEFAULT, CSS_THEME)
+    !yaml
+    global-styling:
+      css:
+        theme:
+          css/style.min.css
+      js:
+        js/theme.js
+      dependencies:
+        - core/jquery
+        - core/drupal.ajax
+
+  * Tout est sous forme de bibliothèque
+  * \#attached[] -> au moment du rendering
+  * drupal_add_library()
 
 --------------------------------------------------------------------------------
 
@@ -1080,11 +1363,11 @@ Ajouter des suggestions pour ce template.
 Ajouter une classe à l'image et créer un fichier CSS:
 
     !css
-    img.gold-icon {
+    img.premium-icon {
       float: right;
     }
 
-L'ajouter lorsqu'un noœud gold est affiché.
+L'ajouter lorsqu'un noœud premium est affiché.
 
 .fx: tp
 
@@ -1107,24 +1390,316 @@ Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
-# Les profils d'installation
+# Les librairies JS fournies avec le cœur
 
-Quelques exemples
-
-Une bonne pratique de développement
-
-TP: créer un profil avec notre module gold
+  * jQuery
+  * jQuery UI
+  * Backbone
+  * Underscore
 
 --------------------------------------------------------------------------------
 
-# Aller plus loin
+# Création de theme avec un my_theme.info.yml
 
-Drush make
+    !yaml
+    name: My Theme
+    type: theme
+    version: 0.1
+    core: 8.x
+    regions:
+      branding: "Branding"
+      header: "Header"
+      breadcrumb: "Breadcrumb"
+      content: "Content"
+      footer: "Footer"
+    regions_hidden:
+      - sidebar_first
+      - sidebar_second
+    libraries:
+      - my_theme/global_styling
 
-Les performances
+--------------------------------------------------------------------------------
 
-Features
+# Les services
+
+  * <https://api.drupal.org/api/drupal/services/8.1.x>
+  * Les services à connaître :
+    * router.admin_context (->isAdminRoute())
+    * path.matcher (->isFrontPage() / ->match())
+    * plugin.manager.mail (->mail())
+    * title_resolver (->getTitle())
+    * entity_type.manager (->getStorage())
+    * ...
+
+--------------------------------------------------------------------------------
+
+# La File API
+
+  * Différence entre fichiers gérés et non gérés
+  * Différence entre fichiers privés et fichiers publics
+  * API complète <https://api.drupal.org/api/drupal/core!includes!file.inc/group/file/8>
+
+## Les streams wrappers
+
+Un stream est un chemin, une URI, vers un fichier interne ou externe :
+
+  * public://
+  * private://
+
+--------------------------------------------------------------------------------
+
+# Fonctionnalités avancées
+
+.fx: alternate
+
+--------------------------------------------------------------------------------
+
+# Le cache
+
+  * Les clés : comment identifier ce cache
+  * Les contextes : Qu'est ce qui fait varier ce cache ('language',
+  'user.permissions', 'user.role', 'url')
+  * Les tags : à quoi est associé ce cache ('node:X',
+  `EntityInterface::getCacheTags()`)
+  * La durée de conservation (si on veut la forcer), avec 2 valeurs spéciales :
+    * 0 (ne pas conserver en cache)
+    * Cache::PERMANENT (ne pas expirer selon le temps, uniquement selon les tags)
+
+## Comment l'implémenter
+    !php
+    $build['#cache'] = array(
+      'keys' => 'my_cache',
+      'contexts' => 'url',
+      'tags' => array(),
+      'max-age' => Cache::PERMANENT,
+    );
+
+Directement dans le render array
+
+--------------------------------------------------------------------------------
+
+# La sécurité
+
+  * "Valider les entrées, filtrer les sorties"
+
+## Concrètement
+  * URL : `Html::escape(UrlHelper::stripDangerousProtocols($uri));`
+  * Texte brut : `Html::escape($string);`
+  * Texte riche : `check_markup($text, $format_id = NULL, $langcode = '',
+  $filter_types_to_skip = array());`
+  * HTML : `Xss::filter($string, array $html_tags = NULL);`
+  * Sinon, on considère que le texte est validé
+
+## En bonus, déplacez les fichiers
+  * <https://www.drupal.org/node/2767907>
+
+--------------------------------------------------------------------------------
+
+# Les Web Services
+
+## Appel (avec Guzzle)
+    !php
+    // GET
+    $request = \Drupal::service('http_default_client')->get($url, [
+      'auth' => ['username','password']
+    ]);
+    $status = $request->getStatusCode();
+    $response = $request->getBody();
+    // POST
+    $request = $client->post($url, [
+      'json' => [
+        'id'=> 'data-explorer'
+      ]
+    ]);
+    $response = json_decode($request->getBody());
+
+  * Exceptions dans ./vendor/guzzlehttp/guzzle/src/Exception
+  * Documentation sur <http://docs.guzzlephp.org/en/latest/>
+
+--------------------------------------------------------------------------------
+
+# Les Web Services
+
+## Réponse (dans un Controller)
+    !php
+    return new JsonResponse($values);
+
+--------------------------------------------------------------------------------
+
+# Intégrer des données à Views
+
+## Des entités
+
+  * C'est (presque) natif !
+  * Drupal console le génère pour vous.
+
+## Des tables "legacy"
+
+  * Utiliser le hook_views_data()
+  * [documentation](https://api.drupal.org/api/drupal/core!modules!views!views.api.php/function/hook_views_data/8.1.x)
+
+--------------------------------------------------------------------------------
+
+# Modifier des données de Views
+
+## Les données elles-mêmes
+
+  * hook_views_data_alter()
+
+## Leur affichage
+
+  * Views utilise des Plugins :
+    * Field
+    * Sort
+    * Filter
+    * ...
+
+--------------------------------------------------------------------------------
+
+# Les migrations : le module Migrate
+
+## Depuis Drupal
+  * Drupal fait le plus gros du boulot
+  * Voir [la conférence d'Aurelien Navarre](http://www.slideshare.net/AurelienNavarre/drupalcamp-nantes-2016-migrer-un-site-drupal-6-ou-drupal-7-vers-drupal-8)
+
+## Depuis autre chose
+  * CSV, XML, JSON supportés par des plugins
+  * Une migration est un fichier YAML
+  * On ne code que si on a besoin de faire des traitements spécifiques
+  * [Exemple détaillé](https://blog.liip.ch/archive/2016/05/04/using-the-new-drupal-8-migration-api-module.html)
+  * [Exemple SQL](https://www.sitepoint.com/your-first-drupal-8-migration/)
+  * /!\ Support des traductions dans la 8.2.x /!\
+
+--------------------------------------------------------------------------------
+
+# Exemple de migration
+    !yaml
+    id: basics
+    label: Import articles
+    migration_groups:
+      - mon_groupe
+    source:
+      plugin: csv
+      path: '/path/to/file/data.csv'
+      header_row_count: 1
+      keys:
+        - Id
+
+    process:
+      title: title
+      body: body
+      type:
+        plugin: default_value
+        default_value: article
+
+    destination:
+      plugin: entity:node
+
+--------------------------------------------------------------------------------
+
+# Industrialisation
+
+  * Les profils d'installation et les distributions
+  * Le packaging du site
+    * Drush make
+    * composer
+  * La gestion de la configuration
+    * CMI
+    * Features
+
+--------------------------------------------------------------------------------
+
+# Les profils d'installation
+
+## Qu'est ce que c'est
+
+  * Simplement une pré-configuration de Drupal.
+  * Peut contenir vos propres modules, et votre propre configuration !
+
+## Quelques exemples de distribution Drupal 8
+
+  * [Lightning](https://www.drupal.org/project/lightning) (avec Roadmap) ~
+  sert de démo pour les capacités de Drupal 8
+  * [Commerce](https://www.drupal.org/project/commerce) 2.x (en alpha) :
+  refonte complète par rapport à la version Drupal 7
+  * [OpenSocial](https://www.drupal.org/project/social) (en alpha), avec
+  [prototype](http://goalgorilla.github.io/drupal_social/prototype.html)
+  disponible
+
+--------------------------------------------------------------------------------
+
+# Les installeurs
+
+## Drush make
+
+  * Hérité de Drupal 6, puis 7
+  * Permet de récupérer modules, thèmes, patchs, bibliothèques JS
+  * Par requête HTTP, Git, SVN, ...
+
+# Utilisation de Composer
+
+  * Et notamment de
+  [_Drupal Project_](https://github.com/drupal-composer/drupal-project)
+  * `composer create-project drupal-composer/drupal-project`
+  * `composer require drupal/devel:8.*`
+  * Solution probablement à privilégier pour Drupal 8, la communauté continue
+  d'évoluer
+
+--------------------------------------------------------------------------------
+
+# La gestion de la configuration
+
+## CMI
+
+  * Nouveauté Drupal 8 : tout ce qui n'est pas du contenu est exportable
+  indépendamment du reste du site
+
+## Problème
+
+  * Actuellement, on ne peut le réimporter que sur une même "version" du site
+  (un site dont l'installation s'est faite à partir d'une copie de la base de
+  données du site)
+  * En cours de résolution
+
+## Des solutions possibles fournies par la communauté
+
+  * _Config devel_
+  * _Features_
+
+--------------------------------------------------------------------------------
+
+# Features
+
+  * Sert à créer des modules sur un même sujet
+  * Récupère *automagiquement* la configuration associée
+  * Fournit des commandes drush
+    * `drush fu` met à jour _votre code_ depuis le site
+    * `drush fr` met à jour _le site_ depuis votre code
+    * `drush fd` (features-diff) compare le code et le site
+
+--------------------------------------------------------------------------------
+
+# TP : Feature
+
+Exporter le type de contenu et la Views réalisées précédemment dans une Feature
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
+# Questions ?
 
 --------------------------------------------------------------------------------
 
 # Merci
+
+   [1]: img/twig_resolution.jpg
+
+   [2]: img/module_structure.png
+
+   [3]: img/symfony_components.png
+
+   [4]: img/d8_learning_curve.jpg
+
+   [5]: img/console.png
+

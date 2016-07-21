@@ -3,6 +3,12 @@
 
 --------------------------------------------------------------------------------
 
+# Qui êtes-vous ?
+
+# Que savez-vous de Drupal ?
+
+--------------------------------------------------------------------------------
+
 # Objectifs de la formation
 
   * __Les CMS et Drupal__
@@ -100,14 +106,15 @@
 
   * Pré-requis
     * Environnement Apache/Mysql/Php
-      * Windows : Easyphp/Xampp/Wamp
+      * Windows : Easyphp/Xampp/Wamp -> Acquia Dev Desktop plus intégré
       * Linux : LAMP
-  * alternatives : Nginx, Microsoft IIS, PostgreSQL, SQLite
+  * alternatives : Nginx (ou Microsoft IIS), PostgreSQL, SQLite (ou Oracle, MSSQL)
   * versions :
       * Apache 2.x (avec mod_rewrite)
-      * MySQL > 5.5.3
-      * PHP > 5.5.9
+      * MySQL > 5.5.3 / MariaDB > 5.5.20
+      * PHP > 5.5.9, préférez les versions plus récentes (PHP 7)
   * [http://drupal.org/requirements][3]
+  * <http://jayl.ee/blog/2015/11/19/how-to-solve-drupal-8.0.0's-requirements-problem-on-wampserver>
 
 --------------------------------------------------------------------------------
 
@@ -134,6 +141,54 @@
 ![][22]
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+# Sélection de la langue
+
+![][28]
+
+--------------------------------------------------------------------------------
+
+# Profil d'installation
+
+![][29]
+
+--------------------------------------------------------------------------------
+
+# Configuration de la base de données
+
+![][30]
+
+--------------------------------------------------------------------------------
+
+# Installation de modules
+
+![][31]
+
+--------------------------------------------------------------------------------
+
+# Configuration du site
+
+![][32]
+
+--------------------------------------------------------------------------------
+
+# Compte administateur
+
+![][33]
+
+--------------------------------------------------------------------------------
+
+# Paramètres régionaux
+
+![][34]
+
+--------------------------------------------------------------------------------
+
+# Vérification automatique des mises à jour
+
+![][35]
 
 --------------------------------------------------------------------------------
 
@@ -289,11 +344,13 @@ Thèmes communs à tous les sites
 
 # Workflow
 
-  * Prévu pour la 8.1 (via le module Drafty)
-  * Plusieurs modules disponibles en attendant
-    * Workflow (-beta)
-    * Workbench moderation (-dev)
-    * Multiversion ?
+  * Un workflow très simple dans le cœur (Brouillon / Publié)
+    * (peut-être mieux dans les prochaines versions 8.x)
+    * MAIS pas de permission spécifique
+  * Plusieurs modules disponibles en attendant (de complexité croissante)
+    * Workbench moderation
+    * Workflow
+    * Multiversion (à réserver aux très gros projets spécialisés)
 
 --------------------------------------------------------------------------------
 
@@ -347,16 +404,16 @@ puisse modérer ces pages.
 
 # Les types de contenu
 
+  * Structure > Types de contenu
+
   * Gestion des champs
     * Paramètres d'affichage des champs
-    * Gestion des droits
 
-  * La gestion des images (définition de styles)
+  * La gestion des images (Configuration > Styles d'images)
 
-  * La gestion des commentaires
+  * La gestion des commentaires (attention au type de commentaire)
 
   * Compléments :
-    * Installer de nouveaux champs : date, références...
     * Voir la configuration de cKEditor
 
   * Création de nœuds (nodes)
@@ -423,13 +480,12 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
-# Panels (pas encore prêt)
+# Panelizer
 
+  * "Rolls-Royce de la mise en page"
   * Permet de structurer les nœuds et les contenus entre eux
-  * En fonction de condition
   * Interface complexe
-  * Peut vite devenir une "usine à gaz"
-  * Préférable de ne pas penser à Panels tout de suite
+  * Préférable de ne pas penser à Panelizer tout de suite
 
 ![][23]
 
@@ -527,8 +583,9 @@ uniquement sur la page d'accueil dans la région de droite.
     * À la création d'un nœud
   * Possibilité de désactiver les éléments de menu
   * Possibilité de hierarchiser les éléments de menu
-  * Création de séparateurs ou d'éléments sans lien -> _Special Menu Items_ (pas encore en D8)
-  * Synchronisation entre une taxnomie et un menu -> _Taxonomy Menu_ (pas encore en D8)
+  * Création d'éléments sans lien -> Dans le cœur en 8.2 (novembre 2016)
+  * Synchronisation entre une taxnomie et un menu -> _Taxonomy Menu_
+  * Ajout d'attributs ('target', ...) : _Link Attributes widget_
 
 <br><br><br><br>
 > Les éléments de menus sont affichés à l'utilisateur seulement s'il a les
@@ -538,9 +595,9 @@ permissions d'accèder à sa cible
 
 # Les menus - Exercice
 
-  * Installer le module _Nice menus_
-  * Ajouter quelques liens externes et internes
-  * Organiser entre parents et enfants
+  * Mettre en place le menu principal du site avec des liens vers nos livres
+  * Ajouter une page "Mentions légales" dans le pied de page
+  * Ajouter un lien "Se connecter" dans le pied de page
 
 _La suite après les blocs_
 
@@ -567,8 +624,8 @@ _La suite après les blocs_
   * Structure > Blocs
     * Choix du thème
     * Ordonner les blocs
-  * Attribution a une région par la liste de sélection
-  * Modifier l'ordre par glisser/déposer
+  * Placer des blocs dans des régions
+  * En Drupal 8, TOUT est bloc (logo, fil d'Ariane, ...)
 
 ![][14]
 
@@ -588,8 +645,8 @@ _La suite après les blocs_
 
 # La gestion des blocs - Exercice
 
-  * Placer notre Nice menu principal en sidebar
-    * Seulement pour autres pages que la page d'accueil
+  * Créer un bloc "Horaires" placer sur la barre de droite
+    * Seulement pour la page d'accueil
 
   * Afficher qui est connecté pour les utilisateurs connectés dans le footer
 
@@ -601,13 +658,12 @@ _La suite après les blocs_
 
 # La gestion des blocs - Types de blocs
 
-  * Comme les types de contenu, il y a des types de blocs
+  * Comme les types de contenu, on peut créer des "types" de blocs
     * Blocs de publicité, bloc vidéo, ...
-    * Bloc contenant une vue
-    * Bloc contenant un menu
-    * Bloc contenant un formulaire
-    * Blocs systèmes (connexion, utilisateurs connectés...)
+  * Attention, pour le moment, pas de permissions spécifiques
     
+![][27]
+
 --------------------------------------------------------------------------------
 
 # Les vues (views)
@@ -714,7 +770,7 @@ d'accueil' est cochée sur toutes les pages du site
 
   * Création d'un thème
   * Utiliser un « starter » thème
-    * Aucun existant en D8 pour le moment
+    * Exemple: Zen, Bootstrap, Omega
     * Gain de temps
     * Classes CSS préexistantes
     * Documentation
@@ -733,6 +789,7 @@ d'accueil' est cochée sur toutes les pages du site
 # Exercice
 
   * Installer le thème Adminimal
+  * Installer le thème Writer
 
 --------------------------------------------------------------------------------
 
@@ -800,7 +857,7 @@ cette page comme page d'accueil.
 
    [22]: img/installed8.png
 
-   [23]: img/panels.png
+   [23]: img/panelizer.png
 
    [24]: img/ds.jpg
 
@@ -808,4 +865,20 @@ cette page comme page d'accueil.
 
    [26]: img/taxonomy_field8.png
 
+   [27]: img/block_types.png
 
+   [28]: img/install_1_language_selection.png
+
+   [29]: img/install_2_installation_profile.png
+
+   [30]: img/install_3_database_configuration.png
+
+   [31]: img/install_4_module_installation.png
+
+   [32]: img/install_5_site_configuration.png
+
+   [33]: img/install_6_admin_account.png
+
+   [34]: img/install_7_regional_settings.png
+
+   [35]: img/install_8_update_settings.png

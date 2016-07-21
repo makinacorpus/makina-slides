@@ -4,8 +4,8 @@
   * __Administration (Tâches d'administration, Mises à jour, sauvegarde, Multi-sites, performance)__
   * Référencement (urls, meta-tags, sitemap.xml)
   * Multilinguisme
-  * Autres contenus (vidéos, newsletters, formulaires)
-  * Modules du coeur (aggregator, poll, search)
+  * Autres contenus (médias, newsletters, formulaires)
+  * Recherche
 
 .fx: progress
 
@@ -18,8 +18,8 @@
   * _Configurer > Développement_ : Erreurs et Maintenance
   * _Rapports > Rapport d'état_ : monitorer son site
   * _Rapports > Erreurs récentes_ : monitorer son site
-  * _Rapports > Statistiques_ : Module _Statistics_ du cœur prend beaucoup de
-  ressources, préférer _Google Analytics_
+  * _Rapports > Statistiques_ : Module _Statistics_ du cœur (mais il ne couvre pas
+  ce qu'attendent les gens, préférer _Google Analytics_)
 
 ![][4]
 
@@ -41,28 +41,26 @@
   * Supprimer l'ancienne version
   * Ajouter la nouvelle version
   * Aller dans « Rapports > tableau de bord »
-  * Repérer la ligne Mise à jour de la base de données
-  * Si une mise à jour est nécessaire, suite aux modifications, un lien
+  * Repérer la ligne "Mise à jour de la base de données"
+  * Si une mise à jour est nécessaire suite aux modifications, un lien
 apparait.
-
   * Cliquez sur le lien et suivre les instructions
 
 --------------------------------------------------------------------------------
 
 # Mises à jour du cœur
 
-  * Télécharger la nouvelle version
-  * Copier/coller sur l'ancienne version
-  * Aller dans « Rapports > tableau de bord »
-  * Repérer la ligne Mise à jour de la base de données
-  * Si une mise à jour est nécessaire, suite aux modifications, un lien
-apparaît.
+  * Instructions sur <https://www.drupal.org/node/2700999>
+  * Mettre le site en mode "maintenance"
+  * Supprimer les fichiers dans /code, /vendor, et à la racine du site
+  * Remplacer par les nouveaux fichiers
+  * Décompresser la nouvelle version du cœur
 
-  * Cliquez sur le lien et suivre les instructions
+![][24]
 
 --------------------------------------------------------------------------------
 
-# DRUpal SHell (remplacer par console ?)
+# DRUpal SHell
 
   * [https://github.com/drush-ops/drush][2]
 
@@ -75,7 +73,7 @@ apparaît.
 
   * Disponible sous Linux
 
-  * Relativement supporté sur Windows
+  * Relativement supporté sur Windows (pour Drupal 8, installer avec Composer)
 
 --------------------------------------------------------------------------------
 
@@ -84,6 +82,7 @@ apparaît.
   * Module _Backup & Migrate_
     * Sauvegarde de la base de données
     * Sauvegarde des fichiers
+    * Pas encore stable pour D8
 
   * Script shell maison
 
@@ -103,10 +102,12 @@ apparaît.
     * Copier le contenu de /sites/default dans les sous-répertoires.
     * Lancer l'installation classique via le navigateur
 
-  * Module Domain access (pas encore prêt en D8) - Partage des données
+  * Module Domain access (en cours de port D8) - Partage des données
     * Basé sur 1 instance (même base de données,  même code)
     * Facilité d'administration
     * Partage de contenus, utilisateurs, blocks, etc.
+
+  * [https://www.palantir.net/blog/multi-headed-drupal][23]
 
 --------------------------------------------------------------------------------
 
@@ -115,18 +116,20 @@ apparaît.
   * Cache activé par défaut
     * Fonctionne très bien pour les anonymes
 
-  * Intégration Varnish, Redis (par Makina Corpus), Memcache, CDN, etc.
+  * Intégration Varnish, Redis, Memcache, CDN, etc.
+
+  * Passez à PHP7 et MySQL 5.6 !
 
 --------------------------------------------------------------------------------
 
 # Objectifs de la formation - Les fonctionnalités avancées
 
   * Administration (Tâches d'administration, Mises à jour,  sauvegarde,
-Multi-sites, ldap, performance)
+Multi-sites, performance)
   * __Référencement (urls, meta-tags, sitemap.xml)__
   * Multilinguisme
-  * Autres contenus (vidéos, newsletters, formulaires
-  * Modules du coeur (aggregator, poll, search)
+  * Autres contenus (médias, newsletters, formulaires)
+  * Recherche
 
 .fx: progress
 
@@ -134,7 +137,7 @@ Multi-sites, ldap, performance)
 
 # Ré-écriture des urls
 
-  * Module path (core) et pathauto
+  * Module path (core) et __Pathauto__
   * Recherche et métadonnées > Alias d'urls
   * Gestion de la ré-écriture automatique
     * Selon les types de contenu
@@ -171,7 +174,7 @@ Et bien d'autres
 
 --------------------------------------------------------------------------------
 
-## Module Simple sitemap
+## Module XMLSitemap
 
   * Génération d'un fichier sitemap.xml à la racine avec les urls du site (parsing par les robots de référencement)
   * Paramétrage pour définir quelles pages sont à inclure / exclure
@@ -192,16 +195,18 @@ Et bien d'autres
 
 ## Redirect
 
+  * Gestion des redirections
+
 --------------------------------------------------------------------------------
 
 # Objectifs de la formation - Les fonctionnalités avancées
 
   * Administration (Tâches d'administration, Mises à jour,  sauvegarde,
-Multi-sites, ldap, performance)
+Multi-sites, performance)
   * Référencement (urls, meta-tags, sitemap.xml)
   * __Multilinguisme__
-  * Autres contenus (vidéos, newsletters, formulaires
-  * Modules du coeur (aggregator, poll, search)
+  * Autres contenus (médias, newsletters, formulaires)
+  * Recherche
 
 .fx: progress
 
@@ -209,70 +214,124 @@ Multi-sites, ldap, performance)
 
 # Le multilinguisme
 
-  * Activation des 4 modules présents dans le coeur depuis la version 8
+  * 4 modules présents dans le coeur
+    * Language (gestion des langues du site)
+    * Interface Translation (interface de traduction, administration du site en FR)
     * Configuration Translation (traduction de la configuration)
     * Content Translation (traduction du contenu)
-    * Interface Translation (interface complète de traduction de tous champs)
-    * Language (gestion des langues du site)
+
+![][14]
     
 --------------------------------------------------------------------------------
 
-# Traduire les noeuds
+# La langue
 
-  * Onglet Traduire pour chaque contenu
+  * Ajout de langage
+  * Gère également si la langue s'écrit de gauche à droite
+
+![][15]
+    
+--------------------------------------------------------------------------------
+
+# La langue
+
+  * Activé automatiquement si on choisit l'installation dans une autre langue
+  * Permet de combiner différentes méthodes de détection de langue
+
+![][16]
+    
+--------------------------------------------------------------------------------
+
+# Traduction de l'interface
+
+  * Interface de traduction du back-office
+
+![][17]
+ 
+![][18]
+
+--------------------------------------------------------------------------------
+
+# Traduction du contenu
+
+  * Module "Content Translation"
+  * "Contenu" = 
+    * Nœuds
+    * Blocs
+    * Menus
+    * Taxonomie
+    * Utilisateurs
+ 
+![][19]
+
+--------------------------------------------------------------------------------
+
+# Traduction du contenu
+
+  * Activation du multilinguisme sur le type de contenu
+    * (ou utilisateur, vocabulaire, ...)
+  * Stratégie de langage par défaut (selon les profils, droits, ...)
+
+![][20]
+
+--------------------------------------------------------------------------------
+
+# Traduction du contenu
+
+  * Onglet "Traduire" pour chaque contenu
     * Tableau de synthèse du statut de traduction pour toutes les langues
-  * Ajout d'une traduction :
-    * par le lien ''Ajouter''
-    * par la création d'un contenu puis ajouter sa langue avec le champ
-    ''Language''
+    * Ajout d'une traduction par langue
 
 ![][6]
+
+--------------------------------------------------------------------------------
+
+# Traduction du contenu
+
+  * Attention, il faut paramétrer les champs qui peuvent se traduire !
+  * Administration > Configuration > Langue et région > Langue du contenu et traduction
+
+![][21]
 
 --------------------------------------------------------------------------------
 
 # Traduire les blocs
 
   * Pour chaque bloc dans l'onglet ''Configurer le bloc''
-  * Sélection de la langue
-  * Pages : Spécifier les chemins des contenus traduits où
-  le bloc doit apparaître.
+    * Restriction du bloc à certains langages
 
 ![][7]
 
 --------------------------------------------------------------------------------
 
-# Traduire l'interface
-
-  * Configuration > Régionalisation et langues > Traduction de l'interface utilisateur
-  * Traduction de l'interface différent de la traduction du contenu
-  * Traduction de l'interface aussi différent de la traduction de configuration
+# Traduire la configuration
 
 ![][8]
+
+  * Tout le reste du site...
+  * Page d'accueil, 404, ...
+  * Administration > Configuration > Langue et région > Traduction de la configuration
+
+![][22]
 
 --------------------------------------------------------------------------------
 
 # Traduire les menus
 
-  * 2 possibilités :
+  * 2 stratégies :
     * Créer un menu par langue
-    * Dans un menu, pour chaque item, ajouter un item par langue
-
-# Traduire les variables
-
-  * Nom du site
-  * Slogan
-  * Mails
+    * Traduire un menu, qui comprendra alors des éléments de chaque langue (pas tous affichés)
 
 --------------------------------------------------------------------------------
 
 # Objectifs de la formation - Les fonctionnalités avancées
 
-  * Administration (Mises à jour, Multi-sites, sauvegarde, cron, ldap,
+  * Administration (Mises à jour, Multi-sites, sauvegarde, cron,
 performance, architecture)
   * Référencement (urls, meta-tags, sitemap.xml)
   * Multilinguisme
-  * __Autres contenus (vidéos, newsletters, formulaires)__
-  * Modules du coeur (aggregator, poll, search)
+  * __Autres contenus (médias, newsletters, formulaires)__
+  * Recherche
 
 .fx: progress
 
@@ -284,9 +343,9 @@ performance, architecture)
     * <http://www.drupalmedia.org>
     * Suite de modules (Entity Browser, Media entity, DropzoneJS ...)
     * Fichiers image, vidéo, audio, ...
-    
+  * Pas complètement stable !
+    * Mais en développement actif, sera bientôt prêt
 
-![][11]
 
 --------------------------------------------------------------------------------
 
@@ -296,31 +355,33 @@ performance, architecture)
     * Gestion des abonnements
     * Gestion des envois instantanés ou asynchrones
     * Gestion de plusieurs catégories de newsletters
+    * Pas tout à fait finalisé pour Drupal 8
 
   * Gestion des souscriptions seules
-    * Service externe : _Mailchimp_
+    * Service externe : _Mailchimp_ (ou d'autres, Mailjet, ...)
+    * Solution recommandée aujourd'hui
 
 --------------------------------------------------------------------------------
 
 # Formulaires
 
-  * Module Webform (pas encore prêt...)
-  * Création/Gestion intuitive des champs
-  * Visualisation/export des soumissions
-
-![][12]
-
-![][13]
+  * Référence Drupal : module Webform
+    * Mais pas prêt du tout pour Drupal 8
+    * Création/Gestion intuitive des champs
+    * Visualisation/export des soumissions
+  * Utilisation du module __Contact__
+    * Avec Contact Storage (voir <http://flocondetoile.fr/blog/drupal-8-injecter-un-formulaire-de-contact-dans-un-contenu-en-5-etapes>)
+    * et d'autres éventuellement (pour l'export CSV)
 
 --------------------------------------------------------------------------------
 
 # Objectifs de la formation - Les fonctionnalités avancées
 
   * Multilinguisme
-  * Administration (Mises à jour, Multi-sites, sauvegarde, cron, ldap,
+  * Administration (Mises à jour, Multi-sites, sauvegarde, cron,
 performance, architecture)
   * Référencement (urls, meta-tags, sitemap.xml)
-  * Autres contenus (vidéos, newsletters, formulaires)
+  * Autres contenus (médias, newsletters, formulaires)
   * __Recherche__
 
 .fx: progress
@@ -330,12 +391,25 @@ performance, architecture)
 # La recherche
 
   * Search API
-  * Apache Solr
-    * module Apache Solr Search non porté sur Drupal 8
-    * remplacé par Search API Solr Search
-  * ElasticSearch
-    * Elasticsearch Connector 
-  * ...
+    * Lien Apache Solr (module __Search API Solr Search__)
+    * Lien ElasticSearch (module __Elasticsearch Connector__)
+  * Gestion des facets, des fichiers, ...
+
+--------------------------------------------------------------------------------
+
+# La roadmap de Drupal
+
+  * <https://www.drupal.org/strategic-initiatives#active>
+  * Aujourd'hui :
+    * Workflow
+    * Migration
+  * Dans le futur :
+    * Blocs & mise en page
+    * Utilisation de composants dans le thème
+  * Peut-être :
+    * Media
+    * Modèle de données
+    * Cross-channel
 
 --------------------------------------------------------------------------------
 
@@ -346,15 +420,43 @@ Transférer fichiers et données
 Pour le passage en production
 
   * Attention au fichier settings.php, services.yml
-  * Et surtout la configuration (dans /files)
-  * Versionnement (Git approprié)
   * Pathologic pour réparer les chemins cassés
+  * <https://microserve.io/blogs/drupal-go-live-checklist-revisited>
 
 Pour le développement
 
   * Stage File Proxy
   * Désactiver les mails _Reroute Email_
   * Se faire passer pour un utilisateur _Masquerade_
+  * Une URL à connaître : /core/rebuild.php (vide les caches)
+
+--------------------------------------------------------------------------------
+
+# Procédure de construction d'un site
+
+   * Configuration initiale (multilinguisme, workflow, metatag, ...)
+   * Formats d'images, directement à partir des maquettes
+   * Types de contenu
+   * Views
+   * Mise en page (blocs, panels ou display suite ou ...)
+   * Intégration graphique
+   * Développements spécifiques ou modules additionnels (flags, rules, ...)
+
+   * __Problème__ : aucune intégration graphique avant la fin => incompatible avec une livraison régulière...
+
+![][25]
+
+--------------------------------------------------------------------------------
+
+# Procédure de construction d'un site
+
+   * Configuration initiale => style guide, charte graphique par défaut
+   * Formats d'images
+   * Types de contenu => templates de contenu
+   * Views => templates de Views
+   * Mise en page => finition du template
+   * Développements spécifiques ou modules additionnels (flags, rules, ...)
+   * Intégration graphique des derniers modules
 
 --------------------------------------------------------------------------------
 
@@ -375,7 +477,7 @@ Pour le développement
 
    [7]: img/block_translation.png
 
-   [8]: img/string_traduction.png
+   [8]: img/configuration_translation.png
 
    [9]: img/panel.png
 
@@ -386,4 +488,28 @@ Pour le développement
    [12]: img/webform.png
 
    [13]: img/export_webform.png
+
+   [14]: img/multilinguisme.png
+
+   [15]: img/add_language.png
+
+   [16]: img/language_detection.png
+
+   [17]: img/interface_translation.png
+
+   [18]: img/user_interface_translation.png
+
+   [19]: img/content_translation.png
+
+   [20]: img/content_type_translation.png
+
+   [21]: img/language_field_translation.png
+
+   [22]: img/system_information_translation.png
+
+   [23]: https://www.palantir.net/blog/multi-headed-drupal
+
+   [24]: img/original_release_schedule.png
+
+   [25]: https://makina-corpus.com/blog/metier/2016/comment-creer-un-site-web-avec-drupal
 
