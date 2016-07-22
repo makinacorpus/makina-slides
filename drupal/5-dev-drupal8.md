@@ -863,9 +863,17 @@ accès premium.
 
 --------------------------------------------------------------------------------
 
-# TP : Events
+# TP : Events & Hooks
+
+## Events
 
 Empêcher d'accéder à l'édition du profil d'un utilisateur (/user/{user}/edit)
+en interdisant l'accès à la route.
+
+## Hooks
+
+Faites la même chose en supprimant juste le lien de menu
+(hook_menu_local_tasks_alter)
 
 .fx: tp
 
@@ -902,18 +910,18 @@ https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/8)
     public function getFormId() {
       return 'my_module_form';
     }
-    public function build(array $form, FormStateInterface $form_state) {
+    public function buildForm(array $form, FormStateInterface $form_state) {
       $form['submit'] = array(
         '#type' => 'submit',
         '#value' => t('Submit'),
       );
       return $form;
     }
-    public function validate(array &$form, FormStateInterface $form_state) {
+    public function validateForm(array &$form, FormStateInterface $form_state) {
       // Logique de validation.
       $form_state->setErrorByName('form_field', 'message');
     }
-    public function submit(array &$form, FormStateInterface $form_state) {
+    public function submitForm(array &$form, FormStateInterface $form_state) {
       // Traitement des données soumises.
     }
 
@@ -1036,6 +1044,14 @@ Documentation de l'API sur <https://www.drupal.org/node/1809490>
 # Formulaire de configuration
 
   * Utiliser ConfigFormBase
+
+--------------------------------------------------------------------------------
+
+# Themer précisément un formulaire
+
+<http://www.foreach.be/blog/how-manipulate-forms-drupal-8>
+
+<http://drupal.stackexchange.com/questions/146434/send-a-form-to-twig-template>
 
 --------------------------------------------------------------------------------
 
@@ -1383,7 +1399,7 @@ Exemples d'utilisations de `theme()` :
 
 # Hiérarchie des templates Drupal
 
-TO DO
+![][7]
 
 --------------------------------------------------------------------------------
 
@@ -1821,4 +1837,6 @@ Exporter le type de contenu et la Views réalisées précédemment dans une Feat
    [5]: img/console.png
 
    [6]: img/serialization.png
+
+   [7]: img/twig_templates.png
 
