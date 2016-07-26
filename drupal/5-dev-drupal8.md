@@ -1713,7 +1713,7 @@ Directement dans le render array
       - mon_groupe
     source:
       plugin: csv
-      path: '/path/to/file/data.csv'
+      path: 'public://data.csv'
       header_row_count: 1
       keys:
         - Id
@@ -1727,6 +1727,29 @@ Directement dans le render array
 
     destination:
       plugin: entity:node
+
+--------------------------------------------------------------------------------
+
+# Quelques modules parfois utiles
+
+  * Migrate Plus : quelques fonctionnalités additionnelles pour Migrate
+  * Migrate Tools : commandes Drush supplémentaires (pour lancer des migrations)
+  * Migrate Source CSV : pour lire des fichiers CSV
+  * Migrate Manifest : organise vos migrations dans un fichier manifest
+
+--------------------------------------------------------------------------------
+
+# Les plugins de traitement
+
+  * get() : plugin par défaut
+  * _default_value_ : mettre une valeur
+  * _callback_ : appeler une fonction
+  * concat, flatten, extract : quelques traitements simples de données
+  * skip_on_empty : permet de sauter une ligne de l'import si la valeur est vide
+  * skip_row_if_not_set : permet de sauter une ligne si la valeur n'est pas définie
+  * _entity_lookup_ : rechercher une entité (par Migrate Plus)
+  * entity_generate : créer une entité (par Migrate Plus)
+  * Écrivez le vôtre, c'est un plugin (MigrateProcessPlugin)
 
 --------------------------------------------------------------------------------
 
