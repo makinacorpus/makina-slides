@@ -55,6 +55,8 @@
 
 # /!\ Avertissement /!\
 
+## "Going off the island"
+
   * Drupal 8 est une solution "jeune"
   * Tout a changé depuis Drupal 7
   * Peu de retours d'expérience
@@ -242,7 +244,7 @@ Avantages :
 
 --------------------------------------------------------------------------------
 
-#TP : Console
+# TP : Console
   * Intaller la console Drupal
   * Vérifier que c'est correctement installé
   * Regarder la liste des commandes (drupal list)
@@ -250,6 +252,16 @@ Avantages :
 ![][5]
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+# Exemples de commandes souvent utilisées
+
+  * `drupal site:mode dev`
+  * `drupal generate:module`
+  * `drupal generate:plugin:block`
+  * `drupal generate:routesubscriber`
+  * `drupal generate:form:config`
 
 --------------------------------------------------------------------------------
 
@@ -329,7 +341,7 @@ sous-repertoire `custom`
   * `.info.yml` (<https://www.drupal.org/node/2000204>)
     * `name`
     * `core`
-    * `description`
+    * `type: module` /!\
   * `.module` (souvent vide en D8)
   * `.install` facultatif (configuration désormais indépendante)
   * répertoire "config/install" pour la configuration
@@ -427,6 +439,14 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 --------------------------------------------------------------------------------
 
+# Et pour des permissions dynamiques ?
+
+    !yaml
+    permission_callbacks:
+      - \Drupal\my_module\MyClass::myFunction
+
+--------------------------------------------------------------------------------
+
 # Les plugins & les annotations
 
   * Plugins : <https://www.drupal.org/node/2087839>
@@ -460,7 +480,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 </pre></code>
 
     // Altération
-    function hook_block_build_BASE_BLOCK_ID_alter(&$build, $block) {}
+    function hook_block_view_BLOCK_ID_alter(&$build, $block) {}
 
 --------------------------------------------------------------------------------
 
@@ -543,8 +563,12 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
 # TP: Manipuler les render arrays
 
-  Altérer le bloc dans un `hook_block_view_alter()` afin de changer le
+  Altérer le bloc dans un `hook_block_view_BASE_ID_alter()` afin de changer le
   `<h3>` en `<h4>`
+
+  -> Impossible à faire directement... Il faut ajouter un #pre_render dans le
+  hook_block_view_alter(), et la fonction appelée dans le pre_render aura accès
+  au $build du contenu du bloc.
 
 .fx: tp
 
@@ -602,7 +626,7 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
 --------------------------------------------------------------------------------
 
-# Exemples
+# Exemples de routage
 
     !yaml
     #.routing.yml
@@ -614,6 +638,23 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
       requirements:
         _permission: 'access my module'
 
+    # , = ET
+      requirements:
+        _permission: 'access my module,access content'
+    # + = OU
+      requirements:
+        _permission: 'access my module+access content'
+    # Personnalisé
+      requirements:
+        _custom_access: '\Drupal\my_module\MyClass::my_function'
+
+La function renvoit alors AccessResult::allowed() ou AccessResult::forbidden()
+
+--------------------------------------------------------------------------------
+
+# Ajout de liens / onglets
+
+    !yaml
     #.links.menu.yml
     mymodule.abc_view_tab:
       title: 'My ABC page'
@@ -626,6 +667,8 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
       title: 'Edit'
       route_name: mymodule.abc_view_edit
       base_route: mymodule.abc_view
+
+    #.links.action.yml pour les actions
 
 --------------------------------------------------------------------------------
 
@@ -659,6 +702,7 @@ Quelques fonctions de l'API à connaitre :
   * `Node::load()` et `Node::loadMultiple()` pour charger des nœuds
   * `User::load()` et `User::loadMultiple()` pour charger des utilisateurs
   * $entity->save() pour enregistrer un nœud, un utilisateur, ...
+  * $user->getDisplayName() pour afficher un nom d'utilisateur
 
 --------------------------------------------------------------------------------
 
@@ -668,11 +712,11 @@ Quelques fonctions de l'API à connaitre :
 
     !php
     $db = \Drupal::database();
-    $result = db->select();
-    $result = db->insert();
-    $result = db->delete();
-    $result = db->udpate();
-    $result = db->merge();
+    $result = $db->select();
+    $result = $db->insert();
+    $result = $db->delete();
+    $result = $db->udpate();
+    $result = $db->merge();
 
 ## Requête sur le modèle objet
 
@@ -719,9 +763,11 @@ Récupération de résultats :
 ## L'objet URL
     !php
     use Drupal\Core\Url;
+    // Récupérer une Url.
     $url = Url::fromRoute('contact.site_page', array())->toString();
     $url = Url::fromUserInput('/contact')->toString();
-    $url = Url::fromUri('internal:/contact')->toString();
+    // Ou générer un lien.
+    $url = Url::fromUri('internal:/contact'); // Pas de toString() !
     $link = \Drupal::l(t('Contact'), $url);
 
 --------------------------------------------------------------------------------
@@ -733,17 +779,13 @@ accès premium.
 
   * Créer une page
 
-  * Récupérer les rôles ayant la permission de voir le contenu premium (dans la
-  table `role_permission`)
+  * Récupérer les utilisateurs ayant un rôle permettant de voir le contenu
+  premium (->condition('roles', '...'))
 
-  * Récupérer les utilisateurs ayant ces rôles (dans la table `users_roles`)
+  * Les afficher d'abord dans une liste ('#theme' => 'item_list')
 
-  * Les afficher d'abord dans une liste
-
-  * Modifier pour les afficher dans un tableau avec _Identifiant_,
-  _Nom_, _Lien vers son profil_
-
-Attention au cache
+  * Modifier pour les afficher dans un tableau ('#theme' => 'table') avec
+  _Identifiant_, _Nom_, _Lien vers son profil_
 
 .fx: tp
 
@@ -751,17 +793,16 @@ Attention au cache
 
 # Altérer le comportement des modules existants
 
-## "Ancienne solution" : les hooks
+## Solution "historique" : les hooks
 
   * `hook_XXXXXXX_alter()` : permettent de _modifier_ des données créés par
   d'autres modules
   * [Liste des hooks](https://api.drupal.org/api/drupal/core%21core.api.php/group/hooks/8.1.x)
 
-## Solution "Drupal 8" : les Events symfony
+## "Nouveauté" Drupal 8 : les Events symfony
 
-  * On "s'inscrit" à un événement pour que le système nous appelle
-  automatiquement et qu'on puisse _réagir_
-  * Sera probablement encore plus utilisée en Drupal 9
+  * On "s'inscrit" à un événement (via un service) pour que le système nous
+  appelle automatiquement et qu'on puisse _réagir_
   * [Liste des Events](https://api.drupal.org/api/drupal/core%21core.api.php/group/events/8.1.x)
 
 
@@ -794,10 +835,45 @@ Attention au cache
 
 --------------------------------------------------------------------------------
 
-# TP : Events
+# Exemple : modification du routage des autres modules
+    !php
+    use Drupal\Core\Routing\RouteSubscriberBase;
+    use Symfony\Component\Routing\RouteCollection;
 
-Déconnecter automatiquement un utilisateur quand il se connecte (inutile, mais
-puissant ;-))
+    class RouteSubscriber extends RouteSubscriberBase {
+      public function alterRoutes(RouteCollection $collection) {
+        if ($route = $collection->get('user.login')) {
+          $route->setPath('/login');
+        }
+        if ($route = $collection->get('user.logout')) {
+          $route->setRequirement('_access', 'FALSE');
+        }
+      }
+    }
+
+## C'est un event...
+    !yaml
+    services:
+      example.route_subscriber:
+        class: Drupal\example\Routing\RouteSubscriber
+          tags:
+            - { name: event_subscriber }
+
+<https://www.drupal.org/node/2187643>
+
+--------------------------------------------------------------------------------
+
+# TP : Events & Hooks
+
+## Events
+
+Empêcher d'accéder à l'édition du profil d'un utilisateur (/user/{user}/edit)
+en interdisant l'accès à la route.
+
+## Hooks
+
+Faites la même chose en supprimant juste le lien de menu
+(hook_menu_local_tasks_alter)
 
 .fx: tp
 
@@ -834,18 +910,18 @@ https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/8)
     public function getFormId() {
       return 'my_module_form';
     }
-    public function build(array $form, FormStateInterface $form_state) {
+    public function buildForm(array $form, FormStateInterface $form_state) {
       $form['submit'] = array(
         '#type' => 'submit',
         '#value' => t('Submit'),
       );
       return $form;
     }
-    public function validate(array &$form, FormStateInterface $form_state) {
+    public function validateForm(array &$form, FormStateInterface $form_state) {
       // Logique de validation.
       $form_state->setErrorByName('form_field', 'message');
     }
-    public function submit(array &$form, FormStateInterface $form_state) {
+    public function submitForm(array &$form, FormStateInterface $form_state) {
       // Traitement des données soumises.
     }
 
@@ -962,6 +1038,20 @@ Documentation de l'API sur <https://www.drupal.org/node/1809490>
   (en lisant depuis la configuration)
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+# Formulaire de configuration
+
+  * Utiliser ConfigFormBase
+
+--------------------------------------------------------------------------------
+
+# Themer précisément un formulaire
+
+<http://www.foreach.be/blog/how-manipulate-forms-drupal-8>
+
+<http://drupal.stackexchange.com/questions/146434/send-a-form-to-twig-template>
 
 --------------------------------------------------------------------------------
 
@@ -1307,6 +1397,19 @@ Exemples d'utilisations de `theme()` :
 
 --------------------------------------------------------------------------------
 
+# Hiérarchie des templates Drupal
+
+![][7]
+
+--------------------------------------------------------------------------------
+
+# Le nommage des templates
+
+  * <https://www.drupal.org/node/2354645>
+  * Pour Views : <http://redcrackle.com/blog/drupal-8/theme-views-templates>
+
+--------------------------------------------------------------------------------
+
 # Debug Twig dans Drupal
 
     !yaml
@@ -1315,6 +1418,8 @@ Exemples d'utilisations de `theme()` :
         debug: true
 
 dans sites/default/services.yml
+
++ `{{ dump(_context|keys) }}` pour voir tout ce qui est disponible
 
 --------------------------------------------------------------------------------
 
@@ -1448,6 +1553,19 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 --------------------------------------------------------------------------------
 
+# En résumé : la vie d'une page Drupal
+
+  * Request : appel d'index.php / event `kernel.request`
+  * Routage et contrôle d'accès
+  * Appel du contrôleur / event `kernel.controller`
+  * event `kernel.view`
+  * Principal abonné : appel du "Renderer" (ici HtmlRenderer)
+  * => Le `render array` est généré
+  * Appel de Twig
+  * Response / event `kernel.response`
+
+--------------------------------------------------------------------------------
+
 # Fonctionnalités avancées
 
 .fx: alternate
@@ -1526,6 +1644,21 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
+# Utilisation des APIs de Web Services du cœur
+
+    !php
+    $output = $this->serializer->serialize($entity, 'json');
+    $entity = $this->serializer->deserialize($output,
+    \Drupal\node\Entity\Node::class, 'json');
+
+<https://www.drupal.org/developing/api/8/serialization>
+
+<https://www.drupal.org/node/1899288>
+
+![][6]
+
+--------------------------------------------------------------------------------
+
 # Intégrer des données à Views
 
 ## Des entités
@@ -1580,7 +1713,7 @@ Directement dans le render array
       - mon_groupe
     source:
       plugin: csv
-      path: '/path/to/file/data.csv'
+      path: 'public://data.csv'
       header_row_count: 1
       keys:
         - Id
@@ -1594,6 +1727,29 @@ Directement dans le render array
 
     destination:
       plugin: entity:node
+
+--------------------------------------------------------------------------------
+
+# Quelques modules parfois utiles
+
+  * Migrate Plus : quelques fonctionnalités additionnelles pour Migrate
+  * Migrate Tools : commandes Drush supplémentaires (pour lancer des migrations)
+  * Migrate Source CSV : pour lire des fichiers CSV
+  * Migrate Manifest : organise vos migrations dans un fichier manifest
+
+--------------------------------------------------------------------------------
+
+# Les plugins de traitement
+
+  * get() : plugin par défaut
+  * _default_value_ : mettre une valeur
+  * _callback_ : appeler une fonction
+  * concat, flatten, extract : quelques traitements simples de données
+  * skip_on_empty : permet de sauter une ligne de l'import si la valeur est vide
+  * skip_row_if_not_set : permet de sauter une ligne si la valeur n'est pas définie
+  * _entity_lookup_ : rechercher une entité (par Migrate Plus)
+  * entity_generate : créer une entité (par Migrate Plus)
+  * Écrivez le vôtre, c'est un plugin (MigrateProcessPlugin)
 
 --------------------------------------------------------------------------------
 
@@ -1702,4 +1858,8 @@ Exporter le type de contenu et la Views réalisées précédemment dans une Feat
    [4]: img/d8_learning_curve.jpg
 
    [5]: img/console.png
+
+   [6]: img/serialization.png
+
+   [7]: img/twig_templates.png
 
