@@ -23,6 +23,8 @@ Our feelings…
 
 Explain that to your father-in-law.
 
+<img src="img/de-niro.jpg" />
+
 .fx: extra-large
 
 --------------------------------------------------------------------------------
@@ -44,6 +46,22 @@ You work for free for people you don't know.
 
 --------------------------------------------------------------------------------
 
+# It's not about the money
+
+"It's not about the money, money, money
+
+We don't need your money, money, money
+
+We just wanna make the world dance,
+
+Forget about the price tag"
+
+<p style="text-align:right"><strong>Jessie J</strong></p>
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
 # Why do we work?
 
 - livelihood: we need to eat
@@ -56,9 +74,20 @@ You work for free for people you don't know.
 
 # Consistency matters
 
-Only 16% of employees would recommand their company's products.
+Only 16% of employees would recommend their company's products.
 
-100% of community members would recommand their product.
+.notes: ok, that's just in France, and we love to criticize everything: we love to criticize things we don't like, we love to criticize things we like, and we love to criticize things we do not even care about. But still:
+
+<strong>That's an epic disaster!!</strong>
+
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Consistency matters
+
+100% of community members would recommend their product.
 
 .fx: extra-large
 
@@ -70,11 +99,21 @@ Otium = free time, but not just leisure: time for caring
 
 Negotium = the very opposite of otium
 
+.notes: negotium => negociate => business => to be busy => not available
+
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Responsibility
+# So, business = not caring? really?
+
+Sounds exagerated.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Example
 
 My customer finds a bug: "Sooooo boring…"
 
@@ -84,9 +123,19 @@ A stranger thinks there is a bug in my last night commit: "I need to fix that AS
 
 --------------------------------------------------------------------------------
 
+# A stronger responsibility feeling
+
+Why?
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
 # Minority vs Majority
 
 "Was ist Aufklärung?", Kant
+
+.notes: What Is Enlightenment?
 
 Minor ("Unmündig" also means "dependent" or "unfree") = has no responsibility
 
@@ -102,13 +151,39 @@ The software industry tends to reduce their responsibility.
 
 Communities values their grown-ups status.
 
+.notes: they read my code, I read their.
+
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Softwares need loving parents
+# Only grown-ups can be parents
 
-Only grown-ups can be parents.
+Do softwares need parents?
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Writing software is not ordinary production
+
+It is a full creation process managed by the same person (or team).
+
+It is long and iterative.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# The process induces parenthood
+
+We want our code to be better.
+
+We feel proud of it.
+
+We want it to be prepared for the future.
+
+.notes: That's the same whatever is your programming level. Mention rapido creation (-3kg) and Plomino (wake me up at night).
 
 .fx: extra-large
 
@@ -116,43 +191,31 @@ Only grown-ups can be parents.
 
 # Communities are adoption structures
 
-Make sure a software always has parents to raise it.
+Make sure a software always has loving parents to raise it.
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Care spiral
+# Not just a bunch of developers sharing codes
 
-Caring about the software induces caring about the community.
+It works like a family: we welcome new members we trust to raise the next generation.
 
-.fx: extra-large
-
---------------------------------------------------------------------------------
-
-# Just a bunch of developers sharing codes?
+Caring about the software implies we care about the community: we are sharing a common parenthood.
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Individuation
+# "I" needs a "We"
 
 "L'individuation psychique et collective", Gilbert Simondon
 
-Becoming myself is a process, and it is **individual** and **collective**.
+Becoming myself is a process, which is both **individual** and **collective**.
 
-**"I" needs a "We"**.
+.notes: "I" is just a phase of this process, like a React immutable state :)
 
-.fx: extra-large
-
---------------------------------------------------------------------------------
-
-# Plone-the-thing and Plone-the-concept
-
-Plone-the-thing is not perfect, but Plone-the-concept is our **moral ideal**.
-
-Plone-the-concept is the community's super-ego ("Über-Ich", Freud)
+Belonging to a group makes me feel more as myself.
 
 .fx: extra-large
 
@@ -160,9 +223,11 @@ Plone-the-concept is the community's super-ego ("Über-Ich", Freud)
 
 # We want to be Plone
 
-The community emanates from desire of its contributors.
+The community emanates from the desire of its contributors.
 
 Community > sum(contributors)
+
+.notes: this common desire turns the basic existence of the group into an actual consistency of the community
 
 .fx: extra-large
 
@@ -170,17 +235,64 @@ Community > sum(contributors)
 
 # We, Plone
 
-Plone becomes an actual "We".
-
-It is stable across a collective memory (even if contributors change).
-
 Transindividuation (Bernard Stiegler)
+
+Plone participates to our "We" and each of our "I" processes.
+
+At the same time, it is also the result of them.
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# So what keeps Plone going?
+# Two outputs
+
+- Plone-the-thing
+- Plone-the-concept
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Plone-the-thing
+
+Just the software itself. Just code.
+
+.notes: a tertiary retention
+
+Plone-the-thing is not perfect.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Plone-the-concept
+
+.notes: Our common knowledge of this code, our memory of its past, the future we imagine create Plone-the-concept. The knowledge of its origin too (Zope), and maybe we have reach the point where we have to kill the father.
+
+Plone-the-concept is our **moral ideal**.
+
+It is the community's super-ego ("Über-Ich").
+
+It is (meta-)stable across a collective memory even if contributors change.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# So...
+
+I am not a philosopher nor a psychanalyst.
+
+This talk is potentially a total fraud.
+
+But I can answer one question.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# What does keep Plone going?
 
 .fx: extra-large
 
