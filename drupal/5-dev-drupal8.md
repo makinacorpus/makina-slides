@@ -1555,14 +1555,13 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 # En résumé : la vie d'une page Drupal
 
-  * Request : appel d'index.php / event `kernel.request`
-  * Routage et contrôle d'accès
-  * Appel du contrôleur / event `kernel.controller`
-  * event `kernel.view`
-  * Principal abonné : appel du "Renderer" (ici HtmlRenderer)
-  * => Le `render array` est généré
-  * Appel de Twig
-  * Response / event `kernel.response`
+![][8]
+
+--------------------------------------------------------------------------------
+
+# En résumé : la vie d'une page Drupal
+
+![][9]
 
 --------------------------------------------------------------------------------
 
@@ -1862,4 +1861,8 @@ Exporter le type de contenu et la Views réalisées précédemment dans une Feat
    [6]: img/serialization.png
 
    [7]: img/twig_templates.png
+
+   [8]: img/drupal_page_render_1.png
+
+   [9]: img/drupal_page_render_2.png
 
