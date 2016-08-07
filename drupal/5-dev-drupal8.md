@@ -53,6 +53,17 @@
 
 --------------------------------------------------------------------------------
 
+# Rapidement, ce que vous devez savoir
+
+  * POO
+  * Composer
+  * Symfony
+  * Routage et controlleurs
+  * Plugins
+  * Injection de dépendences et le conteneur de services
+
+--------------------------------------------------------------------------------
+
 # /!\ Avertissement /!\
 
 ## "Going off the island"
@@ -69,9 +80,11 @@
   * PHP 5.5.9 minimum (<http://www.phptherightway.com/>)
   * Programmation orientée Object
   (<http://lornajane.net/posts/2012/introduction-to-php-oop>)
+  * Documentation POO officielle (<http://php.net/manual/fr/language.oop5.php>)
   * Namespaces (<https://www.sitepoint.com/php-53-namespaces-basics/>)
   * Annotations
-  * Injection de dépendances
+  * Injection de dépendances :
+  <http://fabien.potencier.org/what-is-dependency-injection.html>
 
 .fx: alternate
 
@@ -451,7 +464,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
   * Plugins : <https://www.drupal.org/node/2087839>
   * Annotations très utilisé dans le cœur : pour tous le plugins (block, entre
-  autres)
+  autres) : <https://www.drupal.org/node/1882526>
   * <https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.1.x>
 
 --------------------------------------------------------------------------------
@@ -887,6 +900,28 @@ Faites la même chose en supprimant juste le lien de menu
 
 --------------------------------------------------------------------------------
 
+# Les évènements déclenchés par le cœur
+
+  * kernel.request : Au début de la gestion de la requête
+  * kernel.response : Une fois que la réponse est créée
+  * routing.route_dynamic : Permet aux modules d'enregistrer d'autres routes
+  * routing.route_alter : Permet de modifier les routes existantes
+
+--------------------------------------------------------------------------------
+
+# Kernel.request
+
+
+  * AuhtenticationSubscriber : Charge la session et initialize currentUser().
+  * LanguageRequestSubscriber : Détecte la langue courante
+  * PathSubscriber : Convertit l'URL en chemin système
+  * LegacyRequestSubscriber : Permet de définir un thème par défaut
+  * MaintenanceModeSubscriber : Affiche la page de maintenance si besoin
+  * RouteListener : Récupère le router chargé entièrement
+  * AccessSubscriber : Vérifie que le visiteur a accès à la route
+
+--------------------------------------------------------------------------------
+
 # La Form API
 
 <https://www.drupal.org/node/2117411>
@@ -942,6 +977,7 @@ les autres modules.
   * Validation par élément (`#element_validate`)
   * \#ajax (<https://api.drupal.org/api/drupal/core!core.api.php/group/ajax/8>)
   permet de faire de l'Ajax sans ecrire de JS
+  (<https://www.sitepoint.com/using-ajax-forms-drupal-8/>)
   * \#autocomplete_route_name
 
 --------------------------------------------------------------------------------
@@ -1093,6 +1129,8 @@ Celui-ci nous servira pour les images qui seront sur les articles premium
 
   * Ancienne méthode (D7) : on créé ses propres tables manuellement
   * Méthode Drupal 8 : on créé une _entité_ (2 types : configuration ou contenu)
+  * Liste des possibilités de stockage D8 :
+  <https://www.palantir.net/blog/d8ftw-storing-data-drupal-8>
 
 --------------------------------------------------------------------------------
 
@@ -1571,6 +1609,12 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 --------------------------------------------------------------------------------
 
+# On peut valider les entités
+
+https://www.drupal.org/node/2015613
+
+--------------------------------------------------------------------------------
+
 # Le cache
 
   * Les clés : comment identifier ce cache
@@ -1592,6 +1636,24 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
     );
 
 Directement dans le render array
+
+--------------------------------------------------------------------------------
+
+# Liste des contextes
+
+https://www.drupal.org/developing/api/8/cache/contexts
+
+  * cookies
+  * headers
+  * ip
+  * languages
+  * request_format
+  * route
+  * session
+  * theme
+  * timezone
+  * url (url.query_args, url.path, ...)
+  * user (user.roles, ...)
 
 --------------------------------------------------------------------------------
 
