@@ -76,10 +76,11 @@ Forget about the price tag"
 
 Only 16% of employees would recommend their company's products.
 
-.notes: ok, that's just in France, and we love to criticize everything: we love to criticize things we don't like, we love to criticize things we like, and we love to criticize things we do not even care about. But still:
-
 <strong>That's an epic disaster!!</strong>
 
+# Presenter Notes
+
+ok, that's just in France, and we love to criticize everything: we love to criticize things we don't like, we love to criticize things we like, and we love to criticize things we do not even care about. But still:
 
 .fx: extra-large
 
@@ -99,7 +100,8 @@ Otium = free time, but not just leisure: time for caring
 
 Negotium = the very opposite of otium
 
-.notes: negotium => negociate => business => to be busy => not available
+# Presenter Notes
+negotium => negociate => business => to be busy => not available
 
 .fx: extra-large
 
@@ -135,11 +137,13 @@ Why?
 
 "Was ist Aufklärung?", Kant
 
-.notes: What Is Enlightenment?
-
 Minor ("Unmündig" also means "dependent" or "unfree") = has no responsibility
 
 Major = autonomous, scholar among scholars (developers among developers)
+
+# Presenter Notes
+
+What Is Enlightenment?
 
 .fx: extra-large
 
@@ -151,7 +155,9 @@ The software industry tends to reduce their responsibility.
 
 Communities values their grown-ups status.
 
-.notes: they read my code, I read their.
+# Presenter Notes
+
+they read my code, I read their.
 
 .fx: extra-large
 
@@ -183,7 +189,9 @@ We feel proud of it.
 
 We want it to be prepared for the future.
 
-.notes: That's the same whatever is your programming level. Mention rapido creation (-3kg) and Plomino (wake me up at night).
+# Presenter Notes
+
+That's the same whatever is your programming level. Mention rapido creation (-3kg) and Plomino (wake me up at night).
 
 .fx: extra-large
 
@@ -213,9 +221,11 @@ Caring about the software implies we care about the community: we are sharing a 
 
 Becoming myself is a process, which is both **individual** and **collective**.
 
-.notes: "I" is just a phase of this process, like a React immutable state :)
-
 Belonging to a group makes me feel more as myself.
+
+# Presenter Notes
+
+"I" is just a phase of this process, like a React immutable state :)
 
 .fx: extra-large
 
@@ -227,7 +237,9 @@ The community emanates from the desire of its contributors.
 
 Community > sum(contributors)
 
-.notes: this common desire turns the basic existence of the group into an actual consistency of the community
+# Presenter Notes
+
+this common desire turns the basic existence of the group into an actual consistency of the community
 
 .fx: extra-large
 
@@ -258,9 +270,12 @@ At the same time, it is also the result of them.
 
 Just the software itself. Just code.
 
-.notes: a tertiary retention
 
 Plone-the-thing is not perfect.
+
+# Presenter Notes
+
+a tertiary retention
 
 .fx: extra-large
 

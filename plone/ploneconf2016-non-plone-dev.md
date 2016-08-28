@@ -17,7 +17,9 @@
 
 <img src="img/the-matrix-red-pill-blue-pill.jpg" />
 
-.notes: can you face the awful truth?
+# Presenter Notes
+
+can you face the awful truth?
 
 .fx: extra-large
 
@@ -27,7 +29,9 @@
 
 <img src="img/matrix_wake_up.jpg" />
 
-.notes: you get a very though awakening
+# Presenter Notes
+
+you get a very though awakening
 
 .fx: extra-large
 
@@ -37,7 +41,9 @@
 
 <img src="img/the_matrix_0057.jpg" />
 
-.notes: if you are strong enough, at some point you will see the matrix. This guy is a Plone developer: he moves fluidly in a middle of a shit storm, he looks quiet and confident because he knows exactly which moves he has to take to face any given danger second by second.
+# Presenter Notes
+
+if you are strong enough, at some point you will see the matrix. This guy is a Plone developer: he moves fluidly in a middle of a shit storm, he looks quiet and confident because he knows exactly which moves he has to take to face any given danger second by second.
 
 .fx: extra-large
 
@@ -55,7 +61,9 @@ Webmasters
 
 Frontend developers
 
-.notes: we should be able to walk free in the ideal city
+# Presenter Notes
+
+we should be able to walk free in the ideal city
 
 .fx: extra-large
 
@@ -84,6 +92,18 @@ Frontend developers
 # Should they learn Plone?
 
 They know enough!
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Tell them where to start
+
+"There is a lot of documentation, but I find it in times too technical and not very suitable for beginners.
+
+I would prefer more of the youtube tutorials or even documentation written in the style of rapidoplone.readthedocs.org .
+
+It tells where to start, what steps to follow exactly and clearly."
 
 .fx: extra-large
 
