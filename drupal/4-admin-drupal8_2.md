@@ -436,15 +436,15 @@ Pour le développement
 
 # Procédure de construction d'un site
 
-   * Configuration initiale (multilinguisme, workflow, metatag, ...)
-   * Formats d'images, directement à partir des maquettes
-   * Types de contenu
-   * Views
-   * Mise en page (blocs, panels ou display suite ou ...)
-   * Intégration graphique
-   * Développements spécifiques ou modules additionnels (flags, rules, ...)
+  * Configuration initiale (multilinguisme, workflow, metatag, ...)
+  * Formats d'images, directement à partir des maquettes
+  * Types de contenu
+  * Views
+  * Mise en page (blocs, panels ou display suite ou ...)
+  * Intégration graphique
+  * Développements spécifiques ou modules additionnels (flags, rules, ...)
 
-   * __Problème__ : aucune intégration graphique avant la fin => incompatible avec une livraison régulière...
+  * __Problème__ : aucune intégration graphique avant la fin => incompatible avec une livraison régulière...
 
 ![][25]
 
@@ -452,13 +452,68 @@ Pour le développement
 
 # Procédure de construction d'un site
 
-   * Configuration initiale => style guide, charte graphique par défaut
-   * Formats d'images
-   * Types de contenu => templates de contenu
-   * Views => templates de Views
-   * Mise en page => finition du template
-   * Développements spécifiques ou modules additionnels (flags, rules, ...)
-   * Intégration graphique des derniers modules
+  * Configuration initiale => style guide, charte graphique par défaut
+  * Formats d'images
+  * Types de contenu => templates de contenu
+  * Views => templates de Views
+  * Mise en page => finition du template
+  * Développements spécifiques ou modules additionnels (flags, rules, ...)
+  * Intégration graphique des derniers modules
+
+--------------------------------------------------------------------------------
+
+# Quelques exercies pour terminer : les contenus
+
+  * Créer un  article
+  * Le modifier en créant une révision
+  * Modifier son résumé pour la page d'accueil
+  * Créer une page à l'URL "/a-propos"
+  * Créer un article sans le publier
+  * Le publier en modifiant la date de publication à hier
+  * Retirer tous les articles déjà écrits de la page d'accueil
+  * Changer les paramètres d'article pour que les révisions se créent par défaut
+  * Poster quelques commentaires sur le site, les retirer, tout en ajoutant
+  la page de gestion des commentaires dans les raccourcis
+
+--------------------------------------------------------------------------------
+
+# Quelques exercies pour terminer : les utilisateurs
+
+  * Créer un compte utilisateur "communication"
+  * Modifier ce compte pour lui mettre comme mot de passe "toto"
+  * Créer un rôle "webmaster" et affecter l'utilisateur "communication"
+
+--------------------------------------------------------------------------------
+
+# Quelques exercies pour terminer : les blocs
+
+  * Mettre le bloc des derniers commentaires en haut de la barre de gauche
+  * Mettre le bloc indiquant les utilisateurs actuels sur le site sur la barre
+  de droite, uniquement pour les administrateurs
+  * Créer un bloc "Bienvenue sur le site" et ne l'affiche que sur la page
+  d'accueil (au-dessus du contenu)
+  * Supprimer le titre du bloc "Navigation"
+  * Déplacer le bloc de recherche dans la zone d'en-tête
+
+--------------------------------------------------------------------------------
+
+# Quelques exercies pour terminer : les menus
+
+  * Créer un lien vers le blog de ma société (http://makina-corpus.com/blog)
+  dans le menu principal
+  * Ajouter le lien vers la page "à propos" dans le menu du pied de page
+  * Créer un tag "important", tagger quelques contenus, et mettre un lien dans
+  le menu principal vers la page de taxonomy
+  * Mettre les liens "Créer une page", "Créer un article" visibles en permanence
+  (dépliés dans le menu)
+
+--------------------------------------------------------------------------------
+
+# Quelques exercices pour terminer : le bonus
+
+  * Modifier le format de text "Filtered HTML" pour que les H2, H3, H4 puissent être acceptés
+  * Changer le nom du site
+  * Changer le texte de la page 404
 
 --------------------------------------------------------------------------------
 
