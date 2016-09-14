@@ -401,7 +401,7 @@ performance, architecture)
 
 # La roadmap de Drupal
 
-  * <https://www.drupal.org/strategic-initiatives#active>
+  * <https://www.drupal.org/core/roadmap>
   * Aujourd'hui :
     * Workflow
     * Migration
