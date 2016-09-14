@@ -9,6 +9,10 @@
 
 <img src="img/The_Ideal_City.jpg" />
 
+# Presenter Notes
+
+At first look, Plone looks clean, organized. The ideal city!
+
 .fx: extra-large
 
 --------------------------------------------------------------------------------
@@ -19,7 +23,7 @@
 
 # Presenter Notes
 
-can you face the awful truth?
+Now, you want to develop something by your own. Can you face the awful truth?
 
 .fx: extra-large
 
@@ -31,7 +35,7 @@ can you face the awful truth?
 
 # Presenter Notes
 
-you get a very though awakening
+Well, you will get a very though awakening
 
 .fx: extra-large
 
@@ -43,7 +47,7 @@ you get a very though awakening
 
 # Presenter Notes
 
-if you are strong enough, at some point you will see the matrix. This guy is a Plone developer: he moves fluidly in a middle of a shit storm, he looks quiet and confident because he knows exactly which moves he has to take to face any given danger second by second.
+If you are strong enough, at some point you will see the matrix. This guy is a Plone developer: he moves fluidly in a middle of a shit storm, he looks quiet and confident because he knows exactly which moves he has to take to face any given danger second by second.
 
 .fx: extra-large
 
@@ -63,13 +67,27 @@ Frontend developers
 
 # Presenter Notes
 
-we should be able to walk free in the ideal city
+They should be able to walk free in the ideal city
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# They need a CMS
+# Why would they need a CMS?
+
+That's sooooo 2010.
+
+Let's use a REST API + a cool frontend framework!
+
+# Presenter Notes
+
+backend api / front pure js is good and trendy, why would I need a CMS as backend? in my last non-Plone project (tereval), it took 4 days to get a working breadcrumb
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Trust me, they need a CMS
 
 .fx: extra-large
 
@@ -85,6 +103,10 @@ we should be able to walk free in the ideal city
 
 # Plone should be their CMS
 
+# Presenter Notes
+
+I want Plone to be their CMS
+
 .fx: extra-large
 
 --------------------------------------------------------------------------------
@@ -92,6 +114,10 @@ we should be able to walk free in the ideal city
 # Should they learn Plone?
 
 They know enough!
+
+# Presenter Notes
+
+Why should we need more knowledge than HTML and webmastering to do something with Plone?
 
 .fx: extra-large
 
@@ -101,7 +127,7 @@ They know enough!
 
 "There is a lot of documentation, but I find it in times too technical and not very suitable for beginners.
 
-I would prefer more of the youtube tutorials or even documentation written in the style of rapidoplone.readthedocs.org .
+I would prefer more of the youtube tutorials or even documentation written in the style of Rapido.
 
 It tells where to start, what steps to follow exactly and clearly."
 
@@ -126,7 +152,7 @@ Description: Being able to develop custom features on top of Plone without knowi
 • use case toulouse labo, mysmartcab: site plone developpé par une dev non-plone en entier
 • setup de dev: racine normale, et un dossier /front avec gulp watch qui build dans /theme/map, et un proxy sur 3000 qui fait l'auto reload
 • beginner about Plone: "there is a lot of documentation, but I find it in times too technical and not very suitable for beginners. I would prefer more of the youtube tutorials or even documentation written in the style of rapidoplone.readthedocs.org . It tells where to start, what steps to follow exactly and clearly"
-• backend api / front pure js is good and trendy, but why would I need a CMS as backend? in my last non-Plone project (tereval), it took 4 days to get a working breadcrumb
+• backend api / front pure js is good and trendy, why would I need a CMS as backend? in my last non-Plone project (tereval), it took 4 days to get a working breadcrumb
 • parler de webpack avec https://community.plone.org/t/plone-5-frontend-development-plugin-for-webpack
 • toujours besoin d'un package python pour les .po
 --------------------------------------------------------------------------------
