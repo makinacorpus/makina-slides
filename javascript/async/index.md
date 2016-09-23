@@ -1,4 +1,12 @@
-# L'asynchrone en JavaScript
+# Asynchrone
+
+.fx: extra-large
+
+---
+
+# σύγ
+
+.fx: extra-large
 
 ---
 
@@ -8,31 +16,51 @@
 
 Exemples : synthèse, synopsis, synchrétisme
 
+.fx: extra-large
+
+---
+
 # χρονος
 
-chronos : le temps
+.fx: extra-large
+
+---
+
+# χρονος
+
+*chronos* : le temps
 
 Exemples : chronologie, chronomètre
+
+.fx: extra-large
+
+---
 
 # A-syn-chrone
 
 Qui ne se fait pas en même temps.
 
 * une partie du code s'exécute *maintenant*
-* une partie s'exécute plus tard
+* une partie s'exécute *plus tard*
+
+![](img/doc.jpeg)
+
+.fx: extra-large
 
 ---
 
 # Exemple : timer
 
     !js
-    print("D'abord");
+    log("Maintenant");
 
     setTimeout(function() {
-        print("Finalement");
-    }, 10);
+        log("Plus tard");
+    }, 2000);
 
-    print("Ensuite");
+    log("Maintenant aussi");
+
+<button class="run"></button>
 
 ---
 
@@ -40,17 +68,38 @@ Qui ne se fait pas en même temps.
 
     !js
     var xhr = new XMLHttpRequest();
-    xhr.responseType = "document";
+    log("Maintenant");
     xhr.addEventListener("load", function() {
-       var doc = this.responseXML;
-       console.log(doc.querySelector("title").textContent);
+       log("Plus tard : " + this.responseText);
     });
-    xhr.open("GET", "/exemple.txt", true);
+    xhr.open("GET", "http://localhost:8080/data/greeting.txt", true);
     xhr.send(null);
+    log("Maintenant aussi");
+
+<button class="run"></button>
+
+---
+
+# Exemple : lecture d'un fichier
+
+    !js
+    var fs = require('fs'), http = require('http');
+
+    http.createServer(function (req, res) {
+        fs.readFile(__dirname + req.url, function (err, data) {
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.writeHead(200);
+          setTimeout(function() {
+            res.end(data);
+          }, 2000);  // Délai artificiel pour la démo
+        });
+    }).listen(8080);
 
 ---
 
 # Les événements
+
+Exemples :
 
 - Un descripteur de fichier est prêt pour la lecture ou l''ecriture
 - Un timer arrive à échéance
@@ -73,33 +122,58 @@ Qui ne se fait pas en même temps.
 
 ---
 
-## Implémentations en C
+# La boucle d'évéments
 
-- [libuv](http://nikhilm.github.io/uvbook/basics.html) (Node.js) : 
-- [libevent](http://www.wangafu.net/~nickm/libevent-book/Ref3_eventloop.html) (Chromium) : 
-
----
-
-# La boucle d'évéments : caractéristiques
+## Caractéristiques
 
 - un seul fil d'exécution
 - inspection non bloquantes des descripteurs de fichiers (select, epoll, kqueue, etc.)
 - gestion des timers (notion de temps)
 - gestion des événement utilisateurs
-- fonctions exécutés de manière atomique
+- unité atomique d'exécution : **la fonction**
+
+## Implémentations en C
+
+- [libevent](http://www.wangafu.net/~nickm/libevent-book/Ref3_eventloop.html) (Chromium, Tmux, Transmission) 
+- [libuv](http://nikhilm.github.io/uvbook/basics.html) (Node.js) 
+
 
 ---
 
 # Exemple : timer sans délai
 
     !js
-    print("D'abord");
+    log("D'abord");
 
     setTimeout(function() {
-        print("Finalement");
+        log("Finalement");
     }, 0);
 
-    print("Ensuite");
+    log("Ensuite");
+
+
+<button class="run"></button>
+
+---
+
+# Fonction pour requêtes HTTP
+
+    !js
+    function request(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.addEventListener("load", function() {
+        callback(xhr.responseText);
+      });
+      xhr.open("GET", url, true);
+      xhr.send(null);
+    }
+
+    log("Envoi de la requête");
+    request("http://localhost:8080/data/greeting.txt", function(data) {
+      log("Réponse reçue : " + data);
+    }); 
+
+<button class="run"></button>
 
 ---
 
