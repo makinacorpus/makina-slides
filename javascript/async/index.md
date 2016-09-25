@@ -256,11 +256,6 @@ Algorithme très simplifié :
 
 # Des promesses
 
-- chainer des tâches asynchrones
-- attendre la fin de plusieurs tâches asynchrone
-- traiter de manière polymorphique des tâches asynchrones et des taches synchrones : exemple du cache
-- exemples d'API standard utilisant les promises : Fetch, Web Audio API, Service Workers, etc.
-
 ---
 
 # Création d'une promesse
@@ -328,12 +323,66 @@ Algorithme très simplifié :
       requestPromise("/data/data1.json"),
       requestPromise("/data/data2.json"),
       requestPromise("/data/data3.json")
-    ]).then(function(values) {
-        var result = values.reduce(
-            (acc, string) => acc + JSON.parse(string).value,
-            0
+    ]).then(function(responses) {
+        var values = responses.map(
+          (text) => JSON.parse(text).value
         );
-        log("Résultat : " + result);
+        log("Résultat : " + sum(values));
+    });
+
+<button class="run"></button>
+
+---
+
+# Polymorphisme synchrone/asynchrone
+
+    !js
+    var cache = new Map(), url = "data/data1.json";
+    function getWithCache(url) {
+      if (cache.has(url)) {
+        return Promise.resolve(cache.get(url));  // Promesse déjà résolue
+      } else {
+        var promise = requestPromise(url)
+        promise.then(function(value) {       // 1er then
+          cache.set(url, value);
+        });
+        return promise;
+      }
+    }
+    getWithCache(url).then(function(value) { // 2ème then
+        log(value);
+        getWithCache(url).then(log);
+    });
+
+<button class="run"></button>
+
+---
+
+# Cas d'utilisation réel : l'API Fetch
+
+    !js
+    fetch("/data/data1.json")
+    .then((response) => response.json())
+    .then((data) => log(data.value));
+
+<button class="run"></button>
+
+---
+
+# Parallélisme avec fetch
+
+    !js
+    Promise.all([
+      fetch("/data/data1.json"),
+      fetch("/data/data2.json"),
+      fetch("/data/data3.json")
+    ]).then(function(responses) {
+        Promise.all(
+          responses.map(response => response.json())
+        ).then(function(data) {
+          var values = data.map((obj) => obj.value);
+          log("Résultat : " + sum(values));
+        });
     });
 
 <button class="run"></button>

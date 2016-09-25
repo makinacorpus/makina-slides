@@ -4,6 +4,10 @@ $(function() {
 
   "use strict";
 
+  function sum(arr) {
+    return arr.reduce((acc, cur) => acc + cur, 0);
+  };
+
   function request(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener("load", function() {
@@ -34,7 +38,7 @@ $(function() {
     var code = $button.parent().prev('.highlight').find('pre').text();
     $button.click(function() {
       $resultContainer.empty();
-      (new Function('log', 'request', 'requestPromise', code))(log, request, requestPromise);
+      (new Function('log', 'request', 'requestPromise', 'sum', code))(log, request, requestPromise, sum);
     });
   });
 
