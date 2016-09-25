@@ -126,8 +126,8 @@ Algorithme très simplifié :
 
 ## Implémentations notables
 
-- [libevent](http://www.wangafu.net/~nickm/libevent-book/Ref3_eventloop.html) (Chromium, Tmux, Transmission) 
-- [libuv](http://nikhilm.github.io/uvbook/basics.html) (Node.js) 
+- [libevent](http://www.wangafu.net/~nickm/libevent-book/Ref3_eventloop.html) (Chromium, Tmux, Transmission)
+- [libuv](http://nikhilm.github.io/uvbook/basics.html) (Node.js)
 
 ![](img/logo-libuv.png)
 
@@ -193,7 +193,7 @@ Algorithme très simplifié :
     log("Envoi de la requête");
     request("/data/greeting.txt", function(data) {
       log("Réponse reçue : " + data);
-    }); 
+    });
 
 <button class="run"></button>
 
@@ -277,4 +277,62 @@ Montrer l'utilisation des Promises avec jQuery et les problèmes
 
 ---
 
-# Les observables
+# La programmation réactive (PR)
+
+---
+
+# PR - Introduction
+<div style="text-align: center; font-size: 1.2em;">Développer via des flux de données asynchrone.</div>
+
+* L'évènementiel à son paroxisme
+
+* Tout devient un flux **observable** auquel on peut s'inscrire :
+<br/>variables, propriétés, structures de données, ...
+
+* Des outils de manipulation de flux déjà connus :
+<br/>**merge**, **filter**, **map**
+
+---
+
+# PR - Les flux :
+<div style="text-align: center; font-size: 1.2em;">Un flux est une séquence continue d'évènements.</div>
+
+* Chaque évènement peut contenir :
+<br/>une valeur, une erreur, ou un signal de fin de flux
+
+* On s'**inscrit** alors au flux afin de **réagir** lors d'un évènement.
+
+![](img/stream.png)
+
+Les fonctions définis sont les **observers** alors que le flux lui est l'**observable**
+
+---
+
+# PR - Exemple
+
+**Contexte**
+
+* Un **service** chargé de contacter l'API Twitter toutes les 10 secondes
+* Un **composants** qui affiche le flux Twitter récupéré
+
+**Déroulement**
+
+* Le **service** met à disposition un **Observable** (flux)
+* Le composant s'**inscrit** à cet **Obeservable**
+* Le **service** appel l'API ... puis reçoit les données
+* L'**Observable** émet un évènnement contenant le nouveau flux
+* Le **composant** voit passer cet **évènnement** et, en conséquence, affiche le nouveau flux.
+
+---
+
+# PR - Principale bibliothèques
+* [RxJS](https://github.com/Reactive-Extensions/RxJS) (implémentation Javascript de Rx, par **Microsoft**)
+* [Bacon.js](https://github.com/baconjs/bacon.js) (librairie **plus intuitive**, mais un peu **moins complète**)
+
+---
+
+# PR - Ressources
+* [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
+* [Observer Design Pattern](https://en.wikipedia.org/wiki/Observer_pattern)
+* [RxVision](http://jaredforsyth.com/rxvision/examples/playground/)
+* [RxMarbles](http://rxmarbles.com/)
