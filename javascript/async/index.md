@@ -263,6 +263,83 @@ Algorithme très simplifié :
 
 ---
 
+# Création d'une promesse
+
+    !js
+    function requestPromise(url) {
+      return new Promise(function(resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("load", function() {
+          resolve(xhr.responseText);
+        });
+        xhr.open("GET", url, true);
+        xhr.send(null);
+      });
+    }
+
+---
+
+# Utilisation d'une promesse
+
+    !js
+    var value1, value2, value3;
+    requestPromise("/data/data1.json").then(function(data) {
+      log(data); value1 = JSON.parse(data).value;
+      return requestPromise("/data/data2.json");
+    }).then(function(data) {
+      log(data); value2 = JSON.parse(data).value;
+      return requestPromise("/data/data3.json");
+    }).then(function(data) {
+      log(data); value3 = JSON.parse(data).value;
+      log("Résultat : " + (value1 + value2 + value3));
+    });
+
+
+<button class="run"></button>
+
+---
+
+# Gestion des erreurs
+
+    !js
+    var value1, value2, value3;
+    requestPromise("/data/data1.json").then(function(data) {
+      log(data); value1 = JSON.parse(data).value;
+      return requestPromise("/data/invalid.json");
+    }).then(function(data) {
+      log(data); value2 = JSON.parse(data).value;
+      return requestPromise("/data/data3.json");
+    }).then(function(data) {
+      log(data); value3 = JSON.parse(data).value;
+      log("Résultat : " + (value1 + value2 + value3));
+    }).catch(function(err) {
+      log(err);
+    });
+
+
+<button class="run"></button>
+
+---
+
+# Parallélisme
+
+    !js
+    Promise.all([
+      requestPromise("/data/data1.json"),
+      requestPromise("/data/data2.json"),
+      requestPromise("/data/data3.json")
+    ]).then(function(values) {
+        var result = values.reduce(
+            (acc, string) => acc + JSON.parse(string).value,
+            0
+        );
+        log("Résultat : " + result);
+    });
+
+<button class="run"></button>
+
+---
+
 # jQuery
 
 Montrer l'utilisation des Promises avec jQuery et les problèmes
