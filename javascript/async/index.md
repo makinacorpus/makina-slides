@@ -264,8 +264,9 @@ C'est une opération
 
 * **unique**
 * **asynchrone**
-* **pas encore complétée**
+* **pas forcément complétée**
 * **attendue dans le futur**
+* trois états : en attente, satisfaite ou rejetée
 
 ---
 
@@ -594,6 +595,15 @@ Les fonctions définis sont les **observers** alors que le flux lui est l'**obse
 ---
 
 # Ressources
+
+## Event loop
+
+[MDN: Concurrency model and Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+
+## Asynchronous Programming
+
+[You Don't Know JS: Async & Performance](https://github.com/getify/You-Dont-Know-JS/tree/master/async%20%26%20performance)
+
 ## Reactive Programming
 * [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
 * [Observer Design Pattern](https://en.wikipedia.org/wiki/Observer_pattern)
