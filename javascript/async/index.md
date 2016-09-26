@@ -436,18 +436,23 @@ Les fonctions définis sont les **observers** alors que le flux lui est l'**obse
 
 # PR - Exemple
 
-**Contexte**
+    !js
+    var service = Rx.Observable.create(observer => {
+      var counter = 0;
+      setInterval(function () {
+        observer.onNext(counter++);
+        if (counter === 2) observer.onCompleted(42);
+      }, 1000);
+      return;
+    });
 
-* Un **service** chargé de contacter l'API Twitter toutes les 10 secondes
-* Un **composants** qui affiche le flux Twitter récupéré
+    var component = service.subscribe(
+      function (x) {log('onNext: ' + x)},
+      function (e) {log('onError: ' + e)},
+      function () {log('onCompleted')}
+    );
 
-**Déroulement**
-
-* Le **service** met à disposition un **Observable** (flux)
-* Le composant s'**inscrit** à cet **Obeservable**
-* Le **service** appel l'API ... puis reçoit les données
-* L'**Observable** émet un évènnement contenant le nouveau flux
-* Le **composant** voit passer cet **évènnement** et, en conséquence, affiche le nouveau flux.
+<button class="run"></button>
 
 ---
 
