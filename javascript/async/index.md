@@ -258,6 +258,17 @@ Algorithme très simplifié :
 
 ---
 
+# Qu'est-ce qu'une promesse ?
+
+C'est une opération
+
+* **unique**
+* **asynchrone**
+* **pas encore complétée**
+* **attendue dans le futur**
+
+---
+
 # Création d'une promesse
 
     !js
