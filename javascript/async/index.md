@@ -400,16 +400,6 @@ C'est une opération
 
 ---
 
-# jQuery
-
-Montrer l'utilisation des Promises avec jQuery et les problèmes
-
----
-
-# Les générateurs
-
----
-
 # Les générateurs
 
     !js
@@ -498,14 +488,18 @@ Fonction run issue de [You don't know JS: Async & Performance](https://github.co
 
     !js
     run(function *main() {
-      var response = yield requestPromise("/data/greeting.txt");
-      log(response);
-      var values = yield Promise.all([
-        requestPromise("/data/data1.json"),
-        requestPromise("/data/data2.json"),
-        requestPromise("/data/data3.json")
+      var response = yield fetch("/data/greeting.txt");
+      var text = yield response.text();
+      log(text);
+      var responses = yield Promise.all([
+        fetch("/data/data1.json"),
+        fetch("/data/data2.json"),
+        fetch("/data/data3.json")
       ]);
-      var numbers = values.map((value) => JSON.parse(value).value);
+      var data = yield Promise.all(
+        responses.map((response) => response.json())
+      );
+      var numbers = data.map((item) => item.value);
       log(sum(numbers));
     });
 
@@ -515,6 +509,28 @@ Fonction run issue de [You don't know JS: Async & Performance](https://github.co
 ---
 
 # async / await
+
+    !js
+    async function main() {
+      var response = await fetch("/data/greeting.txt");
+      var text = await response.text();
+      log(text);
+      var responses = await Promise.all([
+        fetch("/data/data1.json"),
+        fetch("/data/data2.json"),
+        fetch("/data/data3.json")
+      ]);
+      var data = await Promise.all(
+        responses.map((response) => response.json())
+      );
+      var numbers = data.map((item) => item.value);
+      log(sum(numbers));
+    }
+
+    main();
+
+- exécution du générateur directement par le moteur JavaScript
+- sématique propre à l'asynchrone
 
 ---
 
