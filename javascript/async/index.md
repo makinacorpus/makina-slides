@@ -406,7 +406,111 @@ Montrer l'utilisation des Promises avec jQuery et les problèmes
 
 ---
 
-# Les générateurs et les coroutines
+# Les générateurs
+
+---
+
+# Les générateurs
+
+    !js
+    function *mygen() {
+      yield "Bonjour";
+      var name = yield "Comment t'appelles-tu ?";
+      yield "Enchanté " + name + " !";
+    }
+
+    var it = mygen();
+    var yieldedValue = it.next(); // {"value":"Bonjour","done":false}
+    log(JSON.stringify(yieldedValue));
+
+<button class="run"></button>
+
+---
+
+# Les générateurs
+
+    !js
+    function *mygen() {
+      yield "Bonjour";
+      var name = yield "Comment t'appelles-tu ?";
+      yield "Enchanté " + name + " !";
+    }
+
+    var it = mygen();
+    log(it.next().value);
+    log(it.next().value);
+    log(it.next("Toto").value);   // Passage de valeur au générateur
+    log(JSON.stringify(it.next()));
+
+<button class="run"></button>
+
+---
+
+# yield
+
+Deux significations :
+
+- produire (récoltes, résultat d'investissement)
+- céder (un bien, sa place)
+
+---
+
+# Générateur et callback
+
+    !js
+    function *main() {
+      var response = yield requestWrapper("/data/greeting.txt");
+      log(response);
+    }
+
+    function requestWrapper(url) {
+      return request(url, function(data) {
+        it.next(data);
+      });
+    }
+
+    var it = main();
+    it.next();
+
+<button class="run"></button>
+
+---
+
+# Générateur et promise
+
+    !js
+    function *main() {
+      var response = yield requestPromise("/data/greeting.txt");
+      log(response);
+    }
+
+    var it = main();
+    var promise = it.next().value;
+    promise.then(log);
+
+<button class="run"></button>
+
+---
+
+# Exécuteur de générateur
+
+Fonction run issue de [You don't know JS: Async & Performance](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch4.md#promise-aware-generator-runner)
+
+    !js
+    run(function *main() {
+      var response = yield requestPromise("/data/greeting.txt");
+      log(response);
+      var values = yield Promise.all([
+        requestPromise("/data/data1.json"),
+        requestPromise("/data/data2.json"),
+        requestPromise("/data/data3.json")
+      ]);
+      var numbers = values.map((value) => JSON.parse(value).value);
+      log(sum(numbers));
+    });
+
+<button class="run"></button>
+
 
 ---
 
