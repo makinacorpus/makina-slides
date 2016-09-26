@@ -457,7 +457,8 @@ Les fonctions définis sont les **observers** alors que le flux lui est l'**obse
 
 ---
 
-# PR - Ressources
+# Ressources
+## Reactive Programming
 * [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
 * [Observer Design Pattern](https://en.wikipedia.org/wiki/Observer_pattern)
 * [RxVision](http://jaredforsyth.com/rxvision/examples/playground/)
