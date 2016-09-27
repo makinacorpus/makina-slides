@@ -555,7 +555,7 @@ Fonction run issue de [You don't know JS: Async & Performance](https://github.co
 # PR - Les flux :
 <div style="text-align: center; font-size: 1.2em;">Un flux est une séquence continue d'évènements.</div>
 
-* Chaque évènement peut contenir :
+* Chaque évènement peut transmettre :
 <br/>une valeur, une erreur, ou un signal de fin de flux
 
 * On s'**inscrit** alors au flux afin de **réagir** lors d'un évènement.
@@ -591,6 +591,7 @@ Les fonctions définis sont les **observers** alors que le flux lui est l'**obse
     var ob2 = requestObservable("/data/data2.json");
     var ob3 = requestObservable("/data/data3.json");
     var merged = Rx.Observable.merge(ob1, ob2, ob3);
+
     merged.subscribe(
       v => {
         var value = JSON.parse(v).value;
