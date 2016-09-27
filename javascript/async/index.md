@@ -472,12 +472,14 @@ Deux significations :
     !js
     function *main() {
       var response = yield requestPromise("/data/greeting.txt");
-      log(response);
+      log("Réponse : " + response);
     }
 
     var it = main();
     var promise = it.next().value;
-    promise.then(log);
+    promise.then(function(response) {
+      it.next(response);
+    });
 
 <button class="run"></button>
 
@@ -530,8 +532,8 @@ Fonction run issue de [You don't know JS: Async & Performance](https://github.co
 
     main();
 
-- exécution du générateur directement par le moteur JavaScript
-- sématique propre à l'asynchrone
+- support natif de l'exécution du générateur asynchrone
+- sémantique propre à l'asynchrone
 
 ---
 
