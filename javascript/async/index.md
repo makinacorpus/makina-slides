@@ -570,9 +570,9 @@ Les fonctions définis sont les **observers** alors que le flux lui est l'**obse
 
     !js
     function requestObservable(url) {
-      return Rx.Observable.create(function(observer) {
+      return Rx.Observable.create((observer) => {
         var xhr = new XMLHttpRequest();
-        xhr.addEventListener("load", function() {
+        xhr.addEventListener("load", () => {
           observer.onNext(xhr.responseText);
           observer.onCompleted();
         });
