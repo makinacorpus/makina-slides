@@ -266,7 +266,7 @@ C'est une opération
 * **asynchrone**
 * **pas forcément complétée**
 * **attendue dans le futur**
-* trois états : en attente, satisfaite ou rejetée
+* 3 états : **en attente**, **satisfaite** ou **rejetée**
 
 ---
 
@@ -566,14 +566,53 @@ Les fonctions définis sont les **observers** alors que le flux lui est l'**obse
 
 ---
 
-# PR - Exemple
+# Création d'un Observable
+
+    !js
+    function requestObservable(url) {
+      return Rx.Observable.create(function(observer) {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("load", function() {
+          observer.onNext(xhr.responseText);
+          observer.onCompleted();
+        });
+        xhr.open("GET", url, true);
+        xhr.send(null);
+      });
+    }
+
+---
+
+# Utilisation d'Observables
+
+    !js
+    var res = 0;
+    var ob1 = requestObservable("/data/data1.json");
+    var ob2 = requestObservable("/data/data2.json");
+    var ob3 = requestObservable("/data/data3.json");
+    var merged = Rx.Observable.merge(ob1, ob2, ob3);
+    merged.subscribe(
+      v => {
+        var value = JSON.parse(v).value;
+        log(value);
+        res += value
+      },
+      e => log("Error: " + e),
+      () => log("Résultats : " + res)
+    );
+
+<button class="run"></button>
+
+---
+
+# PR - Flux à émissions multiples
 
     !js
     var service = Rx.Observable.create(observer => {
       var counter = 0;
-      setInterval(function () {
+      setInterval(() => {
         observer.onNext(counter++);
-        if (counter === 2) observer.onCompleted(42);
+        if (counter === 3) observer.onCompleted(42);
       }, 1000);
       return;
     });

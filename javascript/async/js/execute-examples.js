@@ -28,6 +28,18 @@ $(function() {
     });
   }
 
+  function requestObservable(url) {
+      return Rx.Observable.create(function(observer) {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("load", function() {
+          observer.onNext(xhr.responseText);
+          observer.onCompleted();
+        });
+        xhr.open("GET", url, true);
+        xhr.send(null);
+      });
+    }
+
   // Generator runner borrowed from
   // https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch4.md#promise-aware-generator-runner
   // thanks to Benjamin Gruenbaum (@benjamingr on GitHub) for
@@ -84,7 +96,7 @@ $(function() {
     var code = $button.parent().prev('.highlight').find('pre').text();
     $button.click(function() {
       $resultContainer.empty();
-      (new Function('log', 'request', 'requestPromise', 'sum', 'run', code))(log, request, requestPromise, sum, run);
+      (new Function('log', 'request', 'requestPromise', 'requestObservable', 'sum', 'run', code))(log, request, requestPromise, requestObservable, sum, run);
     });
   });
 
