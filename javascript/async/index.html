@@ -1726,6 +1726,18 @@ $(function() {
     });
   }
 
+  function requestObservable(url) {
+      return Rx.Observable.create(function(observer) {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("load", function() {
+          observer.onNext(xhr.responseText);
+          observer.onCompleted();
+        });
+        xhr.open("GET", url, true);
+        xhr.send(null);
+      });
+    }
+
   // Generator runner borrowed from
   // https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch4.md#promise-aware-generator-runner
   // thanks to Benjamin Gruenbaum (@benjamingr on GitHub) for
@@ -1782,7 +1794,7 @@ $(function() {
     var code = $button.parent().prev('.highlight').find('pre').text();
     $button.click(function() {
       $resultContainer.empty();
-      (new Function('log', 'request', 'requestPromise', 'sum', 'run', code))(log, request, requestPromise, sum, run);
+      (new Function('log', 'request', 'requestPromise', 'requestObservable', 'sum', 'run', code))(log, request, requestPromise, requestObservable, sum, run);
     });
   });
 
@@ -1843,7 +1855,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              1/39
+              1/41
             </aside>
           </footer>
         </div>
@@ -1875,7 +1887,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              2/39
+              2/41
             </aside>
           </footer>
         </div>
@@ -1907,7 +1919,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              3/39
+              3/41
             </aside>
           </footer>
         </div>
@@ -1942,7 +1954,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              4/39
+              4/41
             </aside>
           </footer>
         </div>
@@ -1981,7 +1993,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              5/39
+              5/41
             </aside>
           </footer>
         </div>
@@ -2021,7 +2033,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              6/39
+              6/41
             </aside>
           </footer>
         </div>
@@ -2063,7 +2075,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              7/39
+              7/41
             </aside>
           </footer>
         </div>
@@ -2100,7 +2112,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              8/39
+              8/41
             </aside>
           </footer>
         </div>
@@ -2144,7 +2156,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              9/39
+              9/41
             </aside>
           </footer>
         </div>
@@ -2179,7 +2191,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              10/39
+              10/41
             </aside>
           </footer>
         </div>
@@ -2217,7 +2229,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              11/39
+              11/41
             </aside>
           </footer>
         </div>
@@ -2256,7 +2268,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              12/39
+              12/41
             </aside>
           </footer>
         </div>
@@ -2295,7 +2307,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              13/39
+              13/41
             </aside>
           </footer>
         </div>
@@ -2340,7 +2352,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              14/39
+              14/41
             </aside>
           </footer>
         </div>
@@ -2385,7 +2397,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              15/39
+              15/41
             </aside>
           </footer>
         </div>
@@ -2435,7 +2447,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              16/39
+              16/41
             </aside>
           </footer>
         </div>
@@ -2468,7 +2480,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              17/39
+              17/41
             </aside>
           </footer>
         </div>
@@ -2496,7 +2508,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              18/39
+              18/41
             </aside>
           </footer>
         </div>
@@ -2516,7 +2528,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
 <li><strong>asynchrone</strong></li>
 <li><strong>pas forcément complétée</strong></li>
 <li><strong>attendue dans le futur</strong></li>
-<li>trois états : en attente, satisfaite ou rejetée</li>
+<li>3 états : <strong>en attente</strong>, <strong>satisfaite</strong> ou <strong>rejetée</strong></li>
 </ul></section>
             
           </div>
@@ -2533,7 +2545,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              19/39
+              19/41
             </aside>
           </footer>
         </div>
@@ -2574,7 +2586,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              20/39
+              20/41
             </aside>
           </footer>
         </div>
@@ -2617,7 +2629,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              21/39
+              21/41
             </aside>
           </footer>
         </div>
@@ -2662,7 +2674,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              22/39
+              22/41
             </aside>
           </footer>
         </div>
@@ -2704,7 +2716,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              23/39
+              23/41
             </aside>
           </footer>
         </div>
@@ -2752,7 +2764,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              24/39
+              24/41
             </aside>
           </footer>
         </div>
@@ -2787,7 +2799,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              25/39
+              25/41
             </aside>
           </footer>
         </div>
@@ -2831,7 +2843,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              26/39
+              26/41
             </aside>
           </footer>
         </div>
@@ -2872,7 +2884,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              27/39
+              27/41
             </aside>
           </footer>
         </div>
@@ -2915,7 +2927,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              28/39
+              28/41
             </aside>
           </footer>
         </div>
@@ -2949,7 +2961,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              29/39
+              29/41
             </aside>
           </footer>
         </div>
@@ -2994,7 +3006,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              30/39
+              30/41
             </aside>
           </footer>
         </div>
@@ -3036,7 +3048,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              31/39
+              31/41
             </aside>
           </footer>
         </div>
@@ -3084,7 +3096,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              32/39
+              32/41
             </aside>
           </footer>
         </div>
@@ -3136,7 +3148,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              33/39
+              33/41
             </aside>
           </footer>
         </div>
@@ -3164,7 +3176,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              34/39
+              34/41
             </aside>
           </footer>
         </div>
@@ -3207,7 +3219,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              35/39
+              35/41
             </aside>
           </footer>
         </div>
@@ -3224,7 +3236,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <section><p><div style="text-align: center; font-size: 1.2em;">Un flux est une séquence continue d'évènements.</div></p>
 <ul>
 <li>
-<p>Chaque évènement peut contenir :
+<p>Chaque évènement peut transmettre :
 <br/>une valeur, une erreur, ou un signal de fin de flux</p>
 </li>
 <li>
@@ -3248,7 +3260,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              36/39
+              36/41
             </aside>
           </footer>
         </div>
@@ -3259,14 +3271,103 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>PR - Exemple</h1></header>
+            <header><h1>Création d'un Observable</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">requestObservable</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">create</span><span class="p">((</span><span class="nx">observer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+    <span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">observer</span><span class="p">.</span><span class="nx">onNext</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+      <span class="nx">observer</span><span class="p">.</span><span class="nx">onCompleted</span><span class="p">();</span>
+    <span class="p">});</span>
+    <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="index.md">index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              37/41
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Utilisation d'Observables</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">ob1</span> <span class="o">=</span> <span class="nx">requestObservable</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">ob2</span> <span class="o">=</span> <span class="nx">requestObservable</span><span class="p">(</span><span class="s2">&quot;/data/data2.json&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">ob3</span> <span class="o">=</span> <span class="nx">requestObservable</span><span class="p">(</span><span class="s2">&quot;/data/data3.json&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">merged</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">merge</span><span class="p">(</span><span class="nx">ob1</span><span class="p">,</span> <span class="nx">ob2</span><span class="p">,</span> <span class="nx">ob3</span><span class="p">);</span>
+
+<span class="nx">merged</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+  <span class="nx">v</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">v</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="nx">res</span> <span class="o">+=</span> <span class="nx">value</span>
+  <span class="p">},</span>
+  <span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Error: &quot;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">),</span>
+  <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Résultats : &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+
+<p><button class="run"></button></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="index.md">index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              38/41
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>PR - Flux à émissions multiples</h1></header>
             
             
             <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">service</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">observer</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">observer</span><span class="p">.</span><span class="nx">onNext</span><span class="p">(</span><span class="nx">counter</span><span class="o">++</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">===</span> <span class="mi">2</span><span class="p">)</span> <span class="nx">observer</span><span class="p">.</span><span class="nx">onCompleted</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">===</span> <span class="mi">3</span><span class="p">)</span> <span class="nx">observer</span><span class="p">.</span><span class="nx">onCompleted</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
   <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
   <span class="k">return</span><span class="p">;</span>
 <span class="p">});</span>
@@ -3294,7 +3395,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              37/39
+              39/41
             </aside>
           </footer>
         </div>
@@ -3327,7 +3428,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              38/39
+              40/41
             </aside>
           </footer>
         </div>
@@ -3367,7 +3468,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             </aside>
             
             <aside class="page_number">
-              39/39
+              41/41
             </aside>
           </footer>
         </div>
@@ -3599,20 +3700,32 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
       
       
       <tr id="toc-row-37">
-        <th><a href="#slide37">PR - Exemple</a></th>
+        <th><a href="#slide37">Création d'un Observable</a></th>
         <td><a href="#slide37">37</a></td>
       </tr>
       
       
       <tr id="toc-row-38">
-        <th><a href="#slide38">PR - Principale bibliothèques</a></th>
+        <th><a href="#slide38">Utilisation d'Observables</a></th>
         <td><a href="#slide38">38</a></td>
       </tr>
       
       
       <tr id="toc-row-39">
-        <th><a href="#slide39">Ressources</a></th>
+        <th><a href="#slide39">PR - Flux à émissions multiples</a></th>
         <td><a href="#slide39">39</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-40">
+        <th><a href="#slide40">PR - Principale bibliothèques</a></th>
+        <td><a href="#slide40">40</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-41">
+        <th><a href="#slide41">Ressources</a></th>
+        <td><a href="#slide41">41</a></td>
       </tr>
       
       
