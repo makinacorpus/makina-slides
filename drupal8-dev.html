@@ -3772,8 +3772,8 @@ premium</p>
 <span class="nv">$url</span> <span class="o">=</span> <span class="nx">Url</span><span class="o">::</span><span class="na">fromRoute</span><span class="p">(</span><span class="s1">&#39;contact.site_page&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">toString</span><span class="p">();</span>
 <span class="nv">$url</span> <span class="o">=</span> <span class="nx">Url</span><span class="o">::</span><span class="na">fromUserInput</span><span class="p">(</span><span class="s1">&#39;/contact&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">toString</span><span class="p">();</span>
 <span class="c1">// Ou générer un lien.</span>
-<span class="nv">$url</span> <span class="o">=</span> <span class="nx">Url</span><span class="o">::</span><span class="na">fromUri</span><span class="p">(</span><span class="s1">&#39;internal:/contact&#39;</span><span class="p">);</span> <span class="c1">// Pas de toString() !</span>
-<span class="nv">$link</span> <span class="o">=</span> <span class="nx">\Drupal</span><span class="o">::</span><span class="na">l</span><span class="p">(</span><span class="nx">t</span><span class="p">(</span><span class="s1">&#39;Contact&#39;</span><span class="p">),</span> <span class="nv">$url</span><span class="p">);</span>
+<span class="nv">$link</span> <span class="o">=</span> <span class="nx">Link</span><span class="o">::</span><span class="na">fromRoute</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;route&#39;</span><span class="p">);</span>
+<span class="nv">$link</span> <span class="o">=</span> <span class="nx">Link</span><span class="o">::</span><span class="na">fromTextAndUrl</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
 </pre></div>
 </section>
             
@@ -4100,11 +4100,11 @@ en interdisant l'accès à la route.</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Kernel.request</h1></header>
+            <header><h1>Que se passe-t-il sur Kernel.request ?</h1></header>
             
             
             <section><ul>
-<li>AuhtenticationSubscriber : Charge la session et initialize currentUser().</li>
+<li>AuthenticationSubscriber : Charge la session et initialize currentUser().</li>
 <li>LanguageRequestSubscriber : Détecte la langue courante</li>
 <li>PathSubscriber : Convertit l'URL en chemin système</li>
 <li>LegacyRequestSubscriber : Permet de définir un thème par défaut</li>
@@ -4427,7 +4427,7 @@ formulaires de création ou de modification de nœud.</p>
 <li>/config/schema/mon_module.schema.yml -&gt; schéma de la configuration de votre
   module</li>
 </ul>
-<h2>Exemple de fichier</h2>
+<h2>Exemple de fichier de schema</h2>
 <div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">mon_module.settings</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">config_object</span>
   <span class="l l-Scalar l-Scalar-Plain">mapping</span><span class="p p-Indicator">:</span>
@@ -4833,7 +4833,7 @@ Installer cette table via un <code>hook_update_N()</code> ou réinstaller le mod
 <p>Rappels </p>
 <ul>
 <li><code>hook_form_alter(&amp;$form, $form_state, $form_id)</code></li>
-<li><code>hook_node_update()</code> et <code>hook_node_insert()</code></li>
+<li>Ajouter un callback de submit...</li>
 <li>Debug : module Devel + <code>dpm($var)</code></li>
 </ul>
 </section>
@@ -5143,7 +5143,7 @@ suggestions de templates.</p></section>
             
             <section><ul>
 <li>Fonction template_preprocess_forums()</li>
-<li>fichier forums.html.twig</li>
+<li>fichier "templates/forums.html.twig"</li>
 </ul></section>
             
           </div>
@@ -5613,14 +5613,61 @@ suggestions de templates.</p></section>
       
       <!-- slide source: 5-dev-drupal8.md -->
       <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Création de theme avec un my_theme.info.yml</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">My Theme</span>
+<span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">theme</span>
+<span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="l l-Scalar l-Scalar-Plain">core</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">8.x</span>
+<span class="l l-Scalar l-Scalar-Plain">regions</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">branding</span><span class="p p-Indicator">:</span> <span class="s">&quot;Branding&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">header</span><span class="p p-Indicator">:</span> <span class="s">&quot;Header&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">breadcrumb</span><span class="p p-Indicator">:</span> <span class="s">&quot;Breadcrumb&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">content</span><span class="p p-Indicator">:</span> <span class="s">&quot;Content&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">footer</span><span class="p p-Indicator">:</span> <span class="s">&quot;Footer&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">regions_hidden</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sidebar_first</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sidebar_second</span>
+<span class="l l-Scalar l-Scalar-Plain">libraries</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">my_theme/global_styling</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="5-dev-drupal8.md">5-dev-drupal8.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              99/130
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 5-dev-drupal8.md -->
+      <div class="slide-wrapper">
         <div class="slide tp">
           <div class="inner">
             
             <header><h1>TP: Créer un template pour premium</h1></header>
             
             
-            <section><p>Convertir le render array utilisé dans <code>hook_node_view()</code> pour utiliser un
-<em>theme hook</em> qui se base sur un template.</p>
+            <section><p>Utiliser dans le hook_node_view() un render array #markup pour afficher</p>
+<p>Convertir le render array utilisé pour utiliser une fonction de theme (et donc
+un template), en implémentant un hook_theme().</p>
 <p>Passer en paramètre le nœud et transformer "Contenu premium" en "<em>Titre du nœud</em>
 est un contenu premium".</p>
 <p>Ajouter une image de médaille dans ce template.</p>
@@ -5644,7 +5691,7 @@ render() dans le template.</p>
             </aside>
             
             <aside class="page_number">
-              99/130
+              100/130
             </aside>
           </footer>
         </div>
@@ -5689,7 +5736,7 @@ render() dans le template.</p>
             </aside>
             
             <aside class="page_number">
-              100/130
+              101/130
             </aside>
           </footer>
         </div>
@@ -5726,7 +5773,7 @@ render() dans le template.</p>
             </aside>
             
             <aside class="page_number">
-              101/130
+              102/130
             </aside>
           </footer>
         </div>
@@ -5770,7 +5817,7 @@ render() dans le template.</p>
             </aside>
             
             <aside class="page_number">
-              102/130
+              103/130
             </aside>
           </footer>
         </div>
@@ -5790,52 +5837,6 @@ render() dans le template.</p>
 <li>Backbone</li>
 <li>Underscore</li>
 </ul></section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="5-dev-drupal8.md">5-dev-drupal8.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              103/130
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: 5-dev-drupal8.md -->
-      <div class="slide-wrapper">
-        <div class="slide has_code">
-          <div class="inner">
-            
-            <header><h1>Création de theme avec un my_theme.info.yml</h1></header>
-            
-            
-            <section><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">My Theme</span>
-<span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">theme</span>
-<span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-<span class="l l-Scalar l-Scalar-Plain">core</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">8.x</span>
-<span class="l l-Scalar l-Scalar-Plain">regions</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">branding</span><span class="p p-Indicator">:</span> <span class="s">&quot;Branding&quot;</span>
-  <span class="l l-Scalar l-Scalar-Plain">header</span><span class="p p-Indicator">:</span> <span class="s">&quot;Header&quot;</span>
-  <span class="l l-Scalar l-Scalar-Plain">breadcrumb</span><span class="p p-Indicator">:</span> <span class="s">&quot;Breadcrumb&quot;</span>
-  <span class="l l-Scalar l-Scalar-Plain">content</span><span class="p p-Indicator">:</span> <span class="s">&quot;Content&quot;</span>
-  <span class="l l-Scalar l-Scalar-Plain">footer</span><span class="p p-Indicator">:</span> <span class="s">&quot;Footer&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">regions_hidden</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sidebar_first</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sidebar_second</span>
-<span class="l l-Scalar l-Scalar-Plain">libraries</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">my_theme/global_styling</span>
-</pre></div>
-</section>
             
           </div>
           <div class="presenter_notes">
@@ -6034,7 +6035,7 @@ render() dans le template.</p>
             <header><h1>On peut valider les entités</h1></header>
             
             
-            <section><p>https://www.drupal.org/node/2015613</p></section>
+            <section><p><a href="https://www.drupal.org/node/2015613">https://www.drupal.org/node/2015613</a></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -6115,7 +6116,7 @@ render() dans le template.</p>
             <header><h1>Liste des contextes</h1></header>
             
             
-            <section><p>https://www.drupal.org/developing/api/8/cache/contexts</p>
+            <section><p><a href="https://www.drupal.org/developing/api/8/cache/contexts">https://www.drupal.org/developing/api/8/cache/contexts</a></p>
 <ul>
 <li>cookies</li>
 <li>headers</li>
@@ -6713,7 +6714,7 @@ render() dans le template.</p>
 <li>Actuellement, on ne peut le réimporter que sur une même "version" du site
   (un site dont l'installation s'est faite à partir d'une copie de la base de
   données du site)</li>
-<li>En cours de résolution</li>
+<li>En cours de résolution (<a href="https://www.drupal.org/node/1613424">https://www.drupal.org/node/1613424</a>)</li>
 </ul>
 <h2>Des solutions possibles fournies par la communauté</h2>
 <ul>
@@ -7233,7 +7234,7 @@ render() dans le template.</p>
       
       
       <tr id="toc-row-60">
-        <th><a href="#slide60">Kernel.request</a></th>
+        <th><a href="#slide60">Que se passe-t-il sur Kernel.request ?</a></th>
         <td><a href="#slide60">60</a></td>
       </tr>
       
@@ -7468,37 +7469,37 @@ render() dans le template.</p>
       
       
       <tr id="toc-row-99">
-        <th><a href="#slide99">TP: Créer un template pour premium</a></th>
+        <th><a href="#slide99">Création de theme avec un my_theme.info.yml</a></th>
         <td><a href="#slide99">99</a></td>
       </tr>
       
       
       <tr id="toc-row-100">
-        <th><a href="#slide100">Ajout de JS / CSS</a></th>
+        <th><a href="#slide100">TP: Créer un template pour premium</a></th>
         <td><a href="#slide100">100</a></td>
       </tr>
       
       
       <tr id="toc-row-101">
-        <th><a href="#slide101">TP: Faire flotter l'image à droite</a></th>
+        <th><a href="#slide101">Ajout de JS / CSS</a></th>
         <td><a href="#slide101">101</a></td>
       </tr>
       
       
       <tr id="toc-row-102">
-        <th><a href="#slide102">Le javascript</a></th>
+        <th><a href="#slide102">TP: Faire flotter l'image à droite</a></th>
         <td><a href="#slide102">102</a></td>
       </tr>
       
       
       <tr id="toc-row-103">
-        <th><a href="#slide103">Les librairies JS fournies avec le cœur</a></th>
+        <th><a href="#slide103">Le javascript</a></th>
         <td><a href="#slide103">103</a></td>
       </tr>
       
       
       <tr id="toc-row-104">
-        <th><a href="#slide104">Création de theme avec un my_theme.info.yml</a></th>
+        <th><a href="#slide104">Les librairies JS fournies avec le cœur</a></th>
         <td><a href="#slide104">104</a></td>
       </tr>
       
