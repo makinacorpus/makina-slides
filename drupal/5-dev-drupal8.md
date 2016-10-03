@@ -1521,6 +1521,7 @@ Ajouter des suggestions pour ce template.
   * Tout est sous forme de bibliothèque
   * \#attached[] -> au moment du rendering
   * drupal_add_library()
+  * [Adding stylesheets and JavaScript to a Drupal 8 module](https://www.drupal.org/node/2274843)
 
 --------------------------------------------------------------------------------
 
