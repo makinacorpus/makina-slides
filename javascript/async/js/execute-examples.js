@@ -4,15 +4,17 @@ $(function() {
 
   "use strict";
 
+  var mockedResponses = {
+    "/data/greeting.txt": "Bonjour tout le monde !",
+    "/data/data1.json": '{"value": 18}',
+    "/data/data2.json": '{"value": 13}',
+    "/data/data3.json": '{"value": 11}',
+    "/data/invalid.json": "Ceci n'est pas du JSON",
+    "error": "Data not mocked"
+  };
+
   function XHRMock() {
     var self = this;
-    this.responses = {
-      "/data/greeting.txt": "Bonjour tout le monde !",
-      "/data/data1.json": '{"value": 18}',
-      "/data/data2.json": '{"value": 13}',
-      "/data/data3.json": '{"value": 11}',
-      "/data/invalid.json": "Ceci n'est pas du JSON"
-    }
     this.listeners = [];
     this.responseText = null;
     this.addEventListener = function (eventName, callback) {
@@ -26,7 +28,7 @@ $(function() {
     this.open = function (method, url, async) {
       self.send = function () {
         setTimeout(function () {
-          self.responseText = self.responses[url];
+          self.responseText = mockedResponses[url] || mockedResponses.error;
           self.listeners.forEach(function(element) {
             if (typeof element === "function") {
               var  augmented = element;
@@ -37,6 +39,24 @@ $(function() {
         }, 2000);
       }
     }
+  }
+
+  function mockResponse(content) {
+    this.content = content;
+    this.json = function () {return JSON.parse(this.content)};
+    this.text = function () {return this.content};
+  }
+
+  function fetchMock(url) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        if (mockedResponses[url]) {
+          resolve(new mockResponse(mockedResponses[url]));
+        } else {
+          reject(new mockResponse(mockedResponses.error));
+        }
+      }, 2000)
+    });
   }
 
   function sum(arr) {
@@ -131,7 +151,7 @@ $(function() {
     var code = $button.parent().prev('.highlight').find('pre').text();
     $button.click(function() {
       $resultContainer.empty();
-      (new Function('log', 'request', 'requestPromise', 'requestObservable', 'sum', 'run', 'XMLHttpRequest', code))(log, request, requestPromise, requestObservable, sum, run, XHRMock);
+      (new Function('log', 'request', 'requestPromise', 'requestObservable', 'sum', 'run', 'XMLHttpRequest', 'fetch', code))(log, request, requestPromise, requestObservable, sum, run, XHRMock, fetchMock);
     });
   });
 
