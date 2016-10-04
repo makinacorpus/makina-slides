@@ -4,12 +4,67 @@ $(function() {
 
   "use strict";
 
+  var mockedResponses = {
+    "/data/greeting.txt": "Bonjour tout le monde !",
+    "/data/data1.json": '{"value": 18}',
+    "/data/data2.json": '{"value": 13}',
+    "/data/data3.json": '{"value": 11}',
+    "/data/invalid.json": "Ceci n'est pas du JSON",
+    "error": "Data not mocked"
+  };
+
+  function XHRMock() {
+    var self = this;
+    this.listeners = [];
+    this.responseText = null;
+    this.addEventListener = function (eventName, callback) {
+      if (eventName === "load") {
+        self.listeners.push(callback);
+      } else {
+        console.error("Event not supported by mock");
+      }
+    }
+    this.send = function () {return true;};
+    this.open = function (method, url, async) {
+      self.send = function () {
+        setTimeout(function () {
+          self.responseText = mockedResponses[url] || mockedResponses.error;
+          self.listeners.forEach(function(element) {
+            if (typeof element === "function") {
+              var  augmented = element;
+              element.responseText = self.responseText;
+              element();
+            }
+          }, this);
+        }, 2000);
+      }
+    }
+  }
+
+  function mockResponse(content) {
+    this.content = content;
+    this.json = function () {return JSON.parse(this.content)};
+    this.text = function () {return this.content};
+  }
+
+  function fetchMock(url) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        if (mockedResponses[url]) {
+          resolve(new mockResponse(mockedResponses[url]));
+        } else {
+          reject(new mockResponse(mockedResponses.error));
+        }
+      }, 2000)
+    });
+  }
+
   function sum(arr) {
     return arr.reduce((acc, cur) => acc + cur, 0);
   };
 
   function request(url, callback) {
-    var xhr = new XMLHttpRequest();
+    var xhr = new XHRMock();
     xhr.addEventListener("load", function() {
       callback(xhr.responseText);
     });
@@ -19,7 +74,7 @@ $(function() {
 
   function requestPromise(url) {
     return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest();
+      var xhr = new XHRMock();
       xhr.addEventListener("load", function() {
         resolve(xhr.responseText);
       });
@@ -30,7 +85,7 @@ $(function() {
 
   function requestObservable(url) {
       return Rx.Observable.create(function(observer) {
-        var xhr = new XMLHttpRequest();
+        var xhr = new XHRMock();
         xhr.addEventListener("load", function() {
           observer.onNext(xhr.responseText);
           observer.onCompleted();
@@ -96,7 +151,7 @@ $(function() {
     var code = $button.parent().prev('.highlight').find('pre').text();
     $button.click(function() {
       $resultContainer.empty();
-      (new Function('log', 'request', 'requestPromise', 'requestObservable', 'sum', 'run', code))(log, request, requestPromise, requestObservable, sum, run);
+      (new Function('log', 'request', 'requestPromise', 'requestObservable', 'sum', 'run', 'XMLHttpRequest', 'fetch', code))(log, request, requestPromise, requestObservable, sum, run, XHRMock, fetchMock);
     });
   });
 

@@ -1702,12 +1702,67 @@ $(function() {
 
   "use strict";
 
+  var mockedResponses = {
+    "/data/greeting.txt": "Bonjour tout le monde !",
+    "/data/data1.json": '{"value": 18}',
+    "/data/data2.json": '{"value": 13}',
+    "/data/data3.json": '{"value": 11}',
+    "/data/invalid.json": "Ceci n'est pas du JSON",
+    "error": "Data not mocked"
+  };
+
+  function XHRMock() {
+    var self = this;
+    this.listeners = [];
+    this.responseText = null;
+    this.addEventListener = function (eventName, callback) {
+      if (eventName === "load") {
+        self.listeners.push(callback);
+      } else {
+        console.error("Event not supported by mock");
+      }
+    }
+    this.send = function () {return true;};
+    this.open = function (method, url, async) {
+      self.send = function () {
+        setTimeout(function () {
+          self.responseText = mockedResponses[url] || mockedResponses.error;
+          self.listeners.forEach(function(element) {
+            if (typeof element === "function") {
+              var  augmented = element;
+              element.responseText = self.responseText;
+              element();
+            }
+          }, this);
+        }, 2000);
+      }
+    }
+  }
+
+  function mockResponse(content) {
+    this.content = content;
+    this.json = function () {return JSON.parse(this.content)};
+    this.text = function () {return this.content};
+  }
+
+  function fetchMock(url) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        if (mockedResponses[url]) {
+          resolve(new mockResponse(mockedResponses[url]));
+        } else {
+          reject(new mockResponse(mockedResponses.error));
+        }
+      }, 2000)
+    });
+  }
+
   function sum(arr) {
     return arr.reduce((acc, cur) => acc + cur, 0);
   };
 
   function request(url, callback) {
-    var xhr = new XMLHttpRequest();
+    var xhr = new XHRMock();
     xhr.addEventListener("load", function() {
       callback(xhr.responseText);
     });
@@ -1717,7 +1772,7 @@ $(function() {
 
   function requestPromise(url) {
     return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest();
+      var xhr = new XHRMock();
       xhr.addEventListener("load", function() {
         resolve(xhr.responseText);
       });
@@ -1728,7 +1783,7 @@ $(function() {
 
   function requestObservable(url) {
       return Rx.Observable.create(function(observer) {
-        var xhr = new XMLHttpRequest();
+        var xhr = new XHRMock();
         xhr.addEventListener("load", function() {
           observer.onNext(xhr.responseText);
           observer.onCompleted();
@@ -1794,7 +1849,7 @@ $(function() {
     var code = $button.parent().prev('.highlight').find('pre').text();
     $button.click(function() {
       $resultContainer.empty();
-      (new Function('log', 'request', 'requestPromise', 'requestObservable', 'sum', 'run', code))(log, request, requestPromise, requestObservable, sum, run);
+      (new Function('log', 'request', 'requestPromise', 'requestObservable', 'sum', 'run', 'XMLHttpRequest', 'fetch', code))(log, request, requestPromise, requestObservable, sum, run, XHRMock, fetchMock);
     });
   });
 
@@ -1968,7 +2023,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Exemple : timer</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Maintenant&quot;</span><span class="p">);</span>
+            <section><div class="highlight"><pre><span></span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Maintenant&quot;</span><span class="p">);</span>
 
 <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Plus tard&quot;</span><span class="p">);</span>
@@ -2007,10 +2062,10 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Exemple : requête HTTP</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
 <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Maintenant&quot;</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-   <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Plus tard : &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+   <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Plus tard : &quot;</span> <span class="o">+</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
 <span class="p">});</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/data/greeting.txt&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
@@ -2048,7 +2103,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             
             
             <section><p>Code du serveur répondant à la requête précédente :</p>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">),</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">),</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
 
 <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -2127,7 +2182,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             
             
             <section><p>Algorithme très simplifié :</p>
-<div class="highlight"><pre><span class="c1">// Pseudo code</span>
+<div class="highlight"><pre><span></span><span class="c1">// Pseudo code</span>
 <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// Boucle sans fin</span>
 
    <span class="c1">// Recherche les événements actifs</span>
@@ -2243,7 +2298,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Exemple : timer sans délai</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;D&#39;abord&quot;</span><span class="p">);</span>
+            <section><div class="highlight"><pre><span></span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;D&#39;abord&quot;</span><span class="p">);</span>
 
 <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Finalement&quot;</span><span class="p">);</span>
@@ -2282,7 +2337,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Exemple : timer sans délai</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;D&#39;abord&quot;</span><span class="p">);</span>
+            <section><div class="highlight"><pre><span></span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;D&#39;abord&quot;</span><span class="p">);</span>
 
 <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Finalement&quot;</span><span class="p">);</span>
@@ -2321,7 +2376,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Fonction pour requêtes HTTP</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">request</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">request</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
   <span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">callback</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
@@ -2366,7 +2421,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Appels asynchrones multiples</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="nx">request</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="nx">request</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
   <span class="kd">var</span> <span class="nx">value1</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
   <span class="nx">request</span><span class="p">(</span><span class="s2">&quot;/data/data2.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -2411,7 +2466,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Appels asynchrones multiples</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="nx">request</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="nx">request</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">value1</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
   <span class="nx">getData2</span><span class="p">(</span><span class="nx">value1</span><span class="p">);</span>
 <span class="p">});</span>
@@ -2559,8 +2614,8 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Création d'une promesse</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">requestPromise</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">requestPromise</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
     <span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="nx">resolve</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
@@ -2600,7 +2655,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Utilisation d'une promesse</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">,</span> <span class="nx">value3</span><span class="p">;</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">,</span> <span class="nx">value3</span><span class="p">;</span>
 <span class="nx">requestPromise</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span> <span class="nx">value1</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
   <span class="k">return</span> <span class="nx">requestPromise</span><span class="p">(</span><span class="s2">&quot;/data/data2.json&quot;</span><span class="p">);</span>
@@ -2643,7 +2698,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Gestion des erreurs</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">,</span> <span class="nx">value3</span><span class="p">;</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">,</span> <span class="nx">value3</span><span class="p">;</span>
 <span class="nx">requestPromise</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span> <span class="nx">value1</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
   <span class="k">return</span> <span class="nx">requestPromise</span><span class="p">(</span><span class="s2">&quot;/data/invalid.json&quot;</span><span class="p">);</span>
@@ -2688,7 +2743,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Parallélisme</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+            <section><div class="highlight"><pre><span></span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
   <span class="nx">requestPromise</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">),</span>
   <span class="nx">requestPromise</span><span class="p">(</span><span class="s2">&quot;/data/data2.json&quot;</span><span class="p">),</span>
   <span class="nx">requestPromise</span><span class="p">(</span><span class="s2">&quot;/data/data3.json&quot;</span><span class="p">)</span>
@@ -2730,10 +2785,10 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Polymorphisme synchrone/asynchrone</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">(),</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;data/data1.json&quot;</span><span class="p">;</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">(),</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;/data/data1.json&quot;</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">getWithCache</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">url</span><span class="p">))</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">));</span>  <span class="c1">// Promesse déjà résolue</span>
+    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">));</span>  <span class="c1">// Promesse déjà résolue</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">requestPromise</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
     <span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>       <span class="c1">// 1er then</span>
@@ -2778,7 +2833,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Cas d'utilisation réel : l'API Fetch</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">)</span>
+            <section><div class="highlight"><pre><span></span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">)</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="p">));</span>
 </pre></div>
@@ -2813,12 +2868,12 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Parallélisme avec fetch</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+            <section><div class="highlight"><pre><span></span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
   <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">),</span>
   <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data2.json&quot;</span><span class="p">),</span>
   <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data3.json&quot;</span><span class="p">)</span>
 <span class="p">]).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">responses</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+    <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
       <span class="nx">responses</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
     <span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
       <span class="kd">var</span> <span class="nx">values</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">obj</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
@@ -2857,7 +2912,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Les générateurs</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">function</span> <span class="o">*</span><span class="nx">mygen</span><span class="p">()</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="o">*</span><span class="nx">mygen</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">yield</span> <span class="s2">&quot;Bonjour&quot;</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="k">yield</span> <span class="s2">&quot;Comment t&#39;appelles-tu ?&quot;</span><span class="p">;</span>
   <span class="k">yield</span> <span class="s2">&quot;Enchanté &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; !&quot;</span><span class="p">;</span>
@@ -2898,7 +2953,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Les générateurs</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">function</span> <span class="o">*</span><span class="nx">mygen</span><span class="p">()</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="o">*</span><span class="nx">mygen</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">yield</span> <span class="s2">&quot;Bonjour&quot;</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="k">yield</span> <span class="s2">&quot;Comment t&#39;appelles-tu ?&quot;</span><span class="p">;</span>
   <span class="k">yield</span> <span class="s2">&quot;Enchanté &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; !&quot;</span><span class="p">;</span>
@@ -2975,7 +3030,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Générateur et callback</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">function</span> <span class="o">*</span><span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="o">*</span><span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">requestWrapper</span><span class="p">(</span><span class="s2">&quot;/data/greeting.txt&quot;</span><span class="p">);</span>
   <span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">}</span>
@@ -3020,7 +3075,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Générateur et promise</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">function</span> <span class="o">*</span><span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="o">*</span><span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">requestPromise</span><span class="p">(</span><span class="s2">&quot;/data/greeting.txt&quot;</span><span class="p">);</span>
   <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Réponse : &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">);</span>
 <span class="p">}</span>
@@ -3063,16 +3118,16 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             
             
             <section><p>Fonction run issue de <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch4.md#promise-aware-generator-runner">You don't know JS: Async &amp; Performance</a></p>
-<div class="highlight"><pre><span class="nx">run</span><span class="p">(</span><span class="kd">function</span> <span class="o">*</span><span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="nx">run</span><span class="p">(</span><span class="kd">function</span> <span class="o">*</span><span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/greeting.txt&quot;</span><span class="p">);</span>
   <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
   <span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-  <span class="kd">var</span> <span class="nx">responses</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+  <span class="kd">var</span> <span class="nx">responses</span> <span class="o">=</span> <span class="k">yield</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
     <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">),</span>
     <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data2.json&quot;</span><span class="p">),</span>
     <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data3.json&quot;</span><span class="p">)</span>
   <span class="p">]);</span>
-  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">yield</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
     <span class="nx">responses</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
   <span class="p">);</span>
   <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
@@ -3110,16 +3165,16 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>async / await</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="nx">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/greeting.txt&quot;</span><span class="p">);</span>
   <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
   <span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-  <span class="kd">var</span> <span class="nx">responses</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+  <span class="kd">var</span> <span class="nx">responses</span> <span class="o">=</span> <span class="nx">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
     <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">),</span>
     <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data2.json&quot;</span><span class="p">),</span>
     <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/data/data3.json&quot;</span><span class="p">)</span>
   <span class="p">]);</span>
-  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
     <span class="nx">responses</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
   <span class="p">);</span>
   <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
@@ -3274,7 +3329,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Création d'un Observable</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">requestObservable</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">requestObservable</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">create</span><span class="p">((</span><span class="nx">observer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
     <span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -3316,7 +3371,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>Utilisation d'Observables</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">ob1</span> <span class="o">=</span> <span class="nx">requestObservable</span><span class="p">(</span><span class="s2">&quot;/data/data1.json&quot;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">ob2</span> <span class="o">=</span> <span class="nx">requestObservable</span><span class="p">(</span><span class="s2">&quot;/data/data2.json&quot;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">ob3</span> <span class="o">=</span> <span class="nx">requestObservable</span><span class="p">(</span><span class="s2">&quot;/data/data3.json&quot;</span><span class="p">);</span>
@@ -3363,7 +3418,7 @@ var d;b.subscribe(function(a){d=a},c,function(){a(d)})})};var sc=function(a){fun
             <header><h1>PR - Flux à émissions multiples</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">service</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">observer</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">service</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">observer</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">observer</span><span class="p">.</span><span class="nx">onNext</span><span class="p">(</span><span class="nx">counter</span><span class="o">++</span><span class="p">);</span>
