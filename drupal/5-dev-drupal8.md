@@ -780,8 +780,8 @@ Récupération de résultats :
     $url = Url::fromRoute('contact.site_page', array())->toString();
     $url = Url::fromUserInput('/contact')->toString();
     // Ou générer un lien.
-    $url = Url::fromUri('internal:/contact'); // Pas de toString() !
-    $link = \Drupal::l(t('Contact'), $url);
+    $link = Link::fromRoute('text', 'route');
+    $link = Link::fromTextAndUrl('text', $url);
 
 --------------------------------------------------------------------------------
 
@@ -909,10 +909,10 @@ Faites la même chose en supprimant juste le lien de menu
 
 --------------------------------------------------------------------------------
 
-# Kernel.request
+# Que se passe-t-il sur Kernel.request ?
 
 
-  * AuhtenticationSubscriber : Charge la session et initialize currentUser().
+  * AuthenticationSubscriber : Charge la session et initialize currentUser().
   * LanguageRequestSubscriber : Détecte la langue courante
   * PathSubscriber : Convertit l'URL en chemin système
   * LegacyRequestSubscriber : Permet de définir un thème par défaut
@@ -1042,7 +1042,7 @@ Documentation de l'API sur <https://www.drupal.org/node/1809490>
   * /config/schema/mon_module.schema.yml -> schéma de la configuration de votre
   module
 
-## Exemple de fichier
+## Exemple de fichier de schema
 
     !yaml
     mon_module.settings:
@@ -1173,7 +1173,7 @@ Installer cette table via un `hook_update_N()` ou réinstaller le module.
 Rappels 
 
   * `hook_form_alter(&$form, $form_state, $form_id)`
-  * `hook_node_update()` et `hook_node_insert()`
+  * Ajouter un callback de submit...
   * Debug : module Devel + `dpm($var)`
 
 .fx: tp
@@ -1322,7 +1322,7 @@ Exemples d'utilisations de `theme()` :
 # Implémentation du hook_theme()
 
   * Fonction template_preprocess_forums()
-  * fichier forums.html.twig
+  * fichier "templates/forums.html.twig"
 
 --------------------------------------------------------------------------------
 
@@ -1461,10 +1461,33 @@ dans sites/default/services.yml
 
 --------------------------------------------------------------------------------
 
+# Création de theme avec un my_theme.info.yml
+
+    !yaml
+    name: My Theme
+    type: theme
+    version: 0.1
+    core: 8.x
+    regions:
+      branding: "Branding"
+      header: "Header"
+      breadcrumb: "Breadcrumb"
+      content: "Content"
+      footer: "Footer"
+    regions_hidden:
+      - sidebar_first
+      - sidebar_second
+    libraries:
+      - my_theme/global_styling
+
+--------------------------------------------------------------------------------
+
 # TP: Créer un template pour premium
 
-Convertir le render array utilisé dans `hook_node_view()` pour utiliser un
-_theme hook_ qui se base sur un template.
+Utiliser dans le hook_node_view() un render array #markup pour afficher
+
+Convertir le render array utilisé pour utiliser une fonction de theme (et donc
+un template), en implémentant un hook_theme().
 
 Passer en paramètre le nœud et transformer "Contenu premium" en "_Titre du nœud_
 est un contenu premium".
@@ -1498,6 +1521,7 @@ Ajouter des suggestions pour ce template.
   * Tout est sous forme de bibliothèque
   * \#attached[] -> au moment du rendering
   * drupal_add_library()
+  * [Adding stylesheets and JavaScript to a Drupal 8 module](https://www.drupal.org/node/2274843)
 
 --------------------------------------------------------------------------------
 
@@ -1539,27 +1563,6 @@ Voir les modules `example`
   * jQuery UI
   * Backbone
   * Underscore
-
---------------------------------------------------------------------------------
-
-# Création de theme avec un my_theme.info.yml
-
-    !yaml
-    name: My Theme
-    type: theme
-    version: 0.1
-    core: 8.x
-    regions:
-      branding: "Branding"
-      header: "Header"
-      breadcrumb: "Breadcrumb"
-      content: "Content"
-      footer: "Footer"
-    regions_hidden:
-      - sidebar_first
-      - sidebar_second
-    libraries:
-      - my_theme/global_styling
 
 --------------------------------------------------------------------------------
 
@@ -1611,7 +1614,7 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 # On peut valider les entités
 
-https://www.drupal.org/node/2015613
+<https://www.drupal.org/node/2015613>
 
 --------------------------------------------------------------------------------
 
@@ -1641,7 +1644,7 @@ Directement dans le render array
 
 # Liste des contextes
 
-https://www.drupal.org/developing/api/8/cache/contexts
+<https://www.drupal.org/developing/api/8/cache/contexts>
 
   * cookies
   * headers
@@ -1876,7 +1879,7 @@ https://www.drupal.org/developing/api/8/cache/contexts
   * Actuellement, on ne peut le réimporter que sur une même "version" du site
   (un site dont l'installation s'est faite à partir d'une copie de la base de
   données du site)
-  * En cours de résolution
+  * En cours de résolution (<https://www.drupal.org/node/1613424>)
 
 ## Des solutions possibles fournies par la communauté
 
