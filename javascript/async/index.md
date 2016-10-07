@@ -61,7 +61,7 @@ Qui ne se fait pas en même temps.
     var xhr = new XMLHttpRequest();
     log("Maintenant");
     xhr.addEventListener("load", function() {
-       log("Plus tard : " + this.responseText);
+       log("Plus tard : " + xhr.responseText);
     });
     xhr.open("GET", "/data/greeting.txt", true);
     xhr.send(null);
@@ -349,7 +349,7 @@ C'est une opération
 # Polymorphisme synchrone/asynchrone
 
     !js
-    var cache = new Map(), url = "data/data1.json";
+    var cache = new Map(), url = "/data/data1.json";
     function getWithCache(url) {
       if (cache.has(url)) {
         return Promise.resolve(cache.get(url));  // Promesse déjà résolue
