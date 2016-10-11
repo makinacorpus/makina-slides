@@ -478,10 +478,10 @@ puisse modérer ces pages.
   * Créer un état 'En attente de validation'.
   * Cet état doit être la révision par défaut, non publié
   * Ajouter la transition From draft to "En attente".
-  * Ajouter la transition From "En attente de validation" to "Publised".
+  * Ajouter la transition From "En attente de validation" to "Published".
   * Faire en sorte que le rôle "Rédacteur" utilise uniquement la premiere transition crée.
   * Faire en sorte que le rôle "Modérateur" utilise uniquement la seconde.
-  * Tester le workflow avec la création d'un nouvel Article.s
+  * Tester le workflow avec la création d'un nouvel Articles.
 
 .fx: tp
 
