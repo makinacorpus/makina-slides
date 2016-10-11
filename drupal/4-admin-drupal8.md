@@ -232,6 +232,13 @@ Thèmes communs à tous les sites
   * _Contact, Aggregator, Activity Tracker, Update_ -> fonctions spécifiques
   * _Path, RDF_ -> SEO
   * _Migrate_ -> gestion de migration d'autres systèmes (nouveauté D8)
+
+--------------------------------------------------------------------------------
+
+# Principales fonctionnalités - Modules du core
+
+  * Content Moderation -> création de contenu
+  * _"Outside-In"_ -> structuration
   * _Views_ -> listes de données (nouveauté D8)
   * Section _Field types_ -> types de champs
   * Section _Multilingual_ -> traduction (nouveauté D8)
@@ -342,18 +349,6 @@ Thèmes communs à tous les sites
 
 --------------------------------------------------------------------------------
 
-# Workflow
-
-  * Un workflow très simple dans le cœur (Brouillon / Publié)
-    * (peut-être mieux dans les prochaines versions 8.x)
-    * MAIS pas de permission spécifique
-  * Plusieurs modules disponibles en attendant (de complexité croissante)
-    * Workbench moderation
-    * Workflow
-    * Multiversion (à réserver aux très gros projets spécialisés)
-
---------------------------------------------------------------------------------
-
 # Gérer les utilisateurs - Exercice
 
   * Créer un rôle 'Modérateur'
@@ -455,6 +450,43 @@ puisse modérer ces pages.
 .fx: tp
 
 --------------------------------------------------------------------------------
+
+# Workflow
+
+  * Un workflow très simple dans le cœur (Brouillon / Publié)
+    * MAIS pas de permission spécifique
+    
+  * Content moderation (expérimental)
+
+![][36]
+
+--------------------------------------------------------------------------------
+
+# Workflow
+
+  * Content moderation (expérimental)
+    * Création de nouveaux états et de nouvelles transitions
+
+![][37]
+
+![][38]
+
+--------------------------------------------------------------------------------
+
+# La gestion du contenu - Exercice 2
+
+  * Créer un état 'En attente de validation'.
+  * Cet état doit être la révision par défaut, non publié
+  * Ajouter la transition From draft to "En attente".
+  * Ajouter la transition From "En attente de validation" to "Publised".
+  * Faire en sorte que le rôle "Rédacteur" utilise uniquement la premiere transition crée.
+  * Faire en sorte que le rôle "Modérateur" utilise uniquement la seconde.
+  * Tester le workflow avec la création d'un nouvel Article.s
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
 
 # Les modes d'affichage
 
@@ -882,3 +914,11 @@ cette page comme page d'accueil.
    [34]: img/install_7_regional_settings.png
 
    [35]: img/install_8_update_settings.png
+   
+   [36]: img/content_moderation_1.png
+   
+   [37]: img/content_moderation_2.png
+      
+   [38]: img/content_moderation_3.png
+   
+   [39]: img/outside_in.png
