@@ -717,8 +717,9 @@ Récupération de résultats :
 
   - fetchField() : la première colonne du premier résultat
   - fetchCol() : la première colonne sous forme d'array
-  - fetchAssoc() : le premier résultat sous forme d'objet
-  - fetchAllAssoc() : tous les résultats sous forme d'objet
+  - fetchObject() : le premier résultat sous forme d'objet stdClass
+  - fetchAssoc() : le premier résultat sous forme de tableau
+  - fetchAllAssoc($field) : tous les résultats sous forme de tableau
   - fetchAllKeyed() : tous les résultats sous forme de tableau indexé par la
   1ere colonne avec pour valeur la 2e
 

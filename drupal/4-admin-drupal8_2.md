@@ -6,6 +6,7 @@
   * Multilinguisme
   * Autres contenus (médias, newsletters, formulaires)
   * Recherche
+  * "Outside-In"
 
 .fx: progress
 
@@ -69,7 +70,7 @@ apparait.
     * administration simplifiée
     * nombreuses commandes et support par les modules
 
-  * Liste des commandes : [http://drush.ws/][3]
+  * Liste des commandes : [https://drushcommands.com/][3]
 
   * Disponible sous Linux
 
@@ -130,6 +131,7 @@ Multi-sites, performance)
   * Multilinguisme
   * Autres contenus (médias, newsletters, formulaires)
   * Recherche
+  * "Outside-In"
 
 .fx: progress
 
@@ -209,6 +211,7 @@ Multi-sites, performance)
   * __Multilinguisme__
   * Autres contenus (médias, newsletters, formulaires)
   * Recherche
+  * "Outside-In"
 
 .fx: progress
 
@@ -334,6 +337,7 @@ performance, architecture)
   * Multilinguisme
   * __Autres contenus (médias, newsletters, formulaires)__
   * Recherche
+  * "Outside-In"
 
 .fx: progress
 
@@ -343,10 +347,11 @@ performance, architecture)
 
   * Media Initiative
     * <http://www.drupalmedia.org>
-    * Suite de modules (Entity Browser, Media entity, DropzoneJS ...)
+    * Suite de modules (Media entity, DropzoneJS, Entity Browser ...)
     * Fichiers image, vidéo, audio, ...
-  * Pas complètement stable !
-    * Mais en développement actif, sera bientôt prêt
+    * La plupart des modules sont en version 1.x
+    
+![][26]
 
 
 --------------------------------------------------------------------------------
@@ -383,8 +388,10 @@ performance, architecture)
   * Administration (Mises à jour, Multi-sites, sauvegarde, cron,
 performance, architecture)
   * Référencement (urls, meta-tags, sitemap.xml)
-  * Autres contenus (médias, newsletters, formulaires)
+  * Autres contenus (médias, newsletters, formulaires, modération)
   * __Recherche__
+  * "Outside-In"
+
 
 .fx: progress
 
@@ -393,9 +400,46 @@ performance, architecture)
 # La recherche
 
   * Search API
-    * Lien Apache Solr (module __Search API Solr Search__)
-    * Lien ElasticSearch (module __Elasticsearch Connector__)
+    * Apache Solr (module __Search API Solr Search__)
+    * ElasticSearch (module __Elasticsearch Connector__)
   * Gestion des facets, des fichiers, ...
+
+--------------------------------------------------------------------------------
+
+# "Outside-In"
+
+  * Utilisation de fonctionnalités d'administration depuis le "Front-end"
+  
+![][40]
+
+--------------------------------------------------------------------------------
+
+# "Outside-In"
+
+  * Edtition en "live"
+    * Nom du site, slogan
+    * Noms / liens des menus
+    * ...
+    
+![][41]
+
+--------------------------------------------------------------------------------
+
+# "Outside-In"
+
+  * Positionner des blocs
+    * Affichage, selection de la région
+    
+![][42]
+
+--------------------------------------------------------------------------------
+
+# "Outside-In"
+
+  * Positionner des blocs
+    * Selection du bloc
+    
+![][43]
 
 --------------------------------------------------------------------------------
 
@@ -524,7 +568,7 @@ Pour le développement
 
    [2]: https://github.com/drush-ops/drush
 
-   [3]: http://drush.ws/
+   [3]: https://drushcommands.com/
 
    [4]: img/reports8.png
 
@@ -569,4 +613,14 @@ Pour le développement
    [24]: img/original_release_schedule.png
 
    [25]: https://makina-corpus.com/blog/metier/2016/comment-creer-un-site-web-avec-drupal
+   
+   [26]: img/media_entity.png
+      
+   [40]: img/outside_in.png
+   
+   [41]: img/outside_in_2.png
+
+   [42]: img/outside_in_3.png
+
+   [43]: img/outside_in_4.png
 
