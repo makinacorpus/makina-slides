@@ -1,4 +1,4 @@
-# How Python influenced JavaScript
+# How Python influences JavaScript
 
 by [Alex Marandon](http://alexmarandon.com)
 
@@ -18,6 +18,29 @@ by [Alex Marandon](http://alexmarandon.com)
 > value-generating continuations** and a **general iteration protocol**.
 
 [Brendan Eich, 2006](http://wiki.ecmascript.org/doku.php?id=discussion:iterators_and_generators#iterators_and_generators)
+
+
+---
+
+# Initial plan
+
+    !js
+    js> function count(n) {
+    for (var i = 0; i < n; i++)
+    yield i;
+    }
+    js> g = count(10)
+    [object Generator]
+    js> g.next()
+    0
+    js> g.next()
+    1
+    js> two_to_nine = [i for i in g]
+    2,3,4,5,6,7,8,9
+    js> squares_to_20 = [i * i for i in count(20)]
+    0,1,4,9,16,25,36,49,64,81,100,121,144,169,196,225,256,289,324,361
+
+[Brendan Eich, 2006](https://brendaneich.com/2006/02/python-and-javascript/)
 
 ---
 
@@ -39,7 +62,7 @@ by [Alex Marandon](http://alexmarandon.com)
 * An informal interface
 * Not enforced by compiler
 * Defined by documentation and conventions
-* Examples of protocols : iterable, iterator, sequence, file, buffer, etc.
+* Examples of protocols : iterable, iterator, sequence, file, descriptor, etc.
 
 ![](img/Smalltalk80book.jpg)
 
@@ -215,11 +238,12 @@ What if we didn't have lists in Python ?
              return {done: true, value: undefined};
            var commaPosition = csv_str.indexOf(",", position);
            if (commaPosition === -1) {
-             done = true;
-             var value = csv_str.slice(position);
+             done = true;                          // No comma found
+             var value = csv_str.slice(position);  // Return what's left
            } else {
+             // Extract string from here to next comma
              var value = csv_str.slice(position, commaPosition);
-             position = commaPosition + 1;
+             position = commaPosition + 1; // Advance to char after comma
            }
            return {done: false, value: value};
          }
@@ -228,22 +252,141 @@ What if we didn't have lists in Python ?
 
 ---
 
-# Initial plan
+# Playing with our JS iterator
+
 
     !js
-    js> function count(n) {
-    for (var i = 0; i < n; i++)
-    yield i;
-    }
-    js> g = count(10)
-    [object Generator]
-    js> g.next()
-    0
-    js> g.next()
-    1
-    js> two_to_nine = [i for i in g]
-    2,3,4,5,6,7,8,9
-    js> squares_to_20 = [i * i for i in count(20)]
-    0,1,4,9,16,25,36,49,64,81,100,121,144,169,196,225,256,289,324,361
+    > var it = paramIterator("one,two,three");
+    undefined
+    > it.next()
+    { done: false, value: 'one' }
+    > it.next()
+    { done: false, value: 'two' }
+    > it.next()
+    { done: false, value: 'three' }
+    > it.next()
+    { done: true, value: undefined }
 
-[Brendan Eich, 2006](https://brendaneich.com/2006/02/python-and-javascript/)
+
+---
+
+# Using our JS iterator in an iterable
+
+    !js
+    function listParam(csvStr) {
+      var params = csvStr.split(",");
+      return {
+        csvStr: csvStr,
+        [Symbol.iterator]: function() {
+          return paramIterator(csvStr);
+        },
+        toString: function() {
+          return csvStr;
+        }
+      }
+    }
+
+Try it:
+
+    !js
+  	> var params = listParam("one,two,three");
+  	> console.log("My list param is " + params + ".");
+  	My list param is one,two,three.
+  	> for (var param of params)
+  	...     console.log("One of its params is " + param + ".")
+  	One of its params is one.
+  	One of its params is two.
+  	One of its params is three.
+
+---
+
+# Iterators made easy: generators
+
+    !py
+    >>> def make_gen():
+    ...    yield "one"
+    ...    yield "two"
+    ...    yield "three"
+    ... 
+    >>> gen = make_gen()
+    >>> next(gen)
+    'one'
+    >>> next(gen)
+    'two'
+    >>> next(gen)
+    'three'
+    >>> next(gen)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    StopIteration
+    >>> from collections.abc import Iterator
+    >>> isinstance(gen, Iterator)
+    True
+
+
+---
+
+# Generator-based iterable
+
+  	!py
+    class ListParam:
+
+        def __init__(self, csv_str):
+            self.csv_str = csv_str
+
+        def __str__(self):
+            return self.csv_str
+
+        def __iter__(self):
+            position = 0
+            comma_position = self.csv_str.find(",", position)
+            while comma_position != -1:
+                yield self.csv_str[position:comma_position]
+                position = comma_position + 1
+                comma_position = self.csv_str.find(",", position)
+            yield self.csv_str[position:]
+
+
+---
+
+# Generators in JavaScript
+
+    !js
+    > function* make_gen() {
+    ... yield "one";
+    ... yield "two";
+    ... yield "three";
+    ... }
+    > var gen = make_gen();
+    > gen.next()
+    { value: 'one', done: false }
+    > gen.next()
+    { value: 'two', done: false }
+    > gen.next()
+    { value: 'three', done: false }
+    > gen.next()
+    { value: undefined, done: true }
+
+---
+
+# Generator-based iterable in JS
+
+
+  	!js
+    function listParam(csvStr) {
+      return {
+        [Symbol.iterator]: function*() {
+          var position = 0;
+          var commaPosition = csvStr.indexOf(",", position);
+          while (commaPosition != -1) {
+            yield csvStr.slice(position, commaPosition);
+            position = commaPosition + 1
+            commaPosition = csvStr.indexOf(",", position);
+          }
+          yield csvStr.slice(position);
+        },
+        toString: function() {
+          return csvStr;
+        }
+      }
+    }
