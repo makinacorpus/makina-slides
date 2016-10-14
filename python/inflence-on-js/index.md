@@ -160,7 +160,6 @@ Object with an ``__iter__()`` method that returns an [iterator](https://docs.pyt
     function listParam(csvStr) {
       var params = csvStr.split(",");
       return {
-        csvStr: csvStr,
         [Symbol.iterator]: function() {  // Eq. to __iter__
           return params[Symbol.iterator]();  // Eq. to iter()
         },
@@ -230,8 +229,8 @@ What if we didn't have lists in Python ?
                 self.position = comma_position + 1
                 return result
 
-        # Something's actually missing to make it a proper iterator.
-        # We'll come back to it.
+        def __iter__(self):
+            return self # An iterator should also be iterable
 
 ---
 
@@ -304,7 +303,6 @@ What if we didn't have lists in Python ?
     function listParam(csvStr) {
       var params = csvStr.split(",");
       return {
-        csvStr: csvStr,
         [Symbol.iterator]: function() {
           return paramIterator(csvStr);
         },

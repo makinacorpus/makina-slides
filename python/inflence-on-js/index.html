@@ -2072,7 +2072,6 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">listParam</span><span class="p">(</span><span class="nx">csvStr</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">csvStr</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">);</span>
   <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">csvStr</span><span class="o">:</span> <span class="nx">csvStr</span><span class="p">,</span>
     <span class="p">[</span><span class="nx">Symbol</span><span class="p">.</span><span class="nx">iterator</span><span class="p">]</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>  <span class="c1">// Eq. to __iter__</span>
       <span class="k">return</span> <span class="nx">params</span><span class="p">[</span><span class="nx">Symbol</span><span class="p">.</span><span class="nx">iterator</span><span class="p">]();</span>  <span class="c1">// Eq. to iter()</span>
     <span class="p">},</span>
@@ -2212,8 +2211,8 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">comma_position</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="k">return</span> <span class="n">result</span>
 
-    <span class="c"># Something&#39;s actually missing to make it a proper iterator.</span>
-    <span class="c"># We&#39;ll come back to it.</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="c"># An iterator should also be iterable</span>
 </pre></div>
 </section>
             
@@ -2383,7 +2382,6 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">listParam</span><span class="p">(</span><span class="nx">csvStr</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">csvStr</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">);</span>
   <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">csvStr</span><span class="o">:</span> <span class="nx">csvStr</span><span class="p">,</span>
     <span class="p">[</span><span class="nx">Symbol</span><span class="p">.</span><span class="nx">iterator</span><span class="p">]</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nx">paramIterator</span><span class="p">(</span><span class="nx">csvStr</span><span class="p">);</span>
     <span class="p">},</span>

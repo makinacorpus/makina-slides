@@ -1,7 +1,6 @@
 function listParam(csvStr) {
   var params = csvStr.split(",");
   return {
-    csvStr: csvStr,
     [Symbol.iterator]: function() {
       return params[Symbol.iterator]();
     },
