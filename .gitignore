@@ -7,3 +7,7 @@
 
 # Eclipse (et oui)
 .project
+
+# Python
+*.pyc
+__pycache__
