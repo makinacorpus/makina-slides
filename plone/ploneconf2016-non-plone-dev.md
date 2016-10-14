@@ -227,7 +227,8 @@ They feel more confident with npm script than buildout recipes.
 
 - a registration wizard,
 - a Paypal endpoint,
-- a messaging system.
+- a messaging system,
+- a user-manageable form.
 
 .fx: extra-large
 
@@ -255,7 +256,7 @@ An NPM script make a `merge --no-commit` + `npm build` and then push to prod ser
 
 --------------------------------------------------------------------------------
 
-# Even better, thanks to Asko!
+# We can do better, thanks to Asko!
 
 .fx: extra-large
 
@@ -282,6 +283,27 @@ All in the theme!
 
 --------------------------------------------------------------------------------
 
+# plonetheme-upload
+
+NPM package to upload a theme to a Plone site from an NPM project.
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# HELP US IMPROVE!
+
+PLEASE USE THE
+
+SURVEY APP TO SEND
+
+US FEEDBACK.
+
+ploneconf.sixfeetup.com
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
 
 Description: Being able to develop custom features on top of Plone without knowing Plone internal frameworks is critical for Plone future, and it is now possible. This talk will presents different real use cases where complex Plone web site have been actually developed by non-Plone developers using Rapido, Dexterity, and Diazo. Why Plone is a good backend if you are a frontend developer? What are the good practices? How to move from TTW to file-system based coding? How to manage deployment? How to integrate your usual frontend stack?
 
