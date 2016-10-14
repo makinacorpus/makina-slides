@@ -19,7 +19,6 @@ function paramIterator(csv_str) {
 }
 
 function listParam(csvStr) {
-  var params = csvStr.split(",");
   return {
     csvStr: csvStr,
     [Symbol.iterator]: function() {

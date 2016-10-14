@@ -1,5 +1,7 @@
 # How Python influences JavaScript
 
+Iteration protocols and generators
+
 by [Alex Marandon](http://alexmarandon.com)
 
 .fx: extra-large
@@ -18,6 +20,18 @@ by [Alex Marandon](http://alexmarandon.com)
 > value-generating continuations** and a **general iteration protocol**.
 
 [Brendan Eich, 2006](http://wiki.ecmascript.org/doku.php?id=discussion:iterators_and_generators#iterators_and_generators)
+
+---
+
+> general iteration protocol
+
+→ iterables and iterators
+
+> structured value-generating continuations
+
+→ generators
+
+.fx: extra-large
 
 
 ---
@@ -44,18 +58,6 @@ by [Alex Marandon](http://alexmarandon.com)
 
 ---
 
-> general iteration protocol
-
-→ iterables and iterators
-
-> structured value-generating continuations
-
-→ generators
-
-.fx: extra-large
-
----
-
 # Protocol
 
 * Smalltalk already used the term *protocol*
@@ -65,6 +67,32 @@ by [Alex Marandon](http://alexmarandon.com)
 * Examples of protocols : iterable, iterator, sequence, file, descriptor, etc.
 
 ![](img/Smalltalk80book.jpg)
+
+---
+
+# Running example
+
+URL parameters representing multiple values:
+
+    !text
+    http://example.com/path/one,two,three
+
+We'll design a type to treat those parameters as strings:
+
+    !pycon
+    >>> params = ListParam("one,two,three")
+    >>> print("My list param is {}.".format(params))
+    My list param is one,two,three.
+
+Or to iterate on them:
+
+    !pycon
+    >>> for param in params:
+    ...     print("One of its params is {}.".format(param))
+    ... 
+    One of its params is one.
+    One of its params is two.
+    One of its params is three.
 
 ---
 
@@ -390,3 +418,18 @@ Try it:
         }
       }
     }
+
+---
+
+# Other JavaScript features influenced by Python
+
+- EcmaScript 2015 module system
+- EcmaScript 2016 decorators
+
+---
+
+# Conclusion
+
+- browsers don't support Python natively
+- JavaScript borrows important concepts from Python
+- let's write pythonic JavaScript!

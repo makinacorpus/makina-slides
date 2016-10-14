@@ -1,13 +1,14 @@
-# Motivation
+Background
+==========
 
 In 2006, Brendan Eich, creator of JavaScript, wrote this `in the EcmaScript wiki <http://wiki.ecmascript.org/doku.php?id=discussion:iterators_and_generators#iterators_and_generators>`_:
 
-> Given the years of development in Python and similarities to ECMAScript in
-> application domains and programmer communities, we would rather follow than
-> lead. By standing on Python’s shoulders we reuse developer knowledge as well as
-> design and implementation experience. The trick then becomes not borrowing too
-> much from Python, just enough to gain the essential benefits: **structured
-> value-generating continuations** and a **general iteration protocol**.
+  Given the years of development in Python and similarities to ECMAScript in
+  application domains and programmer communities, we would rather follow than
+  lead. By standing on Python’s shoulders we reuse developer knowledge as well as
+  design and implementation experience. The trick then becomes not borrowing too
+  much from Python, just enough to gain the essential benefits: **structured
+  value-generating continuations** and a **general iteration protocol**.
 
 By **structured value-generating continuations** he was referring to Python generators and by **general iteration protocol** he was
 referring to the iterator and iterable protocols that Python already had.
@@ -32,28 +33,28 @@ He also posted `on his blog <https://brendaneich.com/2006/02/python-and-javascri
     0,1,4,9,16,25,36,49,64,81,100,121,144,169,196,225,256,289,324,361
 
 Array comprehensions actually never made it to the EcmaScript standard but as I
-write this my version of Firefox does support [some form of it](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Array_comprehensions):
+write this my version of Firefox does support `some form of it <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Array_comprehensions>`_:
 
 .. sourcecode:: javascript
 
-    let numbers = [1,2,3];
-    undefined
-    [for (i of numbers) i * 2]
+    > let numbers = [1,2,3];
+    > [for (i of numbers) i * 2]
     Array [ 2, 4, 6 ]
 
 Iteration protocols and generators, on the other hand, did make it to the
-standard. They ended up a bit different from what was planned but they still
-captured the essence of what existed in Python. In this article we're going
-to look at both Python and JavaScript incarnations while reviewing the
-underlying concepts.
+standard. They ended up a bit different from what was initially sketched but
+they still captured the essence of what existed in Python. In this article
+we're going to look at both Python and JavaScript incarnations while reviewing
+the underlying concepts.
 
 
-# Protocols
+Protocols
+---------
 
 Python has the notion of protocol which can be described as an informal
 interface, not enforced by the compiler but based on conventions and
 documentation. Among the most well-known Python protocols we can mention
-sequence, file, descriptor... Iterable and iterators are also two of those
+`descriptor <https://docs.python.org/3.6/howto/descriptor.html>`_, `sequence <https://docs.python.org/3.6/glossary.html#term-sequence>`_ or `file-like objects <https://docs.python.org/3.6/glossary.html#term-file-object>`_. `Iterable <https://docs.python.org/3.6/glossary.html#term-iterable>`_ and `iterators <https://docs.python.org/3.6/glossary.html#term-iterator>`_ are also two of those
 protocols.
 
 These protocols are often quite simple and we're perfectly allowed to
@@ -62,22 +63,26 @@ we increase the chances that our objects will play well with Python built-in
 functions and standard library modules, which often speak these protocols.
 
 Creating objects that conform to these protocols is at the heart of writing
-idiomatic Python and the iteration protocols are among the most important
-ones.
+idiomatic Python and the iteration protocols are among the most important.
 
-# Python Iterable
+Iterable
+========
 
 In a project I work on, we have web services that take URL parameters with
-multiple values. To save a bit of URL space, instead of using the standard
+multiple values. To save a bit of URL space, instead of using the more common
 ``name=value1&name=value2&name=value3`` query string convention, we represent
 these parameters as comma-separated strings such as ``value1,value2,value3``.
-Sometimes I need to use those parameters as string, for instance to construct
+Sometimes I need to use those parameters as strings, for instance to construct
 URLs, and sometimes I need to treat them as collections of values, for
 instance to loop over them. In order to do that I'd like to avoid having to ``split`` and ``join`` on the comma all over the code. We're going to design a type that allows us to
-treat these parameters as strings or to iterate on them, depending the
+treat these parameters as strings or to iterate on them, depending on the
 situation.
 
-To conform to the iterable protocol, we need to define a class with an ``__iter__()`` method that returns an [iterator](https://docs.python.org/2/library/stdtypes.html#iterator-types). The ``iter`` function allows us to create an iterator on a list, so that's what we'll do first:
+To conform to the iterable protocol, we need to define a class with a
+``__iter__()`` method that returns an
+`iterator <https://docs.python.org/2/library/stdtypes.html#iterator-types>`_. The
+``iter`` function allows us to create an iterator on a list, so that's what
+we'll do first:
 
 
 .. sourcecode:: python
@@ -88,12 +93,14 @@ To conform to the iterable protocol, we need to define a class with an ``__iter_
             self.csv_str = csv_str
             self.params = self.csv_str.split(",")
 
+        # Conform to the iterable protocol
         def __iter__(self):
-            # Conforms to the iterable protocol
-            return iter(self.params) # Lists are iterables
+            # Lists are iterables
+            # Calling iter on them returns an iterator
+            return iter(self.params)
 
         def __str__(self):
-						# Allows the object to be treated as a string
+            # Allows the object to be used to format strings
             return self.csv_str
 
 
@@ -102,7 +109,6 @@ Here is how we can use this class:
 .. sourcecode:: pycon
 
 
-    !pycon
     >>> from listparam import ListParam
     >>> 
     >>> params = ListParam("one,two,three")
@@ -117,12 +123,13 @@ Here is how we can use this class:
     One of its params is two.
     One of its params is three.
 
-As you can see, we can use the object either in string formatting context or
-in a ``for`` loop and it will do the right thing. That's because the ``for`` loop is aware of the iterable protocol. Behind the scene, it actually does the equivalent of the following while loop:
+As you can see, we can use the object either in string formatting context or in
+a ``for`` loop and it will do the right thing. That's because the ``for`` loop
+is aware of the iterable protocol. Behind the scene, it actually does the
+equivalent of the following while loop:
 
 .. sourcecode:: pycon
 
-    !pycon
     >>> it = iter(params)
     >>> while True:
     ...     try:
@@ -138,16 +145,17 @@ in a ``for`` loop and it will do the right thing. That's because the ``for`` loo
 First it calls the ``iter`` function on the object, which will trigger a call
 to its ``__iter__`` method and return an iterator on the list of parameters.
 
-It then repeatidely calls next on that iterator until a ``StopIteration`` is raised. That is iterator protocol, which will get back to in a bit. For now let's come back to JavaScript and see how we can create an object that supports the iterable protocol.
+It then repeatidely calls next on that iterator until a ``StopIteration`` is
+raised. That is the iterator protocol, which will get back to in a bit. For now
+let's come back to JavaScript and see how we can create an object that supports
+the iterable protocol.
 
-# JavaScript iterable
-
-.. sourcecode:: javascript
+JavaScript iterable
+-------------------
 
 Here is a function that returns an object literal implementing the iterable
 protocol. In JavaScript an iterable must have a method with the computed name
 ``Symbol.iterator``. Here that method just delegates to the ``Symbol.iterator`` method of the ``Array`` object.
-
 
 .. sourcecode:: javascript
 
@@ -178,14 +186,14 @@ In order to iterate over that object, we need to use the  JavaScript ``for-of`` 
     One of its params is three.
 
 
-Please note that the ``for-of`` loop is a new kind of JavaScript ``for`` loop. It's equivalent to Python's ``for`` loop but different from JavaScript's original ``for (;;)`` and ``for-in`` loops.
+Please note that the ``for-of`` loop is a new kind of JavaScript ``for`` loop.
+It's equivalent to Python's ``for`` loop but different from JavaScript's
+original ``for (;;)`` and ``for-in`` loops.
 
----
-
-# Iterator
+Iterator
+========
 
 Let's consider again how we provided an iterator to the for loop:
-
 
 .. sourcecode:: python
 
@@ -205,7 +213,8 @@ Because Python lists are iterables, calling ``iter`` on them will return an iter
 Now what if we didn't have lists in Python? How can we build an iterator
 object that can used by the ``for`` loop? You might have guessed the answer: we need to make an object that implements the iterator protocol!
 
-# A custom iterator
+A custom iterator
+-----------------
 
 An iterator is simply an object that has ``__next__`` method. That method returns a new value each time it's called, untill it raises ``StopIteration`` because it doesn't have any more values to return:
 
@@ -230,10 +239,12 @@ An iterator is simply an object that has ``__next__`` method. That method return
                 self.position = comma_position + 1
                 return result
 
-        # Something's actually missing to make it a proper iterator.
-        # We'll come back to it.
+        def __iter__(self):
+            return self # An iterator should also be iterable
 
-## Using our custom iterator
+
+Using our custom iterator
+-------------------------
 
 Now instead of relying on Python lists to implement our iterable, we can use
 our new iterator type:
@@ -253,7 +264,8 @@ our new iterator type:
         def __iter__(self):
             return ParamIterator(self.csv_str)
 
-## JavaScript custom iterator
+JavaScript custom iterator
+--------------------------
 
 The JavaScript way to make iterators is similar in essence but differs slightly in the details:
 
@@ -281,7 +293,7 @@ The JavaScript way to make iterators is similar in essence but differs slightly 
      }
 
 The method to implement is called ``next`` instead of ``__next__`` but most
-importantly it doesn't raise and exception when it has no more values to returni. Instead, each time it's called, it returns an object with a ``done``
+importantly it doesn't raise and exception when it has no more values to return. Instead, each time it's called, it returns an object with a ``done``
 property, indicating if it has returned all available values, and a
 ``value`` property holding the value itself:
 
@@ -299,12 +311,14 @@ property, indicating if it has returned all available values, and a
     { done: true, value: undefined }
 
 
-## Using our JS iterator in an iterable
+Using our JS iterator in an iterable
+------------------------------------
+
+We can now get rid of the array and use our iterator in our iterable:
 
 .. sourcecode:: javascript
 
     function listParam(csvStr) {
-      var params = csvStr.split(",");
       return {
         csvStr: csvStr,
         [Symbol.iterator]: function() {
@@ -329,11 +343,15 @@ Let's try it:
   	One of its params is two.
   	One of its params is three.
 
----
+Iterators made easy: generators
+===============================
 
-# Iterators made easy: generators
+This is all working fine but manually coding an iterator is a bit verbose. To simplify the process of creating iterators, we can use generator objects which are also iterators:
 
-    !py
+Playing with a simple generator shows that it implements the iterator protocol:
+
+.. sourcecode:: pycon
+
     >>> def make_gen():
     ...    yield "one"
     ...    yield "two"
@@ -350,16 +368,22 @@ Let's try it:
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     StopIteration
+
+And checking it against the Iterator abstract base class confirm this observation:
+
+.. sourcecode:: pycon
+
     >>> from collections.abc import Iterator
     >>> isinstance(gen, Iterator)
     True
 
 
----
-
 # Generator-based iterable
 
-  	!py
+So instead instead of explicitely returning an iterator from our ``__iter__`` method, we can turn that method into a generator method:
+
+.. sourcecode:: python
+
     class ListParam:
 
         def __init__(self, csv_str):
@@ -378,16 +402,24 @@ Let's try it:
             yield self.csv_str[position:]
 
 
----
+Generators in JavaScript
+------------------------
 
-# Generators in JavaScript
+In JavaScript, generator functions are similar to Python, although we need to mark them with a star character:
 
-    !js
+.. sourcecode:: javascript
+
     > function* make_gen() {
     ... yield "one";
     ... yield "two";
     ... yield "three";
     ... }
+
+
+They also return an object conforming to the JavaScript iteragor protocol:
+
+.. sourcecode:: javascript
+
     > var gen = make_gen();
     > gen.next()
     { value: 'one', done: false }
@@ -398,22 +430,29 @@ Let's try it:
     > gen.next()
     { value: undefined, done: true }
 
----
 
-# Generator-based iterable in JS
+Generator-based iterable in JS
+------------------------------
+
+So we can convert our ``Symbol.iterator`` method into a generator method:
+
+.. sourcecode:: javascript
 
 
-  	!js
     function listParam(csvStr) {
       return {
         [Symbol.iterator]: function*() {
           var position = 0;
           var commaPosition = csvStr.indexOf(",", position);
           while (commaPosition != -1) {
+            // Yield from current position to next comma
             yield csvStr.slice(position, commaPosition);
+            // Advance to char after next comma
             position = commaPosition + 1
+            // Find next comma position
             commaPosition = csvStr.indexOf(",", position);
           }
+          // No comma left, yielding what's left
           yield csvStr.slice(position);
         },
         toString: function() {
@@ -422,3 +461,78 @@ Let's try it:
       }
     }
 
+Usage notes
+-----------
+
+So far we've seen how we can use iteration protocols and generators to
+create data types that can be iterated over. Keep in mind that those types
+don't necessary need to represent flat sequences, you may want to allow
+easy iteration on the elements of tree structures or on randomly nested collections
+by exposing the iterable interface.
+
+Generators are great to transform collections of items in successive
+steps without creating intermediate lists. This can save a lot of memory
+when we need to transform large data sets.
+
+But they can also be used in more ordinary code to refactor loops into
+separate functions. Say for instance you have a function that iterates over
+a collection and processes each item before passing it to
+another function:
+
+.. sourcecode:: python
+
+
+    def some_function(a, b, collection):
+        data = a + b
+        for item in collection:
+            new_item = copy_item(item)
+            # ...
+            # Do more stuff with the new item
+            # ...
+            do_something_with(data, new_item)
+
+As the tranformation process becomes more complex, or is shared between different parts of the code, you'll likely want to factor it out to a separate tranformation function like this:
+
+.. sourcecode:: python
+
+    def some_function(a, b, collection):
+        data = a + b
+        new_collection = transform_collection(collection)
+        for new_item in new_collection:
+            do_something_with(data, new_item)
+
+    def transform_collection(collection):
+        result = []
+        for item in collection:
+            new_item = copy_item(item)
+            # ...
+            # Do more stuff with the new item
+            # ...
+            result.append(new_item)
+        return result
+
+
+This kind of function can easily be simplified by converting it to a generator:
+
+.. sourcecode:: python
+
+    def transform_collection(collection):
+        for item in collection:
+            new_item = copy_item(item)
+            # ...
+            # Do more stuff with the new item
+            # ...
+            yield new_item
+
+On top of reducing boilerplate code, this new version uses less memory by
+avoiding the creation of a new list, which can be useful with large data
+sets.
+
+Conclusion
+==========
+
+I hope this article helped you understand or review iteration protocols
+and generators in both Python and JavaScript. If you use both languages
+these protocols are worth mastering because except for minor details
+they're similar in both languages and the patterns you'll come up with in
+one language will apply equally well to the other.
