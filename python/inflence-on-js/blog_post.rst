@@ -63,14 +63,14 @@ we increase the chances that our objects will play well with Python built-in
 functions and standard library modules, which often speak these protocols.
 
 Creating objects that conform to these protocols is at the heart of writing
-idiomatic Python and the iteration protocols are among the most important.
+idiomatic Python and the iteration protocols are among the most important ones.
 
 Iterable
 ========
 
 In a project I work on, we have web services that take URL parameters with
-multiple values. To save a bit of URL space, instead of using the more common
-``name=value1&name=value2&name=value3`` query string convention, we represent
+multiple values. To save a bit of URL space, instead of using the usual convention
+``name=value1&name=value2&name=value3``, we represent
 these parameters as comma-separated strings such as ``value1,value2,value3``.
 Sometimes I need to use those parameters as strings, for instance to construct
 URLs, and sometimes I need to treat them as collections of values, for
@@ -81,9 +81,7 @@ situation.
 To conform to the iterable protocol, we need to define a class with a
 ``__iter__()`` method that returns an
 `iterator <https://docs.python.org/2/library/stdtypes.html#iterator-types>`_. The
-``iter`` function allows us to create an iterator on a list, so that's what
-we'll do first:
-
+``iter`` function allows us to create an iterator on a list, so we'll delegate to it:
 
 .. sourcecode:: python
 
@@ -145,7 +143,7 @@ equivalent of the following while loop:
 First it calls the ``iter`` function on the object, which will trigger a call
 to its ``__iter__`` method and return an iterator on the list of parameters.
 
-It then repeatidely calls next on that iterator until a ``StopIteration`` is
+It then repeatedly calls ``next`` on that iterator until a ``StopIteration`` exception is
 raised. That is the iterator protocol, which will get back to in a bit. For now
 let's come back to JavaScript and see how we can create an object that supports
 the iterable protocol.
@@ -162,7 +160,6 @@ protocol. In JavaScript an iterable must have a method with the computed name
     function listParam(csvStr) {
       var params = csvStr.split(",");
       return {
-        csvStr: csvStr,
         [Symbol.iterator]: function() {  // Eq. to __iter__
           return params[Symbol.iterator]();  // Eq. to iter()
         },
@@ -188,7 +185,7 @@ In order to iterate over that object, we need to use the  JavaScript ``for-of`` 
 
 Please note that the ``for-of`` loop is a new kind of JavaScript ``for`` loop.
 It's equivalent to Python's ``for`` loop but different from JavaScript's
-original ``for (;;)`` and ``for-in`` loops.
+original ``for (;;)`` and ``for-in`` loops. The point of the ``for-of`` loop is that it speaks the iterable and iterator protocols.
 
 Iterator
 ========
@@ -216,7 +213,7 @@ object that can used by the ``for`` loop? You might have guessed the answer: we 
 A custom iterator
 -----------------
 
-An iterator is simply an object that has ``__next__`` method. That method returns a new value each time it's called, untill it raises ``StopIteration`` because it doesn't have any more values to return:
+An iterator is simply an object that has a ``__next__`` method. That method returns a new value each time it's called, until it raises ``StopIteration`` because it doesn't have any more values to return:
 
 .. sourcecode:: python
 
@@ -320,7 +317,6 @@ We can now get rid of the array and use our iterator in our iterable:
 
     function listParam(csvStr) {
       return {
-        csvStr: csvStr,
         [Symbol.iterator]: function() {
           return paramIterator(csvStr);
         },
@@ -346,9 +342,7 @@ Let's try it:
 Iterators made easy: generators
 ===============================
 
-This is all working fine but manually coding an iterator is a bit verbose. To simplify the process of creating iterators, we can use generator objects which are also iterators:
-
-Playing with a simple generator shows that it implements the iterator protocol:
+This is all working fine but manually coding an iterator is a bit verbose. To simplify the process of creating iterators, we can use generator objects which are also iterators. Playing with a simple generator shows that it implements the iterator protocol:
 
 .. sourcecode:: pycon
 
@@ -369,7 +363,7 @@ Playing with a simple generator shows that it implements the iterator protocol:
       File "<stdin>", line 1, in <module>
     StopIteration
 
-And checking it against the Iterator abstract base class confirm this observation:
+And checking it against the Iterator `abstract base class <https://docs.python.org/dev/library/collections.abc.html>`_ confirms this observation:
 
 .. sourcecode:: pycon
 
@@ -378,9 +372,10 @@ And checking it against the Iterator abstract base class confirm this observatio
     True
 
 
-# Generator-based iterable
+Generator-based iterable
+------------------------
 
-So instead instead of explicitely returning an iterator from our ``__iter__`` method, we can turn that method into a generator method:
+So instead instead of explicitly returning an iterator from our ``__iter__`` method, we can turn that method into a generator method:
 
 .. sourcecode:: python
 
@@ -416,7 +411,7 @@ In JavaScript, generator functions are similar to Python, although we need to ma
     ... }
 
 
-They also return an object conforming to the JavaScript iteragor protocol:
+They also return an object conforming to the JavaScript iterator protocol:
 
 .. sourcecode:: javascript
 
@@ -470,17 +465,15 @@ don't necessary need to represent flat sequences, you may want to allow
 easy iteration on the elements of tree structures or on randomly nested collections
 by exposing the iterable interface.
 
-Generators are great to transform collections of items in successive
+`Generators are great <http://www.dabeaz.com/generators/>`_ to transform collections of items in successive
 steps without creating intermediate lists. This can save a lot of memory
 when we need to transform large data sets.
 
-But they can also be used in more ordinary code to refactor loops into
-separate functions. Say for instance you have a function that iterates over
-a collection and processes each item before passing it to
-another function:
+But they can also be used in more ordinary code to refactor loops into separate
+functions. Say for instance you have a function that iterates over a collection
+and processes each item before passing it to another function:
 
 .. sourcecode:: python
-
 
     def some_function(a, b, collection):
         data = a + b
@@ -491,7 +484,7 @@ another function:
             # ...
             do_something_with(data, new_item)
 
-As the tranformation process becomes more complex, or is shared between different parts of the code, you'll likely want to factor it out to a separate tranformation function like this:
+As the transformation process becomes more complex, or is shared between different parts of the code, you'll likely want to factor it out to a separate transformation function like this:
 
 .. sourcecode:: python
 
