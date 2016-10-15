@@ -400,7 +400,7 @@ So instead instead of explicitly returning an iterator from our ``__iter__`` met
 Generators in JavaScript
 ------------------------
 
-In JavaScript, generator functions are similar to Python, although we need to mark them with a star character:
+In JavaScript, generator functions are similar to Python, although we `need to mark them with a star character <http://stackoverflow.com/questions/27778105/what-purpose-of-asterisk-in-es6-generator-functions/27787527#27787527>`_.
 
 .. sourcecode:: javascript
 

@@ -419,6 +419,46 @@ Try it:
 
 ---
 
+# Generator delegation
+
+## Python
+
+    !py
+    yield from another_gen()
+    yield from [1, 2, 3]
+
+## JavaScript
+
+    !js
+    yield* another_gen()
+    yield* [1, 2, 3]
+
+---
+
+# Sending value to generators
+
+## Python
+
+    !py
+    gen_obj.send(value)
+
+Recieve from within a generator:
+
+    !py
+    value = yield
+
+## JavaScript
+
+    !js
+    gen_obj.next(value)
+
+Recieve from within a generator:
+
+    !js
+    value = yield
+
+---
+
 # Other JavaScript features influenced by Python
 
 - EcmaScript 2015 module system
