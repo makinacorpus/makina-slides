@@ -64,6 +64,12 @@ Forget about the price tag"
 
 # Why do we work?
 
+- livelihood
+- existence
+- consistency
+
+# Presenter Notes
+
 - livelihood: we need to eat
 - existence: we need to be part of the society
 - consistency: we need a shared ideal
@@ -319,7 +325,15 @@ But I can answer one question.
 
 --------------------------------------------------------------------------------
 
-# Thank you!
+# HELP US IMPROVE!
+
+PLEASE USE THE
+
+SURVEY APP TO SEND
+
+US FEEDBACK.
+
+ploneconf.sixfeetup.com
 
 .fx: extra-large
 
