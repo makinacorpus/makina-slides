@@ -521,6 +521,55 @@ On top of reducing boilerplate code, this new version uses less memory by
 avoiding the creation of a new list, which can be useful with large data
 sets.
 
+More generator features
+-----------------------
+
+There are more advanced generator features that I didn't mention and that are supported by both languages: generator delegation and sending values to generators. 
+
+Generator delegation allows to delegate to another iterable, similarly to how a function call allows to delegate to another function. Because generator objects are iterable this can also be used to delegate to another generator.
+
+Since version 3.3, Python has the ``yield from`` statement:
+
+.. sourcecode:: python
+
+    yield from [1, 2, 3]
+    yield from another_gen()
+
+JavaScript uses ``yield*``:
+
+.. sourcecode:: javascript
+
+    yield* [1, 2, 3]
+    yield* another_gen()
+
+It's also possible to send values to a generator, which is useful to implement coroutines. In Python you use the ``send`` method:
+
+.. sourcecode:: python
+
+    gen_obj.send(value)
+
+And you receive the value from within the generator like this:
+
+.. sourcecode:: python
+
+    value = yield
+
+In JavaScript you can send a value by passing an argument to the ``next`` method:
+
+.. sourcecode:: javascript
+
+    gen_obj.next(value)
+
+And you recieve from within a generator exactly like in Python:
+
+.. sourcecode:: javascript
+
+    value = yield
+
+I won't go into too much details about those more advanced features, but
+you can see that JavaScript kept following Python's lead even for more
+recent features.
+
 Conclusion
 ==========
 
