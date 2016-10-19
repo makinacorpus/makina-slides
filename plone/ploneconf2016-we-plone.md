@@ -145,10 +145,11 @@ Why?
 
 Minor ("Unmündig" also means "dependent" or "unfree") = has no responsibility
 
-Major = autonomous, scholar among scholars (developers among developers)
+Major = autonomous, scholar among scholars
 
 # Presenter Notes
 
+vassa iste aoufklarounk
 What Is Enlightenment?
 
 .fx: extra-large
@@ -163,7 +164,7 @@ Communities values their grown-ups status.
 
 # Presenter Notes
 
-they read my code, I read their.
+they read my code, I read their (developers among developers).
 
 .fx: extra-large
 
@@ -187,7 +188,7 @@ It is long and iterative.
 
 --------------------------------------------------------------------------------
 
-# The process induces parenthood
+# This process induces parenthood
 
 We want our code to be better.
 
@@ -211,7 +212,7 @@ Make sure a software always has loving parents to raise it.
 
 --------------------------------------------------------------------------------
 
-# Not just a bunch of developers sharing codes
+# Not just a bunch of developers sharing code
 
 It works like a family: we welcome new members we trust to raise the next generation.
 
@@ -289,13 +290,15 @@ a tertiary retention
 
 # Plone-the-concept
 
-.notes: Our common knowledge of this code, our memory of its past, the future we imagine create Plone-the-concept. The knowledge of its origin too (Zope), and maybe we have reach the point where we have to kill the father.
-
 Plone-the-concept is our **moral ideal**.
 
 It is the community's super-ego ("Über-Ich").
 
 It is (meta-)stable across a collective memory even if contributors change.
+
+# Presenter Notes
+
+Our common knowledge of this code, our memory of its past, the future we imagine create Plone-the-concept. The knowledge of its origin too (Zope), and maybe we have reach the point where we have to kill the father.
 
 .fx: extra-large
 
@@ -308,6 +311,10 @@ I am not a philosopher nor a psychanalyst.
 This talk is potentially a total fraud.
 
 But I can answer one question.
+
+# Presenter Notes
+
+or did I mean a total freud?
 
 .fx: extra-large
 

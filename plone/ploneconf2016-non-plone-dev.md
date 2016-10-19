@@ -250,7 +250,7 @@ An NPM script to push the build to the `static/front` folder.
 
 The `static/front` folder is ignored in Git master but not in `prod` branch.
 
-An NPM script make a `merge --no-commit` + `npm build` and then push to prod server.
+An NPM script makes a `merge --no-commit` + `npm build` and then push to prod server.
 
 .fx: extra-large
 
