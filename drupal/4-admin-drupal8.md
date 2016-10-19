@@ -885,7 +885,7 @@ cette page comme page d'accueil.
 
    [20]: img/joomla-logo.png
 
-   [21]: img/druplicon-logo.png
+   [21]: img/drupal-logo.png
 
    [22]: img/installed8.png
 

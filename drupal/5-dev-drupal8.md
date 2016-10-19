@@ -566,6 +566,18 @@ Des propriétés utiles :
 
 --------------------------------------------------------------------------------
 
+# Render Arrays
+
+    !php
+    // Un render array en html
+    render($array);
+    // (quasiment jamais invoqué directement)
+
+    // Un objet en render array
+    $object->toRenderable();
+
+--------------------------------------------------------------------------------
+
 # TP
 
 Ajouter un '&lt;h3&gt;' autour du bloc précédent
