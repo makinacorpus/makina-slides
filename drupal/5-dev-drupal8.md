@@ -780,7 +780,7 @@ Récupération de résultats :
     $url = Url::fromRoute('contact.site_page', array())->toString();
     $url = Url::fromUserInput('/contact')->toString();
     // Ou générer un lien.
-    $link = Link::fromRoute('text', 'route');
+    $link = Link::createFromRoute('text', 'route');
     $link = Link::fromTextAndUrl('text', $url);
 
 --------------------------------------------------------------------------------

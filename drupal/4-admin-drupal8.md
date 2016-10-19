@@ -827,7 +827,7 @@ d'accueil' est cochée sur toutes les pages du site
 
 # L'organisation du contenu - Exercice récapitulatif
 
-  * Créer un type de contenu auteur : nom, présentation, photo (image)
+  * Créer un type de contenu auteur : nom, biographie, photo (image)
   * Ajouter une référence (references) vers l'auteur dans le type de contenu
 ''Livre''
   * Faire une vue qui affiche la bibliographie de l'auteur (bloc dans les
