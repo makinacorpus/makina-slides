@@ -305,20 +305,6 @@ ploneconf.sixfeetup.com
 
 --------------------------------------------------------------------------------
 
-Description: Being able to develop custom features on top of Plone without knowing Plone internal frameworks is critical for Plone future, and it is now possible. This talk will presents different real use cases where complex Plone web site have been actually developed by non-Plone developers using Rapido, Dexterity, and Diazo. Why Plone is a good backend if you are a frontend developer? What are the good practices? How to move from TTW to file-system based coding? How to manage deployment? How to integrate your usual frontend stack?
-
-• plone dev before rapido: blue pill or red pill, strong enough to face the awful truth, or just forget everything and go back to your normal life
-• now: no need anymore (but the matrix is still here, behind, ahahahahaha)
-• use case toulouse labo, mysmartcab: site plone developpé par une dev non-plone en entier
-• setup de dev: racine normale, et un dossier /front avec gulp watch qui build dans /theme/map, et un proxy sur 3000 qui fait l'auto reload
-• beginner about Plone: "there is a lot of documentation, but I find it in times too technical and not very suitable for beginners. I would prefer more of the youtube tutorials or even documentation written in the style of rapidoplone.readthedocs.org . It tells where to start, what steps to follow exactly and clearly"
-• backend api / front pure js is good and trendy, why would I need a CMS as backend? in my last non-Plone project (tereval), it took 4 days to get a working breadcrumb
-• parler de webpack avec https://community.plone.org/t/plone-5-frontend-development-plugin-for-webpack
-- voir aussi http://datakurre.pandala.org/2016/10/on-building-fat-themes-for-plone.html
-notamment plonetheme-upload
-• toujours besoin d'un package python pour les .po
---------------------------------------------------------------------------------
-
 # Thank you!
 
 .fx: extra-large
