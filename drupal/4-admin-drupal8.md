@@ -362,6 +362,38 @@ puisse modérer ces pages.
 
 --------------------------------------------------------------------------------
 
+# Workflow
+
+  * Un workflow très simple dans le cœur (Brouillon / Publié)
+    * MAIS pas de permission spécifique
+
+  * Content moderation (expérimental)
+
+![][36]
+
+--------------------------------------------------------------------------------
+
+# Workflow
+
+  * Content moderation (expérimental)
+    * Création de nouveaux états et de nouvelles transitions
+
+![][37]
+
+![][38]
+
+--------------------------------------------------------------------------------
+
+# Gérer les utilisateurs - Exercice 2
+
+  * Refaites l'exercice précédent avec le module "Content Modération"
+  * Vérifier que vous pouvez supprimer les droits d'aministration données
+  précédemment
+
+.fx: tp larger
+
+--------------------------------------------------------------------------------
+
 # Pour aller plus loin...
 
   * Modules de la communauté
@@ -450,43 +482,6 @@ puisse modérer ces pages.
 .fx: tp
 
 --------------------------------------------------------------------------------
-
-# Workflow
-
-  * Un workflow très simple dans le cœur (Brouillon / Publié)
-    * MAIS pas de permission spécifique
-    
-  * Content moderation (expérimental)
-
-![][36]
-
---------------------------------------------------------------------------------
-
-# Workflow
-
-  * Content moderation (expérimental)
-    * Création de nouveaux états et de nouvelles transitions
-
-![][37]
-
-![][38]
-
---------------------------------------------------------------------------------
-
-# La gestion du contenu - Exercice 2
-
-  * Créer un état 'En attente de validation'.
-  * Cet état doit être la révision par défaut, non publié
-  * Ajouter la transition From draft to "En attente".
-  * Ajouter la transition From "En attente de validation" to "Published".
-  * Faire en sorte que le rôle "Rédacteur" utilise uniquement la premiere transition crée.
-  * Faire en sorte que le rôle "Modérateur" utilise uniquement la seconde.
-  * Tester le workflow avec la création d'un nouvel Articles.
-
-.fx: tp
-
---------------------------------------------------------------------------------
-
 
 # Les modes d'affichage
 
@@ -827,7 +822,7 @@ d'accueil' est cochée sur toutes les pages du site
 
 # L'organisation du contenu - Exercice récapitulatif
 
-  * Créer un type de contenu auteur : nom, présentation, photo (image)
+  * Créer un type de contenu auteur : nom, biographie, photo (image)
   * Ajouter une référence (references) vers l'auteur dans le type de contenu
 ''Livre''
   * Faire une vue qui affiche la bibliographie de l'auteur (bloc dans les
@@ -885,7 +880,7 @@ cette page comme page d'accueil.
 
    [20]: img/joomla-logo.png
 
-   [21]: img/druplicon-logo.png
+   [21]: img/drupal-logo.png
 
    [22]: img/installed8.png
 

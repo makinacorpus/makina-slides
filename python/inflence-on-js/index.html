@@ -1720,7 +1720,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              1/23
+              1/25
             </aside>
           </footer>
         </div>
@@ -1758,7 +1758,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              2/23
+              2/25
             </aside>
           </footer>
         </div>
@@ -1794,7 +1794,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              3/23
+              3/25
             </aside>
           </footer>
         </div>
@@ -1840,7 +1840,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              4/23
+              4/25
             </aside>
           </footer>
         </div>
@@ -1877,7 +1877,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              5/23
+              5/25
             </aside>
           </footer>
         </div>
@@ -1925,7 +1925,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              6/23
+              6/25
             </aside>
           </footer>
         </div>
@@ -1969,7 +1969,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              7/23
+              7/25
             </aside>
           </footer>
         </div>
@@ -2013,7 +2013,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              8/23
+              8/25
             </aside>
           </footer>
         </div>
@@ -2055,7 +2055,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              9/23
+              9/25
             </aside>
           </footer>
         </div>
@@ -2097,7 +2097,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              10/23
+              10/25
             </aside>
           </footer>
         </div>
@@ -2137,7 +2137,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              11/23
+              11/25
             </aside>
           </footer>
         </div>
@@ -2178,7 +2178,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              12/23
+              12/25
             </aside>
           </footer>
         </div>
@@ -2230,7 +2230,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              13/23
+              13/25
             </aside>
           </footer>
         </div>
@@ -2273,7 +2273,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              14/23
+              14/25
             </aside>
           </footer>
         </div>
@@ -2324,7 +2324,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              15/23
+              15/25
             </aside>
           </footer>
         </div>
@@ -2365,7 +2365,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              16/23
+              16/25
             </aside>
           </footer>
         </div>
@@ -2418,7 +2418,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              17/23
+              17/25
             </aside>
           </footer>
         </div>
@@ -2468,7 +2468,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              18/23
+              18/25
             </aside>
           </footer>
         </div>
@@ -2515,7 +2515,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              19/23
+              19/25
             </aside>
           </footer>
         </div>
@@ -2560,7 +2560,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              20/23
+              20/25
             </aside>
           </footer>
         </div>
@@ -2608,7 +2608,91 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              21/23
+              21/25
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Generator delegation</h1></header>
+            
+            
+            <section><h2>Python</h2>
+<div class="highlight"><pre><span class="k">yield from</span> <span class="n">another_gen</span><span class="p">()</span>
+<span class="k">yield from</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+<h2>JavaScript</h2>
+<div class="highlight"><pre><span class="k">yield</span><span class="o">*</span> <span class="nx">another_gen</span><span class="p">()</span>
+<span class="k">yield</span><span class="o">*</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="index.md">index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/25
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Sending value to generators</h1></header>
+            
+            
+            <section><h2>Python</h2>
+<div class="highlight"><pre><span class="n">gen_obj</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+<p>Get value with:</p>
+<div class="highlight"><pre><span class="n">value</span> <span class="o">=</span> <span class="k">yield</span>
+</pre></div>
+
+<h2>JavaScript</h2>
+<div class="highlight"><pre><span class="nx">gen_obj</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+</pre></div>
+
+<p>Get value with:</p>
+<div class="highlight"><pre><span class="nx">value</span> <span class="o">=</span> <span class="k">yield</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="index.md">index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/25
             </aside>
           </footer>
         </div>
@@ -2623,8 +2707,8 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             
             
             <section><ul>
-<li>EcmaScript 2015 module system</li>
 <li>EcmaScript 2016 decorators</li>
+<li>EcmaScript 2015 module system</li>
 </ul></section>
             
           </div>
@@ -2641,7 +2725,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              22/23
+              24/25
             </aside>
           </footer>
         </div>
@@ -2675,7 +2759,7 @@ value-generating continuations</strong> and a <strong>general iteration protocol
             </aside>
             
             <aside class="page_number">
-              23/23
+              25/25
             </aside>
           </footer>
         </div>
@@ -2817,14 +2901,26 @@ value-generating continuations</strong> and a <strong>general iteration protocol
       
       
       <tr id="toc-row-22">
-        <th><a href="#slide22">Other JavaScript features influenced by Python</a></th>
+        <th><a href="#slide22">Generator delegation</a></th>
         <td><a href="#slide22">22</a></td>
       </tr>
       
       
       <tr id="toc-row-23">
-        <th><a href="#slide23">Conclusion</a></th>
+        <th><a href="#slide23">Sending value to generators</a></th>
         <td><a href="#slide23">23</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-24">
+        <th><a href="#slide24">Other JavaScript features influenced by Python</a></th>
+        <td><a href="#slide24">24</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-25">
+        <th><a href="#slide25">Conclusion</a></th>
+        <td><a href="#slide25">25</a></td>
       </tr>
       
       
