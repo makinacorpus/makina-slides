@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ task.name }}
+{% endblock %}
+
+{% block content %}
+  <h1>Task : {{ task.name }} </h1>
+  <p>We are on : {{ today }}</p>
+  <dl>
+    <dt>Description</dt><dd>{{ task.description|linebreaksbr }}</dd>
+    <dt>Deadline</dt><dd>{{ task.deadline|date:"d/m/Y" }}</dd>
+    <dt>Done</dt><dd>{{ task.done|yesno:"Oui,Non" }}</dd>
+  </dl>
+  <p>
+    <a href="{% url 'edit_task' task.pk %}">Edit task</a>
+  </p>
+{% endblock %}

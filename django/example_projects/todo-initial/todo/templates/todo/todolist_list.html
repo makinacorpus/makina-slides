@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Liste des todo lists
+{% endblock %}
+
+{% block content %}
+  <h1> Liste des <em>todo lists</em></h1>
+  {% if object_list %}
+    <ul>
+      {% for list in object_list %}
+        <li><a href="{% url 'todolist_detail' list.pk %}">{{ list }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Aucune liste !</p>
+  {% endif %}
+
+{% endblock %}

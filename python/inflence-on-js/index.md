@@ -471,3 +471,6 @@ Recieve from within a generator:
 - browsers don't support Python natively
 - JavaScript borrows important concepts from Python
 - let's write pythonic JavaScript!
+
+Transcript available in a few minutes on<br>
+[https://makina-corpus.com](https://makina-corpus.com)
