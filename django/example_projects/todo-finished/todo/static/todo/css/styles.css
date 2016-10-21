@@ -1,0 +1,34 @@
+html {
+    width: 100%;
+}
+
+body {
+    width: 900px;
+    margin: 0 auto;
+    border-left: 1px solid rgb(66, 113, 174);
+    border-right: 1px solid rgb(66, 113, 174);
+    font-family: Helvetica, sans-serif;
+    line-height: 150%;
+}
+
+header,
+footer {
+  background: #00627F;
+  text-align: center;
+  line-height: 2.5em;
+  color: #C9F2FF;
+}
+
+header a,
+footer a {
+    color: white;
+}
+
+section {
+    padding: 3em;
+    min-height: 500px;
+}
+
+ul > * {
+  padding: 0.5em;
+}
