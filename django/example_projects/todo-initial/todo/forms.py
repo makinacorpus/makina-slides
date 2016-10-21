@@ -11,6 +11,7 @@ class AddTaskForm(forms.ModelForm):
 class EditTaskForm(forms.ModelForm):
     class Meta:
         model = Task
+        exclude = []
 
 
 class TaskSearchForm(forms.Form):
