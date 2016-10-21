@@ -1,7 +1,7 @@
 Background
 ==========
 
-In 2006, Brendan Eich, creator of JavaScript, wrote this `in the EcmaScript wiki <http://wiki.ecmascript.org/doku.php?id=discussion:iterators_and_generators#iterators_and_generators>`_:
+In 2006, Brendan Eich, creator of JavaScript, wrote this `in the ECMAScript wiki <http://wiki.ecmascript.org/doku.php?id=discussion:iterators_and_generators#iterators_and_generators>`_:
 
   Given the years of development in Python and similarities to ECMAScript in
   application domains and programmer communities, we would rather follow than
@@ -32,8 +32,8 @@ He also posted `on his blog <https://brendaneich.com/2006/02/python-and-javascri
     js> squares_to_20 = [i * i for i in count(20)]
     0,1,4,9,16,25,36,49,64,81,100,121,144,169,196,225,256,289,324,361
 
-Array comprehensions actually never made it to the EcmaScript standard but as I
-write this my version of Firefox does support `some form of it <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Array_comprehensions>`_:
+Array comprehensions actually never made it to the ECMAScript standard but as I
+write this, my version of Firefox does support `some form of it <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Array_comprehensions>`_:
 
 .. sourcecode:: javascript
 
@@ -54,7 +54,7 @@ Protocols
 Python has the notion of protocol which can be described as an informal
 interface, not enforced by the compiler but based on conventions and
 documentation. Among the most well-known Python protocols we can mention
-`descriptor <https://docs.python.org/3.6/howto/descriptor.html>`_, `sequence <https://docs.python.org/3.6/glossary.html#term-sequence>`_ or `file-like objects <https://docs.python.org/3.6/glossary.html#term-file-object>`_. `Iterable <https://docs.python.org/3.6/glossary.html#term-iterable>`_ and `iterators <https://docs.python.org/3.6/glossary.html#term-iterator>`_ are also two of those
+`descriptor <https://docs.python.org/3.6/howto/descriptor.html>`_, `sequence <https://docs.python.org/3.6/glossary.html#term-sequence>`_ or `file-like objects <https://docs.python.org/3.6/glossary.html#term-file-object>`_. `Iterable <https://docs.python.org/3.6/glossary.html#term-iterable>`_ and `iterators <https://docs.python.org/3.6/glossary.html#term-iterator>`_ are also two of these
 protocols.
 
 These protocols are often quite simple and we're perfectly allowed to
@@ -72,9 +72,9 @@ In a project I work on, we have web services that take URL parameters with
 multiple values. To save a bit of URL space, instead of using the usual convention
 ``name=value1&name=value2&name=value3``, we represent
 these parameters as comma-separated strings such as ``value1,value2,value3``.
-Sometimes I need to use those parameters as strings, for instance to construct
+Sometimes I need to use these parameters as strings, for instance to construct
 URLs, and sometimes I need to treat them as collections of values, for
-instance to loop over them. In order to do that I'd like to avoid having to ``split`` and ``join`` on the comma all over the code. We're going to design a type that allows us to
+instance to loop through them. In order to do that, I'd like to avoid using ``split`` and ``join`` all over the code to convert between strings and lists. We're going to design a type that allows us to
 treat these parameters as strings or to iterate on them, depending on the
 situation.
 
