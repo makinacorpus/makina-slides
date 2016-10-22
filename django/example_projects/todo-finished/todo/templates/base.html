@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>
+      {% block title %}
+        ...
+      {% endblock %}
+    </title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <a href="{% url 'todolist_list' %}">See todo lists</a> - <a href="{% url 'task_list' %}">See tasks</a> - <a href="{% url 'task_search' %}">Task search</a>
+    </header>
+    <section>
+      {% block content %}
+        ...
+      {% endblock %}
+    </section>
+    <footer>{% if user.is_authenticated %}{{ user.first_name }} {{ user.last_name }} : <a href="{% url 'logout' %}">Se déconnecter</a>{% else %}<a href="{% url 'login' %}">Se connecter</a>{% endif %}</footer>
+  </body>
+</html>

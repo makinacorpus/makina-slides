@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Add task
+  Edit task {{ task }}
 {% endblock %}
 
 {% block content %}
-    <h1>Add task</h1>
-    <form action="" method="POST">
+    <h1>Edit task {{ task }}</h1>
+    <form action="" enctype="multipart/form-data" method="POST">
       {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" value="OK" />

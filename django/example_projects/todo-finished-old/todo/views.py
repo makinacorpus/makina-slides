@@ -1,5 +1,7 @@
 from datetime import date
+from rest_framework import viewsets
 
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
@@ -7,19 +9,37 @@ from django.core.urlresolvers import reverse
 
 from todo.models import Task, TodoList
 from todo.forms import AddTaskForm, EditTaskForm, TaskSearchForm
+from todo.serializers import TodoListSerializer, TaskSerializer
 
-# --- Lists --------------------------------------------------------------------
+# --- Lists -------------------------------------------------------------------
 
+
+# --- TodoList list -----------------------------------------------------------
 
 class TodoListList(ListView):
     model = TodoList
 
 
+# --- Task list ---------------------------------------------------------------
+
+# Solution 1 : class based view
 class TaskList(ListView):
     model = Task
 
 
-# --- TodoList detail ----------------------------------------------------------
+# Solution 2 : function based view
+def task_list(request):
+
+    tasks = Task.objects.get_urgent()
+
+    return render(
+        request,
+        'todo/task_list.html',
+        {
+            'object_list': tasks
+        })
+
+# --- TodoList detail ---------------------------------------------------------
 
 
 class TodoListDetail(DetailView):
@@ -28,10 +48,11 @@ class TodoListDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = DetailView.get_context_data(self, **kwargs)
         context['tasks'] = self.object.tasks.all()
+        context['urgent_tasks'] = self.object.tasks.get_urgent()
         return context
 
 
-# --- Task detail --------------------------------------------------------------
+# --- Task detail -------------------------------------------------------------
 
 
 # Solution 1 : class based view
@@ -58,7 +79,7 @@ def task_detail(request, identifiant):
         })
 
 
-# --- Add a task ---------------------------------------------------------------
+# --- Add a task --------------------------------------------------------------
 
 # Solution 1: class based view
 class AddTask(CreateView):
@@ -72,7 +93,7 @@ class AddTask(CreateView):
 
 # Solution 2 : function based view
 def add_task(request):
-    form = AddTaskForm(request.POST or None)
+    form = AddTaskForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         task = form.save()
         return redirect(
@@ -87,7 +108,7 @@ def add_task(request):
             'form': form,
         })
 
-# --- Edit a task --------------------------------------------------------------
+# --- Edit a task -------------------------------------------------------------
 
 
 # Solution 1: class based view
@@ -120,8 +141,9 @@ def edit_task(request, pk):
         })
 
 
-# --- Task search --------------------------------------------------------------
+# --- Task search -------------------------------------------------------------
 
+@permission_required('search_task')
 def task_search(request):
 
     form = TaskSearchForm(request.POST or None)
@@ -129,17 +151,20 @@ def task_search(request):
     tasks = Task.objects.all()
     if form.is_valid():
 
+        filters = {}
         name = form.cleaned_data.get('name')
-        if name is not None:
-            tasks = tasks.filter(name__icontains=name)
+        if name:
+            filters.update(name__icontains=name)
 
         deadline = form.cleaned_data.get('deadline')
-        if deadline is not None:
-            tasks = tasks.filter(deadline__lte=deadline)
+        if deadline:
+            filters.update(deadline__lte=deadline)
 
         done = form.cleaned_data.get('done', None)
         if done is not None:
-            tasks = tasks.filter(done=done)
+            filters.update(done=done)
+
+        tasks = tasks.filter(**filters)
 
     return render(
         request,
@@ -148,3 +173,15 @@ def task_search(request):
             'tasks': tasks,
             'form': form,
         })
+
+
+# ------ REST -----------------------------------------------------------------
+
+class TodoListViewSet(viewsets.ModelViewSet):
+    queryset = TodoList.objects.all()
+    serializer_class = TodoListSerializer
+
+
+class TaskViewSet(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer

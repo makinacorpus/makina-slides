@@ -1,23 +1,25 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Liste des tâches
+  Search tasks
 {% endblock %}
 
 {% block content %}
-  <h1> Liste des tâches</h1>
-  {% if object_list %}
+    <h1>Search tasks</h1>
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="OK" />
+    </form>
+
+  {% if tasks %}
     <ul>
-      {% for task in object_list %}
+      {% for task in tasks %}
         <li><a href="{% url 'task_detail' task.pk %}">{{ task }}</a></li>
       {% endfor %}
     </ul>
   {% else %}
     <p>Aucune tâche !</p>
   {% endif %}
-
-  <p>
-    <a href="{% url 'add_task' %}">Add task</a>
-  </p>
 
 {% endblock %}

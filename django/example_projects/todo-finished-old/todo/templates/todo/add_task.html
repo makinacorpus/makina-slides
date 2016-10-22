@@ -6,7 +6,7 @@
 
 {% block content %}
     <h1>Add task</h1>
-    <form action="" method="POST">
+    <form action="" enctype="multipart/form-data" method="POST">
       {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" value="OK" />
