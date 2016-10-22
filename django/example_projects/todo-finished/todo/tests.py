@@ -1,5 +1,7 @@
+from datetime import timedelta
 from django.test import TestCase
 from django.contrib.auth.models import User, Group, Permission
+from django.utils import timezone
 from .models import Task, TodoList
 
 
@@ -39,3 +41,24 @@ class TestTaskAdminPermission(TestCase):
         })
 
         self.assertEqual(Task.objects.count(), 1)
+
+
+class TestUrgentManager(TestCase):
+
+    def test_no_task(self):
+        self.assertEqual(Task.objects.get_urgent().count(), 0)
+
+    def test_three_tasks_with_one_urgent(self):
+        now = timezone.now()
+        todo_list = TodoList.objects.create(label="Testing list")
+        Task.objects.create(name="Not urgent",
+                            deadline=now + timedelta(days=10),
+                            todo_list=todo_list)
+        Task.objects.create(name="Urgent but done",
+                            deadline=now + timedelta(days=10),
+                            todo_list=todo_list,
+                            done=True)
+        Task.objects.create(name="Urgent and not done",
+                            deadline=now + timedelta(days=2),
+                            todo_list=todo_list)
+        self.assertEqual(Task.objects.get_urgent().count(), 1)

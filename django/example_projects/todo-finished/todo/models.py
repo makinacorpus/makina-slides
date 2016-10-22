@@ -1,5 +1,17 @@
+from datetime import timedelta
+
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+
+
+class TaskManager(models.Manager):
+
+    def get_urgent(self):
+        now = timezone.now()
+        return self.get_queryset().filter(
+            deadline__lte=now + timedelta(7),
+            done=False)
 
 
 class TodoList(models.Model):
@@ -22,6 +34,8 @@ class Task(models.Model):
     deadline = models.DateField(blank=True, null=True)
     done = models.BooleanField(default=False)
     todo_list = models.ForeignKey(TodoList, related_name='tasks')
+
+    objects = TaskManager()
 
     class Meta:
         db_table = 'task'
