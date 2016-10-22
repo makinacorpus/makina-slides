@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load todo_filters %}
 
 {% block title %}
   {{ task.name }}
@@ -10,6 +11,7 @@
   <dl>
     <dt>Description</dt><dd>{{ task.description|linebreaksbr }}</dd>
     <dt>Deadline</dt><dd>{{ task.deadline|date:"d/m/Y" }}</dd>
+    <dt>Time left</dt><dd>{{ task.deadline|delay }}</dd>
     <dt>Done</dt><dd>{{ task.done|yesno:"Oui,Non" }}</dd>
   </dl>
   <p>

@@ -73,3 +73,16 @@ class TestDates(TestCase):
         task.name = "New name"
         task.save()
         self.assertGreater(task.modification_time, task.creation_time)
+
+
+class TestRemainingTime(TestCase):
+
+    def test_task_overdue(self):
+        now = timezone.now()
+        todo_list = TodoList.objects.create(label="Testing list")
+        task = Task.objects.create(name="Overdue",
+                                   deadline=now - timedelta(days=1),
+                                   todo_list=todo_list)
+        url = "/todo/task/{0}/detail/".format(task.pk)
+        response = self.client.get(url)
+        self.assertContains(response, "late")
