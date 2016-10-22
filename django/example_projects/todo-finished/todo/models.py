@@ -14,7 +14,16 @@ class TaskManager(models.Manager):
             done=False)
 
 
-class TodoList(models.Model):
+class Timestamped(models.Model):
+
+    creation_time = models.DateTimeField(auto_now_add=True, null=True)
+    modification_time = models.DateTimeField(auto_now=True, null=True)
+
+    class Meta:
+        abstract = True
+
+
+class TodoList(Timestamped):
     label = models.CharField(max_length=100)
     users = models.ManyToManyField(User, related_name='todo_lists')
 
@@ -28,7 +37,7 @@ class TodoList(models.Model):
         return self.label
 
 
-class Task(models.Model):
+class Task(Timestamped):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     deadline = models.DateField(blank=True, null=True)

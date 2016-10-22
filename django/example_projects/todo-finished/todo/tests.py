@@ -62,3 +62,14 @@ class TestUrgentManager(TestCase):
                             deadline=now + timedelta(days=2),
                             todo_list=todo_list)
         self.assertEqual(Task.objects.get_urgent().count(), 1)
+
+
+class TestDates(TestCase):
+
+    def test_modification_date_after_a_change(self):
+        todo_list = TodoList.objects.create(label="Testing list")
+        Task.objects.create(name="A task", todo_list=todo_list)
+        task = Task.objects.first()
+        task.name = "New name"
+        task.save()
+        self.assertGreater(task.modification_time, task.creation_time)
