@@ -3,6 +3,7 @@ from datetime import date
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.decorators import permission_required
 from django.core.urlresolvers import reverse
 
 from todo.models import Task, TodoList
@@ -71,6 +72,7 @@ class AddTask(CreateView):
 
 
 # Solution 2 : function based view
+@permission_required("todo.add_task")
 def add_task(request):
     form = AddTaskForm(request.POST or None)
     if form.is_valid():
@@ -101,6 +103,7 @@ class EditTask(UpdateView):
 
 
 # Solution 2 : function based view
+@permission_required("todo.change_task")
 def edit_task(request, pk):
     task = Task.objects.get(pk=pk)
     form = EditTaskForm(request.POST or None, instance=task)

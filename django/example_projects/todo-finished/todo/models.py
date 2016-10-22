@@ -12,7 +12,7 @@ class TodoList(models.Model):
         verbose_name_plural = 'Todo lists'
         ordering = ('label', )
 
-    def __unicode__(self):
+    def __str__(self):
         return self.label
 
 
@@ -29,5 +29,5 @@ class Task(models.Model):
         verbose_name_plural = 'Tasks'
         ordering = ('-deadline', )
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
