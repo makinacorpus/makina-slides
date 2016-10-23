@@ -1669,7 +1669,7 @@ d'administration qui peuvent être lancées périodiquement et automatiquement (
 
 # Arborescence des fichiers
 
-Les commandes doivent être des fichiers Python placés dans une module 
+Les commandes doivent être des fichiers Python placés dans un module 
 ``management/command`` de l'application.
 
 
@@ -1716,9 +1716,8 @@ de ``django.core.management.base.BaseCommand``.
 Il est bien sûr possible de lancer une commande personnalisée à la main, tout
 simplement en utilisant directement dans le terminal le point d'entrée ``./manage.py`` :
 
-    !python
+    !console
     $ ./manage.py my_test_command
-
 
 ## Éxécution automatique
 
@@ -1726,12 +1725,17 @@ Il peut être aussi très utile d'automatiser cette execution via une tâche cro
 
     !python
     # Cron tasks
-    0 * * * * user source /project_env_path/bin activate && 
-                   /project_path/manage.py my_test_command
+    0 * * * * /project_path/manage.py my_test_command
+
+## Exécution depuis du code
+
+    !python
+    from django.core import management
+    management.call_command("my_test_command")
 
 --------------------------------------------------------------------------------
 
-# Tutoriel : Écrire une commande qui supprime automatiquement les tâches réalisées depuis une semaine
+# Tutoriel : Écrire une commande qui supprime automatiquement les tâches réalisées avec un deadline qui remonte à plus d'une semaine
 
 .fx: alternate
 

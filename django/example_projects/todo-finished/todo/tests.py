@@ -2,6 +2,7 @@ from datetime import timedelta
 from django.test import TestCase
 from django.contrib.auth.models import User, Group, Permission
 from django.utils import timezone
+from django.core import management
 from .models import Task, TodoList
 
 
@@ -86,3 +87,25 @@ class TestRemainingTime(TestCase):
         url = "/todo/task/{0}/detail/".format(task.pk)
         response = self.client.get(url)
         self.assertContains(response, "late")
+
+
+class TestCleanupCommand(TestCase):
+
+    def test_cleanup_done_for_a_week(self):
+        now = timezone.now()
+        todo_list = TodoList.objects.create(label="Testing list")
+        Task.objects.create(name="Uncompleted old task",
+                            deadline=now - timedelta(days=7),
+                            todo_list=todo_list,
+                            done=False)
+        Task.objects.create(name="Completed old task",
+                            deadline=now - timedelta(days=7),
+                            todo_list=todo_list,
+                            done=True)
+        Task.objects.create(name="New task",
+                            deadline=now + timedelta(days=1),
+                            todo_list=todo_list,
+                            done=True)
+        self.assertEqual(Task.objects.count(), 3)
+        management.call_command("cleanup_old_tasks")
+        self.assertEqual(Task.objects.count(), 2)
