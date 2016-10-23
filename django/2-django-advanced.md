@@ -1382,7 +1382,7 @@ Exemple pour une image :
 
     !python
     {# my_app/templates/my_app/my_template.html #}
-    {% load staticfiles %}
+    {% load static %}
     ...
     <img src="{% static "my_app/img/myexample.jpg" %}" alt="My image"/>
 
@@ -1390,7 +1390,7 @@ Exemple pour un CSS :
 
     !python
     {# base.html #}
-    {% load staticfiles %}
+    {% load static %}
     <html>
       <head>
         <link href="{% static "my_app/css/styles.css" %}" />
