@@ -1335,7 +1335,7 @@ Django fournit un module ``django.contrib.staticfiles`` qui facilite cette gesti
 
 ## Quelques réglages
 
-Comme toujours, pour l'application soit utilisable, il faut qu'elle soit présente
+Comme toujours, pour que l'application soit utilisable, il faut qu'elle soit présente
 dans les ``INSTALLED_APPS`` du projet.
 
 ``STATIC_URL`` permet ensuite de spécifier l'URL à partir de laquelle ces fichiers
@@ -1362,7 +1362,7 @@ Les fichiers statiques doivent être stockés dans un répertoire ``static`` de
 l'application. Les scripts par défaut configurés dans ``STATICFILES_FINDERS`` (cf ``settings.py``) pourront alors retrouver les fichiers statiques de chaque application.
 
 Il est aussi possible de stocker des fichiers statiques dans d'autres dossiers, 
-il faut alors ceux-ci dans un réglage particulier : ``STATICFILES_DIRS``.
+il faut alors ajouter ceux-ci à la liste ``STATICFILES_DIRS``.
 
 La commande ``collectstatic`` permet d'aggréger ces fichiers dans un répertoire unique défini par ``STATIC_ROOT`` :
 
@@ -1410,13 +1410,13 @@ en production
 
 ## En production
 
-Un réglage supplémentaire, ``STATIC_ROOT``, permet de spécifier le chemin vers
+Le paramètre ``STATIC_ROOT`` permet de spécifier le chemin vers
 le répertoire des fichiers statiques sur le système de fichiers.
 
 Grâce à ce réglage, la commande ``collectstatic`` copie tous les fichiers statiques
 vers le chemin précisé.
 
-Il suffit ensuite de paramétrer le serveur web pour qu'il serve lui-même ces fichiers.
+Il faut ensuite paramétrer le serveur web pour qu'il serve lui-même ces fichiers.
 
 --------------------------------------------------------------------------------
 
