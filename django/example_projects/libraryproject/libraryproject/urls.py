@@ -20,3 +20,5 @@ urlpatterns = [
     url(r'^library/', include('library.urls')),
     url(r'^admin/', admin.site.urls),
 ]
+
+handler404 = 'library.views.custom_404_view'

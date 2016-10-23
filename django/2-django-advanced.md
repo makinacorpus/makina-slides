@@ -957,13 +957,15 @@ Il est important de gérer les erreurs selon les concepts du protocole HTTP. Une
     from django.http import Http404
 
     def book_detail(request, book_id):
-        
+
         try:
-            b = Book.objects.get(pk=book_id)
+            book = Book.objects.get(pk=book_id)
         except Book.DoesNotExist:
             raise Http404
-        
-        return render('books/detail.html', {'book': b})
+
+        return render(request, 'library/book_detail.html', {
+            'book': book
+        })
 
 
 --------------------------------------------------------------------------------
@@ -980,9 +982,9 @@ Comme pour l'erreur 404, Il est important de gérer les erreurs en accord avec l
         if not library.is_registered(user):
             raise PermissionDenied
         
-        b = Book.objects.get(pk=book_id)
+        book = Book.objects.get(pk=book_id)
         
-        return render('books/detail.html', {'book': b})
+        return render(request, 'books/detail.html', {'book': book})
 
 --------------------------------------------------------------------------------
 
@@ -1023,7 +1025,7 @@ de créer une vue dont il faudra préciser le nom dans l'``URLConf`` :
     def my_403_view(request):
         send_mail_to_admin()
         # ...
-        return render('403.html')
+        return render(request, '403.html')
 
     # urls.py
     urlpatterns = patterns('',
