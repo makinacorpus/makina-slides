@@ -2040,6 +2040,39 @@ ou même d'écrire son propre formulaire et de le déclarer dans le ``ModelAdmin
 
 .fx: alternate
 
+---
+
+# Deploiement
+
+## Serveurs WSGI
+
+WSGI : interface entre un serveur web et une application web en Python
+
+* Gunicorn
+* mod_wsgi (fonctionne avec Apache HTTP Server)
+* uWSGI
+* Chaussette
+
+Application WSGI minimale :
+
+    !python
+    def application(environ, start_response):
+        data = b'Hello, World!\n'
+        start_response('200 OK', [
+            ('Content-type', 'text/plain'),
+            ('Content-Length', str(len(data)))
+        ])
+        return iter([data])
+
+---
+
+# Deploiement
+
+## Serveur web 
+
+* nginx : léger, rapide
+* Apache HTTP Server : très complet et nombreux modules
+
 --------------------------------------------------------------------------------
 
 # Merci !
