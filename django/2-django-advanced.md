@@ -747,7 +747,7 @@ Grâce aux modèles *proxy*, il est possible de modifier le comportement d'un ob
 
 # ORM et performance
 
-## Le problème N+1
+## Le problème N+1 avec les ForeignKey
 
 On accède à une relation dans une boucle ce qui entraine :
 
@@ -789,7 +789,48 @@ Exemple :
 
 L'ORM fait une seule requête avec une jointure :
 
-![](img/ddt_nplus1_fixed.png)
+![](img/ddt_nplus1_fixed.png) 
+
+---
+
+# ORM et performance
+
+## Le problème N+1 avec les ManyToManyField
+
+    !django
+    {% for list in object_list %}
+      <li>
+        <a href="{% url 'todolist_detail' list.pk %}">{{ list }}</a>
+        Users: {% for user in list.users.all %}
+                  {{ user.username }}
+               {% endfor %}
+      </li>
+    {% endfor %}
+
+--- 
+
+# ORM et performance
+
+## Diagnostique : Django Debug Toolbar
+
+![](img/ddt_nplus1_manytomany.png)
+
+---
+
+# Solution : prefetch_related
+
+
+    !python
+    class TodoListList(ListView):
+        model = TodoList
+
+        def get_queryset(self):
+            queryset = super(TodoListList, self).get_queryset()
+            return queryset.prefetch_related("users")
+
+L'ORM ne fait qu'une seule requête supplémentaire avec une clause ``IN`` :
+
+![](img/ddt_nplus1_manytomany_fixed.png)
 
 --------------------------------------------------------------------------------
 
