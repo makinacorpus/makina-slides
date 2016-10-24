@@ -832,6 +832,35 @@ L'ORM ne fait qu'une seule requête supplémentaire avec une clause ``IN`` :
 
 ![](img/ddt_nplus1_manytomany_fixed.png)
 
+---
+
+# Les signaux
+
+Permet d'appeler du code quand certains événements se produisent dans l'application :
+
+* initialisation de l'application (pre_init / post_init)
+* écritures dans la base de données (pre_save / post_save / pre_delete ...)
+* traitement des requêtes (request_started / request_finished)
+
+Exemple :
+
+
+    !python
+    from django.db.models.signals import post_save
+    from django.dispatch import receiver
+    from todo.models import Task
+
+    @receiver(post_save, sender=Task)
+    def db_update_callback(sender, instance, created, **kwargs):
+        print('Task "{0}" saved!'.format(instance.name))
+
+
+---
+
+# Tutoriel : Envoyer un email quand une tâche est éffectuée
+
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # Aller plus loin avec les vues

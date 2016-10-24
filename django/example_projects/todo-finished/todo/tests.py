@@ -1,5 +1,7 @@
+# coding:utf-8
 from datetime import timedelta
 from django.test import TestCase
+from django.core import mail
 from django.contrib.auth.models import User, Group, Permission
 from django.utils import timezone
 from django.core import management
@@ -109,3 +111,18 @@ class TestCleanupCommand(TestCase):
         self.assertEqual(Task.objects.count(), 3)
         management.call_command("cleanup_old_tasks")
         self.assertEqual(Task.objects.count(), 2)
+
+
+class TestEmail(TestCase):
+    def test_send_email_upon_task_completion(self):
+        user = create_user()
+        todo_list = TodoList.objects.create(label="Testing list")
+        todo_list.users.add(user)
+        task = Task.objects.create(
+            name="Testing task",
+            todo_list=todo_list,
+            done=False)
+        task.done = True
+        task.save()
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertIn(task.name, mail.outbox[0].subject)
