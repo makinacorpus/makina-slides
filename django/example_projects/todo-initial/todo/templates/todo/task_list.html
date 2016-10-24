@@ -9,7 +9,8 @@
   {% if object_list %}
     <ul>
       {% for task in object_list %}
-      <li><a href="{% url 'task_detail' task.pk %}">{{ task }}</a> ({{task.todo_list.label }})</li>
+        <li><a href="{% url 'task_detail' task.pk %}">{{ task }}</a>
+        Liste: {{task.todo_list.label }}</li>
       {% endfor %}
     </ul>
   {% else %}

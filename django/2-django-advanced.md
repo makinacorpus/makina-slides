@@ -743,6 +743,54 @@ Grâce aux modèles *proxy*, il est possible de modifier le comportement d'un ob
 
 .fx: alternate
 
+---
+
+# ORM et performance
+
+## Le problème N+1
+
+On accède à une relation dans une boucle ce qui entraine :
+
+* **1** requête pour récupérer la collection de taille N sur laquelle un bouble
+* **N** requêtes pour récupérer l'attribut lié
+
+Exemple :
+
+
+     !htmldjango
+     {% for task in object_list %}
+     <li>
+       <a href="{% url 'task_detail' task.pk %}">{{ task }}</a>
+       Liste: {{task.todo_list.label }}
+     </li>
+     {% endfor %}
+
+---
+
+# ORM et performance
+
+## Diagnostique : Django Debug Toolbar
+
+![](img/ddt_nplus1.png)
+
+---
+
+# Solution
+
+## select_related
+
+    !python
+    class TaskList(ListView):
+        model = Task
+
+        def get_queryset(self):
+            queryset = super(TaskList, self).get_queryset()
+            return queryset.select_related("todo_list")
+
+L'ORM fait une seule requête avec une jointure :
+
+![](img/ddt_nplus1_fixed.png)
+
 --------------------------------------------------------------------------------
 
 # Aller plus loin avec les vues

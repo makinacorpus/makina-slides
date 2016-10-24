@@ -18,6 +18,10 @@ class TodoListList(ListView):
 class TaskList(ListView):
     model = Task
 
+    def get_queryset(self):
+        queryset = super(TaskList, self).get_queryset()
+        return queryset.select_related("todo_list")
+
 
 # --- TodoList detail ----------------------------------------------------------
 
