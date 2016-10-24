@@ -15,6 +15,9 @@ class TodoList(models.Model):
     def __str__(self):
         return self.label
 
+    def __unicode__(self):
+        return self.label
+
 
 class Task(models.Model):
     name = models.CharField(max_length=100)
@@ -30,4 +33,7 @@ class Task(models.Model):
         ordering = ('-deadline', )
 
     def __str__(self):
+        return self.name
+
+    def __unicode__(self):
         return self.name
