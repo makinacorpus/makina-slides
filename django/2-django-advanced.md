@@ -1157,7 +1157,48 @@ de créer une vue dont il faudra préciser le nom dans l'``URLConf`` :
 
 .fx: alternate
 
+---
+
+# Middleware
+
+Altérer le traitement des requêtes de manière globale
+
+    !python
+    class SimpleMiddleware(object):
+        def __init__(self, get_response):
+            # Initialisation
+            self.get_response = get_response
+
+        def __call__(self, request):
+
+            # Code exécuté pour chaque requête avant la vue
+
+            response = self.get_response(request)
+
+            # Code exécuté pour chaque requête après la vue
+
+            return response
+
 --------------------------------------------------------------------------------
+
+# Middleware
+
+Les middlewares activés par défaut
+
+    !python
+    MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
+
+Voir la documentation des [middlewares standards](https://docs.djangoproject.com/en/dev/ref/middleware/)
+
+---
 
 # Aller plus loin avec les templates
 
