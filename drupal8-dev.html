@@ -2957,7 +2957,7 @@ sous-repertoire <code>custom</code></p>
 <li>Poids des modules et altération</li>
 <li>Répondent à des déclencheurs</li>
 <li>Des hooks peuvent être déclarés par des modules contrib</li>
-<li>Rappel: on ne « hack » JAMAIS le code <small>(sauf en cas de module
+<li>Rappel: on ne « hack » JAMAIS le core <small>(sauf en cas de module
   bogué)</small></li>
 <li>Tend à disparaître avec Drupal 8 (Plugins, yml, events), mais existe encore...</li>
 <li>Les implémentations sont mise en cache</li>
@@ -3093,36 +3093,33 @@ sous-repertoire <code>custom</code></p>
       
       <!-- slide source: 5-dev-drupal8.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Les blocs</h1></header>
             
             
-            <section><ul>
-<li>fichier src/Plugin/Block/TestBlock.php</li>
-<li>Déclaration</li>
-</ul>
-<p><code><pre>
-    namespace Drupal\mon_module\Plugin\Block;
-    use Drupal\Core\Block\BlockBase;
-    /*<em>
-     * Provides a 'Test' block.
-     * 
-     * @Block(
-     *   id = "test_block",
-     *   admin_label = @Translation("Test block"),
-     * )
-     </em>/
-    class TestBlock extends BlockBase {
-      public function build() {
-        return array('#markup' =&gt; '',);
-      }
-    }
-</pre></code></p>
-<pre><code>// Altération
-function hook_block_view_BLOCK_ID_alter(&amp;$build, $block) {}
-</code></pre></section>
+            <section><p>fichier src/Plugin/Block/TestBlock.php</p>
+<div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">Drupal\mon_module\Plugin\Block</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Drupal\Core\Block\BlockBase</span><span class="p">;</span>
+<span class="sd">/**</span>
+<span class="sd"> * Provides a &#39;Test&#39; block.</span>
+<span class="sd"> * </span>
+<span class="sd"> * @Block(</span>
+<span class="sd"> *   id = &quot;test_block&quot;,</span>
+<span class="sd"> *   admin_label = @Translation(&quot;Test block&quot;),</span>
+<span class="sd"> * )</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">TestBlock</span> <span class="k">extends</span> <span class="nx">BlockBase</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">build</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;#markup&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Altération</span>
+<span class="k">function</span> <span class="nf">hook_block_view_BLOCK_ID_alter</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$build</span><span class="p">,</span> <span class="nv">$block</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -3433,28 +3430,28 @@ Un render array est converti en HTML avec la fonction <code>render();</code></p>
       
       <!-- slide source: 5-dev-drupal8.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Les controllers</h1></header>
             
             
-            <section><ul>
-<li>fichier src/Controller/ModuleController.php</li>
-<li>Déclaration</li>
-</ul>
-<p><code><pre>
-    namespace Drupal\mon_module\Controller;
-    use Drupal\Core\Controller\ControllerBase;
-    /*<em>
-     * Provides a 'Test' block.
-     </em>/
-    class ModuleController extends ControllerBase {
-      public function abc_view() {
-        return array('#markup' =&gt; '',);
-      }
-    }
-</pre></code></p></section>
+            <section><p>fichier src/Controller/ModuleController.php :</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">Drupal\mon_module\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Drupal\Core\Controller\ControllerBase</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Provides a basic controller.</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">ModuleController</span> <span class="k">extends</span> <span class="nx">ControllerBase</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">abc_view</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;#markup&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
