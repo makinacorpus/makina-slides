@@ -430,7 +430,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
   * Poids des modules et altération
   * Répondent à des déclencheurs
   * Des hooks peuvent être déclarés par des modules contrib
-  * Rappel: on ne « hack » JAMAIS le code <small>(sauf en cas de module
+  * Rappel: on ne « hack » JAMAIS le core <small>(sauf en cas de module
   bogué)</small>
   * Tend à disparaître avec Drupal 8 (Plugins, yml, events), mais existe encore...
   * Les implémentations sont mise en cache
@@ -471,10 +471,9 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 # Les blocs
 
-  * fichier src/Plugin/Block/TestBlock.php
-  * Déclaration
+fichier src/Plugin/Block/TestBlock.php
 
-<code><pre>
+    !php
     namespace Drupal\mon_module\Plugin\Block;
     use Drupal\Core\Block\BlockBase;
     /**
@@ -490,7 +489,6 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
         return array('#markup' => '',);
       }
     }
-</pre></code>
 
     // Altération
     function hook_block_view_BLOCK_ID_alter(&$build, $block) {}
@@ -622,22 +620,22 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
 # Les controllers
 
-  * fichier src/Controller/ModuleController.php
-  * Déclaration
+fichier src/Controller/ModuleController.php :
 
-<code><pre>
+    !php
+    <?php
     namespace Drupal\mon_module\Controller;
+
     use Drupal\Core\Controller\ControllerBase;
+
     /**
-     * Provides a 'Test' block.
+     * Provides a basic controller.
      */
     class ModuleController extends ControllerBase {
       public function abc_view() {
         return array('#markup' => '',);
       }
     }
-</pre></code>
-
 
 --------------------------------------------------------------------------------
 
