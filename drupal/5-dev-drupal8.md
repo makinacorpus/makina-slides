@@ -716,12 +716,20 @@ premium
 
 --------------------------------------------------------------------------------
 
+# Quelques routes spéciales
+
+  * <front>
+  * <nolink>
+
+Pour voir les routes, utilisez la console : `drupal router:debug`
+
+--------------------------------------------------------------------------------
+
 # Gestion des nodes et des users
 
 Quelques fonctions de l'API à connaitre :
 
   * `\Drupal::currentUser()` : utilisateur actuellement connecté
-<small>(modifier avec prudence !)</small>
   * `Node::load()` et `Node::loadMultiple()` pour charger des nœuds
   * `User::load()` et `User::loadMultiple()` pour charger des utilisateurs
   * $entity->save() pour enregistrer un nœud, un utilisateur, ...
