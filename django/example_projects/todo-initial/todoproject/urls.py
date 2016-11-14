@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+import debug_toolbar
 
 from todo.views import TodoListList
 
@@ -22,4 +23,5 @@ urlpatterns = [
     url(r'^$', TodoListList.as_view(), name='home'),
     url(r'^todo/', include('todo.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^__debug__/', include(debug_toolbar.urls)),
 ]

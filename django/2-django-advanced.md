@@ -2,6 +2,285 @@
 
 --------------------------------------------------------------------------------
 
+# Introduction aux tests automatisés
+
+--------------------------------------------------------------------------------
+
+# Arborescence
+
+Une architecture possible pour organiser les tests d'une application consiste à
+créer, dans un dossier ``tests``, un fichier de tests
+(``test_views.py``, ``test_models.py``, ...) par fichier de
+l'application (``views.py``, ``models.py``, ...).
+
+    !console
+    ├── library
+    │   ├── __init__.py
+    │   ├── forms.py
+    │   ├── models.py
+    │   ├── views.py
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   ├── test_forms.py
+    │   │   ├── test_models.py
+    │   │   └── test_views.py
+
+Les tests automatisés sont les premières briques indispensables pour garantir
+une application fiable et éviter les régressions au fil du temps.
+
+--------------------------------------------------------------------------------
+
+# Tester un modèle
+
+## Le modèle
+
+Voici un modèle très basique :
+
+    !python
+    # models.py
+
+    class Author(models.Model):
+        firstname = models.CharField(max_length=100, null=True, blank=True)
+        lastname = models.CharField(max_length=100)
+
+        def __str__(self):
+            return u'%s %s' % (self.firstname, self.lastname)
+
+L'idée n'est pas de tester Django (création d'instance, vérification que les 
+différents fonctionnent, ...) mais bien de tester notre code personnel. Ici,
+seule la fonction ``__str__`` est donc à tester.
+
+Il faut prendre soin de tester les différents cas possibles d'exécution ( en
+l'occurrence, la présence d'un ``firstname`` ou non).
+
+
+--------------------------------------------------------------------------------
+
+# Tester un modèle
+
+## Le test
+
+    !python
+    # tests/test_models.py
+    from django.test import TestCase
+    from library.models import Author
+
+
+    class AuthorAsStringTest(TestCase):
+
+        def test_with_first_name(self):
+
+            author = Author.objects.create(firstname='René',
+                                           lastname='Descartes')
+            self.assertEqual(str(author), 'René Descartes')
+
+        def test_without_first_name(self):
+
+            author = Author.objects.create(lastname='Platon')
+            self.assertEqual(str(author), 'Platon')
+
+--------------------------------------------------------------------------------
+
+# Exécution des test
+
+    !shell
+    $ ./manage.py test library
+    Creating test database for alias 'default'...
+    .F
+    ======================================================================
+    FAIL: test_without_first_name (library.tests.test_models.AuthorAsStringTest)
+    ----------------------------------------------------------------------
+    Traceback (most recent call last):
+      File "/home/al/makina-slides/django/example_projects/libraryproject/library/tests/test_models.py", line 16, in test_without_first_name
+        self.assertEqual(str(author), 'Platon')
+    AssertionError: 'None Platon' != 'Platon'
+    - None Platon
+    + Platon
+
+    ----------------------------------------------------------------------
+    Ran 2 tests in 0.002s
+
+    FAILED (failures=1)
+    Destroying test database for alias 'default'...
+
+--------------------------------------------------------------------------------
+
+# Tester un modèle
+
+## Le modèle corrigé
+
+    !python
+    class Author(models.Model):
+        firstname = models.CharField(max_length=100, null=True, blank=True)
+        lastname = models.CharField(max_length=100)
+
+        def __str__(self):
+            if self.firstname:
+                return u'%s %s' % (self.firstname, self.lastname)
+            else:
+                return self.lastname
+
+Exécution des tests :
+
+    !shell
+    $ ./manage.py test library.tests.test_models
+    Creating test database for alias 'default'...
+    ..
+    ----------------------------------------------------------------------
+    Ran 2 tests in 0.001s
+
+    OK
+    Destroying test database for alias 'default'...
+
+--------------------------------------------------------------------------------
+
+# Tester une vue
+
+## Le test
+
+    !python
+    from datetime import date
+    from django.test import TestCase
+    from library.models import Book
+
+
+    class BookViewTest(TestCase):
+
+        def test_recent_books_view(self):
+            recent_date = date.today()
+            recent_book = Book.objects.create(title='Titre du livre récent',
+                                              published=recent_date)
+
+            old_date = recent_date.replace(year=recent_date.year - 1)
+            old_book = Book.objects.create(title='Titre du vieux livre',
+                                           published=old_date)
+
+            response = self.client.get("/library/recent/")
+
+            self.assertNotContains(response, old_book.title)
+            self.assertContains(response, recent_book.title)
+
+--------------------------------------------------------------------------------
+
+# Tester une vue
+
+## Le modèle
+
+    !python
+    class Book(models.Model):
+        title = models.CharField(max_length=200)
+        published = models.DateField(null=True, blank=True)
+
+--------------------------------------------------------------------------------
+
+# Tester une vue
+
+## La vue
+
+    !python
+    from django.shortcuts import render
+    from datetime import date
+    from .models import Book
+
+
+    def recent_books(request):
+        today = date.today()
+        threshold = today.replace(year=today.year - 1)
+
+        results = Book.objects.filter(published__gt=threshold)
+
+        return render(request, 'library/book_list.html', {
+            'results': results
+        })
+
+On a vérifié :
+
+1. que la vue fonctionne correctement (pas d'erreur 500);
+2. que la requête renvoit les résultats attendus.
+
+
+--------------------------------------------------------------------------------
+
+# Tester un formulaire
+
+## Le formulaire
+
+    !python
+    # forms.py
+    from django import forms
+
+    class PeriodForm(forms.Form):
+        begin = forms.DateField()
+        end = forms.DateField()
+
+        def __init__(self, *args, **kwargs):
+            super(PeriodForm, self).__init__(*args, **kwargs)
+
+            begin = self.initial.get('begin', None)
+            if begin:
+                self.initial['end'] = begin.replace(month=begin.month + 1)
+
+
+Comme pour le modèle, l'idée n'est pas de tester ce qui est du ressort de Django.
+Ici, il est simplement nécessaire de s'assurer que la fonction ``__init__``fonctionne correctement dans les différents cas possibles (présence ou non d'une valeur
+initiale pour le champ ``begin``).
+
+--------------------------------------------------------------------------------
+
+# Tester un formulaire
+
+## Le test
+
+    !python
+    # tests/test_forms.py
+    from datetime import date
+    from django.test import TestCase
+    from library.forms import PeriodForm
+
+
+    class PeriodFormTest(TestCase):
+
+        def test_init_without_begin(self):
+            f = PeriodForm()
+            self.assertIsNone(f.initial.get('end'))
+
+        def test_init_with_begin(self):
+            initial = {'begin': date(2014, 1, 1)}
+            f = PeriodForm(initial=initial)
+            self.assertEqual(f.initial.get('begin'), date(2014, 1, 1))
+            self.assertEqual(f.initial.get('end'), date(2014, 2, 1))
+
+--------------------------------------------------------------------------------
+
+# Rapport de couverture
+
+Révèle quelles parties du code sont couvertes par les tests
+
+    !shell
+    $ coverage run --branch --source=library ./manage.py test
+    $ coverage report
+    Name                                 Stmts   Miss Branch BrPart  Cover
+    ----------------------------------------------------------------------
+    library/__init__.py                      0      0      0      0   100%
+    library/admin.py                         1      0      0      0   100%
+    library/apps.py                          3      0      0      0   100%
+    library/forms.py                         9      0      2      0   100%
+    library/migrations/0001_initial.py       6      0      0      0   100%
+    library/migrations/__init__.py           0      0      0      0   100%
+    library/models.py                       11      0      2      0   100%
+    library/tests/__init__.py                0      0      0      0   100%
+    library/tests/test_forms.py             12      0      0      0   100%
+    library/tests/test_models.py             9      0      0      0   100%
+    library/tests/test_views.py             12      0      0      0   100%
+    library/urls.py                          3      0      0      0   100%
+    library/views.py                         8      0      0      0   100%
+    ----------------------------------------------------------------------
+    TOTAL                                   74      0      4      0   100%
+
+
+
+--------------------------------------------------------------------------------
+
 # Gestion des utilisateurs 
 
 --------------------------------------------------------------------------------
@@ -464,6 +743,124 @@ Grâce aux modèles *proxy*, il est possible de modifier le comportement d'un ob
 
 .fx: alternate
 
+---
+
+# ORM et performance
+
+## Le problème N+1 avec les ForeignKey
+
+On accède à une relation dans une boucle ce qui entraine :
+
+* **1** requête pour récupérer la collection de taille N sur laquelle un bouble
+* **N** requêtes pour récupérer l'attribut lié
+
+Exemple :
+
+
+     !htmldjango
+     {% for task in object_list %}
+     <li>
+       <a href="{% url 'task_detail' task.pk %}">{{ task }}</a>
+       Liste: {{task.todo_list.label }}
+     </li>
+     {% endfor %}
+
+---
+
+# ORM et performance
+
+## Diagnostique : Django Debug Toolbar
+
+![](img/ddt_nplus1.png)
+
+---
+
+# Solution
+
+## select_related
+
+    !python
+    class TaskList(ListView):
+        model = Task
+
+        def get_queryset(self):
+            queryset = super(TaskList, self).get_queryset()
+            return queryset.select_related("todo_list")
+
+L'ORM fait une seule requête avec une jointure :
+
+![](img/ddt_nplus1_fixed.png) 
+
+---
+
+# ORM et performance
+
+## Le problème N+1 avec les ManyToManyField
+
+    !django
+    {% for list in object_list %}
+      <li>
+        <a href="{% url 'todolist_detail' list.pk %}">{{ list }}</a>
+        Users: {% for user in list.users.all %}
+                  {{ user.username }}
+               {% endfor %}
+      </li>
+    {% endfor %}
+
+--- 
+
+# ORM et performance
+
+## Diagnostique : Django Debug Toolbar
+
+![](img/ddt_nplus1_manytomany.png)
+
+---
+
+# Solution : prefetch_related
+
+
+    !python
+    class TodoListList(ListView):
+        model = TodoList
+
+        def get_queryset(self):
+            queryset = super(TodoListList, self).get_queryset()
+            return queryset.prefetch_related("users")
+
+L'ORM ne fait qu'une seule requête supplémentaire avec une clause ``IN`` :
+
+![](img/ddt_nplus1_manytomany_fixed.png)
+
+---
+
+# Les signaux
+
+Permet d'appeler du code quand certains événements se produisent dans l'application :
+
+* initialisation de l'application (pre_init / post_init)
+* écritures dans la base de données (pre_save / post_save / pre_delete ...)
+* traitement des requêtes (request_started / request_finished)
+
+Exemple :
+
+
+    !python
+    from django.db.models.signals import post_save
+    from django.dispatch import receiver
+    from todo.models import Task
+
+    @receiver(post_save, sender=Task)
+    def db_update_callback(sender, instance, created, **kwargs):
+        print('Task "{0}" saved!'.format(instance.name))
+
+
+---
+
+# Tutoriel : Envoyer un email quand une tâche est éffectuée
+
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # Aller plus loin avec les vues
@@ -678,13 +1075,15 @@ Il est important de gérer les erreurs selon les concepts du protocole HTTP. Une
     from django.http import Http404
 
     def book_detail(request, book_id):
-        
+
         try:
-            b = Book.objects.get(pk=book_id)
+            book = Book.objects.get(pk=book_id)
         except Book.DoesNotExist:
             raise Http404
-        
-        return render('books/detail.html', {'book': b})
+
+        return render(request, 'library/book_detail.html', {
+            'book': book
+        })
 
 
 --------------------------------------------------------------------------------
@@ -701,9 +1100,9 @@ Comme pour l'erreur 404, Il est important de gérer les erreurs en accord avec l
         if not library.is_registered(user):
             raise PermissionDenied
         
-        b = Book.objects.get(pk=book_id)
+        book = Book.objects.get(pk=book_id)
         
-        return render('books/detail.html', {'book': b})
+        return render(request, 'books/detail.html', {'book': book})
 
 --------------------------------------------------------------------------------
 
@@ -744,7 +1143,7 @@ de créer une vue dont il faudra préciser le nom dans l'``URLConf`` :
     def my_403_view(request):
         send_mail_to_admin()
         # ...
-        return render('403.html')
+        return render(request, '403.html')
 
     # urls.py
     urlpatterns = patterns('',
@@ -758,7 +1157,48 @@ de créer une vue dont il faudra préciser le nom dans l'``URLConf`` :
 
 .fx: alternate
 
+---
+
+# Middleware
+
+Altérer le traitement des requêtes de manière globale
+
+    !python
+    class SimpleMiddleware(object):
+        def __init__(self, get_response):
+            # Initialisation
+            self.get_response = get_response
+
+        def __call__(self, request):
+
+            # Code exécuté pour chaque requête avant la vue
+
+            response = self.get_response(request)
+
+            # Code exécuté pour chaque requête après la vue
+
+            return response
+
 --------------------------------------------------------------------------------
+
+# Middleware
+
+Les middlewares activés par défaut
+
+    !python
+    MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
+
+Voir la documentation des [middlewares standards](https://docs.djangoproject.com/en/dev/ref/middleware/)
+
+---
 
 # Aller plus loin avec les templates
 
@@ -1054,7 +1494,7 @@ Django fournit un module ``django.contrib.staticfiles`` qui facilite cette gesti
 
 ## Quelques réglages
 
-Comme toujours, pour l'application soit utilisable, il faut qu'elle soit présente
+Comme toujours, pour que l'application soit utilisable, il faut qu'elle soit présente
 dans les ``INSTALLED_APPS`` du projet.
 
 ``STATIC_URL`` permet ensuite de spécifier l'URL à partir de laquelle ces fichiers
@@ -1081,7 +1521,7 @@ Les fichiers statiques doivent être stockés dans un répertoire ``static`` de
 l'application. Les scripts par défaut configurés dans ``STATICFILES_FINDERS`` (cf ``settings.py``) pourront alors retrouver les fichiers statiques de chaque application.
 
 Il est aussi possible de stocker des fichiers statiques dans d'autres dossiers, 
-il faut alors ceux-ci dans un réglage particulier : ``STATICFILES_DIRS``.
+il faut alors ajouter ceux-ci à la liste ``STATICFILES_DIRS``.
 
 La commande ``collectstatic`` permet d'aggréger ces fichiers dans un répertoire unique défini par ``STATIC_ROOT`` :
 
@@ -1101,7 +1541,7 @@ Exemple pour une image :
 
     !python
     {# my_app/templates/my_app/my_template.html #}
-    {% load staticfiles %}
+    {% load static %}
     ...
     <img src="{% static "my_app/img/myexample.jpg" %}" alt="My image"/>
 
@@ -1109,7 +1549,7 @@ Exemple pour un CSS :
 
     !python
     {# base.html #}
-    {% load staticfiles %}
+    {% load static %}
     <html>
       <head>
         <link href="{% static "my_app/css/styles.css" %}" />
@@ -1129,13 +1569,13 @@ en production
 
 ## En production
 
-Un réglage supplémentaire, ``STATIC_ROOT``, permet de spécifier le chemin vers
+Le paramètre ``STATIC_ROOT`` permet de spécifier le chemin vers
 le répertoire des fichiers statiques sur le système de fichiers.
 
 Grâce à ce réglage, la commande ``collectstatic`` copie tous les fichiers statiques
 vers le chemin précisé.
 
-Il suffit ensuite de paramétrer le serveur web pour qu'il serve lui-même ces fichiers.
+Il faut ensuite paramétrer le serveur web pour qu'il serve lui-même ces fichiers.
 
 --------------------------------------------------------------------------------
 
@@ -1388,7 +1828,7 @@ d'administration qui peuvent être lancées périodiquement et automatiquement (
 
 # Arborescence des fichiers
 
-Les commandes doivent être des fichiers Python placés dans une module 
+Les commandes doivent être des fichiers Python placés dans un module 
 ``management/command`` de l'application.
 
 
@@ -1435,9 +1875,8 @@ de ``django.core.management.base.BaseCommand``.
 Il est bien sûr possible de lancer une commande personnalisée à la main, tout
 simplement en utilisant directement dans le terminal le point d'entrée ``./manage.py`` :
 
-    !python
+    !console
     $ ./manage.py my_test_command
-
 
 ## Éxécution automatique
 
@@ -1445,12 +1884,17 @@ Il peut être aussi très utile d'automatiser cette execution via une tâche cro
 
     !python
     # Cron tasks
-    0 * * * * user source /project_env_path/bin activate && 
-                   /project_path/manage.py my_test_command
+    0 * * * * /project_path/manage.py my_test_command
+
+## Exécution depuis du code
+
+    !python
+    from django.core import management
+    management.call_command("my_test_command")
 
 --------------------------------------------------------------------------------
 
-# Tutoriel : Écrire une commande qui supprime automatiquement les tâches réalisées depuis une semaine
+# Tutoriel : Écrire une commande qui supprime automatiquement les tâches réalisées avec un deadline qui remonte à plus d'une semaine
 
 .fx: alternate
 
@@ -1596,221 +2040,39 @@ ou même d'écrire son propre formulaire et de le déclarer dans le ``ModelAdmin
 
 .fx: alternate
 
---------------------------------------------------------------------------------
+---
 
-# Introduction aux tests
+# Deploiement
 
---------------------------------------------------------------------------------
+## Serveurs WSGI
 
-# Arborescence
+WSGI : interface entre un serveur web et une application web en Python
 
-Une architecture conseillée pour organiser les tests d'une application est
-de créer, dans un dossier ``tests``, un fichier de tests
-(``test_views.py``, ``test_models.py``, ...) par fichier de
-l'application (``views.py``, ``models.py``, ...).
+* Gunicorn
+* mod_wsgi (fonctionne avec Apache HTTP Server)
+* uWSGI
+* Chaussette
 
-    !console
-    ├── todo
-    │   ├── __init__.py
-    │   ├── forms.py
-    │   ├── models.py
-    │   ├── views.py
-    │   ├── tests
-    │   │   ├── __init__.py
-    │   │   ├── test_forms.py
-    │   │   ├── test_models.py
-    │   │   └── test_views.py
-
-Les tests unitaires sont les premières briques indispensables pour garantir une
-application fiable et éviter les régressions au fil du temps.
-
---------------------------------------------------------------------------------
-
-# Tester un modèle
-
-## Le modèle
-
-Voici un modèle très basique :
+Application WSGI minimale :
 
     !python
-    # models.py
+    def application(environ, start_response):
+        data = b'Hello, World!\n'
+        start_response('200 OK', [
+            ('Content-type', 'text/plain'),
+            ('Content-Length', str(len(data)))
+        ])
+        return iter([data])
 
-    class Author(models.Model):
-        firstname = forms.CharField(max_length=100, null=True, blank=True)
-        lastname = forms.CharField(max_length=100)
+---
 
-        def __unicode__(self):
-            if self.firstname:
-                return u'%s %s' % (self.firstname, self.lastname)
-            else:
-                return self.lastname
+# Deploiement
 
-L'idée n'est pas de tester Django (création d'instance, vérification que les 
-différents fonctionnent, ...) mais bien de tester notre code personnel. Ici,
-seule la fonction ``__unicode__`` est donc à tester.
+## Serveur web 
 
-Il faut prendre soin de tester les différents cas possibles d'exécution ( en
-l'occurrence, la présence d'un ``firstname`` ou non).
-
+* nginx : léger, rapide
+* Apache HTTP Server : très complet et nombreux modules
 
 --------------------------------------------------------------------------------
 
-# Tester un modèle
-
-## Le test
-
-    !python
-    # tests/test_models.py
-    from django.test import TestCase
-    from my_app.models import Author
-
-    class AuthorTest(TestCase):
-
-        def test_unicode(self):
-
-            # Test with first_name
-            a = Author.objects.create(firstname='John', lastname='DOE')
-            self.assertEqual(a.__unicode__(), 'John DOE')
-
-            # Test without first_name
-            a = Author.objects.create(lastname='DOE')
-            self.assertEqual(a.__unicode__(), 'DOE')
-
---------------------------------------------------------------------------------
-
-# Tester un formulaire
-
-## Le formulaire
-
-En reprenant un exemple de formulaire vu précédemment :
-
-    !python
-    # forms.py
-
-    class PeriodForm(forms.Form):
-        begin = forms.DateField()
-        end = forms.DateField()
-
-        def __init__(self, *args, **kwargs):
-            super(PeriodForm, self).__init__(*args, **kwargs)
-
-            begin = self.initial.get('begin', None)
-            if begin:
-                self.initial['end'] = begin + delta(months=1)
-
-
-Comme pour le modèle, l'idée n'est pas de tester ce qui est du ressort de Django.
-Ici, il est simplement nécessaire de s'assurer que la fonction ``__init__``fonctionne correctement dans les différents cas possibles (présence ou non d'une valeur
-initiale pour le champ ``begin``).
-
---------------------------------------------------------------------------------
-
-# Tester un formulaire
-
-## Le test
-
-    !python
-    # tests/test_forms.py
-    from django.test import TestCase
-    from my_app.forms import PeriodForm
-
-    class PeriodFormTest(TestCase):
-
-        def test_init(self):
-
-            # Test without 'begin' initial value
-            f = PeriodForm()
-            self.assertIsNone(f.initial.get('end'))
-
-            # Test witht 'begin' initial value
-            initial = {'begin': date(2014, 01, 01)}
-            f = PeriodForm(initial=initial)
-            self.assertEqual(f.initial.get('end'), date(2014, 02, 01))
-
---------------------------------------------------------------------------------
-
-# Tester une vue
-
-## La vue
-
-Voici un exemple de vue assez basique, une liste de *nouveaux* livres :
-
-    !python
-    from django.shortcuts import render
-
-    def new_book_list(request):
-        
-        results = Book.objects.filter(release__gte=date(2014, 01, 01))
-        
-        return render(
-            'books/book_list.html',
-            {
-                'results': results
-            })
-
-Bien que ce type de requête est plus souvent réalisé dans un ``Manager``, il
-est ici intéressant de vérifier :
-
-1. que la vue fonctionne correctement (pas d'erreur 500);
-2. que la requête renvoit les résultats attendus.
-
---------------------------------------------------------------------------------
-
-# Tester une vue
-
-## Le test
-
-    !python
-    # tests/test_views.py
-    from django.test import TestCase
-    from django.core.urlresolvers import reverse
-
-    class BookViewsTest(TestCase):
-
-        def test_new_book_list(self):
-
-            b1 = Book.objects.create(title='Foo', release=date(2013, 06, 22))
-            b2 = Book.objects.create(title='Bar', release=date(2014, 02, 01))
-
-            url = reverse('book_list')
-            resp = self.client.get(url)
-
-            # HTTP response is OK
-            self.assertEqual(resp.status_code, 200)
-            # b1 must not be in results (not a new book)
-            self.assertNotIn(b1.title, resp.content)
-            # b2 must be in results (new book !)
-            self.assertIn(b2.title, resp.content)
-
-
---------------------------------------------------------------------------------
-
-# Exécuter les tests
-
-Dans un premier temps, la solution la plus simple est de laisser Django 
-jouer les tests.
-
-    !console
-    $ ./manage.py test
-    
-    test_unicode (my_app.tests.AuthorTest) ... ok
-    test_init (my_app.tests.PeriodFormTest) ... ok
-    test_new_book_list (my_app.tests.BookViewsTest) ... ok
-
-    ----------------------------------------------------------------------
-    Ran 3 tests in 0.753s
-
-Pour aller plus loin, il est intéressant :
-
-* de lancer les tests via ``coverage``, qui calcule et détaille la couverture de tests de l'application ou du projet ;
-* d'utiliser des outils de tests plus haut niveau (PyTest, WebTest) ;
-* d'automatiser le lancement de la suite de tests via Jenkins et django-jenkins par exemple.
-
---------------------------------------------------------------------------------
-
-# Tutoriel : Test all the things !
-
-.fx: alternate
-
---------------------------------------------------------------------------------
 # Merci !

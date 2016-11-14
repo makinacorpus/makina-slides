@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load todo_filters %}
+
+{% block title %}
+  {{ task.name }}
+{% endblock %}
+
+{% block content %}
+  <h1>Task : {{ task.name }} </h1>
+  <p>We are on : {{ today }}</p>
+  <dl>
+    <dt>Description</dt><dd>{{ task.description|linebreaksbr }}</dd>
+    <dt>Deadline</dt><dd>{{ task.deadline|date:"d/m/Y" }}</dd>
+    <dt>Delay</dt><dd>{{ task.deadline|delay }}</dd>
+    <dt>Done</dt><dd>{{ task.done|yesno:"Oui,Non" }}</dd>
+    {% if task.attachment %}
+      <dt>Attachment</dt><dd><a href="{{ task.attachment.url }}">{{ task.attachment }}</dd>
+    {% endif %}
+  </dl>
+  <p>
+    <a href="{% url 'edit_task' task.pk %}">{% trans "Edit task" %}</a>
+  </p>
+{% endblock %}

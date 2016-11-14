@@ -1,5 +1,4 @@
-{% load staticfiles %}
-{% load i18n %}
+{% load static %}
 <html>
   <head>
     <title>
@@ -7,11 +6,11 @@
         ...
       {% endblock %}
     </title>
-    <link href="{% static "todo/css/styles.css" %}" rel="stylesheet" />
+    <link href="{% static "style.css" %}" rel="stylesheet" />
   </head>
   <body>
     <header>
-      <a href="{% url 'todolist_list' %}">See todo lists</a> - <a href="{% url 'task_list' %}">{% trans "See tasks" %}</a>{% if perms.todo.search_task %} - <a href="{% url 'task_search' %}">Task search</a>{% endif %}
+      <a href="{% url 'todolist_list' %}">See todo lists</a> - <a href="{% url 'task_list' %}">See tasks</a> - <a href="{% url 'task_search' %}">Task search</a>
     </header>
     <section>
       {% block content %}

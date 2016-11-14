@@ -6,15 +6,7 @@
 
 {% block content %}
   <h1>Todo list : {{ todolist.name }} </h1>
-
-  <h2>Urgent tasks</h2>
-  <ul>
-    {% for task in urgent_tasks %}
-      <li><a href="{% url 'task_detail' task.pk %}">{{ task }}</a></li>
-    {% endfor %}
-  </ul>
-
-  <h2>All tasks</h2>
+  <h2>Tasks</h2>
   <ul>
     {% for task in tasks %}
       <li><a href="{% url 'task_detail' task.pk %}">{{ task }}</a></li>

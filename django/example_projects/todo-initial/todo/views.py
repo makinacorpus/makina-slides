@@ -14,9 +14,17 @@ from todo.forms import AddTaskForm, EditTaskForm, TaskSearchForm
 class TodoListList(ListView):
     model = TodoList
 
+    def get_queryset(self):
+        queryset = super(TodoListList, self).get_queryset()
+        return queryset.prefetch_related("users")
+
 
 class TaskList(ListView):
     model = Task
+
+    def get_queryset(self):
+        queryset = super(TaskList, self).get_queryset()
+        return queryset.select_related("todo_list")
 
 
 # --- TodoList detail ----------------------------------------------------------
