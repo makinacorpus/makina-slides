@@ -31,7 +31,7 @@ Essayez de l'expliquer à votre beau-père.
 
 # Au final
 
-On travaille gratos pour des gens qu'on connait pas.
+On travaille gratos pour des gens qu'on connaît pas.
 
 .fx: extra-large
 
@@ -72,7 +72,7 @@ Forget about the price tag"
 
 - subsistance: on doit manger
 - existence: on a besoin de faire partie de la société
-- consistence: on a besoin d'un idéal commun
+- consistance: on a besoin d'un idéal commun
 
 .fx: extra-large
 
@@ -82,7 +82,7 @@ Forget about the price tag"
 
 Seulement 16% des employés recommanderaient les produits de leur société.
 
-<strong>Un désatre absolu !!</strong>
+<strong>Un désastre absolu !!</strong>
 
 .fx: extra-large
 
@@ -162,7 +162,7 @@ Le savoir de l'époque était moins vaste, donc tout tenait en une seule communa
 
 L'industrie du logiciel tend à limiter leur responsabilité.
 
-Les communautés valorisent leur status d'adulte.
+Les communautés valorisent leur statut d'adulte.
 
 ils lisent mon code, je lis le leur (développeurs devant des développeurs).
 
@@ -266,7 +266,7 @@ ce désir commun crée la communauté, il en établit la consistance.
 
 # Nous, logiciel libre
 
-Transindividuation (Bernard Stiegler)
+Trans-individuation (Bernard Stiegler)
 
 # Presenter Notes
 
@@ -307,13 +307,13 @@ c'est un rétention tertiaire
 
 Notre **idéal moral**.
 
-Le sur-moi de la communité ("Über-Ich").
+Le sur-moi de la communauté ("Über-Ich").
 
 # Presenter Notes
 
 Il est (meta-)stable à travers une mémoire collective même si les contributeurs changent.
 
-Notre connaissance commune, notre mémoire de son passé, le futur qu'on imagine, créeent le logiciel-concept.
+Notre connaissance commune, notre mémoire de son passé, le futur qu'on imagine, créent le logiciel-concept.
 
 .fx: extra-large
 
