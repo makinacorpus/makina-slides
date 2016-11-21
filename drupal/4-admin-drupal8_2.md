@@ -379,6 +379,47 @@ performance, architecture)
   * Utilisation du module __Contact__
     * Avec Contact Storage (voir <http://flocondetoile.fr/blog/drupal-8-injecter-un-formulaire-de-contact-dans-un-contenu-en-5-etapes>)
     * et d'autres éventuellement (pour l'export CSV)
+    
+
+--------------------------------------------------------------------------------
+
+# Formulaires
+
+  * Utilisation du module __YAML Form__
+       * Module le plus complet à ce jour
+       * Version actuelle suffisament stable
+       * Pack de plusieurs modules
+       
+![][44]
+
+--------------------------------------------------------------------------------
+
+# Formulaires
+
+  * __YAML Form__
+       * Création -> utilisation de fichiers YML
+       
+![][45]
+
+--------------------------------------------------------------------------------
+
+# Formulaires
+
+  * __YAML Form__
+       * Activation de YAML Form UI
+       * Editeur visuel
+       
+![][46]
+
+--------------------------------------------------------------------------------
+
+# Formulaires
+
+  * __YAML Form__
+       * Nombreux choix de configuration
+       * Gestion des droits par groupes/utilisateurs
+       * Configuration des emails
+       * Consultation/EXport des soumissions
 
 --------------------------------------------------------------------------------
 
@@ -624,3 +665,10 @@ Pour le développement
 
    [43]: img/outside_in_4.png
 
+   [44]: img/yaml-form1.png
+   
+   [45]: img/yaml-form2.png
+   
+   [46]: img/yaml-form3.png
+   
+   [47]: img/yaml-form4.png
