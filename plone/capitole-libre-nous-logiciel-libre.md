@@ -58,6 +58,11 @@ Forget about the price tag"
 
 <p style="text-align:right"><strong>Jessie J</strong></p>
 
+# Presenter Notes
+
+ok, on ne le fait pas pour l'argent
+mais est-ce qu'on le fait juste parce que c'est fun ? non, souvent ce n'est pas fun
+
 .fx: extra-large
 
 --------------------------------------------------------------------------------
