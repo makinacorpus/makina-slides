@@ -53,7 +53,60 @@ Choisir un framework main stream est un gage de sécurité.
 
 --------------------------------------------------------------------------------
 
+# Les grands frameworks
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# L'ère MVC
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
 # AngularJS
+
+- créé en 2009 par Google
+- très populaire
+- (va devenir) obsolète
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# AngularJS - Principes
+
+- forte structuration (controllers, services, directives),
+- 2-way data binding,
+- injection de dépendances.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# AngularJS - Avantages
+
+- très large base de connaissances et de ressources,
+- fortement structurant,
+- solution tout-en-un,
+- facile d'accès pour un développeur MVC backend.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# AngularJS - Inconvénients
+
+- de petites erreurs peuvent entrainer des problèmes de performances,
+- se prête mal à l'intégration avec des composants exogènes,
+- très verbeux.
 
 # Presenter Notes
 
@@ -62,6 +115,44 @@ Choisir un framework main stream est un gage de sécurité.
 --------------------------------------------------------------------------------
 
 # Ember.js
+
+- créé en 2007,
+- plutôt lié à Ruby on Rails,
+- vieillissant.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Ember.js - Principes
+
+- un CLI puissant,
+- un store central pour les données,
+- templating Handlebars.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Ember.js - Avantages
+
+- forte productivité,
+- bonnes performances.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Ember.js - Inconvénients
+
+- très old school (par exemple, très lié à jQuery) et donc tombe en désuétude,
+- parfois difficile à customiser (il manque la logique composant).
 
 # Presenter Notes
 
@@ -72,6 +163,12 @@ Choisir un framework main stream est un gage de sécurité.
 # Backbone.js
 
 # Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# L'ère Composants
 
 .fx: extra-large
 
