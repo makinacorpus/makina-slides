@@ -70,7 +70,7 @@ Choisir un framework main stream est un gage de sécurité.
 - créé en 2009 par Google,
 - très populaire,
 - (va devenir) obsolète,
-- 1 frameworks mobile.
+- 1 framework mobile.
 
 .fx: extra-large
 
@@ -156,7 +156,7 @@ Choisir un framework main stream est un gage de sécurité.
 
 - old school (jQuery),
 - tombe en désuétude,
-- difficile à customiser
+- difficile à customiser,
 - pas de logique composant.
 
 .fx: extra-large
@@ -354,7 +354,7 @@ Choisir un framework main stream est un gage de sécurité.
 - librairie s'occupant que du View Layer
 - Virtual DOM,
 - one-way data flow,
-- Framework Progressif
+- Framework Progressif,
 - Server-side rendering.
 
 .fx: extra-large
