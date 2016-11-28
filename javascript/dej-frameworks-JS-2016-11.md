@@ -313,8 +313,61 @@ Choisir un framework main stream est un gage de sécurité.
 
 # Vue.js
 
+- créé en 2013
+- popularité en forte croissance, 
+- la voie du milieu par rapport à Angular et React,
+- soutenu par de grosses entreprises.
+
+# Presenter Notes
+
+- créé par Evan You, ancien employé Google et Meteor
+- libération du code en 2014, v1 en 2015, v2 en 2016
+- 1er framework dans les tendances JavaScript,
+- http://bestof.js.org/tags/framework/trending/last-3-months
+- utilisé par GitLab pour son front.
+
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Vue.js - Principes
+
+- librairie s'occupant que du View Layer
+- Virtual DOM,
+- one-way data binding,
+- Framework Progressif.
+
+# Presenter Notes
+
+- principe du framework progressif lié à l'image 
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Vue.js - Avantages
+
+- documentation très facile d'accès,
+- courbe d'apprentissage facile,
+- maintien d'un coeur de framework (vue-router, vuex, vue-cli, vue-devtools),
+- librairie classée parmi les plus performantes à l'heure actuelle,
+- très facile d'accès pour tout développeur.
+
 # Presenter Notes
 
 .fx: extra-large
 
 --------------------------------------------------------------------------------
+
+# Vue.js - Inconvénients
+
+- faiblement structurant,
+- pas encore de gros projet type Airbnb ou Netflix.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
