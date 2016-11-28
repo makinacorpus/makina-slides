@@ -75,6 +75,49 @@ apparait.
   * Disponible sous Linux
 
   * Relativement supporté sur Windows (pour Drupal 8, installer avec Composer)
+  
+--------------------------------------------------------------------------------
+
+# Drupal Console
+
+  * [https://drupalconsole.com/][48]
+
+  * Inspiré de la Symfony Console
+
+  * Liste des commandes : *drupal list*
+    * drupal list | grep grenerate (liste les commandes ne concernant que *generate*)
+    
+  * Disponible sous Linux / Windows / MacOS
+  
+  * Version 1.0.0-rc10
+  
+  * plus de 300 000 téléchargements
+  
+--------------------------------------------------------------------------------
+
+# Drupal Console VS Drush
+
+  * Concurrents ou compléments ? Fusion ?
+  
+![][49]
+
+--------------------------------------------------------------------------------
+
+# Drupal CMI
+
+  * Configuration Migration Interface
+  
+  * Configuration > Configuration synchronization
+  
+  * Export global : *pas conseillé*
+  
+  * Export au détail : Blocs, Types de contenus, Champs, Rôles ...
+  
+  * Fichiers yml
+  
+  * Remplace le module Features ...
+    
+![][50]
 
 --------------------------------------------------------------------------------
 
@@ -608,6 +651,7 @@ Pour le développement
    [1]: img/update.png
 
    [2]: https://github.com/drush-ops/drush
+   
 
    [3]: https://drushcommands.com/
 
@@ -672,3 +716,9 @@ Pour le développement
    [46]: img/yaml-form3.png
    
    [47]: img/yaml-form4.png
+
+   [48]: https://drupalconsole.com
+   
+   [49]: img/drush-dc.png
+   
+   [50]: img/cmi.png
