@@ -59,7 +59,7 @@ Choisir un framework main stream est un gage de sécurité.
 
 --------------------------------------------------------------------------------
 
-# L'ère MVC
+# L' ère MVC
 
 .fx: extra-large
 
@@ -204,7 +204,7 @@ Choisir un framework main stream est un gage de sécurité.
 
 --------------------------------------------------------------------------------
 
-# L'ère Composants
+# L' ère Composants
 
 .fx: extra-large
 
