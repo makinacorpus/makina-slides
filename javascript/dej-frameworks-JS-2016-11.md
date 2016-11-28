@@ -212,7 +212,56 @@ Choisir un framework main stream est un gage de sécurité.
 
 # React
 
+- créé en 2011 par Facebook
+- très populaire
+- utilisé par de nombreux acteurs, dont Netflix et Airbnb
+
 # Presenter Notes
+
+- créé par Jordan Walke, ingénieur logiciel chez Facebook
+- utilisé dans Facebook newsfeed en 2011 et sur Instagram en 2012
+- libéré à la JSConf US en 2013
+- 6ème projet le plus étoilé sur GitHub (dépasse AngularJS)
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# React - Principes
+
+- librairie s'occupant du View layer exclusivement,
+- Virtual DOM,
+- one-way data binding.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# React - Avantages
+
+- très large base de connaissances et de ressources,
+- écosystème très développé,
+- communauté compétente,
+- moteur dans l'évolution du développement front-end.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# React - Inconvénients
+
+- faiblement structurant,
+- batteries not included, 
+- très verbeux,
+- nécessite de l'optimisation manuelle.
+
+# Presenter Notes
+
+- optimisation manuelle: shouldComponentUpdate par exemple
 
 .fx: extra-large
 
