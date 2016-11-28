@@ -162,6 +162,42 @@ Choisir un framework main stream est un gage de sécurité.
 
 # Backbone.js
 
+- volonté de simplicité
+- plus grande modularité
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Backbone.js - Principes
+
+- basé sur Underscore.js
+- collections
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Backbone.js - Avantages
+
+- pas de "magie",
+- permet des utilisations partielles,
+- s'intègre bien avec d'autres outils.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Backbone.js - Inconvénients
+
+- beaucoup de cablage manuel.
+
 # Presenter Notes
 
 .fx: extra-large
@@ -183,6 +219,42 @@ Choisir un framework main stream est un gage de sécurité.
 --------------------------------------------------------------------------------
 
 # Angular2
+
+- sorti en 2016,
+- refonte complète.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Angular2 - Principes
+
+- TypeScript,
+- approche tout-composant.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Angular2 - Avantages
+
+- forte structuration,
+- injection de dépendances plus simple,
+- framework à très large couverture.
+
+# Presenter Notes
+
+.fx: extra-large
+
+--------------------------------------------------------------------------------
+
+# Angular2 - Inconvénients
+
+- un CLI à perfectionner.
 
 # Presenter Notes
 
