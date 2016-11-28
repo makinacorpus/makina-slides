@@ -45,7 +45,7 @@ On entent souvent "Moi, avec jQuery je m'en sors très bien et c'est quand même
 
 # Presenter Notes
 
-C'est possible aussi mais c'est comme choisir un framework peut connu.
+C'est possible aussi mais c'est comme choisir un framework peu connu.
 C'est risqué.
 Choisir un framework main stream est un gage de sécurité.
 
