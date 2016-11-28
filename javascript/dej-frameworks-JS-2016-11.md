@@ -6,6 +6,8 @@
 
 # Le développement front-end
 
+.fx: extra-large
+
 # Presenter Notes
 
 Donner une définition
@@ -13,11 +15,11 @@ Donner une définition
 - existe depuis longtemps, mais est devenu une discipline spécifique récemment
 - dispose maintenant d'un tooling, de concepts, de frameworks, etc.
 
-.fx: extra-large
-
 --------------------------------------------------------------------------------
 
 # Qu'est-ce qu'un framework ?
+
+.fx: extra-large
 
 # Presenter Notes
 
@@ -25,11 +27,11 @@ Un ensemble de composants (au sens large) qui permet de construire rapidement et
 
 Un framework peut être plus ou moins riche, et plus ou moins structurant.
 
-.fx: extra-large
-
 --------------------------------------------------------------------------------
 
 # Travailler sans framework ?
+
+.fx: extra-large
 
 # Presenter Notes
 
@@ -37,19 +39,17 @@ C'est possible. Mais c'est aussi idiot (ou pertinent, selon le point de vue) que
 
 On entent souvent "Moi, avec jQuery je m'en sors très bien et c'est quand même plus simple que tous ces trucs" => expliquer que c'est vrai, que ça reste valide, mais qu'à partir du moment où on part sur le frontend, c'est tout ou rien.
 
-.fx: extra-large
-
 --------------------------------------------------------------------------------
 
 # Écrire son propre framework ?
+
+.fx: extra-large
 
 # Presenter Notes
 
 C'est possible aussi mais c'est comme choisir un framework peu connu.
 C'est risqué.
 Choisir un framework main stream est un gage de sécurité.
-
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -67,13 +67,16 @@ Choisir un framework main stream est un gage de sécurité.
 
 # AngularJS
 
-- créé en 2009 par Google
-- très populaire
-- (va devenir) obsolète
+- créé en 2009 par Google,
+- très populaire,
+- (va devenir) obsolète,
+- 1 framework mobile.
+
+.fx: extra-large
 
 # Presenter Notes
 
-.fx: extra-large
+- mobile = Ionic
 
 --------------------------------------------------------------------------------
 
@@ -83,9 +86,9 @@ Choisir un framework main stream est un gage de sécurité.
 - 2-way data binding,
 - injection de dépendances.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
@@ -96,9 +99,9 @@ Choisir un framework main stream est un gage de sécurité.
 - solution tout-en-un,
 - facile d'accès pour un développeur MVC backend.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
@@ -108,9 +111,9 @@ Choisir un framework main stream est un gage de sécurité.
 - se prête mal à l'intégration avec des composants exogènes,
 - très verbeux.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
@@ -120,9 +123,9 @@ Choisir un framework main stream est un gage de sécurité.
 - plutôt lié à Ruby on Rails,
 - vieillissant.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
@@ -132,9 +135,9 @@ Choisir un framework main stream est un gage de sécurité.
 - un store central pour les données,
 - templating Handlebars.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
@@ -143,42 +146,44 @@ Choisir un framework main stream est un gage de sécurité.
 - forte productivité,
 - bonnes performances.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
 # Ember.js - Inconvénients
 
-- très old school (par exemple, très lié à jQuery) et donc tombe en désuétude,
-- parfois difficile à customiser (il manque la logique composant).
-
-# Presenter Notes
+- old school (jQuery),
+- tombe en désuétude,
+- difficile à customiser,
+- pas de logique composant.
 
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
 # Backbone.js
 
-- volonté de simplicité
-- plus grande modularité
-
-# Presenter Notes
+- volonté de simplicité,
+- plus grande modularité.
 
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
 # Backbone.js - Principes
 
-- basé sur Underscore.js
-- collections
-
-# Presenter Notes
+- basé sur Underscore.js,
+- collections et évènements.
 
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
@@ -188,9 +193,9 @@ Choisir un framework main stream est un gage de sécurité.
 - permet des utilisations partielles,
 - s'intègre bien avec d'autres outils.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
@@ -198,23 +203,24 @@ Choisir un framework main stream est un gage de sécurité.
 
 - beaucoup de cablage manuel.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
 # L' ère Composants
 
-.fx: extra-large
-
 --------------------------------------------------------------------------------
 
 # React
 
-- créé en 2011 par Facebook
-- très populaire
-- utilisé par de nombreux acteurs, dont Netflix et Airbnb
+- créé en 2011 par Facebook,
+- très populaire,
+- utilisé par de nombreux acteurs, dont Netflix et Airbnb,
+- 1 framework mobile.
+
+.fx: extra-large
 
 # Presenter Notes
 
@@ -222,8 +228,7 @@ Choisir un framework main stream est un gage de sécurité.
 - utilisé dans Facebook newsfeed en 2011 et sur Instagram en 2012
 - libéré à la JSConf US en 2013
 - 6ème projet le plus étoilé sur GitHub (dépasse AngularJS)
-
-.fx: extra-large
+- mobile = React native
 
 --------------------------------------------------------------------------------
 
@@ -231,11 +236,15 @@ Choisir un framework main stream est un gage de sécurité.
 
 - librairie s'occupant du View layer exclusivement,
 - Virtual DOM,
-- one-way data binding.
+- one-way data flow,
+- isomorphism.
+
+.fx: extra-large
 
 # Presenter Notes
 
-.fx: extra-large
+- one-way data flow en opposition au 2-way binding d'AngularJS.
+- isomorphism = server-side rendering
 
 --------------------------------------------------------------------------------
 
@@ -243,80 +252,91 @@ Choisir un framework main stream est un gage de sécurité.
 
 - très large base de connaissances et de ressources,
 - écosystème très développé,
-- communauté compétente,
+- communauté énorme,
 - moteur dans l'évolution du développement front-end.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
 # React - Inconvénients
 
 - faiblement structurant,
-- batteries not included, 
-- très verbeux,
 - nécessite de l'optimisation manuelle.
+
+.fx: extra-large
 
 # Presenter Notes
 
 - optimisation manuelle: shouldComponentUpdate par exemple
 
-.fx: extra-large
-
 --------------------------------------------------------------------------------
 
-# Angular2
+# Angular 2
 
-- sorti en 2016,
-- refonte complète.
+- sorti en 2016 par Google,
+- refonte complète,
+- système de version type semver,
+- 2 frameworks mobiles.
+
+.fx: extra-large
 
 # Presenter Notes
 
-.fx: extra-large
+- frameworks mobiles = Nativescript / Ionic 2.
 
 --------------------------------------------------------------------------------
 
-# Angular2 - Principes
+# Angular 2 - Principes
 
 - TypeScript,
-- approche tout-composant.
-
-# Presenter Notes
+- approche par module et composant,
+- universal.
 
 .fx: extra-large
 
+# Presenter Notes
+
+- universal = server-side rendering
+
 --------------------------------------------------------------------------------
 
-# Angular2 - Avantages
+# Angular 2 - Avantages
 
 - forte structuration,
 - injection de dépendances plus simple,
 - framework à très large couverture.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
-# Angular2 - Inconvénients
+# Angular 2 - Inconvénients
 
-- un CLI à perfectionner.
+- un CLI à perfectionner,
+- peu adapté à des petites applications,
+- moins facile à prendre en main.
+
+.fx: extra-large
 
 # Presenter Notes
 
-.fx: extra-large
+- moins facile à prendre en main par rapport à React ou Vue.
 
 --------------------------------------------------------------------------------
 
 # Vue.js
 
-- créé en 2013
-- popularité en forte croissance, 
+- créé en 2013,
+- popularité en forte croissance,
 - la voie du milieu par rapport à Angular et React,
 - soutenu par de grosses entreprises.
+
+.fx: extra-large
 
 # Presenter Notes
 
@@ -327,36 +347,36 @@ Choisir un framework main stream est un gage de sécurité.
 - utilisé par GitLab pour son front.
 
 
-.fx: extra-large
-
 --------------------------------------------------------------------------------
 
 # Vue.js - Principes
 
 - librairie s'occupant que du View Layer
 - Virtual DOM,
-- one-way data binding,
-- Framework Progressif.
+- one-way data flow,
+- Framework Progressif,
+- Server-side rendering.
+
+.fx: extra-large
 
 # Presenter Notes
 
-- principe du framework progressif lié à l'image 
-
-.fx: extra-large
+- principe du framework progressif lié à l'image
 
 --------------------------------------------------------------------------------
 
 # Vue.js - Avantages
 
-- documentation très facile d'accès,
-- courbe d'apprentissage facile,
-- maintien d'un coeur de framework (vue-router, vuex, vue-cli, vue-devtools),
-- librairie classée parmi les plus performantes à l'heure actuelle,
-- très facile d'accès pour tout développeur.
+- courbe d'apprentissage douce,
+- un socle officiel de plugins,
+- très performante,
+- très facile d'accès.
+
+.fx: extra-large
 
 # Presenter Notes
 
-.fx: extra-large
+- socle de plugins officiels -> (vue-router, vuex, vue-cli, vue-devtools)
 
 --------------------------------------------------------------------------------
 
@@ -365,9 +385,9 @@ Choisir un framework main stream est un gage de sécurité.
 - faiblement structurant,
 - pas encore de gros projet type Airbnb ou Netflix.
 
-# Presenter Notes
-
 .fx: extra-large
+
+# Presenter Notes
 
 --------------------------------------------------------------------------------
 
