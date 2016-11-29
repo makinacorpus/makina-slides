@@ -534,7 +534,6 @@ performance, architecture)
     * Workflow
     * Migration
   * Dans le futur :
-    * Blocs & mise en page
     * Utilisation de composants dans le thème
   * Peut-être :
     * Media
@@ -590,7 +589,7 @@ Pour le développement
 
 --------------------------------------------------------------------------------
 
-# Quelques exercies pour terminer : les contenus
+# Quelques exercices pour terminer : les contenus
 
   * Créer un  article
   * Le modifier en créant une révision
@@ -605,7 +604,7 @@ Pour le développement
 
 --------------------------------------------------------------------------------
 
-# Quelques exercies pour terminer : les utilisateurs
+# Quelques exercices pour terminer : les utilisateurs
 
   * Créer un compte utilisateur "communication"
   * Modifier ce compte pour lui mettre comme mot de passe "toto"
@@ -613,7 +612,7 @@ Pour le développement
 
 --------------------------------------------------------------------------------
 
-# Quelques exercies pour terminer : les blocs
+# Quelques exercices pour terminer : les blocs
 
   * Mettre le bloc des derniers commentaires en haut de la barre de gauche
   * Mettre le bloc indiquant les utilisateurs actuels sur le site sur la barre
@@ -625,7 +624,7 @@ Pour le développement
 
 --------------------------------------------------------------------------------
 
-# Quelques exercies pour terminer : les menus
+# Quelques exercices pour terminer : les menus
 
   * Créer un lien vers le blog de ma société (http://makina-corpus.com/blog)
   dans le menu principal
