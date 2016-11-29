@@ -718,10 +718,16 @@ premium
 
 # Quelques routes spéciales
 
-  * <front>
-  * <nolink>
+  * &lt;front&gt;
+  * &lt;nolink&gt;
 
 Pour voir les routes, utilisez la console : `drupal router:debug`
+
+--------------------------------------------------------------------------------
+
+# Comment convertir les paramètres dans les routes
+
+Utiliser des [ParamConverter](https://www.drupal.org/docs/8/api/routing-system/implementing-custom-parameter-converters)
 
 --------------------------------------------------------------------------------
 
