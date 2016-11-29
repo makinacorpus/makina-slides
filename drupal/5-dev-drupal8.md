@@ -1164,8 +1164,8 @@ Celui-ci nous servira pour les images qui seront sur les articles premium
   * Se situe dans le fichier .install
   * `hook_schema()` -> crée une ou plusieurs tables
   * `hook_schema_alter()` déclare une modification (mais ne la réalise pas)
-  * API de la structure <https://drupal.org/node/146866>
-  * Fonctions de l'API <https://drupal.org/node/150223>
+  * [API de la structure](https://www.drupal.org/docs/7/api/schema-api/data-types)
+  * [Fonctions de l'API](https://drupal.org/node/150223)
   * Les `hook_update_N()` servent à réaliser des actions sur la structure ou
   les données
   * Très utile pour les mises à jour en production, et le test de celles-ci
