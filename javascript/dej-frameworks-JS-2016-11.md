@@ -155,7 +155,6 @@ Choisir un framework main stream est un gage de sécurité.
 # Ember.js - Inconvénients
 
 - old school (jQuery),
-- tombe en désuétude,
 - difficile à customiser,
 - pas de logique composant.
 
@@ -391,3 +390,6 @@ Choisir un framework main stream est un gage de sécurité.
 
 --------------------------------------------------------------------------------
 
+# Téléchargez notre livre blanc
+
+<a href="https://makinacorpus.github.io/livre-blanc-front-end/">https://makinacorpus.github.io/livre-blanc-front-end/</a>
