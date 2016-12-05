@@ -293,7 +293,7 @@ Choisir un framework main stream est un gage de sécurité.
 
 - TypeScript,
 - approche par module et composant,
-- universal.
+- Universal.
 
 .fx: extra-large
 
