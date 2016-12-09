@@ -1646,6 +1646,23 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             }
         }, false);
 
+        var addTouchListeners = function() {
+            document.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].pageX;
+            }, false);
+            document.addEventListener('touchend', function(e) {
+                var pixelsMoved = touchStartX - e.changedTouches[0].pageX;
+                var SWIPE_SIZE = 150;
+                if (pixelsMoved > SWIPE_SIZE) {
+                    nextSlide();
+                }
+                else if (pixelsMoved < -SWIPE_SIZE) {
+                   prevSlide();
+               }
+           }, false);
+        };
+        addTouchListeners();
+
         /**
          * Close presenter window if parent window is closed
          */
@@ -1801,7 +1818,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <section>
             
               <p>C'est possible. Mais c'est aussi idiot (ou pertinent, selon le point de vue) que de travailler sans framework côté backend.</p>
-<p>On entent souvent "Moi, avec jQuery je m'en sors très bien et c'est quand même plus simple que tous ces trucs" =&gt; expliquer que c'est vrai, que ça reste valide, mais qu'à partir du moment où on part sur le frontend, c'est tout ou rien.</p>
+<p>On entend souvent "Moi, avec jQuery je m'en sors très bien et c'est quand même plus simple que tous ces trucs" =&gt; expliquer que c'est vrai, que ça reste valide, mais qu'à partir du moment où on part sur le frontend, c'est tout ou rien.</p>
             
             </section>
           </div>
@@ -2166,7 +2183,6 @@ Choisir un framework main stream est un gage de sécurité.</p>
             
             <section><ul>
 <li>old school (jQuery),</li>
-<li>tombe en désuétude,</li>
 <li>difficile à customiser,</li>
 <li>pas de logique composant.</li>
 </ul>
