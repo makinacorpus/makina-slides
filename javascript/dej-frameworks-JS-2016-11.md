@@ -37,7 +37,7 @@ Un framework peut être plus ou moins riche, et plus ou moins structurant.
 
 C'est possible. Mais c'est aussi idiot (ou pertinent, selon le point de vue) que de travailler sans framework côté backend.
 
-On entent souvent "Moi, avec jQuery je m'en sors très bien et c'est quand même plus simple que tous ces trucs" => expliquer que c'est vrai, que ça reste valide, mais qu'à partir du moment où on part sur le frontend, c'est tout ou rien.
+On entend souvent "Moi, avec jQuery je m'en sors très bien et c'est quand même plus simple que tous ces trucs" => expliquer que c'est vrai, que ça reste valide, mais qu'à partir du moment où on part sur le frontend, c'est tout ou rien.
 
 --------------------------------------------------------------------------------
 
