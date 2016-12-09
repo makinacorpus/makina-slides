@@ -343,6 +343,23 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             }
         }, false);
 
+        var addTouchListeners = function() {
+            document.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].pageX;
+            }, false);
+            document.addEventListener('touchend', function(e) {
+                var pixelsMoved = touchStartX - e.changedTouches[0].pageX;
+                var SWIPE_SIZE = 150;
+                if (pixelsMoved > SWIPE_SIZE) {
+                    nextSlide();
+                }
+                else if (pixelsMoved < -SWIPE_SIZE) {
+                   prevSlide();
+               }
+           }, false);
+        };
+        addTouchListeners();
+
         /**
          * Close presenter window if parent window is closed
          */
