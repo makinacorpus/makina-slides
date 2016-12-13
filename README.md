@@ -11,7 +11,7 @@
 
 ## Good practice
 
-* Please create your `*.cfg` and `*.md` files in an appropriate directory
+* Please create your `*.cfg` and source files in an appropriate directory
 (it may already exist)
 * Always make your path is relative to root directory and thus run `landslide`
 from it
@@ -22,9 +22,9 @@ from it
 Let's take an example `mydomain/myconfig.cfg`
 
     [landslide]
-    theme = assets/landslide_theme
+    theme = assets/theme
     source = mydomain/myslides.md
-    destination = 1-initiation-django.html
+    destination = docs/1-initiation-django.html
     relative = True
     embed = True
     linenos = no
@@ -34,12 +34,12 @@ Let's take an example `mydomain/myconfig.cfg`
 * _theme_: must always be the same
 * _source_: can be one or mutliple Markdown or RestructuredText files, relative
 to root
-* _destination_: relative to root, prefer to generate in subdirectory to avoid
-polluting main directory
+* _destination_: relative to root, always generate in `docs/` directory
 * _relative_: keep this option
-* _embed_: this option will embed images
+* _embed_: this option will embed images (recommended)
 * _linenos_: display line numbers in code blocks
-* _js_ and _css_: you can add your own files here in addition to theme
+* _js_ and _css_: you can add your own files here in addition to theme,
+these will be embed
 
 More documentation at <https://github.com/adamzap/landslide>
 
@@ -60,7 +60,17 @@ If you need to change the style of all slides (on screen only), edit
 If you need to change the style of all slides (on print only), edit
 `assets/lanslide_theme/css/screen.css`.
 
+## Structure
 
+    ├── assets          --> symbolic link to docs/assets, for generation purposes
+    ├── docs            --> Github delivery root
+    │   ├── assets      --> Assets directory
+    │   │   └── theme   --> landslide theme root
+    │   │       ├── js
+    │   │       └── css
+    │   ├── index.html  --> home page, not generated
+    │   └── *.html      --> presentation files
+    └── *               --> any other directory containing *.cfg files
 
 # Usage
 
