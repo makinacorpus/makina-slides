@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Développer des applications mobiles avec Phonegap</title>
+    <!-- Styles -->
+    <link rel="stylesheet" media="print" href="assets/landslide_theme/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="assets/landslide_theme/css/screen.css">
+    <link rel="stylesheet" href="assets/landslide_theme/css/pygments.css">
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    <script type="text/javascript" src="assets/landslide_theme/js/slides.js"></script>
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="time">
+      <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+    </div>            
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Développer des applications mobiles avec Phonegap</h1></header>
+            
+            
+            <section><h2>Éric Bréhault</h2>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>PhoneGap ou Cordova ?</h1></header>
+            
+            
+            <section><ul>
+<li>à l'origine:<ul>
+<li><strong>PhoneGap</strong> développé par Adobe,</li>
+<li>cédé à l'Apache Foundation en 2011,</li>
+<li>s'appelle <strong>Cordova</strong>.</li>
+</ul>
+</li>
+<li>aujourd'hui:<ul>
+<li>le projet principal est Cordova,</li>
+<li>PhoneGap existe toujours en tant que <strong>distribution</strong> Cordova</li>
+</ul>
+</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Le principe</h1></header>
+            
+            
+            <section><ul>
+<li>on construit une app en HTML/JS,</li>
+<li>Cordova utilise le navigateur du mobile pour l'afficher,</li>
+<li>le même code marchera sur tous les OS.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Le principe</h1></header>
+            
+            
+            <section><ul>
+<li>en plus des fonctionnalités de base, on a accès à des plugins,</li>
+<li>les plugins sont développés en natif pour chaque OS,</li>
+<li>on y accède en Javascript.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Les plugins</h1></header>
+            
+            
+            <section><ul>
+<li>accès au système de fichiers,</li>
+<li>status réseau,</li>
+<li>GPS,</li>
+<li>caméra,</li>
+<li>contacts,</li>
+<li>etc.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Les plugins</h1></header>
+            
+            
+            <section><p>Attention à la liste des OS proposés par chaque plugin!</p>
+<p>Vous pouvez développer vos propres plugins.</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Générer une app</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> npm install cordova
+<span class="gp">$</span> cordova create monApp
+<span class="go">    com.makinacorpus.maSuperApp MaSuperApp</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Coder l'app</h1></header>
+            
+            
+            <section><p>Faire un développement web frontend classique.
+Mettre le code dans le dossier monApp/www.</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Compiler</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> cordova platform add android
+<span class="gp">$</span> cordova build
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>DÉMO</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Outillage</h1></header>
+            
+            
+            <section><ul>
+<li>inspection du DOM avec Chrome/Safari,</li>
+<li>adb pour Android,</li>
+<li>XCode pour iOS.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Bonnes pratiques</h1></header>
+            
+            
+            <section><ul>
+<li>adopter les méthodes front-end,</li>
+<li>utiliser un framework JS,</li>
+<li>utiliser une grid responsive,</li>
+<li>faire un maximum dans son navigateur.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Frameworks et "distributions"</h1></header>
+            
+            
+            <section><ul>
+<li>ngCordova pour Angular,</li>
+<li>ionic,</li>
+<li>Steroids.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>DÉMO IONIC</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> npm install ionic
+<span class="gp">$</span> ionic monApp sidemenu
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Cas réels</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/petit-dej-cordova-2014-12-11.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Merci !</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/petit-dej-cordova-2014-12-11.md">cordova/petit-dej-cordova-2014-12-11.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/16
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Développer des applications mobiles avec Phonegap</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">PhoneGap ou Cordova ?</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">Le principe</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Le principe</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Les plugins</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Les plugins</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Générer une app</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Coder l'app</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Compiler</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">DÉMO</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Outillage</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Bonnes pratiques</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Frameworks et "distributions"</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">DÉMO IONIC</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Cas réels</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Merci !</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Autoscale</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>f</td>
+      </tr>
+      <tr>
+        <th>Presenter view</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Blank screen</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>$().landslide();</script>
+</body>
+</html>

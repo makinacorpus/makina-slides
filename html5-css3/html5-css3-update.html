@@ -1,0 +1,3057 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>HTML5 / CSS3</title>
+    <!-- Styles -->
+    <link rel="stylesheet" media="print" href="assets/landslide_theme/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="assets/landslide_theme/css/screen.css">
+    <link rel="stylesheet" href="assets/landslide_theme/css/pygments.css">
+    
+      
+      <style type="text/css" media="screen, projection">
+        /* Style */
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin,latin-ext);
+
+body {
+    font-size: 26px;
+    font-family: "Helvetica", "Arial", "Liberation Sans", sans-serif;
+    color: #EEE;
+    background-color: #333; /* Colour outside of slide */
+}
+
+div.slide h1, div.slide h2, div.slide h3, div.slide h4, div.slide h5, div.slide h6 {
+   font-family:  'Roboto Condensed', sans-serif;
+   margin-top: 0.25em;
+   margin-bottom: 0.15em;
+}
+
+div.presentation, div.slide {
+    border-radius: 0;
+    background-color: #232f39; /* colour of the slide */
+}
+div.slide.current {
+    z-index: 10;
+}
+pre {
+    padding: 10px;
+    background-color: #222;
+    font-size: 20px;
+}
+code {
+    background-color: #222;
+    font-size: 22px;
+    padding: 2px;
+    font-family: Monaco,Courier,monospace;
+}
+
+p {
+    margin-bottom: 0.5em;
+}
+ul {
+    margin-top: 0.5em;
+}
+li {
+    padding: 5px 0;
+}
+/* layout */
+.2col {
+    width: 50%;
+    float: left;
+}
+
+/* Colors */
+div.slide h1 {
+    color: #d6e61f;
+}
+div.slide h2 {
+    color: #f08a00;
+}
+
+a {
+    color: #ef4e70;
+}
+
+/* Smaller */
+
+.smaller section {
+    font-size: 20px;
+}
+.smaller section pre {
+    font-size: 16px;
+}
+.smaller div h1 {
+    font-size: 36px;
+}
+
+/* Larger */
+
+
+.larger section {
+    font-size: 30px;
+}
+.larger section pre {
+    font-size: 28px;
+}
+
+      </style>
+      
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    <script type="text/javascript" src="assets/landslide_theme/js/slides.js"></script>
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="time">
+      <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+    </div>            
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>HTML5 / CSS3</h1></header>
+            
+            
+            <section><p>28-29 avril 2015
+ CNFPT</p>
+<h2>Présentation</h2>
+<p><strong>Emmanuelle Helly</strong></p>
+<ul>
+<li>Intégratrice HTML/CSS depuis 2008</li>
+<li>Plone, Drupal</li>
+<li>emmanuelle.helly@makina-corpus.net</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Jour 1 : HTML5 / CSS3</h1></header>
+            
+            
+            <section><h2>HTML5</h2>
+<ul>
+<li><em>Intro : le WorldWideWeb</em></li>
+<li>Doctype</li>
+<li>Sémantique</li>
+<li>Formulaires</li>
+<li>Media (figure, audio, video)</li>
+<li>Canvas et SVG</li>
+<li>Drag &amp; Drop</li>
+<li>Localstorage</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>CSS3</h2></header>
+            
+            
+            <section><ul>
+<li>Mise en forme</li>
+<li>Sélecteurs</li>
+<li>Unités relatives et absolues</li>
+<li>Positionnement</li>
+<li>Mise en page (Grid layout)</li>
+<li>Media-queries</li>
+<li>Transformations</li>
+<li>Effets et animations</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Jour 2 : Bootstrap, LessCSS</h1></header>
+            
+            
+            <section><h2>BOOTSTRAP 3</h2>
+<ul>
+<li>Mise en forme du contenu : texte, tableaux, formulaires, boutons, images et la mise en page</li>
+<li>Mise en page avec la grille adaptative de Bootstrap : pour des sites Responsive Web Design</li>
+<li>Composants Bootstrap : barres de navigation, pagination, boutons, etc.</li>
+</ul>
+<h2>LessCSS</h2>
+<ul>
+<li>variables</li>
+<li>mixins</li>
+<li>heritages</li>
+<li>pseudo-classes</li>
+<li>importation de fichier</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Introduction : le World Wide Web</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide larger">
+          <div class="inner">
+            
+            <header><h2>Composants du WorldWideWeb</h2></header>
+            
+            
+            <section><ul>
+<li>URL (<em>Uniform Resource Locator</em>)</li>
+<li>HTML (<em>HyperText Markup Language</em>)</li>
+<li>HTTP (<em>HyperText Transfer Protocol</em>)</li>
+</ul>
+<h2>le W3C</h2>
+<p><strong>World Wide Web Consortium</strong>, dirigé par <em>Tim Berners Lee</em></p>
+<ul>
+<li><strong>396</strong> membres (au 27 avril 2015)</li>
+<li>Définit les spécifications (HTML, XML, accessibilité, mobile)</li>
+<li>Fonctionne par groupes de travail</li>
+</ul>
+<p><a href="http://www.w3.org/Consortium/">w3.org/Consortium</a></p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide smaller">
+          <div class="inner">
+            
+            <header><h2>Historique</h2></header>
+            
+            
+            <section><ul>
+<li>1989 : début des travaux de <em>Tim Berners Lee</em>, chercheur au CERN, et son équipe. Le principe, l'hypertexte</li>
+<li>1991 : <em>Tim Berners Lee</em> rend le projet <strong>WorldWideWeb</strong> public</li>
+<li>1993 : création du navigateur <strong>Mosaic</strong></li>
+<li>1994 : création du <strong>W3C</strong> par <em>Tim Berners Lee</em></li>
+<li>1996 : implémentation de <strong>CSS1.0</strong> par <strong>IE</strong></li>
+<li>1998 : publication des spécifications <strong>CSS 2.0</strong></li>
+<li>1999 : spécifications <strong>HTML4.01</strong>, et début des travaux sur <strong>CSS3</strong></li>
+<li>2000 : publication des spécifications pour <strong>XHTML1</strong>. </li>
+<li>2006 : publication des recommandations de <strong>XHTML2.0</strong></li>
+</ul>
+<p>Scission au sein du W3C : le <strong>WHATWG</strong> (Web Hypertext Application Technology Working Group) travaille sur un autre standard pour le <strong>HTML</strong></p>
+<ul>
+<li>2008 : "First Public Working Draft" du <strong>HTML5</strong> présentée par le <strong>WHATWG</strong></li>
+<li>2012 : <strong>HTML5</strong> passe en "Candidate Recommandation"</li>
+<li>fin 2014 : <strong>HTML5</strong> est un standard du W3C</li>
+</ul>
+<p><a href="http://fr.wikipedia.org/wiki/World_Wide_Web">fr.wikipedia.org/wiki/World_Wide_Web</a></p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Les outils de développement</h1></header>
+            
+            
+            <section><ul>
+<li>Éditeur de code : <a href="http://notepad-plus-plus.org/">Notepad++</a>, Sublime Text, Geany, <a href="https://atom.io/">Atom</a></li>
+<li>Navigateur : <strong>éviter IE</strong> !! Firefox ou Chrome, et leurs plugins d'inspection de code (voir <a href="http://makina-corpus.com/blog/metier/2013/extensions-firefox-pour-le-developpement-web">Liste de puglins</a>)</li>
+<li>Test et validation<ul>
+<li><a href="http://validator.w3.org/">validator.w3.org</a> respect des standards</li>
+<li><a href="http://opquast.com/fr/">opquast.com</a> pour la qualité du code, l'accessibilité</li>
+</ul>
+</li>
+<li>Documentation<ul>
+<li>officielle <a href="http://www.w3.org/TR/html5/">w3c.org/TR/html5</a></li>
+<li>compréhensible <a href="https://developer.mozilla.org/fr/">developer.mozilla.org</a></li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Partie 1 : HTML5</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Sommaire</h2></header>
+            
+            
+            <section><ul>
+<li>Doctype</li>
+<li>Sémantique</li>
+<li>Formulaires</li>
+<li>Media (figure, audio, video)</li>
+<li>Canvas et SVG</li>
+<li>Drag &amp; Drop</li>
+<li>Localstorage</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>HTML5, standard depuis le 28 octobre 2014</h2></header>
+            
+            
+            <section><ul>
+<li>Implémentation variable selon les navigateurs : voir <a href="http://caniuse.com/">caniuse.com</a></li>
+<li>Compatible avec IE9, du moins en partie, des outils permettent une "régression en douceur" (graceful degradation)</li>
+<li><a href="http://www.w3.org/TR/html5-diff/">Différences avec HTML4</a></li>
+</ul>
+<h2>DocType</h2>
+<p><code>&lt;!DOCTYPE html&gt;</code> ... tout simplement</p>
+<h2>Encodage</h2>
+<p>Ajouter dans les entêtes <code>&lt;meta charset="UTF-8"&gt;</code></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Exemple 1 : Pour commencer</h2></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="cp">&lt;!doctype html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Example document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Example paragraph<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Sémantique</h1></header>
+            
+            
+            <section><h2>Balises</h2>
+<ul>
+<li>Inline : <code>&lt;mark&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;meter&gt;</code>, <code>&lt;progress&gt;</code></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Sections_and_Outlines_of_an_HTML5_document">Section</a> : <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code></li>
+<li>Grouper : <code>&lt;figure&gt;</code>, <code>&lt;figcaption&gt;</code></li>
+</ul>
+<p>Code plus clair, page mieux structurée sémantiquement : un meilleur référencement.</p>
+<!-- Voir [tinytypo.tetue.net](http://tinytypo.tetue.net/tinytypo.html) --></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code smaller">
+          <div class="inner">
+            
+            <header><h2>Exemple 2 : Structure sémantique d'une page</h2></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">data-role</span><span class="o">=</span><span class="s">&quot;menu&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+            …
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">main</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>éléphants de forêt<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Dans cette section, nous discutons des éléphants de forêt moins connus.
+                   Ce paragraphe continue…<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Habitat<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Les éléphants de forêt ne vivent pas dans les arbres mais parmi eux.
+                   Ce paragraphe continue…<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;__mon__url__&quot;</span> <span class="p">/&gt;&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Texte<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+              <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">aside</span><span class="p">&gt;</span>
+        … barre latérale …
+        <span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+    …
+    <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+              <p><code>header</code> et <code>footer</code> désignent l'entête et le pied de page, mais ne sont pas forcément en haut ou en bas de la page.
+Peuvent être à l'intérieur d'un article.</p>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code smaller">
+          <div class="inner">
+            
+            <header><h2>Microdatas</h2></header>
+            
+            
+            <section><p>Voir <a href="http://schema.org/docs/gs.html">schema.org</a></p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">itemscope</span> <span class="na">itemtype</span><span class="o">=</span><span class="s">&quot;http://schema.org/Person&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Boris Vian<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">itemscope</span> 
+        <span class="na">itemtype</span><span class="o">=</span><span class="s">&quot;http://schema.org/Organization&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">&quot;url&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;www.letabou.com&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">&gt;</span>le Tabou<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">&quot;address&quot;</span> <span class="na">itemscope</span> <span class="na">itemtype</span><span class="o">=</span><span class="s">&quot;http://schema.org/PostalAddress&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">&quot;streetAddress&quot;</span><span class="p">&gt;</span>le Tabou<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+            Saint Germain des Prés<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">&quot;postalCode&quot;</span><span class="p">&gt;</span>75006<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">&quot;addressLocality&quot;</span><span class="p">&gt;</span>Paris<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">&quot;addressCountry&quot;</span><span class="p">&gt;</span>France<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">itemprop</span><span class="o">=</span><span class="s">&quot;telephone&quot;</span><span class="p">&gt;</span>0149687368<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+
+<p>Autres implémentations : microformats, RDFa</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Media et éléments embarqués</h1></header>
+            
+            
+            <section><h2><code>&lt;embed&gt;</code></h2>
+<ul>
+<li>Pour embarquer une application externe (un plugin par exemple). </li>
+<li>
+<p>Déjà existants en HTML4 : </p>
+<ul>
+<li><code>&lt;object&gt;</code></li>
+<li><code>&lt;iframe&gt;</code> : Peut embarquer un autre site, un éditeur de texte riche ou une carte par exemple.</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Utilisation_d%27audio_et_video_en_HTML5"><code>&lt;audio&gt;</code> et <code>&lt;video&gt;</code></a></h2></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">audio</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./donjon-crom.mp3&quot;</span> <span class="na">controls</span><span class="p">&gt;&lt;/</span><span class="nt">audio</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">video</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;video.ogg&quot;</span> <span class="na">controls</span> 
+    <span class="na">poster</span><span class="o">=</span><span class="s">&quot;video.jpg&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;640&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;480&quot;</span><span class="p">&gt;</span>
+</pre></div>
+
+<h3>Formats audio et vidéo / navigateurs</h3>
+<ul>
+<li>ogg -&gt; Chrome, Firefox, Opera</li>
+<li>webm -&gt; Chrome, Firefox, Opera</li>
+<li>MPEG-4/H.264 -&gt; Chrome, Firefox, Opera, Safari, IE</li>
+</ul>
+<h3>Code</h3>
+<p>On peut inclure plusieurs formats de media</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">video</span> <span class="na">controls</span> <span class="na">poster</span><span class="o">=</span><span class="s">&quot;video.jpg&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;640&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;480&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;video.ogg&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;video.avi&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;video.mp4&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
+</pre></div>
+
+<h3>Exercice</h3>
+<p>Essayer la balise <code>&lt;video&gt;</code> avec différentes sources, en ouvrant la page dans différents navigateurs.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Image, nouveaux attributs <code>srcset</code> et <code>sizes</code></h2></header>
+            
+            
+            <section><p><code>src</code> est ignoré pour les user-agent supportant srcset.</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;img/eilean-donnan-castle-200.jpg&quot;</span> 
+  <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Clock&quot;</span> 
+  <span class="na">srcset</span><span class="o">=</span><span class="s">&quot;img/eilean-donnan-castle-200.jpg 200w, img/eilean-donnan-castle-400.jpg 400w&quot;</span>
+  <span class="na">sizes</span><span class="o">=</span><span class="s">&quot;(min-width: 800px) 400px, 50vw&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
+
+<p>Si (min-width: 600px) :</p>
+<ul>
+<li>alors image de largeur 200px</li>
+<li>sinon 50 % de la largeur viewport</li>
+</ul>
+<p>Fonctionne avec Chrome, et firefox à partir de la version 38.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Conteneur <code>&lt;figure&gt;</code></h2></header>
+            
+            
+            <section><p>Permet d'illustrer et ajouter une légende à une image, un schéma.</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;image.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Légende de l&#39;image<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
+</pre></div>
+
+<p>Peut contenir autre chose que des images : du code ou une vidéo par exemple.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Formulaires</h1></header>
+            
+            
+            <section><h2>Nouveaux contrôles</h2>
+<p><code>&lt;input&gt;</code> de type text, mais aussi :</p>
+<ul>
+<li>tel, url, email, search</li>
+<li>date, time, number, range</li>
+<li>color</li>
+</ul>
+<h2>Nouveaux attributs</h2>
+<ul>
+<li>placeholder</li>
+<li>pattern</li>
+<li>autocomplete</li>
+<li>min, max, step (pour date, time, number et range)</li>
+<li>list</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code smaller">
+          <div class="inner">
+            
+            <header><h2>Code</h2></header>
+            
+            
+            <section><p>Url avec placeholder</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;url&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;url&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Votre site Web&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
+
+<p>Range</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;range&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;range&quot;</span> 
+    <span class="na">min</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;100&quot;</span> <span class="na">step</span><span class="o">=</span><span class="s">&quot;5&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;15&quot;</span><span class="p">/&gt;</span>
+</pre></div>
+
+<p>Pattern</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;pattern&quot;</span> <span class="na">pattern</span><span class="o">=</span><span class="s">&quot;[a-z]{2}[0-9]{2}&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
+
+<p>Liste</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;ville&quot;</span> <span class="na">list</span><span class="o">=</span><span class="s">&quot;villes&quot;</span><span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">datalist</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;villes&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Albi&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Cahors&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">datalist</span><span class="p">&gt;</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Exercice</h2></header>
+            
+            
+            <section><ul>
+<li>Créez un formulaire avec les champs suivants : <ul>
+<li>Nom complet, </li>
+<li>Téléphone, </li>
+<li>Date de naissance, </li>
+<li>Couleur préférée, </li>
+<li>Ville (parmi quelques villes)</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://github.com/numahell/html5-css3/blob/master/html/forms.html">Exemple complet</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code smaller">
+          <div class="inner">
+            
+            <header><h1>Effets et 3D</h1></header>
+            
+            
+            <section><h2>CANVAS</h2>
+<ul>
+<li>surface de pixels contrôlés en JavaScript, API disponible</li>
+<li>Fonctionnement en "boite noire"</li>
+</ul>
+<p>Le "Paint" du web</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;application/x-javascript&quot;</span><span class="p">&gt;</span>
+    <span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+     <span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;canvas&quot;</span><span class="p">);</span>
+     <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+
+     <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">&quot;rgb(200,0,0)&quot;</span><span class="p">;</span>
+     <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">body</span> <span class="na">onload</span><span class="o">=</span><span class="s">&quot;draw()&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;canvas&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;300&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;300&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>SVG</h2></header>
+            
+            
+            <section><p>Dessiner en 2D vectorielle via XML</p>
+<ul>
+<li>Accès aux éléments d'un SVG depuis le DOM</li>
+<li>CSS applicables</li>
+<li>Peut être chargé depuis un fichier externe ou en ligne dans un document HTML</li>
+<li>L’arbre des données est conservé en mémoire</li>
+</ul>
+<h3>Example</h3>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">svg</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">circle</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;circle1&quot;</span> <span class="na">cx</span><span class="o">=</span><span class="s">&quot;40&quot;</span> <span class="na">cy</span><span class="o">=</span><span class="s">&quot;40&quot;</span> <span class="na">r</span><span class="o">=</span><span class="s">&quot;24&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+</pre></div>
+
+<p>Voir aussi <a href="http://css-tricks.com/using-svg/">css-tricks.com/using-svg</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>WebGL</h2></header>
+            
+            
+            <section><p>Un peu plus que bablutiant : de plus en plus de navigateurs le supportent, mais pas toujours les cartes vidéos.</p>
+<p>Voir <a href="http://fr.slideshare.net/makinacorpus/petit-djeuner-html5-et-css3-les-interfaces-de-demain">Les interfaces de demain</a> pour plus de détails.</p>
+<h2>Flash ?</h2>
+<p>Flash n'est plus supporté par les Iphone et Ipad, GNU/Linux et Android depuis Jelly Bean. Oubliez-le.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              25/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Application web en HTML5</h1></header>
+            
+            
+            <section><h2>Drag&amp;Drop</h2>
+<h2>Local Stockage</h2>
+<h2>File API</h2>
+<h2>Server-Sent Events</h2></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              26/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Partie 2 : CSS3</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              27/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Sommaire</h2></header>
+            
+            
+            <section><ul>
+<li>Mise en forme</li>
+<li>Sélecteurs</li>
+<li>Unités relatives et absolues</li>
+<li>Positionnement</li>
+<li>Mise en page (Grid layout)</li>
+<li>Media-queries</li>
+<li>Transformations</li>
+<li>Effets et animations</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              28/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Mise en forme</h1></header>
+            
+            
+            <section><h2>Propriétés</h2>
+<ul>
+<li><code>background-size</code>, <code>border-radius</code>, <code>box-shadow</code>, <code>opacity</code>, </li>
+<li>dégradés</li>
+<li>arrière-plan multiples</li>
+<li>transparence pour la couleur de fond</li>
+</ul>
+<p><a href="http://css3generator.com/">css3generator.com</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              29/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Font-Face</h2></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="c">/* roboto bold */</span>
+<span class="k">@font-face</span> <span class="p">{</span>
+    <span class="nt">font-family</span><span class="o">:</span> <span class="s1">&#39;roboto&#39;</span><span class="o">;</span>
+    <span class="nt">src</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;roboto/Roboto-Bold-webfont.eot&#39;</span><span class="o">);</span>
+    <span class="nt">src</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;roboto/Roboto-Bold-webfont.eot?#iefix&#39;</span><span class="o">)</span> <span class="nt">format</span><span class="o">(</span><span class="s1">&#39;embedded-opentype&#39;</span><span class="o">),</span>
+         <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;roboto/Roboto-Bold-webfont.woff&#39;</span><span class="o">)</span> <span class="nt">format</span><span class="o">(</span><span class="s1">&#39;woff&#39;</span><span class="o">),</span>
+         <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;roboto/Roboto-Bold-webfont.ttf&#39;</span><span class="o">)</span> <span class="nt">format</span><span class="o">(</span><span class="s1">&#39;truetype&#39;</span><span class="o">),</span>
+         <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;roboto/Roboto-Bold-webfont.svg#robotobold&#39;</span><span class="o">)</span> <span class="nt">format</span><span class="o">(</span><span class="s1">&#39;svg&#39;</span><span class="o">);</span>
+    <span class="nt">font-weight</span><span class="o">:</span> <span class="nt">bold</span><span class="o">;</span>
+    <span class="nt">font-style</span><span class="o">:</span> <span class="nt">normal</span><span class="o">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>Trouvez des fonts sur <a href="http://www.fontsquirrel.com/">fontsquirrel.com</a></li>
+<li>Possibilité de faire un import des fonts depuis <a href="http://www.google.com/fonts/">www.google.com/fonts</a></li>
+</ul>
+<p>Attention à la qualité des glyphes, peuvent être mal positionnés sur la ligne de base.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              30/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Extensions spécifiques des navigateurs</h2></header>
+            
+            
+            <section><p>Les navigateurs principaux</p>
+<table border=1>
+    <tbody>
+        <tr>
+            <td>Safari / Chrome</td>
+            <td>-webkit-</td>
+        </tr>
+        <tr>
+            <td>Firefox</td>
+            <td>-moz-</td>
+        </tr>
+        <tr>
+            <td>Opera</td>
+            <td>-o-</td>
+        </tr>
+        <tr>
+            <td>Internet Explorer</td>
+            <td>-ms-</td>
+        </tr>
+    </tbody>
+</table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              31/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Sélecteurs</h1></header>
+            
+            
+            <section><h2>Sélecteurs CSS2</h2>
+<p>Sont maintenant implémentés par les navigateurs modernes</p>
+<p>par attribut</p>
+<div class="highlight"><pre><span></span><span class="nt">a</span><span class="o">[</span><span class="nt">attribut</span><span class="o">~=</span><span class="s2">&quot;valeur&quot;</span><span class="o">]</span>
+</pre></div>
+
+<p>par élément fils direct</p>
+<div class="highlight"><pre><span></span><span class="nt">a</span> <span class="o">&gt;</span> <span class="nt">b</span>
+</pre></div>
+
+<p>par élément frère</p>
+<div class="highlight"><pre><span></span><span class="nt">a</span> <span class="o">+</span> <span class="nt">b</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              32/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code smaller">
+          <div class="inner">
+            
+            <header><h2>Sélecteurs CSS3</h2></header>
+            
+            
+            <section><p>par attribut</p>
+<div class="highlight"><pre><span></span><span class="nt">a</span><span class="o">[</span><span class="nt">attribut</span><span class="o">^=</span><span class="s2">&quot;valeur&quot;</span><span class="o">]</span>
+</pre></div>
+
+<p>par fils premier, dernier ou tous les x éléments</p>
+<div class="highlight"><pre><span></span><span class="nt">a</span><span class="nd">:first-child</span>
+<span class="nt">a</span><span class="nd">:last-child</span>
+<span class="nt">a</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">expression</span><span class="o">)</span>
+</pre></div>
+
+<p>négation</p>
+<div class="highlight"><pre><span></span><span class="nt">a</span><span class="nd">:not</span><span class="o">(</span><span class="nc">.class</span><span class="o">)</span>
+</pre></div>
+
+<p>première lettre, première ligne</p>
+<div class="highlight"><pre><span></span><span class="o">:</span><span class="nd">:first-letter</span>
+<span class="o">:</span><span class="nd">:first-line</span>
+</pre></div>
+
+<ul>
+<li>Un tutoriel : <a href="http://flukeout.github.io/">flukeout.github.io</a></li>
+<li>La documentation officielle : <a href="http://www.w3.org/TR/selectors/">www.w3.org/TR/selectors</a></li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              33/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Unités</h1></header>
+            
+            
+            <section><h2>Absolues</h2>
+<ul>
+<li>px : pour les supports écran</li>
+<li>pt : pour les supports imprimés</li>
+</ul>
+<h2>Relatives</h2>
+<ul>
+<li>em, %</li>
+<li>rem (root em), relative à la taille attibuée au document (nouveau !)</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              34/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Positionnement</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="nt">position</span><span class="o">:</span> <span class="nt">absolute</span><span class="o">;</span>
+<span class="nt">top</span><span class="o">:</span> <span class="nt">10</span><span class="o">%;</span>
+<span class="nt">left</span><span class="o">:</span> <span class="nt">50px</span><span class="o">;</span>
+</pre></div>
+
+<ul>
+<li>L'élément sort du flux</li>
+<li>Position relatif au document ou à l'élément parent le plus proche positionné en relatif</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              35/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code smaller">
+          <div class="inner">
+            
+            <header><h1>Mise en page</h1></header>
+            
+            
+            <section><h2>Flexbox</h2>
+<div class="highlight"><pre><span></span><span class="nc">.flex</span> <span class="p">{</span> <span class="nb">display</span><span class="o">:</span> <span class="n">flex</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="o">!</span><span class="nt">html</span>
+<span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;flex&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nt">div</span><span class="o">&gt;</span><span class="nt">texte</span> <span class="nt">1</span><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nt">div</span><span class="o">&gt;</span><span class="nt">texte</span> <span class="nt">2</span><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</pre></div>
+
+<p>Supporté par les navigateurs modernes, mais l'implémentation est parfois différente. Fonctionnel mais à utiliser à bon escient.</p>
+<h2>Colonne</h2>
+<div class="highlight"><pre><span></span><span class="nt">div</span> <span class="p">{</span>
+    <span class="n">column</span><span class="o">-</span><span class="n">count</span><span class="o">:</span> <span class="m">2</span><span class="p">;</span>
+    <span class="n">column</span><span class="o">-</span><span class="nb">width</span><span class="o">:</span> <span class="m">12em</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Supporté par les navigateurs actuels en utilisant les préfixes (voir caniuse.com)</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              36/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Media-queries</h1></header>
+            
+            
+            <section><pre><code>@media (min-width: 700px) and (orientation: landscape) {…}
+</code></pre>
+<ul>
+<li>Orientation (<code>portrait</code> ou <code>landscape</code>) et Localisation</li>
+<li>Device api (<code>screen</code>, <code>print</code>, <code>tv</code>, )</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              37/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>CSS animé</h1></header>
+            
+            
+            <section><h2>Transitions</h2>
+<pre><code>a:hover {
+    transition color 200ms ease;
+}
+</code></pre>
+<p>Sur les propriété <code>height</code>, <code>width</code>, <code>color</code>, <code>background</code></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              38/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Transformations</h2></header>
+            
+            
+            <section><p>Rotation, translations</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              39/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>TP Mise en page</h1></header>
+            
+            
+            <section><ul>
+<li>Créer une page structurée</li>
+<li>Ajouter un menu horizontal déroulant</li>
+<li>Ajouter une image de fond positionnée</li>
+<li>Responsive</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              40/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Partie 3 : Bootstrap 3</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              41/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Sommaire</h2></header>
+            
+            
+            <section><ul>
+<li>Mise en forme CSS</li>
+<li>La grille bootstrap</li>
+<li>Composants</li>
+</ul>
+<p><a href="http://getbootstrap.com/getting-started/#examples">Des exemples</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              42/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Mise en forme CSS</h2></header>
+            
+            
+            <section><p><a href="http://getbootstrap.com/css/">getbootstrap.com/css</a></p>
+<ul>
+<li>Typography (alignement, blockquotes, lists)</li>
+<li>Tables</li>
+<li>Formulaires</li>
+<li>Boutons</li>
+<li>Images</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              43/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>La grille bootstrap</h2></header>
+            
+            
+            <section><ul>
+<li>Le principe</li>
+<li>colonnes imbriquées</li>
+<li>offset</li>
+<li>ordre des colonnes</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              44/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Composants</h2></header>
+            
+            
+            <section><ul>
+<li>Glyphicons</li>
+<li>Menus déroulants</li>
+<li>Navigation</li>
+<li>Breadcrumb, pagination, label, badges</li>
+<li>Media (groupe d'image + texte)</li>
+<li>Vignettes</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              45/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>TP Bootstrap</h2></header>
+            
+            
+            <section><p>(voir fichiers)</p>
+<p><a href="http://www.alsacreations.com/tuto/lire/1417-zoom-sur-effet-parallaxe.html">Exemples de parallaxe</a></p>
+<p><a href="http://lorempixel.com/">Générateur d'images</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              46/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Partie 4 : LessCSS</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              47/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Sommaire</h2></header>
+            
+            
+            <section><ul>
+<li>variables</li>
+<li>imbrication de code</li>
+<li>mixins</li>
+<li>importation de fichier</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              48/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Installer LessCSS</h2></header>
+            
+            
+            <section><ul>
+<li>Dans windows : <a href="http://winless.org/">winless.org</a></li>
+<li>Pour utiliser plus de fonctionnalités de nodejs : <a href="http://nodejs.org/download/">nodejs.org</a></li>
+<li><a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions">Installer nodejs sous Ubuntu / debian</a></li>
+</ul>
+<p>Sur Ubuntu:</p>
+<pre><code>curl -sL https://deb.nodesource.com/setup | sudo bash -
+</code></pre>
+<p>Installation du paquet:</p>
+<pre><code>sudo apt-get install -y nodejs
+</code></pre>
+<p>Installer less</p>
+<pre><code>sudo npm install -g less
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              49/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Les bases</h1></header>
+            
+            
+            <section><h2>variables</h2>
+<div class="highlight"><pre><span></span><span class="k">@nice-blue</span><span class="o">:</span> <span class="nn">#5B83AD</span><span class="p">;</span>
+<span class="k">@light-blue</span><span class="o">:</span> <span class="k">@nice-blue</span> <span class="o">+</span> <span class="nn">#111</span><span class="p">;</span>
+
+<span class="nn">#header</span> <span class="p">{</span>
+  <span class="nt">color</span><span class="o">:</span> <span class="k">@light-blue</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Résultat :</p>
+<div class="highlight"><pre><span></span><span class="nn">#header</span> <span class="p">{</span>
+  <span class="nb">color</span><span class="o">:</span> <span class="m">#6c94be</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Un gain de temps inestimable pour l'intégration front-end</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              50/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>imbrication de code</h2></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="nn">#header</span> <span class="p">{</span>
+  <span class="nb">color</span><span class="o">:</span> <span class="nb">black</span><span class="p">;</span>
+  <span class="o">.</span><span class="n">navigation</span> <span class="err">{</span>
+    <span class="nb">font-size</span><span class="o">:</span> <span class="m">12px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.logo</span> <span class="p">{</span>
+    <span class="nb">width</span><span class="o">:</span> <span class="m">300px</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              51/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Mixins et fonctions</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="nc">.a</span><span class="o">,</span> <span class="nn">#b</span> <span class="p">{</span>
+  <span class="nb">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.mixin-class</span> <span class="p">{</span>
+  <span class="o">.</span><span class="n">a</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nc">.mixin-id</span> <span class="p">{</span>
+  <span class="m">#b</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Résultat :</p>
+<div class="highlight"><pre><span></span><span class="nc">.a</span><span class="o">,</span> <span class="nn">#b</span> <span class="p">{</span>
+  <span class="nb">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.mixin-class</span> <span class="p">{</span>
+  <span class="nb">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.mixin-id</span> <span class="p">{</span>
+  <span class="nb">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              52/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Import de fichier</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="k">@import</span> <span class="o">(</span><span class="nt">option</span><span class="o">)</span> <span class="s2">&quot;fichier&quot;</span><span class="p">;</span>
+</pre></div>
+
+<p>Les options</p>
+<ul>
+<li><code>reference</code>: importe en tant que fichier less sans l'inclure dans la sortie css. Très utilisé pour les fichiers de fonctions less.</li>
+<li><code>inline</code>: inclue le fichier sans le compiler</li>
+<li><code>less</code>: traite le fichier en tant que less, quelque soit l'extension</li>
+<li><code>css</code>: traite le fichier en tant que css</li>
+<li><code>once</code>: n'importe le fichier qu'une seule fois (comportement par défaut)</li>
+<li><code>multiple</code>: importe le fichier plusieurs fois</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              53/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>TP : un thème avec LessCSS et Bootstrap</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              54/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Intégrer un design simple</h2></header>
+            
+            
+            <section><ol>
+<li>Créer l'arborescence du projet</li>
+<li>
+<p>Créer une structure de page d'accueil en utilisant les fonctionnalités de bootstrap. On doit retrouver les éléments suivants :</p>
+<ul>
+<li>Logo et nom du site</li>
+<li>Barre de navigation</li>
+<li>Diaporama</li>
+<li>Liste d'articles</li>
+<li>Complément d'information sous forme d'accordéon</li>
+</ul>
+</li>
+</ol>
+<p>Voir <a href="http://getbootstrap.com/getting-started/#examples">les exemples</a> pour l'inspiration.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              55/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code smaller">
+          <div class="inner">
+            
+            <header><h2>Arborescence type d'un thème</h2></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="go">mon_projet</span>
+<span class="go">├── base.html</span>
+<span class="go">└── mon_theme</span>
+<span class="go">    ├── bootstrap -&gt; /chemin/vers/dossier/bibliotheques/bootstrap/</span>
+<span class="go">    ├── css</span>
+<span class="go">    ├── fonts</span>
+<span class="go">    ├── img</span>
+<span class="go">    ├── js</span>
+<span class="go">    └── less</span>
+<span class="go">        ├── components/</span>
+<span class="go">        │   ├── search.less</span>
+<span class="go">        │   ├── nav.less</span>
+<span class="go">        │   ├── fonts.less</span>
+<span class="go">        │   └── forms.less</span>
+<span class="go">        ├── bootstrap.less</span>
+<span class="go">        ├── content.less</span>
+<span class="go">        ├── footer.less</span>
+<span class="go">        ├── header.less</span>
+<span class="go">        ├── style.less</span>
+<span class="go">        ├── mixins_project.less</span>
+<span class="go">        ├── variables_project.less</span>
+<span class="go">        └── variables.less</span>
+</pre></div>
+
+<p>Compiler vos fichiers</p>
+<pre><code>lessc less/style.less css/style.css
+</code></pre>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              56/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Bonus</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              57/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code smaller">
+          <div class="inner">
+            
+            <header><h1>Gulp, outil d'automatisation</h1></header>
+            
+            
+            <section><p>Met en place des tâches qui peuvent remplir plusieurs fonctions</p>
+<ul>
+<li>automatiser la génération des fichiers css à partir des fichiers less,</li>
+<li>minifier les CSS et les JS</li>
+<li>....</li>
+</ul>
+<h2>Installation</h2>
+<p>Prérequis : installer nodejs</p>
+<p>Installer <code>gulp</code> globalement</p>
+<div class="highlight"><pre><span></span><span class="go">npm install -g gulp</span>
+</pre></div>
+
+<p>Installer les dépendances du projet et les ajouter au fichier <code>package.json</code></p>
+<div class="highlight"><pre><span></span><span class="go">cd /dossier/de/montheme</span>
+<span class="go">npm install --sav-dev gulp-less</span>
+</pre></div>
+
+<p>Lancer l'installation des paquets indiqués dans <code>package.json</code> :</p>
+<div class="highlight"><pre><span></span><span class="go">npm install</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              58/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code smaller">
+          <div class="inner">
+            
+            <header><h2>Initialisation</h2></header>
+            
+            
+            <section><p>Copier <code>gulpfile.js</code> dans le dossier de thème</p>
+<div class="highlight"><pre><span></span><span class="go">var gulp = require(&#39;gulp&#39;);</span>
+<span class="go">var less = require(&#39;gulp-less&#39;);</span>
+<span class="go">var rename = require(&#39;gulp-rename&#39;);</span>
+<span class="go">var notify = require(&#39;gulp-notify&#39;);</span>
+<span class="go">var minifyCSS = require(&#39;gulp-minify-css&#39;);</span>
+<span class="go">var dsource = &quot;./src/&quot;;</span>
+<span class="go">var ddest = &quot;./www/&quot;;</span>
+
+<span class="go">var lessfiles = [dsource+&#39;less/styles.less&#39;];</span>
+<span class="go">var lessfiles_watch = [dsource+&#39;less/**/*.less&#39;];</span>
+
+<span class="go">w = process.cwd();</span>
+<span class="go">styles = gulp.task(</span>
+<span class="go">  &#39;styles&#39;,</span>
+<span class="go">  function() {</span>
+<span class="go">    return gulp.src(lessfiles)</span>
+<span class="go">    .pipe(less())</span>
+<span class="go">    .pipe(rename(&quot;styles.css&quot;))</span>
+<span class="go">    .pipe(gulp.dest(ddest+&#39;css/&#39;))</span>
+<span class="go">    .pipe(notify({message: &#39;Styles task complete&#39;}))</span>
+<span class="go">    .pipe(rename({suffix: &#39;.min&#39;}))</span>
+<span class="go">    .pipe(minifyCSS())</span>
+<span class="go">    .pipe(gulp.dest(ddest+&#39;css/&#39;))</span>
+<span class="go">  });</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              59/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Usage</h2></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="go">gulp &lt;nom_de_tache_définie&gt;</span>
+<span class="go">gulp styles # compile les fichiers less et minifie les CSS</span>
+</pre></div>
+
+<h2>Resources</h2>
+<ul>
+<li>Site officiel <a href="http://gulpjs.com/">gulpjs</a></li>
+<li>Tutoriel (en) sur <a href="http://www.sitepoint.com/introduction-gulp-js/">Site Point</a></li>
+<li>Erreur courante <a href="http://stackoverflow.com/questions/16748737/grunt-watch-error-waiting-fatal-error-watch-enospc">Erreur ENOSPC</a></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              60/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Autres ressources</h1></header>
+            
+            
+            <section><h2>Outils</h2>
+<ul>
+<li><a href="http://yeoman.io/">Yeoman</a></li>
+<li><a href="https://github.com/aFarkas/html5shiv">HTML Shiv</a></li>
+<li><a href="https://remysharp.com/2010/10/08/what-is-a-polyfill">Polyfill</a></li>
+</ul>
+<h2>Exemples de code</h2>
+<ul>
+<li><a href="http://codepen.io">Codeopen</a></li>
+<li><a href="http://tympanus.net/codrops/">Codedrops</a></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              61/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: html5-css3/html5-css3-update.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Questions ?</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="html5-css3/html5-css3-update.md">html5-css3/html5-css3-update.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              62/62
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">HTML5 / CSS3</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">Jour 1 : HTML5 / CSS3</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-3" class="sub">
+          <th><a href="#slide3">CSS3</a></th>
+          <td><a href="#slide3">3</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Jour 2 : Bootstrap, LessCSS</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Introduction : le World Wide Web</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-6" class="sub">
+          <th><a href="#slide6">Composants du WorldWideWeb</a></th>
+          <td><a href="#slide6">6</a></td>
+        </tr>
+        
+        <tr id="toc-row-7" class="sub">
+          <th><a href="#slide7">Historique</a></th>
+          <td><a href="#slide7">7</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Les outils de développement</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Partie 1 : HTML5</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-10" class="sub">
+          <th><a href="#slide10">Sommaire</a></th>
+          <td><a href="#slide10">10</a></td>
+        </tr>
+        
+        <tr id="toc-row-11" class="sub">
+          <th><a href="#slide11">HTML5, standard depuis le 28 octobre 2014</a></th>
+          <td><a href="#slide11">11</a></td>
+        </tr>
+        
+        <tr id="toc-row-12" class="sub">
+          <th><a href="#slide12">Exemple 1 : Pour commencer</a></th>
+          <td><a href="#slide12">12</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Sémantique</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-14" class="sub">
+          <th><a href="#slide14">Exemple 2 : Structure sémantique d'une page</a></th>
+          <td><a href="#slide14">14</a></td>
+        </tr>
+        
+        <tr id="toc-row-15" class="sub">
+          <th><a href="#slide15">Microdatas</a></th>
+          <td><a href="#slide15">15</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Media et éléments embarqués</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-17" class="sub">
+          <th><a href="#slide17"><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Utilisation_d%27audio_et_video_en_HTML5"><code>&lt;audio&gt;</code> et <code>&lt;video&gt;</code></a></a></th>
+          <td><a href="#slide17">17</a></td>
+        </tr>
+        
+        <tr id="toc-row-18" class="sub">
+          <th><a href="#slide18">Image, nouveaux attributs <code>srcset</code> et <code>sizes</code></a></th>
+          <td><a href="#slide18">18</a></td>
+        </tr>
+        
+        <tr id="toc-row-19" class="sub">
+          <th><a href="#slide19">Conteneur <code>&lt;figure&gt;</code></a></th>
+          <td><a href="#slide19">19</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Formulaires</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-21" class="sub">
+          <th><a href="#slide21">Code</a></th>
+          <td><a href="#slide21">21</a></td>
+        </tr>
+        
+        <tr id="toc-row-22" class="sub">
+          <th><a href="#slide22">Exercice</a></th>
+          <td><a href="#slide22">22</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-23">
+        <th><a href="#slide23">Effets et 3D</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-24" class="sub">
+          <th><a href="#slide24">SVG</a></th>
+          <td><a href="#slide24">24</a></td>
+        </tr>
+        
+        <tr id="toc-row-25" class="sub">
+          <th><a href="#slide25">WebGL</a></th>
+          <td><a href="#slide25">25</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-26">
+        <th><a href="#slide26">Application web en HTML5</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-27">
+        <th><a href="#slide27">Partie 2 : CSS3</a></th>
+        <td><a href="#slide27">27</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-28" class="sub">
+          <th><a href="#slide28">Sommaire</a></th>
+          <td><a href="#slide28">28</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-29">
+        <th><a href="#slide29">Mise en forme</a></th>
+        <td><a href="#slide29">29</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-30" class="sub">
+          <th><a href="#slide30">Font-Face</a></th>
+          <td><a href="#slide30">30</a></td>
+        </tr>
+        
+        <tr id="toc-row-31" class="sub">
+          <th><a href="#slide31">Extensions spécifiques des navigateurs</a></th>
+          <td><a href="#slide31">31</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-32">
+        <th><a href="#slide32">Sélecteurs</a></th>
+        <td><a href="#slide32">32</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-33" class="sub">
+          <th><a href="#slide33">Sélecteurs CSS3</a></th>
+          <td><a href="#slide33">33</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-34">
+        <th><a href="#slide34">Unités</a></th>
+        <td><a href="#slide34">34</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-35">
+        <th><a href="#slide35">Positionnement</a></th>
+        <td><a href="#slide35">35</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-36">
+        <th><a href="#slide36">Mise en page</a></th>
+        <td><a href="#slide36">36</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-37">
+        <th><a href="#slide37">Media-queries</a></th>
+        <td><a href="#slide37">37</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-38">
+        <th><a href="#slide38">CSS animé</a></th>
+        <td><a href="#slide38">38</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-39" class="sub">
+          <th><a href="#slide39">Transformations</a></th>
+          <td><a href="#slide39">39</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-40">
+        <th><a href="#slide40">TP Mise en page</a></th>
+        <td><a href="#slide40">40</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-41">
+        <th><a href="#slide41">Partie 3 : Bootstrap 3</a></th>
+        <td><a href="#slide41">41</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-42" class="sub">
+          <th><a href="#slide42">Sommaire</a></th>
+          <td><a href="#slide42">42</a></td>
+        </tr>
+        
+        <tr id="toc-row-43" class="sub">
+          <th><a href="#slide43">Mise en forme CSS</a></th>
+          <td><a href="#slide43">43</a></td>
+        </tr>
+        
+        <tr id="toc-row-44" class="sub">
+          <th><a href="#slide44">La grille bootstrap</a></th>
+          <td><a href="#slide44">44</a></td>
+        </tr>
+        
+        <tr id="toc-row-45" class="sub">
+          <th><a href="#slide45">Composants</a></th>
+          <td><a href="#slide45">45</a></td>
+        </tr>
+        
+        <tr id="toc-row-46" class="sub">
+          <th><a href="#slide46">TP Bootstrap</a></th>
+          <td><a href="#slide46">46</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-47">
+        <th><a href="#slide47">Partie 4 : LessCSS</a></th>
+        <td><a href="#slide47">47</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-48" class="sub">
+          <th><a href="#slide48">Sommaire</a></th>
+          <td><a href="#slide48">48</a></td>
+        </tr>
+        
+        <tr id="toc-row-49" class="sub">
+          <th><a href="#slide49">Installer LessCSS</a></th>
+          <td><a href="#slide49">49</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-50">
+        <th><a href="#slide50">Les bases</a></th>
+        <td><a href="#slide50">50</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-51" class="sub">
+          <th><a href="#slide51">imbrication de code</a></th>
+          <td><a href="#slide51">51</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-52">
+        <th><a href="#slide52">Mixins et fonctions</a></th>
+        <td><a href="#slide52">52</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-53">
+        <th><a href="#slide53">Import de fichier</a></th>
+        <td><a href="#slide53">53</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-54">
+        <th><a href="#slide54">TP : un thème avec LessCSS et Bootstrap</a></th>
+        <td><a href="#slide54">54</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-55" class="sub">
+          <th><a href="#slide55">Intégrer un design simple</a></th>
+          <td><a href="#slide55">55</a></td>
+        </tr>
+        
+        <tr id="toc-row-56" class="sub">
+          <th><a href="#slide56">Arborescence type d'un thème</a></th>
+          <td><a href="#slide56">56</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-57">
+        <th><a href="#slide57">Bonus</a></th>
+        <td><a href="#slide57">57</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-58">
+        <th><a href="#slide58">Gulp, outil d'automatisation</a></th>
+        <td><a href="#slide58">58</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-59" class="sub">
+          <th><a href="#slide59">Initialisation</a></th>
+          <td><a href="#slide59">59</a></td>
+        </tr>
+        
+        <tr id="toc-row-60" class="sub">
+          <th><a href="#slide60">Usage</a></th>
+          <td><a href="#slide60">60</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-61">
+        <th><a href="#slide61">Autres ressources</a></th>
+        <td><a href="#slide61">61</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-62">
+        <th><a href="#slide62">Questions ?</a></th>
+        <td><a href="#slide62">62</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Autoscale</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>f</td>
+      </tr>
+      <tr>
+        <th>Presenter view</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Blank screen</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>$().landslide();</script>
+</body>
+</html>
