@@ -58,7 +58,7 @@ If you need to change the style of all slides (on screen and print), edit
 If you need to change the style of all slides (on screen only), edit
 `assets/lanslide_theme/css/screen.css`.
 If you need to change the style of all slides (on print only), edit
-`assets/lanslide_theme/css/screen.css`.
+`assets/lanslide_theme/css/print.css`.
 
 ## Structure
 
