@@ -44,7 +44,7 @@ Voici un modèle très basique :
         lastname = models.CharField(max_length=100)
 
         def __str__(self):
-            return u'%s %s' % (self.firstname, self.lastname)
+            return '%s %s' % (self.firstname, self.lastname)
 
 L'idée n'est pas de tester Django (création d'instance, vérification que les 
 différents fonctionnent, ...) mais bien de tester notre code personnel. Ici,
@@ -116,7 +116,7 @@ l'occurrence, la présence d'un ``firstname`` ou non).
 
         def __str__(self):
             if self.firstname:
-                return u'%s %s' % (self.firstname, self.lastname)
+                return '%s %s' % (self.firstname, self.lastname)
             else:
                 return self.lastname
 
@@ -222,7 +222,8 @@ On a vérifié :
 
 
 Comme pour le modèle, l'idée n'est pas de tester ce qui est du ressort de Django.
-Ici, il est simplement nécessaire de s'assurer que la fonction ``__init__``fonctionne correctement dans les différents cas possibles (présence ou non d'une valeur
+Ici, il est simplement nécessaire de s'assurer que la fonction ``__init__`` 
+fonctionne correctement dans les différents cas possibles (présence ou non d'une valeur
 initiale pour le champ ``begin``).
 
 --------------------------------------------------------------------------------
@@ -418,7 +419,7 @@ des utilisateurs en écrivant une simple classe qui implémente certaines foncti
 
 --------------------------------------------------------------------------------
 
-# Tutoriel : Mettre en place la connexion/déconnexion des utilisateurs et créer un groupe possédant les droits d'administrer les tâches
+# Tutoriel : Mettre en place la (dé)connexion et créer un groupe avec le droit d'administrer les tâches
 
 .fx: alternate
 
@@ -490,23 +491,43 @@ pour obtenir une liste non imbriquée.
 
 # Aller plus loin avec les ``QuerySet``
 
-La méthode basique pour créer une instance est d'instancier le modèle puis de faire appel à la méthode ``save()`` de cette instance, mais une autre solution très pratique existe.
+## Quelques méthodes à retenir
 
-## Les méthodes ``create() et get_or_create()``
+* ``count()``: retourne le nombre d'éléments dans le queryset
+* ``exists()``: retourne True si le queryset n'est pas vide
+* ``first()`` et ``last()`` : retourne le premier ou dernier élément du queryset
+* ``latest(field_name=date)`` et ``earliest()`` : retourne le premier ou dernier élément du queryset en fonction d'un champ date
 
-La méthode ``create()`` permet de réaliser l'opération ci-dessus en une seule instruction :
+## La méthode ``create()``
+
+La méthode basique pour créer une instance est d'instancier le modèle puis de 
+faire appel à la méthode ``save()`` de cette instance, mais une autre solution très pratique existe.
+
+Elle permet de réaliser l'opération ci-dessus en une seule instruction :
 
     !python
     book = Book.objects.create(title="New django book", price="42€")
 
-La méthode ``get_or_create()`` permet de tenter de récupérer un objet (via ``get()``), et de le créer si il n'existe pas. Elle retourne un tuple comprenant un booléen qui précise si l'instance vient d'être créée, et l'instance elle-même :
+
+--------------------------------------------------------------------------------
+
+# Aller plus loin avec les ``QuerySet``
+
+## La méthode ``get_or_create()``
+
+La méthode ``get_or_create()`` permet de tenter de récupérer un objet 
+(via ``get()``), et de le créer si il n'existe pas. Elle retourne un tuple 
+comprenant un booléen qui précise si l'instance vient d'être créée, et l'instance elle-même :
 
     !python
     book, created = Book.objects.get_or_create(
         title="New django book", date(2013, 05, 15),
         defaults={'price': '42€'})
 
-Les valeurs passées directement en paramètres sont utilisées lors de l'appel de le méthode ``get()``, les valeurs passées dans ``defaults`` sont utilisées lors de la création éventuelle de l'instance pour initialiser la valeur des propriétés correspondantes.
+Les valeurs passées directement en paramètres sont utilisées lors de l'appel 
+de la méthode ``get()``, les valeurs passées dans ``defaults`` sont utilisées 
+lors de la création éventuelle de l'instance pour initialiser la valeur des 
+propriétés correspondantes.
 
 --------------------------------------------------------------------------------
 
@@ -743,7 +764,7 @@ Grâce aux modèles *proxy*, il est possible de modifier le comportement d'un ob
 
 .fx: alternate
 
----
+--------------------------------------------------------------------------------
 
 # ORM et performance
 
@@ -756,8 +777,7 @@ On accède à une relation dans une boucle ce qui entraine :
 
 Exemple :
 
-
-     !htmldjango
+     !html+django
      {% for task in object_list %}
      <li>
        <a href="{% url 'task_detail' task.pk %}">{{ task }}</a>
@@ -797,7 +817,7 @@ L'ORM fait une seule requête avec une jointure :
 
 ## Le problème N+1 avec les ManyToManyField
 
-    !django
+    !html+django
     {% for list in object_list %}
       <li>
         <a href="{% url 'todolist_detail' list.pk %}">{{ list }}</a>
@@ -857,7 +877,7 @@ Exemple :
 
 ---
 
-# Tutoriel : Envoyer un email quand une tâche est éffectuée
+# Tutoriel : Envoyer un email quand une tâche est effectuée
 
 .fx: alternate
 
@@ -984,7 +1004,7 @@ Dans ``django.views.generic.edit`` :
 
 ## Les classes fournies par Django
 
-Un excellent site permettant d'avoir un aperçu complet : http://ccbv.co.uk/
+Un excellent site permettant d'avoir un aperçu complet : <http://ccbv.co.uk/>
 
 --------------------------------------------------------------------------------
 
@@ -1075,7 +1095,6 @@ Il est important de gérer les erreurs selon les concepts du protocole HTTP. Une
     from django.http import Http404
 
     def book_detail(request, book_id):
-
         try:
             book = Book.objects.get(pk=book_id)
         except Book.DoesNotExist:
@@ -1085,6 +1104,14 @@ Il est important de gérer les erreurs selon les concepts du protocole HTTP. Une
             'book': book
         })
 
+Bon c'est assez fastidieux donc il existe un raccourci :
+
+    !python
+    from django.shortcuts import get_object_or_404, render
+
+    def book_detail(request, book_id):
+        book = get_object_or_404(Book, pk=book_id)
+        return render(request, 'library/book_detail.html', {'book': book})
 
 --------------------------------------------------------------------------------
 
@@ -1120,7 +1147,7 @@ Par défaut, chaque erreur correspond à une vue dont Django fait le rendu quand
 ## Mode ``debug``
 
 Le réglage ``TEMPLATE_DEBUG`` (dans ``settings.py``) permet d'activer ou non 
-l'affichage de la page de débogage pedant le développement. Cette page vient en
+l'affichage de la page de débogage pendant le développement. Cette page vient en
 remplacement des vues d'erreurs listées ci-dessus. Il est donc important de
 la désactiver en production.
 
@@ -1146,9 +1173,9 @@ de créer une vue dont il faudra préciser le nom dans l'``URLConf`` :
         return render(request, '403.html')
 
     # urls.py
-    urlpatterns = patterns('',
+    urlpatterns = [
         # ...
-    )
+    ]
     handler403 = 'my_app.views.my_403_view'
 
 --------------------------------------------------------------------------------
@@ -1373,8 +1400,6 @@ Il existe une méthode très simple pour initialiser les champs d'un formulaire 
 la méthode ``__init__()`` peut prendre en argument un dictionnaire "``initial``"
 dont les clés doivent correspondre aux noms des champs du formulaire.
 
-Exemple :
-
     !python
     # forms.py
     class AccountForm(forms.Form):
@@ -1398,8 +1423,6 @@ Exemple :
 Pour aller plus loin, il est possible de surcharger la méthode ``__init__()``
 pour réaliser des traitements particuliers (initialiser des valeurs complexes,
 limiter les choix d'un champ select, cacher dynamiquement des champs, ...).
-
-Exemple :
 
     !python
     # forms.py
@@ -1430,8 +1453,6 @@ Un échec de validation doit engendrer une exception de type ``ValidationError``
 Pour valider un champ de formulaire, il suffit de créer une méthode de formulaire
 nommée par le nom du champ préfixé de ``clean_``.
 
-Exemple :
-
     !python
     # forms.py
     class SearchBookForm(forms.Form):
@@ -1453,8 +1474,6 @@ Exemple :
 Implémenter la méthode ``clean`` permet de faire une validation globale du formulaire,
 utile notamment pour faire des vérifications sur plusieurs champs dépendants les uns
 des autres.
-
-Exemple :
 
     !python
     # forms.py
@@ -1539,7 +1558,7 @@ statique.
 
 Exemple pour une image :
 
-    !python
+    !html+django
     {# my_app/templates/my_app/my_template.html #}
     {% load static %}
     ...
@@ -1547,7 +1566,7 @@ Exemple pour une image :
 
 Exemple pour un CSS :
 
-    !python
+    !html+django
     {# base.html #}
     {% load static %}
     <html>
@@ -1606,11 +1625,8 @@ disposant de propriétés (``name``, ``size``, ...) et de méthodes très utiles
 Deux champs ``FileField`` et ``ImageField`` sont fournis pour pouvoir associer
 facilement un fichier ou une image à une instance de modèle.
 
-## Exemple
-
     !python
     # models.py
-
     class Book(models.Model):
         # ...
         summary = models.FileField(upload_to='summaries')
@@ -1713,7 +1729,7 @@ généralement cette fonction avec l'alias '_'.
 
 # Traduire l'interface (fichiers python)
 
-## Exemple d'utilisation dans un formulaire
+Exemple d'utilisation dans un formulaire
 
     !python
     # forms.py
@@ -1722,7 +1738,7 @@ généralement cette fonction avec l'alias '_'.
     class BookSearchForm(models.Model):
         search_text = models.CharField(label=_('Search text'))
 
-## Exemple d'utilisation dans une vue
+Exemple d'utilisation dans une vue
 
     !python
     # views.py
@@ -1749,7 +1765,7 @@ sont disponibles :
 
 Il permet de traduire une chaine de caractères simple ou le contenu d'une variable.
 
-    !html
+    !html+django
     {% load i18n %}
     <title>{% trans "List of books" %}</title>
     <title>{% trans page_title %}</title>
@@ -1758,7 +1774,7 @@ Il permet de traduire une chaine de caractères simple ou le contenu d'une varia
 
 Il permet de mixer chaînes de caractères et variables pour traduire des chaînes complexes.
 
-    !html
+    !html+django
     {% load i18n %}
     {% blocktrans with book_t=book|title author_t=author|title %}
     <p>This is {{ book_t }} by {{ author_t }}</p>
@@ -1880,7 +1896,7 @@ simplement en utilisant directement dans le terminal le point d'entrée ``./mana
 
 ## Éxécution automatique
 
-Il peut être aussi très utile d'automatiser cette execution via une tâche cron :
+Il peut être aussi très utile de l'automatiser via une tâche cron :
 
     !python
     # Cron tasks
@@ -1904,7 +1920,7 @@ Il peut être aussi très utile d'automatiser cette execution via une tâche cro
 
 --------------------------------------------------------------------------------
 
-# Fonctionnement de l'interface d'administration
+# Fonctionnement de l'interface d'admin
 
 Pour activer l'interface d'administration il faut commencer par :
 
@@ -1918,12 +1934,12 @@ La classe est la représentation d'un modèle dans l'interface d'administration.
 
 --------------------------------------------------------------------------------
 
-# Fonctionnement de l'interface d'administration
+# Fonctionnement de l'interface d'admin
 
 ## Déclaration d'un ``ModelAdmin``
 
 Si on ne souhaite pas personnaliser la représentation du modèle dans l'interface
-d'administration, il existe une version simplifiée de déclaration :
+d'administration, il existe une version simplifiée de déclaration
 
     !python
     # admin.py

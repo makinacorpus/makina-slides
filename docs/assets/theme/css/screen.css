@@ -11,7 +11,7 @@ div.slide h1, div.slide h2, div.slide h3, div.slide h4, div.slide h5, div.slide 
 }
 
 li {
-  padding: 10px 0;
+  padding: 2px 0;
 }
 
 table {
@@ -38,12 +38,6 @@ tr > td:first-child, tr > th:first-child {
   color: white;
   background: #777;
   opacity:0.90;
-}
-
-/* A title slide is a single header */
-.slide header:only-child h1 {
-  font-weight: bold;
-  font-size: 80px;
 }
 
 /* Source and page number */

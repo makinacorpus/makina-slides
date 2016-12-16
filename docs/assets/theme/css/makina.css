@@ -65,12 +65,10 @@ pre, tt, code, kbd, samp {
 }
 
 /* A title slide is a single header */
+.slide section h1:only-child,
 .slide header:only-child h1 {
   font-weight: normal;
-}
-.slide section h1:only-child {
-  font-weight: bold;
-  font-size: 80px;
+  font-size: 72px;
 }
 
 blockquote {

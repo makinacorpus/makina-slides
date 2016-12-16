@@ -1,5 +1,21 @@
 # Initiation à Django
 
+---
+
+# Faisons les présentations 
+
+## Makina Corpus
+Experts en logiciels libres, cartographie et analyse de données, nous concevons des applications métiers innovantes.
+
+Nos valeurs :
+* Les logiciels libres et les données ouvertes • L'agilité
+* Le développement durable
+
+## Le formateur
+
+## Et vous ?
+
+
 --------------------------------------------------------------------------------
 
 > La Plateforme de développement Web pour les perfectionnistes sous pression.
@@ -20,8 +36,8 @@
 
 * Créé en 2003 par le journal local de Lawrence (Kansas, USA), basé sur le langage Python créé en 1990
 * Rendu Open Source (BSD) en 2005
-* Version actuelle : Django 1.9, sortie en décembre 2015
-* Aujourd'hui utilisé par de très nombreuses entreprises : Mozilla, Instagram, Pinterest, Disqus, ...
+* Version actuelle : Django 1.10, sortie en aout 2016
+* Aujourd'hui utilisé par de très nombreuses entreprises/sites : Mozilla, Instagram, Pinterest, Disqus, Washington Times, ...
 
 --------------------------------------------------------------------------------
 
@@ -38,6 +54,21 @@
 ## Conventions de codage
 
 La documentation précise certaines conventions de codage spécifiques à Django. La PEP 8 fait référence pour le reste.
+
+--------------------------------------------------------------------------------
+
+# Philosophie
+
+## Couplage faible
+* Les différentes couches du framework sont indépendantes
+* Le socle d'applications peut être réduit au strict minimum
+
+## Peu de code à écrire
+* Ecriture "automatique" de code
+* Utilisation des possibilités d'introspection de Django
+
+## Rapidité
+* Dans le domaine du web, au 21e siècle, tout va très vite
 
 --------------------------------------------------------------------------------
 
@@ -58,10 +89,37 @@ La documentation précise certaines conventions de codage spécifiques à Django
 
 # Environnement
 
-* Django 1.9
+* Django 1.10
 * Python : 2.7 / 3.x
 * Base de données : SQLite, PostgreSQL, MySQL
-* Il est préférable de travailler dans un environnement virtualisé (*virtualenv*)
+
+## Côté python
+
+Python parcours sys.path pour chercher les modules à importer
+
+* Par défaut ce path contient les répertoires systèmes tels que ``/usr/lib/python``, 
+``/usr/local/lib/python``, ``~/.local/lib/python`` ainsi que le répertoire courant en général
+* Comme tout module python, il faut que Django soit accessible dans le path pour pouvoir l'utiliser
+* Virtualenv permet de créer un environnement python en isolation du système, 
+c'est la méthode préférable pour développer avec python
+
+---
+
+# Environnement
+
+## Introduction au virtualenv
+
+    !shell
+    $ virtualenv env  # crée l'environnement
+    $ ./env/bin/python  # lance le python de l'environnement virtuel
+    (env) $ source env/bin/activate  # ajoute ./env/bin en tête du PATH
+    (env) $ python  # lance le python de l'environnement virtuel
+    (env) $ deactivate  # rétablit le path
+    $ python  # lance le python du système
+
+Cela permet ainsi de créer plusieurs environnement avec différentes version de python, de Django, etc.
+
+Pour aller plus loin, voir _pyenv_.
 
 --------------------------------------------------------------------------------
 
@@ -94,18 +152,19 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 ## Installation de Django
 
     !console
-    $ pip install django==1.9
+    $ pip install django
 
 ## Création du projet
 
     !console
-    $ django-admin.py startproject library
+    $ django-admin startproject library
 
 ## Lancement du serveur de développement
 
     !console
     $ cd library
     $ ./manage.py runserver
+
 
 --------------------------------------------------------------------------------
 
@@ -117,23 +176,35 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 
 --------------------------------------------------------------------------------
 
+# Installer Django
+
+## Serveur de développement
+
+Django vient avec ce serveur HTTP de développement (à ne surtout pas utiliser en production pour des raisons de performances et de sécurité)
+
+* Ce serveur se relance (presque toujours) automatiquement lorsqu'il détecte un changement de fichier
+* Par défaut il écoute sur l'interface localhost sur le port 8000
+* Le script manage.py fait la même chose que django-admin mais après avoir lu la configuration du projet (dans ``settings.py``)
+
+--------------------------------------------------------------------------------
+
 # Le projet créé
 
     !console
-    ├── library/
-    │   ├── manage.py
-    │   └── library/
-    │       ├── __init__.py
-    │       ├── settings.py
-    │       ├── urls.py
-    │       └── wsgi.py
+    └── library
+        ├── library
+        │   ├── __init__.py
+        │   ├── settings.py
+        │   ├── urls.py
+        │   └── wsgi.py
+        └── manage.py
 
-* ``/library`` : conteneur du projet (le nom est sans importance)
-* ``/manage.py`` : utilitaire en ligne de commande permettant différentes actions sur le projet
-* ``/library/library`` : paquet Python effectif du projet
-* ``/library/settings.py`` : réglages et configuration du projet
-* ``/library/urls.py`` : déclaration des URLs du projet
-* ``/library/wsgi.py`` : point d'entrée pour déployer le projet avec WSGI
+* ``library`` : conteneur du projet (le nom est sans importance)
+* ``library/manage.py`` : utilitaire en ligne de commande permettant différentes actions sur le projet
+* ``library/library`` : paquet Python effectif du projet
+* ``library/library/settings.py`` : réglages et configuration du projet
+* ``library/library/urls.py`` : déclaration des URLs du projet
+* ``library/library/wsgi.py`` : point d'entrée pour déployer le projet avec WSGI
 
 --------------------------------------------------------------------------------
 
@@ -178,6 +249,46 @@ Il est important de différencier la notion de **projet** et d'**application**.
 
 <cite> — docs.djangoproject.com</cite>
 
+
+---
+
+# Un projet est une combinaison d'apps
+
+* Le projet peut être découpé en différentes apps
+* Une même app peut être réutilisée dans plusieurs projets
+* Django fourni par défaut des apps, par exemple pour gérer l'authentification
+* De nombreuses autres apps sont mise à disposition par la communauté (installation via `pip`)
+* Un projet django typique combine des apps de Django, d'autres provenant de la 
+communauté, et enfin une ou des apps spécifiques au projet
+* Ce sont des modules python
+* La commande `manage.py startapp` crée automatiquement un patron d'app dans un nouveau
+répertoire
+* Les apps sont à déclarer dans les settings ( `INSTALLED_APPS = [...]` ) 
+
+---
+
+# Chaque chose à sa place
+
+Django "impose" une organisation du code (noms et emplacements des fichiers) 
+
+  * C'est une contrainte
+  * Mais c'est aussi très pratique pour retrouver son code
+    - Quand c'est le sien
+    - Quand c'est celui des autres
+    - Ce qui revient au même au bout d'un certain temps...
+  * Par exemple les vues vont dans le  chier views.py dans le répertoire de l'app 
+  * Ou plutôt dans le module views du package de l'app
+  * Et les urls vont dans le module urls ( chier urls.py)
+  * On peut inclure une liste d'urls d'une app dans les urls du projet
+
+<!-- -->
+
+     !python
+     from django.conf.urls import url, include
+     urlpatterns = [
+         url(r'', include('books.urls')),
+     ]
+
 --------------------------------------------------------------------------------
 
 # Création d'une application
@@ -188,21 +299,133 @@ Il est important de différencier la notion de **projet** et d'**application**.
 ## L'application créée
 
     !console
-    ├── library/
-        ├── books/
-        │   ├── __init__.py
-        │   ├── admin.py
-        |   ├── apps.py
-        │   ├── migrations/
-        │   ├── models.py
-        │   ├── tests.py
-        │   ├── views.py
+      ├── books/
+      │   ├── __init__.py
+      │   ├── admin.py
+      |   ├── apps.py
+      │   ├── migrations/__init__.py
+      │   ├── models.py
+      │   ├── tests.py
+      │   ├── views.py
 
 * ``models.py`` : déclaration des modèles de l'application
 * ``views.py`` : écriture des vues de l'application
 * ``admin.py`` : comportement de l'application dans l'interface d'administration
 * ``tests.py`` : Il. Faut. Tester.
-* ``migrations``: modifications successives du schéma de la base de donnée
+* ``migrations``: modifications successives du schéma de la base de données
+
+# Presenter notes
+
+La commande devra être lancée avec le bon nom de module (todo).
+
+---
+
+# Activation de l'application
+
+## Déclaration de l'application dans les *settings*
+
+    !python
+    # settings.py
+    INSTALLED_APPS = (
+      'django.contrib.admin',
+      ...
+      'books',
+    )
+
+
+--------------------------------------------------------------------------------
+
+# Tutoriel fil rouge : créer l'application *todo*, le modèle *tâche*, et activer l'application
+
+.fx: alternate
+
+# Presenter notes
+
+Le résultat final doit être qu'on peut gérer les taches dans le backoffice
+
+--------------------------------------------------------------------------------
+
+# Déroulement d'une requête HTTP
+
+* Une vue est une fonction qui prend un objet `HttpRequest` et renvoie un objet `HttpResponse`
+* Quand Django reçoit une requête HTTP, il crée l'objet `HttpRequest` correspondant à la requête du client
+* Il cherche la fonction de vue associée à l'URL
+* Il appelle cette fonction en lui passant l'objet `HttpRequest` en paramètre
+* Il récupère un objet `HttpResponse` en retour de la fonction ou de la classe
+* Il répond au client
+
+---
+
+# L'objet `HttpRequest`
+
+Permet d'accéder à de nombreux attributs tels que
+
+  * Le schéma (ex. http ou https), le domaine, et le chemin formant l'URL 
+  * La méthode (ex. GET, POST, PUT, DELETE)
+  * Les headers HTTP (ex. Content-Type)
+  * Les paramètres et les fichiers uploadés
+  * Les cookies
+
+Peut être lu comme un flux 
+
+  * request.read()
+  * request.readline()
+  * for line in request:
+
+_cf._ <https://docs.djangoproject.com/en/1.10/ref/request-response/#httprequest-objects>
+
+-----
+
+# L'objet `HttpResponse`
+
+Permet de régler de nombreux attributs tels que
+
+* Le statut HTTP (ex. 200 OK, 404 Not Found)
+* Le contenu de la réponse (ex. du code HTML, des données sérialisées en JSON) 
+* Les headers HTTP (ex. Content-Type)
+* Les cookies
+
+Peut être instancié directement avec le contenu comme paramètre 
+
+    !python
+    response = HttpResponse("foobar")
+
+Peut être écrit comme un flux 
+    
+    !python
+    request.write()
+
+Est dérivé en sous-classes (ex. HttpResponseRedirect)
+
+_cf._ <https://docs.djangoproject.com/en/1.10/ref/request-response/#httpresponse-objects>
+
+---
+
+# Vue simple basée sur une chaîne
+
+En somme, une vue se résume à déclarer une url :
+
+    !python
+    # books/urls.py
+    from django.conf.urls import patterns, include, url
+    urlpatterns = [
+        url(r'^ma-vue$', 'books.views.ma_vue'),
+    ]
+
+et retourner un contenu en fonction d'une requeête
+
+    !python
+    # books/views.py
+    from django.http import HttpResponse
+
+    def ma_vue(request):
+        return HttpResponse("mon contenu")
+
+--------------------------------------------------------------------------------
+
+# TP : créer une vue affichant "Bienvenue dans la Todo List"
+
+.fx: alternate
 
 --------------------------------------------------------------------------------
 
@@ -221,8 +444,16 @@ Il est important de différencier la notion de **projet** et d'**application**.
         release = models.DateField(blank=True, null=True)
         borrowed = models.BooleanField(default=False)
 
-        def __unicode__(self):  # ou __str__ en python 3
+        def __str__(self):
             return self.title
+
+# Presenter notes
+
+Ces 3 types de champs suffisent pour l'appli todo 
+
+* title
+* added_at
+* done
 
 --------------------------------------------------------------------------------
 
@@ -248,6 +479,13 @@ D'autres options permettent par exemple de :
 * préciser des critères de tri
 * déclarer des permissions relatives au modèle
 
+# Presenter notes
+
+Ici on utilisera uniquement verbose_name et ordering
+
+Mentionner le fait que les noms de modele sont declinés de leur nom système
+
+
 --------------------------------------------------------------------------------
 
 # Quelques options pour les champs
@@ -263,18 +501,6 @@ Chaque type de champs possède ses propres propriétés. Cependant, certaines so
 
 --------------------------------------------------------------------------------
 
-# Activation de l'application
-
-## Déclaration de l'application dans les *settings*
-
-    !python
-    # settings.py
-    INSTALLED_APPS = (
-      'django.contrib.admin',
-      ...
-      'books',
-    )
-
 ## Création de la migration qui permet d'ajouter la table en base de données
 
     !console
@@ -284,6 +510,7 @@ Chaque type de champs possède ses propres propriétés. Cependant, certaines so
 
     !console
     $ ./manage.py migrate
+
 
 --------------------------------------------------------------------------------
 
@@ -306,15 +533,9 @@ Chaque type de champs possède ses propres propriétés. Cependant, certaines so
 
 --------------------------------------------------------------------------------
 
-# Tutoriel fil rouge : créer l'application *todo*, le modèle *tâche*, et activer l'application
-
-.fx: alternate
-
---------------------------------------------------------------------------------
-
 # Un exemple complet de vue : la liste des livres
 
---------------------------------------------------------------------------------
+---
 
 # 1. Création de la vue
 
@@ -336,11 +557,13 @@ Chaque type de champs possède ses propres propriétés. Cependant, certaines so
             context
         )
 
+Ce style de vue est dit "Function-based" (par opposition à "Class-based").
+
 --------------------------------------------------------------------------------
 
-# 2. Création d'une template
+# 2. Création d'un template
 
-    !html
+    !html+django
     {# books/templates/books/book_list.html #}
     
     <h1>Liste des livres</h1>
@@ -355,10 +578,13 @@ Chaque type de champs possède ses propres propriétés. Cependant, certaines so
         <p>Aucun livre !</p>
     {% endif %}
 
+Documentation: <https://docs.djangoproject.com/fr/1.10/topics/templates/>
 
 --------------------------------------------------------------------------------
 
 # 3. Mapping de l'URL
+
+Routeur basé sur des regex, avec un préfixe par application
 
 ## Déclaration d'une URL
 
@@ -416,39 +642,43 @@ Ces vues sont généralement écrites dans le fichier ``views.py`` de l'applicat
 Une vue *basée sur une classe* Django est simplement une classe Python préformatée qui prend en entrée une **requête HTTP** et retourne une **réponse HTTP**.
 
 
-## Un exemple tiré de la documention Django
+## Un exemple tiré de la documentation Django
 
     !python
     # some_app/views.py
     from django.http import HttpResponse
-	from django.views.generic import View
+  	from django.views.generic import View
 
-	class CurrentDatetimeView(View):
-		def get(self, request, * args, ** kwargs):
-			now = datetime.datetime.now()
-			html = "<html><body>It is now %s.</body></html>" % now
-			return HttpResponse(html)
+  	class CurrentDatetimeView(View):
+  		def get(self, request, * args, ** kwargs):
+  			now = datetime.datetime.now()
+  			html = "<html><body>It is now %s.</body></html>" % now
+  			return HttpResponse(html)
+
 --------------------------------------------------------------------------------
 
 # Le moteur de template
 
 --------------------------------------------------------------------------------
 
-# Qu'est-ce qu'une template Django ?
+# Qu'est-ce qu'un template Django ?
 
 C'est un simple fichier texte qui peut générer n'importe quel format de texte (HTML, XML, CSV, ...).
 
-Une template a accès à des **variables** qui lui auront été passées via un **contexte** par la vue.
+Un template a accès à des **variables** qui lui auront été passées via un **contexte** par la vue.
 
 --------------------------------------------------------------------------------
 
 # Où écrire ses templates ?
 
-Django possède un mécanisme capable de retrouver les templates d'un projet, configurable via le réglage ``TEMPLATE_LOADERS``.
+Django possède un mécanisme capable de retrouver les templates d'un projet, configurable via le réglage ``TEMPLATES['BACKEND']``.
 
 Le plus souvent on stocke les templates :
-* dans chaque application, en suivant l'arborescence ``<application>/templates/<application>``. Ils seront retrouvés grâce au loader django.template.backends.django.DjangoTemplates, activé par défaut.
+
+* dans chaque application, en suivant l'arborescence ``<application>/templates/<application>``. Ils seront retrouvés grâce au loader ``django.template.backends.django.DjangoTemplates``, activé par défaut.
 * dans un répertoire ``templates/`` à la racine du projet qu'il faudra déclarer dans la clé ``DIRS`` du réglage ``TEMPLATES``.
+
+Il existe un mécanisme de découverte où l'ordre importe : cela permet de surcharger les templates d'autres applications.
 
 --------------------------------------------------------------------------------
 
@@ -456,14 +686,14 @@ Le plus souvent on stocke les templates :
 
 ## Affichage d'une variable
 
-    !python
+    !django
     {{ ma_variable }}
 
 ## Les filtres
 
 Il est possible de modifier l'affichage d'une variable en appliquant des **filtres**. Un filtre peut prendre (ou non) un argument. Les filtres peuvent être appliqués en cascade. Quelques exemples :
 
-    !python
+    !django
     {{ name|lower }}
     {{ text|linebreaksbr }}
     {{ current_time|time:"H:i" }}
@@ -481,18 +711,18 @@ Les **tags** sont plus complexes que les variables, ils peuvent créer du texte 
 
 ### Une condition *if* :
 
-    !python
+    !django
     {% if condition %} .. {% else %} .. {% endif %}
 
 ### Une boucle *for* :
 
-    !python
+    !django
     {% for item in list %} .. {% endfor %}
 
 
 ### Un lien avec *url* :
 
-    !html
+    !html+django
     <a href="{% url 'books:book_detail' book.pk %}">Django book</a>
 
 Django fournit aussi plusieurs tags nativement et il est possible d'écrire ses propres tags.
@@ -505,13 +735,13 @@ L'intérêt de l'héritage de template est par exemple de pouvoir créer un sque
 
 Dans une template *parent*, la balise ``{% block %}`` permet de définir les blocs surchargeables.
 
-Dans une template *enfant*, la balise ``{% extends %}`` permet de préciser de quelle template celle-ci doit hériter.
+Dans une template *enfant*, la balise ``{% extends %}`` permet de préciser de quel template celui-ci doit hériter.
 
 --------------------------------------------------------------------------------
 
 # Exemple de template *parent*
 
-    !html
+    !html+django
     {# templates/base.html #}
     <html>
       <head>
@@ -537,7 +767,7 @@ Dans une template *enfant*, la balise ``{% extends %}`` permet de préciser de q
 
 # Exemple de template *enfant*
 
-    !html
+    !html+django
     {# books/templates/books/book_list.html #}
 
     {% extends "base.html" %}
@@ -563,10 +793,12 @@ Dans une template *enfant*, la balise ``{% extends %}`` permet de préciser de q
 # L'inclusion de template
 
 L'intérêt de l'inclusion de template est de pouvoir factoriser du code de template :
+
 * pour éviter d'avoir des fichiers de templates trop long
 * pour le réutiliser facilement tout en évitant la duplication de code
 
 Cela peut être utile dans différents cas :
+
 * pour certains éléments communs de la page (menu, entête, pied de page, ...)
 * pour certaines macros réutilisables (structure d'onglets, affichage en liste d'éléments, structure HTML d'une pop-in, ...)
 
@@ -574,7 +806,7 @@ Cela peut être utile dans différents cas :
 
 # Exemple de template *appelant*
 
-    !html
+    !html+django
     {# templates/base.html #}
     <html>
       <head>
@@ -619,10 +851,10 @@ Le module *URLconf* est un fichier ``urls.py`` contenant une variable ``urlpatte
     !python
     # urls.py
     from django.conf.urls import patterns, url
-    urlpatterns = [,
+    urlpatterns = [
         url(r'^myview$', 'myapp.views.my_view', name='my_view'),
         ...
-      ]
+    ]
 
 ## Inclusion d'*URLconf*
 
@@ -661,6 +893,12 @@ La vue aura en argument l'objet ``HttpRequest``, puis les valeurs trouvées dans
 # Tutoriel fil rouge : créer la vue *listes des tâches* et *détail d'une tâche*
 
 .fx: alternate
+
+# Presenter notes
+
+Ici il faut créer au paravant quelques tâche via l'interface d'administration
+
+On attend ensuite une liste de ces tâche en frontend avec une vue par tache affichant ses informations
 
 --------------------------------------------------------------------------------
 
@@ -704,6 +942,7 @@ Les concepts principaux sont les suivants:
 # Les champs de formulaire
 
 La bibliothèque django.forms fournit plus de 20 types de champs différents, dont voici les principaux :
+
 * Les champs pur texte : CharField , TextField
 * Les champs pour les nombres : FloatField, IntegerField
 * Les champs booléens : BooleanField, NullBooleandField
@@ -739,9 +978,9 @@ Certains modules annexes fournissent leurs propres champs et il est possible d'�
 
 --------------------------------------------------------------------------------
 
-# Rendu du formulaire dans une template
+# Rendu du formulaire dans un template
 
-    !python
+    !html+django
     <form action="/contact/" method="post">
       {% csrf_token %}
       {{ form.as_p }}
@@ -749,6 +988,12 @@ Certains modules annexes fournissent leurs propres champs et il est possible d'�
     </form>
 
 L'utilisation du tag ``{% csrf_token %}`` est importante car elle permet de protéger le formulaire des attaques de type CSRF (*Cross Site Request Forgeries*).
+
+Un formulaire peut être rendu de différentes manières :
+
+* _as\_p_: chaque champ est rendu dans un paragraphe
+* _as\_ul_: chaque champ est rendu dans une ligne de liste
+* _as\_table_: chaque champ est rendu dans une ligne de tableau
 
 --------------------------------------------------------------------------------
 
@@ -761,6 +1006,7 @@ Le fonctionnement est assez semblable à celui des formulaires classiques à que
 * La déclaration d'une classe ``Meta`` est nécessaire pour préciser sur quel modèle doit se baser le formulaire
 * La méthode ``__init__`` prend en argument l'instance du modèle à modifier (ou ``None`` dans le cas d'une création)
 * Le formulaire fournit une méthode ``save`` qui permet d'enregistrer l'instance éditée via le formulaire
+* Les champs sont automatiquement listés dès lors qu'ils n'ont pas la propriété ``editable=False``
 
 --------------------------------------------------------------------------------
 
@@ -826,8 +1072,7 @@ Un livre est associé à un auteur, un auteur peut avoir écrit plusieurs livres
 
     class Book(models.Model):
         title = models.CharField(max_length=100)
-        author = models.ForeignKey(Author,
-                                   related_name='books')
+        author = models.ForeignKey(Author, related_name='books')
 
 --------------------------------------------------------------------------------
 
@@ -848,8 +1093,7 @@ Un livre est associé à plusieurs catégories, plusieurs livres peuvent apparte
 
     class Book(models.Model):
         title = models.CharField(max_length=100)
-        categories = models.ManyToManyField(Category,
-                                            related_name='books')
+        categories = models.ManyToManyField(Category, related_name='books')
 
 --------------------------------------------------------------------------------
 
@@ -870,14 +1114,20 @@ Un livre est associé à un seul code barre, un code barre correspond à un seul
 
     class Book(models.Model):
         title = models.CharField(max_length=100)
-        barcode = models.OneToOneField(BarCode,
-                                       related_name='book')
+        barcode = models.OneToOneField(BarCode, related_name='book')
 
 --------------------------------------------------------------------------------
 
 # Tutoriel : Mettre en place une modélisation gérant des listes de tâches partagées entre utilisateurs
 
 .fx: alternate
+
+# Presenter notes
+
+Ici l'attendu est 
+
+* un nouveau modèle pour les lsites
+* un ManyToManyField entre liste et utilisateurs
 
 --------------------------------------------------------------------------------
 
@@ -904,11 +1154,14 @@ La même méthode ``save`` est utilisée pour enregistrer en base de données de
 
 # Suppression d'une instance
 
-Pour supprimer une instance, il suffit d'appeler la méthode delete qui permet de supprimer directement la ligne en base de données.
+Pour supprimer une instance, il suffit d'appeler la méthode ``delete()`` qui permet de supprimer directement la ligne en base de données.
 
+    !python
     >>> b = Book(name='Two scoops of django',
                  release=date(2013, 08, 31))
+    // Création
     >>> b.save()
+    // Suppression
     >>> b.delete()
 
 --------------------------------------------------------------------------------
@@ -1008,6 +1261,14 @@ Supprimer l'association de livres à une catégorie :
 
 .fx: alternate
 
+# Presenter notes
+
+Ici on attend un formulaire sur la liste des taches qui permet de filtrer :
+
+* entre deux dates
+* sur le titre
+* sur le fait qu'elles soient terminées ou non
+
 --------------------------------------------------------------------------------
 
 # Pour finir ...
@@ -1019,6 +1280,9 @@ Supprimer l'association de livres à une catégorie :
 ## Outils
 * ``django_extensions`` : plusieurs extensions et outils d'administration très pratiques
 * ``django_debug_toolbar`` : une barre latérale permettant de faire du *debug* et du *profiling* page par page
+* ``django_hijack``: permet de se connecter avec un autre utilisateur sans se déconnecter
+* ``django_extra_views``: apporte d'autres CBV pour des formulaires et vues toujours plus rapides
+* ``django_braces``: apporte des mixins pour vos CBV
 
 # Tests
 * ``factory_boy`` : création de grappes de données pour les tests
@@ -1029,12 +1293,14 @@ Supprimer l'association de livres à une catégorie :
 # Quelques modules souvent utilisés
 
 * ``django_compressor`` : compression des fichiers statiques
-* ``django_linaration_pagination`` : affichage de listes paginées
+* ``django_pagination`` : affichage de listes paginées
 * ``django_sorting`` : affichage de tableaux triables
+* ``django_filters`` : création de liste filtrées
+* ``django_crispy_forms`` : affichage de forms avec Bootstrap/Foundation/Uniform
 * ``django_breadcrumbs`` : création de fil d'ariane
 * ``django_xworkflows`` : gestion de workflows
 * ``django_modeltranslation`` : gestion de modèles multilingues
-* ``easy_thumbnails`` : gestion de miniatures pour les images
+* ``easy_thumbnails`` ou ``versatileimagefield`` : gestion de miniatures pour les images
 * ``django_tinymce`` : intégration d'un *widget* TinyMCE
 * ...
 
