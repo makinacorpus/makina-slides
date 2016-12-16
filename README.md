@@ -45,7 +45,7 @@ More documentation at <https://github.com/adamzap/landslide>
 
 Next, just run:
 
-	  lanslide mydomain/myconfig.cfg
+	  landslide mydomain/myconfig.cfg
 
 ## Publishing
 
