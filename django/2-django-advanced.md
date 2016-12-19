@@ -6,7 +6,7 @@
 
 --------------------------------------------------------------------------------
 
-# Arborescence
+## Arborescence
 
 Une architecture possible pour organiser les tests d'une application consiste à
 créer, dans un dossier ``tests``, un fichier de tests
@@ -30,9 +30,7 @@ une application fiable et éviter les régressions au fil du temps.
 
 --------------------------------------------------------------------------------
 
-# Tester un modèle
-
-## Le modèle
+## Tester un modèle - Le modèle
 
 Voici un modèle très basique :
 
@@ -56,9 +54,7 @@ l'occurrence, la présence d'un ``firstname`` ou non).
 
 --------------------------------------------------------------------------------
 
-# Tester un modèle
-
-## Le test
+## Tester un modèle - Le test
 
     !python
     # tests/test_models.py
@@ -81,7 +77,7 @@ l'occurrence, la présence d'un ``firstname`` ou non).
 
 --------------------------------------------------------------------------------
 
-# Exécution des test
+## Exécution des test
 
     !shell
     $ ./manage.py test library
@@ -105,9 +101,7 @@ l'occurrence, la présence d'un ``firstname`` ou non).
 
 --------------------------------------------------------------------------------
 
-# Tester un modèle
-
-## Le modèle corrigé
+## Tester un modèle - Le modèle corrigé
 
     !python
     class Author(models.Model):
@@ -134,9 +128,7 @@ Exécution des tests :
 
 --------------------------------------------------------------------------------
 
-# Tester une vue
-
-## Le test
+## Tester une vue - Le test
 
     !python
     from datetime import date
@@ -162,9 +154,7 @@ Exécution des tests :
 
 --------------------------------------------------------------------------------
 
-# Tester une vue
-
-## Le modèle
+## Tester une vue - Le modèle
 
     !python
     class Book(models.Model):
@@ -173,9 +163,7 @@ Exécution des tests :
 
 --------------------------------------------------------------------------------
 
-# Tester une vue
-
-## La vue
+## Tester une vue - La vue
 
     !python
     from django.shortcuts import render
@@ -201,9 +189,7 @@ On a vérifié :
 
 --------------------------------------------------------------------------------
 
-# Tester un formulaire
-
-## Le formulaire
+## Tester un formulaire - Le formulaire
 
     !python
     # forms.py
@@ -228,9 +214,7 @@ initiale pour le champ ``begin``).
 
 --------------------------------------------------------------------------------
 
-# Tester un formulaire
-
-## Le test
+## Tester un formulaire - Le test
 
     !python
     # tests/test_forms.py
@@ -253,11 +237,12 @@ initiale pour le champ ``begin``).
 
 --------------------------------------------------------------------------------
 
-# Rapport de couverture
+## Rapport de couverture
 
 Révèle quelles parties du code sont couvertes par les tests
 
     !shell
+    $ pip install coverage
     $ coverage run --branch --source=library ./manage.py test
     $ coverage report
     Name                                 Stmts   Miss Branch BrPart  Cover
@@ -279,14 +264,13 @@ Révèle quelles parties du code sont couvertes par les tests
     TOTAL                                   74      0      4      0   100%
 
 
-
 --------------------------------------------------------------------------------
 
 # Gestion des utilisateurs 
 
 --------------------------------------------------------------------------------
 
-# Principaux concepts
+## Principaux concepts
 
 La gestion des utilisateurs Django est principalement gérée par le module
 ``django.contrib.auth``. Ce module introduit plusieurs concepts :
@@ -303,7 +287,7 @@ Pour disposer de cette fonctionnalité, le module ``django.contrib.auth`` doit
 
 --------------------------------------------------------------------------------
 
-# Les utilisateurs
+## Les utilisateurs
 
 La classe ``User`` est le coeur du système d'authentification Django. Une instance
 de ``User`` représente un utilisateur, une personne qui interagit avec le site. Elle
@@ -313,7 +297,7 @@ permet plusieurs choses comme :
 * personnaliser des profils utilisateurs ;
 * associer des contenus à leur créateur.
 
-## Quelques propriétés
+### Quelques propriétés
 
 La classe ``User`` fournit quelques propriétés de base comme ``first_name``, ``last_name``,
 ``username``, ``password``, ``email``. D'autres propriétés, plus *fonctionnelles*,
@@ -325,7 +309,7 @@ sont à connaitre :
 
 --------------------------------------------------------------------------------
 
-# Les permissions
+## Les permissions
 
 Django fournit un système de permissions assez simple. Il consiste à assigner des
 permissions particulières à des utilisateurs ou/et à des groupes.
@@ -350,7 +334,7 @@ notamment :
 
 --------------------------------------------------------------------------------
 
-# Les groupes
+## Les groupes
 
 L'objectif des groupes et de catégoriser des sous-ensembles d'utilisateurs
 afin de leur assigner une liste commune de permissions. Exemple :
@@ -361,7 +345,7 @@ afin de leur assigner une liste commune de permissions. Exemple :
 
 --------------------------------------------------------------------------------
 
-# Les vues
+## Les vues
 
 Django apporte nativement quelques vues facilitant l'authentification et la gestion
 du mot de passe des utilisateurs, principalement :
@@ -381,7 +365,7 @@ Quelques settings permettent aussi de simplifier cette gestion :
 
 --------------------------------------------------------------------------------
 
-# Les formulaires
+## Les formulaires
 
 Sans utiliser directement les vues prêtes à l'emploi, il est aussi possible de baser
 des vues personnalisées sur des formulaires présents dans la bibliothèque
@@ -398,7 +382,7 @@ d'utilisateur, vérification de la ressaisie du mot de passe, ...).
 
 --------------------------------------------------------------------------------
 
-# Backend d'authentification
+## Backend d'authentification
 
 La bibliothèque ``django.contrib.auth.backends`` apporte un système de *backend*
 d'authentification relativement simple et très souple.
@@ -408,7 +392,7 @@ Deux *backends* par défaut sont disponibles:
 * ``ModelBackend`` : *backend* d'authentification par défaut utilisant le nom d'utilisateur / mot de passe de l'utilisateur
 * ``RemoteUserBackend`` : permet de gérer une authentification depuis une source externe via les entête HTTP
 
-## Écrire un backend personnalisé
+### Écrire un backend personnalisé
 
 Il est assez facile d'écrire son propre *backend* pour personnaliser l'authentification
 des utilisateurs en écrivant une simple classe qui implémente certaines fonctions comme :
@@ -431,13 +415,13 @@ des utilisateurs en écrivant une simple classe qui implémente certaines foncti
 
 # Le concept ``Queryset``
 
-## Rappel
+### Rappel
 
 Un ``Queryset`` représente une collection d'objets provenant de la base de données. Cette collection peut être filtrée, limitée, ordonnée, ... grâce à des méthodes qui correspondent à des clauses SQL.
 
 Il est donc possible de construire des requêtes en base de données via ce QuerySet.
 
-## Exemple
+### Exemple
 
     !python
     >>> Book.objects.filter(title__icontains='django') \
@@ -446,9 +430,7 @@ Il est donc possible de construire des requêtes en base de données via ce Quer
 
 --------------------------------------------------------------------------------
 
-# Aller plus loin avec les ``QuerySet``
-
-## La méthode ``values()``
+## ``QuerySet`` avancés - `values()`
 
 Cette méthode retourne un ``ValuesQuerySet`` qui liste des dictionnaires plutôt que des instances du modèle. Chaque dictionnaire représente une instance ; ses clés correspondent aux attributs de l'instance. Il est possible de spécifier les clés que l'on souhaite récupérer.
 
@@ -465,9 +447,7 @@ Attention, dans le cas d'un attribut de type ``ForeignKey``, la clé et la valeu
 
 --------------------------------------------------------------------------------
 
-# Aller plus loin avec les ``QuerySet``
-
-## La méthode ``values_list()``
+## ``QuerySet`` avancés - `values_list()`
 
 Cette méthode est semblable à la précédente mais elle retourne une liste de tuples plutôt qu'une liste de dictionnaires.
 
@@ -489,16 +469,14 @@ pour obtenir une liste non imbriquée.
 
 --------------------------------------------------------------------------------
 
-# Aller plus loin avec les ``QuerySet``
-
-## Quelques méthodes à retenir
+##  ``QuerySet`` avancés -méthodes à retenir
 
 * ``count()``: retourne le nombre d'éléments dans le queryset
 * ``exists()``: retourne True si le queryset n'est pas vide
 * ``first()`` et ``last()`` : retourne le premier ou dernier élément du queryset
 * ``latest(field_name=date)`` et ``earliest()`` : retourne le premier ou dernier élément du queryset en fonction d'un champ date
 
-## La méthode ``create()``
+### La méthode ``create()``
 
 La méthode basique pour créer une instance est d'instancier le modèle puis de 
 faire appel à la méthode ``save()`` de cette instance, mais une autre solution très pratique existe.
@@ -511,9 +489,9 @@ Elle permet de réaliser l'opération ci-dessus en une seule instruction :
 
 --------------------------------------------------------------------------------
 
-# Aller plus loin avec les ``QuerySet``
+## ``QuerySet`` avancés - raccourcis
 
-## La méthode ``get_or_create()``
+### La méthode ``get_or_create()``
 
 La méthode ``get_or_create()`` permet de tenter de récupérer un objet 
 (via ``get()``), et de le créer si il n'existe pas. Elle retourne un tuple 
@@ -533,7 +511,7 @@ propriétés correspondantes.
 
 # Le concept ``Manager``
 
-## Rappel
+### Rappel
 
 Un ``Manager`` est l'interface à travers laquelle les opérations de requêtage en base de données sont mises à disposition d'un modèle Django. Chaque modèle possède un ``Manager`` par défaut accessible via la propriété ``objects``.
 
@@ -555,9 +533,9 @@ Ce ``Manager`` par défaut fournit nativement quelques méthodes très souvent u
 
 --------------------------------------------------------------------------------
 
-# Manager personnalisé
+## Manager personnalisé
 
-## Objectif
+### Objectif
 
 Il peut cependant être utile d'écrire son propre ``Manager`` pour principalement
 deux raisons :
@@ -565,7 +543,7 @@ deux raisons :
 * ajouter des méthodes supplémentaires ;
 * modifier le ``QuerySet`` initial retourné par le ``Manager``.
 
-## Méthode
+### Méthode
 
 Un ``Manager`` personnalisé est une classe héritant de ``Manager`` que l'on instancie dans un attribut du modèle.
 
@@ -582,7 +560,7 @@ Un ``Manager`` personnalisé est une classe héritant de ``Manager`` que l'on in
 
 --------------------------------------------------------------------------------
 
-# Ajouter des méthodes supplémentaires
+## Manager - Ajouter des méthodes supplémentaires
 
 Écrire un ``Manager`` personnalisé est la bonne solution pour ajouter des méthodes de niveau *table* (qui renvoit des informations sur un ensemble d'instances) contrairement aux méthodes du modèle dites de niveau *ligne* (qui renvoit des informations sur une instance).
 
@@ -591,17 +569,16 @@ Un ``Manager`` personnalisé est une classe héritant de ``Manager`` que l'on in
 
     class AuthorManager(models.Manager):
         def with_nb_books(self):
-            self.get_query_set() \
+            self.get_queryset() \
                 .annotate(nb_books=Count('books')) \
                 .order_by('nb_books')
 
     class Author(models.Model):
-        #...
+        # ...
         objects = AuthorManager()
+<!-- -->
 
-&nbsp;
-
-    !python
+    !shell
     >>> authors_with_nb_books = Author.objects.with_nb_books()
     >>> authors_with_nb_books[0]
     <Author : John Doe>
@@ -610,9 +587,9 @@ Un ``Manager`` personnalisé est une classe héritant de ``Manager`` que l'on in
 
 --------------------------------------------------------------------------------
 
-# Modifier le ``QuerySet`` initial
+## Manager - Modifier le ``QuerySet`` initial
 
-La méthode ``Manager.get_query_set()`` renvoit un ``QuerySet`` par défaut qui correspond à ``Model.objects.all()``. 
+La méthode ``Manager.get_queryset()`` renvoit un ``QuerySet`` par défaut qui correspond à ``Model.objects.all()``. 
 
 Il peut être intéressant de créer un ``Manager`` pour surcharger cette méthode et retourner un ``QuerySet`` personnalisé.
 
@@ -620,11 +597,11 @@ Il peut être intéressant de créer un ``Manager`` pour surcharger cette métho
     from django.db import models
 
     class EnglishBookManager(models.Manager):
-        def get_query_set(self):
+        def get_queryset(self):
              return Manager.get_queryset(self).filter(lang='EN')
 
     class FrenchBookManager(models.Manager):
-        def get_query_set(self):
+        def get_queryset(self):
              return Manager.get_queryset(self).filter(lang='FR')
 
     class Book(models.Model):
@@ -635,7 +612,7 @@ Il peut être intéressant de créer un ``Manager`` pour surcharger cette métho
 
 --------------------------------------------------------------------------------
 
-# Modifier le ``QuerySet`` initial
+## Manager - Modifier le ``QuerySet`` initial
 
 ## Attention !
 
@@ -657,11 +634,11 @@ En revanche, remplacer ``objects`` par un ``Manager`` personnalisé qui ne fait 
 
 --------------------------------------------------------------------------------
 
-# L'héritage par classe abstraite
+## L'héritage par classe abstraite
 
 Ce type d'héritage est souvent utilisé pour mettre en commun un certain nombre d'informations et/ou de comportements entre plusieurs modèles. Cette classe abstraite ne sera pas utilisé de manière autonome.
 
-## Caractéristiques
+### Caractéristiques
 
 * La classe abstraite ne donnera pas lieu a une création de table en base de données ;
 * Chaque champ de classe abstraite est présente dans chaque modèle qui en hérite ;
@@ -670,9 +647,7 @@ Ce type d'héritage est souvent utilisé pour mettre en commun un certain nombre
 
 --------------------------------------------------------------------------------
 
-# L'héritage par classe abstraite
-
-## Exemple
+## L'héritage par classe abstraite - Exemple
 
     !python
     # models.py
@@ -695,11 +670,11 @@ Ce type d'héritage est souvent utilisé pour mettre en commun un certain nombre
 
 --------------------------------------------------------------------------------
 
-# L'héritage traditionnel (multi-tables)
+## L'héritage traditionnel (multi-tables)
 
 Pour spécialiser un modèle déjà existant (éventuellement d'une application externe) ou/et si on souhaite que les modèles aient des tables séparées, il faut utiliser l'héritabe multi-tables.
 
-## Caractéristiques
+### Caractéristiques
 
 * Chaque modèle a sa propre table en base de données ;
 * Il est possible de requêter chaque modèle indépendamment ;
@@ -708,9 +683,7 @@ Pour spécialiser un modèle déjà existant (éventuellement d'une application 
 
 --------------------------------------------------------------------------------
 
-# L'héritage traditionnel (multi-tables)
-
-## Exemple
+## L'héritage traditionnel (multi-tables) - Exemple
 
     !python
     # models.py
@@ -729,11 +702,11 @@ Pour spécialiser un modèle déjà existant (éventuellement d'une application 
 
 --------------------------------------------------------------------------------
 
-# L'héritage "proxy"
+## L'héritage "proxy"
 
 Grâce aux modèles *proxy*, il est possible de modifier le comportement d'un objet (``Manager`` personnalisé, ajout d'une méthode, ...) sans toucher aux données (champs) et donc sans créer une nouvelle table pour ce modèle dérivé.
 
-## Caractéristiques
+### Caractéristiques
 
 * Le modèle *proxy* n'engendre pas de nouvelle table en base de données ;
 * Le modèle *proxy* et son modèle parent travaille sur la même table ;
@@ -741,9 +714,7 @@ Grâce aux modèles *proxy*, il est possible de modifier le comportement d'un ob
 
 --------------------------------------------------------------------------------
 
-# L'héritage "proxy"
-
-## Exemple
+## L'héritage "proxy" - Exemple
 
     !python
     # models.py
@@ -768,7 +739,9 @@ Grâce aux modèles *proxy*, il est possible de modifier le comportement d'un ob
 
 # ORM et performance
 
-## Le problème N+1 avec les ForeignKey
+--------------------------------------------------------------------------------
+
+## Perf ORM: Le problème N+1 avec les ForeignKey
 
 On accède à une relation dans une boucle ce qui entraine :
 
@@ -787,17 +760,13 @@ Exemple :
 
 ---
 
-# ORM et performance
-
-## Diagnostique : Django Debug Toolbar
+## Perf ORM: Diagnostique avec Django Debug Toolbar
 
 ![](img/ddt_nplus1.png)
 
 ---
 
-# Solution
-
-## select_related
+## Perf ORM: Solution avec select_related
 
     !python
     class TaskList(ListView):
@@ -813,9 +782,7 @@ L'ORM fait une seule requête avec une jointure :
 
 ---
 
-# ORM et performance
-
-## Le problème N+1 avec les ManyToManyField
+## Perf ORM: Le problème N+1 avec ManyToMany
 
     !html+django
     {% for list in object_list %}
@@ -827,17 +794,11 @@ L'ORM fait une seule requête avec une jointure :
       </li>
     {% endfor %}
 
---- 
-
-# ORM et performance
-
-## Diagnostique : Django Debug Toolbar
-
 ![](img/ddt_nplus1_manytomany.png)
 
 ---
 
-# Solution : prefetch_related
+## Perf ORM: Solution avec prefetch_related
 
 
     !python
@@ -887,15 +848,16 @@ Exemple :
 
 --------------------------------------------------------------------------------
 
-# Les vues basées sur des classes
+## Les vues basées sur des classes
 
-Une vue *basée sur une classe* Django permet de **structurer le code et de le réutiliser** en exploitant notamment l'héritage et les *mixins*.
+Les vues basées sur des classes possèdent des avantages sur les vues classiques :
 
-Django fournit de multiples socles plus ou moins avancés pour construire ce type de vues.
+* possibilité d'organiser le code dans différentes méthodes (notamment selon la méthode HTTP entrante) ;
+* possibilité d'utiliser l'héritage et les *mixins* pour factoriser et réutiliser le code.
 
 Ces vues sont aussi généralement écrites dans le fichier ``views.py`` de l'application.
 
-## Un exemple tiré de la documention Django
+### Un exemple tiré de la documention Django
 
     !python
     # some_app/views.py
@@ -906,28 +868,22 @@ Ces vues sont aussi généralement écrites dans le fichier ``views.py`` de l'ap
 
 --------------------------------------------------------------------------------
 
-# Les vues basées sur des classes
-
-Les vues basées sur des classes possèdent des avantages sur les vues classiques :
-
-* possibilité d'organiser le code dans différentes méthodes (notamment selon la méthode HTTP entrante) ;
-* possibilité d'utiliser l'héritage et les *mixins* pour factoriser et réutiliser le code.
-
-
-Django propose une biobliothèque riche permettant de travailler avec des vues basées sur des classes, dont la classe ``View`` est le point central
-
-## Worfklow de base
+## Les vues basées sur des classes - Worfklow de base
 
 * La méthode ``as_view()`` est appelée par l'``URLDispatcher`` ;
 * Cette méthode instancie la classe et appelle la méthode ``dispatch()`` de l'instance créée ;
 * Celle-ci appelle la méthode ``get()``, ``post()``, ... en fonction de la méthode HTTP entrante (GET, POST, ...) ;
 * Le traitement qui suit dépend du cas d'utilisation, puis une ``HttpResponse`` est relayée par ``dispatch()``.
 
+La documentation : <https://docs.djangoproject.com/fr/1.10/topics/class-based-views/>
+
+Vue d'ensemble : <http://ccbv.co.uk/>
+
 --------------------------------------------------------------------------------
 
-# Function-based vs. Class-based views
+## Function-based vs. Class-based views
 
-## Class-based views
+### Class-based views
 
 Il faut probablement utiliser une vue basée sur une classe ... 
 
@@ -935,7 +891,7 @@ Il faut probablement utiliser une vue basée sur une classe ...
 * si la vue peut être créée par héritage d'une autre en surchargeant seulement des attributs
 * si la vue à créer peut être réutilisée par héritage et avec peu de modifications par la suite
 
-## Function-based views
+### Function-based views
 
 Il faut probablement utiliser une vue basée sur une fonction ... 
 
@@ -944,9 +900,9 @@ Il faut probablement utiliser une vue basée sur une fonction ...
 
 --------------------------------------------------------------------------------
 
-# Passage aux vues basées sur des classes
+## Passage aux vues basées sur des classes
 
-## Vue simple basée sur une fonction
+### Vue simple basée sur une fonction
 
     !python
     from django.http import HttpResponse
@@ -956,7 +912,7 @@ Il faut probablement utiliser une vue basée sur une fonction ...
             # traitements
             return HttpResponse('result')
 
-## Vue simple basée sur une classe
+### Vue simple basée sur une classe
 
     !python
     from django.http import HttpResponse
@@ -969,16 +925,16 @@ Il faut probablement utiliser une vue basée sur une fonction ...
 
 --------------------------------------------------------------------------------
 
-# Quelques classes de base
+## Quelques classes de base
 
-## Les vues basiques
+### Les vues basiques
 
 Dans ``django.views.generic.base`` :
 
 * ``View`` est la classe *mère* et fourni le workflow vu précédemment.
 * ``TemplateView`` est une classe permettant très simplement de faire le rendu d'une template.
 
-## Les vues permettant de traiter un formulaire
+### Les vues permettant de traiter un formulaire
 
 Dans ``django.views.generic.edit`` :
 
@@ -986,25 +942,21 @@ Dans ``django.views.generic.edit`` :
 
 --------------------------------------------------------------------------------
 
-# Quelques classes de base
+## Quelques classes de base
 
-## Les vues permettant d'afficher des instances
+### Les vues permettant d'afficher des instances
 
 Dans ``django.views.generic`` :
 
 * ``ListView`` permet de lister très simplement des instances d'un modèle.
 * ``DetailView`` permet d'afficher le détail d'une instance d'un modèle.
 
-## Les vues permettant de modifier des instances
+### Les vues permettant de modifier des instances
 
 Dans ``django.views.generic.edit`` :
 
 * ``CreateView`` et ``UpdateView`` sont très utiles pour la création/modification d'instance, de l'affichage du formulaire jusqu'à l'enregistrement de l'instance.
 * ``DeleteView`` facilite l'implémentation de vues pour la suppression d'intance.
-
-## Les classes fournies par Django
-
-Un excellent site permettant d'avoir un aperçu complet : <http://ccbv.co.uk/>
 
 --------------------------------------------------------------------------------
 
@@ -1024,9 +976,9 @@ Il est par exemple possible de protéger une vue avec un ou plusieurs décorateu
 
 --------------------------------------------------------------------------------
 
-# Protéger une vue basée sur une fonction
+## Protéger une vue basée sur une fonction
 
-## Exemple avec ``login_required``
+### Exemple avec ``login_required``
 
     !python
     from django.contrib.auth.decorators import login_required
@@ -1036,7 +988,7 @@ Il est par exemple possible de protéger une vue avec un ou plusieurs décorateu
         # Seul un utilisateur connecté peut accéder à cette vue
         # ...
 
-## Exemple avec ``require_http_methods``
+### Exemple avec ``require_http_methods``
 
     !python
     from django.contrib.auth.decorators import login_required
@@ -1048,9 +1000,9 @@ Il est par exemple possible de protéger une vue avec un ou plusieurs décorateu
 
 --------------------------------------------------------------------------------
 
-# Protéger une vue basée sur une classe
+## Protéger une vue basée sur une classe
 
-## Dans la vue
+### Dans la vue
 
     !python
     # views.py
@@ -1064,7 +1016,7 @@ Il est par exemple possible de protéger une vue avec un ou plusieurs décorateu
         def dispatch(self, *args, **kwargs):
             return super(MyProtectedView, self).dispatch(*args, **kwargs)
 
-## Dans l'``URLConf``
+### Dans l'``URLConf``
 
     !python
     # urls.py
@@ -1087,7 +1039,7 @@ Il est par exemple possible de protéger une vue avec un ou plusieurs décorateu
 
 --------------------------------------------------------------------------------
 
-# Retourner une erreur 404
+## Retourner une erreur 404
 
 Il est important de gérer les erreurs selon les concepts du protocole HTTP. Une ressource non trouvée sur un site doit donc retourner une erreur de type 404. On utilise pour cela une exception de type ``Http404``.
 
@@ -1115,7 +1067,7 @@ Bon c'est assez fastidieux donc il existe un raccourci :
 
 --------------------------------------------------------------------------------
 
-# Retourner une erreur 403
+## Retourner une erreur 403
 
 Comme pour l'erreur 404, Il est important de gérer les erreurs en accord avec le protocole HTTP. Un problème de permission doit donc engendrer une erreur de type 403. On utilise pour cela une exception de type ``PermissionDenied``.
 
@@ -1133,7 +1085,7 @@ Comme pour l'erreur 404, Il est important de gérer les erreurs en accord avec l
 
 --------------------------------------------------------------------------------
 
-# Affichage par défaut d'une erreur
+## Affichage par défaut d'une erreur
 
 Plusieurs types d'erreurs peuvent être générées manuellement ou automatiquement par Django, principalement : 400, 403, 404 et 500.
 
@@ -1144,7 +1096,7 @@ Par défaut, chaque erreur correspond à une vue dont Django fait le rendu quand
 * Erreur 404 : ``django.views.defaults.page_not_found``
 * Erreur 500 : ``django.views.defaults.server_error``
 
-## Mode ``debug``
+### Mode ``debug``
 
 Le réglage ``TEMPLATE_DEBUG`` (dans ``settings.py``) permet d'activer ou non 
 l'affichage de la page de débogage pendant le développement. Cette page vient en
@@ -1153,14 +1105,14 @@ la désactiver en production.
 
 --------------------------------------------------------------------------------
 
-# Personnaliser l'affichage d'une erreur
+## Personnaliser l'affichage d'une erreur
 
-## Avec une template personnalisée
+### Avec un template personnalisé
 
 Pour personnaliser simplement l'affichage, il suffit de nommer la template
 403.html, 404.html, ... et Django fera le rendu de cette template automatiquement.
 
-## Avec une vue personnalisée
+### Avec une vue personnalisée
 
 Si on souhaite que le traitement de l'erreur soit plus complexe, il est possible
 de créer une vue dont il faudra préciser le nom dans l'``URLConf`` :
@@ -1208,9 +1160,7 @@ Altérer le traitement des requêtes de manière globale
 
 --------------------------------------------------------------------------------
 
-# Middleware
-
-Les middlewares activés par défaut
+## Middleware activés par défaut
 
     !python
     MIDDLEWARE = [
@@ -1225,15 +1175,32 @@ Les middlewares activés par défaut
 
 Voir la documentation des [middlewares standards](https://docs.djangoproject.com/en/dev/ref/middleware/)
 
----
+### Exemple de middleware
+
+Le middleware `MessageMiddleware` permet d'afficher des messages au utilisateurs.
+Ceux-ci sont enregistrés dans la session et sont affichés la prochaine fois qu'une page HTML est affichée.
+
+L'ordre est donc important, `SessionMiddleware` doit être placé avant `MessageMiddleware`.
+
+----------------------------------------
+
+# TP: écrire un middleware qui affiche un message important lorsque des tâches sont dépassées
+
+.fx: alternate
+
+# Presenter notes
+
+On prendra soin de ne faire qu'une seule requête avec values_list()
+
+----------------------------------------
 
 # Aller plus loin avec les templates
 
 --------------------------------------------------------------------------------
 
-# Chaînes de caractères sécurisées et échappement
+## Chaînes de caractères sécurisées et échappement
 
-##  Chaîne de caractère sécurisée
+###  Chaîne de caractère sécurisée
 
 Une chaîne est dite sécurisée quand elle a été marquée comme n'ayant pas besoin
 d'échappement lors d'un rendu HTML, c'est à dire que les caractères qui ne
@@ -1241,7 +1208,7 @@ doivent pas être interprétés par le moteur HTML ont déjà été transformés
 entités appropriées.
 Une chaîne sécurisée est représentée par un objet ``SafeString``.
 
-## Échappement
+### Échappement
 
 Plusieurs filtres et tag permettent de gérer l'échappement des chaînes :
 
@@ -1255,7 +1222,7 @@ Plusieurs filtres et tag permettent de gérer l'échappement des chaînes :
 
 --------------------------------------------------------------------------------
 
-# Arborescence des fichiers
+## Arborescence des fichiers
 
 Les filtres personnalisés doivent être écrits dans une module ``templatetags``
 de l'application.
@@ -1277,7 +1244,7 @@ charger les filtres au niveau des templates.
 
 --------------------------------------------------------------------------------
 
-# Structure d'un filtre
+## Structure d'un filtre
 
 Un filtre personnalisé est une simple fonctions python qui prend un ou deux arguments :
 
@@ -1297,9 +1264,9 @@ et un filtre avec argument sera utilisé ainsi :
 
 --------------------------------------------------------------------------------
 
-# Quelques exemples
+## Quelques exemples
 
-## Exemple d'un filtre avec un seul argument
+### Exemple d'un filtre avec un seul argument
 
     !python
     # filters.py
@@ -1310,7 +1277,7 @@ et un filtre avec argument sera utilisé ainsi :
     {# template #}
     {{ variable|lower }}
 
-## Exemple d'un filtre avec deux arguments
+### Exemple d'un filtre avec deux arguments
 
     !python
     # filters.py
@@ -1323,13 +1290,13 @@ et un filtre avec argument sera utilisé ainsi :
 
 --------------------------------------------------------------------------------
 
-# Enregistrement du filtre personnalisé
+## Enregistrement du filtre personnalisé
 
 La classe ``Library`` permet d'ajouter les filtres personnalisés à la bibliothèque
 de filtres Django pour pouvoir ensuite les charger et les utiliser dans les
 templates. Deux solutions :
 
-## Via un appel de fonction classique
+### Via un appel de fonction classique
 
     !python
     from django import template
@@ -1340,7 +1307,7 @@ templates. Deux solutions :
 
     register.filter('my_filter', my_filter)
 
-## Via un décorateur
+### Via un décorateur
 
     !python
     from django import template
@@ -1352,7 +1319,7 @@ templates. Deux solutions :
 
 --------------------------------------------------------------------------------
 
-# Filtres et échappement
+## Filtres et échappement
 
 L'échappement (ou non) de la chaîne retournée en sortie du filtre doit être
 contrôlé.
@@ -1392,9 +1359,9 @@ filtre (nécessaire si le filtre introduit du HTML).
 
 --------------------------------------------------------------------------------
 
-# Initialiser un formulaire
+## Initialiser un formulaire
 
-## Founir des données initiales
+### Founir des données initiales
 
 Il existe une méthode très simple pour initialiser les champs d'un formulaire :
 la méthode ``__init__()`` peut prendre en argument un dictionnaire "``initial``"
@@ -1416,9 +1383,9 @@ dont les clés doivent correspondre aux noms des champs du formulaire.
 
 --------------------------------------------------------------------------------
 
-# Initialiser un formulaire
+## Initialiser un formulaire
 
-## Personnaliser la méthode ``__init__()``
+### Personnaliser la méthode ``__init__()``
 
 Pour aller plus loin, il est possible de surcharger la méthode ``__init__()``
 pour réaliser des traitements particuliers (initialiser des valeurs complexes,
@@ -1440,7 +1407,7 @@ limiter les choix d'un champ select, cacher dynamiquement des champs, ...).
 
 --------------------------------------------------------------------------------
 
-# Valider un formulaire
+## Valider un champ formulaire
 
 Un formulaire Django dispose d'un mécanisme de validation assez poussé qui consiste
 à valider chaque champ un par un, puis à exécuter une méthode réalisant une validation
@@ -1448,7 +1415,7 @@ plus globale.
 
 Un échec de validation doit engendrer une exception de type ``ValidationError``.
 
-## Valider le champ d'un formulaire
+### Exemple
 
 Pour valider un champ de formulaire, il suffit de créer une méthode de formulaire
 nommée par le nom du champ préfixé de ``clean_``.
@@ -1467,9 +1434,7 @@ nommée par le nom du champ préfixé de ``clean_``.
 
 --------------------------------------------------------------------------------
 
-# Valider un formulaire
-
-## Valider le formulaire de manière globale
+## Valider un formulaire de manière globale
 
 Implémenter la méthode ``clean`` permet de faire une validation globale du formulaire,
 utile notamment pour faire des vérifications sur plusieurs champs dépendants les uns
@@ -1504,14 +1469,14 @@ des autres.
 
 --------------------------------------------------------------------------------
 
-# Introduction à la gestion des fichiers statiques
+## Introduction à la gestion des fichiers statiques
 
 Les sites web ont très souvent besoin de servir des fichiers dits *statiques*, 
 principalement des images, CSS et JS.
 
 Django fournit un module ``django.contrib.staticfiles`` qui facilite cette gestion.
 
-## Quelques réglages
+### Quelques réglages
 
 Comme toujours, pour que l'application soit utilisable, il faut qu'elle soit présente
 dans les ``INSTALLED_APPS`` du projet.
@@ -1532,9 +1497,9 @@ statiques seront disponibles.
 
 --------------------------------------------------------------------------------
 
-# Gérer les fichiers statiques
+## Gérer les fichiers statiques
 
-## Stockage
+### Stockage
 
 Les fichiers statiques doivent être stockés dans un répertoire ``static`` de
 l'application. Les scripts par défaut configurés dans ``STATICFILES_FINDERS`` (cf ``settings.py``) pourront alors retrouver les fichiers statiques de chaque application.
@@ -1549,9 +1514,9 @@ La commande ``collectstatic`` permet d'aggréger ces fichiers dans un répertoir
 
 --------------------------------------------------------------------------------
 
-# Utiliser les fichiers statiques
+## Utiliser les fichiers statiques
 
-## Dans les templates
+### Dans les templates
 
 Le tag ``{% static %}`` permet de créer une URL dynamiquement vers un fichier
 statique.
@@ -1575,9 +1540,9 @@ Exemple pour un CSS :
 
 --------------------------------------------------------------------------------
 
-# Servir les fichiers statiques
+## Servir les fichiers statiques
 
-## En développement
+### En développement
 
 En cours de développement (``DEBUG = True``), le serveur *standalone* de Django
 se charge de servir les fichiers statiques lui-même via une vue dédiée : 
@@ -1586,7 +1551,7 @@ se charge de servir les fichiers statiques lui-même via une vue dédiée :
 Cette méthode est peu efficace et peu sécurisée, et ne doit pas être utilisée
 en production
 
-## En production
+### En production
 
 Le paramètre ``STATIC_ROOT`` permet de spécifier le chemin vers
 le répertoire des fichiers statiques sur le système de fichiers.
@@ -1620,7 +1585,7 @@ disposant de propriétés (``name``, ``size``, ...) et de méthodes très utiles
 
 --------------------------------------------------------------------------------
 
-# Utiliser les fichiers media dans les modèles
+## Utiliser les fichiers media dans les modèles
 
 Deux champs ``FileField`` et ``ImageField`` sont fournis pour pouvoir associer
 facilement un fichier ou une image à une instance de modèle.
@@ -1647,7 +1612,7 @@ Les instance de ```Book`` pourront donc chacun avoir un fichier attaché :
 
 --------------------------------------------------------------------------------
 
-# Utiliser les fichiers media dans les formulaires
+## Utiliser les fichiers media dans les formulaires
 
 Il existe des champs de formulaires correspondant aux champs de modèles vus précédemment.
 Il  est donc très facile d'obtenir un champ d'upload dans un formulaire.
@@ -1684,7 +1649,7 @@ Dans la template, il faut préciser l'attribut ``enctype`` du ``<form>`` :
 
 --------------------------------------------------------------------------------
 
-# Quelques réglages
+## i18n et l10n : quelques réglages
 
 Plusieurs réglages dans ``settings.py`` permettent d'activer ou non certaines
 fonctionnalités liées à l'internationalisation et la localisation :
@@ -1699,9 +1664,9 @@ fonctionnalités liées à l'internationalisation et la localisation :
 
 --------------------------------------------------------------------------------
 
-# Traduire l'interface (fichiers python)
+## Traduire l'interface (fichiers python)
 
-## Utilisation de la bibliothèque ``gettext``
+### Utilisation de la bibliothèque ``gettext``
 
 Pour traduire les différents textes de l'interface, on utilise les fonctions ``ugetttext``,
 ou plus souvent ``ugettext_lazy``. Pour la simplicité de l'écriture, on importe
@@ -1710,7 +1675,7 @@ généralement cette fonction avec l'alias '_'.
     !python
     from django.utils.translation import ugettext_lazy as _
 
-## Exemple d'utilisation dans un modèle
+### Exemple d'utilisation dans un modèle
 
     !python
     # models.py
@@ -1727,7 +1692,7 @@ généralement cette fonction avec l'alias '_'.
 
 --------------------------------------------------------------------------------
 
-# Traduire l'interface (fichiers python)
+## Traduire l'interface (fichiers python)
 
 Exemple d'utilisation dans un formulaire
 
@@ -1756,12 +1721,12 @@ Exemple d'utilisation dans une vue
 
 --------------------------------------------------------------------------------
 
-# Traduire l'interface (templates)
+## Traduire l'interface (templates)
 
 Deux tags permettant de traduire l'interface directement dans les templates
 sont disponibles :
 
-## Le tag {% trans %}
+### Le tag {% trans %}
 
 Il permet de traduire une chaine de caractères simple ou le contenu d'une variable.
 
@@ -1770,7 +1735,7 @@ Il permet de traduire une chaine de caractères simple ou le contenu d'une varia
     <title>{% trans "List of books" %}</title>
     <title>{% trans page_title %}</title>
 
-## Le tag {% blocktrans %}
+### Le tag {% blocktrans %}
 
 Il permet de mixer chaînes de caractères et variables pour traduire des chaînes complexes.
 
@@ -1782,9 +1747,9 @@ Il permet de mixer chaînes de caractères et variables pour traduire des chaîn
 
 --------------------------------------------------------------------------------
 
-# Gérer les fichiers de traduction
+## Gérer les fichiers de traduction
 
-## Créer / mettre à jour le fichier de traduction
+### Créer / mettre à jour le fichier de traduction
 
 La commande ``makemessages`` permet de créer le fichier traduction pour une langue
 donnée (fichier texte avec l'extension ".po" contenant les identifiants de messages
@@ -1796,7 +1761,7 @@ arborescence de dossiers ``locale/LANG/LC_MESSAGES``.
      $ django-admin.py makemessages -l fr
 
 
-## Compiler le fichier de traduction
+### Compiler le fichier de traduction
 
 La commande ``compilemessages`` permet de compiler le fichier de traduction
 pour qu'il soit utilisable dans le code Python.
@@ -1810,7 +1775,7 @@ pour qu'il soit utilisable dans le code Python.
 
 --------------------------------------------------------------------------------
 
-# ``django-admin.py`` et ``manage.py``
+## ``django-admin.py`` et ``manage.py``
 
 Les commandes ``django-admin.py`` sont très utilisées pour l'administration d'un 
 pojet Django (création d'une application, synchronisation de la base, compilation
@@ -1837,12 +1802,12 @@ soit chargé et les différents modules soient chargés.
 
 --------------------------------------------------------------------------------
 
-# Écrire une commande d'administration
+## Écrire une commande d'administration
 
 Écrire une commande *standalone* peut être très utile dans le cadre de tâches
 d'administration qui peuvent être lancées périodiquement et automatiquement (cron).
 
-# Arborescence des fichiers
+### Arborescence des fichiers
 
 Les commandes doivent être des fichiers Python placés dans un module 
 ``management/command`` de l'application.
@@ -1861,7 +1826,7 @@ Les commandes doivent être des fichiers Python placés dans un module
 
 --------------------------------------------------------------------------------
 
-# Structure d'une commande d'administration
+## Structure d'une commande d'administration
 
 Pour créer une commande personnalisée, il faut écrire une classe ``Command`` qui hérite
 de ``django.core.management.base.BaseCommand``.
@@ -1884,9 +1849,9 @@ de ``django.core.management.base.BaseCommand``.
 
 --------------------------------------------------------------------------------
 
-# Éxécuter une commande d'administration
+## Éxécuter une commande d'administration
 
-## Éxécution manuelle
+### Éxécution manuelle
 
 Il est bien sûr possible de lancer une commande personnalisée à la main, tout
 simplement en utilisant directement dans le terminal le point d'entrée ``./manage.py`` :
@@ -1894,7 +1859,7 @@ simplement en utilisant directement dans le terminal le point d'entrée ``./mana
     !console
     $ ./manage.py my_test_command
 
-## Éxécution automatique
+### Éxécution automatique
 
 Il peut être aussi très utile de l'automatiser via une tâche cron :
 
@@ -1902,7 +1867,7 @@ Il peut être aussi très utile de l'automatiser via une tâche cron :
     # Cron tasks
     0 * * * * /project_path/manage.py my_test_command
 
-## Exécution depuis du code
+### Exécution depuis du code
 
     !python
     from django.core import management
@@ -1920,7 +1885,7 @@ Il peut être aussi très utile de l'automatiser via une tâche cron :
 
 --------------------------------------------------------------------------------
 
-# Fonctionnement de l'interface d'admin
+## Fonctionnement de l'interface d'admin
 
 Pour activer l'interface d'administration il faut commencer par :
 
@@ -1934,9 +1899,9 @@ La classe est la représentation d'un modèle dans l'interface d'administration.
 
 --------------------------------------------------------------------------------
 
-# Fonctionnement de l'interface d'admin
+## Fonctionnement de l'interface d'admin
 
-## Déclaration d'un ``ModelAdmin``
+### Déclaration d'un ``ModelAdmin``
 
 Si on ne souhaite pas personnaliser la représentation du modèle dans l'interface
 d'administration, il existe une version simplifiée de déclaration
@@ -1964,15 +1929,15 @@ personnaliser son comportement :
 
 --------------------------------------------------------------------------------
 
-# Personnaliser les listes
+## Personnaliser les listes
 
-## Personnaliser l'affichage
+### Personnaliser l'affichage
 
 Les propriétés ``list_display`` et ``list_display_links`` permettent respectivement
 de spécifier les colonnes que l'on souhaite voir apparaitre dans la liste et de préciser
 lesquelles d'entre elles doivent être cliquables.
 
-## Personnaliser le filtrage
+### Personnaliser le filtrage
 
 L'attribut ``list_filter`` permet de mettre en place une recherche type recherche
 à facettes dans une barre latérale à droite.
@@ -1986,9 +1951,7 @@ doit être exécutée.
 
 --------------------------------------------------------------------------------
 
-# Personnaliser les listes
-
-## Un exemple combiné
+## Personnaliser les listes - exemple combiné
 
     !python
     # admin.py
@@ -2007,9 +1970,9 @@ doit être exécutée.
 
 --------------------------------------------------------------------------------
 
-# Personnaliser les formulaires
+## Personnaliser les formulaires
 
-## Personnaliser les champs
+### Personnaliser les champs
 
 Grâce aux propriétés ``fields`` ou ``exclude``, il est possible de spécifier
 quels champs on souhaite voir apparaître dans les formulaires de l'interface
@@ -2018,16 +1981,14 @@ d'administration
 La propriété ``fieldsets`` permet d'aller plus loin et d'organiser la mise en 
 page du formulaire.
 
-## Surcharger le formulaire
+### Surcharger le formulaire
 
 Il est possible d'aller encore plus loin en surchargeant la template d'un formulaire
 ou même d'écrire son propre formulaire et de le déclarer dans le ``ModelAdmin``
 
 --------------------------------------------------------------------------------
 
-# Personnaliser les formulaires
-
-## L'exemple complété
+## Personnaliser les formulaires - Exemple
 
     !python
     # admin.py
@@ -2056,9 +2017,15 @@ ou même d'écrire son propre formulaire et de le déclarer dans le ``ModelAdmin
 
 .fx: alternate
 
+# Presenter notes
+
+Ici on attendra une personnalisation qui s'approche du front-end
+
 ---
 
 # Deploiement
+
+---
 
 ## Serveurs WSGI
 
@@ -2082,12 +2049,34 @@ Application WSGI minimale :
 
 ---
 
-# Deploiement
-
 ## Serveur web 
 
-* nginx : léger, rapide
+* nginx : léger, rapide, recommandé
 * Apache HTTP Server : très complet et nombreux modules
+
+<!-- -->
+
+    !nginx
+    upstream wsgi_server {
+      server unix:/webapps/django/run/gunicorn.sock fail_timeout=0;
+    }
+
+    server {
+        listen   80;
+        server_name example.com;
+        location /static/ { alias /webapps/hello_django/static/; }
+        location /media/ { alias /webapps/hello_django/media/; }
+        location / {
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+            proxy_redirect off;
+            if (!-f $request_filename) {
+                proxy_pass http://wsgi_server;
+                break;
+            }
+        }
+    }
+
 
 --------------------------------------------------------------------------------
 

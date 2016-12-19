@@ -8,12 +8,28 @@
 Experts en logiciels libres, cartographie et analyse de données, nous concevons des applications métiers innovantes.
 
 Nos valeurs :
-* Les logiciels libres et les données ouvertes • L'agilité
+* Les logiciels libres et les données ouvertes   * L'agilité
 * Le développement durable
 
 ## Le formateur
 
 ## Et vous ?
+
+# Presenter notes
+
+- quels sont les deux types d'arguments qu'on peut passer à une fonction ? args et kwargs
+- comment déclarer une fonction ou une classe vide? pass
+- quel opérateur utilise-t'on pour remplacer des variables dans une chaine ? %
+- comment modifier la manière dont s'affiche un objet ? \_\_str\_\_
+- comment récupérer l'avant dernier élément d'une liste ? liste[-2:1]
+- quel mot-clé représente l'instance courante dans une classe ? self
+- qu'est ce qu'une liste par compréhension ? une liste inline bouclant sur une autre
+- sur quel protocole est basé le WWW ? HTTP
+- quel est le type mime d'une page web ? text/html
+- quels ports sont utilisés par HTTP(s) ? 80 et 443
+- donner 2 méthodes HTTP ? GET POST PUT DELETE HEAD
+- quelle entité html représente un espace insécable ? &amp;nbsp;
+- autres questions : len(), type(); isinstance(), PyPi, URL, codes de statut HTTP
 
 
 --------------------------------------------------------------------------------
@@ -41,38 +57,38 @@ Nos valeurs :
 
 --------------------------------------------------------------------------------
 
-# Philosophie
+## Philosophie
 
-## KISS (*Keep It Simple, Stupid*)
+### KISS (*Keep It Simple, Stupid*)
 
 > Simplicity should be a key goal in design and unnecessary complexity should be avoided.
 
-## DRY (*Don't Repeat Yourself*)
+### DRY (*Don't Repeat Yourself*)
 
 > Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.
 
-## Conventions de codage
+### Conventions de codage
 
 La documentation précise certaines conventions de codage spécifiques à Django. La PEP 8 fait référence pour le reste.
 
 --------------------------------------------------------------------------------
 
-# Philosophie
+## Philosophie
 
-## Couplage faible
+### Couplage faible
 * Les différentes couches du framework sont indépendantes
 * Le socle d'applications peut être réduit au strict minimum
 
-## Peu de code à écrire
+### Peu de code à écrire
 * Ecriture "automatique" de code
 * Utilisation des possibilités d'introspection de Django
 
-## Rapidité
+### Rapidité
 * Dans le domaine du web, au 21e siècle, tout va très vite
 
 --------------------------------------------------------------------------------
 
-# 10 raisons d'utiliser Django
+## 10 raisons d'utiliser Django
 
 * Facile à installer
 * Fonctionne *out of the box*
@@ -84,6 +100,18 @@ La documentation précise certaines conventions de codage spécifiques à Django
 * Serveur de développement *standalone*
 * Déploiement facile
 * Communauté autour du projet très active
+
+--------------------------------------------------------------------------------
+
+# Architecture MVC, ou plutôt MTV
+
+L'architecture de Django s'inspire du principe MVC (*Model, View, Controller*) ou plutôt MTV (*Model, Template, View*) :
+
+* **Model** : Les modèles sont écrits en Python et Django fournit un ORM (*Django ORM*) complet pour accéder à la base de données
+* **Template** : Django possède son propre moteur de template (*Django Template Engine*)
+* **View** : Les vues Django peuvent être de simples fonctions Python retournant des réponses HTTP ou être basées sur des classes
+
+La fonction **controller** est gérée par l'*URL dispatcher* qui permet de faire correspondre des URLs sous forme d'expressions régulières à des vues.
 
 --------------------------------------------------------------------------------
 
@@ -105,9 +133,8 @@ c'est la méthode préférable pour développer avec python
 
 ---
 
-# Environnement
-
 ## Introduction au virtualenv
+
 
     !shell
     $ virtualenv env  # crée l'environnement
@@ -121,17 +148,6 @@ Cela permet ainsi de créer plusieurs environnement avec différentes version de
 
 Pour aller plus loin, voir _pyenv_.
 
---------------------------------------------------------------------------------
-
-# Architecture MVC, ou plutôt MTV
-
-L'architecture de Django s'inspire du principe MVC (*Model, View, Controller*) ou plutôt MTV (*Model, Template, View*) :
-
-* **Model** : Les modèles sont écrits en Python et Django fournit un ORM (*Django ORM*) complet pour accéder à la base de données
-* **Template** : Django possède son propre moteur de template (*Django Template Engine*)
-* **View** : Les vues Django peuvent être de simples fonctions Python retournant des réponses HTTP ou être basées sur des classes
-
-La fonction **controller** est gérée par l'*URL dispatcher* qui permet de faire correspondre des URLs sous forme d'expressions régulières à des vues.
 
 --------------------------------------------------------------------------------
 
@@ -142,6 +158,8 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 --------------------------------------------------------------------------------
 
 # Installer Django
+
+--------------------------------------------------------------------------------
 
 ## Création et activation du *virtualenv*
 
@@ -168,17 +186,13 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 
 --------------------------------------------------------------------------------
 
-# It worked !
-
 ![Page d'accueil par défaut Django](./it-worked.png)
 
 .fx: imageslide
 
 --------------------------------------------------------------------------------
 
-# Installer Django
-
-## Serveur de développement
+## Développer avec le serveur de déveloopement Django
 
 Django vient avec ce serveur HTTP de développement (à ne surtout pas utiliser en production pour des raisons de performances et de sécurité)
 
@@ -188,7 +202,7 @@ Django vient avec ce serveur HTTP de développement (à ne surtout pas utiliser 
 
 --------------------------------------------------------------------------------
 
-# Le projet créé
+# Structure d'un projet Django
 
     !console
     └── library
@@ -208,42 +222,19 @@ Django vient avec ce serveur HTTP de développement (à ne surtout pas utiliser 
 
 --------------------------------------------------------------------------------
 
-# Accès à la base de données
-Django propose une configuration par défaut pour une base SQLite (cf : ``settings.py``).
-
-Voici un exemple de configuration pour une base Postgresql :
-
-    !python
-    DATABASES = {
-      'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'library_db',
-        'USER': 'library_user',
-        'PASSWORD': 'Cx12%a03oa',
-        'HOST': 'localhost'
-      }
-    }
-
-## Création de la structure de la base de données
-
-    !console
-    $ ./manage.py migrate
-
---------------------------------------------------------------------------------
-
-# Projet vs. Application
+## Projet vs. Application
 
 Il est important de différencier la notion de **projet** et d'**application**.
 
-## Une application
+### Une application
 
 > Une application est une application Web qui fait quelque chose – par exemple un système de blog, une base de données publique ou une application de sondage
 
-## Un projet
+### Un projet
 
 > Un projet est un ensemble de réglages et d’applications pour un site Web particulier.
 
-## Projets et applications
+### Projets et applications
 
 > Un projet peut contenir plusieurs applications. Une application peut apparaître dans plusieurs projets.
 
@@ -252,7 +243,7 @@ Il est important de différencier la notion de **projet** et d'**application**.
 
 ---
 
-# Un projet est une combinaison d'apps
+## Un projet est une combinaison d'applications
 
 * Le projet peut être découpé en différentes apps
 * Une même app peut être réutilisée dans plusieurs projets
@@ -267,7 +258,7 @@ répertoire
 
 ---
 
-# Chaque chose à sa place
+## Structure d'une application : chaque chose à sa place
 
 Django "impose" une organisation du code (noms et emplacements des fichiers) 
 
@@ -291,12 +282,12 @@ Django "impose" une organisation du code (noms et emplacements des fichiers)
 
 --------------------------------------------------------------------------------
 
-# Création d'une application
+## Création d'une application
 
     !console
     $ ./manage.py startapp books
 
-## L'application créée
+### L'application créée
 
     !console
       ├── books/
@@ -320,9 +311,9 @@ La commande devra être lancée avec le bon nom de module (todo).
 
 ---
 
-# Activation de l'application
+## Activation de l'application
 
-## Déclaration de l'application dans les *settings*
+### Déclaration de l'application dans les *settings*
 
     !python
     # settings.py
@@ -332,20 +323,45 @@ La commande devra être lancée avec le bon nom de module (todo).
       'books',
     )
 
+--------------------------------------------------------------------------------
+
+# Configuration de la BDD
+
+Django propose une configuration par défaut pour une base SQLite (cf : ``settings.py``).
+
+Voici un exemple de configuration pour une base Postgresql :
+
+    !python
+    DATABASES = {
+      'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'library_db',
+        'USER': 'library_user',
+        'PASSWORD': 'Cx12%a03oa',
+        'HOST': 'localhost'
+      }
+    }
+
+## Création de la structure de la base de données
+
+    !console
+    $ ./manage.py migrate
+
 
 --------------------------------------------------------------------------------
 
-# Tutoriel fil rouge : créer l'application *todo*, le modèle *tâche*, et activer l'application
+# Tutoriel fil rouge : créer le projet *formation* puis l'application *todo* et activer l'application
 
 .fx: alternate
 
-# Presenter notes
-
-Le résultat final doit être qu'on peut gérer les taches dans le backoffice
 
 --------------------------------------------------------------------------------
 
-# Déroulement d'une requête HTTP
+# Fonctionnement général
+
+--------------------------------------------------------------------------------
+
+## Déroulement d'une requête HTTP
 
 * Une vue est une fonction qui prend un objet `HttpRequest` et renvoie un objet `HttpResponse`
 * Quand Django reçoit une requête HTTP, il crée l'objet `HttpRequest` correspondant à la requête du client
@@ -356,7 +372,7 @@ Le résultat final doit être qu'on peut gérer les taches dans le backoffice
 
 ---
 
-# L'objet `HttpRequest`
+## L'objet `HttpRequest`
 
 Permet d'accéder à de nombreux attributs tels que
 
@@ -376,7 +392,7 @@ _cf._ <https://docs.djangoproject.com/en/1.10/ref/request-response/#httprequest-
 
 -----
 
-# L'objet `HttpResponse`
+## L'objet `HttpResponse`
 
 Permet de régler de nombreux attributs tels que
 
@@ -401,7 +417,7 @@ _cf._ <https://docs.djangoproject.com/en/1.10/ref/request-response/#httpresponse
 
 ---
 
-# Vue simple basée sur une chaîne
+## Vue simple basée sur une chaîne
 
 En somme, une vue se résume à déclarer une url :
 
@@ -433,7 +449,7 @@ et retourner un contenu en fonction d'une requeête
 
 --------------------------------------------------------------------------------
 
-# Déclaration d'un modèle
+## Déclaration d'un modèle
 
     !python
     # models.py
@@ -452,12 +468,12 @@ et retourner un contenu en fonction d'une requeête
 Ces 3 types de champs suffisent pour l'appli todo 
 
 * title
-* added_at
+* deadline
 * done
 
 --------------------------------------------------------------------------------
 
-# Quelques options pour les modèles
+## Quelques options pour les modèles
 
 L'ajout de la classe ``Meta`` dans un modèle permet de déclarer des *options de métadonnées* sur le modèle. Exemple :
 
@@ -479,6 +495,8 @@ D'autres options permettent par exemple de :
 * préciser des critères de tri
 * déclarer des permissions relatives au modèle
 
+Documentation : <https://docs.djangoproject.com/fr/1.10/ref/models/>
+
 # Presenter notes
 
 Ici on utilisera uniquement verbose_name et ordering
@@ -488,7 +506,30 @@ Mentionner le fait que les noms de modele sont declinés de leur nom système
 
 --------------------------------------------------------------------------------
 
-# Quelques options pour les champs
+## Quelques types de champs
+
+  * Les champs texte : 
+    * `CharField` (une ligne avec longueur max)
+    * `TextField` (multiligne)
+    * `EmailField` (vérifie la syntaxe de l'adresse)
+  * Les champs pour les nombres :
+    * `IntegerField` et `PositiveIntegerField`
+    * `FloatField`
+    * `DecimalField` (précision fixe, non soumis aux arrondis) 
+    * `AutoField` (`IntegerField` incrémenté automatiquement)
+  * Les champs booléens :  `BooleanField` et `NullBooleandField`
+  * Les champs pour la gestion des dates : 
+    * `DateField`, `TimeField` et `DateTimeField`
+    * `DurationField`
+  * Les champs pour la gestion des fichiers : 
+    * `FileField` et `ImageField`
+    * `FilePathField`
+
+
+---
+
+
+## Quelques options pour les champs
 
 Chaque type de champs possède ses propres propriétés. Cependant, certaines sont communes et souvent utilisées comme : 
 
@@ -497,11 +538,23 @@ Chaque type de champs possède ses propres propriétés. Cependant, certaines so
 * ``blank`` : valeur vide autorisée lors de la validation du champ dans un formulaire
 * ``default`` : valeur par défaut pour une nouvelle instance
 * ``editable`` : le champ doit-il apparaître automatiquement dans les formulaires
-* ...
+* `choices` permet d'expliciter la liste de valeurs possibles
+* `primary_key` est la clé primaire (remplace *id*)
+* `unique` ajoute une contrainte d'unicité
+* `validators` permet d'ajouter des contraintes de validation au niveau du modèle
 
---------------------------------------------------------------------------------
+Documentation <https://docs.djangoproject.com/fr/1.10/ref/models/fields/#field-options>
 
-## Création de la migration qui permet d'ajouter la table en base de données
+---
+
+# Les migrations
+
+* Django permet de faire évoluer les modèles sans devoir effacer les données en génèrant des « diffs » appelés migrations qu'il applique ensuite à la base de données
+* Il compare la dernière des migrations existantes aux modèles déclarés en python (peu importe ce qui est dans la base de données)
+* Puis il convertit en SQL et applique toutes les migrations qui n'ont pas déjà été faites (la liste des migrations déjà faites est stockée dans la base)
+* Ces migrations sont numérotées et rangées dans les apps dans le sous-répertoire `migrations/`. Il est conseillé d'enregistrer les migrations avec le code
+
+## Création d'une migration automatique
 
     !console
     $ ./manage.py makemigrations
@@ -522,6 +575,19 @@ Chaque type de champs possède ses propres propriétés. Cependant, certaines so
     from books.models import Book
 
     admin.site.register(Book)
+    
+L'interface d'administration est le "back-office" automatique" de Django qui 
+liste les instances et par introspection des modèles, créer les formulaire de 
+création/modification correspondants.
+
+Elle est personnalisable et permet de modifier :
+
+* les filtres et l'ordre des listes
+* l'affichage des listes
+* les formulaires et l'ordre des champs
+* ajouter des actions en masse sur les listes
+
+Documentation : <https://docs.djangoproject.com/fr/1.10/ref/contrib/admin/>
 
 --------------------------------------------------------------------------------
 
@@ -533,11 +599,22 @@ Chaque type de champs possède ses propres propriétés. Cependant, certaines so
 
 --------------------------------------------------------------------------------
 
+# TP: Créer le modèle *tâche* ayant notamment les champs titre, deadline, description, urgence
+
+.fx: alternate
+
+# Presenter notes
+
+Le modèle doit apparaitre dans l'interface d'administration avec les bons champs
+ne pas oublier le booléen done
+
+--------------------------------------------------------------------------------
+
 # Un exemple complet de vue : la liste des livres
 
 ---
 
-# 1. Création de la vue
+## Exemple : Création de la vue
 
     !python
     # views.py
@@ -561,7 +638,7 @@ Ce style de vue est dit "Function-based" (par opposition à "Class-based").
 
 --------------------------------------------------------------------------------
 
-# 2. Création d'un template
+## Exemple : Création d'un template
 
     !html+django
     {# books/templates/books/book_list.html #}
@@ -582,11 +659,11 @@ Documentation: <https://docs.djangoproject.com/fr/1.10/topics/templates/>
 
 --------------------------------------------------------------------------------
 
-# 3. Mapping de l'URL
+## Exemple : Mapping de l'URL
 
 Routeur basé sur des regex, avec un préfixe par application
 
-## Déclaration d'une URL
+### Déclaration d'une URL
 
     !python
     # books/urls.py
@@ -595,7 +672,7 @@ Routeur basé sur des regex, avec un préfixe par application
         url(r'^book_list$', 'books.views.book_list', name='book_list'),
     ]
 
-## Inclusion des URLs de l'application au projet
+### Inclusion des URLs de l'application au projet
 
     !python
     # library/urls.py
@@ -604,10 +681,6 @@ Routeur basé sur des regex, avec un préfixe par application
         ...
         url(r'^books/', include('books.urls', namespace="books")),
     ]
-    
---------------------------------------------------------------------------------
-
-# Plus en détail ...
 
 --------------------------------------------------------------------------------
 
@@ -615,7 +688,7 @@ Routeur basé sur des regex, avec un préfixe par application
 
 --------------------------------------------------------------------------------
 
-# Function-based views
+## Function-based views
 
 Une vue *basée sur une fonction* Django est simplement une fonction Python qui prend en entrée une **requête HTTP** et retourne une **réponse HTTP**.
 
@@ -623,7 +696,7 @@ Cette réponse peut être une page HTML, un document XML, une redirection, une e
 
 Ces vues sont généralement écrites dans le fichier ``views.py`` de l'application.
 
-## Un exemple tiré de la documention Django
+### Un exemple tiré de la documention Django
 
     !python
     # some_app/views.py
@@ -637,12 +710,12 @@ Ces vues sont généralement écrites dans le fichier ``views.py`` de l'applicat
 
 --------------------------------------------------------------------------------
 
-# Class-based views
+## Class-based views
 
 Une vue *basée sur une classe* Django est simplement une classe Python préformatée qui prend en entrée une **requête HTTP** et retourne une **réponse HTTP**.
 
 
-## Un exemple tiré de la documentation Django
+### Un exemple tiré de la documentation Django
 
     !python
     # some_app/views.py
@@ -661,15 +734,17 @@ Une vue *basée sur une classe* Django est simplement une classe Python préform
 
 --------------------------------------------------------------------------------
 
-# Qu'est-ce qu'un template Django ?
+## Qu'est-ce qu'un template Django ?
 
 C'est un simple fichier texte qui peut générer n'importe quel format de texte (HTML, XML, CSV, ...).
 
 Un template a accès à des **variables** qui lui auront été passées via un **contexte** par la vue.
 
+Par défaut, Django fournit sa propre syntaxe de template mais il est possible de la remplacer par un autre moteur comme Jinja2.
+
 --------------------------------------------------------------------------------
 
-# Où écrire ses templates ?
+## Où écrire ses templates ?
 
 Django possède un mécanisme capable de retrouver les templates d'un projet, configurable via le réglage ``TEMPLATES['BACKEND']``.
 
@@ -682,14 +757,14 @@ Il existe un mécanisme de découverte où l'ordre importe : cela permet de surc
 
 --------------------------------------------------------------------------------
 
-# Base de la syntaxe de template
+## Syntaxe de Django template
 
-## Affichage d'une variable
+### Affichage d'une variable
 
     !django
     {{ ma_variable }}
 
-## Les filtres
+### Les filtres
 
 Il est possible de modifier l'affichage d'une variable en appliquant des **filtres**. Un filtre peut prendre (ou non) un argument. Les filtres peuvent être appliqués en cascade. Quelques exemples :
 
@@ -703,9 +778,9 @@ Django fournit nativement une liste de filtres assez intéressante et il est pos
 
 --------------------------------------------------------------------------------
 
-# Base de la syntaxe de template
+## Syntaxe de Django template
 
-## Les tags
+### Les tags
 
 Les **tags** sont plus complexes que les variables, ils peuvent créer du texte ou de la logique (boucle, condition, ...) dans la tempate.
 
@@ -729,7 +804,7 @@ Django fournit aussi plusieurs tags nativement et il est possible d'écrire ses 
 
 --------------------------------------------------------------------------------
 
-# L'héritage de template
+## L'héritage de template
 
 L'intérêt de l'héritage de template est par exemple de pouvoir créer un squelette HTML contenant tous les éléments communs du site et définir des blocs que chaque template pourra surcharger.
 
@@ -739,7 +814,7 @@ Dans une template *enfant*, la balise ``{% extends %}`` permet de préciser de q
 
 --------------------------------------------------------------------------------
 
-# Exemple de template *parent*
+## Exemple de template *parent*
 
     !html+django
     {# templates/base.html #}
@@ -765,7 +840,7 @@ Dans une template *enfant*, la balise ``{% extends %}`` permet de préciser de q
 
 --------------------------------------------------------------------------------
 
-# Exemple de template *enfant*
+## Exemple de template *enfant*
 
     !html+django
     {# books/templates/books/book_list.html #}
@@ -790,7 +865,7 @@ Dans une template *enfant*, la balise ``{% extends %}`` permet de préciser de q
 
 --------------------------------------------------------------------------------
 
-# L'inclusion de template
+## L'inclusion de template
 
 L'intérêt de l'inclusion de template est de pouvoir factoriser du code de template :
 
@@ -804,7 +879,7 @@ Cela peut être utile dans différents cas :
 
 --------------------------------------------------------------------------------
 
-# Exemple de template *appelant*
+## Exemple de template *appelant*
 
     !html+django
     {# templates/base.html #}
@@ -834,7 +909,7 @@ Cela peut être utile dans différents cas :
 
 --------------------------------------------------------------------------------
 
-# Processus de traitement des requêtes par Django
+## Processus de traitement des requêtes par Django
 
 1. Django identifie le module *URLconf* racine à utiliser (cf ROOT_URLCONF dans les *settings*).
 2. Django charge ce module et cherche la variable ``urlpatterns``.
@@ -844,7 +919,7 @@ Cela peut être utile dans différents cas :
 
 --------------------------------------------------------------------------------
 
-# Écriture d'un module *URLconf*
+## Écriture d'un module *URLconf*
 
 Le module *URLconf* est un fichier ``urls.py`` contenant une variable ``urlpatterns`` :
 
@@ -870,16 +945,16 @@ Souvent, l'*URLconf* racine inclura les modules URLconf de chaque application :
 
 --------------------------------------------------------------------------------
 
-# Syntaxe de déclaration d'une URL
+## Syntaxe de déclaration d'une URL
 
-## URL sans paramètre
+### URL sans paramètre
     
     !python
     url(r'^myview$', 'my_view', name='my_view')
 
 La vue aura en argument seulement l'objet ``HttpRequest``.
 
-# URL avec paramètres
+### URL avec paramètres
 
     !python
     url(r'^myview_by_month/(?P<year>\d{4})/(?P<month>\d{2})/$',
@@ -896,9 +971,10 @@ La vue aura en argument l'objet ``HttpRequest``, puis les valeurs trouvées dans
 
 # Presenter notes
 
-Ici il faut créer au paravant quelques tâche via l'interface d'administration
-
-On attend ensuite une liste de ces tâche en frontend avec une vue par tache affichant ses informations
+* Ici il faut créer auparavant quelques tâches via l'interface d'administration
+* On attend ensuite une liste de ces tâche en frontend avec une vue par tache affichant ses informations
+* S'appuyer fortement sur l'exemple de Book pour Book.objects.all()
+* Pour le détail, donner la méthode Book.objects.get(pk=<pk>)
 
 --------------------------------------------------------------------------------
 
@@ -906,7 +982,7 @@ On attend ensuite une liste de ces tâche en frontend avec une vue par tache aff
 
 --------------------------------------------------------------------------------
 
-# La bibliothèque ``django.forms``
+## La bibliothèque ``django.forms``
 
 Django possède une bibliothèque assez complète de gestion de formulaires : ``django.forms``.
 
@@ -919,9 +995,9 @@ Les concepts principaux sont les suivants:
 
 --------------------------------------------------------------------------------
 
-# Création d'un formulaire simple
+## Création d'un formulaire simple
 
-## Un exemple tiré de la documentation Django
+### Un exemple tiré de la documentation Django
 
     !python
     # forms.py
@@ -933,28 +1009,28 @@ Les concepts principaux sont les suivants:
         sender = forms.EmailField()
         cc_myself = forms.BooleanField(required=False)
 
-## Quelques méthodes souvent utilisées
+### Quelques méthodes souvent utilisées
 * La méthode ``__init__`` : permet de personnaliser l'intialisation du formulaire (par exemple : pré-remplir le champ ``sender`` par l'email de l'utilisateur connecté)
 * La méthode ``clean`` : permet de personnaliser la validation du formulaire (par exemple : vérifier que ``sender`` a bien été fourni si ``cc_myself`` a été coché)
 
 --------------------------------------------------------------------------------
 
-# Les champs de formulaire
+## Les champs de formulaire
 
 La bibliothèque django.forms fournit plus de 20 types de champs différents, dont voici les principaux :
 
-* Les champs pur texte : CharField , TextField
-* Les champs pour les nombres : FloatField, IntegerField
-* Les champs booléens : BooleanField, NullBooleandField
-* Les champs de sélection : ChoiceField, MultipleChoiceField
-* Les champs pour la gestion des dates : DateField, DateTimeField, TimeField
-* Les champs pour la gestion des fichiers : FileField, FilePathField, ImageField
+* Les champs texte : `CharField` , `TextField`
+* Les champs pour les nombres : `FloatField`, `IntegerField`
+* Les champs booléens : `BooleanField`, `NullBooleandField`
+* Les champs de sélection : `ChoiceField`, `MultipleChoiceField`
+* Les champs pour la gestion des dates : `DateField`, `DateTimeField`, `TimeField`
+* Les champs pour la gestion des fichiers : `FileField`, `FilePathField`, `ImageField`
 
 Certains modules annexes fournissent leurs propres champs et il est possible d'écrire des champs personnalisés.
 
 --------------------------------------------------------------------------------
 
-# Utilisation d'un formulaire dans une ``function-based view``
+## Utilisation d'un formulaire dans une ``function-based view``
 
     !python
     from django.shortcuts import render_to_response
@@ -978,7 +1054,7 @@ Certains modules annexes fournissent leurs propres champs et il est possible d'�
 
 --------------------------------------------------------------------------------
 
-# Rendu du formulaire dans un template
+## Rendu du formulaire dans un template
 
     !html+django
     <form action="/contact/" method="post">
@@ -997,7 +1073,7 @@ Un formulaire peut être rendu de différentes manières :
 
 --------------------------------------------------------------------------------
 
-# Les formulaires de modèles
+## Les formulaires de modèles
 
 La classe ``ModelForm`` permet de créer automatiquement des formulaires basés sur des modèles.
 
@@ -1010,7 +1086,7 @@ Le fonctionnement est assez semblable à celui des formulaires classiques à que
 
 --------------------------------------------------------------------------------
 
-# Un exemple d'utilisation d'un ModelForm
+## Un exemple d'utilisation d'un ModelForm
 
     !python
     # models.py
@@ -1045,7 +1121,7 @@ Le fonctionnement est assez semblable à celui des formulaires classiques à que
 
 --------------------------------------------------------------------------------
 
-# Relations entre les modèles
+## Relations entre les modèles - Les différents champs
 
 La bibliothèque ``django.models`` fournit différents champs spécifiques pour représenter les relations entre modèles.
 
@@ -1055,13 +1131,13 @@ La bibliothèque ``django.models`` fournit différents champs spécifiques pour 
 
 --------------------------------------------------------------------------------
 
-# Le champ ForeignKey
+## Le champ ForeignKey
 
 Le champ ``ForeignKey`` doit être déclaré avec comme premier argument le modèle auquel il est lié par cette relation 1-N. L'argument optionnel ``related_name`` permet de nommer la relation inverse à partir de ce modèle lié.
 
 La représentation de ce champ en base de données est une contrainte de type clé étrangère.
 
-## Exemple
+### Exemple
 
 Un livre est associé à un auteur, un auteur peut avoir écrit plusieurs livres.
 
@@ -1076,13 +1152,13 @@ Un livre est associé à un auteur, un auteur peut avoir écrit plusieurs livres
 
 --------------------------------------------------------------------------------
 
-# Le champ ManyToManyField
+## Le champ ManyToManyField
 
 Le champ ``ManyToManyField`` doit être déclaré de la même manière que le champ ``ForeignKey``.
 
 La représentation de ce champ en base de données est une table contenant deux clés étrangères vers les deux tables des modèles liés.
 
-## Exemple
+### Exemple
 
 Un livre est associé à plusieurs catégories, plusieurs livres peuvent appartenir à une même catégorie.
 
@@ -1097,13 +1173,13 @@ Un livre est associé à plusieurs catégories, plusieurs livres peuvent apparte
 
 --------------------------------------------------------------------------------
 
-# Le champ OneToOneField
+## Le champ OneToOneField
 
 La déclaration du ``OneToOneField`` est similaire.
 
 La représentation de ce champ en base de données est une clé étrangère possédant une contrainte d'unicité.
 
-## Exemple
+### Exemple
 
 Un livre est associé à un seul code barre, un code barre correspond à un seul livre.
 
@@ -1131,11 +1207,40 @@ Ici l'attendu est
 
 --------------------------------------------------------------------------------
 
-# L'ORM : les requêtes
+# L'ORM
+
+-----------
+
+## Les moteurs de base de donnée
+
+  * 4 moteurs sont disponibles dans l'ORM de Django
+    * PostgreSQL `django.db.backends.postgresql`
+    * MySQL `django.db.backends.mysql`
+    * Oracle `django.db.backends.oracle`
+    * SQLite `django.db.backends.sqlite3`
+  * SQLite n'est pas recommandé en production, il est d'abord pensé pour PostgreSQL (champs `DateRangeField`, `JSONField`, etc)
+  * Possible de changer de moteur sans réécrire le code (mais il faut migrer les éventuelles données), sauf pour certaines spécificités
+  * Recommandé de développer (ou au moins de tester) avec le moteur utilisé en production
+  * Moteur spécifié dans `settings.py` (variable `DATABASES`), ainsi que la configuration du nom de la base, du serveur, et de l'authentification
+
+Documentation <https://docs.djangoproject.com/fr/1.10/ref/databases/>
+
+-----------
+
+## ORM (Object-relational mapping)
+
+  * Fait correspondre une classe Python à une table SQL
+  * Fait correspondre un objet python Python, instance de cette classe, à un enregistrement de cette table SQL
+  * Il y a donc juste des classes et objets python à manipuler, aucun SQL à écrire, que ce soit : 
+    * Pour créer et modiger les tables
+    * Pour créer et modiger les données
+    * Pour interroger la base
+  * Facilite la gestion des relations entre modèles (jointures)
+  * A sa propre "opinion", nécessite souvent des optimisations
 
 --------------------------------------------------------------------------------
 
-# Création / modification d'une instance
+## Création / modification d'une instance
 
 Pour créer une instance, il suffit de l'instancier en passant en argument les noms des attributs du modèle. L'instance dispose ensuite d'une méthode ``save`` qui permet de l'enregistrer en base de données.
 
@@ -1152,7 +1257,7 @@ La même méthode ``save`` est utilisée pour enregistrer en base de données de
 
 --------------------------------------------------------------------------------
 
-# Suppression d'une instance
+## Suppression d'une instance
 
 Pour supprimer une instance, il suffit d'appeler la méthode ``delete()`` qui permet de supprimer directement la ligne en base de données.
 
@@ -1166,28 +1271,36 @@ Pour supprimer une instance, il suffit d'appeler la méthode ``delete()`` qui pe
 
 --------------------------------------------------------------------------------
 
-# Les concepts ``Manager`` & ``Queryset``
+## Les concepts ``Manager`` & ``Queryset``
 
 Pour récupérer une ou plusieurs instances, il faut construire un ``Queryset`` via un ``Manager`` associé au modèle.
 
-## Qu'est ce qu'un ``Manager`` ?
+### Qu'est ce qu'un ``Manager`` ?
 
-Un ``Manager`` est l'interface à travers laquelle les opérations de requêtage en base de données sont mises à disposition d'un modèle Django. Chaque modèle possède un ``Manager`` par défaut accessible via la propriété ``objects``.
+Un ``Manager`` est l'interface à travers laquelle les opérations de requêtage en 
+base de données sont mises à disposition d'un modèle Django. Chaque modèle 
+possède un ``Manager`` par défaut accessible via la propriété ``objects``.
 
-## Qu'est ce qu'un ``Queryset`` ?
+### Qu'est ce qu'un ``Queryset`` ?
 
-Un ``Queryset`` représente une collection d'objets provenant de la base de données. Cette collection peut être filtrée, limitée, ordonnée, ... grâce à des méthodes qui correspondent à des clauses SQL.
+Un ``Queryset`` représente une collection d'objets provenant de la base de 
+données. Cette collection peut être filtrée, limitée, ordonnée, ... grâce à 
+des méthodes qui correspondent à des clauses SQL.
+
+A partir d'un queryset il est possible d'obtenir un autre queryset plus spécialisé.
+Un queryset est paresseux (la requête SQL n'est faite que lorsqu'il n'est plus 
+possible de la retarder).
 
 --------------------------------------------------------------------------------
 
-# Retrouver une liste d'instances
+## Retrouver une liste d'instances
 
-## Retrouver toutes les instances d'un modèle
+### Retrouver toutes les instances d'un modèle
 
     !python
     >>> Book.objects.all()
 
-## Retrouver une liste filtrée d'instances
+### Retrouver une liste filtrée d'instances
     
 Les méthodes de filtrage principalement utilisées sont ``filter`` et ``exclude``. Il est possible de les chaîner.
 
@@ -1198,14 +1311,37 @@ Les méthodes de filtrage principalement utilisées sont ``filter`` et ``exclude
             borrowed=True
           )
 
-## Retrouver une liste ordonnée d'instances
+### Retrouver une liste ordonnée d'instances
 
     !python
     >>> Book.objects.exclude(borrowed=True).order_by('title')
+    
+---------
+
+## ORM - Fitrage
+
+  * Les paramètres nommés sont le nom du champ et la valeur
+  * On peut ajouter derrière le nom du champ deux undescores et un lookup
+    * `__iexact` pour une recherche insensible à la casse
+    * `__contains` pour chercher à l'intérieur
+    * `__lt`, `__lte`, ` __gt`,` __gte` pour les inégalités
+  * Avec deux undescores on peut aussi suivre une relation
+  * Il y a un **ET** logique entre les différentes conditions
+
+Documentation : <https://docs.djangoproject.com/fr/1.10/ref/models/lookups/>
+
+    !python
+    books = Book.objects.filter(title__startswith="Le")
+    books = Book.objects.filter(release__year__lt=1950) \
+                        .exclude(title__icontains="fleurs")
+
+Pour l'opérateur **OU** ou des requêtes plus complexes, utiliser `django.db.models.F` 
+et `django.db.models.Q`, qui permettent des combinaisons avant exécution.
+
 
 --------------------------------------------------------------------------------
 
-# Retrouver une instance en particulier
+## Retrouver une instance en particulier
 
 La méthode ``get`` permet de récupérer une instance particulière.
 
@@ -1214,14 +1350,14 @@ La méthode ``get`` permet de récupérer une instance particulière.
 
 La méthode ne peut retourner qu'une instance précise, il faut donc que le filtre fourni ne soit pas ambigu. Il faut veiller à filtrer sur un champ ``unique`` (ou un ensemble de champs uniques ensemble).
 
-## Exceptions potentielles
+### Exceptions potentielles
 
 * Si l'instance n'est pas trouvée, une exception ``Book.DoesNotExist`` sera levée (de manière générique : ``<Model>.DoesNotExist``).
 * Si plusieurs instances ont été trouvées, l'exception levée sera ``Book.MultipleObjectsReturned`` (``<Model>.MultipleObjectsReturned``).
 
 --------------------------------------------------------------------------------
 
-# Référence à des objets associés
+## Référence à des objets associés
 
 Pour les relations entre instances (``ForeignKey``, ``ManyToManyField``), Django fournit un ``Manager`` spécifique nommé ``RelatedManager``. Il permet notamment de :
 
@@ -1231,9 +1367,7 @@ Pour les relations entre instances (``ForeignKey``, ``ManyToManyField``), Django
 
 --------------------------------------------------------------------------------
 
-# Référence à des objets associés
-
-## Quelques exemples
+## Référence à des objets associés - Quelques exemples
 
 Retrouver les livres disponibles d'un auteur :
 
@@ -1271,10 +1405,6 @@ Ici on attend un formulaire sur la liste des taches qui permet de filtrer :
 
 --------------------------------------------------------------------------------
 
-# Pour finir ...
-
---------------------------------------------------------------------------------
-
 # Quelques modules indispensables
 
 ## Outils
@@ -1284,7 +1414,7 @@ Ici on attend un formulaire sur la liste des taches qui permet de filtrer :
 * ``django_extra_views``: apporte d'autres CBV pour des formulaires et vues toujours plus rapides
 * ``django_braces``: apporte des mixins pour vos CBV
 
-# Tests
+## Tests
 * ``factory_boy`` : création de grappes de données pour les tests
 * ``django_jenkins`` : intégration à Jenkins
 
@@ -1318,8 +1448,6 @@ Ici on attend un formulaire sur la liste des taches qui permet de filtrer :
 ## Les planètes
 * http://www.planetdjango.org/ [EN]
 * http://www.django-fr.org/planete/ [FR]
-
---------------------------------------------------------------------------------
 
 ## Les outils de développement
 * Le *bug tracker* : http://code.djangoproject.com
