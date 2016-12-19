@@ -416,7 +416,7 @@ performance, architecture)
 # Formulaires
 
   * Référence Drupal : module Webform
-    * Mais pas prêt du tout pour Drupal 8
+    * YAML Form Jusqu'en Novembre 2016
     * Création/Gestion intuitive des champs
     * Visualisation/export des soumissions
   * Utilisation du module __Contact__
@@ -428,7 +428,7 @@ performance, architecture)
 
 # Formulaires
 
-  * Utilisation du module __YAML Form__
+  * Utilisation du module __Webform__
        * Module le plus complet à ce jour
        * Version actuelle suffisament stable
        * Pack de plusieurs modules
@@ -439,7 +439,7 @@ performance, architecture)
 
 # Formulaires
 
-  * __YAML Form__
+  * __Webform__
        * Création -> utilisation de fichiers YML
        
 ![][45]
@@ -448,8 +448,8 @@ performance, architecture)
 
 # Formulaires
 
-  * __YAML Form__
-       * Activation de YAML Form UI
+  * __Webform__
+       * Activation de Webform UI
        * Editeur visuel
        
 ![][46]
@@ -458,11 +458,13 @@ performance, architecture)
 
 # Formulaires
 
-  * __YAML Form__
+  * __Webform__
        * Nombreux choix de configuration
        * Gestion des droits par groupes/utilisateurs
        * Configuration des emails
        * Consultation/EXport des soumissions
+       
+![][47]
 
 --------------------------------------------------------------------------------
 
@@ -708,13 +710,13 @@ Pour le développement
 
    [43]: img/outside_in_4.png
 
-   [44]: img/yaml-form1.png
+   [44]: img/webform-d8.png
    
-   [45]: img/yaml-form2.png
+   [45]: img/webform-d8-2.png
    
-   [46]: img/yaml-form3.png
+   [46]: img/webform-d8-3.png
    
-   [47]: img/yaml-form4.png
+   [47]: img/webform-d8-4.png
 
    [48]: https://drupalconsole.com
    
