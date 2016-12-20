@@ -832,8 +832,7 @@ Plusieurs niveaux :
   * par site (middleware)
   * par vue (décorateur)
   * par un tag dans les templates
-  * par l'API `from django.core.cache import cache`
-    * `cache_get()`, `cache_set()`, `cache_get_or_set()`
+  * par l'API `from django.core.cache import cache` puis utilisation des fonctions `cache_get()`, `cache_set()`, `cache_get_or_set()`
 
 Documentation : <https://docs.djangoproject.com/fr/1.10/topics/cache/>
 

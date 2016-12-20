@@ -5624,17 +5624,14 @@ deux raisons :</p>
 <li>base de données</li>
 <li>fichiers</li>
 <li>mémoire (RAM)</li>
-<li></li>
+<li>autre (API extensible, redis par ex)</li>
 </ul>
 <p>Plusieurs niveaux :</p>
 <ul>
 <li>par site (middleware)</li>
 <li>par vue (décorateur)</li>
 <li>par un tag dans les templates</li>
-<li>par l'API <code>from django.core.cache import cache</code><ul>
-<li><code>cache_get()</code>, <code>cache_set()</code>, <code>cache_get_or_set()</code></li>
-</ul>
-</li>
+<li>par l'API <code>from django.core.cache import cache</code> puis utilisation des fonctions <code>cache_get()</code>, <code>cache_set()</code>, <code>cache_get_or_set()</code></li>
 </ul>
 <p>Documentation : <a href="https://docs.djangoproject.com/fr/1.10/topics/cache/">https://docs.djangoproject.com/fr/1.10/topics/cache/</a></p></section>
             
