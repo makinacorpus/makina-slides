@@ -813,7 +813,31 @@ L'ORM ne fait qu'une seule requête supplémentaire avec une clause ``IN`` :
 
 ![](img/ddt_nplus1_manytomany_fixed.png)
 
----
+-----------------
+
+## Le cache
+
+Lorsque les requêtes sont lentes même si elles sont optimisées, il reste le cache.
+
+Plusieurs possibilités de backend :
+
+* memcached
+* base de données
+* fichiers
+* mémoire (RAM)
+* autre (API extensible, redis par ex)
+
+Plusieurs niveaux :
+
+  * par site (middleware)
+  * par vue (décorateur)
+  * par un tag dans les templates
+  * par l'API `from django.core.cache import cache`
+    * `cache_get()`, `cache_set()`, `cache_get_or_set()`
+
+Documentation : <https://docs.djangoproject.com/fr/1.10/topics/cache/>
+
+------------------------------------------
 
 # Les signaux
 
