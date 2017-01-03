@@ -1,0 +1,285 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular-webfont.eot');
+    src: url('../fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Roboto-Regular-webfont.woff') format('woff'),
+         url('../fonts/Roboto-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Roboto-Regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* ROBOTO */
+@font-face {
+  font-family: 'Roboto light';
+  src: url('../fonts/Roboto-Light.eot');
+  src: url('../fonts/Roboto-Light.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Roboto-Light.woff') format('woff'),
+  url('../fonts/Roboto-Light.ttf') format('truetype'),
+  url('../fonts/Roboto-Light.svg#roboto_Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto light ital';
+  src: url('../fonts/Roboto-LightItalic.eot');
+  src: url('../fonts/Roboto-LightItalic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Roboto-LightItalic.woff') format('woff'),
+  url('../fonts/Roboto-LightItalic.ttf') format('truetype'),
+  url('../fonts/Roboto-LightItalic.svg#Roboto-LightItalic') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Roboto medium';
+  src: url('../fonts/Roboto-Medium.eot');
+  src: url('../fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Roboto-Medium.woff') format('woff'),
+  url('../fonts/Roboto-Medium.ttf') format('truetype'),
+  url('../fonts/Roboto-Medium.svg#Roboto-Medium') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto medium ital';
+  src: url('../fonts/Roboto-MediumItalic.eot');
+  src: url('../fonts/Roboto-MediumItalic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Roboto-MediumItalic.woff') format('woff'),
+  url('../fonts/Roboto-MediumItalic.ttf') format('truetype'),
+  url('../fonts/Roboto-MediumItalic.svg#Roboto-MediumItalic') format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+/* ROBOTO SLAB */
+@font-face {
+  font-family: 'Roboto Slab light';
+  src: url('../fontsRobotoSlab-Light.eot.eot');
+  src: url('../fonts/RobotoSlab-Light.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/RobotoSlab-Light.woff') format('woff'),
+  url('../fonts/RobotoSlab-Light.ttf') format('truetype'),
+  url('../fonts/RobotoSlab-Light.svg#RobotoSlab-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('../fonts/RobotoSlab-Regular.eot');
+  src: url('../fonts/RobotoSlab-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/RobotoSlab-Regular.woff') format('woff'),
+  url('../fonts/RobotoSlab-Regular.ttf') format('truetype'),
+  url('../fonts/RobotoSlab-Regular.svg#rRobotoSlab-Regular') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* ROBOTO MONO */
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('../fonts/RobotoMono-Regular.eot');
+  src: url('../fonts/RobotoMono-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/RobotoMono-Regular.woff') format('woff'),
+  url('../fonts/RobotoMono-Regular.ttf') format('truetype'),
+  url('../fonts/RobotoMono-Regular.svg#roboto_monoregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto Mono ital';
+  src: url('../fonts/RobotoMono-Italic.eot');
+  src: url('../fonts/RobotoMono-Italic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/RobotoMono-Italic.woff') format('woff'),
+  url('../fonts/RobotoMono-Italic.ttf') format('truetype'),
+  url('../fonts/RobotoMono-Italic.svg#roboto_monoitalic') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Roboto Mono bold';
+  src: url('../fonts/RobotoMono-Bold.eot.eot');
+  src: url('../fonts/RobotoMono-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/RobotoMono-Bold.woff') format('woff'),
+  url('../fonts/RobotoMono-Bold.ttf') format('truetype'),
+  url('../fonts/RobotoMono-Bold.svg#roboto_monobold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto Mono bold ital';
+  src: url('../fonts/RobotoMono-BoldItalic.eot.eot');
+  src: url('../fonts/RobotoMono-BoldItalic.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/RobotoMono-BoldItalic.woff') format('woff'),
+  url('../fonts/RobotoMono-BoldItalic.ttf') format('truetype'),
+  url('../fonts/RobotoMono-BoldItalic.svg#roboto_monobolditalic') format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* colors 
+green       #b5b42c
+gray        #241f1e
+dark gray   #1e1817 > fond perdu
+white       #fff
+*/
+
+/* borders
+accueil >                   140px
+chapitre & présentation >   80px
+Sous-chapitre >             40px
+Pages >                     20px
+*/
+
+/* Chapitres */
+h1 {
+  font-size : 110pt;
+  font-family: 'Roboto Slab light', Helvetica, Verdana, sans-serif;
+  font-weight: normal;
+  line-height: 120pt;
+  margin : 40pt 0;
+  text-align: center;
+}
+
+/* pages */
+h1 {
+  font-size : 70pt;
+  font-family: 'Roboto Slab light', Helvetica, Verdana, sans-serif;
+  font-weight: normal;
+  line-height: 70pt;
+  color: #fff;
+  margin : 0 0 70pt 0;
+  padding: 10pt;
+  background-color: #b5b42c;
+  text-align: left;
+}
+h2 {
+  font-size : 36pt;
+  font-family: 'Roboto medium', Helvetica, Verdana, sans-serif;
+  font-weight: bold;
+  line-height: 40pt;
+  margin : 0;
+  text-align: left;
+}
+p{
+  font-size : 36pt;
+  font-family: 'Roboto light', Helvetica, Verdana, sans-serif;
+  font-weight: normal;
+  line-height: 46pt;
+  margin : 0 0 40pt 0;
+  text-align: left;
+}
+
+
+
+body {
+    font-size: 24px;
+    font-family: 'Roboto', Helvetica, Verdana, sans-serif;
+    color: #241f1e;
+    background-color: #1e1817; /* Colour outside of slide */
+}
+
+p, ul, ol {
+  margin: 0 0 .5em;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: .5em 0 0;
+}
+
+div.presentation, div.slide {
+  background-color: #000; /* colour of the slide */
+}
+
+div.slide h1 {
+  color: #bece12;
+  font-weight: normal;
+  letter-spacing: 0;
+  margin-top: 0;
+}
+
+div.slide h2, div.slide h3, div.slide h4, div.slide h5, div.slide h6 {
+  color: #fff; /* #ef4e70 */
+  letter-spacing: 0;
+}
+div.slide header h1,
+div.slide header h2 {
+  color: #bece12;
+}
+
+div.presentation, div.slide {
+  border-radius: 20px;
+}
+
+pre, tt, code, kbd, samp {
+  font-family: "Roboto Mono", monospace;
+  font-size: 80%; /* monospace is bigger than yanone_kaffeesatzlight */
+  letter-spacing: 0;
+}
+
+/* A title slide is a single header */
+.slide header:only-child h1 {
+  font-weight: normal;
+}
+.slide section h1:only-child {
+  font-weight: bold;
+  font-size: 80px;
+}
+
+blockquote {
+  text-indent: 0
+}
+
+blockquote p { 
+  font-style: italic;
+}
+
+/* Override pygments */
+
+.highlight {
+  border-radius: 5px;
+}
+
+/* ----- Alternate color for only H1 slides ----- */
+
+.slide.alternate header:only-child h1 {
+  color: #c9015a;
+}
+
+/* ----- First slide and last slide ----- */
+
+.slides .slide-wrapper:last-child .slide,
+.slides .slide-wrapper:first-child .slide {
+  background: url(../logo.png) 283px 375px no-repeat;
+}
+
+.slides .slide-wrapper:last-child .slide header:only-child h1,
+.slides .slide-wrapper:first-child .slide header:only-child h1 {
+  height: 550px;
+}
+
+/* ----- Slide with only a quote ----- */
+
+div.slide.quoteslide blockquote {
+    display: table-cell;
+    width: 800px;
+    height: 600px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+div.slide.quoteslide blockquote p {
+  font-size: 170%;
+  line-height: 170%;
+  font-style: italic;
+}
+
+div.slide.quoteslide cite {
+  float: right;
+  font-style: normal;
+}
+
+li > p {
+  margin: 0;
+}
+
+img.single-image {
+  max-height: 690px;
+  max-width: 100%;
+  margin-top: -25px;
+}
