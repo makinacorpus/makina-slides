@@ -8,7 +8,8 @@
 Experts en logiciels libres, cartographie et analyse de données, nous concevons des applications métiers innovantes.
 
 Nos valeurs :
-* Les logiciels libres et les données ouvertes   * L'agilité
+* Les logiciels libres et les données ouvertes
+* L'agilité
 * Le développement durable
 
 ## Le formateur
@@ -267,9 +268,10 @@ Django "impose" une organisation du code (noms et emplacements des fichiers)
     - Quand c'est le sien
     - Quand c'est celui des autres
     - Ce qui revient au même au bout d'un certain temps...
-  * Par exemple les vues vont dans le  chier views.py dans le répertoire de l'app 
+  * Par exemple les vues vont dans le  
+  views.py dans le répertoire de l'app
   * Ou plutôt dans le module views du package de l'app
-  * Et les urls vont dans le module urls ( chier urls.py)
+  * Et les urls vont dans le module urls (fichier urls.py)
   * On peut inclure une liste d'urls d'une app dans les urls du projet
 
 <!-- -->
@@ -424,11 +426,12 @@ En somme, une vue se résume à déclarer une url :
     !python
     # books/urls.py
     from django.conf.urls import patterns, include, url
+    import books.views
     urlpatterns = [
-        url(r'^ma-vue$', 'books.views.ma_vue'),
+        url(r'^ma-vue$', book.views.ma_vue),
     ]
 
-et retourner un contenu en fonction d'une requeête
+et retourner un contenu en fonction d'une requête
 
     !python
     # books/views.py
