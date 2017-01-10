@@ -602,14 +602,14 @@ Documentation : <https://docs.djangoproject.com/fr/1.10/ref/contrib/admin/>
 
 --------------------------------------------------------------------------------
 
-# TP: Créer le modèle *tâche* ayant notamment les champs titre, deadline, description, urgence
+# TP: Créer le modèle *tâche* ayant notamment les champs titre, deadline, réalisée
 
 .fx: alternate
 
 # Presenter notes
 
+./manage.py createsuperuser
 Le modèle doit apparaitre dans l'interface d'administration avec les bons champs
-ne pas oublier le booléen done
 
 --------------------------------------------------------------------------------
 
