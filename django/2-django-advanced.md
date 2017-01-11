@@ -569,9 +569,9 @@ Un ``Manager`` personnalisé est une classe héritant de ``Manager`` que l'on in
 
     class AuthorManager(models.Manager):
         def with_nb_books(self):
-            self.get_queryset() \
-                .annotate(nb_books=Count('books')) \
-                .order_by('nb_books')
+            return self.get_queryset() \
+                       .annotate(nb_books=Count('books')) \
+                       .order_by('nb_books')
 
     class Author(models.Model):
         # ...
@@ -598,11 +598,11 @@ Il peut être intéressant de créer un ``Manager`` pour surcharger cette métho
 
     class EnglishBookManager(models.Manager):
         def get_queryset(self):
-             return Manager.get_queryset(self).filter(lang='EN')
+             return super().get_queryset().filter(lang='EN')
 
     class FrenchBookManager(models.Manager):
         def get_queryset(self):
-             return Manager.get_queryset(self).filter(lang='FR')
+             return super().get_queryset().filter(lang='FR')
 
     class Book(models.Model):
         #...

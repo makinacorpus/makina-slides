@@ -474,6 +474,9 @@ Ces 3 types de champs suffisent pour l'appli todo
 * deadline
 * done
 
+Pour python2, utiliser `@python2_unicode_compatible`
+
+
 --------------------------------------------------------------------------------
 
 ## Quelques options pour les modèles
@@ -621,7 +624,7 @@ Le modèle doit apparaitre dans l'interface d'administration avec les bons champ
 
     !python
     # views.py
-    from django.shortcuts import render_to_response
+    from django.shortcuts import render
     from books.models import Book
 
     def book_list(request):
@@ -632,10 +635,7 @@ Le modèle doit apparaitre dans l'interface d'administration avec les bons champ
             'books': books
         }
     
-        return render_to_response(
-            'books/book_list.html',
-            context
-        )
+        return render(request, 'books/book_list.html', context)
 
 Ce style de vue est dit "Function-based" (par opposition à "Class-based").
 
@@ -672,7 +672,7 @@ Routeur basé sur des regex, avec un préfixe par application
     # books/urls.py
     from django.conf.urls import patterns, include, url
     urlpatterns = [
-        url(r'^book_list$', 'books.views.book_list', name='book_list'),
+        url(r'^book_list$', books.views.book_list, name='book_list'),
     ]
 
 ### Inclusion des URLs de l'application au projet
@@ -930,7 +930,7 @@ Le module *URLconf* est un fichier ``urls.py`` contenant une variable ``urlpatte
     # urls.py
     from django.conf.urls import patterns, url
     urlpatterns = [
-        url(r'^myview$', 'myapp.views.my_view', name='my_view'),
+        url(r'^myview$', myapp.views.my_view, name='my_view'),
         ...
     ]
 
@@ -953,7 +953,7 @@ Souvent, l'*URLconf* racine inclura les modules URLconf de chaque application :
 ### URL sans paramètre
     
     !python
-    url(r'^myview$', 'my_view', name='my_view')
+    url(r'^myview$', my_view, name='my_view')
 
 La vue aura en argument seulement l'objet ``HttpRequest``.
 
@@ -1036,7 +1036,7 @@ Certains modules annexes fournissent leurs propres champs et il est possible d'�
 ## Utilisation d'un formulaire dans une ``function-based view``
 
     !python
-    from django.shortcuts import render_to_response
+    from django.shortcuts import render
     from django.http import HttpResponseRedirect
     from myapp.forms import ContactForm
 
@@ -1050,10 +1050,7 @@ Certains modules annexes fournissent leurs propres champs et il est possible d'�
         else:
             form = ContactForm()
         # Render form
-        return render_to_response(
-            'contact.html',
-            {'form': form,}
-        )
+        return render(request, 'contact.html', {'form': form})
 
 --------------------------------------------------------------------------------
 
@@ -1110,7 +1107,7 @@ Le fonctionnement est assez semblable à celui des formulaires classiques à que
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/books/')
-        return render_to_response('add_book.html', {'form': form,})
+        return render(request, 'add_book.html', {'form': form})
 
 --------------------------------------------------------------------------------
 

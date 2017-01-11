@@ -65,8 +65,9 @@
             <section><h2>Makina Corpus</h2>
 <p>Experts en logiciels libres, cartographie et analyse de données, nous concevons des applications métiers innovantes.</p>
 <p>Nos valeurs :
-<em> Les logiciels libres et les données ouvertes   * L'agilité
-</em> Le développement durable</p>
+<em> Les logiciels libres et les données ouvertes
+</em> L'agilité
+* Le développement durable</p>
 <h2>Le formateur</h2>
 <h2>Et vous ?</h2></section>
             
@@ -733,9 +734,10 @@ répertoire</li>
 <li>Ce qui revient au même au bout d'un certain temps...</li>
 </ul>
 </li>
-<li>Par exemple les vues vont dans le  chier views.py dans le répertoire de l'app </li>
+<li>Par exemple les vues vont dans le<br />
+  views.py dans le répertoire de l'app</li>
 <li>Ou plutôt dans le module views du package de l'app</li>
-<li>Et les urls vont dans le module urls ( chier urls.py)</li>
+<li>Et les urls vont dans le module urls (fichier urls.py)</li>
 <li>On peut inclure une liste d'urls d'une app dans les urls du projet</li>
 </ul>
 <!-- -->
@@ -1097,12 +1099,13 @@ répertoire</li>
             <section><p>En somme, une vue se résume à déclarer une url :</p>
 <div class="highlight"><pre><span></span><span class="c1"># books/urls.py</span>
 <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">include</span><span class="p">,</span> <span class="n">url</span>
+<span class="kn">import</span> <span class="nn">books.views</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^ma-vue$&#39;</span><span class="p">,</span> <span class="s1">&#39;books.views.ma_vue&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^ma-vue$&#39;</span><span class="p">,</span> <span class="n">book</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">ma_vue</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 
-<p>et retourner un contenu en fonction d'une requeête</p>
+<p>et retourner un contenu en fonction d'une requête</p>
 <div class="highlight"><pre><span></span><span class="c1"># books/views.py</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 
@@ -1219,6 +1222,7 @@ répertoire</li>
 <li>deadline</li>
 <li>done</li>
 </ul>
+<p>Pour python2, utiliser <code>@python2_unicode_compatible</code></p>
             
             </section>
           </div>
@@ -1509,7 +1513,7 @@ création/modification correspondants.</p>
         <div class="slide alternate">
           <div class="inner">
             
-            <header><h1>TP: Créer le modèle <em>tâche</em> ayant notamment les champs titre, deadline, description, urgence</h1></header>
+            <header><h1>TP: Créer le modèle <em>tâche</em> ayant notamment les champs titre, deadline, réalisée</h1></header>
             
             
           </div>
@@ -1517,8 +1521,8 @@ création/modification correspondants.</p>
             <header><h1>Notes</h1></header>
             <section>
             
-              <p>Le modèle doit apparaitre dans l'interface d'administration avec les bons champs
-ne pas oublier le booléen done</p>
+              <p>./manage.py createsuperuser
+Le modèle doit apparaitre dans l'interface d'administration avec les bons champs</p>
             
             </section>
           </div>
@@ -1572,7 +1576,7 @@ ne pas oublier le booléen done</p>
             
             
             <section><div class="highlight"><pre><span></span><span class="c1"># views.py</span>
-<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render_to_response</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">books.models</span> <span class="kn">import</span> <span class="n">Book</span>
 
 <span class="k">def</span> <span class="nf">book_list</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -1583,10 +1587,7 @@ ne pas oublier le booléen done</p>
         <span class="s1">&#39;books&#39;</span><span class="p">:</span> <span class="n">books</span>
     <span class="p">}</span>
 
-    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span>
-        <span class="s1">&#39;books/book_list.html&#39;</span><span class="p">,</span>
-        <span class="n">context</span>
-    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;books/book_list.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </pre></div>
 
 <p>Ce style de vue est dit "Function-based" (par opposition à "Class-based").</p></section>
@@ -1669,7 +1670,7 @@ ne pas oublier le booléen done</p>
 <div class="highlight"><pre><span></span><span class="c1"># books/urls.py</span>
 <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">include</span><span class="p">,</span> <span class="n">url</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^book_list$&#39;</span><span class="p">,</span> <span class="s1">&#39;books.views.book_list&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;book_list&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^book_list$&#39;</span><span class="p">,</span> <span class="n">books</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">book_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;book_list&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 
@@ -2297,7 +2298,7 @@ ne pas oublier le booléen done</p>
 <div class="highlight"><pre><span></span><span class="c1"># urls.py</span>
 <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">url</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^myview$&#39;</span><span class="p">,</span> <span class="s1">&#39;myapp.views.my_view&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_view&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^myview$&#39;</span><span class="p">,</span> <span class="n">myapp</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">my_view</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_view&#39;</span><span class="p">),</span>
     <span class="o">...</span>
 <span class="p">]</span>
 </pre></div>
@@ -2342,7 +2343,7 @@ ne pas oublier le booléen done</p>
             
             
             <section><h3>URL sans paramètre</h3>
-<div class="highlight"><pre><span></span><span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^myview$&#39;</span><span class="p">,</span> <span class="s1">&#39;my_view&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_view&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^myview$&#39;</span><span class="p">,</span> <span class="n">my_view</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_view&#39;</span><span class="p">)</span>
 </pre></div>
 
 <p>La vue aura en argument seulement l'objet <code>HttpRequest</code>.</p>
@@ -2566,7 +2567,7 @@ ne pas oublier le booléen done</p>
             <header><h2>Utilisation d'un formulaire dans une <code>function-based view</code></h2></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render_to_response</span>
+            <section><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span>
 <span class="kn">from</span> <span class="nn">myapp.forms</span> <span class="kn">import</span> <span class="n">ContactForm</span>
 
@@ -2580,10 +2581,7 @@ ne pas oublier le booléen done</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">ContactForm</span><span class="p">()</span>
     <span class="c1"># Render form</span>
-    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span>
-        <span class="s1">&#39;contact.html&#39;</span><span class="p">,</span>
-        <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,}</span>
-    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;contact.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
 </pre></div>
 </section>
             
@@ -2713,7 +2711,7 @@ ne pas oublier le booléen done</p>
     <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
         <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s1">&#39;/books/&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s1">&#39;add_book.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,})</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;add_book.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
 </pre></div>
 </section>
             
@@ -4945,9 +4943,9 @@ deux raisons :</p>
 
 <span class="k">class</span> <span class="nc">AuthorManager</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Manager</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">with_nb_books</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span> \
-            <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">nb_books</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;books&#39;</span><span class="p">))</span> \
-            <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nb_books&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span> \
+                   <span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">nb_books</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;books&#39;</span><span class="p">))</span> \
+                   <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nb_books&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># ...</span>
@@ -4998,11 +4996,11 @@ deux raisons :</p>
 
 <span class="k">class</span> <span class="nc">EnglishBookManager</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Manager</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-         <span class="k">return</span> <span class="n">Manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;EN&#39;</span><span class="p">)</span>
+         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;EN&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">FrenchBookManager</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Manager</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-         <span class="k">return</span> <span class="n">Manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;FR&#39;</span><span class="p">)</span>
+         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;FR&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1">#...</span>
@@ -8714,7 +8712,7 @@ ou même d'écrire son propre formulaire et de le déclarer dans le <code>ModelA
       
       
       <tr id="toc-row-38">
-        <th><a href="#slide38">TP: Créer le modèle <em>tâche</em> ayant notamment les champs titre, deadline, description, urgence</a></th>
+        <th><a href="#slide38">TP: Créer le modèle <em>tâche</em> ayant notamment les champs titre, deadline, réalisée</a></th>
         <td><a href="#slide38">38</a></td>
       </tr>
       
