@@ -512,7 +512,7 @@ Mentionner le fait que les noms de modele sont declinés de leur nom système
 
 --------------------------------------------------------------------------------
 
-## Quelques types de champs
+## Quelques types de champs de modèle
 
   * Les champs texte : 
     * `CharField` (une ligne avec longueur max)
@@ -664,7 +664,13 @@ Documentation: <https://docs.djangoproject.com/fr/1.10/topics/templates/>
 
 ## Exemple : Mapping de l'URL
 
-Routeur basé sur des regex, avec un préfixe par application
+Routeur basé sur des regex, avec un préfixe par application. Ce préfixe n'est
+pas obligatoire mais permet de classer les vues afin d'éviter les conflits, par exemple :
+
+  * book/list
+  * book/add
+  * movie/list
+  * movie/add
 
 ### Déclaration d'une URL
 
@@ -912,13 +918,16 @@ Cela peut être utile dans différents cas :
 
 --------------------------------------------------------------------------------
 
-## Processus de traitement des requêtes par Django
+## Processus de traitement des requêtes
 
-1. Django identifie le module *URLconf* racine à utiliser (cf ROOT_URLCONF dans les *settings*).
-2. Django charge ce module et cherche la variable ``urlpatterns``.
-3. Django parcourt chaque motif d’URL (expression régulière) dans l’ordre et s’arrête dès la première correspondance avec l’URL demandée.
-4. Une fois qu’une des expressions régulières correspond, Django importe et appelle la vue correspondante. La vue se voit passer une requête HTTP (objet Python ``HttpRequest``) en tant que premier paramètre puis toutes les valeurs capturées dans l’expression régulière.
-5. Si aucune expression régulière ne correspond, ou si une exception est levée durant ce processus, Django appelle une vue d’erreur appropriée.
+1. Django identifie le module *URLconf* racine à utiliser (cf `ROOT_URLCONF` dans les *settings*), souvent `projet/urls.py`
+2. Django charge ce module et cherche la variable ``urlpatterns``
+3. Django parcourt chaque motif d’URL dans l’ordre et s’arrête dès la première
+correspondance avec l’URL demandée. Il tient compte des _include_ d'autres `urls.py` de chaque application.
+4. Une fois qu’une des regex correspond, Django appelle la vue correspondante
+avec en paramètre la requête HTTP (objet Python ``HttpRequest``) puis toutes les valeurs capturées dans la regex.
+5. Si aucune regex ne correspond, ou si une exception est levée durant ce
+processus, Django appelle une vue d’erreur appropriée.
 
 --------------------------------------------------------------------------------
 
@@ -927,12 +936,14 @@ Cela peut être utile dans différents cas :
 Le module *URLconf* est un fichier ``urls.py`` contenant une variable ``urlpatterns`` :
 
     !python
-    # urls.py
+    # library/urls.py
     from django.conf.urls import patterns, url
     urlpatterns = [
         url(r'^myview$', myapp.views.my_view, name='my_view'),
         ...
     ]
+
+À chaque vue peut être associé un nom système qui pourra servir lors de l'inversion d'une url.
 
 ## Inclusion d'*URLconf*
 
@@ -945,6 +956,8 @@ Souvent, l'*URLconf* racine inclura les modules URLconf de chaque application :
         url(r'^myapp/', include('myapp.urls', namespace='myapp')),
         ...
     ]
+    
+À chaque application peut être associé un namespace qui pourra servir lors de l'inversion d'une url.
 
 --------------------------------------------------------------------------------
 
@@ -965,6 +978,40 @@ La vue aura en argument seulement l'objet ``HttpRequest``.
         name='myview_by_month'),
 
 La vue aura en argument l'objet ``HttpRequest``, puis les valeurs trouvées dans l'expression régulière (ex: ``request, year=2014, month=12``).
+
+--------------------------------------------------------------------------------
+
+## Résolution inversée d'une URL
+
+La résolution d'une url consiste à partir d'une URL et trouver la regex correspondant ainsi que ses paramètres.<br/>
+La résolution inversée part d'un nom système de vue et de paramètres pour arriver à une URL.
+
+Ceci permet de modifier les motifs sans avoir à retoucher toutes les fois où
+l'url est appelée (par exemple dans un `<a href>`).
+
+    !python
+    # project/urls.py
+    urlpatterns = [
+        url(r'^book/', include('book.urls', namespace='book')),
+    ]
+
+    # book/urls.py
+    urlpatterns = [
+        url(r'^list$', book.views.list, name='list'),
+        url(r'^edit/(?P<pk>\d+)$', book.views.edit, name='edit'),
+    ]
+
+Dans un template:
+
+    !html+django
+    <a href="{% url 'book:list' %}">Liste des livres</a>
+
+Dans du code python :
+
+    !python
+    from django.urls import reverse
+    return HttpResponseRedirect(reverse('book:edit', pk=12))
+
 
 --------------------------------------------------------------------------------
 
@@ -1018,18 +1065,22 @@ Les concepts principaux sont les suivants:
 
 --------------------------------------------------------------------------------
 
-## Les champs de formulaire
+## Quelques champs de formulaire
 
-La bibliothèque django.forms fournit plus de 20 types de champs différents, dont voici les principaux :
+La bibliothèque `django.forms` fournit plus de 20 types de champs différents, dont voici les principaux :
 
-* Les champs texte : `CharField` , `TextField`
-* Les champs pour les nombres : `FloatField`, `IntegerField`
-* Les champs booléens : `BooleanField`, `NullBooleandField`
-* Les champs de sélection : `ChoiceField`, `MultipleChoiceField`
-* Les champs pour la gestion des dates : `DateField`, `DateTimeField`, `TimeField`
-* Les champs pour la gestion des fichiers : `FileField`, `FilePathField`, `ImageField`
+* Champs texte : `CharField`, `SlugField`, `RegexField`, `EmailField`, `UrlField`
+* Champs pour les nombres : `FloatField`, `IntegerField`
+* Champs booléens : `BooleanField`, `NullBooleandField`
+* Champs de sélection : `ChoiceField`, `MultipleChoiceField`
+* Champs pour les dates : `DateField`, `DateTimeField`, `TimeField`, `DurationField`
+* Champs pour les fichiers : `FileField`, `FilePathField`, `ImageField`
 
 Certains modules annexes fournissent leurs propres champs et il est possible d'écrire des champs personnalisés.
+
+__Rappel__ : ces champs gérent les données, ce sont les widgets qui gèrent la manière
+dont ils sont saisis. Par exemple, un `CharField` gérera du texte et aura par défaut
+un widget `TextInput`, mais il est possible de spécifier un widget un widget `Textarea`.
 
 --------------------------------------------------------------------------------
 

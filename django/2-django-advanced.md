@@ -745,7 +745,7 @@ Grâce aux modèles *proxy*, il est possible de modifier le comportement d'un ob
 
 On accède à une relation dans une boucle ce qui entraine :
 
-* **1** requête pour récupérer la collection de taille N sur laquelle un bouble
+* **1** requête pour récupérer la collection de taille N sur laquelle on boucle
 * **N** requêtes pour récupérer l'attribut lié
 
 Exemple :
@@ -1121,7 +1121,7 @@ Par défaut, chaque erreur correspond à une vue dont Django fait le rendu quand
 
 ### Mode ``debug``
 
-Le réglage ``TEMPLATE_DEBUG`` (dans ``settings.py``) permet d'activer ou non 
+Le réglage ``DEBUG`` (dans ``settings.py``) permet d'activer ou non
 l'affichage de la page de débogage pendant le développement. Cette page vient en
 remplacement des vues d'erreurs listées ci-dessus. Il est donc important de
 la désactiver en production.
@@ -1269,13 +1269,13 @@ charger les filtres au niveau des templates.
 
 ## Structure d'un filtre
 
-Un filtre personnalisé est une simple fonctions python qui prend un ou deux arguments :
+Un filtre personnalisé est une simple fonction python qui prend un ou deux arguments :
 
 * la valeur de la variable dont on veut modifier l'affichage (pas nécessairement
 une chaîne de caractères)
 * un argument optionnel (qui peut avoir une valeur par défaut ou non)
 
-Un filtre sera sans argument supplémentaire sera appelé de la manière suivante :
+Un filtre sans argument supplémentaire sera appelé de la manière suivante :
 
     !python
     {{ variable|my_simple_filter }}
@@ -1476,7 +1476,8 @@ des autres.
 
             if begin and end and begin >= end:
                 msg = 'End date must be later than begin date!'
-                self._errors.setdefault('end', []).append(msg)
+                self.add_error('end', msg)
+                # ou raise forms.ValidationError(msg)
 
             return cleaned_data
 
@@ -1524,16 +1525,21 @@ statiques seront disponibles.
 
 ### Stockage
 
-Les fichiers statiques doivent être stockés dans un répertoire ``static`` de
-l'application. Les scripts par défaut configurés dans ``STATICFILES_FINDERS`` (cf ``settings.py``) pourront alors retrouver les fichiers statiques de chaque application.
+Les fichiers statiques doivent être stockés dans un répertoire `static` dans
+chaque application. Les scripts par défaut configurés dans ``STATICFILES_FINDERS``
+(cf ``settings.py``) pourront alors retrouver les fichiers statiques de chaque application.
 
 Il est aussi possible de stocker des fichiers statiques dans d'autres dossiers, 
 il faut alors ajouter ceux-ci à la liste ``STATICFILES_DIRS``.
 
-La commande ``collectstatic`` permet d'aggréger ces fichiers dans un répertoire unique défini par ``STATIC_ROOT`` :
+La commande ``collectstatic`` permet d'aggréger ces fichiers dans un répertoire 
+unique défini par ``STATIC_ROOT`` :
 
     !console
-    $ ./manage.py collecstatic
+    $ ./manage.py collectstatic
+
+Cette méthode permet aux applications ou au projet de surcharger des fichiers
+statiques d'autres applications (l'ordre de découverte est important).
 
 --------------------------------------------------------------------------------
 
@@ -1542,7 +1548,7 @@ La commande ``collectstatic`` permet d'aggréger ces fichiers dans un répertoir
 ### Dans les templates
 
 Le tag ``{% static %}`` permet de créer une URL dynamiquement vers un fichier
-statique.
+statique, elle sera automatiquement préfixée par `STATIC_URL`.
 
 Exemple pour une image :
 
@@ -1559,7 +1565,7 @@ Exemple pour un CSS :
     {% load static %}
     <html>
       <head>
-        <link href="{% static "my_app/css/styles.css" %}" />
+        <link href="{% static "my_app/css/styles.css" %}" rel="stylesheet"/>
 
 --------------------------------------------------------------------------------
 
@@ -1572,7 +1578,7 @@ se charge de servir les fichiers statiques lui-même via une vue dédiée :
 ``django.contrib.staticfiles.views.serve``.
 
 Cette méthode est peu efficace et peu sécurisée, et ne doit pas être utilisée
-en production
+en production.
 
 ### En production
 
