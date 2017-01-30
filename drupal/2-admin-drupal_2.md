@@ -1,17 +1,19 @@
 
 # Objectifs de la formation - Les fonctionnalités avancées
 
-  * __Administration (Tâches d'administration, Mises à jour, sauvegarde, Multi-sites, performance)__
-  * Référencement (urls, meta-tags, sitemap.xml)
+  * Administration (tâches d'administration, mises à jour, sauvegarde, multi-sites, performance)
+  * Référencement (URL, meta-tags, sitemap.xml)
   * Multilinguisme
-  * Autres contenus (vidéos, newsletters, formulaires
-  * Modules du coeur (aggregator, poll, search)
-
-.fx: progress
+  * Autres contenus (vidéos, newsletters, formulaires)
+  * Modules du cœur (aggregator, poll, search)
 
 --------------------------------------------------------------------------------
 
-# Tâches d'administration
+# Administration
+
+--------------------------------------------------------------------------------
+
+## Tâches d'administration
 
   * _Configurer > Personnes_ : Paramétrage/blocage de comptes
   * _Configurer > Système_ : Informations et Cron
@@ -24,51 +26,44 @@
 
 --------------------------------------------------------------------------------
 
-# Mises à jour
+## Mises à jour
 
-  * Rapport > Mises à jour disponibles (module _Update status_)
+  * Rapport > Mises à jour disponibles (module _Update Status_)
 
-# ATTENTION : Toujours faire une sauvegarde des fichiers et de la base de données de façon préalable.
+__ATTENTION : Toujours faire une sauvegarde préalable des fichiers et de la base de données.__
 
 ![][1]
 
-
 --------------------------------------------------------------------------------
 
-# Mises à jour des modules
+## Mises à jour des modules
 
   * Télécharger la nouvelle version
   * Supprimer l'ancienne version
   * Ajouter la nouvelle version
-  * Aller dans « Rapports > tableau de bord »
-  * Repérer la ligne Mise à jour de la base de données
-  * Si une mise à jour est nécessaire, suite aux modifications, un lien
-apparait.
-
-  * Cliquez sur le lien et suivre les instructions
-
+  * Aller dans « Rapports > Tableau de bord »
+  * Repérer la ligne « Mises à jour de la base de données »
+  * Si une mise à jour est nécessaire suite aux modifications, un lien apparait
+  * Cliquer sur le lien et suivre les instructions
 
 --------------------------------------------------------------------------------
 
-# Mises à jour du cœur
+## Mises à jour du cœur
 
   * Télécharger la nouvelle version
   * Copier/coller sur l'ancienne version
-  * Aller dans « Rapports > tableau de bord »
-  * Repérer la ligne Mise à jour de la base de données
-  * Si une mise à jour est nécessaire, suite aux modifications, un lien
-apparaît.
-
-  * Cliquez sur le lien et suivre les instructions
-
+  * Aller dans « Rapports > Tableau de bord »
+  * Repérer la ligne « Mises à jour de la base de données »
+  * Si une mise à jour est nécessaire suite aux modifications, un lien apparait
+  * Cliquer sur le lien et suivre les instructions
 
 --------------------------------------------------------------------------------
 
-# DRUpal SHell
+## DRUpal SHell
 
   * [https://github.com/drush-ops/drush][2]
 
-  * Exécution d'installation et de mise à jour en ligne de commande
+  * Exécution d'installations et de mises à jour en ligne de commande
     * gain de temps
     * administration simplifiée
     * nombreuses commandes et support par les modules
@@ -79,10 +74,9 @@ apparaît.
 
   * Relativement supporté sur Windows
 
-
 --------------------------------------------------------------------------------
 
-# Sauvegardes
+## Sauvegardes
 
   * Module _Backup & Migrate_
     * Sauvegarde de la base de données
@@ -96,172 +90,156 @@ apparaît.
     * drush sql-dump
     * drush sql-client
 
-
 --------------------------------------------------------------------------------
 
-# Installation multi-sites
+## Installation multi-sites
 
-  * Traditionnel - Partage des modules
+  * Traditionnelle - Partage des modules
     * Décompresser Drupal
-    * Créer les répertoires dans /sites/ avec les noms des domaines
-    * Copier le contenu de /sites/default dans les sous-répertoires.
+    * Créer les répertoires correspondant à vos noms des domaines dans /sites
+    * Copier le contenu de /sites/default dans ces nouveaux répertoires
     * Lancer l'installation classique via le navigateur
 
-  * Module Domain access - Partage des données
-    * Basé sur 1 instance (même base de données,  même code)
+  * Module _Domain Access_ - Partage des données
+    * Basé sur une unique instance (même base de données, même code)
     * Facilité d'administration
-    * Partage de contenus, utilisateurs, blocks, etc.
-
+    * Partage de contenus, utilisateurs, blocs, etc.
 
 --------------------------------------------------------------------------------
 
-# Performance
+## Performance
 
-  * Activer le cache - Activer l'aggrégation
+  * Activer le cache
     * Fonctionne très bien pour les anonymes
-
+  * Activer l'aggrégation
   * Modules avancés
-    * Views cache content
-    * Memcache
-    * EntityCache
-
+    * _Views content cache_
+    * _Memcache_
+    * _Entity cache_
   * Intégration Varnish, Redis, CDN, etc.
 
 --------------------------------------------------------------------------------
 
-# Objectifs de la formation - Les fonctionnalités avancées
-
-  * Administration (Tâches d'administration, Mises à jour,  sauvegarde,
-Multi-sites, ldap, performance)
-  * __Référencement (urls, meta-tags, sitemap.xml)__
-  * Multilinguisme
-  * Autres contenus (vidéos, newsletters, formulaires
-  * Modules du coeur (aggregator, poll, search)
-
-.fx: progress
+# Référencement
 
 --------------------------------------------------------------------------------
 
-# Ré-écriture des urls
+## Ré-écriture des URL
 
-  * Module path (core) et pathauto
-  * Recherche et métadonnées > Alias d'urls
+  * Modules path (core) et pathauto
+  * Recherche et métadonnées > Alias d'URL
   * Gestion de la ré-écriture automatique
     * Selon les types de contenu
     * Selon la taxonomie
-  * Régénération d'urls en batch
+  * Régénération d'URL en batch
   * Création à partir de tokens
 
 --------------------------------------------------------------------------------
 
-# Module Token
+## Module Token
 
-  * Sorte de variables affichant certaines données en fonction d'un contexte
+Sorte de « balises » permettant l'affichage de données variables en fonction
+du contexte :
+
   * Global
-    * nom du site
-    * date actuelle
+    * Nom du site
+    * Date actuelle
   * Node
-    * titre
-    * champs
-    * date
+    * Titre
+    * Champs
+    * Dates (création, modification)
   * Utilisateur
-    * nom d'utilisateur
-    * date de dernière connexion
-
-Et bien d'autres
+    * Nom d'utilisateur
+    * Date de dernière connexion
+  * ...
 
 --------------------------------------------------------------------------------
 
 ## Module meta-tag
 
-  * Méta-données intégrées dans le code HTML des pages du site
-  * à définir pour chaque contenu
-  * paramétrage pour la page d'accueil
-  * possibilité d'ajouter de nombreux tag
+  * Métadonnées intégrées au code HTML des pages du site
+  * À définir pour chaque contenu
+  * Paramétrage spécifique pour la page d'accueil
+  * Possibilité d'ajouter de nombreux tags
 
+--------------------------------------------------------------------------------
 
 ## Module XMLsitemap
 
-  * Génération d'un fichier sitemap.xml à la racine avec les urls du site (parsing par les robots de référencement)
-  * dans les formulaires d'édition, paramètrage pour définir quelles pages sont à inclure / exclure
-  * Reconstruction automatique au lancement du cron
+Génération d'un fichier sitemap.xml à la racine du site :
+
+  * contient les URL du site à destination des robots de référencement
+  * paramétrable afin de définir quelles pages sont à inclure ou exclure
+  * reconstruit automatiquement au lancement du cron
 
 ![][5]
 
 --------------------------------------------------------------------------------
 
-## Module Google Analytics
+## Autres modules
 
-  * Code à renseigner, script ajouté à toutes les pages
+### Module Google Analytics
 
-## Module Schema.org
+  * Code à renseigner
+  * Script ajouté à toutes les pages
 
-  * Metadonnées pour l'affichage dans les résultats de recherche
+### Module Schema.org
+
+  * Métadonnées pour l'affichage dans les résultats de recherche
   * Basé sur RDF
 
-## Module SEO Checklist
-
-## Module Search 404
-
-## Redirect - Global Redirect
+### Module SEO Checklist
+### Module Search 404
+### Redirect - Global Redirect
 
 --------------------------------------------------------------------------------
 
-# Objectifs de la formation - Les fonctionnalités avancées
-
-  * Administration (Tâches d'administration, Mises à jour,  sauvegarde,
-Multi-sites, ldap, performance)
-  * Référencement (urls, meta-tags, sitemap.xml)
-  * __Multilinguisme__
-  * Autres contenus (vidéos, newsletters, formulaires
-  * Modules du coeur (aggregator, poll, search)
-
-.fx: progress
+# Multilinguisme
 
 --------------------------------------------------------------------------------
 
-# Le multilinguisme
+## Introduction
 
-  * Installation du module I18n (Internationalization)
-    * Activation du module et sous-modules
+  * Installation du module _I18n_ (_Internationalization_)
+    * Activation du module et des sous-modules
     * Ajout d'une langue et configuration
     * Configuration > Régionalisation et langues > Langues
 
 > Traduction au niveau du contenu
 
-  * Autre possibilité : Entity translation
-    * Pratique pour les noeuds
+  * Autre possibilité : _Entity Translation_
+    * Pratique pour les nœuds
     * Moins pour les menus, blocs, taxonomie, ...
-    * Inclus dans D8
+    * Inclus dans Drupal 8
 
 > Traduction au niveau des champs
 
 --------------------------------------------------------------------------------
 
-# Traduire les noeuds
+## Traduire les nœuds
 
-  * Onglet Traduire pour chaque contenu
+  * Onglet « Traduire » pour chaque contenu
     * Tableau de synthèse du statut de traduction pour toutes les langues
   * Ajout d'une traduction :
-    * par le lien ''ajouter une traduction''
-    * par la création d'un contenu puis ajouter sa référence dans la partie
-    ''Select translations for...''
+    * par le lien « Ajouter » sur le tableau de synthèse
+    * par la création d'un contenu en ajoutant sa référence dans la partie
+      « Select translations for... »
 
 ![][6]
 
 --------------------------------------------------------------------------------
 
-# Traduire les blocs
+## Traduire les blocs
 
-  * Choix de la langue
-  * Paramètres de visibilité : Spécifier les chemins des contenus traduits où
-  le bloc doit apparaître.
+  * Choix de la langue
+  * Paramètres de visibilité : spécifier les chemins des contenus traduits où
+    le bloc doit apparaître.
 
 ![][7]
 
 --------------------------------------------------------------------------------
 
-# Traduire l'interface
+## Traduire l'interface
 
   * Configuration > Régionalisation et langues > Traduction de l'interface
   * Traduction de l'interface différent de la traduction du contenu
@@ -270,13 +248,15 @@ Multi-sites, ldap, performance)
 
 --------------------------------------------------------------------------------
 
-# Traduire les menus
+## Traduire les menus
 
   * 2 possibilités :
     * Créer un menu par langue
-    * Dans un menu, pour chaque item, ajouter un item par langue
+    * Créer un item par langue dans le même menu
 
-# Traduire les variables
+--------------------------------------------------------------------------------
+
+## Traduire les variables
 
   * Nom du site
   * Slogan
@@ -284,63 +264,52 @@ Multi-sites, ldap, performance)
 
 --------------------------------------------------------------------------------
 
-# Objectifs de la formation - Les fonctionnalités avancées
-
-  * Administration (Mises à jour, Multi-sites, sauvegarde, cron, ldap,
-performance, architecture)
-  * Référencement (urls, meta-tags, sitemap.xml)
-  * Multilinguisme
-  * __Autres contenus (vidéos, newsletters, formulaires)__
-  * Modules du coeur (aggregator, poll, search)
-
-.fx: progress
+# Autres contenus
 
 --------------------------------------------------------------------------------
 
-# Media dans l'éditeur wysiwyg
+## Media dans l'éditeur wysiwyg
 
-  * Module Media
+  * Module _Media_
   * Gestion centralisée de tous les médias (images, vidéos, audio, flash)
-  * Accès à la bibliothèque pour ré-utilisation
+  * Accès à la bibliothèque pour réutilisation
   * Facilité d'utilisation
-
 
 ![][11]
 
 --------------------------------------------------------------------------------
 
-# Autres modules de media
+## Autres modules de media
 
-  * Alternative à Media
-    * Scald
-    * Asset
+  * Alternatives à _Media_
+    * _Scald_
+    * _Asset_
 
-  * Module Video
-    * Fournit un champ vidéo à ajouter dans les types de contenu
+  * Module _Video_
+    * Permet de créer des champ de type vidéo dans les types de contenu
 
-  * Module MediaFront
-    * Champ video et customisation du player.
-
+  * Module _MediaFront_
+    * Champ vidéo et personnalisation du lecteur
 
 --------------------------------------------------------------------------------
 
-# Newsletter
+## Newsletter
 
-  * Module Simplenews
+  * Module _Simplenews_
     * Gestion des abonnements
     * Gestion des envois instantanés ou asynchrones
-    * Gestion de plusieurs catégories de newsletters
+    * Gestion de plusieurs catégories de newsletter
 
   * Gestion des souscriptions seules
-    * Simple Subscription
-    * Mailchimp
+    * _Simple Subscription_
+    * _Mailchimp_
 
 --------------------------------------------------------------------------------
 
-# Formulaires
+## Formulaires
 
-  * Module Webform
-  * Création/Gestion intuitive des champs
+  * Module _Webform_
+  * Création/gestion intuitive des champs
   * Visualisation/export des soumissions
 
 ![][12]
@@ -349,49 +318,36 @@ performance, architecture)
 
 --------------------------------------------------------------------------------
 
-# Objectifs de la formation - Les fonctionnalités avancées
-
-  * Administration (Mises à jour, Multi-sites, sauvegarde, cron, ldap,
-performance, architecture)
-  * Référencement (urls, meta-tags, sitemap.xml)
-  * Multilinguisme
-  * Autres contenus (vidéos, newsletters, formulaires)
-  * __Modules du coeur (aggregator, poll, search)__
-
-.fx: progress
-
+# Modules du cœur
 
 --------------------------------------------------------------------------------
 
-# Modules du coeur de Drupal
+## Modules du cœur de Drupal
 
-  * Aggregator (Flux RSS)
-    * Feeds pour aller plus loin
+  * _Aggregator_ (Flux RSS)
+    * _Feeds_ pour aller plus loin
 
-  * Poll (Sondage)
-      * Webform, Advanced Poll
+  * _Poll_ (Sondage)
+    * _Webform_, _Advanced Poll_
 
-  * Search
-      * Search API, Solr, ...
+  * _Search_
+    * _Search API_, _Solr_, ...
 
 --------------------------------------------------------------------------------
 
-# Mise production d'un site Drupal
+## Mise production d'un site Drupal
 
-Transférer fichiers et données
-
-Pour le passage en production
-
-  * Attention au fichier settings.php
+  * Transférer fichiers et données
+  * Attention au fichier _settings.php_
   * Versionnement (Git approprié)
-  * Pathologic pour réparer les chemins cassés
+  * _Pathologic_ pour réparer les chemins cassés
 
-Pour le développement
+Pendant le développement :
 
-  * Stage File Proxy
-  * Désactiver les mails _Reroute Email_
-  * Se faire passer pour un utilisateur _Masquerade_
-  * _Administration Menu_
+  * _Stage File Proxy_ pour récupérer les fichiers depuis le site de production
+  * _Reroute Email_ pour désactiver les e-mails
+  * _Masquerade_ pour se faire passer pour un autre utilisateur
+  * _Administration menu_
 
 --------------------------------------------------------------------------------
 
