@@ -1,0 +1,41 @@
+/* -------------------------------------------------- */
+/* File tree slide                                    */
+/* -------------------------------------------------- */
+
+.file-tree img {
+  margin: 30px 0 0 0;
+}
+.file-tree p:nth-child(1n+2) {
+  position: absolute;
+  left: 190px;
+}
+.file-tree p:nth-child(1n+2):before {
+  content: "------> ";
+  color: #bece12;
+}
+.file-tree p:nth-child(2) {
+  top: 144px;
+}
+.file-tree p:nth-child(3) {
+  top: 284px;
+}
+.file-tree p:nth-child(4) {
+  top: 312px;
+}
+.file-tree p:nth-child(5) {
+  top: 368px;
+}
+.file-tree p:nth-child(6) {
+  top: 424px;
+}
+.file-tree p:nth-child(7) {
+  top: 452px;
+}
+
+/* -------------------------------------------------- */
+/* Module versions slide                              */
+/* -------------------------------------------------- */
+
+.module-versions strong {
+  color: #bece12;
+}
