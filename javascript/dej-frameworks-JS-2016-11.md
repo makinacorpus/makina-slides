@@ -121,7 +121,7 @@ Choisir un framework main stream est un gage de sécurité.
 
 - créé en 2007,
 - plutôt lié à Ruby on Rails,
-- vieillissant.
+- vieillissant mais toujours vivant.
 
 .fx: extra-large
 
@@ -307,6 +307,7 @@ Choisir un framework main stream est un gage de sécurité.
 - forte structuration,
 - injection de dépendances plus simple,
 - framework à très large couverture.
+- un CLI façon Ember.js,
 
 .fx: extra-large
 
@@ -316,9 +317,8 @@ Choisir un framework main stream est un gage de sécurité.
 
 # Angular 2 - Inconvénients
 
-- un CLI à perfectionner,
 - peu adapté à des petites applications,
-- moins facile à prendre en main.
+- moins facile à prendre en main pour un développeur front.
 
 .fx: extra-large
 
@@ -350,7 +350,7 @@ Choisir un framework main stream est un gage de sécurité.
 
 # Vue.js - Principes
 
-- librairie s'occupant que du View Layer
+- librairie ne s'occupant que du View Layer
 - Virtual DOM,
 - one-way data flow,
 - Framework Progressif,
@@ -368,7 +368,7 @@ Choisir un framework main stream est un gage de sécurité.
 
 - courbe d'apprentissage douce,
 - un socle officiel de plugins,
-- très performante,
+- très performant,
 - très facile d'accès.
 
 .fx: extra-large
@@ -382,7 +382,7 @@ Choisir un framework main stream est un gage de sécurité.
 # Vue.js - Inconvénients
 
 - faiblement structurant,
-- pas encore de gros projet type Airbnb ou Netflix.
+- pas encore de gros projets.
 
 .fx: extra-large
 
