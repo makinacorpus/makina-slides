@@ -240,7 +240,7 @@ Avantages :
   * _Masquerade_ : changer d'utilisateur sans se déconnecter
   * _Examples for developpers_ : démonstrations de l'utilisation de l'API
   * Ne pas utiliser les caches durant le développement
-  (<https://www.drupal.org/node/2598914>)
+  (<https://www.drupal.org/node/2598914> / <http://www.tothenew.com/blog/is-your-drupal-8-ready-for-writing-codes/>)
 
 --------------------------------------------------------------------------------
 

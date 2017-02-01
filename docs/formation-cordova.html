@@ -1,0 +1,2989 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Développer des applications mobiles avec Phonegap</title>
+    <!-- Styles -->
+    <link rel="stylesheet" media="print" href="assets/theme/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="assets/theme/css/screen.css">
+    <link rel="stylesheet" href="assets/theme/css/pygments.css">
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    <script type="text/javascript" src="assets/theme/js/slides.js"></script>
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="time">
+      <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+    </div>            
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Développer des applications mobiles avec Phonegap</h1></header>
+            
+            
+            <section><h2>Éric Bréhault</h2>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Plan</h1></header>
+            
+            
+            <section><ul>
+<li>Introduction<ul>
+<li>App, WebApp ou site mobile</li>
+<li>Application hybride ou native</li>
+<li>PhoneGap ou Cordova ?</li>
+<li>Le principe</li>
+<li>Les plugins officiels</li>
+</ul>
+</li>
+<li>Installation / premiers pas<ul>
+<li>Prérequis</li>
+<li>Installation</li>
+<li>Générer une app simple</li>
+<li>Débugger</li>
+</ul>
+</li>
+<li>Bonnes pratiques<ul>
+<li>Les bonnes pratiques front-end</li>
+<li>Gestionnaire de sources</li>
+<li>Crosswalk</li>
+</ul>
+</li>
+<li>Ionic<ul>
+<li>Installation</li>
+<li>Utiliser les outils du client</li>
+<li>La grille CSS et les composants</li>
+<li>L'API</li>
+</ul>
+</li>
+<li>Utilisation des plugins<ul>
+<li>camera</li>
+<li>file</li>
+<li>local notification</li>
+<li>push notification</li>
+<li>InAppBrowser</li>
+<li>SQLite</li>
+</ul>
+</li>
+<li>Tests<ul>
+<li>tests unitaires</li>
+<li>tests d'acceptance</li>
+</ul>
+</li>
+<li>Publication<ul>
+<li>Google PlayStore</li>
+<li>AppStore</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Introduction</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>App / WebApp / site mobile</h1></header>
+            
+            
+            <section><ul>
+<li><strong>app</strong> : binaire éxécuté par l'OS du téléphone</li>
+<li><strong>web app</strong> : application éxécutée dans le navigateur du téléphone</li>
+<li><strong>site mobile</strong> : site web adapté pour l'utilisation depuis un téléphone</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Application hybride ou native</h1></header>
+            
+            
+            <section><ul>
+<li><strong>native</strong> : compilée avec un SDK pour l'OS du téléphone</li>
+<li><strong>hybride</strong> : développée avec des technologies web et packagée pour l'OS du téléphone</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>PhoneGap ou Cordova ?</h1></header>
+            
+            
+            <section><ul>
+<li>à l'origine:<ul>
+<li><strong>PhoneGap</strong> développé par Nitobi,</li>
+<li>racheté par Adobe,</li>
+<li>cédé à l'Apache Foundation en 2011,</li>
+<li>s'appelle <strong>Cordova</strong>.</li>
+</ul>
+</li>
+<li>aujourd'hui:<ul>
+<li>le projet principal est Cordova,</li>
+<li>PhoneGap existe toujours en tant que <strong>distribution</strong> Cordova d'Adobe</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Le principe</h1></header>
+            
+            
+            <section><ul>
+<li>on construit une app en HTML/JS,</li>
+<li>Cordova utilise le navigateur du mobile pour l'afficher,</li>
+<li>le même code marchera sur tous les OS.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Le principe</h1></header>
+            
+            
+            <section><ul>
+<li>en plus des fonctionnalités de base, on a accès à des plugins,</li>
+<li>les plugins sont développés en natif pour chaque OS,</li>
+<li>on y accède en Javascript.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Les plugins officiels</h1></header>
+            
+            
+            <section><ul>
+<li>Battery Status : information sur l’état de la batterie</li>
+<li>Camera : gestion de l’appareil photo</li>
+<li>Console : surcharge du console.log JavaScript</li>
+<li>Contacts : gestion des contacts de l’appareil mobile</li>
+<li>Device : récupération d’informations sur l’appareil lui-même (système - d’exploitation, nom, etc.)</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Les plugins officiels</h1></header>
+            
+            
+            <section><ul>
+<li>Device Motion : accès aux données de l’accéléromètre</li>
+<li>Device Orientation : accès à la boussole</li>
+<li>Dialogs : utilisation des fenêtres d’informations natives</li>
+<li>File : gestion de fichiers</li>
+<li>File Transfer : téléchargement et upload de fichiers</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Les plugins officiels</h1></header>
+            
+            
+            <section><ul>
+<li>Geolocation : accès aux données de localisation géographique ;</li>
+<li>Globalization : gestion de la langue et des fuseaux horaires de l’appareil mobile</li>
+<li>In-App Browser : affichage de sites web directement dans l’application</li>
+<li>Media : lecture audio</li>
+<li>Media Capture : capture audio, vidéo et photo</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Les plugins officiels</h1></header>
+            
+            
+            <section><ul>
+<li>Network Information : accès aux informations réseau de l’appareil mobile</li>
+<li>SplashScreen : gestion de l’écran de chargement</li>
+<li>Statusbar : gestion d’état en haut de l’écran</li>
+<li>Vibration : gestion du vibreur</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Installation / premiers pas</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Prérequis</h1></header>
+            
+            
+            <section><ul>
+<li>Java</li>
+<li>NodeJS</li>
+<li>Android SDK Manager</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Installation</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> npm install --global cordova
+<span class="gp">$</span> npm install --global plugman
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Générer une app</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> cordova create monApp
+<span class="go">    com.makinacorpus.maSuperApp MaSuperApp</span>
+<span class="gp">$</span> cordova platform add android
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Coder le contenu de l'app</h1></header>
+            
+            
+            <section><p>Faire un développement web frontend classique.
+Mettre le code dans le dossier monApp/www.</p>
+<p>Dans index.html, ajouter:</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;cordova.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Compiler ou éxécuter</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> cordova build
+<span class="gp">$</span> cordova run
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Lancer sans terminal</h1></header>
+            
+            
+            <section><ul>
+<li>VM sous Android</li>
+<li>émulateurs</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Ajouter un plugin</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> plugman install --platform android
+<span class="go">    --project .</span>
+<span class="go">    --plugin cordova-plugin-camera</span>
+</pre></div>
+
+<p>ou</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> cordova plugin add cordova-plugin-camera
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Débugger</h1></header>
+            
+            
+            <section><p>Débugging front: <strong>inspecteur Chrome</strong> chrome://inspect/#devices</p>
+<p>Débugging système:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> adb logcat
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Exercice</h1></header>
+            
+            
+            <section><p>Créer une app Android avec une page d'accueil affichant un message de bienvenue.</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>JavaScript</h1></header>
+            
+            
+            <section><p>Pas de <code>onload</code>, mais:</p>
+<div class="highlight"><pre><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+    <span class="s2">&quot;deviceready&quot;</span><span class="p">,</span> <span class="nx">callback</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+</pre></div>
+
+<p>Aucun plugin ne fonctionnera avant.</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>JavaScript, accès aux plugins</h1></header>
+            
+            
+            <section><p>En général, les plugins sont exposés via l'objet global <code>navigator</code>:</p>
+<div class="highlight"><pre><span></span><span class="nx">navigator</span><span class="p">.</span><span class="nx">vibrate</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="nx">navigator</span><span class="p">.</span><span class="nx">compass</span><span class="p">.</span><span class="nx">getCurrentHeading</span><span class="p">(</span>
+    <span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+<span class="nx">navigator</span><span class="p">.</span><span class="nx">camera</span><span class="p">.</span><span class="nx">getPicture</span><span class="p">(</span>
+    <span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Exercice</h1></header>
+            
+            
+            <section><p>Créer une app Android avec un bouton qui fait vibrer l'appareil et qui affiche
+le cap de la boussole.</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              25/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Bonnes pratiques</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              26/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Utiliser un framework JS</h1></header>
+            
+            
+            <section><ul>
+<li>Angular</li>
+<li>Backbone</li>
+<li>React</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              27/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Utiliser un framework CSS</h1></header>
+            
+            
+            <section><ul>
+<li>Bootstrap</li>
+<li>Foundation</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              28/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Utiliser un compilateur CSS</h1></header>
+            
+            
+            <section><ul>
+<li>LESS</li>
+<li>SASS</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              29/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Utiliser un gestionnaire de dépendances</h1></header>
+            
+            
+            <section><ul>
+<li>NPM</li>
+<li>NPM + WebPack</li>
+<li>NPM + Bower (bientôt obsolète)</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              30/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Utiliser un builder</h1></header>
+            
+            
+            <section><ul>
+<li>Grunt</li>
+<li>Gulp</li>
+<li>scripts NPM</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              31/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Utiliser un gestionnaire de sources</h1></header>
+            
+            
+            <section><ul>
+<li>Git</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              32/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Avoir des tests automatiques</h1></header>
+            
+            
+            <section><ul>
+<li>Jasmine (ou autre),</li>
+<li>CasperJS ou Selenium,</li>
+<li>RobotFramework</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              33/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Crosswalk</h1></header>
+            
+            
+            <section><p>Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4.3.</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              34/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Ionic</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              35/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Ionic</h1></header>
+            
+            
+            <section><ul>
+<li>un maximum de bonnes pratiques</li>
+<li>des optimisations</li>
+<li>Angular</li>
+<li>un framework CSS léger spécifique pour mobile</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              36/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Ionic: installation</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> npm install -g ionic
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              37/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Ionic: créer une app</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> ionic start myApp sidemenu
+<span class="gp">$</span> ionic platform add android
+<span class="gp">$</span> npm install
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              38/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Ionic: lancer en local</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> ionic serve -l
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              39/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Crosswalk sur ionic</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> ionic browser add crosswalk
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              40/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Les plugins</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              41/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Capture d'image</h1></header>
+            
+            
+            <section><ul>
+<li>soumission directe: champ <code>&lt;input type="file" capture="camera" /&gt;</code></li>
+<li>obtention du fichier en local: plugin camera</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              42/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Système de fichier</h1></header>
+            
+            
+            <section><ul>
+<li><code>cordova-plugin-file</code>,</li>
+<li>FileSystem HTML5,</li>
+<li>url en <code>cdvfile://</code>,</li>
+<li>ngCordova fournit <code>$cordovaFile</code>.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              43/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Système de fichier</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="nx">$cordovaFile</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span>
+    <span class="nx">cordova</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">dataDirectory</span><span class="p">,</span>
+    <span class="s2">&quot;file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// success</span>
+<span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// error</span>
+<span class="p">});</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              44/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Zip</h1></header>
+            
+            
+            <section><p>https://github.com/MobileChromeApps/zip</p>
+<div class="highlight"><pre><span></span><span class="nx">zip</span><span class="p">.</span><span class="nx">unzip</span><span class="p">(</span><span class="nx">zipLocalPath</span><span class="p">,</span> <span class="nx">toPath</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              45/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>SQLite</h1></header>
+            
+            
+            <section><ul>
+<li>WebSQL standard HTML5,</li>
+<li>https://github.com/brodysoft/Cordova-SQLitePlugin : pas de limite de taille, pas de soucis au nettoyage de cache.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              46/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Local notification</h1></header>
+            
+            
+            <section><ul>
+<li><code>https://github.com/katzer/cordova-plugin-local-notifications.git</code>,</li>
+<li>ngCordova fournit <code>$cordovaLocalNotificationSource</code>.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              47/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Notification</h1></header>
+            
+            
+            <section><p><code>https://github.com/Telerik-Verified-Plugins/PushNotification</code></p>
+<p>Le backend doit pousser les notifications vers GCM et APN.</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              48/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>InAppBrowser</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> cordova plugin add
+<span class="go">    cordova-plugin-inappbrowser</span>
+</pre></div>
+
+<p>et on peut ouvrir des pages externes avec:</p>
+<div class="highlight"><pre><span></span><span class="nx">cordova</span><span class="p">.</span><span class="nx">InAppBrowser</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="s2">&quot;_system&quot;</span><span class="p">);</span>
+</pre></div>
+
+<p>ou:</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;...&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_system&quot;</span><span class="p">&gt;</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              49/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>WhiteList</h1></header>
+            
+            
+            <section><p>Autoriser l'accès à un backend</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;access</span> <span class="na">origin=</span><span class="s">&quot;*&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;allow-intent</span> <span class="na">href=</span><span class="s">&quot;*&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;allow-navigation</span> <span class="na">href=</span><span class="s">&quot;*&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Security-Policy&quot;</span> <span class="na">content=</span><span class="s">&quot;default-src *; style-src &#39;self&#39; &#39;unsafe-inline&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; &#39;unsafe-eval&#39;&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              50/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Les tests</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              51/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Tests unitaires</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> npm install jasmine-core karma
+<span class="go">    karma-chrome-launcher karma-jasmine</span>
+<span class="go">    --save-dev</span>
+<span class="gp">$</span> bower install angular-mocks
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              52/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Tests unitaires - karma.conf.js</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">){</span>
+  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+    <span class="nx">basePath</span> <span class="o">:</span> <span class="s1">&#39;./&#39;</span><span class="p">,</span>
+    <span class="nx">files</span> <span class="o">:</span> <span class="p">[</span>
+      <span class="s1">&#39;www/lib/ionic/js/ionic.bundle.js&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;www/lib/angular-mocks/angular-mocks.js&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;www/lib/DEPENDANCE_1&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;www/lib/DEPENDANCE_2&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;www/js/*.js&#39;</span>
+    <span class="p">],</span>
+    <span class="nx">autoWatch</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">frameworks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;jasmine&#39;</span><span class="p">],</span>
+    <span class="nx">browsers</span> <span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Chrome&#39;</span><span class="p">],</span>
+    <span class="nx">plugins</span> <span class="o">:</span> <span class="p">[</span>
+            <span class="s1">&#39;karma-chrome-launcher&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;karma-jasmine&#39;</span>
+            <span class="p">],</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              53/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Tests unitaires - app_test.js</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;MainCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">controller</span><span class="p">,</span> <span class="nx">scope</span><span class="p">;</span>
+
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;starter&#39;</span><span class="p">));</span>
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;starter.controllers&#39;</span><span class="p">));</span>
+
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">inject</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$controller</span><span class="p">,</span> <span class="nx">$rootScope</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">scope</span> <span class="o">=</span> <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$new</span><span class="p">();</span>
+        <span class="nx">controller</span> <span class="o">=</span> <span class="nx">$controller</span><span class="p">(</span><span class="s1">&#39;AppCtrl&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="nx">$scope</span><span class="o">:</span> <span class="nx">scope</span>
+        <span class="p">});</span>
+    <span class="p">}));</span>
+
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should have scope to be defined&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">controller</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+    <span class="p">});</span>
+
+<span class="p">});</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              54/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Tests unitaires</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> ./node_modules/karma/bin/karma start
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              55/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Robotframework</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> easy_install pip
+<span class="gp">$</span> pip install robotframework
+<span class="gp">$</span> pip install robotframework-selenium2library
+<span class="gp">$</span> pip install robotframework-debuglibrary
+</pre></div>
+
+<p>ChromeDriver à ajouter dans le dossier bin:
+http://chromedriver.storage.googleapis.com
+/index.html?path=2.19/</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              56/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Robotframework - resources.robot</h1></header>
+            
+            
+            <section><pre><code>*** Settings ***
+Documentation     A resource file with reusable keywords and variables.
+
+Library           Selenium2Library
+
+*** Variables ***
+${SERVER}         localhost:8100
+${BROWSER}        Chrome
+${DELAY}          0
+${START_URL}      http://${SERVER}/
+
+*** Keywords ***
+
+Open Application
+    Open Browser    ${START_URL}    ${BROWSER}
+    Set Selenium Speed    ${DELAY}
+
+Page should be home
+    Wait Until Page Contains Element    css=#home-page
+    Page should contain element    css=#home-page
+
+Click '${title}' menu
+    Click Element               css=a.menu-${title}
+
+Go back
+    Sleep           200milliseconds
+    Click Element                css=.back-button
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              57/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Robotframework - scenarios.robot</h1></header>
+            
+            
+            <section><pre><code>*** Settings ***
+Documentation     A test suite with basic tests
+Resource          Resources.robot
+
+*** Test Cases ***
+Read home page
+    Open Application
+    Page should be home
+    Click 'search' menu
+    Go back
+    Page should be home
+    [Teardown]    Close Browser
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              58/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Robotframework</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> pybot scenarios.robot
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              59/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Cas métier</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              60/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>La publication</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              61/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Les icons et splashcreens</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> ionic resources
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              62/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Signature Android</h1></header>
+            
+            
+            <section><ul>
+<li>créer un keystore (avec keytool ou le studio),</li>
+<li>
+<p>ajouter un fichier <code>./release-signing.properties</code>:</p>
+<p>storeFile=/chemin/vers/monkeystore.keystore
+storeType=jks
+keyAlias=ma-clef
+// optionnel (evite de resaisir à chaque fois)
+keyPassword=your-key-password
+storePassword=your-store-password</p>
+</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              63/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code extra-large">
+          <div class="inner">
+            
+            <header><h1>Release</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="gp">$</span> cordova build --release
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              64/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Publier l'app sur le PlayStore</h1></header>
+            
+            
+            <section><ul>
+<li>créer un compte Google developer,</li>
+<li>rédiger la fiche de l'app,</li>
+<li>uploader l'APK signé.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              65/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Préparer la fiche sur l'AppStore</h1></header>
+            
+            
+            <section><ul>
+<li>créer un compte Apple developer,</li>
+<li>déclarer l'app,</li>
+<li>obtenir les différents certificats,</li>
+<li>packager avec Xcode et uploader.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              66/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>XCode</h1></header>
+            
+            
+            <section><ul>
+<li>importer le projet XCode généré dans <code>./platforms/ios</code>,</li>
+<li>saisir manuellement la target version (5.1.1 alors que la valeur minimale proposée est 6.0),</li>
+<li>puis Products / Archive pour produire l'archive.</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              67/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Mises en garde pour XCode</h1></header>
+            
+            
+            <section><p>On doit valider régulièrement les notifications sur le compte AppleDev, sinon la publication est bloquée.</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              68/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide extra-large">
+          <div class="inner">
+            
+            <header><h1>Publier via des services tiers</h1></header>
+            
+            
+            <section><ul>
+<li>PhoneGap</li>
+<li>ionic.io</li>
+<li>Fastlane (pour iOS)</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              69/69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source:  -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="page_number">
+              /69
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Développer des applications mobiles avec Phonegap</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">Plan</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">Introduction</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">App / WebApp / site mobile</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Application hybride ou native</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">PhoneGap ou Cordova ?</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Le principe</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Le principe</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Les plugins officiels</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">Les plugins officiels</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Les plugins officiels</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Les plugins officiels</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Installation / premiers pas</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">Prérequis</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Installation</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Générer une app</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">Coder le contenu de l'app</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Compiler ou éxécuter</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Lancer sans terminal</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Ajouter un plugin</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-21">
+        <th><a href="#slide21">Débugger</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-22">
+        <th><a href="#slide22">Exercice</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-23">
+        <th><a href="#slide23">JavaScript</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-24">
+        <th><a href="#slide24">JavaScript, accès aux plugins</a></th>
+        <td><a href="#slide24">24</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-25">
+        <th><a href="#slide25">Exercice</a></th>
+        <td><a href="#slide25">25</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-26">
+        <th><a href="#slide26">Bonnes pratiques</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-27">
+        <th><a href="#slide27">Utiliser un framework JS</a></th>
+        <td><a href="#slide27">27</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-28">
+        <th><a href="#slide28">Utiliser un framework CSS</a></th>
+        <td><a href="#slide28">28</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-29">
+        <th><a href="#slide29">Utiliser un compilateur CSS</a></th>
+        <td><a href="#slide29">29</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-30">
+        <th><a href="#slide30">Utiliser un gestionnaire de dépendances</a></th>
+        <td><a href="#slide30">30</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-31">
+        <th><a href="#slide31">Utiliser un builder</a></th>
+        <td><a href="#slide31">31</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-32">
+        <th><a href="#slide32">Utiliser un gestionnaire de sources</a></th>
+        <td><a href="#slide32">32</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-33">
+        <th><a href="#slide33">Avoir des tests automatiques</a></th>
+        <td><a href="#slide33">33</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-34">
+        <th><a href="#slide34">Crosswalk</a></th>
+        <td><a href="#slide34">34</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-35">
+        <th><a href="#slide35">Ionic</a></th>
+        <td><a href="#slide35">35</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-36">
+        <th><a href="#slide36">Ionic</a></th>
+        <td><a href="#slide36">36</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-37">
+        <th><a href="#slide37">Ionic: installation</a></th>
+        <td><a href="#slide37">37</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-38">
+        <th><a href="#slide38">Ionic: créer une app</a></th>
+        <td><a href="#slide38">38</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-39">
+        <th><a href="#slide39">Ionic: lancer en local</a></th>
+        <td><a href="#slide39">39</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-40">
+        <th><a href="#slide40">Crosswalk sur ionic</a></th>
+        <td><a href="#slide40">40</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-41">
+        <th><a href="#slide41">Les plugins</a></th>
+        <td><a href="#slide41">41</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-42">
+        <th><a href="#slide42">Capture d'image</a></th>
+        <td><a href="#slide42">42</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-43">
+        <th><a href="#slide43">Système de fichier</a></th>
+        <td><a href="#slide43">43</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-44">
+        <th><a href="#slide44">Système de fichier</a></th>
+        <td><a href="#slide44">44</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-45">
+        <th><a href="#slide45">Zip</a></th>
+        <td><a href="#slide45">45</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-46">
+        <th><a href="#slide46">SQLite</a></th>
+        <td><a href="#slide46">46</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-47">
+        <th><a href="#slide47">Local notification</a></th>
+        <td><a href="#slide47">47</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-48">
+        <th><a href="#slide48">Notification</a></th>
+        <td><a href="#slide48">48</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-49">
+        <th><a href="#slide49">InAppBrowser</a></th>
+        <td><a href="#slide49">49</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-50">
+        <th><a href="#slide50">WhiteList</a></th>
+        <td><a href="#slide50">50</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-51">
+        <th><a href="#slide51">Les tests</a></th>
+        <td><a href="#slide51">51</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-52">
+        <th><a href="#slide52">Tests unitaires</a></th>
+        <td><a href="#slide52">52</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-53">
+        <th><a href="#slide53">Tests unitaires - karma.conf.js</a></th>
+        <td><a href="#slide53">53</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-54">
+        <th><a href="#slide54">Tests unitaires - app_test.js</a></th>
+        <td><a href="#slide54">54</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-55">
+        <th><a href="#slide55">Tests unitaires</a></th>
+        <td><a href="#slide55">55</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-56">
+        <th><a href="#slide56">Robotframework</a></th>
+        <td><a href="#slide56">56</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-57">
+        <th><a href="#slide57">Robotframework - resources.robot</a></th>
+        <td><a href="#slide57">57</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-58">
+        <th><a href="#slide58">Robotframework - scenarios.robot</a></th>
+        <td><a href="#slide58">58</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-59">
+        <th><a href="#slide59">Robotframework</a></th>
+        <td><a href="#slide59">59</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-60">
+        <th><a href="#slide60">Cas métier</a></th>
+        <td><a href="#slide60">60</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-61">
+        <th><a href="#slide61">La publication</a></th>
+        <td><a href="#slide61">61</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-62">
+        <th><a href="#slide62">Les icons et splashcreens</a></th>
+        <td><a href="#slide62">62</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-63">
+        <th><a href="#slide63">Signature Android</a></th>
+        <td><a href="#slide63">63</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-64">
+        <th><a href="#slide64">Release</a></th>
+        <td><a href="#slide64">64</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-65">
+        <th><a href="#slide65">Publier l'app sur le PlayStore</a></th>
+        <td><a href="#slide65">65</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-66">
+        <th><a href="#slide66">Préparer la fiche sur l'AppStore</a></th>
+        <td><a href="#slide66">66</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-67">
+        <th><a href="#slide67">XCode</a></th>
+        <td><a href="#slide67">67</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-68">
+        <th><a href="#slide68">Mises en garde pour XCode</a></th>
+        <td><a href="#slide68">68</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-69">
+        <th><a href="#slide69">Publier via des services tiers</a></th>
+        <td><a href="#slide69">69</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Autoscale</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>f</td>
+      </tr>
+      <tr>
+        <th>Presenter view</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Blank screen</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>$().landslide();</script>
+</body>
+</html>
