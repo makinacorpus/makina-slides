@@ -3,15 +3,23 @@
 /***************************************************************************/
 /* The bits that you probably want to override! */
 body {
-    background-color: #333; /* Colour outside of slide */
-}
-
-div.slide h1, div.slide h2, div.slide h3, div.slide h4, div.slide h5, div.slide h6 {
-  font-weight: normal;
+  background-color: #333; /* Colour outside of slide */
 }
 
 li {
-  padding: 10px 0;
+  position: relative;
+  margin: 10px 0;
+  list-style-type: none;
+  /*margin-left: -14px;*/
+}
+li:before {
+  content: "•";
+  position: absolute;
+  left: -0.6em;
+  /*
+    display: inline-block;
+    margin-right: 6px;
+  */
 }
 
 table {
@@ -29,7 +37,8 @@ table td, table th {
   padding-top:    4px;
   padding-bottom: 4px;
 }
-tr > td:first-child, tr > th:first-child {
+tr > td:first-child,
+tr > th:first-child {
   padding-left: 0;
 }
 
@@ -37,17 +46,12 @@ tr > td:first-child, tr > th:first-child {
 .notes {
   color: white;
   background: #777;
-  opacity:0.90;
-}
-
-/* A title slide is a single header */
-.slide header:only-child h1 {
-  font-weight: bold;
-  font-size: 80px;
+  opacity: 0.90;
 }
 
 /* Source and page number */
-aside.source, aside.page_number {
+aside.source,
+aside.page_number {
   font-size: 20px;
 }
 
@@ -59,7 +63,7 @@ blockquote p:after  { content: '\201D'; }
 blockquote p        { margin:0; padding:0; }
 blockquote q:before { content: '\2018'; }
 blockquote q:after  { content: '\2019'; }
-.cite { margin:0; text-align:right; margin-right: 40px;}
+.cite { margin: 0; text-align: right; margin-right: 40px; }
 
 /***************************************************************************/
 /* Specific clases for use with the .fx: macro */
@@ -89,29 +93,52 @@ blockquote q:after  { content: '\2019'; }
   font-size: 28px;
 }
 
-/* titleslide: displaying a title(h1) and subtitle(h2) on the same slide */
-div.titleslide { text-align: center; }
-div.titleslide h1 { padding-top: 140px; font-size: 80px; font-weight: bold;}
-
-/* imageslide: covering a whole slide with an image */
-div.slides div.imageslide {margin: 0; width: 1024px; height: 768px;}
-div.imageslide img { 
-  position: absolute; 
-  top: 0; left: 0; 
-  width: 1024px; 
-  max-width: 1024px; max-height: 768px;
-  z-index: 0; 
+/* titleslide: displaying a title (h1) and subtitle (h2) on the same slide */
+.slide.title,
+.slide.titleslide {
+  text-align: center;
+  background-color: #b5b42c;
+}
+.slide.title h1,
+.slide.titleslide h1 {
+  padding-top: 140px;
+  font-size: 80px;
+  font-weight: bold;
 }
 
-div.imageslide h1 { position: absolute; z-index: 3; left: 40px; top: 0; }
+/* imageslide: covering a whole slide with an image */
+.slide.image,
+.slide.imageslide {
+  margin: 0;
+  border: 0;
+  width: 1024px;
+  height: 768px;
+}
+.slide.image img,
+.slide.imageslide img { 
+  position: absolute; 
+  top: 0;
+  left: 0; 
+  width: 1024px; 
+  max-width: 1024px;
+  max-height: 768px;
+  z-index: 0; 
+}
+.slide.image h1,
+.slide.imageslide h1 {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  z-index: 3;
+}
 
 /* black and white header for use with imageslide */
-div.whiteheading h1 {color: white !important;}
-div.blackheading h1 {color: black !important;}
+div.whiteheading h1 { color: white !important; }
+div.blackheading h1 { color: black !important; }
 
 /***************************************************************************/
 /* Syntax highlighting is by Pygments - select via config file */
-.lineno {color: #aaa; }  /* Line numbers */
+.lineno { color: #aaa; }  /* Line numbers */
 
 
 /***************************************************************************/
@@ -142,32 +169,36 @@ body {
 }
 
 div.presentation {
-  margin     : 0px auto;
-  width      : 1024px;
-  height     : 768px;
   position   : absolute;
   top        : 50%;
   left       : 50%;
+  width      : 1024px;
+  height     : 768px;
   margin-left: -512px;
   margin-top : -384px;
 }
 
-div.slides {
+.slides {
   width      : 1024px;
   height     : 768px;
 }
 
-div.slide {
-  display    : none;
-  margin-left: 80px; /* Nice big margin */
-  margin-top : 40px;
-  width      : 864px;
-  height     : 688px;
-  position   : absolute;
-  overflow   : hidden;
+.slide {
+  display: none;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  border-width: 10px;
+  border-style: solid;
+  overflow: hidden;
 }
 
-.slide.past, .slide.current {
+.slide.past,
+.slide.current {
   display: block;
 }
 
@@ -176,38 +207,50 @@ div.slide {
 }
 
 /* A title slide is a single header */
+/*
 .slide header:only-child {
   display: table;
+  width: 100%;
 }
 
 .slide header:only-child h1 {
-  height        : 600px;
-  width         : 864px;
-  text-align    : center;
   display       : table-cell;
+  height        : 600px;
+  text-align    : center;
   vertical-align: middle;
 }
+*/
 
 ol {
   margin-left: 15px;
 }
 
 /* Image alignment options. Note that we align centre by default */
-img { display: block; margin: auto; max-width: 864px; max-height: 500px;}
+img {
+  display: block;
+  margin: auto;
+  max-width: 864px;
+  max-height: 500px;
+}
 
-section img.align-center, section img.align-centre, section img.center, section img.centre {
+section img.align-center,
+section img.align-centre,
+section img.center,
+section img.centre {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-section img.align-right, section img.right {
+section img.align-right,
+section img.right {
   display: block;
   margin-left: auto;
   margin-right: 0;
 }
 
-section img.align-left, section img.left {
+section img.align-left,
+section img.left {
   display: block;
   margin-right: auto;
   margin-left: 0;
@@ -265,18 +308,16 @@ aside {
 }
 aside.source {
   position: absolute;
-  bottom: 6px;
   left: 0px;
 }
 aside.page_number {
   position: absolute;
-  bottom: 6px;
   right: 0px;
 }
 
 
 /* Expose */
-body.expose div.slides {
+body.expose .slides {
   float           : left;
   position        : relative;
   overflow        : auto;
@@ -286,7 +327,7 @@ body.expose div.slides {
   background-color: #fff !important;
 }
 
-body.expose div.slide {
+body.expose .slide {
   display                 : block;
   width                   : 864px;
   height                  : 688px;  
@@ -312,7 +353,7 @@ body.expose div.slide {
   /*background-color        : #eee;*/
 }
 
-body.expose div.slide:hover {
+body.expose .slide:hover {
   /*background-color: #D7FCFC;*/
   border: 10px solid blue;
 }
@@ -452,12 +493,12 @@ body.expose .slide:hover aside.page_number {
 body.presenter_view, body.presenter_view div.presentation {
   background-color: #333 !important;
 }
-body.presenter_view div.slides {
+body.presenter_view .slides {
   margin-left: -40px !important;
   margin-top : -30px !important;
 }
 
-body.presenter_view div.slide {
+body.presenter_view .slide {
   display: inline;
   position: absolute;
   overflow: hidden;
@@ -601,6 +642,6 @@ div#current_presenter_notes {
   display: none;
 }
 
-div.slide div.presenter_notes {
+.slide div.presenter_notes {
   display: none;
 }

@@ -3,11 +3,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>{{ head_title }}</title>
+    <title>{{ head_title|striptags }}</title>
     <!-- Styles -->
+    <link rel="stylesheet" href="assets/makina/css/pygments/colorful.css">
+    <link rel="stylesheet" href="assets/makina/css/pygments/monokai.css">
     <link rel="stylesheet" media="print" href="{{ css.print.path_url }}">
     <link rel="stylesheet" media="screen, projection" href="{{ css.screen.path_url }}">
-    <link rel="stylesheet" href="assets/theme/css/pygments.css">
     {% for css in user_css %}
       {% if embed %}
       <style type="text/css" media="screen, projection">
@@ -45,28 +46,37 @@
       <!-- slide source: {% if slide.source %}{{ slide.source.rel_path }}{% endif %} -->
       <div class="slide-wrapper">
         <div class="slide{% if slide.classes %}{% for class in slide.classes %} {{ class }}{% endfor %}{% endif %}">
-          <div class="inner">
-            {% if slide.header %}
-            <header>{{ slide.header }}</header>
-            {% endif %}
-            {% if slide.content %}
-            <section>{{ slide.content }}</section>
-            {% endif %}
+          <div class="inner-wrapper">
+            <div class="inner">
+              {% if slide.header %}
+                {{ slide.header }}
+              {% endif %}
+              {% if slide.content %}
+                {{ slide.content }}
+              {% endif %}
+            </div>
           </div>
+
           <div class="presenter_notes">
-            <header><h1>Notes</h1></header>
+            <header>Notes</header>
             <section>
-            {% if slide.presenter_notes %}
-              {{ slide.presenter_notes }}
-            {% endif %}
+              {% if slide.presenter_notes %}
+                {{ slide.presenter_notes }}
+              {% endif %}
             </section>
           </div>
+
           <footer>
+            {% if loop.first or loop.last %}
+            <img src="assets/makina/logo.png" class="logo" alt="Makina Corpus"/>
+            {% endif %}
+
             {% if slide.source %}
             <aside class="source">
               Source: <a href="{{ slide.source.rel_path }}">{{ slide.source.rel_path }}</a>
             </aside>
             {% endif %}
+
             <aside class="page_number">
               {{ slide.number }}/{{ num_slides }}
             </aside>
@@ -76,7 +86,7 @@
       {% endfor %}
     </div>
   </div>
-  
+
   {% if toc %}
   <div id="toc" class="sidebar hidden">
     <h2>Table of Contents</h2>
@@ -99,6 +109,7 @@
     </table>
   </div>
   {% endif %}
+
   <div id="help" class="sidebar hidden">
     <h2>Help</h2>
     <table>
