@@ -139,6 +139,7 @@
 </code></pre>
 
   <https://bojanz.wordpress.com/2015/09/18/d8-composer-definitive-intro/>
+  <https://adamcod.es/2013/03/07/composer-install-vs-composer-update.html>
 
 --------------------------------------------------------------------------------
 
@@ -893,8 +894,8 @@ accès premium.
     services:
       example.route_subscriber:
         class: Drupal\example\Routing\RouteSubscriber
-          tags:
-            - { name: event_subscriber }
+        tags:
+          - { name: event_subscriber }
 
 <https://www.drupal.org/node/2187643>
 
