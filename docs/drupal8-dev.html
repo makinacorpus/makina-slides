@@ -3280,8 +3280,8 @@ Installer cette table via un <code>hook_update_N()</code> ou réinstaller le mod
             
             
             <section><p>Utiliser l'API Node Access (<a href="https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.1.x">documentation</a>)</p>
-<p>Déclarer le <code>hook_node_access()</code> et ne retourner NODE_ACCESS_DENY que si les 4
-conditions sont réunies :</p>
+<p>Déclarer le <code>hook_node_access()</code> et ne retourner AccessResult::forbidden()
+uniquement si les 4 conditions sont réunies :</p>
 <ol>
 <li>Je suis en train de voir le nœud</li>
 <li>Son type a la foncitonnalité premium activé</li>
