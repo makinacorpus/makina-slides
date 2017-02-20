@@ -1209,11 +1209,11 @@ Rappels 
 
 Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.1.x))
 
-Déclarer le `hook_node_access()` et ne retourner NODE_ACCESS_DENY que si les 4
-conditions sont réunies :
+Déclarer le `hook_node_access()` et ne retourner AccessResult::forbidden()
+uniquement si les 4 conditions sont réunies :
 
   1. Je suis en train de voir le nœud
-  2. Son type a la foncitonnalité premium activé
+  2. Son type a la fonctionnalité premium activé
   3. C'est un contenu premium
   4. Je n'ai pas la permission de voir les contenu premium
 
