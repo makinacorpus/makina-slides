@@ -85,11 +85,14 @@ Permet d'y ajouter des composants.
 
 --------------------------------------------------------------------------------
 
-# Exercice
+# Installation et premiers pas
 
 - Installer NodeJS et Angular CLI
 - Créer un projet
+- Le lancer avec `ng serve` et ouvrir http://localhost:4200
 - Observer la structure de fichiers générée
+
+[Solution](https://github.com/makinacorpus/angular-training/commit/f865cbf4660be2087da7e6925db7ff931bd833b6)
 
 --------------------------------------------------------------------------------
 
@@ -137,7 +140,7 @@ Il définit les injections disponibles.
 
 # Injections
 
-Les composants ont besoin de services globaux (persistence des données, accès au backend, rouage, etc.).
+Les composants ont besoin de services globaux (persistence des données, accès au backend, routage, etc.).
 
 Ils les obtiennent par injection de dépendances :
 Angular va instancier les services dont on a besoin, et les fournir aux composants.
@@ -150,12 +153,70 @@ Ils sont fournis aux composants dans leur constructeur.
 
 --------------------------------------------------------------------------------
 
-# 4 - Créer une app simple
+# 4 - Créer un composant simple
 
-# Presenter Notes
-utiliser le CLI
-faire du debug
-SCSS
+Le CLI permet de générer de nouveaux composants dans l'app.
+
+Nous allons créer un composant pour la page d'accueil :
+
+    !console
+    $ ng generate component Home
+
+--------------------------------------------------------------------------------
+
+# Utiliser un composant
+
+Le décorateur `@Component` associe un sélecteur (`selector`) au composant.
+
+C'est sous ce nom qu'on peut utiliser le composant dans nos templates HTML.
+
+Dans le cas présent : 
+
+    !xml
+    <app-home></app-home>
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/3c42e93cf619d0efacc8581db4dbd212a4606902)
+
+--------------------------------------------------------------------------------
+
+# Créer un input
+
+Le décorateur `@Input` permet de déclarer une nouvelle propriété pour le composant :
+
+    !javascript
+    @Input() message: string;
+
+déclare une propriété `message` qu'on peut utiliser de cette façon :
+
+    !xml
+    <app-home message="Bonjour !"></app-home>
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/75741b6aeb7b9338ebf80cb98ce2e4855ec3259c)
+
+--------------------------------------------------------------------------------
+
+# Lier (i.e. binding) un input à une propriété
+
+Plutôt qu'un message écrit en dur, nous souhaitons passer la valeur d'une propriété du composant `App` :
+
+    !javascript
+    welcomeMessage: string = 'Bienvenue ici';
+
+Pour cela, on doit noter l'input entre crochet :
+
+    !xml
+    <app-home [message]="welcomeMessage"></app-home>
+
+(sinon le message serait littéralement "welcomeMessage" et non pas "Bienvenue ici")
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/963495ca67318867b8b8d3ce67f0ccf63805e88e)
+
+--------------------------------------------------------------------------------
+
+# Lier un événement à une méthode
+
+On souhaite appeler une méthode lorsqu'on clique sur un bouton.
+Pour cela, on note l'événement entre parenthèses:
 
 --------------------------------------------------------------------------------
 
@@ -168,6 +229,7 @@ SCSS
 # 6 - Appels au backend
 
 # Presenter Notes
+API REST: http://pokeapi.co/
 
 --------------------------------------------------------------------------------
 
@@ -177,13 +239,19 @@ SCSS
 
 --------------------------------------------------------------------------------
 
-# 8 - Ajouter des dépendances externes
+# 8 - Tester une app
 
 # Presenter Notes
 
 --------------------------------------------------------------------------------
 
-# 9 - Déployer en prod
+# 9 - Ajouter des dépendances externes
+
+# Presenter Notes
+
+--------------------------------------------------------------------------------
+
+# 10 - Déployer en prod
 
 # Presenter Notes
 
