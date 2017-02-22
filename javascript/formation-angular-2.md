@@ -449,6 +449,9 @@ L'API est lente, il faut faire un spinner (ou un message de chargement).
 Plutôt qu'appeler `http` directment dans nos composants, il est plus sain de déléguer
 tous les appels à un service injectable spécifique.
 
+Cela peut faciliter la maintenance (meilleure isolation), ou permettre de greffer
+des améliorations (gérer l'authentification, le cache, le mode offline, etc.).
+
 Pour cela, il faut :
 
 - créer une classe ayant le décorateur `@Injectable`,
@@ -458,11 +461,28 @@ Pour cela, il faut :
 
 --------------------------------------------------------------------------------
 
+# Observables
+
+Grâce à l'opérateur `map` de RxJS, on peut appliquer une fonction sur un observable
+comme si c'était une liste normale, et le résultat reste un observable.
+
+C'est ainsi qu'on peut appliquer des traitements sur le résultat d'un appel HTTP.
+
+--------------------------------------------------------------------------------
+
 # Exercice
 
 Créer un service fournissant une méthode `listAll()` et une méthode `get(id)`.
 
 [Solution](https://github.com/makinacorpus/angular-training/commit/9b9462fadb7f03661bf194fce84162b1b6e09809)
+
+--------------------------------------------------------------------------------
+
+# Exercice
+
+Stocker le résultat de `listAll()` en cache.
+
+[Solution](https://github.com/makinacorpus/angular-training/commit/3c216e2e53f2250d5d604e99fd640aec768fa114)
 
 --------------------------------------------------------------------------------
 
