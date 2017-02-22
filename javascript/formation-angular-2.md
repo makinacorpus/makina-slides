@@ -305,13 +305,16 @@ On peut directement lier l'attribut normal `class` :
     !javascript
     private defaultClasses:string = 'btn btn-primary btn-special';
 
-    !xml
     <div [class]="defaultClasses"></div>
 
 On peut aussi conditionner une classe avec un booléen:
 
     !xml
     <div [class.alert]="isAlert"></div>
+
+--------------------------------------------------------------------------------
+
+# Syntaxe des templates
 
 Mais la directive `ngClass` est souvent plus simple car elle permet de gérer plusieurs classes dans un dictionnaire :
 
@@ -327,7 +330,6 @@ Mais la directive `ngClass` est souvent plus simple car elle permet de gérer pl
         }
     }
 
-    !xml
     <li [ngClass]="getClasses(pokemon)">
 
 [Exemple](https://github.com/makinacorpus/angular-training/commit/8431681ebd45a1de742b042259658fc9e32d8e43)
@@ -336,14 +338,131 @@ Mais la directive `ngClass` est souvent plus simple car elle permet de gérer pl
 
 # 5 - Gérer le routage
 
-# Presenter Notes
+Le routage permet de naviguer de "pages" en "pages" dans notre application
+(en fait, physiquement on reste sur la même page `index.html`).
+
+Le principe est de mettre en correspondance des URLs avec des composants :
+
+    !javascript
+    { path: '', component: HomeComponent },
+    { path: 'about', component: AboutComponent },
+
+Le composant sera affiché dans un point d'insertion qu'on met généralement dans
+le template de l'AppComponent :
+
+    !xml
+    <router-outlet></router-outlet>
+
+--------------------------------------------------------------------------------
+
+# Exercice
+
+Créons un composant About et utilisons des routes pour atteindre soit Home soit About.
+
+Solution : [Mettre en place le routage](https://github.com/makinacorpus/angular-training/commit/ad97a817a1e66819c21173bd4217f4d65985f803) [Ajouter About et sa route](https://github.com/makinacorpus/angular-training/commit/6715ca7fc3cd9a463bfc1aeb232d931788391efb)
+
+--------------------------------------------------------------------------------
+
+# Liens vers des routes
+
+On peut très bien faire un lien normal vers une route :
+
+    !html
+    <a href="/about">About</a>
+
+Mais cela va recharger la page en entier. [Exemple](https://github.com/makinacorpus/angular-training/commit/21721389b3555f980d472f9f4035a787b6000d36)
+
+Si on veut rendre le routage dynamique, on utilise la directive `routerLink`:
+
+    !xml
+    <a routerLink="/about">About</a>
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/323c37239af8ddc07b51bd68141475a8447c3cc3)
+
+--------------------------------------------------------------------------------
+
+# Routes paramétrées
+
+On peut déclarer des routes contenant des paramètres :
+
+    !javascript
+    { path: 'pokemon/:id', component: DetailComponent }
+
+Le module `Router` fournit des services **injectables** (c'est-à-dire appelables depuis n'importe quel composant).
+Notamment le service `ActivatedRoute` qui permet d'obtenir des informations sur la route courante.
+
+Le composant cible peut recevoir le (ou les) paramètre(s) d'une route en souscrivant (=subscribe)
+à des **Observables** proposés par `ActivatedRoute`.
+
+Dans le cas d'un paramètre, on utilise l'observable `params` :
+
+    !javascript
+    this.route.params.subscribe(params => {
+        console.log(params['id']);
+    }
+
+--------------------------------------------------------------------------------
+
+# Exercice
+
+On va créer [une page de présentation détaillée d'un pokémon](https://github.com/makinacorpus/angular-training/commit/3f74fcb655846f102aa782a693b2cc9f9323a429) et faire [des liens depuis la page d'accueil](https://github.com/makinacorpus/angular-training/commit/5d5ec1c2142722984346e17183cfffa80c6ce8aa).
+
+Note: auparavant on va mettre les données sur les pokémons dans un [fichier de configuration](https://github.com/makinacorpus/angular-training/commit/a82ea22f7a53f08214a7a51411e8e4c2d42aa1f6)
 
 --------------------------------------------------------------------------------
 
 # 6 - Appels au backend
 
-# Presenter Notes
-API REST: http://pokeapi.co/
+Plutôt que gérer des informations localement, on souhaite utiliser l'API publique http://pokeapi.co/ .
+
+Pour cela on va utiliser le service `http` :
+
+    !javascript
+    this.http.get('http://pokeapi.co/api/v2/pokemon/')
+
+Les méthodes (get, post, etc.) de `http` renvoient des observables auquel on souscrit pour obtenir les données.
+La méthode `json()` permet de désérialiser les données reçues :
+
+    !javascript
+    this.http.get('http://pokeapi.co/api/v2/pokemon/')
+    .subscribe(res => {
+        this.pokemons = res.json().results
+    });
+
+--------------------------------------------------------------------------------
+
+# Exercice
+
+Utiliser http://pokeapi.co/api/v2/pokemon/ pour avoir la liste des Pokémons sur la page d'accueil.
+Utiliser http://pokeapi.co/api/v2/pokemon/:id pour avoir les informations d'un pokémon.
+
+[Solution](https://github.com/makinacorpus/angular-training/commit/6376c0b3cb97dca531ef2eaf184aa5b015f44f7f)
+
+L'API est lente, il faut faire un spinner (ou un message de chargement).
+
+[Solution](https://github.com/makinacorpus/angular-training/commit/d7b02efba2cac3d5c6d36b4338677aaef9f7ea10)
+
+--------------------------------------------------------------------------------
+
+# Créer un Injectable
+
+Plutôt qu'appeler `http` directment dans nos composants, il est plus sain de déléguer
+tous les appels à un service injectable spécifique.
+
+Pour cela, il faut :
+
+- créer une classe ayant le décorateur `@Injectable`,
+- y injecter `http`,
+- déclarer le service en tant que `provider` dans le module,
+- et injecter notre service dans nos composants.
+
+--------------------------------------------------------------------------------
+
+# Exercice
+
+Créer un service fournissant une méthode `listAll()` et une méthode `get(id)`.
+
+[Solution](https://github.com/makinacorpus/angular-training/commit/9b9462fadb7f03661bf194fce84162b1b6e09809)
 
 --------------------------------------------------------------------------------
 
