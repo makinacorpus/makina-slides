@@ -53,6 +53,8 @@ expliquer les différences avec React
 
 Installer NodeJS (6.9+) et NPM.
 
+https://nodejs.org/en/download/
+
 Installer Angular CLI:
 
     !console
@@ -253,7 +255,7 @@ Interpolation `{{ }}` : permet d'évaluer une expression.
 Par exemple :
 
     !javascript
-    {{ 1 + 2 }} // affiche 2
+    {{ 1 + 2 }} // affiche 3
     {{ message }} // affiche la valeur de la propriété `message` du composant
 
 --------------------------------------------------------------------------------
@@ -446,7 +448,7 @@ L'API est lente, il faut faire un spinner (ou un message de chargement).
 
 # Créer un Injectable
 
-Plutôt qu'appeler `http` directment dans nos composants, il est plus sain de déléguer
+Plutôt qu'appeler `http` directement dans nos composants, il est plus sain de déléguer
 tous les appels à un service injectable spécifique.
 
 Cela peut faciliter la maintenance (meilleure isolation), ou permettre de greffer
@@ -488,19 +490,81 @@ Stocker le résultat de `listAll()` en cache.
 
 # 7 - Gérer des formulaires
 
-# Presenter Notes
+Le FormModule fournit des directives disponibles par défaut sur tous les `<form>` :
+
+- `ngForm`, l'objet form lui-même (avec notamment ses valeurs)
+- `ngModel`, le binding avec les champs
+- `ngSubmit`, l'action de submit
+
+--------------------------------------------------------------------------------
+
+# Exemple
+
+    !xml
+    <form #f="ngForm" (ngSubmit)="doSomething(f.value)">
+        <input type="text" name="email" ngModel />
+        <input type="text" name="id_xx_11" ngModel="username" />
+        <button (click)="ngSubmit">Go</button>
+    </form>
+
+Et dans le composant :
+
+    !javascript
+    doSomething(data) {
+        console.log(data.email);
+        console.log(data.username);
+    }
+
+--------------------------------------------------------------------------------
+
+# Exercice
+
+Faire un formulaire dans la page About qui permet de signaler
+un pokémon manquant.
+
+Note: comme on ne dispose pas d'un endpoint pour envoyer des mails, on va simplement écrire dans le log notre message.
 
 --------------------------------------------------------------------------------
 
 # 8 - Tester une app
 
+Par défaut, le CLI génère un fichier .spec.ts pour chaque composant.
+
+Ce fichier contiendra tous les tests unitaires du composant.
+
+Les tests sont lancés par la commande :
+
+    !console
+    ng test
+
 # Presenter Notes
 
 --------------------------------------------------------------------------------
 
-# 9 - Ajouter des dépendances externes
+# Test d'acceptance
 
-# Presenter Notes
+RobotFramework
+
+--------------------------------------------------------------------------------
+
+# 9 - Ajouter des dépendences externes
+
+On ajoute des dépendences avec :
+
+    !console
+    npm install nom-dependence --save
+
+Le `--save` sert à ajouter une entrée dans `package.json`.
+
+--------------------------------------------------------------------------------
+
+# Exercice
+
+Ajouter Material Design
+
+    !console
+    npm install angular2-mdl material-design-lite --save
+
 
 --------------------------------------------------------------------------------
 
