@@ -336,6 +336,25 @@ Mais la directive `ngClass` est souvent plus simple car elle permet de gérer pl
 
 [Exemple](https://github.com/makinacorpus/angular-training/commit/8431681ebd45a1de742b042259658fc9e32d8e43)
 
+
+--------------------------------------------------------------------------------
+
+# Syntaxe des templates
+
+Les pipes permettent d'appliquer des transformations simples au résultat d'une interpolation.
+
+Exemples :
+
+Formatter une date :
+
+    {{ dateObj | date }}
+    {{ dateObj | date:'shortTime'}}
+
+Formatter des valeurs monétaires :
+
+    {{ price | currency:'EUR':true }}
+
+
 --------------------------------------------------------------------------------
 
 # 5 - Gérer le routage
@@ -456,7 +475,11 @@ des améliorations (gérer l'authentification, le cache, le mode offline, etc.).
 
 Pour cela, il faut :
 
-- créer une classe ayant le décorateur `@Injectable`,
+- créer un service :
+    
+    !console
+    ng generate service MyService
+
 - y injecter `http`,
 - déclarer le service en tant que `provider` dans le module,
 - et injecter notre service dans nos composants.
