@@ -58,7 +58,7 @@ https://nodejs.org/en/download/
 Installer Angular CLI:
 
     !console
-    $ npm install -g @angular/cli
+    npm install -g @angular/cli
 
 # Presenter Notes
 
@@ -69,19 +69,19 @@ Installer Angular CLI:
 Permet de générer un projet.
 
     !console
-    $ ng new myproject
-    $ cd myproject
-    $ ng serve
+    ng new myproject
+    cd myproject
+    ng serve
 
 Fournit des facilités pour le développement.
 
     !console
-    $ ng serve
+    ng serve
     
 Permet d'y ajouter des composants.
 
     !console
-    $ ng generate component MyComponent
+    ng generate component MyComponent
 
 # Presenter Notes
 
@@ -162,7 +162,7 @@ Le CLI permet de générer de nouveaux composants dans l'app.
 Nous allons créer un composant pour la page d'accueil :
 
     !console
-    $ ng generate component Home
+    ng generate component Home
 
 --------------------------------------------------------------------------------
 
@@ -590,15 +590,20 @@ Ajouter Material Design
 
 # 10 - Déployer en prod
 
-Pour créer un build:
+Pour créer un build :
 
     !console
     ng build
 
-Pour un build minifié:
+Pour un build minifié :
 
     !console
     ng build --prod
+
+Si le déploiement n'est pas fait à la racine :
+
+    !console
+    ng build --base-href=/pokemon
 
 --------------------------------------------------------------------------------
 
