@@ -503,7 +503,7 @@ Le FormModule fournit des directives disponibles par défaut sur tous les `<form
     !xml
     <form #f="ngForm" (ngSubmit)="doSomething(f.value)">
         <input type="text" name="email" ngModel />
-        <input type="text" name="id_xx_11" ngModel="username" />
+        <input type="text" name="username" [ngModel]="currentUser" />
         <button (click)="ngSubmit">Go</button>
     </form>
 
@@ -545,6 +545,24 @@ Les tests sont lancés par la commande :
 
 RobotFramework
 
+- les tests sont rédigés en langage naturel,
+- ils sont interprétés par Selenium.
+
+--------------------------------------------------------------------------------
+
+# Installation
+
+Installer Python 2.7 puis :
+
+    !console
+    easy_install pip
+    pip install robotframework
+    pip install robotframework-selenium2library
+    pip install robotframework-debuglibrary
+
+ChromeDriver à ajouter dans le dossier bin de Python :
+http://chromedriver.storage.googleapis.com/index.html
+
 --------------------------------------------------------------------------------
 
 # 9 - Ajouter des dépendences externes
@@ -552,9 +570,11 @@ RobotFramework
 On ajoute des dépendences avec :
 
     !console
-    npm install nom-dependence --save
+    npm install nom-du-paquet
+    npm install nom-du-paquet@3.0.2
+    npm install nom-du-paquet --save
 
-Le `--save` sert à ajouter une entrée dans `package.json`.
+Note: `--save` sert à ajouter une entrée dans `package.json`.
 
 --------------------------------------------------------------------------------
 
@@ -570,10 +590,43 @@ Ajouter Material Design
 
 # 10 - Déployer en prod
 
-# Presenter Notes
+Pour créer un build:
 
-build de prod
-vhost
-Angular Universal
+    !console
+    ng build
+
+Pour un build minifié:
+
+    !console
+    ng build --prod
+
+--------------------------------------------------------------------------------
+
+# Respecter le routage
+
+Le routage de l'app Angular doit être accepté par le serveur web :
+
+- si l'utilisateur est sur une URL donnée produite par le routage Angular, et qu'il rafraîchit la page, il ne doit pas obtenir un 404,
+- idem pour les bookmarks ou les les liens partagés par mail ou autre.
+
+Il faut donc un vhost qui renvoie toutes les URLs sur index.html (sauf les ressources JS/CSS/assets).
+
+Exemple Nginx:
+
+    location ~ [^\.]+ {
+        try_files   $uri $uri/ /index.html;
+    }
+
+--------------------------------------------------------------------------------
+
+# Angular Universal
+
+Permet de faire tourner l'app Angular sur un serveur afin de servir la page demandée en HTML pré-généré :
+
+- augmente les performances,
+- gère le routage,
+- améliore le référencement.
+
+La page servie est ensuite ré-hydratée : le JS s'active et la suite de la navigation se fait en mode client-side.
 
 --------------------------------------------------------------------------------
