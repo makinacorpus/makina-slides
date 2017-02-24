@@ -595,7 +595,7 @@ Pour créer un build :
     !console
     ng build
 
-Pour un build minifié :
+Pour un build minifié avec cache keys:
 
     !console
     ng build --prod
@@ -612,7 +612,7 @@ Si le déploiement n'est pas fait à la racine :
 Le routage de l'app Angular doit être accepté par le serveur web :
 
 - si l'utilisateur est sur une URL donnée produite par le routage Angular, et qu'il rafraîchit la page, il ne doit pas obtenir un 404,
-- idem pour les bookmarks ou les les liens partagés par mail ou autre.
+- idem pour les bookmarks ou les liens partagés par mail ou autre.
 
 Il faut donc un vhost qui renvoie toutes les URLs sur index.html (sauf les ressources JS/CSS/assets).
 
