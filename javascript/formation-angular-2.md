@@ -60,6 +60,12 @@ Installer Angular CLI:
     !console
     npm install -g @angular/cli
 
+Accessoirement les extensions Chrome suivantes peuvent être utiles:
+
+- Postman
+- JSONViewer
+- Allow-Control-Allow-Origin: *
+
 # Presenter Notes
 
 --------------------------------------------------------------------------------
