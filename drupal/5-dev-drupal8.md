@@ -1550,6 +1550,33 @@ Ajouter des suggestions pour ce template.
 
 --------------------------------------------------------------------------------
 
+# Surcharge de bibliothèque (my_theme.info.yml)
+
+    !yaml
+    libraries-override:
+      classy/base:
+        css:
+          components:
+            css/components/menu.css: false
+      user/drupal.user: false
+      # jQuery Update
+      core/jquery:
+        js:
+          assets/vendor/jquery/jquery.min.js: js/jquery-5000.max.js
+
+--------------------------------------------------------------------------------
+
+# Extension de bibliothèques (my_theme.info.yml)
+
+    !yaml
+    libraries-extend:
+      user/drupal.user:
+        - my_theme/user
+      classy/node:
+        - my_theme/node
+
+--------------------------------------------------------------------------------
+
 # TP: Faire flotter l'image à droite
 
 Ajouter une classe à l'image et créer un fichier CSS:
