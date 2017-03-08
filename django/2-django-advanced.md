@@ -570,7 +570,7 @@ Un ``Manager`` personnalisé est une classe héritant de ``Manager`` que l'on in
 
     class AuthorManager(models.Manager):
         def with_nb_books(self):
-            self.get_query_set() \
+            self.get_queryset() \
                 .annotate(nb_books=Count('books')) \
                 .order_by('nb_books')
 
@@ -591,7 +591,7 @@ Un ``Manager`` personnalisé est une classe héritant de ``Manager`` que l'on in
 
 # Modifier le ``QuerySet`` initial
 
-La méthode ``Manager.get_query_set()`` renvoit un ``QuerySet`` par défaut qui correspond à ``Model.objects.all()``. 
+La méthode ``Manager.get_queryset()`` renvoit un ``QuerySet`` par défaut qui correspond à ``Model.objects.all()``. 
 
 Il peut être intéressant de créer un ``Manager`` pour surcharger cette méthode et retourner un ``QuerySet`` personnalisé.
 
@@ -599,11 +599,11 @@ Il peut être intéressant de créer un ``Manager`` pour surcharger cette métho
     from django.db import models
 
     class EnglishBookManager(models.Manager):
-        def get_query_set(self):
+        def get_queryset(self):
              return Manager.get_queryset(self).filter(lang='EN')
 
     class FrenchBookManager(models.Manager):
-        def get_query_set(self):
+        def get_queryset(self):
              return Manager.get_queryset(self).filter(lang='FR')
 
     class Book(models.Model):
