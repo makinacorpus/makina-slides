@@ -677,7 +677,7 @@ pas obligatoire mais permet de classer les vues afin d'éviter les conflits, par
 
     !python
     # books/urls.py
-    from django.conf.urls import patterns, include, url
+    from django.conf.urls import include, url
     urlpatterns = [
         url(r'^book_list$', books.views.book_list, name='book_list'),
     ]
