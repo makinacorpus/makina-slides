@@ -1672,11 +1672,30 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 # Le cache
 
+<http://md-systems.github.io/drupal-8-caching>
+
+    !php
+    $key = 'my-unique-cache-key';
+    if ($cache = \Drupal::cache()->get($key)) {
+      $data = $cache->data;
+    } else {
+      $data = my_slow_calculation();
+      \Drupal::cache()->set($key, $data);
+    }
+
+    // Alternative for multiple items
+    \Drupal::cache()->getMultiple($keys);
+    \Drupal::cache()->setMultiple($items);
+
+--------------------------------------------------------------------------------
+
+# Le cache de rendu
+
   * Les clés : comment identifier ce cache
   * Les contextes : Qu'est ce qui fait varier ce cache ('language',
   'user.permissions', 'user.role', 'url')
   * Les tags : à quoi est associé ce cache ('node:X',
-  `EntityInterface::getCacheTags()`)
+  `EntityInterface::getCacheTags()`, 'config.system.performance')
   * La durée de conservation (si on veut la forcer), avec 2 valeurs spéciales :
     * 0 (ne pas conserver en cache)
     * Cache::PERMANENT (ne pas expirer selon le temps, uniquement selon les tags)
@@ -1707,8 +1726,8 @@ Directement dans le render array
   * session
   * theme
   * timezone
-  * url (url.query_args, url.path, ...)
-  * user (user.roles, ...)
+  * url (url.query_args, url.path, url.host, ...)
+  * user (user.roles, user.permissions, ...)
 
 --------------------------------------------------------------------------------
 
