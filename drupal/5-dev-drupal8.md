@@ -1668,6 +1668,23 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 <https://www.drupal.org/node/2015613>
 
+    !php
+    $violations = $entity->validate();
+    $violations->count(); // extends \IteratorAggregate
+    $violation->getMessage();
+
+## 4 niveaux de validation
+
+  * l'entité ($entity)
+  * un champ (global) de l'entité ($entity->field_invalid)
+  * une valeur d'un champ de l'entité ($entity->field[0])
+  * la propriété d'une valeur d'un champ de l'entité ($entity->field[0]['invalid_value'])
+
+## Pour une validation personnalisée
+
+  * un plugin de Constraint
+  * un Validator
+
 --------------------------------------------------------------------------------
 
 # Le cache

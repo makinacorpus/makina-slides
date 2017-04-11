@@ -4520,13 +4520,30 @@ render() dans le template.</p>
       
       <!-- slide source: drupal/5-dev-drupal8.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>On peut valider les entités</h1></header>
             
             
-            <section><p><a href="https://www.drupal.org/node/2015613">https://www.drupal.org/node/2015613</a></p></section>
+            <section><p><a href="https://www.drupal.org/node/2015613">https://www.drupal.org/node/2015613</a></p>
+<div class="highlight"><pre><span></span><span class="nv">$violations</span> <span class="o">=</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">();</span>
+<span class="nv">$violations</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">();</span> <span class="c1">// extends \IteratorAggregate</span>
+<span class="nv">$violation</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+</pre></div>
+
+<h2>4 niveaux de validation</h2>
+<ul>
+<li>l'entité ($entity)</li>
+<li>un champ (global) de l'entité ($entity-&gt;field_invalid)</li>
+<li>une valeur d'un champ de l'entité ($entity-&gt;field[0])</li>
+<li>la propriété d'une valeur d'un champ de l'entité ($entity-&gt;field[0]['invalid_value'])</li>
+</ul>
+<h2>Pour une validation personnalisée</h2>
+<ul>
+<li>un plugin de Constraint</li>
+<li>un Validator</li>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -4926,6 +4943,28 @@ render() dans le template.</p>
             
             <aside class="page_number">
               124/136
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source:  -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="page_number">
+              /136
             </aside>
           </footer>
         </div>
