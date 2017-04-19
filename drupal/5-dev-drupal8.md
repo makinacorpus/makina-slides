@@ -1746,6 +1746,14 @@ Directement dans le render array
   * url (url.query_args, url.path, url.host, ...)
   * user (user.roles, user.permissions, ...)
 
+3 contextes par défaut sur tous les éléments (dans le services.yml) :
+
+    !yaml
+    parameters:
+      renderer.config:
+        required_cache_contexts: ['languages:language_interface', 'theme',
+        'user.permissions']
+
 --------------------------------------------------------------------------------
 
 # La sécurité

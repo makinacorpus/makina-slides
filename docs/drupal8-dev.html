@@ -4661,7 +4661,7 @@ render() dans le template.</p>
       
       <!-- slide source: drupal/5-dev-drupal8.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Liste des contextes</h1></header>
@@ -4680,7 +4680,14 @@ render() dans le template.</p>
 <li>timezone</li>
 <li>url (url.query_args, url.path, url.host, ...)</li>
 <li>user (user.roles, user.permissions, ...)</li>
-</ul></section>
+</ul>
+<p>3 contextes par défaut sur tous les éléments (dans le services.yml) :</p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">renderer.config</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">required_cache_contexts</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;languages:language_interface&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;theme&#39;</span><span class="p p-Indicator">,</span>
+    <span class="s">&#39;user.permissions&#39;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
