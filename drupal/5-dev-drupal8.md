@@ -1952,14 +1952,14 @@ Directement dans le render array
   * Permet de récupérer modules, thèmes, patchs, bibliothèques JS
   * Par requête HTTP, Git, SVN, ...
 
-# Utilisation de Composer
+## Utilisation de Composer
 
   * Et notamment de
   [_Drupal Project_](https://github.com/drupal-composer/drupal-project)
   * `composer create-project drupal-composer/drupal-project`
   * `composer require drupal/devel:8.*`
-  * Solution probablement à privilégier pour Drupal 8, la communauté continue
-  d'évoluer
+  * Solution désormais à privilégier pour Drupal 8
+  * /!\ Attention aux composer update /!\
 
 --------------------------------------------------------------------------------
 
@@ -1977,11 +1977,6 @@ Directement dans le render array
   données du site)
   * En cours de résolution (<https://www.drupal.org/node/1613424>)
 
-## Des solutions possibles fournies par la communauté
-
-  * _Config devel_
-  * _Features_
-
 --------------------------------------------------------------------------------
 
 # Features
@@ -1995,11 +1990,29 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# TP : Feature
+# Mais... Features ne doit théoriquement pas servir à déployer un site...
 
-Exporter le type de contenu et la Views réalisées précédemment dans une Feature
+--------------------------------------------------------------------------------
 
-.fx: tp
+# Le worfklow qui fonctionne aujourd'hui
+
+  * Installer un site (peu importe le moyen, profil, dump, ...)
+  * Exporter toute la configuration du site (drush cex)
+  * Ensuite, chaque nouveau développeur devra faire :
+    * Installer le site en utilisant le profil d'installation "Config Installer"
+    * Utiliser un workflow classique d'export / import (drush cex / cim)
+  * Il reste des problèmes :
+    * Export d'une configuration non souhaitée (devel, ...)
+    * Utiliser "Configuration Split"
+    * Voir le blog de la société [Nuvole](http://nuvole.org/blog)
+
+--------------------------------------------------------------------------------
+
+# L'avenir
+
+  * Les profils d'installation pourront directement importer une configuration
+    * Déjà opérationnel grâce à [un patch](https://www.drupal.org/node/2788777)
+  * Voir <https://www.chapterthree.com/blog/installing-drupal-8-from-configuration>
 
 --------------------------------------------------------------------------------
 
