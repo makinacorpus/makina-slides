@@ -1668,15 +1668,51 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 <https://www.drupal.org/node/2015613>
 
+    !php
+    $violations = $entity->validate();
+    $violations->count(); // extends \IteratorAggregate
+    $violation->getMessage();
+
+## 4 niveaux de validation
+
+  * l'entité ($entity)
+  * un champ (global) de l'entité ($entity->field_invalid)
+  * une valeur d'un champ de l'entité ($entity->field[0])
+  * la propriété d'une valeur d'un champ de l'entité ($entity->field[0]['invalid_value'])
+
+## Pour une validation personnalisée
+
+  * un plugin de Constraint
+  * un Validator
+
 --------------------------------------------------------------------------------
 
 # Le cache
+
+<http://md-systems.github.io/drupal-8-caching>
+
+    !php
+    $key = 'my-unique-cache-key';
+    if ($cache = \Drupal::cache()->get($key)) {
+      $data = $cache->data;
+    } else {
+      $data = my_slow_calculation();
+      \Drupal::cache()->set($key, $data);
+    }
+
+    // Alternative for multiple items
+    \Drupal::cache()->getMultiple($keys);
+    \Drupal::cache()->setMultiple($items);
+
+--------------------------------------------------------------------------------
+
+# Le cache de rendu
 
   * Les clés : comment identifier ce cache
   * Les contextes : Qu'est ce qui fait varier ce cache ('language',
   'user.permissions', 'user.role', 'url')
   * Les tags : à quoi est associé ce cache ('node:X',
-  `EntityInterface::getCacheTags()`)
+  `EntityInterface::getCacheTags()`, 'config.system.performance')
   * La durée de conservation (si on veut la forcer), avec 2 valeurs spéciales :
     * 0 (ne pas conserver en cache)
     * Cache::PERMANENT (ne pas expirer selon le temps, uniquement selon les tags)
@@ -1707,8 +1743,16 @@ Directement dans le render array
   * session
   * theme
   * timezone
-  * url (url.query_args, url.path, ...)
-  * user (user.roles, ...)
+  * url (url.query_args, url.path, url.host, ...)
+  * user (user.roles, user.permissions, ...)
+
+3 contextes par défaut sur tous les éléments (dans le services.yml) :
+
+    !yaml
+    parameters:
+      renderer.config:
+        required_cache_contexts: ['languages:language_interface', 'theme',
+        'user.permissions']
 
 --------------------------------------------------------------------------------
 
@@ -1908,14 +1952,14 @@ Directement dans le render array
   * Permet de récupérer modules, thèmes, patchs, bibliothèques JS
   * Par requête HTTP, Git, SVN, ...
 
-# Utilisation de Composer
+## Utilisation de Composer
 
   * Et notamment de
   [_Drupal Project_](https://github.com/drupal-composer/drupal-project)
   * `composer create-project drupal-composer/drupal-project`
   * `composer require drupal/devel:8.*`
-  * Solution probablement à privilégier pour Drupal 8, la communauté continue
-  d'évoluer
+  * Solution désormais à privilégier pour Drupal 8
+  * /!\ Attention aux composer update /!\
 
 --------------------------------------------------------------------------------
 
@@ -1933,11 +1977,6 @@ Directement dans le render array
   données du site)
   * En cours de résolution (<https://www.drupal.org/node/1613424>)
 
-## Des solutions possibles fournies par la communauté
-
-  * _Config devel_
-  * _Features_
-
 --------------------------------------------------------------------------------
 
 # Features
@@ -1951,11 +1990,29 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# TP : Feature
+# Mais... Features ne doit théoriquement pas servir à déployer un site...
 
-Exporter le type de contenu et la Views réalisées précédemment dans une Feature
+--------------------------------------------------------------------------------
 
-.fx: tp
+# Le worfklow qui fonctionne aujourd'hui
+
+  * Installer un site (peu importe le moyen, profil, dump, ...)
+  * Exporter toute la configuration du site (drush cex)
+  * Ensuite, chaque nouveau développeur devra faire :
+    * Installer le site en utilisant le profil d'installation "Config Installer"
+    * Utiliser un workflow classique d'export / import (drush cex / cim)
+  * Il reste des problèmes :
+    * Export d'une configuration non souhaitée (devel, ...)
+    * Utiliser "Configuration Split"
+    * Voir le blog de la société [Nuvole](http://nuvole.org/blog)
+
+--------------------------------------------------------------------------------
+
+# L'avenir
+
+  * Les profils d'installation pourront directement importer une configuration
+    * Déjà opérationnel grâce à [un patch](https://www.drupal.org/node/2788777)
+  * Voir <https://www.chapterthree.com/blog/installing-drupal-8-from-configuration>
 
 --------------------------------------------------------------------------------
 
