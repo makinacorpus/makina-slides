@@ -13,7 +13,7 @@ AngularJS est la version 1.
 
 À partir de la verison 2, le nom devient "Angular".
 
-La version 4 va paraître prochaînement (mais sera dans la continuité d'Angular 2).
+La version 4 est parue le 23 mars 2017 (et reste dans la continuité d'Angular 2).
 
 # Presenter Notes
 
@@ -84,7 +84,7 @@ Fournit des facilités pour le développement.
     !console
     ng serve
     
-Permet d'y ajouter des composants.
+Permet d'y ajouter des composants, des services, des sous-modules...
 
     !console
     ng generate component MyComponent
@@ -647,7 +647,7 @@ Il faut donc un vhost qui renvoie toutes les URLs sur index.html (sauf les resso
 
 Exemple Nginx:
 
-    location ~ [^\.]+ {
+    location / {
         try_files   $uri $uri/ /index.html;
     }
 
