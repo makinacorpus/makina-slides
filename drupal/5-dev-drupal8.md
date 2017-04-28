@@ -279,6 +279,15 @@ Avantages :
 
 --------------------------------------------------------------------------------
 
+# Le meilleur moyen d'installer Drupal 8
+
+  * `composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction`
+
+  * `composer create-project drupal/drupal my_site_name` installe un nouveau site
+  * composer require drupal/core ~8.3 --update-with-dependencies` met à jour le cœur
+
+--------------------------------------------------------------------------------
+
 # Git et la gestion de versions
 
   * Utilisé par beaucoup de développeurs dans le milieu du web
