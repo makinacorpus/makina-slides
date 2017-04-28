@@ -501,7 +501,7 @@ fichier src/Plugin/Block/TestBlock.php
 Créer un bloc :
 
   - dont le titre côté administration est "Statut premium de l'utilisateur"
-  - dont le delta (nom machine) est `premium-status`
+  - dont le delta (nom machine) est `premium_status`
   - qui affiche "Vous pouvez voir les contenus premium" ou "Vous ne pouvez pas
   voir les contenus premium"
 
@@ -739,8 +739,10 @@ Quelques fonctions de l'API à connaitre :
   * `\Drupal::currentUser()` : utilisateur actuellement connecté
   * `Node::load()` et `Node::loadMultiple()` pour charger des nœuds
   * `User::load()` et `User::loadMultiple()` pour charger des utilisateurs
-  * $entity->save() pour enregistrer un nœud, un utilisateur, ...
-  * $user->getDisplayName() pour afficher un nom d'utilisateur
+  * `$entity->save()` pour enregistrer un nœud, un utilisateur, ...
+  * `$user->getDisplayName()` pour afficher un nom d'utilisateur
+  * `Node::create(['type' => article])->save();`
+  * `$node->set('body' => ['value' => 'My body']); $node->save();`
 
 --------------------------------------------------------------------------------
 
@@ -1177,6 +1179,9 @@ Celui-ci nous servira pour les images qui seront sur les articles premium
 
   * Recommandation : utiliser la console pour générer l'entité
   * drupal generate:entity:content (ou drupal generate:entity:config)
+  * /!\ Attention /!\ : drush entity-updates / drupal update:entities à passer
+  après la génération d'une entité pour mettre à jour le schéma de base de
+  données
 
 --------------------------------------------------------------------------------
 
@@ -1408,7 +1413,7 @@ Exemples d'utilisations de `theme()` :
   * {{ messages | join(', ') }}
   * {{ "now" | date('d/m/Y H:i') }}
   * {{ 'Home' | t }} (ajouté par Drupal)
-  * {{ 'Home' | format_date('short') }} (ajouté par Drupal)
+  * {{ content.field_date | format_date('short') }} (ajouté par Drupal)
   * Voir core/lib/Drupal/Core/Template/TwigExtension.php pour la liste des
   rajouts Drupal
   * Sur toute une section : {% filter upper %} Texte {% endfilter %}
@@ -1890,12 +1895,11 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Quelques modules parfois utiles
+# Quelques modules additionnels à utiliser
 
   * Migrate Plus : quelques fonctionnalités additionnelles pour Migrate
   * Migrate Tools : commandes Drush supplémentaires (pour lancer des migrations)
   * Migrate Source CSV : pour lire des fichiers CSV
-  * Migrate Manifest : organise vos migrations dans un fichier manifest
 
 --------------------------------------------------------------------------------
 

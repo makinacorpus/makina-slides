@@ -1468,7 +1468,7 @@ sous-repertoire <code>custom</code></p>
             <section><p>Créer un bloc :</p>
 <ul>
 <li>dont le titre côté administration est "Statut premium de l'utilisateur"</li>
-<li>dont le delta (nom machine) est <code>premium-status</code></li>
+<li>dont le delta (nom machine) est <code>premium_status</code></li>
 <li>qui affiche "Vous pouvez voir les contenus premium" ou "Vous ne pouvez pas
   voir les contenus premium"</li>
 </ul>
@@ -2047,8 +2047,10 @@ premium</p>
 <li><code>\Drupal::currentUser()</code> : utilisateur actuellement connecté</li>
 <li><code>Node::load()</code> et <code>Node::loadMultiple()</code> pour charger des nœuds</li>
 <li><code>User::load()</code> et <code>User::loadMultiple()</code> pour charger des utilisateurs</li>
-<li>$entity-&gt;save() pour enregistrer un nœud, un utilisateur, ...</li>
-<li>$user-&gt;getDisplayName() pour afficher un nom d'utilisateur</li>
+<li><code>$entity-&gt;save()</code> pour enregistrer un nœud, un utilisateur, ...</li>
+<li><code>$user-&gt;getDisplayName()</code> pour afficher un nom d'utilisateur</li>
+<li><code>Node::create(['type' =&gt; article])-&gt;save();</code></li>
+<li><code>$node-&gt;set('body' =&gt; ['value' =&gt; 'My body']); $node-&gt;save();</code></li>
 </ul></section>
             
           </div>
@@ -3198,6 +3200,9 @@ formulaires de création ou de modification de nœud.</p>
             <section><ul>
 <li>Recommandation : utiliser la console pour générer l'entité</li>
 <li>drupal generate:entity:content (ou drupal generate:entity:config)</li>
+<li>/!\ Attention /!\ : drush entity-updates / drupal update:entities à passer
+  après la génération d'une entité pour mettre à jour le schéma de base de
+  données</li>
 </ul></section>
             
           </div>
@@ -3770,7 +3775,7 @@ suggestions de templates.</p></section>
 <li>{{ messages | join(', ') }}</li>
 <li>{{ "now" | date('d/m/Y H:i') }}</li>
 <li>{{ 'Home' | t }} (ajouté par Drupal)</li>
-<li>{{ 'Home' | format_date('short') }} (ajouté par Drupal)</li>
+<li>{{ content.field_date | format_date('short') }} (ajouté par Drupal)</li>
 <li>Voir core/lib/Drupal/Core/Template/TwigExtension.php pour la liste des
   rajouts Drupal</li>
 <li>
@@ -5054,14 +5059,13 @@ render() dans le template.</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Quelques modules parfois utiles</h1></header>
+            <header><h1>Quelques modules additionnels à utiliser</h1></header>
             
             
             <section><ul>
 <li>Migrate Plus : quelques fonctionnalités additionnelles pour Migrate</li>
 <li>Migrate Tools : commandes Drush supplémentaires (pour lancer des migrations)</li>
 <li>Migrate Source CSV : pour lire des fichiers CSV</li>
-<li>Migrate Manifest : organise vos migrations dans un fichier manifest</li>
 </ul></section>
             
           </div>
@@ -6267,7 +6271,7 @@ render() dans le template.</p>
       
       
       <tr id="toc-row-127">
-        <th><a href="#slide127">Quelques modules parfois utiles</a></th>
+        <th><a href="#slide127">Quelques modules additionnels à utiliser</a></th>
         <td><a href="#slide127">127</a></td>
       </tr>
       
