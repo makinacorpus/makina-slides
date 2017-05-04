@@ -286,6 +286,8 @@ Avantages :
   * `composer create-project drupal/drupal my_site_name` installe un nouveau site
   * composer require drupal/core ~8.3 --update-with-dependencies` met à jour le cœur
 
+  * Attention, encore [quelques problèmes avec Composer](https://www.jeffgeerling.com/blog/2017/composer-and-drupal-are-still-strange-bedfellows)
+
 --------------------------------------------------------------------------------
 
 # Git et la gestion de versions
