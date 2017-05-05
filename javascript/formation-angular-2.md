@@ -664,3 +664,14 @@ Permet de faire tourner l'app Angular sur un serveur afin de servir la page dema
 La page servie est ensuite ré-hydratée : le JS s'active et la suite de la navigation se fait en mode client-side.
 
 --------------------------------------------------------------------------------
+
+# RxJS
+
+Observables, BehaviorSubject, etc
+
+Exemple avec :
+
+    import 'rxjs/add/operator/debounceTime';
+
+    @ViewChild('f') form
+    this.f.valueChanges.debounceTime().subscribe()
