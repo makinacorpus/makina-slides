@@ -380,8 +380,6 @@ puisse modérer ces pages.
 
 ![][37]
 
-![][38]
-
 --------------------------------------------------------------------------------
 
 # Gérer les utilisateurs - Exercice 2
@@ -913,7 +911,5 @@ cette page comme page d'accueil.
    [36]: img/content_moderation_1.png
    
    [37]: img/content_moderation_2.png
-      
-   [38]: img/content_moderation_3.png
    
    [39]: img/outside_in.png
