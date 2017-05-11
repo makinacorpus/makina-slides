@@ -649,10 +649,9 @@ Pour le développement
 # Questions ?
 
 
-   [1]: img/update.png
+   [1]: img/update8.png
 
    [2]: https://github.com/drush-ops/drush
-   
 
    [3]: https://drushcommands.com/
 
