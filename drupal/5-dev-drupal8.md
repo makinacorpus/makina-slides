@@ -720,7 +720,7 @@ argument l'uid de l'utilisateur
   - url d'exemple : est-il-premium/2
 
 Créer une page _Page Premium_ avec du contenu "Lorem Ipsum" et ne
-s'affichant que si l'utilisateur courant à la permission de voir le contenu
+s'affichant que si l'utilisateur courant a la permission de voir le contenu
 premium
 
   - url : page-premium
