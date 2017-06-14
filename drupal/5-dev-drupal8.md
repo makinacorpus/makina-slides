@@ -1287,7 +1287,7 @@ L'équipe du site _Nom du site_
 
 --------------------------------------------------------------------------------
 
-## Le partie thème d'un module
+## La partie thème d'un module
 
 Le module fournit **toujours** le markup par défaut.
 
