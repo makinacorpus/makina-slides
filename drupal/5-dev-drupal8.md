@@ -1072,34 +1072,12 @@ formulaires de création ou de modification de nœud.
 
 --------------------------------------------------------------------------------
 
-## Déclaration de la configuration
-
-  * /config/install/mon_module.settings.yml -> initialisation à l'installation
-  * /config/optionnal/module1.type1.name1.yml -> si module1 est activé
-  * /config/schema/mon_module.schema.yml -> schéma de la configuration de votre
-  module
-
-## Exemple de fichier de schema
-
-    !yaml
-    mon_module.settings:
-      type: config_object
-      mapping:
-        settings_1:
-          type: boolean
-          label: 'Settings 1'
-        settings_2:
-          type: string
-          label: 'Settings 2'
-
---------------------------------------------------------------------------------
-
 ## TP : Form API
 
   * A la soumission enregistrer les valeurs dans une variable persistante
-  `'premium_types'`
+  `'content_types'` de l'objet `premium.settings`
   * Attention, il faut désinstaller et réinstaller votre module pour que Drupal
-  connaisse votre configuration
+  connaisse votre configuration si vous déclarez un fichier dans config/install
 
 .fx: tp
 
@@ -1117,6 +1095,16 @@ formulaires de création ou de modification de nœud.
 ## Formulaire de configuration
 
   * Utiliser ConfigFormBase
+
+--------------------------------------------------------------------------------
+
+## Une autocomplétion rapide
+
+    !php
+    $form['my_key'] = [
+      '#type' => 'entity_autocomplete',
+      '#target_type' => 'user',
+    ];
 
 --------------------------------------------------------------------------------
 

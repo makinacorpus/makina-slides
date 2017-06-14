@@ -2897,29 +2897,18 @@ formulaires de création ou de modification de nœud.</p>
       
       <!-- slide source: drupal/5-dev-drupal8.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code">
+        <div class="slide tp">
           <div class="inner">
             
-            <header><h2>Déclaration de la configuration</h2></header>
+            <header><h2>TP : Form API</h2></header>
             
             
             <section><ul>
-<li>/config/install/mon_module.settings.yml -&gt; initialisation à l'installation</li>
-<li>/config/optionnal/module1.type1.name1.yml -&gt; si module1 est activé</li>
-<li>/config/schema/mon_module.schema.yml -&gt; schéma de la configuration de votre
-  module</li>
+<li>A la soumission enregistrer les valeurs dans une variable persistante
+  <code>'content_types'</code> de l'objet <code>premium.settings</code></li>
+<li>Attention, il faut désinstaller et réinstaller votre module pour que Drupal
+  connaisse votre configuration si vous déclarez un fichier dans config/install</li>
 </ul>
-<h2>Exemple de fichier de schema</h2>
-<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">mon_module.settings</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">config_object</span>
-  <span class="l l-Scalar l-Scalar-Plain">mapping</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">settings_1</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
-      <span class="l l-Scalar l-Scalar-Plain">label</span><span class="p p-Indicator">:</span> <span class="s">&#39;Settings</span><span class="nv"> </span><span class="s">1&#39;</span>
-    <span class="l l-Scalar l-Scalar-Plain">settings_2</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
-      <span class="l l-Scalar l-Scalar-Plain">label</span><span class="p p-Indicator">:</span> <span class="s">&#39;Settings</span><span class="nv"> </span><span class="s">2&#39;</span>
-</pre></div>
 </section>
             
           </div>
@@ -2937,42 +2926,6 @@ formulaires de création ou de modification de nœud.</p>
             
             <aside class="page_number">
               73/141
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: drupal/5-dev-drupal8.md -->
-      <div class="slide-wrapper">
-        <div class="slide tp">
-          <div class="inner">
-            
-            <header><h2>TP : Form API</h2></header>
-            
-            
-            <section><ul>
-<li>A la soumission enregistrer les valeurs dans une variable persistante
-  <code>'premium_types'</code></li>
-<li>Attention, il faut désinstaller et réinstaller votre module pour que Drupal
-  connaisse votre configuration</li>
-</ul>
-</section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="drupal/5-dev-drupal8.md">drupal/5-dev-drupal8.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              74/141
             </aside>
           </footer>
         </div>
@@ -3006,7 +2959,7 @@ formulaires de création ou de modification de nœud.</p>
             </aside>
             
             <aside class="page_number">
-              75/141
+              74/141
             </aside>
           </footer>
         </div>
@@ -3023,6 +2976,41 @@ formulaires de création ou de modification de nœud.</p>
             <section><ul>
 <li>Utiliser ConfigFormBase</li>
 </ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="drupal/5-dev-drupal8.md">drupal/5-dev-drupal8.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              75/141
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: drupal/5-dev-drupal8.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Une autocomplétion rapide</h2></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="nv">$form</span><span class="p">[</span><span class="s1">&#39;my_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;#type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;entity_autocomplete&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;#target_type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span>
+<span class="p">];</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -5986,7 +5974,7 @@ render() dans le template.</p>
         </tr>
         
         <tr id="toc-row-73" class="sub">
-          <th><a href="#slide73">Déclaration de la configuration</a></th>
+          <th><a href="#slide73">TP : Form API</a></th>
           <td><a href="#slide73">73</a></td>
         </tr>
         
@@ -5996,12 +5984,12 @@ render() dans le template.</p>
         </tr>
         
         <tr id="toc-row-75" class="sub">
-          <th><a href="#slide75">TP : Form API</a></th>
+          <th><a href="#slide75">Formulaire de configuration</a></th>
           <td><a href="#slide75">75</a></td>
         </tr>
         
         <tr id="toc-row-76" class="sub">
-          <th><a href="#slide76">Formulaire de configuration</a></th>
+          <th><a href="#slide76">Une autocomplétion rapide</a></th>
           <td><a href="#slide76">76</a></td>
         </tr>
         
