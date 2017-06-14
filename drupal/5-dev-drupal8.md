@@ -1590,7 +1590,7 @@ Ajouter une classe à l'image et créer un fichier CSS:
       float: right;
     }
 
-L'ajouter lorsqu'un noœud premium est affiché.
+L'ajouter lorsqu'un nœud premium est affiché.
 
 .fx: tp
 
