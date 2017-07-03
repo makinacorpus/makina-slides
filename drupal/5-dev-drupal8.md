@@ -138,6 +138,7 @@
   * "composer install"
   * composer.lock
   * Contient un autoloader
+  * Pour les performances : <https://github.com/hirak/prestissimo>
 
 <pre><code>
   curl -sS https://getcomposer.org/installer | php
