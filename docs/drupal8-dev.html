@@ -1500,10 +1500,13 @@ sous-repertoire <code>custom</code></p>
   <span class="k">public</span> <span class="k">function</span> <span class="nf">build</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;#markup&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,);</span>
   <span class="p">}</span>
-<span class="p">}</span>
 
-<span class="c1">// Altération</span>
-<span class="k">function</span> <span class="nf">hook_block_view_BLOCK_ID_alter</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$build</span><span class="p">,</span> <span class="nv">$block</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">blockAccess</span><span class="p">(</span><span class="nx">AccountInterface</span> <span class="nv">$account</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">blockForm</span><span class="p">(</span><span class="nv">$form</span><span class="p">,</span> <span class="nx">FormStateInterface</span> <span class="nv">$form_state</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">blockSubmit</span><span class="p">(</span><span class="nv">$form</span><span class="p">,</span> <span class="nx">FormStateInterface</span> <span class="nv">$form_state</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </section>
             

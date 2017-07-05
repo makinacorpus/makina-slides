@@ -502,10 +502,13 @@ fichier src/Plugin/Block/TestBlock.php
       public function build() {
         return array('#markup' => '',);
       }
-    }
 
-    // Altération
-    function hook_block_view_BLOCK_ID_alter(&$build, $block) {}
+      public function blockAccess(AccountInterface $account) { }
+
+      public function blockForm($form, FormStateInterface $form_state) { }
+
+      public function blockSubmit($form, FormStateInterface $form_state) { }
+    }
 
 --------------------------------------------------------------------------------
 
