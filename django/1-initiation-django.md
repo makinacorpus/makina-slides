@@ -8,9 +8,10 @@
 Experts en logiciels libres, cartographie et analyse de données, nous concevons des applications métiers innovantes.
 
 Nos valeurs :
-* Les logiciels libres et les données ouvertes
-* L'agilité
-* Le développement durable
+
+  * Les logiciels libres et les données ouvertes
+  * L'agilité
+  * Le développement durable
 
 ## Le formateur
 
@@ -425,10 +426,10 @@ En somme, une vue se résume à déclarer une url :
 
     !python
     # books/urls.py
-    from django.conf.urls import patterns, include, url
+    from django.conf.urls import include, url
     import books.views
     urlpatterns = [
-        url(r'^ma-vue$', book.views.ma_vue),
+        url(r'^ma-vue$', books.views.ma_vue),
     ]
 
 et retourner un contenu en fonction d'une requête
@@ -676,7 +677,7 @@ pas obligatoire mais permet de classer les vues afin d'éviter les conflits, par
 
     !python
     # books/urls.py
-    from django.conf.urls import patterns, include, url
+    from django.conf.urls import include, url
     urlpatterns = [
         url(r'^book_list$', books.views.book_list, name='book_list'),
     ]
@@ -705,7 +706,7 @@ Cette réponse peut être une page HTML, un document XML, une redirection, une e
 
 Ces vues sont généralement écrites dans le fichier ``views.py`` de l'application.
 
-### Un exemple tiré de la documention Django
+### Un exemple tiré de la documentation Django
 
     !python
     # some_app/views.py
@@ -937,7 +938,7 @@ Le module *URLconf* est un fichier ``urls.py`` contenant une variable ``urlpatte
 
     !python
     # library/urls.py
-    from django.conf.urls import patterns, url
+    from django.conf.urls import url
     urlpatterns = [
         url(r'^myview$', myapp.views.my_view, name='my_view'),
         ...
@@ -951,7 +952,7 @@ Souvent, l'*URLconf* racine inclura les modules URLconf de chaque application :
 
     !python
     # urls.py
-    from django.conf.urls import patterns, url
+    from django.conf.urls import url
     urlpatterns = [
         url(r'^myapp/', include('myapp.urls', namespace='myapp')),
         ...
@@ -992,25 +993,27 @@ l'url est appelée (par exemple dans un `<a href>`).
     !python
     # project/urls.py
     urlpatterns = [
-        url(r'^book/', include('book.urls', namespace='book')),
+        url(r'^books/', include('books.urls', namespace='books')),
     ]
 
-    # book/urls.py
+### books/urls.py
+
+    !python
     urlpatterns = [
-        url(r'^list$', book.views.list, name='list'),
-        url(r'^edit/(?P<pk>\d+)$', book.views.edit, name='edit'),
+        url(r'^list$', books.views.list, name='list'),
+        url(r'^edit/(?P<pk>\d+)$', books.views.edit, name='edit'),
     ]
 
 Dans un template:
 
     !html+django
-    <a href="{% url 'book:list' %}">Liste des livres</a>
+    <a href="{% url 'books:list' %}">Liste des livres</a>
 
 Dans du code python :
 
     !python
     from django.urls import reverse
-    return HttpResponseRedirect(reverse('book:edit', pk=12))
+    return HttpResponseRedirect(reverse('books:edit', pk=12))
 
 
 --------------------------------------------------------------------------------
@@ -1253,7 +1256,7 @@ Un livre est associé à un seul code barre, un code barre correspond à un seul
 
 Ici l'attendu est 
 
-* un nouveau modèle pour les lsites
+* un nouveau modèle pour les listes
 * un ManyToManyField entre liste et utilisateurs
 
 --------------------------------------------------------------------------------
@@ -1283,8 +1286,8 @@ Documentation <https://docs.djangoproject.com/fr/1.10/ref/databases/>
   * Fait correspondre une classe Python à une table SQL
   * Fait correspondre un objet python Python, instance de cette classe, à un enregistrement de cette table SQL
   * Il y a donc juste des classes et objets python à manipuler, aucun SQL à écrire, que ce soit : 
-    * Pour créer et modiger les tables
-    * Pour créer et modiger les données
+    * Pour créer et modifier les tables
+    * Pour créer et modifier les données
     * Pour interroger la base
   * Facilite la gestion des relations entre modèles (jointures)
   * A sa propre "opinion", nécessite souvent des optimisations
@@ -1335,7 +1338,7 @@ possède un ``Manager`` par défaut accessible via la propriété ``objects``.
 ### Qu'est ce qu'un ``Queryset`` ?
 
 Un ``Queryset`` représente une collection d'objets provenant de la base de 
-données. Cette collection peut être filtrée, limitée, ordonnée, ... grâce à 
+données. Cette collection peut être filtrée, limitée, ordonnée, … grâce à
 des méthodes qui correspondent à des clauses SQL.
 
 A partir d'un queryset il est possible d'obtenir un autre queryset plus spécialisé.
@@ -1369,7 +1372,7 @@ Les méthodes de filtrage principalement utilisées sont ``filter`` et ``exclude
     
 ---------
 
-## ORM - Fitrage
+## ORM - Filtrage
 
   * Les paramètres nommés sont le nom du champ et la valeur
   * On peut ajouter derrière le nom du champ deux undescores et un lookup
