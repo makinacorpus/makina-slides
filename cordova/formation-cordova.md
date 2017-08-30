@@ -1,7 +1,6 @@
 # Développer des applications mobiles avec Phonegap
 ## Éric Bréhault
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -45,7 +44,6 @@
 
 # Introduction
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -53,9 +51,9 @@
 
 - **app** : binaire éxécuté par l'OS du téléphone
 - **web app** : application éxécutée dans le navigateur du téléphone
+- **progressive web app** : site web qui est reconnu comme une app
 - **site mobile** : site web adapté pour l'utilisation depuis un téléphone
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -64,7 +62,6 @@
 - **native** : compilée avec un SDK pour l'OS du téléphone
 - **hybride** : développée avec des technologies web et packagée pour l'OS du téléphone
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -87,7 +84,6 @@
 - Cordova utilise le navigateur du mobile pour l'afficher,
 - le même code marchera sur tous les OS.
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -97,7 +93,6 @@
 - les plugins sont développés en natif pour chaque OS,
 - on y accède en Javascript.
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -109,7 +104,6 @@
 - Contacts : gestion des contacts de l’appareil mobile
 - Device : récupération d’informations sur l’appareil lui-même (système - d’exploitation, nom, etc.)
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -121,7 +115,6 @@
 - File : gestion de fichiers
 - File Transfer : téléchargement et upload de fichiers
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -133,7 +126,6 @@
 - Media : lecture audio
 - Media Capture : capture audio, vidéo et photo
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -144,13 +136,11 @@
 - Statusbar : gestion d’état en haut de l’écran
 - Vibration : gestion du vibreur
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Installation / premiers pas
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -160,7 +150,6 @@
 - NodeJS
 - Android SDK Manager
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -170,7 +159,6 @@
     $ npm install --global cordova
     $ npm install --global plugman
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -181,7 +169,6 @@
         com.makinacorpus.maSuperApp MaSuperApp
     $ cordova platform add android
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -195,7 +182,6 @@ Dans index.html, ajouter:
     !html
     <script src="cordova.js"></script>
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -205,7 +191,6 @@ Dans index.html, ajouter:
     $ cordova build
     $ cordova run
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -214,7 +199,6 @@ Dans index.html, ajouter:
 - VM sous Android
 - émulateurs
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -230,7 +214,6 @@ ou
     !console
     $ cordova plugin add cordova-plugin-camera
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -243,7 +226,6 @@ Débugging système:
     !console
     $ adb logcat
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -251,7 +233,6 @@ Débugging système:
 
 Créer une app Android avec une page d'accueil affichant un message de bienvenue.
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -265,7 +246,6 @@ Pas de `onload`, mais:
 
 Aucun plugin ne fonctionnera avant.
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -280,7 +260,6 @@ En général, les plugins sont exposés via l'objet global `navigator`:
     navigator.camera.getPicture(
         success, error, options);
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -289,13 +268,11 @@ En général, les plugins sont exposés via l'objet global `navigator`:
 Créer une app Android avec un bouton qui fait vibrer l'appareil et qui affiche
 le cap de la boussole.
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Bonnes pratiques
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -305,7 +282,6 @@ le cap de la boussole.
 - Backbone
 - React
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -314,7 +290,6 @@ le cap de la boussole.
 - Bootstrap
 - Foundation
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -323,27 +298,21 @@ le cap de la boussole.
 - LESS
 - SASS
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Utiliser un gestionnaire de dépendances
 
-- NPM
-- NPM + WebPack
-- NPM + Bower (bientôt obsolète)
+NPM
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Utiliser un builder
 
-- Grunt
-- Gulp
+- webpack
 - scripts NPM
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -351,17 +320,15 @@ le cap de la boussole.
 
 - Git
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Avoir des tests automatiques
 
 - Jasmine (ou autre),
-- CasperJS ou Selenium,
+- Protractor,
 - RobotFramework
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -369,13 +336,11 @@ le cap de la boussole.
 
 Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4.3.
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Ionic
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -386,7 +351,6 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
 - Angular
 - un framework CSS léger spécifique pour mobile
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -395,7 +359,6 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
     !console
     $ npm install -g ionic
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -404,9 +367,7 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
     !console
     $ ionic start myApp sidemenu
     $ ionic platform add android
-    $ npm install
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -415,7 +376,6 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
     !console
     $ ionic serve -l
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -424,13 +384,11 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
     !console
     $ ionic browser add crosswalk
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Les plugins
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -439,73 +397,108 @@ Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4
 - soumission directe: champ `<input type="file" capture="camera" />`
 - obtention du fichier en local: plugin camera
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
-# Système de fichier
+# Système de fichiers
 
 - `cordova-plugin-file`,
 - FileSystem HTML5,
 - url en `cdvfile://`,
-- ngCordova fournit `$cordovaFile`.
+- `@ionic-native/file` fournit un service prêt à l'emploi.
 
-.fx: extra-large
+
+    !console
+
+    $ ionic plugin add --save cordova-plugin-file
+
+    $ npm install --save @ionic-native/file
 
 --------------------------------------------------------------------------------
 
-# Système de fichier
+# Système de fichiers
+
+- dataDirectory: les fichiers gérés par l'app,
+- externalDataDirectory: les fichiers partagés entre les différentes apps.
+
+--------------------------------------------------------------------------------
+
+# Système de fichiers
 
     !javascript
-    $cordovaFile.writeFile(
-        cordova.file.dataDirectory,
-        "file.txt", "text", true)
-    .then(function (success) {
-        // success
-    }, function (error) {
-        // error
-    });
+    import { File } from '@ionic-native/file';
 
-.fx: extra-large
+    constructor(private file: File) { }
+
+    ...
+
+    this.file.checkDir(this.file.dataDirectory, 'mydir')
+    .then(
+        () => console.log('Directory exists')
+    ).catch(
+        err => console.log('Directory doesnt exist')
+    );
+
+
+--------------------------------------------------------------------------------
+
+# Système de fichiers
+
+    !console
+    $ adb shell
+    $ run-as com.mycompany.myapp
+    $ cd files
 
 --------------------------------------------------------------------------------
 
 # Zip
 
-https://github.com/MobileChromeApps/zip
-
+    !console
+    $ ionic plugin add --save cordova-plugin-zip
+    $ npm install --save @ionic-native/zip
     !javascript
-    zip.unzip(zipLocalPath, toPath, callback)
+    import { Zip } from '@ionic-native/zip';
 
-.fx: extra-large
+    constructor(private zip: Zip) { }
+
+    ...
+
+    this.zip.unzip('dossier/archive.zip', 'dossier/dest')
+    .then((result) => {
+        ...    
+    })
+
 
 --------------------------------------------------------------------------------
 
 # SQLite
 
 - WebSQL standard HTML5,
-- https://github.com/brodysoft/Cordova-SQLitePlugin : pas de limite de taille, pas de soucis au nettoyage de cache.
+- pas de limite de taille, pas de soucis au nettoyage de cache.
 
-.fx: extra-large
+    !console
+    $ cordova plugin add cordova-sqlite-storage --save
+    $ npm install --save @ionic/storage
+
 
 --------------------------------------------------------------------------------
 
 # Local notification
 
-- `https://github.com/katzer/cordova-plugin-local-notifications.git`,
-- ngCordova fournit `$cordovaLocalNotificationSource`.
+    !console
+    $ ionic plugin add --save de.appplant.cordova.plugin.local-notification
+    $ npm install --save @ionic-native/local-notifications
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Notification
 
-`https://github.com/Telerik-Verified-Plugins/PushNotification`
+- PhoneGap (phonegap-plugin-push + @ionic-native/push)
+- OneSignal (onesignal-cordova-plugin + @ionic-native/onesignal)
 
-Le backend doit pousser les notifications vers GCM et APN.
+Le backend doit pousser les notifications vers l'API choisie (ou directement vers GCM et APN).
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -525,7 +518,6 @@ ou:
     !html
     <a href="..." target="_system">
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -543,7 +535,6 @@ Autoriser l'accès à un backend
 
 # Les tests
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -555,7 +546,6 @@ Autoriser l'accès à un backend
         --save-dev
     $ bower install angular-mocks
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -613,7 +603,6 @@ Autoriser l'accès à un backend
     !console
     $ ./node_modules/karma/bin/karma start
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -629,7 +618,6 @@ ChromeDriver à ajouter dans le dossier bin:
 http://chromedriver.storage.googleapis.com
 /index.html?path=2.19/
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -687,19 +675,16 @@ http://chromedriver.storage.googleapis.com
     !console
     $ pybot scenarios.robot
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # Cas métier
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
 # La publication
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -708,7 +693,6 @@ http://chromedriver.storage.googleapis.com
     !console
     $ ionic resources
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -724,7 +708,6 @@ http://chromedriver.storage.googleapis.com
     keyPassword=your-key-password
     storePassword=your-store-password
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -733,7 +716,6 @@ http://chromedriver.storage.googleapis.com
     !console
     $ cordova build --release
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -743,7 +725,6 @@ http://chromedriver.storage.googleapis.com
 - rédiger la fiche de l'app,
 - uploader l'APK signé.
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -754,7 +735,6 @@ http://chromedriver.storage.googleapis.com
 - obtenir les différents certificats,
 - packager avec Xcode et uploader.
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -764,7 +744,6 @@ http://chromedriver.storage.googleapis.com
 - saisir manuellement la target version (5.1.1 alors que la valeur minimale proposée est 6.0),
 - puis Products / Archive pour produire l'archive.
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -772,7 +751,6 @@ http://chromedriver.storage.googleapis.com
 
 On doit valider régulièrement les notifications sur le compte AppleDev, sinon la publication est bloquée.
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------
 
@@ -782,6 +760,5 @@ On doit valider régulièrement les notifications sur le compte AppleDev, sinon 
 - ionic.io
 - Fastlane (pour iOS)
 
-.fx: extra-large
 
 --------------------------------------------------------------------------------

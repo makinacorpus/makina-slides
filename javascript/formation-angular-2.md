@@ -75,7 +75,7 @@ Accessoirement les extensions Chrome suivantes peuvent être utiles:
 Permet de générer un projet.
 
     !console
-    ng new myproject
+    ng new myproject # ET SI BESOIN --style=scss
     cd myproject
     ng serve
 
@@ -555,6 +555,146 @@ Note: comme on ne dispose pas d'un endpoint pour envoyer des mails, on va simple
 
 --------------------------------------------------------------------------------
 
+# Accèder au formulaire depuis le composant
+
+    !javascript
+    import { NgForm } from '@angular/forms';
+    ...
+        @ViewChild('f') form: NgForm;
+
+        ngOnInit() {
+          this.form.valueChanges.subscribe(v => console.log(v));
+        }
+
+--------------------------------------------------------------------------------
+
+# Debounce sur la saisie
+
+    !javascript
+    import { NgForm } from '@angular/forms';
+    ...
+        @ViewChild('f') form: NgForm;
+
+        ngOnInit() {
+          this.form.valueChanges
+            .debounceTime(1000)
+            .subscribe(v => console.log(v));
+        }
+
+--------------------------------------------------------------------------------
+
+# ViewChild
+
+ViewChild permet d'accèder aux composants contenus dans le composant courant.
+
+C'est un décorateur qui prend en paramètre soit une classe:
+
+    !javascript
+    @ViewChild(ContactComponent) contact: ContactComponent;
+
+soit une référence de template:
+
+    !javascript
+    @ViewChild('f') form: NgForm;
+
+--------------------------------------------------------------------------------
+
+# RxJS et les observables
+
+Faire un observable à partir d'une valeur simple:
+
+    !javascript
+    import { Observable } from 'rxjs/Observable';
+    import 'rxjs/add/observable/of';
+
+    Observable.of('Bonjour')
+
+--------------------------------------------------------------------------------
+
+# RxJS et les observables
+
+Combiner 2 observables:
+
+`forkJoin` renvoie les données dès qu'il a obtenu une réponse de chacun.
+
+`combineLatest` renvoie des données à partir du moment où il a obtenu au moins une réponse de chacun et à chaque nouvelle réponse d'un d'entre eux.
+
+
+    !javascript
+    import { Observable } from 'rxjs/Observable';
+    import 'rxjs/add/operator/map';
+    import 'rxjs/add/observable/of';
+    import 'rxjs/add/observable/forkJoin';
+
+    Observable.forkJoin(
+    observable1,
+    observable2
+    ).map(([result1, result2]) => ...)
+
+    Observable.combineLatest(
+    observable1,
+    observable2
+    ).subscribe(([result1, result2]) => ...)
+
+--------------------------------------------------------------------------------
+
+# RxJS et les observables
+
+Chaîner 2 observables: mergeMap (ou concatMap pour des événements répétables)
+
+    !javascript
+    return this.http.get(this.baseUrl + id + '/')
+      .map(res => {
+        this.status.next({ loading: false, error: null });
+        return res.json();
+      }).mergeMap(res => {
+        return Observable.forkJoin(
+          Observable.of(res),
+          this.http.get(res.abilities[0].ability.url).map(res2 => res2.json()));
+      });
+
+--------------------------------------------------------------------------------
+
+# RxJS et les subjects
+
+Les subjects sont des observables et des observateurs à la fois, on peut s'y abonner et leur envoyer des données.
+
+    !javascript
+    const subject = new Subject<number>();
+
+    subject.subscribe((number) => {
+        console.log(number);
+    });
+
+    subject.next(1);
+    subject.complete();
+
+--------------------------------------------------------------------------------
+
+# RxJS et les subjects
+
+BehaviorSubject renvoie la dernière valeur même si elle a été émise avant le subscribe.
+Il a forcément une valeur intiale.
+
+--------------------------------------------------------------------------------
+
+# RxJS et les subjects
+
+AsyncSubject ne garde que sa dernière valeur et l'émet à partir du moment où on l'arrête.
+
+    !javascript
+    protected vocabulary: AsyncSubject = new AsyncSubject();
+
+    constructor(private api: HTTPService) {
+        this.api.get('/vocabulary/')
+            .map((response: Response) => {
+                this.vocabulary.next(response.json());
+                this.vocabulary.complete();
+            });
+    }
+
+--------------------------------------------------------------------------------
+
 # 8 - Tester une app
 
 Par défaut, le CLI génère un fichier .spec.ts pour chaque composant.
@@ -662,16 +802,3 @@ Permet de faire tourner l'app Angular sur un serveur afin de servir la page dema
 - améliore le référencement.
 
 La page servie est ensuite ré-hydratée : le JS s'active et la suite de la navigation se fait en mode client-side.
-
---------------------------------------------------------------------------------
-
-# RxJS
-
-Observables, BehaviorSubject, etc
-
-Exemple avec :
-
-    import 'rxjs/add/operator/debounceTime';
-
-    @ViewChild('f') form
-    this.f.valueChanges.debounceTime().subscribe()

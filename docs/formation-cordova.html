@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Développer des applications mobiles avec Phonegap</title>
     <!-- Styles -->
-    <link rel="stylesheet" media="print" href="assets/theme/css/print.css">
-    <link rel="stylesheet" media="screen, projection" href="assets/theme/css/screen.css">
-    <link rel="stylesheet" href="assets/theme/css/pygments.css">
+    <link rel="stylesheet" media="print" href="http://makinacorpus.github.io/makina-slides/assets/theme/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="http://makinacorpus.github.io/makina-slides/assets/theme/css/screen.css">
+    <link rel="stylesheet" href="http://makinacorpus.github.io/makina-slides/assets/theme/css/pygments.css">
     
     <!-- /Styles -->
     <!-- Javascripts -->
-    <script type="text/javascript" src="assets/theme/js/slides.js"></script>
+    <script type="text/javascript" src="http://makinacorpus.github.io/makina-slides/assets/theme/js/slides.js"></script>
     
     <!-- /Javascripts -->
 </head>
@@ -28,14 +28,13 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Développer des applications mobiles avec Phonegap</h1></header>
             
             
-            <section><h2>Éric Bréhault</h2>
-</section>
+            <section><h2>Éric Bréhault</h2></section>
             
           </div>
           <div class="presenter_notes">
@@ -51,7 +50,7 @@
             </aside>
             
             <aside class="page_number">
-              1/69
+              1/71
             </aside>
           </footer>
         </div>
@@ -129,7 +128,7 @@
             </aside>
             
             <aside class="page_number">
-              2/69
+              2/71
             </aside>
           </footer>
         </div>
@@ -137,7 +136,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Introduction</h1></header>
@@ -157,7 +156,7 @@
             </aside>
             
             <aside class="page_number">
-              3/69
+              3/71
             </aside>
           </footer>
         </div>
@@ -165,7 +164,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>App / WebApp / site mobile</h1></header>
@@ -174,9 +173,9 @@
             <section><ul>
 <li><strong>app</strong> : binaire éxécuté par l'OS du téléphone</li>
 <li><strong>web app</strong> : application éxécutée dans le navigateur du téléphone</li>
+<li><strong>progressive web app</strong> : site web qui est reconnu comme une app</li>
 <li><strong>site mobile</strong> : site web adapté pour l'utilisation depuis un téléphone</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -192,7 +191,7 @@
             </aside>
             
             <aside class="page_number">
-              4/69
+              4/71
             </aside>
           </footer>
         </div>
@@ -200,7 +199,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Application hybride ou native</h1></header>
@@ -209,8 +208,7 @@
             <section><ul>
 <li><strong>native</strong> : compilée avec un SDK pour l'OS du téléphone</li>
 <li><strong>hybride</strong> : développée avec des technologies web et packagée pour l'OS du téléphone</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -226,7 +224,7 @@
             </aside>
             
             <aside class="page_number">
-              5/69
+              5/71
             </aside>
           </footer>
         </div>
@@ -269,7 +267,7 @@
             </aside>
             
             <aside class="page_number">
-              6/69
+              6/71
             </aside>
           </footer>
         </div>
@@ -277,7 +275,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Le principe</h1></header>
@@ -287,8 +285,7 @@
 <li>on construit une app en HTML/JS,</li>
 <li>Cordova utilise le navigateur du mobile pour l'afficher,</li>
 <li>le même code marchera sur tous les OS.</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -304,7 +301,7 @@
             </aside>
             
             <aside class="page_number">
-              7/69
+              7/71
             </aside>
           </footer>
         </div>
@@ -312,7 +309,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Le principe</h1></header>
@@ -322,8 +319,7 @@
 <li>en plus des fonctionnalités de base, on a accès à des plugins,</li>
 <li>les plugins sont développés en natif pour chaque OS,</li>
 <li>on y accède en Javascript.</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -339,7 +335,7 @@
             </aside>
             
             <aside class="page_number">
-              8/69
+              8/71
             </aside>
           </footer>
         </div>
@@ -347,7 +343,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Les plugins officiels</h1></header>
@@ -359,8 +355,7 @@
 <li>Console : surcharge du console.log JavaScript</li>
 <li>Contacts : gestion des contacts de l’appareil mobile</li>
 <li>Device : récupération d’informations sur l’appareil lui-même (système - d’exploitation, nom, etc.)</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -376,7 +371,7 @@
             </aside>
             
             <aside class="page_number">
-              9/69
+              9/71
             </aside>
           </footer>
         </div>
@@ -384,7 +379,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Les plugins officiels</h1></header>
@@ -396,8 +391,7 @@
 <li>Dialogs : utilisation des fenêtres d’informations natives</li>
 <li>File : gestion de fichiers</li>
 <li>File Transfer : téléchargement et upload de fichiers</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -413,7 +407,7 @@
             </aside>
             
             <aside class="page_number">
-              10/69
+              10/71
             </aside>
           </footer>
         </div>
@@ -421,7 +415,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Les plugins officiels</h1></header>
@@ -433,8 +427,7 @@
 <li>In-App Browser : affichage de sites web directement dans l’application</li>
 <li>Media : lecture audio</li>
 <li>Media Capture : capture audio, vidéo et photo</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -450,7 +443,7 @@
             </aside>
             
             <aside class="page_number">
-              11/69
+              11/71
             </aside>
           </footer>
         </div>
@@ -458,7 +451,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Les plugins officiels</h1></header>
@@ -469,8 +462,7 @@
 <li>SplashScreen : gestion de l’écran de chargement</li>
 <li>Statusbar : gestion d’état en haut de l’écran</li>
 <li>Vibration : gestion du vibreur</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -486,7 +478,7 @@
             </aside>
             
             <aside class="page_number">
-              12/69
+              12/71
             </aside>
           </footer>
         </div>
@@ -494,7 +486,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Installation / premiers pas</h1></header>
@@ -514,7 +506,7 @@
             </aside>
             
             <aside class="page_number">
-              13/69
+              13/71
             </aside>
           </footer>
         </div>
@@ -522,7 +514,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Prérequis</h1></header>
@@ -532,8 +524,7 @@
 <li>Java</li>
 <li>NodeJS</li>
 <li>Android SDK Manager</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -549,7 +540,7 @@
             </aside>
             
             <aside class="page_number">
-              14/69
+              14/71
             </aside>
           </footer>
         </div>
@@ -557,16 +548,15 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Installation</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> npm install --global cordova
+            <section><div class="highlight"><pre><span class="gp">$</span> npm install --global cordova
 <span class="gp">$</span> npm install --global plugman
 </pre></div>
-
 </section>
             
           </div>
@@ -583,7 +573,7 @@
             </aside>
             
             <aside class="page_number">
-              15/69
+              15/71
             </aside>
           </footer>
         </div>
@@ -591,17 +581,16 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Générer une app</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> cordova create monApp
+            <section><div class="highlight"><pre><span class="gp">$</span> cordova create monApp
 <span class="go">    com.makinacorpus.maSuperApp MaSuperApp</span>
 <span class="gp">$</span> cordova platform add android
 </pre></div>
-
 </section>
             
           </div>
@@ -618,7 +607,7 @@
             </aside>
             
             <aside class="page_number">
-              16/69
+              16/71
             </aside>
           </footer>
         </div>
@@ -626,7 +615,7 @@
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Coder le contenu de l'app</h1></header>
@@ -635,9 +624,8 @@
             <section><p>Faire un développement web frontend classique.
 Mettre le code dans le dossier monApp/www.</p>
 <p>Dans index.html, ajouter:</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;cordova.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;cordova.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
-
 </section>
             
           </div>
@@ -654,7 +642,7 @@ Mettre le code dans le dossier monApp/www.</p>
             </aside>
             
             <aside class="page_number">
-              17/69
+              17/71
             </aside>
           </footer>
         </div>
@@ -662,16 +650,15 @@ Mettre le code dans le dossier monApp/www.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Compiler ou éxécuter</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> cordova build
+            <section><div class="highlight"><pre><span class="gp">$</span> cordova build
 <span class="gp">$</span> cordova run
 </pre></div>
-
 </section>
             
           </div>
@@ -688,7 +675,7 @@ Mettre le code dans le dossier monApp/www.</p>
             </aside>
             
             <aside class="page_number">
-              18/69
+              18/71
             </aside>
           </footer>
         </div>
@@ -696,7 +683,7 @@ Mettre le code dans le dossier monApp/www.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Lancer sans terminal</h1></header>
@@ -705,8 +692,7 @@ Mettre le code dans le dossier monApp/www.</p>
             <section><ul>
 <li>VM sous Android</li>
 <li>émulateurs</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -722,7 +708,7 @@ Mettre le code dans le dossier monApp/www.</p>
             </aside>
             
             <aside class="page_number">
-              19/69
+              19/71
             </aside>
           </footer>
         </div>
@@ -730,21 +716,20 @@ Mettre le code dans le dossier monApp/www.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Ajouter un plugin</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> plugman install --platform android
+            <section><div class="highlight"><pre><span class="gp">$</span> plugman install --platform android
 <span class="go">    --project .</span>
 <span class="go">    --plugin cordova-plugin-camera</span>
 </pre></div>
 
 <p>ou</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> cordova plugin add cordova-plugin-camera
+<div class="highlight"><pre><span class="gp">$</span> cordova plugin add cordova-plugin-camera
 </pre></div>
-
 </section>
             
           </div>
@@ -761,7 +746,7 @@ Mettre le code dans le dossier monApp/www.</p>
             </aside>
             
             <aside class="page_number">
-              20/69
+              20/71
             </aside>
           </footer>
         </div>
@@ -769,7 +754,7 @@ Mettre le code dans le dossier monApp/www.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Débugger</h1></header>
@@ -777,9 +762,8 @@ Mettre le code dans le dossier monApp/www.</p>
             
             <section><p>Débugging front: <strong>inspecteur Chrome</strong> chrome://inspect/#devices</p>
 <p>Débugging système:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> adb logcat
+<div class="highlight"><pre><span class="gp">$</span> adb logcat
 </pre></div>
-
 </section>
             
           </div>
@@ -796,7 +780,7 @@ Mettre le code dans le dossier monApp/www.</p>
             </aside>
             
             <aside class="page_number">
-              21/69
+              21/71
             </aside>
           </footer>
         </div>
@@ -804,14 +788,13 @@ Mettre le code dans le dossier monApp/www.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Exercice</h1></header>
             
             
-            <section><p>Créer une app Android avec une page d'accueil affichant un message de bienvenue.</p>
-</section>
+            <section><p>Créer une app Android avec une page d'accueil affichant un message de bienvenue.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -827,7 +810,7 @@ Mettre le code dans le dossier monApp/www.</p>
             </aside>
             
             <aside class="page_number">
-              22/69
+              22/71
             </aside>
           </footer>
         </div>
@@ -835,19 +818,18 @@ Mettre le code dans le dossier monApp/www.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>JavaScript</h1></header>
             
             
             <section><p>Pas de <code>onload</code>, mais:</p>
-<div class="highlight"><pre><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<div class="highlight"><pre><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
     <span class="s2">&quot;deviceready&quot;</span><span class="p">,</span> <span class="nx">callback</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
 </pre></div>
 
-<p>Aucun plugin ne fonctionnera avant.</p>
-</section>
+<p>Aucun plugin ne fonctionnera avant.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -863,7 +845,7 @@ Mettre le code dans le dossier monApp/www.</p>
             </aside>
             
             <aside class="page_number">
-              23/69
+              23/71
             </aside>
           </footer>
         </div>
@@ -871,20 +853,19 @@ Mettre le code dans le dossier monApp/www.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>JavaScript, accès aux plugins</h1></header>
             
             
             <section><p>En général, les plugins sont exposés via l'objet global <code>navigator</code>:</p>
-<div class="highlight"><pre><span></span><span class="nx">navigator</span><span class="p">.</span><span class="nx">vibrate</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<div class="highlight"><pre><span class="nx">navigator</span><span class="p">.</span><span class="nx">vibrate</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 <span class="nx">navigator</span><span class="p">.</span><span class="nx">compass</span><span class="p">.</span><span class="nx">getCurrentHeading</span><span class="p">(</span>
     <span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
 <span class="nx">navigator</span><span class="p">.</span><span class="nx">camera</span><span class="p">.</span><span class="nx">getPicture</span><span class="p">(</span>
     <span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
 </pre></div>
-
 </section>
             
           </div>
@@ -901,7 +882,7 @@ Mettre le code dans le dossier monApp/www.</p>
             </aside>
             
             <aside class="page_number">
-              24/69
+              24/71
             </aside>
           </footer>
         </div>
@@ -909,15 +890,14 @@ Mettre le code dans le dossier monApp/www.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Exercice</h1></header>
             
             
             <section><p>Créer une app Android avec un bouton qui fait vibrer l'appareil et qui affiche
-le cap de la boussole.</p>
-</section>
+le cap de la boussole.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -933,7 +913,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              25/69
+              25/71
             </aside>
           </footer>
         </div>
@@ -941,7 +921,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Bonnes pratiques</h1></header>
@@ -961,7 +941,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              26/69
+              26/71
             </aside>
           </footer>
         </div>
@@ -969,7 +949,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Utiliser un framework JS</h1></header>
@@ -979,8 +959,7 @@ le cap de la boussole.</p>
 <li>Angular</li>
 <li>Backbone</li>
 <li>React</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -996,7 +975,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              27/69
+              27/71
             </aside>
           </footer>
         </div>
@@ -1004,7 +983,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Utiliser un framework CSS</h1></header>
@@ -1013,8 +992,7 @@ le cap de la boussole.</p>
             <section><ul>
 <li>Bootstrap</li>
 <li>Foundation</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1030,7 +1008,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              28/69
+              28/71
             </aside>
           </footer>
         </div>
@@ -1038,7 +1016,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Utiliser un compilateur CSS</h1></header>
@@ -1047,8 +1025,7 @@ le cap de la boussole.</p>
             <section><ul>
 <li>LESS</li>
 <li>SASS</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1064,7 +1041,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              29/69
+              29/71
             </aside>
           </footer>
         </div>
@@ -1072,18 +1049,13 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Utiliser un gestionnaire de dépendances</h1></header>
             
             
-            <section><ul>
-<li>NPM</li>
-<li>NPM + WebPack</li>
-<li>NPM + Bower (bientôt obsolète)</li>
-</ul>
-</section>
+            <section><p>NPM</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1099,7 +1071,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              30/69
+              30/71
             </aside>
           </footer>
         </div>
@@ -1107,18 +1079,16 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Utiliser un builder</h1></header>
             
             
             <section><ul>
-<li>Grunt</li>
-<li>Gulp</li>
+<li>webpack</li>
 <li>scripts NPM</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1134,7 +1104,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              31/69
+              31/71
             </aside>
           </footer>
         </div>
@@ -1142,7 +1112,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Utiliser un gestionnaire de sources</h1></header>
@@ -1150,8 +1120,7 @@ le cap de la boussole.</p>
             
             <section><ul>
 <li>Git</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1167,7 +1136,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              32/69
+              32/71
             </aside>
           </footer>
         </div>
@@ -1175,7 +1144,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Avoir des tests automatiques</h1></header>
@@ -1183,10 +1152,9 @@ le cap de la boussole.</p>
             
             <section><ul>
 <li>Jasmine (ou autre),</li>
-<li>CasperJS ou Selenium,</li>
+<li>Protractor,</li>
 <li>RobotFramework</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1202,7 +1170,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              33/69
+              33/71
             </aside>
           </footer>
         </div>
@@ -1210,14 +1178,13 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Crosswalk</h1></header>
             
             
-            <section><p>Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4.3.</p>
-</section>
+            <section><p>Embarque Chrome dans l'app pour éviter le navigateur natif sur Android 4.0 à 4.3.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1233,7 +1200,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              34/69
+              34/71
             </aside>
           </footer>
         </div>
@@ -1241,7 +1208,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Ionic</h1></header>
@@ -1261,7 +1228,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              35/69
+              35/71
             </aside>
           </footer>
         </div>
@@ -1269,7 +1236,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Ionic</h1></header>
@@ -1280,8 +1247,7 @@ le cap de la boussole.</p>
 <li>des optimisations</li>
 <li>Angular</li>
 <li>un framework CSS léger spécifique pour mobile</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1297,7 +1263,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              36/69
+              36/71
             </aside>
           </footer>
         </div>
@@ -1305,15 +1271,14 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Ionic: installation</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> npm install -g ionic
+            <section><div class="highlight"><pre><span class="gp">$</span> npm install -g ionic
 </pre></div>
-
 </section>
             
           </div>
@@ -1330,7 +1295,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              37/69
+              37/71
             </aside>
           </footer>
         </div>
@@ -1338,17 +1303,15 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Ionic: créer une app</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> ionic start myApp sidemenu
+            <section><div class="highlight"><pre><span class="gp">$</span> ionic start myApp sidemenu
 <span class="gp">$</span> ionic platform add android
-<span class="gp">$</span> npm install
 </pre></div>
-
 </section>
             
           </div>
@@ -1365,7 +1328,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              38/69
+              38/71
             </aside>
           </footer>
         </div>
@@ -1373,15 +1336,14 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Ionic: lancer en local</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> ionic serve -l
+            <section><div class="highlight"><pre><span class="gp">$</span> ionic serve -l
 </pre></div>
-
 </section>
             
           </div>
@@ -1398,7 +1360,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              39/69
+              39/71
             </aside>
           </footer>
         </div>
@@ -1406,15 +1368,14 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Crosswalk sur ionic</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> ionic browser add crosswalk
+            <section><div class="highlight"><pre><span class="gp">$</span> ionic browser add crosswalk
 </pre></div>
-
 </section>
             
           </div>
@@ -1431,7 +1392,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              40/69
+              40/71
             </aside>
           </footer>
         </div>
@@ -1439,7 +1400,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Les plugins</h1></header>
@@ -1459,7 +1420,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              41/69
+              41/71
             </aside>
           </footer>
         </div>
@@ -1467,7 +1428,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Capture d'image</h1></header>
@@ -1476,8 +1437,7 @@ le cap de la boussole.</p>
             <section><ul>
 <li>soumission directe: champ <code>&lt;input type="file" capture="camera" /&gt;</code></li>
 <li>obtention du fichier en local: plugin camera</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1493,7 +1453,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              42/69
+              42/71
             </aside>
           </footer>
         </div>
@@ -1501,19 +1461,23 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
-            <header><h1>Système de fichier</h1></header>
+            <header><h1>Système de fichiers</h1></header>
             
             
             <section><ul>
 <li><code>cordova-plugin-file</code>,</li>
 <li>FileSystem HTML5,</li>
 <li>url en <code>cdvfile://</code>,</li>
-<li>ngCordova fournit <code>$cordovaFile</code>.</li>
-</ul>
-</section>
+<li>
+<p><code>@ionic-native/file</code> fournit un service prêt à l'emploi.</p>
+<p>!console</p>
+<p>$ ionic plugin add --save cordova-plugin-file</p>
+<p>$ npm install --save @ionic-native/file</p>
+</li>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1529,7 +1493,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              43/69
+              43/71
             </aside>
           </footer>
         </div>
@@ -1537,22 +1501,58 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide">
           <div class="inner">
             
-            <header><h1>Système de fichier</h1></header>
+            <header><h1>Système de fichiers</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="nx">$cordovaFile</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span>
-    <span class="nx">cordova</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">dataDirectory</span><span class="p">,</span>
-    <span class="s2">&quot;file.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// success</span>
-<span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// error</span>
-<span class="p">});</span>
-</pre></div>
+            <section><ul>
+<li>dataDirectory: les fichiers gérés par l'app,</li>
+<li>externalDataDirectory: les fichiers partagés entre les différentes apps.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              44/71
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Système de fichiers</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="kr">import</span> <span class="p">{</span> <span class="nx">File</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@ionic-native/file&#39;</span><span class="p">;</span>
 
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">file</span><span class="o">:</span> <span class="nx">File</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="p">...</span>
+
+<span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">checkDir</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">dataDirectory</span><span class="p">,</span> <span class="s1">&#39;mydir&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+    <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Directory exists&#39;</span><span class="p">)</span>
+<span class="p">).</span><span class="k">catch</span><span class="p">(</span>
+    <span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Directory doesnt exist&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
 </section>
             
           </div>
@@ -1569,7 +1569,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              44/69
+              45/71
             </aside>
           </footer>
         </div>
@@ -1577,16 +1577,60 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Système de fichiers</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="gp">$</span> adb shell
+<span class="gp">$</span> run-as com.mycompany.myapp
+<span class="gp">$</span> <span class="nb">cd </span>files
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="cordova/formation-cordova.md">cordova/formation-cordova.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              46/71
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: cordova/formation-cordova.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Zip</h1></header>
             
             
-            <section><p>https://github.com/MobileChromeApps/zip</p>
-<div class="highlight"><pre><span></span><span class="nx">zip</span><span class="p">.</span><span class="nx">unzip</span><span class="p">(</span><span class="nx">zipLocalPath</span><span class="p">,</span> <span class="nx">toPath</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span>
-</pre></div>
+            <section><div class="highlight"><pre><span class="gp">$</span> ionic plugin add --save cordova-plugin-zip
+<span class="gp">$</span> npm install --save @ionic-native/zip
+<span class="go">!javascript</span>
+<span class="go">import { Zip } from &#39;@ionic-native/zip&#39;;</span>
 
+<span class="go">constructor(private zip: Zip) { }</span>
+
+<span class="go">...</span>
+
+<span class="go">this.zip.unzip(&#39;dossier/archive.zip&#39;, &#39;dossier/dest&#39;)</span>
+<span class="go">.then((result) =&gt; {</span>
+<span class="go">    ...    </span>
+<span class="go">})</span>
+</pre></div>
 </section>
             
           </div>
@@ -1603,7 +1647,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              45/69
+              47/71
             </aside>
           </footer>
         </div>
@@ -1611,7 +1655,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>SQLite</h1></header>
@@ -1619,9 +1663,13 @@ le cap de la boussole.</p>
             
             <section><ul>
 <li>WebSQL standard HTML5,</li>
-<li>https://github.com/brodysoft/Cordova-SQLitePlugin : pas de limite de taille, pas de soucis au nettoyage de cache.</li>
-</ul>
-</section>
+<li>
+<p>pas de limite de taille, pas de soucis au nettoyage de cache.</p>
+<p>!console
+$ cordova plugin add cordova-sqlite-storage --save
+$ npm install --save @ionic/storage</p>
+</li>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1637,7 +1685,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              46/69
+              48/71
             </aside>
           </footer>
         </div>
@@ -1645,16 +1693,15 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Local notification</h1></header>
             
             
-            <section><ul>
-<li><code>https://github.com/katzer/cordova-plugin-local-notifications.git</code>,</li>
-<li>ngCordova fournit <code>$cordovaLocalNotificationSource</code>.</li>
-</ul>
+            <section><div class="highlight"><pre><span class="gp">$</span> ionic plugin add --save de.appplant.cordova.plugin.local-notification
+<span class="gp">$</span> npm install --save @ionic-native/local-notifications
+</pre></div>
 </section>
             
           </div>
@@ -1671,7 +1718,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              47/69
+              49/71
             </aside>
           </footer>
         </div>
@@ -1679,15 +1726,17 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Notification</h1></header>
             
             
-            <section><p><code>https://github.com/Telerik-Verified-Plugins/PushNotification</code></p>
-<p>Le backend doit pousser les notifications vers GCM et APN.</p>
-</section>
+            <section><ul>
+<li>PhoneGap (phonegap-plugin-push + @ionic-native/push)</li>
+<li>OneSignal (onesignal-cordova-plugin + @ionic-native/onesignal)</li>
+</ul>
+<p>Le backend doit pousser les notifications vers l'API choisie (ou directement vers GCM et APN).</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1703,7 +1752,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              48/69
+              50/71
             </aside>
           </footer>
         </div>
@@ -1711,24 +1760,23 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>InAppBrowser</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> cordova plugin add
+            <section><div class="highlight"><pre><span class="gp">$</span> cordova plugin add
 <span class="go">    cordova-plugin-inappbrowser</span>
 </pre></div>
 
 <p>et on peut ouvrir des pages externes avec:</p>
-<div class="highlight"><pre><span></span><span class="nx">cordova</span><span class="p">.</span><span class="nx">InAppBrowser</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="s2">&quot;_system&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span class="nx">cordova</span><span class="p">.</span><span class="nx">InAppBrowser</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="s2">&quot;_system&quot;</span><span class="p">);</span>
 </pre></div>
 
 <p>ou:</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;...&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_system&quot;</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;...&quot;</span> <span class="na">target=</span><span class="s">&quot;_system&quot;</span><span class="nt">&gt;</span>
 </pre></div>
-
 </section>
             
           </div>
@@ -1745,7 +1793,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              49/69
+              51/71
             </aside>
           </footer>
         </div>
@@ -1760,7 +1808,7 @@ le cap de la boussole.</p>
             
             
             <section><p>Autoriser l'accès à un backend</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;access</span> <span class="na">origin=</span><span class="s">&quot;*&quot;</span> <span class="nt">/&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;access</span> <span class="na">origin=</span><span class="s">&quot;*&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;allow-intent</span> <span class="na">href=</span><span class="s">&quot;*&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;allow-navigation</span> <span class="na">href=</span><span class="s">&quot;*&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Security-Policy&quot;</span> <span class="na">content=</span><span class="s">&quot;default-src *; style-src &#39;self&#39; &#39;unsafe-inline&#39;; script-src &#39;self&#39; &#39;unsafe-inline&#39; &#39;unsafe-eval&#39;&quot;</span> <span class="nt">/&gt;</span>
@@ -1781,7 +1829,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              50/69
+              52/71
             </aside>
           </footer>
         </div>
@@ -1789,7 +1837,7 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Les tests</h1></header>
@@ -1809,7 +1857,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              51/69
+              53/71
             </aside>
           </footer>
         </div>
@@ -1817,18 +1865,17 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Tests unitaires</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> npm install jasmine-core karma
+            <section><div class="highlight"><pre><span class="gp">$</span> npm install jasmine-core karma
 <span class="go">    karma-chrome-launcher karma-jasmine</span>
 <span class="go">    --save-dev</span>
 <span class="gp">$</span> bower install angular-mocks
 </pre></div>
-
 </section>
             
           </div>
@@ -1845,7 +1892,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              52/69
+              54/71
             </aside>
           </footer>
         </div>
@@ -1859,7 +1906,7 @@ le cap de la boussole.</p>
             <header><h1>Tests unitaires - karma.conf.js</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">){</span>
+            <section><div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">){</span>
   <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
     <span class="nx">basePath</span> <span class="o">:</span> <span class="s1">&#39;./&#39;</span><span class="p">,</span>
     <span class="nx">files</span> <span class="o">:</span> <span class="p">[</span>
@@ -1895,7 +1942,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              53/69
+              55/71
             </aside>
           </footer>
         </div>
@@ -1909,7 +1956,7 @@ le cap de la boussole.</p>
             <header><h1>Tests unitaires - app_test.js</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;MainCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <section><div class="highlight"><pre><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;MainCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">controller</span><span class="p">,</span> <span class="nx">scope</span><span class="p">;</span>
 
     <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;starter&#39;</span><span class="p">));</span>
@@ -1944,7 +1991,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              54/69
+              56/71
             </aside>
           </footer>
         </div>
@@ -1952,15 +1999,14 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Tests unitaires</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> ./node_modules/karma/bin/karma start
+            <section><div class="highlight"><pre><span class="gp">$</span> ./node_modules/karma/bin/karma start
 </pre></div>
-
 </section>
             
           </div>
@@ -1977,7 +2023,7 @@ le cap de la boussole.</p>
             </aside>
             
             <aside class="page_number">
-              55/69
+              57/71
             </aside>
           </footer>
         </div>
@@ -1985,13 +2031,13 @@ le cap de la boussole.</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Robotframework</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> easy_install pip
+            <section><div class="highlight"><pre><span class="gp">$</span> easy_install pip
 <span class="gp">$</span> pip install robotframework
 <span class="gp">$</span> pip install robotframework-selenium2library
 <span class="gp">$</span> pip install robotframework-debuglibrary
@@ -1999,8 +2045,7 @@ le cap de la boussole.</p>
 
 <p>ChromeDriver à ajouter dans le dossier bin:
 http://chromedriver.storage.googleapis.com
-/index.html?path=2.19/</p>
-</section>
+/index.html?path=2.19/</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2016,7 +2061,7 @@ http://chromedriver.storage.googleapis.com
             </aside>
             
             <aside class="page_number">
-              56/69
+              58/71
             </aside>
           </footer>
         </div>
@@ -2073,7 +2118,7 @@ Go back
             </aside>
             
             <aside class="page_number">
-              57/69
+              59/71
             </aside>
           </footer>
         </div>
@@ -2115,7 +2160,7 @@ Read home page
             </aside>
             
             <aside class="page_number">
-              58/69
+              60/71
             </aside>
           </footer>
         </div>
@@ -2123,15 +2168,14 @@ Read home page
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Robotframework</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> pybot scenarios.robot
+            <section><div class="highlight"><pre><span class="gp">$</span> pybot scenarios.robot
 </pre></div>
-
 </section>
             
           </div>
@@ -2148,7 +2192,7 @@ Read home page
             </aside>
             
             <aside class="page_number">
-              59/69
+              61/71
             </aside>
           </footer>
         </div>
@@ -2156,7 +2200,7 @@ Read home page
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Cas métier</h1></header>
@@ -2176,7 +2220,7 @@ Read home page
             </aside>
             
             <aside class="page_number">
-              60/69
+              62/71
             </aside>
           </footer>
         </div>
@@ -2184,7 +2228,7 @@ Read home page
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>La publication</h1></header>
@@ -2204,7 +2248,7 @@ Read home page
             </aside>
             
             <aside class="page_number">
-              61/69
+              63/71
             </aside>
           </footer>
         </div>
@@ -2212,15 +2256,14 @@ Read home page
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Les icons et splashcreens</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> ionic resources
+            <section><div class="highlight"><pre><span class="gp">$</span> ionic resources
 </pre></div>
-
 </section>
             
           </div>
@@ -2237,7 +2280,7 @@ Read home page
             </aside>
             
             <aside class="page_number">
-              62/69
+              64/71
             </aside>
           </footer>
         </div>
@@ -2245,7 +2288,7 @@ Read home page
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Signature Android</h1></header>
@@ -2262,8 +2305,7 @@ keyAlias=ma-clef
 keyPassword=your-key-password
 storePassword=your-store-password</p>
 </li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -2279,7 +2321,7 @@ storePassword=your-store-password</p>
             </aside>
             
             <aside class="page_number">
-              63/69
+              65/71
             </aside>
           </footer>
         </div>
@@ -2287,15 +2329,14 @@ storePassword=your-store-password</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code extra-large">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Release</h1></header>
             
             
-            <section><div class="highlight"><pre><span></span><span class="gp">$</span> cordova build --release
+            <section><div class="highlight"><pre><span class="gp">$</span> cordova build --release
 </pre></div>
-
 </section>
             
           </div>
@@ -2312,7 +2353,7 @@ storePassword=your-store-password</p>
             </aside>
             
             <aside class="page_number">
-              64/69
+              66/71
             </aside>
           </footer>
         </div>
@@ -2320,7 +2361,7 @@ storePassword=your-store-password</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Publier l'app sur le PlayStore</h1></header>
@@ -2330,8 +2371,7 @@ storePassword=your-store-password</p>
 <li>créer un compte Google developer,</li>
 <li>rédiger la fiche de l'app,</li>
 <li>uploader l'APK signé.</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -2347,7 +2387,7 @@ storePassword=your-store-password</p>
             </aside>
             
             <aside class="page_number">
-              65/69
+              67/71
             </aside>
           </footer>
         </div>
@@ -2355,7 +2395,7 @@ storePassword=your-store-password</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Préparer la fiche sur l'AppStore</h1></header>
@@ -2366,8 +2406,7 @@ storePassword=your-store-password</p>
 <li>déclarer l'app,</li>
 <li>obtenir les différents certificats,</li>
 <li>packager avec Xcode et uploader.</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -2383,7 +2422,7 @@ storePassword=your-store-password</p>
             </aside>
             
             <aside class="page_number">
-              66/69
+              68/71
             </aside>
           </footer>
         </div>
@@ -2391,7 +2430,7 @@ storePassword=your-store-password</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>XCode</h1></header>
@@ -2401,8 +2440,7 @@ storePassword=your-store-password</p>
 <li>importer le projet XCode généré dans <code>./platforms/ios</code>,</li>
 <li>saisir manuellement la target version (5.1.1 alors que la valeur minimale proposée est 6.0),</li>
 <li>puis Products / Archive pour produire l'archive.</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -2418,7 +2456,7 @@ storePassword=your-store-password</p>
             </aside>
             
             <aside class="page_number">
-              67/69
+              69/71
             </aside>
           </footer>
         </div>
@@ -2426,14 +2464,13 @@ storePassword=your-store-password</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Mises en garde pour XCode</h1></header>
             
             
-            <section><p>On doit valider régulièrement les notifications sur le compte AppleDev, sinon la publication est bloquée.</p>
-</section>
+            <section><p>On doit valider régulièrement les notifications sur le compte AppleDev, sinon la publication est bloquée.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2449,7 +2486,7 @@ storePassword=your-store-password</p>
             </aside>
             
             <aside class="page_number">
-              68/69
+              70/71
             </aside>
           </footer>
         </div>
@@ -2457,7 +2494,7 @@ storePassword=your-store-password</p>
       
       <!-- slide source: cordova/formation-cordova.md -->
       <div class="slide-wrapper">
-        <div class="slide extra-large">
+        <div class="slide">
           <div class="inner">
             
             <header><h1>Publier via des services tiers</h1></header>
@@ -2467,8 +2504,7 @@ storePassword=your-store-password</p>
 <li>PhoneGap</li>
 <li>ionic.io</li>
 <li>Fastlane (pour iOS)</li>
-</ul>
-</section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -2484,7 +2520,7 @@ storePassword=your-store-password</p>
             </aside>
             
             <aside class="page_number">
-              69/69
+              71/71
             </aside>
           </footer>
         </div>
@@ -2506,7 +2542,7 @@ storePassword=your-store-password</p>
           <footer>
             
             <aside class="page_number">
-              /69
+              /71
             </aside>
           </footer>
         </div>
@@ -2774,164 +2810,176 @@ storePassword=your-store-password</p>
       
       
       <tr id="toc-row-43">
-        <th><a href="#slide43">Système de fichier</a></th>
+        <th><a href="#slide43">Système de fichiers</a></th>
         <td><a href="#slide43">43</a></td>
       </tr>
       
       
       <tr id="toc-row-44">
-        <th><a href="#slide44">Système de fichier</a></th>
+        <th><a href="#slide44">Système de fichiers</a></th>
         <td><a href="#slide44">44</a></td>
       </tr>
       
       
       <tr id="toc-row-45">
-        <th><a href="#slide45">Zip</a></th>
+        <th><a href="#slide45">Système de fichiers</a></th>
         <td><a href="#slide45">45</a></td>
       </tr>
       
       
       <tr id="toc-row-46">
-        <th><a href="#slide46">SQLite</a></th>
+        <th><a href="#slide46">Système de fichiers</a></th>
         <td><a href="#slide46">46</a></td>
       </tr>
       
       
       <tr id="toc-row-47">
-        <th><a href="#slide47">Local notification</a></th>
+        <th><a href="#slide47">Zip</a></th>
         <td><a href="#slide47">47</a></td>
       </tr>
       
       
       <tr id="toc-row-48">
-        <th><a href="#slide48">Notification</a></th>
+        <th><a href="#slide48">SQLite</a></th>
         <td><a href="#slide48">48</a></td>
       </tr>
       
       
       <tr id="toc-row-49">
-        <th><a href="#slide49">InAppBrowser</a></th>
+        <th><a href="#slide49">Local notification</a></th>
         <td><a href="#slide49">49</a></td>
       </tr>
       
       
       <tr id="toc-row-50">
-        <th><a href="#slide50">WhiteList</a></th>
+        <th><a href="#slide50">Notification</a></th>
         <td><a href="#slide50">50</a></td>
       </tr>
       
       
       <tr id="toc-row-51">
-        <th><a href="#slide51">Les tests</a></th>
+        <th><a href="#slide51">InAppBrowser</a></th>
         <td><a href="#slide51">51</a></td>
       </tr>
       
       
       <tr id="toc-row-52">
-        <th><a href="#slide52">Tests unitaires</a></th>
+        <th><a href="#slide52">WhiteList</a></th>
         <td><a href="#slide52">52</a></td>
       </tr>
       
       
       <tr id="toc-row-53">
-        <th><a href="#slide53">Tests unitaires - karma.conf.js</a></th>
+        <th><a href="#slide53">Les tests</a></th>
         <td><a href="#slide53">53</a></td>
       </tr>
       
       
       <tr id="toc-row-54">
-        <th><a href="#slide54">Tests unitaires - app_test.js</a></th>
+        <th><a href="#slide54">Tests unitaires</a></th>
         <td><a href="#slide54">54</a></td>
       </tr>
       
       
       <tr id="toc-row-55">
-        <th><a href="#slide55">Tests unitaires</a></th>
+        <th><a href="#slide55">Tests unitaires - karma.conf.js</a></th>
         <td><a href="#slide55">55</a></td>
       </tr>
       
       
       <tr id="toc-row-56">
-        <th><a href="#slide56">Robotframework</a></th>
+        <th><a href="#slide56">Tests unitaires - app_test.js</a></th>
         <td><a href="#slide56">56</a></td>
       </tr>
       
       
       <tr id="toc-row-57">
-        <th><a href="#slide57">Robotframework - resources.robot</a></th>
+        <th><a href="#slide57">Tests unitaires</a></th>
         <td><a href="#slide57">57</a></td>
       </tr>
       
       
       <tr id="toc-row-58">
-        <th><a href="#slide58">Robotframework - scenarios.robot</a></th>
+        <th><a href="#slide58">Robotframework</a></th>
         <td><a href="#slide58">58</a></td>
       </tr>
       
       
       <tr id="toc-row-59">
-        <th><a href="#slide59">Robotframework</a></th>
+        <th><a href="#slide59">Robotframework - resources.robot</a></th>
         <td><a href="#slide59">59</a></td>
       </tr>
       
       
       <tr id="toc-row-60">
-        <th><a href="#slide60">Cas métier</a></th>
+        <th><a href="#slide60">Robotframework - scenarios.robot</a></th>
         <td><a href="#slide60">60</a></td>
       </tr>
       
       
       <tr id="toc-row-61">
-        <th><a href="#slide61">La publication</a></th>
+        <th><a href="#slide61">Robotframework</a></th>
         <td><a href="#slide61">61</a></td>
       </tr>
       
       
       <tr id="toc-row-62">
-        <th><a href="#slide62">Les icons et splashcreens</a></th>
+        <th><a href="#slide62">Cas métier</a></th>
         <td><a href="#slide62">62</a></td>
       </tr>
       
       
       <tr id="toc-row-63">
-        <th><a href="#slide63">Signature Android</a></th>
+        <th><a href="#slide63">La publication</a></th>
         <td><a href="#slide63">63</a></td>
       </tr>
       
       
       <tr id="toc-row-64">
-        <th><a href="#slide64">Release</a></th>
+        <th><a href="#slide64">Les icons et splashcreens</a></th>
         <td><a href="#slide64">64</a></td>
       </tr>
       
       
       <tr id="toc-row-65">
-        <th><a href="#slide65">Publier l'app sur le PlayStore</a></th>
+        <th><a href="#slide65">Signature Android</a></th>
         <td><a href="#slide65">65</a></td>
       </tr>
       
       
       <tr id="toc-row-66">
-        <th><a href="#slide66">Préparer la fiche sur l'AppStore</a></th>
+        <th><a href="#slide66">Release</a></th>
         <td><a href="#slide66">66</a></td>
       </tr>
       
       
       <tr id="toc-row-67">
-        <th><a href="#slide67">XCode</a></th>
+        <th><a href="#slide67">Publier l'app sur le PlayStore</a></th>
         <td><a href="#slide67">67</a></td>
       </tr>
       
       
       <tr id="toc-row-68">
-        <th><a href="#slide68">Mises en garde pour XCode</a></th>
+        <th><a href="#slide68">Préparer la fiche sur l'AppStore</a></th>
         <td><a href="#slide68">68</a></td>
       </tr>
       
       
       <tr id="toc-row-69">
-        <th><a href="#slide69">Publier via des services tiers</a></th>
+        <th><a href="#slide69">XCode</a></th>
         <td><a href="#slide69">69</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-70">
+        <th><a href="#slide70">Mises en garde pour XCode</a></th>
+        <td><a href="#slide70">70</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-71">
+        <th><a href="#slide71">Publier via des services tiers</a></th>
+        <td><a href="#slide71">71</a></td>
       </tr>
       
       
