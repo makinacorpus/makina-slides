@@ -577,6 +577,7 @@ Mentionner le fait que les noms de modele sont declinés de leur nom système
     * `FileField` et `ImageField`
     * `FilePathField`
 
+.fx: wide
 
 ---
 
