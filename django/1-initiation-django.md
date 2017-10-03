@@ -4,17 +4,20 @@
 
 # Faisons les présentations 
 
-## Makina Corpus
+### Makina Corpus
 Experts en logiciels libres, cartographie et analyse de données, nous concevons des applications métiers innovantes.
 
 Nos valeurs :
+
 * Les logiciels libres et les données ouvertes
 * L'agilité
 * Le développement durable
 
-## Le formateur
+### Le formateur
 
-## Et vous ?
+`"%s : un•e expert•e, fort de %s ans d'expérience à votre écoute" % (name, xp)`
+
+### Et vous ?
 
 # Presenter notes
 
@@ -32,6 +35,22 @@ Nos valeurs :
 - quelle entité html représente un espace insécable ? &amp;nbsp;
 - autres questions : len(), type(); isinstance(), PyPi, URL, codes de statut HTTP
 
+
+--------------------------------------------------------------------------------
+
+# Programme
+
+* Introduction
+* Installation
+* Structure
+* Requêtes et réponses
+* Modèles
+* Vues, Templates et Urls
+* Formulaires
+* ORM
+* Ressources
+
+.fx: toc
 
 --------------------------------------------------------------------------------
 
@@ -53,7 +72,8 @@ Nos valeurs :
 
 * Créé en 2003 par le journal local de Lawrence (Kansas, USA), basé sur le langage Python créé en 1990
 * Rendu Open Source (BSD) en 2005
-* Version actuelle : Django 1.10, sortie en aout 2016
+* Django 1.x : compatible python 2 et 3
+* Django 2.x : compatible python 3 uniquement
 * Aujourd'hui utilisé par de très nombreuses entreprises/sites : Mozilla, Instagram, Pinterest, Disqus, Washington Times, ...
 
 --------------------------------------------------------------------------------
@@ -118,8 +138,8 @@ La fonction **controller** est gérée par l'*URL dispatcher* qui permet de fair
 
 # Environnement
 
-* Django 1.10
-* Python : 2.7 / 3.x
+* Django 1.11+
+* Python : 3.x
 * Base de données : SQLite, PostgreSQL, MySQL
 
 ## Côté python
@@ -147,18 +167,31 @@ c'est la méthode préférable pour développer avec python
 
 Cela permet ainsi de créer plusieurs environnement avec différentes version de python, de Django, etc.
 
-Pour aller plus loin, voir _pyenv_.
+Quelques alternatives/extensions : _virtualenvwrapper_, _anaconda_, _pyenv_.
 
 
 --------------------------------------------------------------------------------
 
-# Tutoriel fil rouge : une gestion de *Todo lists*
+# Tutoriel fil rouge 
+
+Proposez vos idées pour un tutorial original !
+
+Sur les slides, des exemples basés sur une bibliothèque seront utilisés
+
+À défaut d'idées dans l'audience, nous créerons une application de gestion de *Todo lists* :
+
+ - différentes listes de tâches
+ - affectation à des utilisateurs
+ - notifications par e-mail
+ - catégorisation
 
 .fx: alternate
 
 --------------------------------------------------------------------------------
 
 # Installer Django
+
+.fx: titleslide
 
 --------------------------------------------------------------------------------
 
@@ -171,25 +204,25 @@ Pour aller plus loin, voir _pyenv_.
 ## Installation de Django
 
     !console
-    $ pip install django
+    (venv) $ pip install django
 
 ## Création du projet
 
     !console
-    $ django-admin startproject library
+    (venv) $ django-admin startproject library
 
 ## Lancement du serveur de développement
 
     !console
-    $ cd library
-    $ ./manage.py runserver
+    (venv) $ cd library
+    (venv) $ ./manage.py runserver
 
 
 --------------------------------------------------------------------------------
 
 ![Page d'accueil par défaut Django](./it-worked.png)
 
-.fx: imageslide
+.fx: bg-image
 
 --------------------------------------------------------------------------------
 
@@ -263,15 +296,10 @@ répertoire
 
 Django "impose" une organisation du code (noms et emplacements des fichiers) 
 
-  * C'est une contrainte
-  * Mais c'est aussi très pratique pour retrouver son code
-    - Quand c'est le sien
-    - Quand c'est celui des autres
-    - Ce qui revient au même au bout d'un certain temps...
-  * Par exemple les vues vont dans le  
-  views.py dans le répertoire de l'app
-  * Ou plutôt dans le module views du package de l'app
-  * Et les urls vont dans le module urls (fichier urls.py)
+  * C'est une contrainte mais c'est aussi très pratique pour retrouver son code, 
+  quand c'est le sien ou quand c'est celui des autres : ce qui revient au même au bout d'un certain temps...
+  * Par exemple les vues vont dans le  `views.py` dans le répertoire de l'app (ou dans le package `views` de l'app)
+  * Et les urls vont dans le module urls (fichier `urls.py`)
   * On peut inclure une liste d'urls d'une app dans les urls du projet
 
 <!-- -->
@@ -279,6 +307,9 @@ Django "impose" une organisation du code (noms et emplacements des fichiers)
      !python
      from django.conf.urls import url, include
      urlpatterns = [
+         # soit on définit des couples url-vue
+         url(r'^$', une_vue),
+         # ... ou on inclut les urls depuis une autre app
          url(r'', include('books.urls')),
      ]
 
@@ -352,7 +383,13 @@ Voici un exemple de configuration pour une base Postgresql :
 
 --------------------------------------------------------------------------------
 
-# Tutoriel fil rouge : créer le projet *formation* puis l'application *todo* et activer l'application
+# Tutoriel fil rouge
+
+Créer le projet (ex: *formation*) 
+
+Puis une application (ex: *todo*)
+
+Enfin activer l'application
 
 .fx: alternate
 
@@ -360,6 +397,9 @@ Voici un exemple de configuration pour une base Postgresql :
 --------------------------------------------------------------------------------
 
 # Fonctionnement général
+
+.fx: titleslide
+
 
 --------------------------------------------------------------------------------
 
@@ -390,7 +430,7 @@ Peut être lu comme un flux
   * request.readline()
   * for line in request:
 
-_cf._ <https://docs.djangoproject.com/en/1.10/ref/request-response/#httprequest-objects>
+_cf._ <https://docs.djangoproject.com/fr/stable/ref/request-response/#httprequest-objects>
 
 -----
 
@@ -415,7 +455,7 @@ Peut être écrit comme un flux
 
 Est dérivé en sous-classes (ex. HttpResponseRedirect)
 
-_cf._ <https://docs.djangoproject.com/en/1.10/ref/request-response/#httpresponse-objects>
+_cf._ <https://docs.djangoproject.com/fr/stable/ref/request-response/#httpresponse-objects>
 
 ---
 
@@ -442,13 +482,19 @@ et retourner un contenu en fonction d'une requête
 
 --------------------------------------------------------------------------------
 
-# TP : créer une vue affichant "Bienvenue dans la Todo List"
+# Exercice
+
+Créer une vue affichant "Bienvenue dans la Todo List"
+
+Ce sera notre page d'accueil, elle sera accessible sur `http://127.0.0.1:8000/`
 
 .fx: alternate
 
 --------------------------------------------------------------------------------
 
 # Les modèles
+
+.fx: titleslide
 
 --------------------------------------------------------------------------------
 
@@ -501,7 +547,7 @@ D'autres options permettent par exemple de :
 * préciser des critères de tri
 * déclarer des permissions relatives au modèle
 
-Documentation : <https://docs.djangoproject.com/fr/1.10/ref/models/>
+Documentation : <https://docs.djangoproject.com/fr/stable/ref/models/>
 
 # Presenter notes
 
@@ -549,7 +595,7 @@ Chaque type de champs possède ses propres propriétés. Cependant, certaines so
 * `unique` ajoute une contrainte d'unicité
 * `validators` permet d'ajouter des contraintes de validation au niveau du modèle
 
-Documentation <https://docs.djangoproject.com/fr/1.10/ref/models/fields/#field-options>
+Documentation <https://docs.djangoproject.com/fr/stable/ref/models/fields/#field-options>
 
 ---
 
@@ -560,15 +606,15 @@ Documentation <https://docs.djangoproject.com/fr/1.10/ref/models/fields/#field-o
 * Puis il convertit en SQL et applique toutes les migrations qui n'ont pas déjà été faites (la liste des migrations déjà faites est stockée dans la base)
 * Ces migrations sont numérotées et rangées dans les apps dans le sous-répertoire `migrations/`. Il est conseillé d'enregistrer les migrations avec le code
 
-## Création d'une migration automatique
+### Création d'une migration automatique
 
     !console
-    $ ./manage.py makemigrations
+    (venv) $ ./manage.py makemigrations
 
-## Application de la migration
+### Application de la migration
 
     !console
-    $ ./manage.py migrate
+    (venv) $ ./manage.py migrate
 
 
 --------------------------------------------------------------------------------
@@ -593,7 +639,7 @@ Elle est personnalisable et permet de modifier :
 * les formulaires et l'ordre des champs
 * ajouter des actions en masse sur les listes
 
-Documentation : <https://docs.djangoproject.com/fr/1.10/ref/contrib/admin/>
+Documentation : <https://docs.djangoproject.com/fr/stable/ref/contrib/admin/>
 
 --------------------------------------------------------------------------------
 
@@ -601,29 +647,42 @@ Documentation : <https://docs.djangoproject.com/fr/1.10/ref/contrib/admin/>
 
 ![L'interface d'administration Django](./admin.png)
 
-.fx: imageslide
+.fx: bg-image
 
 --------------------------------------------------------------------------------
 
-# TP: Créer le modèle *tâche* ayant notamment les champs titre, deadline, réalisée
+# Exercice
+
+Par défaut: Créer le modèle *tâche* ayant notamment les champs : 
+
+- titre (texte)
+- description (texte long)
+- deadline (date et heure)
+- réalisée (booléen)
+
+Pour accèder à l'admin de Django, vous aurez besoin d'un superutilisateur :
+
+    !console
+    (venv) $ ./manage.py createsuperuser
+
+But: Le modèle doit apparaitre dans l'interface d'administration avec les bons champs
 
 .fx: alternate
 
-# Presenter notes
-
-./manage.py createsuperuser
-Le modèle doit apparaitre dans l'interface d'administration avec les bons champs
-
 --------------------------------------------------------------------------------
 
-# Un exemple complet de vue : la liste des livres
+# Vue, template et URL
+
+## Exemple complet : la liste des livres
+
+.fx: titleslide
 
 ---
 
 ## Exemple : Création de la vue
 
     !python
-    # views.py
+    # book/views.py
     from django.shortcuts import render
     from books.models import Book
 
@@ -658,7 +717,7 @@ Ce style de vue est dit "Function-based" (par opposition à "Class-based").
         <p>Aucun livre !</p>
     {% endif %}
 
-Documentation: <https://docs.djangoproject.com/fr/1.10/topics/templates/>
+Documentation: <https://docs.djangoproject.com/fr/stable/topics/templates/>
 
 --------------------------------------------------------------------------------
 
@@ -667,10 +726,8 @@ Documentation: <https://docs.djangoproject.com/fr/1.10/topics/templates/>
 Routeur basé sur des regex, avec un préfixe par application. Ce préfixe n'est
 pas obligatoire mais permet de classer les vues afin d'éviter les conflits, par exemple :
 
-  * book/list
-  * book/add
-  * movie/list
-  * movie/add
+  * `book/list` et `book/add`
+  * `movie/list` et `movie/add`
 
 ### Déclaration d'une URL
 
@@ -694,6 +751,8 @@ pas obligatoire mais permet de classer les vues afin d'éviter les conflits, par
 --------------------------------------------------------------------------------
 
 # Les vues
+
+.fx: titleslide
 
 --------------------------------------------------------------------------------
 
@@ -741,6 +800,8 @@ Une vue *basée sur une classe* Django est simplement une classe Python préform
 
 # Le moteur de template
 
+.fx: titleslide
+
 --------------------------------------------------------------------------------
 
 ## Qu'est-ce qu'un template Django ?
@@ -755,14 +816,13 @@ Par défaut, Django fournit sa propre syntaxe de template mais il est possible d
 
 ## Où écrire ses templates ?
 
-Django possède un mécanisme capable de retrouver les templates d'un projet, configurable via le réglage ``TEMPLATES['BACKEND']``.
+Pour retrouver les templates d'un projet, Django se base sur le réglage ``TEMPLATES``. Le plus souvent on stocke les templates :
 
-Le plus souvent on stocke les templates :
+* dans chaque application, en suivant l'arborescence ``<app>/templates/<app>``. 
+  Ils seront retrouvés grâce au loader activé par défaut quand la clé ``APP_DIRS`` vaut `True`.
+* dans un répertoire ``templates/`` à la racine du projet qu'il faudra déclarer dans la clé ``DIRS``.
 
-* dans chaque application, en suivant l'arborescence ``<application>/templates/<application>``. Ils seront retrouvés grâce au loader ``django.template.backends.django.DjangoTemplates``, activé par défaut.
-* dans un répertoire ``templates/`` à la racine du projet qu'il faudra déclarer dans la clé ``DIRS`` du réglage ``TEMPLATES``.
-
-Il existe un mécanisme de découverte où l'ordre importe : cela permet de surcharger les templates d'autres applications.
+Dans ce mécanisme de découverte, l'ordre importe : cela permet de surcharger les templates d'autres applications.
 
 --------------------------------------------------------------------------------
 
@@ -916,6 +976,8 @@ Cela peut être utile dans différents cas :
 
 # L'URL dispatcher
 
+.fx: titleslide
+
 --------------------------------------------------------------------------------
 
 ## Processus de traitement des requêtes
@@ -1012,23 +1074,25 @@ Dans du code python :
     from django.urls import reverse
     return HttpResponseRedirect(reverse('book:edit', pk=12))
 
+.fx: wide
 
 --------------------------------------------------------------------------------
 
-# Tutoriel fil rouge : créer la vue *listes des tâches* et *détail d'une tâche*
+# Tutoriel fil rouge
+
+Créer la vue *liste des tâches* et *détail d'une tâche*
+
+Créer auparavant quelques tâches via l'interface d'administration
+
+Pour la liste de toutes les tâches : `Task.objects.all()` et pour le détail `Task.objects.get(pk=<pk>)`
 
 .fx: alternate
-
-# Presenter notes
-
-* Ici il faut créer auparavant quelques tâches via l'interface d'administration
-* On attend ensuite une liste de ces tâche en frontend avec une vue par tache affichant ses informations
-* S'appuyer fortement sur l'exemple de Book pour Book.objects.all()
-* Pour le détail, donner la méthode Book.objects.get(pk=<pk>)
 
 --------------------------------------------------------------------------------
 
 # Les formulaires
+
+.fx: titleslide
 
 --------------------------------------------------------------------------------
 
@@ -1050,7 +1114,7 @@ Les concepts principaux sont les suivants:
 ### Un exemple tiré de la documentation Django
 
     !python
-    # forms.py
+    # contact/forms.py
     from django import forms
 
     class ContactForm(forms.Form):
@@ -1084,7 +1148,7 @@ un widget `TextInput`, mais il est possible de spécifier un widget un widget `T
 
 --------------------------------------------------------------------------------
 
-## Utilisation d'un formulaire dans une ``function-based view``
+## Utilisation d'un formulaire dans une *Function-based view*
 
     !python
     from django.shortcuts import render
@@ -1095,13 +1159,25 @@ un widget `TextInput`, mais il est possible de spécifier un widget un widget `T
         if request.method == 'POST':
             form = ContactForm(request.POST)
             if form.is_valid():
-                # Process the data in form.cleaned_data and redirect
+                # Traite les données dans form.cleaned_data puis redirige
                 # ...
                 return HttpResponseRedirect('/thanks/')
         else:
             form = ContactForm()
-        # Render form
+        # Affiche le formulaire
         return render(request, 'contact.html', {'form': form})
+        
+### Méthode simplifiée
+
+    !python
+    def contact(request):
+        form = ContactForm(request.POST or None)
+        if form.is_valid():
+            # ...
+            return HttpResponseRedirect('/thanks/')
+        return render(request, 'contact.html', {'form': form})
+
+.fx: wide
 
 --------------------------------------------------------------------------------
 
@@ -1122,6 +1198,8 @@ Un formulaire peut être rendu de différentes manières :
 * _as\_ul_: chaque champ est rendu dans une ligne de liste
 * _as\_table_: chaque champ est rendu dans une ligne de tableau
 
+Des packages de la communauté (cripsy_forms, floppyforms, material) permettent d'afficher le bon markup pour un framework HTML/CSS.
+
 --------------------------------------------------------------------------------
 
 ## Les formulaires de modèles
@@ -1140,19 +1218,19 @@ Le fonctionnement est assez semblable à celui des formulaires classiques à que
 ## Un exemple d'utilisation d'un ModelForm
 
     !python
-    # models.py
+    # book/models.py
     class Book(models.Model):
         title = models.CharField(max_length=100)
         release = models.DateField()
         borrowed = models.BooleanField(default=False)
 
-    # forms.py
+    # book/forms.py
     class AddBookForm(forms.ModelForm):
         class Meta:
             model = Book
             fields = ('title', 'release')
 
-    # views.py
+    # book/views.py
     def add_book(request):
         form = AddBookForm(request.POST or None)
         if form.is_valid():
@@ -1162,13 +1240,19 @@ Le fonctionnement est assez semblable à celui des formulaires classiques à que
 
 --------------------------------------------------------------------------------
 
-# Tutoriel : Créer les vues d'ajout et modification d'une tâche
+# Tutoriel
+
+Créer les vues d'ajout et modification d'une tâche
+
+Afficher également des liens depuis la liste de tâches
 
 .fx: alternate
 
 --------------------------------------------------------------------------------
 
 # Relations entre les modèles
+
+.fx: titleslide
 
 --------------------------------------------------------------------------------
 
@@ -1193,7 +1277,7 @@ La représentation de ce champ en base de données est une contrainte de type cl
 Un livre est associé à un auteur, un auteur peut avoir écrit plusieurs livres.
 
     !python
-    # models.py
+    # book/models.py
     class Author(models.Model):
         name = models.CharField(max_length=50)
 
@@ -1214,7 +1298,7 @@ La représentation de ce champ en base de données est une table contenant deux 
 Un livre est associé à plusieurs catégories, plusieurs livres peuvent appartenir à une même catégorie.
 
     !python
-    # models.py
+    # book/models.py
     class Category(models.Model):
         label = models.CharField(max_length=50)
 
@@ -1235,7 +1319,7 @@ La représentation de ce champ en base de données est une clé étrangère poss
 Un livre est associé à un seul code barre, un code barre correspond à un seul livre.
 
     !python
-    # models.py
+    # book/models.py
     class BarCode(models.Model):
         code = models.CharField(max_length=50)
 
@@ -1245,7 +1329,9 @@ Un livre est associé à un seul code barre, un code barre correspond à un seul
 
 --------------------------------------------------------------------------------
 
-# Tutoriel : Mettre en place une modélisation gérant des listes de tâches partagées entre utilisateurs
+# Tutoriel 
+
+Mettre en place une modélisation gérant des listes de tâches partagées entre utilisateurs
 
 .fx: alternate
 
@@ -1253,12 +1339,14 @@ Un livre est associé à un seul code barre, un code barre correspond à un seul
 
 Ici l'attendu est 
 
-* un nouveau modèle pour les lsites
+* un nouveau modèle pour les listes
 * un ManyToManyField entre liste et utilisateurs
 
 --------------------------------------------------------------------------------
 
 # L'ORM
+
+.fx: titleslide
 
 -----------
 
@@ -1274,7 +1362,7 @@ Ici l'attendu est
   * Recommandé de développer (ou au moins de tester) avec le moteur utilisé en production
   * Moteur spécifié dans `settings.py` (variable `DATABASES`), ainsi que la configuration du nom de la base, du serveur, et de l'authentification
 
-Documentation <https://docs.djangoproject.com/fr/1.10/ref/databases/>
+Documentation <https://docs.djangoproject.com/fr/stable/ref/databases/>
 
 -----------
 
@@ -1315,9 +1403,9 @@ Pour supprimer une instance, il suffit d'appeler la méthode ``delete()`` qui pe
     !python
     >>> b = Book(name='Two scoops of django',
                  release=date(2013, 08, 31))
-    // Création
+    # Création en BDD
     >>> b.save()
-    // Suppression
+    # Suppression
     >>> b.delete()
 
 --------------------------------------------------------------------------------
@@ -1379,7 +1467,7 @@ Les méthodes de filtrage principalement utilisées sont ``filter`` et ``exclude
   * Avec deux undescores on peut aussi suivre une relation
   * Il y a un **ET** logique entre les différentes conditions
 
-Documentation : <https://docs.djangoproject.com/fr/1.10/ref/models/lookups/>
+Documentation : <https://docs.djangoproject.com/fr/stable/ref/models/lookups/>
 
     !python
     books = Book.objects.filter(title__startswith="Le")
@@ -1442,19 +1530,26 @@ Supprimer l'association de livres à une catégorie :
 
 --------------------------------------------------------------------------------
 
-# Tutoriel : Mettre en place un formulaire de filtrage de tâches
+# Tutoriel
 
-.fx: alternate
-
-# Presenter notes
-
-Ici on attend un formulaire sur la liste des taches qui permet de filtrer :
+Mettre en place un formulaire de filtrage de tâches :
 
 * entre deux dates
 * sur le titre
 * sur le fait qu'elles soient terminées ou non
 
+.fx: alternate
+
 --------------------------------------------------------------------------------
+
+# Ressources
+
+## Pour aller plus loin
+
+.fx: titleslide
+
+--------------------------------------------------------------------------------
+
 
 # Quelques modules indispensables
 
@@ -1489,18 +1584,18 @@ Ici on attend un formulaire sur la liste des taches qui permet de filtrer :
 
 # Où obtenir des informations ?
 
-## Les sites
+### Les sites
 * http://www.djangoproject.com [EN]
 * http://www.django-fr.org/ [FR]
 * http://docs.djangoproject.com [EN]
 * http://docs.djangoproject.com/fr [FR]
 * http://stackoverflow.com/questions/tagged/django
 
-## Les planètes
+### Les planètes
 * http://www.planetdjango.org/ [EN]
 * http://www.django-fr.org/planete/ [FR]
 
-## Les outils de développement
+### Les outils de développement
 * Le *bug tracker* : http://code.djangoproject.com
 * Le Jenkins : http://ci.djangoproject.com/
 
@@ -1508,16 +1603,18 @@ Ici on attend un formulaire sur la liste des taches qui permet de filtrer :
 
 # La communauté Django
 
-## Modules
+### Modules
+
+
 * Un répertoire de modules : https://www.djangopackages.com/
 
-## Contacts
+### Contacts
 
 * La *mailing list* Django : django@lists.afpy.org
 * Les *channels* IRC : #django, #django-fr
 * Le forum français : http://forum.django-fr.org
 
-## Événements
+### Événements
 
 * Djangocong : Conférence annuelle française
 * Djangocon-eu : Conférence annuelle européenne
@@ -1525,5 +1622,9 @@ Ici on attend un formulaire sur la liste des taches qui permet de filtrer :
 
 --------------------------------------------------------------------------------
 
-# Merci !
+### Merci !
+
+Des questions ? Des remarques ?
+
+Gardons le contact : <https://makina-corpus.com>
 
