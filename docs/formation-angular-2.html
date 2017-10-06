@@ -1,0 +1,2531 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Formation Angular</title>
+    <!-- Styles -->
+    <link rel="stylesheet" media="print" href="http://makinacorpus.github.io/makina-slides/assets/theme/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="http://makinacorpus.github.io/makina-slides/assets/theme/css/screen.css">
+    <link rel="stylesheet" href="http://makinacorpus.github.io/makina-slides/assets/theme/css/pygments.css">
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    <script type="text/javascript" src="http://makinacorpus.github.io/makina-slides/assets/theme/js/slides.js"></script>
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="time">
+      <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+    </div>            
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Formation Angular</h1></header>
+            
+            
+            <section><h2>Éric Bréhault</h2></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>1 - Présentation générale</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>La version 2 ?</h1></header>
+            
+            
+            <section><p>AngularJS est la version 1.</p>
+<p>À partir de la verison 2, le nom devient "Angular".</p>
+<p>La version 4 est parue le 23 mars 2017 (et reste dans la continuité d'Angular 2).</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+              <p>parler du sémantic versionning</p>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Quel type de framework ?</h1></header>
+            
+            
+            <section><ul>
+<li>Spectre large</li>
+<li>Très structurant</li>
+<li>Fortement contraint</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+              <p>expliquer les différences avec React</p>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Les grands principes</h1></header>
+            
+            
+            <section><ul>
+<li>Composants</li>
+<li>TypeScript</li>
+<li>build</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>2 - Installation et tooling</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Installation</h1></header>
+            
+            
+            <section><p>Installer NodeJS (6.9+) et NPM.</p>
+<p>https://nodejs.org/en/download/</p>
+<p>Installer Angular CLI:</p>
+<div class="highlight"><pre><span class="go">npm install -g @angular/cli</span>
+</pre></div>
+
+<p>Accessoirement les extensions Chrome suivantes peuvent être utiles:</p>
+<ul>
+<li>Postman</li>
+<li>JSONViewer</li>
+<li>Allow-Control-Allow-Origin: *</li>
+</ul>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Le CLI</h1></header>
+            
+            
+            <section><p>Permet de générer un projet.</p>
+<div class="highlight"><pre><span class="go">ng new myproject # ET SI BESOIN --style=scss</span>
+<span class="go">cd myproject</span>
+<span class="go">ng serve</span>
+</pre></div>
+
+<p>Fournit des facilités pour le développement.</p>
+<div class="highlight"><pre><span class="go">ng serve</span>
+</pre></div>
+
+<p>Permet d'y ajouter des composants, des services, des sous-modules...</p>
+<div class="highlight"><pre><span class="go">ng generate component MyComponent</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Installation et premiers pas</h1></header>
+            
+            
+            <section><ul>
+<li>Installer NodeJS et Angular CLI</li>
+<li>Créer un projet</li>
+<li>Le lancer avec <code>ng serve</code> et ouvrir http://localhost:4200</li>
+<li>Observer la structure de fichiers générée</li>
+</ul>
+<p><a href="https://github.com/makinacorpus/angular-training/commit/f865cbf4660be2087da7e6925db7ff931bd833b6">Solution</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>3 - Les concepts</h1></header>
+            
+            
+            <section><ul>
+<li>TypeScript</li>
+<li>Component</li>
+<li>Module</li>
+<li>Injection</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Typescript</h1></header>
+            
+            
+            <section><ul>
+<li>TypeScript superset d'ES6 superset d'ES5</li>
+<li>Un "compilateur" fait la conversion</li>
+<li>Apporte :<ul>
+<li>le typage</li>
+<li>les classes</li>
+<li>les décorateurs</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Component</h1></header>
+            
+            
+            <section><p>Un composant est une classe avec un décorateur <code>@Component</code>.</p>
+<p>Il correspond à un tag.</p>
+<p>Il a un template HTML, éventuellement des fichiers de style.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Module</h1></header>
+            
+            
+            <section><p>Le module est le point d'entrée de l'app Angular.</p>
+<p>Il déclare les composants.</p>
+<p>Il charge les modules tiers.</p>
+<p>Il définit les injections disponibles.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Injections</h1></header>
+            
+            
+            <section><p>Les composants ont besoin de services globaux (persistence des données, accès au backend, routage, etc.).</p>
+<p>Ils les obtiennent par injection de dépendances :
+Angular va instancier les services dont on a besoin, et les fournir aux composants.</p>
+<p>Les services injectables sont des classes ayant le décorateur <code>@Injectable</code>.</p>
+<p>Ils sont déclarés dans le module (dans <code>providers</code>).</p>
+<p>Ils sont fournis aux composants dans leur constructeur.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>4 - Créer un composant simple</h1></header>
+            
+            
+            <section><p>Le CLI permet de générer de nouveaux composants dans l'app.</p>
+<p>Nous allons créer un composant pour la page d'accueil :</p>
+<div class="highlight"><pre><span class="go">ng generate component Home</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Utiliser un composant</h1></header>
+            
+            
+            <section><p>Le décorateur <code>@Component</code> associe un sélecteur (<code>selector</code>) au composant.</p>
+<p>C'est sous ce nom qu'on peut utiliser le composant dans nos templates HTML.</p>
+<p>Dans le cas présent : </p>
+<div class="highlight"><pre><span class="nt">&lt;app-home&gt;&lt;/app-home&gt;</span>
+</pre></div>
+
+<p><a href="https://github.com/makinacorpus/angular-training/commit/3c42e93cf619d0efacc8581db4dbd212a4606902">Exemple</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Créer un input</h1></header>
+            
+            
+            <section><p>Le décorateur <code>@Input</code> permet de déclarer un nouvel attribut pour le composant :</p>
+<div class="highlight"><pre><span class="err">@</span><span class="nx">Input</span><span class="p">()</span> <span class="nx">message</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+</pre></div>
+
+<p>déclare un attribut <code>message</code> qu'on peut utiliser de cette façon :</p>
+<div class="highlight"><pre><span class="nt">&lt;app-home</span> <span class="na">message=</span><span class="s">&quot;Bonjour !&quot;</span><span class="nt">&gt;&lt;/app-home&gt;</span>
+</pre></div>
+
+<p><a href="https://github.com/makinacorpus/angular-training/commit/75741b6aeb7b9338ebf80cb98ce2e4855ec3259c">Exemple</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Lier (i.e. binding) un input à une propriété</h1></header>
+            
+            
+            <section><p>Plutôt qu'un message écrit en dur, nous souhaitons passer la valeur d'une propriété du composant <code>App</code> :</p>
+<div class="highlight"><pre><span class="nx">welcomeMessage</span><span class="o">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s1">&#39;Bienvenue ici&#39;</span><span class="p">;</span>
+</pre></div>
+
+<p>Pour cela, on doit noter l'input entre crochet :</p>
+<div class="highlight"><pre><span class="nt">&lt;app-home</span> <span class="err">[message]=&quot;welcomeMessage&quot;</span><span class="nt">&gt;&lt;/app-home&gt;</span>
+</pre></div>
+
+<p>(sinon le message serait littéralement "welcomeMessage" et non pas "Bienvenue ici")</p>
+<p><a href="https://github.com/makinacorpus/angular-training/commit/963495ca67318867b8b8d3ce67f0ccf63805e88e">Exemple</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Lier un événement à une méthode</h1></header>
+            
+            
+            <section><p>Ajoutons au composant Hom une méthode qui modifie le message :</p>
+<div class="highlight"><pre><span class="nx">changeMessage</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s1">&#39;This is a new message&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>On souhaite appeler cette méthode lorsqu'on clique sur un bouton.
+Pour cela, on note l'événement entre parenthèses:</p>
+<div class="highlight"><pre><span class="nt">&lt;button</span> <span class="err">(click)=&quot;changeMessage()&quot;</span><span class="nt">&gt;</span>Change the message<span class="nt">&lt;/button&gt;</span>
+</pre></div>
+
+<p><a href="https://github.com/makinacorpus/angular-training/commit/6682d3ace9ad190878db075880e1d0745116c520">Exemple</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Input et output</h1></header>
+            
+            
+            <section><p>Les <strong>inputs</strong> sont les informations qui sont fournies en entrée au composant.</p>
+<p>Ils sont notés entre crochets.</p>
+<p>Les <strong>outputs</strong> sont les informations qui sont émises par le composant.</p>
+<p>Ils sont notés entre parenthèses.</p>
+<p>Pour les éléments pouvant être fournis en entrée et émis en sortie, on peut utiliser les 2 notations ensemble : <code>[()]</code>, par exemple pour un champ de formulaire. C'est le two-way data binding. En dehors de l'usage élémentaire pour des formulaires, on préfère l'éviter pour des raisons de performance.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Syntaxe des templates</h1></header>
+            
+            
+            <section><p>Interpolation <code>{{ }}</code> : permet d'évaluer une expression.</p>
+<p>Par exemple :</p>
+<div class="highlight"><pre><span class="p">{{</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="p">}}</span> <span class="c1">// affiche 3</span>
+<span class="p">{{</span> <span class="nx">message</span> <span class="p">}}</span> <span class="c1">// affiche la valeur de la propriété `message` du composant</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Syntaxe des templates</h1></header>
+            
+            
+            <section><p>Boucle avec <code>*ngFor</code></p>
+<p>Note : les directives structurelles (celles qui utilisent un template propre) sont préfixées par <code>*</code>.</p>
+<p>Créons une propriété contenant une liste de pokémons et affichons-les dans une liste :</p>
+<div class="highlight"><pre><span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">&quot;let pokemon of pokemons&quot;</span><span class="nt">&gt;</span>{{pokemon.name}}<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+
+<p><a href="https://github.com/makinacorpus/angular-training/commit/f3f629d4d5781dcaee95c43733e042f527766768">Exemple</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Syntaxe des templates</h1></header>
+            
+            
+            <section><p>Condition avec <code>*ngIf</code> ou <code>*ngSwitch</code></p>
+<p>On va créer une méthode qui indique si un pokémon est le plus fort :</p>
+<div class="highlight"><pre><span class="nx">isStronger</span><span class="p">(</span><span class="nx">pokemon</span><span class="o">:</span><span class="nx">any</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">max_pv</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="k">this</span><span class="p">.</span><span class="nx">pokemons</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">pok</span> <span class="o">=&gt;</span> <span class="nx">pok</span><span class="p">.</span><span class="nx">pv</span><span class="p">));</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">pokemon</span><span class="p">.</span><span class="nx">pv</span> <span class="o">==</span> <span class="nx">max_pv</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Et on utilise cette méthode dans un <code>*ngIf</code> pour afficher une mention à côté du plus fort :</p>
+<div class="highlight"><pre><span class="nt">&lt;strong</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">&quot;isStronger(pokemon)&quot;</span><span class="nt">&gt;</span>Le plus fort !!<span class="nt">&lt;/strong&gt;</span>
+</pre></div>
+
+<p><a href="https://github.com/makinacorpus/angular-training/commit/c28624c8128f7fadba7e175958a963717e554e76">Exemple</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Syntaxe des templates</h1></header>
+            
+            
+            <section><p>Classes (et style) avec <code>ngClass</code>  (ou <code>ngStyle</code>)</p>
+<p>On peut directement lier l'attribut normal <code>class</code> :</p>
+<div class="highlight"><pre><span class="kr">private</span> <span class="nx">defaultClasses</span><span class="o">:</span><span class="nx">string</span> <span class="o">=</span> <span class="s1">&#39;btn btn-primary btn-special&#39;</span><span class="p">;</span>
+
+<span class="o">&lt;</span><span class="nx">div</span> <span class="p">[</span><span class="kr">class</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;defaultClasses&quot;</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
+</pre></div>
+
+<p>On peut aussi conditionner une classe avec un booléen:</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="err">[class.alert]=&quot;isAlert&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Syntaxe des templates</h1></header>
+            
+            
+            <section><p>Mais la directive <code>ngClass</code> est souvent plus simple car elle permet de gérer plusieurs classes dans un dictionnaire :</p>
+<div class="highlight"><pre><span class="nx">getClasses</span><span class="p">(</span><span class="nx">pokemon</span><span class="o">:</span><span class="nx">any</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">grass</span><span class="o">:</span> <span class="nx">pokemon</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;grass&#39;</span><span class="p">,</span>
+        <span class="nx">electric</span><span class="o">:</span> <span class="nx">pokemon</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;electric&#39;</span><span class="p">,</span>
+        <span class="nx">fire</span><span class="o">:</span> <span class="nx">pokemon</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;fire&#39;</span><span class="p">,</span>
+        <span class="nx">small</span><span class="o">:</span> <span class="nx">pokemon</span><span class="p">.</span><span class="nx">size</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nx">medium</span><span class="o">:</span> <span class="nx">pokemon</span><span class="p">.</span><span class="nx">size</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="o">&amp;&amp;</span> <span class="nx">pokemon</span><span class="p">.</span><span class="nx">size</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nx">big</span><span class="o">:</span> <span class="nx">pokemon</span><span class="p">.</span><span class="nx">size</span> <span class="o">&gt;=</span> <span class="mi">100</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">&lt;</span><span class="nx">li</span> <span class="p">[</span><span class="nx">ngClass</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;getClasses(pokemon)&quot;</span><span class="o">&gt;</span>
+</pre></div>
+
+<p><a href="https://github.com/makinacorpus/angular-training/commit/8431681ebd45a1de742b042259658fc9e32d8e43">Exemple</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              25/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Syntaxe des templates</h1></header>
+            
+            
+            <section><p>Les pipes permettent d'appliquer des transformations simples au résultat d'une interpolation.</p>
+<p>Exemples :</p>
+<p>Formatter une date :</p>
+<pre><code>{{ dateObj | date }}
+{{ dateObj | date:'shortTime'}}
+</code></pre>
+<p>Formatter des valeurs monétaires :</p>
+<pre><code>{{ price | currency:'EUR':true }}
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              26/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>5 - Gérer le routage</h1></header>
+            
+            
+            <section><p>Le routage permet de naviguer de "pages" en "pages" dans notre application
+(en fait, physiquement on reste sur la même page <code>index.html</code>).</p>
+<p>Le principe est de mettre en correspondance des URLs avec des composants :</p>
+<div class="highlight"><pre><span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">HomeComponent</span> <span class="p">},</span>
+<span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;about&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">AboutComponent</span> <span class="p">},</span>
+</pre></div>
+
+<p>Le composant sera affiché dans un point d'insertion qu'on met généralement dans
+le template de l'AppComponent :</p>
+<div class="highlight"><pre><span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              27/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Exercice</h1></header>
+            
+            
+            <section><p>Créons un composant About et utilisons des routes pour atteindre soit Home soit About.</p>
+<p>Solution : <a href="https://github.com/makinacorpus/angular-training/commit/ad97a817a1e66819c21173bd4217f4d65985f803">Mettre en place le routage</a> <a href="https://github.com/makinacorpus/angular-training/commit/6715ca7fc3cd9a463bfc1aeb232d931788391efb">Ajouter About et sa route</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              28/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Liens vers des routes</h1></header>
+            
+            
+            <section><p>On peut très bien faire un lien normal vers une route :</p>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/about&quot;</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+
+<p>Mais cela va recharger la page en entier. <a href="https://github.com/makinacorpus/angular-training/commit/21721389b3555f980d472f9f4035a787b6000d36">Exemple</a></p>
+<p>Si on veut rendre le routage dynamique, on utilise la directive <code>routerLink</code>:</p>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">routerLink=</span><span class="s">&quot;/about&quot;</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+
+<p><a href="https://github.com/makinacorpus/angular-training/commit/323c37239af8ddc07b51bd68141475a8447c3cc3">Exemple</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              29/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Routes paramétrées</h1></header>
+            
+            
+            <section><p>On peut déclarer des routes contenant des paramètres :</p>
+<div class="highlight"><pre><span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;pokemon/:id&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="o">:</span> <span class="nx">DetailComponent</span> <span class="p">}</span>
+</pre></div>
+
+<p>Le module <code>Router</code> fournit des services <strong>injectables</strong> (c'est-à-dire appelables depuis n'importe quel composant).
+Notamment le service <code>ActivatedRoute</code> qui permet d'obtenir des informations sur la route courante.</p>
+<p>Le composant cible peut recevoir le (ou les) paramètre(s) d'une route en souscrivant (=subscribe)
+à des <strong>Observables</strong> proposés par <code>ActivatedRoute</code>.</p>
+<p>Dans le cas d'un paramètre, on utilise l'observable <code>params</code> :</p>
+<div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">route</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">params</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              30/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Exercice</h1></header>
+            
+            
+            <section><p>On va créer <a href="https://github.com/makinacorpus/angular-training/commit/3f74fcb655846f102aa782a693b2cc9f9323a429">une page de présentation détaillée d'un pokémon</a> et faire <a href="https://github.com/makinacorpus/angular-training/commit/5d5ec1c2142722984346e17183cfffa80c6ce8aa">des liens depuis la page d'accueil</a>.</p>
+<p>Note: auparavant on va mettre les données sur les pokémons dans un <a href="https://github.com/makinacorpus/angular-training/commit/a82ea22f7a53f08214a7a51411e8e4c2d42aa1f6">fichier de configuration</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              31/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>6 - Appels au backend</h1></header>
+            
+            
+            <section><p>Plutôt que gérer des informations localement, on souhaite utiliser l'API publique http://pokeapi.co/ .</p>
+<p>Pour cela on va utiliser le service <code>http</code> :</p>
+<div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://pokeapi.co/api/v2/pokemon/&#39;</span><span class="p">)</span>
+</pre></div>
+
+<p>Les méthodes (get, post, etc.) de <code>http</code> renvoient des observables auquel on souscrit pour obtenir les données.
+La méthode <code>json()</code> permet de désérialiser les données reçues :</p>
+<div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://pokeapi.co/api/v2/pokemon/&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">pokemons</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">results</span>
+<span class="p">});</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              32/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Exercice</h1></header>
+            
+            
+            <section><p>Utiliser http://pokeapi.co/api/v2/pokemon/ pour avoir la liste des Pokémons sur la page d'accueil.
+Utiliser http://pokeapi.co/api/v2/pokemon/:id pour avoir les informations d'un pokémon.</p>
+<p><a href="https://github.com/makinacorpus/angular-training/commit/6376c0b3cb97dca531ef2eaf184aa5b015f44f7f">Solution</a></p>
+<p>L'API est lente, il faut faire un spinner (ou un message de chargement).</p>
+<p><a href="https://github.com/makinacorpus/angular-training/commit/d7b02efba2cac3d5c6d36b4338677aaef9f7ea10">Solution</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              33/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Créer un Injectable</h1></header>
+            
+            
+            <section><p>Plutôt qu'appeler <code>http</code> directement dans nos composants, il est plus sain de déléguer
+tous les appels à un service injectable spécifique.</p>
+<p>Cela peut faciliter la maintenance (meilleure isolation), ou permettre de greffer
+des améliorations (gérer l'authentification, le cache, le mode offline, etc.).</p>
+<p>Pour cela, il faut :</p>
+<ul>
+<li>
+<p>créer un service :</p>
+<p>!console
+ng generate service MyService</p>
+</li>
+<li>
+<p>y injecter <code>http</code>,</p>
+</li>
+<li>déclarer le service en tant que <code>provider</code> dans le module,</li>
+<li>et injecter notre service dans nos composants.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              34/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Observables</h1></header>
+            
+            
+            <section><p>Grâce à l'opérateur <code>map</code> de RxJS, on peut appliquer une fonction sur un observable
+comme si c'était une liste normale, et le résultat reste un observable.</p>
+<p>C'est ainsi qu'on peut appliquer des traitements sur le résultat d'un appel HTTP.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              35/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Exercice</h1></header>
+            
+            
+            <section><p>Créer un service fournissant une méthode <code>listAll()</code> et une méthode <code>get(id)</code>.</p>
+<p><a href="https://github.com/makinacorpus/angular-training/commit/9b9462fadb7f03661bf194fce84162b1b6e09809">Solution</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              36/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Exercice</h1></header>
+            
+            
+            <section><p>Stocker le résultat de <code>listAll()</code> en cache.</p>
+<p><a href="https://github.com/makinacorpus/angular-training/commit/3c216e2e53f2250d5d604e99fd640aec768fa114">Solution</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              37/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>7 - Gérer des formulaires</h1></header>
+            
+            
+            <section><p>Le FormModule fournit des directives disponibles par défaut sur tous les <code>&lt;form&gt;</code> :</p>
+<ul>
+<li><code>ngForm</code>, l'objet form lui-même (avec notamment ses valeurs)</li>
+<li><code>ngModel</code>, le binding avec les champs</li>
+<li><code>ngSubmit</code>, l'action de submit</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              38/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Exemple</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="err">#</span><span class="na">f=</span><span class="s">&quot;ngForm&quot;</span> <span class="err">(ngSubmit)=&quot;doSomething(f.value)&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="err">ngModel</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="err">[ngModel]=&quot;currentUser&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">(click)=&quot;ngSubmit&quot;</span><span class="nt">&gt;</span>Go<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+
+<p>Et dans le composant :</p>
+<div class="highlight"><pre><span class="nx">doSomething</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              39/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Exercice</h1></header>
+            
+            
+            <section><p>Faire un formulaire dans la page About qui permet de signaler
+un pokémon manquant.</p>
+<p>Note: comme on ne dispose pas d'un endpoint pour envoyer des mails, on va simplement écrire dans le log notre message.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              40/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Accèder au formulaire depuis le composant</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="kr">import</span> <span class="p">{</span> <span class="nx">NgForm</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/forms&#39;</span><span class="p">;</span>
+<span class="p">...</span>
+    <span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span> <span class="nx">form</span><span class="o">:</span> <span class="nx">NgForm</span><span class="p">;</span>
+
+    <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">valueChanges</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">v</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">v</span><span class="p">));</span>
+    <span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              41/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Debounce sur la saisie</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="kr">import</span> <span class="p">{</span> <span class="nx">NgForm</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/forms&#39;</span><span class="p">;</span>
+<span class="p">...</span>
+    <span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span> <span class="nx">form</span><span class="o">:</span> <span class="nx">NgForm</span><span class="p">;</span>
+
+    <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">valueChanges</span>
+        <span class="p">.</span><span class="nx">debounceTime</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">v</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">v</span><span class="p">));</span>
+    <span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              42/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>ViewChild</h1></header>
+            
+            
+            <section><p>ViewChild permet d'accèder aux composants contenus dans le composant courant.</p>
+<p>C'est un décorateur qui prend en paramètre soit une classe:</p>
+<div class="highlight"><pre><span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="nx">ContactComponent</span><span class="p">)</span> <span class="nx">contact</span><span class="o">:</span> <span class="nx">ContactComponent</span><span class="p">;</span>
+</pre></div>
+
+<p>soit une référence de template:</p>
+<div class="highlight"><pre><span class="err">@</span><span class="nx">ViewChild</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span> <span class="nx">form</span><span class="o">:</span> <span class="nx">NgForm</span><span class="p">;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              43/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>RxJS et les observables</h1></header>
+            
+            
+            <section><p>Faire un observable à partir d'une valeur simple:</p>
+<div class="highlight"><pre><span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;rxjs/Observable&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;rxjs/add/observable/of&#39;</span><span class="p">;</span>
+
+<span class="nx">Observable</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="s1">&#39;Bonjour&#39;</span><span class="p">)</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              44/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>RxJS et les observables</h1></header>
+            
+            
+            <section><p>Combiner 2 observables:</p>
+<p><code>forkJoin</code> renvoie les données dès qu'il a obtenu une réponse de chacun.</p>
+<p><code>combineLatest</code> renvoie des données à partir du moment où il a obtenu au moins une réponse de chacun et à chaque nouvelle réponse d'un d'entre eux.</p>
+<div class="highlight"><pre><span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;rxjs/Observable&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;rxjs/add/operator/map&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;rxjs/add/observable/of&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;rxjs/add/observable/forkJoin&#39;</span><span class="p">;</span>
+
+<span class="nx">Observable</span><span class="p">.</span><span class="nx">forkJoin</span><span class="p">(</span>
+<span class="nx">observable1</span><span class="p">,</span>
+<span class="nx">observable2</span>
+<span class="p">).</span><span class="nx">map</span><span class="p">(([</span><span class="nx">result1</span><span class="p">,</span> <span class="nx">result2</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">...)</span>
+
+<span class="nx">Observable</span><span class="p">.</span><span class="nx">combineLatest</span><span class="p">(</span>
+<span class="nx">observable1</span><span class="p">,</span>
+<span class="nx">observable2</span>
+<span class="p">).</span><span class="nx">subscribe</span><span class="p">(([</span><span class="nx">result1</span><span class="p">,</span> <span class="nx">result2</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">...)</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              45/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>RxJS et les observables</h1></header>
+            
+            
+            <section><p>Chaîner 2 observables:</p>
+<ul>
+<li>mergeMap</li>
+<li>concatMap</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              46/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>RxJS et les subjects</h1></header>
+            
+            
+            <section><p>Les subjects sont des observables et des observateurs à la fois, on peut s'y abonner et leur envoyer des données.</p>
+<div class="highlight"><pre><span class="kr">const</span> <span class="nx">subject</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="nx">subject</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">subject</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">subject</span><span class="p">.</span><span class="nx">complete</span><span class="p">();</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              47/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>RxJS et les subjects</h1></header>
+            
+            
+            <section><p>BehaviorSubject renvoie la dernière valeur même si elle a été émise avant le subscribe.
+Il a forcément une valeur intiale.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              48/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>RxJS et les subjects</h1></header>
+            
+            
+            <section><p>AsyncSubject ne garde que sa dernière valeur et l'émet à partir du moment où on l'arrête.</p>
+<div class="highlight"><pre><span class="kr">protected</span> <span class="nx">vocabulary</span><span class="o">:</span> <span class="nx">AsyncSubject</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AsyncSubject</span><span class="p">();</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">api</span><span class="o">:</span> <span class="nx">HTTPService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/vocabulary/&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">response</span><span class="o">:</span> <span class="nx">Response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">vocabulary</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">vocabulary</span><span class="p">.</span><span class="nx">complete</span><span class="p">();</span>
+        <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              49/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>8 - Tester une app</h1></header>
+            
+            
+            <section><p>Par défaut, le CLI génère un fichier .spec.ts pour chaque composant.</p>
+<p>Ce fichier contiendra tous les tests unitaires du composant.</p>
+<p>Les tests sont lancés par la commande :</p>
+<div class="highlight"><pre><span class="go">ng test</span>
+</pre></div>
+
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              50/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Test d'acceptance</h1></header>
+            
+            
+            <section><p>RobotFramework</p>
+<ul>
+<li>les tests sont rédigés en langage naturel,</li>
+<li>ils sont interprétés par Selenium.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              51/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Installation</h1></header>
+            
+            
+            <section><p>Installer Python 2.7 puis :</p>
+<div class="highlight"><pre><span class="go">easy_install pip</span>
+<span class="go">pip install robotframework</span>
+<span class="go">pip install robotframework-selenium2library</span>
+<span class="go">pip install robotframework-debuglibrary</span>
+</pre></div>
+
+<p>ChromeDriver à ajouter dans le dossier bin de Python :
+http://chromedriver.storage.googleapis.com/index.html</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              52/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>9 - Ajouter des dépendences externes</h1></header>
+            
+            
+            <section><p>On ajoute des dépendences avec :</p>
+<div class="highlight"><pre><span class="go">npm install nom-du-paquet</span>
+<span class="go">npm install nom-du-paquet@3.0.2</span>
+<span class="go">npm install nom-du-paquet --save</span>
+</pre></div>
+
+<p>Note: <code>--save</code> sert à ajouter une entrée dans <code>package.json</code>.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              53/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Exercice</h1></header>
+            
+            
+            <section><p>Ajouter Material Design</p>
+<div class="highlight"><pre><span class="go">npm install angular2-mdl material-design-lite --save</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              54/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>10 - Déployer en prod</h1></header>
+            
+            
+            <section><p>Pour créer un build :</p>
+<div class="highlight"><pre><span class="go">ng build</span>
+</pre></div>
+
+<p>Pour un build minifié avec cache keys:</p>
+<div class="highlight"><pre><span class="go">ng build --prod</span>
+</pre></div>
+
+<p>Si le déploiement n'est pas fait à la racine :</p>
+<div class="highlight"><pre><span class="go">ng build --base-href=/pokemon</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              55/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Respecter le routage</h1></header>
+            
+            
+            <section><p>Le routage de l'app Angular doit être accepté par le serveur web :</p>
+<ul>
+<li>si l'utilisateur est sur une URL donnée produite par le routage Angular, et qu'il rafraîchit la page, il ne doit pas obtenir un 404,</li>
+<li>idem pour les bookmarks ou les liens partagés par mail ou autre.</li>
+</ul>
+<p>Il faut donc un vhost qui renvoie toutes les URLs sur index.html (sauf les ressources JS/CSS/assets).</p>
+<p>Exemple Nginx:</p>
+<pre><code>location / {
+    try_files   $uri $uri/ /index.html;
+}
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              56/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/formation-angular-2.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Angular Universal</h1></header>
+            
+            
+            <section><p>Permet de faire tourner l'app Angular sur un serveur afin de servir la page demandée en HTML pré-généré :</p>
+<ul>
+<li>augmente les performances,</li>
+<li>gère le routage,</li>
+<li>améliore le référencement.</li>
+</ul>
+<p>La page servie est ensuite ré-hydratée : le JS s'active et la suite de la navigation se fait en mode client-side.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/formation-angular-2.md">javascript/formation-angular-2.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              57/57
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Formation Angular</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">1 - Présentation générale</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">La version 2 ?</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Quel type de framework ?</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Les grands principes</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">2 - Installation et tooling</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Installation</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Le CLI</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Installation et premiers pas</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">3 - Les concepts</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Typescript</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Component</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Module</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">Injections</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">4 - Créer un composant simple</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Utiliser un composant</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">Créer un input</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Lier (i.e. binding) un input à une propriété</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Lier un événement à une méthode</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Input et output</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-21">
+        <th><a href="#slide21">Syntaxe des templates</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-22">
+        <th><a href="#slide22">Syntaxe des templates</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-23">
+        <th><a href="#slide23">Syntaxe des templates</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-24">
+        <th><a href="#slide24">Syntaxe des templates</a></th>
+        <td><a href="#slide24">24</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-25">
+        <th><a href="#slide25">Syntaxe des templates</a></th>
+        <td><a href="#slide25">25</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-26">
+        <th><a href="#slide26">Syntaxe des templates</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-27">
+        <th><a href="#slide27">5 - Gérer le routage</a></th>
+        <td><a href="#slide27">27</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-28">
+        <th><a href="#slide28">Exercice</a></th>
+        <td><a href="#slide28">28</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-29">
+        <th><a href="#slide29">Liens vers des routes</a></th>
+        <td><a href="#slide29">29</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-30">
+        <th><a href="#slide30">Routes paramétrées</a></th>
+        <td><a href="#slide30">30</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-31">
+        <th><a href="#slide31">Exercice</a></th>
+        <td><a href="#slide31">31</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-32">
+        <th><a href="#slide32">6 - Appels au backend</a></th>
+        <td><a href="#slide32">32</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-33">
+        <th><a href="#slide33">Exercice</a></th>
+        <td><a href="#slide33">33</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-34">
+        <th><a href="#slide34">Créer un Injectable</a></th>
+        <td><a href="#slide34">34</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-35">
+        <th><a href="#slide35">Observables</a></th>
+        <td><a href="#slide35">35</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-36">
+        <th><a href="#slide36">Exercice</a></th>
+        <td><a href="#slide36">36</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-37">
+        <th><a href="#slide37">Exercice</a></th>
+        <td><a href="#slide37">37</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-38">
+        <th><a href="#slide38">7 - Gérer des formulaires</a></th>
+        <td><a href="#slide38">38</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-39">
+        <th><a href="#slide39">Exemple</a></th>
+        <td><a href="#slide39">39</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-40">
+        <th><a href="#slide40">Exercice</a></th>
+        <td><a href="#slide40">40</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-41">
+        <th><a href="#slide41">Accèder au formulaire depuis le composant</a></th>
+        <td><a href="#slide41">41</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-42">
+        <th><a href="#slide42">Debounce sur la saisie</a></th>
+        <td><a href="#slide42">42</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-43">
+        <th><a href="#slide43">ViewChild</a></th>
+        <td><a href="#slide43">43</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-44">
+        <th><a href="#slide44">RxJS et les observables</a></th>
+        <td><a href="#slide44">44</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-45">
+        <th><a href="#slide45">RxJS et les observables</a></th>
+        <td><a href="#slide45">45</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-46">
+        <th><a href="#slide46">RxJS et les observables</a></th>
+        <td><a href="#slide46">46</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-47">
+        <th><a href="#slide47">RxJS et les subjects</a></th>
+        <td><a href="#slide47">47</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-48">
+        <th><a href="#slide48">RxJS et les subjects</a></th>
+        <td><a href="#slide48">48</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-49">
+        <th><a href="#slide49">RxJS et les subjects</a></th>
+        <td><a href="#slide49">49</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-50">
+        <th><a href="#slide50">8 - Tester une app</a></th>
+        <td><a href="#slide50">50</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-51">
+        <th><a href="#slide51">Test d'acceptance</a></th>
+        <td><a href="#slide51">51</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-52">
+        <th><a href="#slide52">Installation</a></th>
+        <td><a href="#slide52">52</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-53">
+        <th><a href="#slide53">9 - Ajouter des dépendences externes</a></th>
+        <td><a href="#slide53">53</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-54">
+        <th><a href="#slide54">Exercice</a></th>
+        <td><a href="#slide54">54</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-55">
+        <th><a href="#slide55">10 - Déployer en prod</a></th>
+        <td><a href="#slide55">55</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-56">
+        <th><a href="#slide56">Respecter le routage</a></th>
+        <td><a href="#slide56">56</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-57">
+        <th><a href="#slide57">Angular Universal</a></th>
+        <td><a href="#slide57">57</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Autoscale</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>f</td>
+      </tr>
+      <tr>
+        <th>Presenter view</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Blank screen</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>$().landslide();</script>
+</body>
+</html>

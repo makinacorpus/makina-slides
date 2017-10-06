@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Progressive Web App</title>
+    <!-- Styles -->
+    <link rel="stylesheet" media="print" href="assets/theme/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="assets/theme/css/screen.css">
+    <link rel="stylesheet" href="assets/theme/css/pygments.css">
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    <script type="text/javascript" src="assets/theme/js/slides.js"></script>
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="time">
+      <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+    </div>            
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: javascript/pwa.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Progressive Web App</h1></header>
+            
+            
+            <section><h2>Éric Bréhault</h2></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/pwa.md">javascript/pwa.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/pwa.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Le marché des apps</h1></header>
+            
+            
+            <section><p>Seuls les jeux et les "grands classiques" (WhatsApp, Facebook, email, etc.) s'en sortent.</p>
+<p>Mais les coûts de développement restent très supérieurs aux coûts habituels des développements web.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/pwa.md">javascript/pwa.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/pwa.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Principe</h1></header>
+            
+            
+            <section><p>Une simple page web...</p>
+<p>... avec un comportement d'application.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/pwa.md">javascript/pwa.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/pwa.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Comparaison</h1></header>
+            
+            
+            <section><table>
+<tr><th></th><th>Natif</th><th>Hybride</th><th>PWA</th></tr>
+<tr><td>Coût</td><td>N</td><td>N/2</td><td>N/4</td></tr>
+<tr><td>Installation</td><td>via un store</td><td>via un store</td><td>en naviguant</td></tr>
+<tr><td>Taille</td><td>plusieurs Mo</td><td>plusieurs Mo</td><td>juste le poids de la page web</td></tr>
+<tr><td>Affichage</td><td>dans le mur d'app</td><td>dans le mur d'app</td><td>dans le mur d'app</td></tr>
+<tr><td>Mode déconnecté</td><td>oui</td><td>oui</td><td>oui</td></tr>
+<tr><td>Notifications</td><td>oui</td><td>oui</td><td>oui</td></tr>
+<tr><td>Utilisation du GPS</td><td>oui</td><td>oui</td><td>oui</td></tr>
+<tr><td>Utilisation de l'appareil photo</td><td>oui</td><td>oui</td><td>oui</td></tr>
+<tr><td>Accès au système</td><td>oui</td><td>oui</td><td>non</td></tr>
+</table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/pwa.md">javascript/pwa.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/pwa.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Les gains</h1></header>
+            
+            
+            <section><ul>
+<li>pas de contrainte ni de coût pour la publication</li>
+<li>meilleure gestion des mises à jour logicielles</li>
+<li>distribution simplifiée</li>
+<li>technologie plus simple</li>
+<li>meilleure maintenabilité</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/pwa.md">javascript/pwa.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/pwa.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Techniques de base</h1></header>
+            
+            
+            <section><ul>
+<li>un fichier manifest.json</li>
+<li>un service worker</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/pwa.md">javascript/pwa.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/pwa.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Compatibilité</h1></header>
+            
+            
+            <section><p>Manifest : quasiment tous les terminaux</p>
+<p>Service workers :</p>
+<ul>
+<li>Android (à partir de 4.4, soit l'essentiel du marché)</li>
+<li><strong>PAS sur iPhone pour le moment</strong></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/pwa.md">javascript/pwa.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: javascript/pwa.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Framework</h1></header>
+            
+            
+            <section><p>Ionic 2 :</p>
+<ul>
+<li>Projet Angular normal</li>
+<li>Génération automatique d'une PWA</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="javascript/pwa.md">javascript/pwa.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source:  -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="page_number">
+              /8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Progressive Web App</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">Le marché des apps</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">Principe</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Comparaison</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Les gains</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Techniques de base</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Compatibilité</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Framework</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Autoscale</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>f</td>
+      </tr>
+      <tr>
+        <th>Presenter view</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Blank screen</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>$().landslide();</script>
+</body>
+</html>
