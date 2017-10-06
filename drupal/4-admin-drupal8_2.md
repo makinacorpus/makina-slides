@@ -575,7 +575,7 @@ Pour le développement
 
   * __Problème__ : aucune intégration graphique avant la fin => incompatible avec une livraison régulière...
 
-![][25]
+  * <https://makina-corpus.com/blog/metier/2016/comment-creer-un-site-web-avec-drupal>
 
 --------------------------------------------------------------------------------
 
@@ -649,10 +649,9 @@ Pour le développement
 # Questions ?
 
 
-   [1]: img/update.png
+   [1]: img/update8.png
 
    [2]: https://github.com/drush-ops/drush
-   
 
    [3]: https://drushcommands.com/
 
@@ -697,8 +696,6 @@ Pour le développement
    [23]: https://www.palantir.net/blog/multi-headed-drupal
 
    [24]: img/original_release_schedule.png
-
-   [25]: https://makina-corpus.com/blog/metier/2016/comment-creer-un-site-web-avec-drupal
    
    [26]: img/media_entity.png
       

@@ -14,3 +14,8 @@ venv
 # Python
 *.pyc
 __pycache__
+
+# Jekyll is a jerk, it can't handle private repo, so we must ignore it
+.gitmodules
+docs/assets/makina
+

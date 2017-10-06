@@ -209,16 +209,16 @@
 # Architecture fichiers
 
 <img src="img/archi_fichiers8.png" style="float:left;padding:0 1em"/>
-
+<small>
 Cœur de Drupal
 <br>
 Modules communs à tous les sites
-<br><br><br>
-Répertoire d'upload par défaut
 <br>
+Répertoire d'upload par défaut
+<br><br>
 Fichiers de configuration
-<br><br><br><br><br><br><br>
-Thèmes communs à tous les sites
+<br><br><br>
+Thèmes communs à tous les sites</small>
 
 --------------------------------------------------------------------------------
 
@@ -380,8 +380,6 @@ puisse modérer ces pages.
 
 ![][37]
 
-![][38]
-
 --------------------------------------------------------------------------------
 
 # Gérer les utilisateurs - Exercice 2
@@ -472,12 +470,13 @@ puisse modérer ces pages.
 
 # La gestion du contenu - Exercice
 
-  * Créer un type de contenu 'livre'.
+  * Créer un type de contenu 'livre'
   * Permettre l'affichage de commentaires
-  * Champs: Titre, résumé, référence, auteur.
-  * Masquer la référence à l'affichage du nœud et de l'accroche.
-  * Afficher le label auteur sur la même ligne que la valeur du champ.
+  * Champs: Titre, résumé, référence, auteur, couverture
+  * Masquer la référence à l'affichage du nœud et de l'accroche
+  * Afficher le label auteur sur la même ligne que la valeur du champ
   * Créer au moins deux livres
+  * Utiliser un style d'image pour uniformiser l'affichage
 
 .fx: tp
 
@@ -823,8 +822,7 @@ d'accueil' est cochée sur toutes les pages du site
 # L'organisation du contenu - Exercice récapitulatif
 
   * Créer un type de contenu auteur : nom, biographie, photo (image)
-  * Ajouter une référence (references) vers l'auteur dans le type de contenu
-''Livre''
+  * Ajouter une référence vers l'auteur dans le type de contenu ''Livre''
   * Faire une vue qui affiche la bibliographie de l'auteur (bloc dans les
 contenus ''auteur'')
   * Faire une vue page qui affiche un slideshow (views slideshow) des 5
@@ -913,7 +911,5 @@ cette page comme page d'accueil.
    [36]: img/content_moderation_1.png
    
    [37]: img/content_moderation_2.png
-      
-   [38]: img/content_moderation_3.png
    
    [39]: img/outside_in.png

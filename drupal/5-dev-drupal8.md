@@ -7,20 +7,20 @@
 
 --------------------------------------------------------------------------------
 
-# Objectifs de la formation
+## Objectifs de la formation
   * Appréhender l'environnement de développement Drupal
   * Comprendre les concepts et l'API Drupal 
   * Modifier le comportement d'un module existant 
   * Créer un module
   * Créer un profil d'installation
-# Prérequis
+## Prérequis
   * Connaitre PHP et avoir développé quelques scripts
   * Avoir construit un site avec Drupal
   * Notions de HTML, CSS, JavaScript et requêtes SQL
 
 --------------------------------------------------------------------------------
 
-# 1er jour
+## 1er jour
   * Rappels PHP
   * Environnement de développement
   * Quelques outils utiles (Drush, Git, Devel)
@@ -28,14 +28,14 @@
   * Architecture de Drupal & concepts de base
   * Création du squelette d'un module
   * Les premiers hooks
-# 2ème jour
+## 2ème jour
   * Les différentes API
   * Les nœuds, le contenu et les droits d'accès
   * L'alteration des modules
 
 --------------------------------------------------------------------------------
 
-# 3ème jour
+## 3ème jour
   * La form API
   * Les mails
   * Créer un thème basique
@@ -46,14 +46,20 @@
 <br/>
 
 <center>
-# Slides disponibles en ligne
+## Slides disponibles en ligne
 
-# <http://makinacorpus.github.io/makina-slides/drupal8-dev.html>
+<http://makinacorpus.github.io/makina-slides/drupal8-dev.html>
 </center>
 
 --------------------------------------------------------------------------------
 
-# Rapidement, ce que vous devez savoir
+# Quelques rappels
+
+.fx: alternate
+
+--------------------------------------------------------------------------------
+
+## Rapidement, ce que vous devez savoir
 
   * POO
   * Composer
@@ -64,7 +70,7 @@
 
 --------------------------------------------------------------------------------
 
-# /!\ Avertissement /!\
+## /!\ Avertissement /!\
 
 ## "Going off the island"
 
@@ -75,7 +81,7 @@
 
 --------------------------------------------------------------------------------
 
-# Rappels PHP
+## Rappels PHP
 
   * PHP 5.5.9 minimum (<http://www.phptherightway.com/>)
   * Programmation orientée Object
@@ -90,7 +96,7 @@
 
 --------------------------------------------------------------------------------
 
-# Les normes PHP
+## Les normes PHP
 
   * Viennent du PHP Framework Interoperability Group (FIG)
   * Différentes normes
@@ -103,7 +109,7 @@
 
 --------------------------------------------------------------------------------
 
-# Symfony (<http://symfony.com/>)
+## [Symfony](http://symfony.com/)
 
   * Le plus populaire des frameworks PHP aujourd'hui
   (<http://symfony.com/doc/current/index.html>)
@@ -114,7 +120,7 @@
 
 --------------------------------------------------------------------------------
 
-<h2>YAML</h2>
+## YAML
 
     !yaml
     key: 'value'
@@ -124,7 +130,7 @@
 
 --------------------------------------------------------------------------------
 
-# Composer (<https://getcomposer.org>)
+## [Composer](https://getcomposer.org)
 
   * Gestionnaire de dépendances utilisé par la communauté PHP
   * Installation uniquement locale au projet
@@ -132,14 +138,15 @@
   * "composer install"
   * composer.lock
   * Contient un autoloader
+  * Pour les performances : <https://github.com/hirak/prestissimo>
 
 <pre><code>
   curl -sS https://getcomposer.org/installer | php
   mv composer.phar /usr/local/bin/composer
 </code></pre>
 
-  <https://bojanz.wordpress.com/2015/09/18/d8-composer-definitive-intro/>
-  <https://adamcod.es/2013/03/07/composer-install-vs-composer-update.html>
+  * [D8 Composer definitive introduction](https://bojanz.wordpress.com/2015/09/18/d8-composer-definitive-intro/)
+  * [Composer install vs. composer update](https://adamcod.es/2013/03/07/composer-install-vs-composer-update.html)
 
 --------------------------------------------------------------------------------
 
@@ -149,7 +156,7 @@
 
 --------------------------------------------------------------------------------
 
-# Le serveur Web
+## Le serveur Web
 
   * xAMP (Apache, MySQL, PHP) conseillé
   * D'autres possibilités : Nginx / IIS, PostgreSQL
@@ -165,7 +172,7 @@ environnement de développement avec tous les pré-requis Drupal.
 
 --------------------------------------------------------------------------------
 
-# TP: Installer Drupal 8
+## TP: Installer Drupal 8
 
   * Choisir la distribution Drupal 8.x simple dans Acquia Dev Desktop
   * Installer le profil d'installation Standard
@@ -180,7 +187,7 @@ environnement de développement avec tous les pré-requis Drupal.
 
 --------------------------------------------------------------------------------
 
-# L'éditeur de code
+## L'éditeur de code
 
   * Le meilleur est celui que vous maitrisez
   * Différence IDE/Editeur simple :
@@ -193,7 +200,7 @@ environnement de développement avec tous les pré-requis Drupal.
 
 --------------------------------------------------------------------------------
 
-# Les standards de codage*
+## Les standards de codage*
 
   * Indentation, espaces : lisibilité du code
   * Nommage, toujours commencer par le nom système : éviter les conflits
@@ -204,17 +211,13 @@ environnement de développement avec tous les pré-requis Drupal.
     * fichiers
   * Tags `<?php` non fermés : éviter l'envoi du buffer
 
-<strong>A connaître pour comprendre et être compris</strong>
-
-<center>
-# <https://drupal.org/coding-standards>
-</center>
+<strong>[À connaître pour comprendre et être compris](https://drupal.org/coding-standards)</strong>
 
 \* <small>basés sur le standard PEAR</small>
 
 --------------------------------------------------------------------------------
 
-# TP: Configuration de PHPStorm
+## TP: Configuration de PHPStorm
   * Ouvrir le dossier Drupal dans PHPStorm
   * Afficher les messages de journal de PHPStorm
   * Cliquer sur "Enable Drupal support" et configurer le chemin
@@ -224,14 +227,13 @@ Avantages :
 
   * code style implémenté
   * navigation dans les hooks (appels et déclarations)
-  * installation d'XDebug facile
-  (<http://redcrackle.com/blog/drupal-8/phpstorm>)
+  * installation d'XDebug facile [pour PHPStorm](http://redcrackle.com/blog/drupal-8/phpstorm)
 
 .fx: tp
 
 --------------------------------------------------------------------------------
 
-# Les modules Drupal utiles au développement
+## Les modules Drupal utiles au développement
   * _Features_: transférer la configuration dans le code
   * _Devel_ : debug et informations sur les données
   * _Drupal Console_ : générateur de code
@@ -245,7 +247,7 @@ Avantages :
 
 --------------------------------------------------------------------------------
 
-# TP: Drush
+## TP: Drush
   * Lancer Drush 
   * Regarder la liste des commandes 
   * Installer un module (features) 
@@ -258,7 +260,7 @@ Avantages :
 
 --------------------------------------------------------------------------------
 
-# TP : Console
+## TP : Console
   * Intaller la console Drupal
   * Vérifier que c'est correctement installé
   * Regarder la liste des commandes (drupal list)
@@ -269,9 +271,9 @@ Avantages :
 
 --------------------------------------------------------------------------------
 
-# Exemples de commandes souvent utilisées
+## Exemples de commandes souvent utilisées
 
-  * `drupal site:mode dev`
+  * `drupal site:mode dev` (désactivée [depuis la rc12](https://blog.wturrell.co.uk/drupal-console-sitemode-option-removed/))
   * `drupal generate:module`
   * `drupal generate:plugin:block`
   * `drupal generate:routesubscriber`
@@ -279,7 +281,7 @@ Avantages :
 
 --------------------------------------------------------------------------------
 
-# Le meilleur moyen d'installer Drupal 8
+## Le meilleur moyen d'installer Drupal 8
 
   * `composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction`
 
@@ -290,7 +292,7 @@ Avantages :
 
 --------------------------------------------------------------------------------
 
-# Git et la gestion de versions
+## Git et la gestion de versions
 
   * Utilisé par beaucoup de développeurs dans le milieu du web
 
@@ -315,7 +317,7 @@ Avantages :
 
 --------------------------------------------------------------------------------
 
-# Présentation de l'arborescence
+## Présentation de l'arborescence
 
 <img src="img/archi_fichiers8.png" style="float:left;padding:.5em 1em 0"/>
 <div style="font-size: 0.95em;line-height: 1.25em;padding-top: 0.3em;">
@@ -350,7 +352,7 @@ sous-repertoire `custom`
 
 --------------------------------------------------------------------------------
 
-#TP: Jetons un œil à la base de données
+## TP: Jetons un œil à la base de données
 
   * se familiariser avec PhpMyAdmin
   * identifier les tables des modules actuellement activés
@@ -362,7 +364,7 @@ sous-repertoire `custom`
 
 --------------------------------------------------------------------------------
 
-# Qu'est ce qu'un module ?
+## Qu'est ce qu'un module ?
   * `.info.yml` (<https://www.drupal.org/node/2000204>)
     * `name`
     * `core`
@@ -374,7 +376,7 @@ sous-repertoire `custom`
 
 --------------------------------------------------------------------------------
 
-# Structure d'un module
+## Structure d'un module
 
 ![][2]
 
@@ -382,7 +384,7 @@ sous-repertoire `custom`
 
 --------------------------------------------------------------------------------
 
-# Fil rouge : le module Premium
+## Fil rouge : le module Premium
 
   * Créer deux permissions pour les rôles, une pouvant affecter le status
   premium aux contenus et l'autre le voir
@@ -409,9 +411,9 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 --------------------------------------------------------------------------------
 
-# Avant de commencer
+## Avant de commencer
 
-## Votre bible : api.drupal.org
+### Votre bible : api.drupal.org
 
   Recense toutes les fonctions de Drupal, et leur documentation. Un IDE aura
   cette même documentation dans le code.
@@ -421,7 +423,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
   <https://api.drupal.org/api/drupal/core%21core.api.php/group/extending/8.1.x>
 
 <br>
-## Votre guide : modules `examples`
+### Votre guide : modules `examples`
 
   Pour chaque concept de Drupal, des exemples concrets d'utilisation (ajax,
   form, blocks, cache, render, cron, dbtng, email, menu, node_access,
@@ -435,7 +437,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 --------------------------------------------------------------------------------
 
-# Les hooks 
+## Les hooks 
 
   * Concept historique Drupal
   * Implémenter `hook_form_alter()` donnera `mon_module_form_alter()`
@@ -451,7 +453,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 --------------------------------------------------------------------------------
 
-# Les permissions
+## Les permissions
 
   * Créer un fichier `.permissions.yml`
   * Créer les deux permissions
@@ -464,7 +466,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 --------------------------------------------------------------------------------
 
-# Et pour des permissions dynamiques ?
+## Et pour des permissions dynamiques ?
 
     !yaml
     permission_callbacks:
@@ -472,7 +474,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 --------------------------------------------------------------------------------
 
-# Les plugins & les annotations
+## Les plugins & les annotations
 
   * Plugins : <https://www.drupal.org/node/2087839>
   * Annotations très utilisé dans le cœur : pour tous le plugins (block, entre
@@ -481,7 +483,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
 --------------------------------------------------------------------------------
 
-# Les blocs
+## Les blocs
 
 fichier src/Plugin/Block/TestBlock.php
 
@@ -500,14 +502,17 @@ fichier src/Plugin/Block/TestBlock.php
       public function build() {
         return array('#markup' => '',);
       }
-    }
 
-    // Altération
-    function hook_block_view_BLOCK_ID_alter(&$build, $block) {}
+      public function blockAccess(AccountInterface $account) { }
+
+      public function blockForm($form, FormStateInterface $form_state) { }
+
+      public function blockSubmit($form, FormStateInterface $form_state) { }
+    }
 
 --------------------------------------------------------------------------------
 
-# TP: Notre premier bloc
+## TP: Notre premier bloc
 
 Créer un bloc :
 
@@ -524,7 +529,7 @@ Attention au cache d'implementations
 
 --------------------------------------------------------------------------------
 
-# Render Arrays
+## Render Arrays
 
 Les render arrays sont les blocs constituant une page Drupal. Ce sont des arrays
 PHP qui définissent des données (c-a-d la structure) ; On est obligés de
@@ -552,7 +557,7 @@ Un render array est converti en HTML avec la fonction `render();`
 
 --------------------------------------------------------------------------------
 
-# Paramètres du render array et propriétés
+## Paramètres du render array et propriétés
 
 Une fonction de `#theme` peut être renseignée ainsi que ses paramètres
 (<https://www.drupal.org/developing/api/8/render/arrays>)
@@ -576,7 +581,7 @@ Des propriétés utiles :
 
 --------------------------------------------------------------------------------
 
-# Render Arrays
+## Render Arrays
 
     !php
     // Un render array en html
@@ -588,7 +593,7 @@ Des propriétés utiles :
 
 --------------------------------------------------------------------------------
 
-# TP
+## TP
 
 Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
@@ -596,7 +601,7 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
 --------------------------------------------------------------------------------
 
-# TP: Manipuler les render arrays
+## TP: Manipuler les render arrays
 
   Altérer le bloc dans un `hook_block_view_BASE_ID_alter()` afin de changer le
   `<h3>` en `<h4>`
@@ -609,9 +614,9 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
 --------------------------------------------------------------------------------
 
-# Système de routage / menus
+## Système de routage / menus
 
-## Quelques définitions :
+### Quelques définitions :
   * routage : faire pointer une route (`node/{node}`) à une action (afficher un
   noeud)
   * chemin (ou path) : route dont les arguments sont définis (ex: `node/123` est 
@@ -621,7 +626,7 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
   renseigné par le contributeur (`mon-noeud`)
 
 
-## Les propriétés d'une route
+### Les propriétés d'une route
   * _Permissions
   * Les arguments sont nommés (`{node}`) et peuvent être chargés dans le
   Controller (en les typant avec une classe)
@@ -630,7 +635,7 @@ Ajouter un '&lt;h3&gt;' autour du bloc précédent
 
 --------------------------------------------------------------------------------
 
-# Les controllers
+## Les controllers
 
 fichier src/Controller/ModuleController.php :
 
@@ -661,7 +666,7 @@ fichier src/Controller/ModuleController.php :
 
 --------------------------------------------------------------------------------
 
-# Exemples de routage
+## Exemples de routage
 
     !yaml
     #.routing.yml
@@ -687,7 +692,7 @@ La function renvoit alors AccessResult::allowed() ou AccessResult::forbidden()
 
 --------------------------------------------------------------------------------
 
-# Ajout de liens / onglets
+## Ajout de liens / onglets
 
     !yaml
     #.links.menu.yml
@@ -707,7 +712,7 @@ La function renvoit alors AccessResult::allowed() ou AccessResult::forbidden()
 
 --------------------------------------------------------------------------------
 
-# TP: Création de page
+## TP: Création de page
 
 Créer une page _Suis-je Premium ?_ reproduisant le comportement du bloc
 
@@ -719,7 +724,7 @@ argument l'uid de l'utilisateur
   - url d'exemple : est-il-premium/2
 
 Créer une page _Page Premium_ avec du contenu "Lorem Ipsum" et ne
-s'affichant que si l'utilisateur courant à la permission de voir le contenu
+s'affichant que si l'utilisateur courant a la permission de voir le contenu
 premium
 
   - url : page-premium
@@ -728,7 +733,7 @@ premium
 
 --------------------------------------------------------------------------------
 
-# Quelques routes spéciales
+## Quelques routes spéciales
 
   * &lt;front&gt;
   * &lt;nolink&gt;
@@ -737,19 +742,20 @@ Pour voir les routes, utilisez la console : `drupal router:debug`
 
 --------------------------------------------------------------------------------
 
-# Comment convertir les paramètres dans les routes
+## Comment convertir les paramètres dans les routes
 
 Utiliser des [ParamConverter](https://www.drupal.org/docs/8/api/routing-system/implementing-custom-parameter-converters)
 
 --------------------------------------------------------------------------------
 
-# Gestion des nodes et des users
+## Gestion des nodes et des users
 
 Quelques fonctions de l'API à connaitre :
 
   * `\Drupal::currentUser()` : utilisateur actuellement connecté
   * `Node::load()` et `Node::loadMultiple()` pour charger des nœuds
   * `User::load()` et `User::loadMultiple()` pour charger des utilisateurs
+  * \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
   * `$entity->save()` pour enregistrer un nœud, un utilisateur, ...
   * `$user->getDisplayName()` pour afficher un nom d'utilisateur
   * `Node::create(['type' => article])->save();`
@@ -757,9 +763,9 @@ Quelques fonctions de l'API à connaitre :
 
 --------------------------------------------------------------------------------
 
-# Gestion de la base de données /!\ en cours de modification /!\
+## Gestion de la base de données
 
-## Requête en base de données
+### Requête en base de données
 
     !php
     $db = \Drupal::database();
@@ -769,7 +775,7 @@ Quelques fonctions de l'API à connaitre :
     $result = $db->udpate();
     $result = $db->merge();
 
-## Requête sur le modèle objet
+### Requête sur le modèle objet
 
     !php
     $ids = \Drupal::entityQuery('user')->condition('name', 'test')->execute();
@@ -801,9 +807,9 @@ Récupération de résultats :
 
 --------------------------------------------------------------------------------
 
-# Gestion des URLs et des paths
+## Gestion des URLs et des paths
 
-## Quelques fonctions
+### Quelques fonctions
 
   * $this->redirect('contact.site_page'); -> redirection
   * `global $base_url` -> http://monsite.com
@@ -811,7 +817,7 @@ Récupération de résultats :
   * `drupal_get_path()` (module, theme) -> chemin vers un module ou un thème
   (`drupal_get_path('module', 'devel')` donne _modules/devel_)
 
-## L'objet URL
+### L'objet URL
     !php
     use Drupal\Core\Url;
     // Récupérer une Url.
@@ -823,7 +829,7 @@ Récupération de résultats :
 
 --------------------------------------------------------------------------------
 
-# TP: Création de page
+## TP: Création de page
 
 Créer une page _Utilisateurs premium_ listant les utilisateurs du site ayant un
 accès premium.
@@ -842,15 +848,15 @@ accès premium.
 
 --------------------------------------------------------------------------------
 
-# Altérer le comportement des modules existants
+## Altérer le comportement des modules existants
 
-## Solution "historique" : les hooks
+### Solution "historique" : les hooks
 
   * `hook_XXXXXXX_alter()` : permettent de _modifier_ des données créés par
   d'autres modules
   * [Liste des hooks](https://api.drupal.org/api/drupal/core%21core.api.php/group/hooks/8.1.x)
 
-## "Nouveauté" Drupal 8 : les Events symfony
+### "Nouveauté" Drupal 8 : les Events symfony
 
   * On "s'inscrit" à un événement (via un service) pour que le système nous
   appelle automatiquement et qu'on puisse _réagir_
@@ -859,9 +865,9 @@ accès premium.
 
 --------------------------------------------------------------------------------
 
-# Concrètement
+## Concrètement
 
-## Une classe pour la réponse à l'évènement
+### Une classe pour la réponse à l'évènement
     !php
     namespace Drupal\my_module\EventSubscriber;
     use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -876,7 +882,7 @@ accès premium.
       }
     }
 
-## Un service (fichier `my_module.services.yml`)
+### Un service (fichier `my_module.services.yml`)
     !yaml
     services:
       my_module.redirect_all:
@@ -886,7 +892,7 @@ accès premium.
 
 --------------------------------------------------------------------------------
 
-# Exemple : modification du routage des autres modules
+## Exemple : modification du routage des autres modules
     !php
     use Drupal\Core\Routing\RouteSubscriberBase;
     use Symfony\Component\Routing\RouteCollection;
@@ -914,14 +920,14 @@ accès premium.
 
 --------------------------------------------------------------------------------
 
-# TP : Events & Hooks
+## TP : Events & Hooks
 
-## Events
+### Events
 
 Empêcher d'accéder à l'édition du profil d'un utilisateur (/user/{user}/edit)
 en interdisant l'accès à la route.
 
-## Hooks
+### Hooks
 
 Faites la même chose en supprimant juste le lien de menu
 (hook_menu_local_tasks_alter)
@@ -930,7 +936,7 @@ Faites la même chose en supprimant juste le lien de menu
 
 --------------------------------------------------------------------------------
 
-# Bonus : déclencher des évènements
+## Bonus : déclencher des évènements
 
     !php
     $dispatcher = \Drupal::service('event_dispatcher');
@@ -938,7 +944,7 @@ Faites la même chose en supprimant juste le lien de menu
 
 --------------------------------------------------------------------------------
 
-# Les évènements déclenchés par le cœur
+## Les évènements déclenchés par le cœur
 
   * kernel.request : Au début de la gestion de la requête
   * kernel.response : Une fois que la réponse est créée
@@ -947,8 +953,7 @@ Faites la même chose en supprimant juste le lien de menu
 
 --------------------------------------------------------------------------------
 
-# Que se passe-t-il sur Kernel.request ?
-
+## Que se passe-t-il sur Kernel.request ?
 
   * AuthenticationSubscriber : Charge la session et initialize currentUser().
   * LanguageRequestSubscriber : Détecte la langue courante
@@ -960,9 +965,7 @@ Faites la même chose en supprimant juste le lien de menu
 
 --------------------------------------------------------------------------------
 
-# La Form API
-
-<https://www.drupal.org/node/2117411>
+# La [Form API](https://www.drupal.org/node/2117411)
 
 .fx: alternate
 
@@ -1000,7 +1003,7 @@ https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/8)
 
 --------------------------------------------------------------------------------
 
-# Traitement des données
+## Traitement des données
 
 Les données soumises et validées sont contenues dans
 `$form_state->getValue('key')`.
@@ -1020,7 +1023,7 @@ les autres modules.
 
 --------------------------------------------------------------------------------
 
-# Appeler un formulaire directement depuis le routage
+## Appeler un formulaire directement depuis le routage
     !yaml
     example.form:
       path: '/example-form'
@@ -1030,7 +1033,7 @@ les autres modules.
 
 --------------------------------------------------------------------------------
 
-# TP : Form API
+## TP : Form API
 
 But: définir pour quels types de contenu la fonctionnalité premium est activée.
 C'est-à-dire, sur quels types on affichera l'option "Contenu premium" dans les
@@ -1050,7 +1053,7 @@ formulaires de création ou de modification de nœud.
 
 --------------------------------------------------------------------------------
 
-# TP : Form API
+## TP : Form API
 
   * Valider le fait qu'on ne peut pas choisir le type de contenu _Page de base_
 
@@ -1058,7 +1061,7 @@ formulaires de création ou de modification de nœud.
 
 --------------------------------------------------------------------------------
 
-# Gestion de la configuration
+## Gestion de la configuration
 
   * <https://www.drupal.org/node/1905070>
   * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings');
@@ -1069,44 +1072,22 @@ formulaires de création ou de modification de nœud.
   * `$config->clear('name')->save();` pour supprimer une valeur
   * $config = \Drupal::service('config.factory')->getEditable('monmodule.settings')->delete();
 
-Documentation de l'API sur <https://www.drupal.org/node/1809490>
+[Documentation de l'API](https://www.drupal.org/node/1809490)
 
 --------------------------------------------------------------------------------
 
-# Déclaration de la configuration
-
-  * /config/install/mon_module.settings.yml -> initialisation à l'installation
-  * /config/optionnal/module1.type1.name1.yml -> si module1 est activé
-  * /config/schema/mon_module.schema.yml -> schéma de la configuration de votre
-  module
-
-## Exemple de fichier de schema
-
-    !yaml
-    mon_module.settings:
-      type: config_object
-      mapping:
-        settings_1:
-          type: boolean
-          label: 'Settings 1'
-        settings_2:
-          type: string
-          label: 'Settings 2'
-
---------------------------------------------------------------------------------
-
-# TP : Form API
+## TP : Form API
 
   * A la soumission enregistrer les valeurs dans une variable persistante
-  `'premium_types'`
+  `'content_types'` de l'objet `premium.settings`
   * Attention, il faut désinstaller et réinstaller votre module pour que Drupal
-  connaisse votre configuration
+  connaisse votre configuration si vous déclarez un fichier dans config/install
 
 .fx: tp
 
 --------------------------------------------------------------------------------
 
-# TP : Form API
+## TP : Form API
 
   * Cocher les checkbox par défaut lorsque le type de contenu est activé
   (en lisant depuis la configuration)
@@ -1115,13 +1096,23 @@ Documentation de l'API sur <https://www.drupal.org/node/1809490>
 
 --------------------------------------------------------------------------------
 
-# Formulaire de configuration
+## Formulaire de configuration
 
   * Utiliser ConfigFormBase
 
 --------------------------------------------------------------------------------
 
-# Themer précisément un formulaire
+## Une autocomplétion rapide
+
+    !php
+    $form['my_key'] = [
+      '#type' => 'entity_autocomplete',
+      '#target_type' => 'user',
+    ];
+
+--------------------------------------------------------------------------------
+
+## Themer précisément un formulaire
 
 <http://www.foreach.be/blog/how-manipulate-forms-drupal-8>
 
@@ -1129,14 +1120,14 @@ Documentation de l'API sur <https://www.drupal.org/node/1809490>
 
 --------------------------------------------------------------------------------
 
-# En bonus, Manipuler les "Form Modes"
+## En bonus, Manipuler les "Form Modes"
 
     !php
     $this->entityFormBuilder()->getForm($form_id, 'form_mode');
 
 --------------------------------------------------------------------------------
 
-# Fournir un style par défaut
+## Fournir un style par défaut
 
   Dans un fichier de configuration '/config/install/image.style.mon_style.yml'
   (l'exporter depuis l'interface)
@@ -1155,7 +1146,7 @@ Documentation de l'API sur <https://www.drupal.org/node/1809490>
 
 --------------------------------------------------------------------------------
 
-# TP: Créer un style d'image pour nos contenus premium
+## TP: Créer un style d'image "premium"
 
 Celui-ci nous servira pour les images qui seront sur les articles premium
 
@@ -1163,7 +1154,7 @@ Celui-ci nous servira pour les images qui seront sur les articles premium
 
 --------------------------------------------------------------------------------
 
-# Le stockage
+## Le stockage
 
   * Ancienne méthode (D7) : on créé ses propres tables manuellement
   * Méthode Drupal 8 : on créé une _entité_ (2 types : configuration ou contenu)
@@ -1172,7 +1163,7 @@ Celui-ci nous servira pour les images qui seront sur les articles premium
 
 --------------------------------------------------------------------------------
 
-# Schema API (~ méthode Drupal 7)
+## Schema API (~ méthode Drupal 7)
 
   * Gère la base de données
   * Se situe dans le fichier .install
@@ -1186,7 +1177,7 @@ Celui-ci nous servira pour les images qui seront sur les articles premium
 
 --------------------------------------------------------------------------------
 
-# Génération d'entité
+## Génération d'entité
 
   * Recommandation : utiliser la console pour générer l'entité
   * drupal generate:entity:content (ou drupal generate:entity:config)
@@ -1196,14 +1187,14 @@ Celui-ci nous servira pour les images qui seront sur les articles premium
 
 --------------------------------------------------------------------------------
 
-# TP: Enregistrer les statuts
+## TP: Enregistrer les statuts
 
-## Déclarer une table premium
+### Déclarer une table premium
 
 Via l'API, déclarer une table avec deux colonnes, nid et status.
 Installer cette table via un `hook_update_N()` ou réinstaller le module.
 
-## Altérer le formulaire de noeuds
+### Altérer le formulaire de noeuds
 
   * Ajouter la checkbox au dessus du titre
 
@@ -1221,7 +1212,7 @@ Rappels 
 
 --------------------------------------------------------------------------------
 
-# TP : Contrôler l'accès aux nœuds
+## TP : Contrôler l'accès aux nœuds
 
 Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.1.x))
 
@@ -1243,7 +1234,7 @@ De même `hook_node_access()` n'est pas appelé pour le superadmin.
 
 --------------------------------------------------------------------------------
 
-# Envoi de mails
+## Envoi de mails
 
     !php
     // Déclaration du contenu du mail avec hook_mail().
@@ -1268,9 +1259,9 @@ La clé permet à un module de gérer plusieurs types de mail.
 
 --------------------------------------------------------------------------------
 
-# TP
+## TP
 
-## Notification par mail
+### Notification par mail
 
 Envoyer un mail à tous les utilisateurs premium :
 
@@ -1284,7 +1275,7 @@ Cordialement,
 L'équipe du site _Nom du site_
 </pre>
 
-## Affichage du statut premium sur le nœud
+### Affichage du statut premium sur le nœud
 
   - Trouver un hook qui permettrait d'ajouter un message
   `<strong>Contenu premium/strong>` sur chaque contenu premium
@@ -1294,7 +1285,13 @@ L'équipe du site _Nom du site_
 
 --------------------------------------------------------------------------------
 
-# Le partie thème d'un module
+# Le thème
+
+.fx: alternate
+
+--------------------------------------------------------------------------------
+
+## La partie thème d'un module
 
 Le module fournit **toujours** le markup par défaut.
 
@@ -1323,11 +1320,6 @@ suggestions de templates.
     	);
     }
 
-    $html_output = theme('forums', array(
-      'forums' => $forums,
-      'topics' => $topics,
-    ));
-
     // Mais toujours privilégier les render arrays, car altérables
     $build['forums'] = array(
       '#theme' => 'forums',
@@ -1337,7 +1329,7 @@ suggestions de templates.
 
 --------------------------------------------------------------------------------
 
-# Fonctions de theme
+## Fonctions de thème
 
 Exemples d'utilisations de `theme()` :
 
@@ -1360,14 +1352,14 @@ Exemples d'utilisations de `theme()` :
 
 --------------------------------------------------------------------------------
 
-# Implémentation du hook_theme()
+## Implémentation du hook_theme()
 
   * Fonction template_preprocess_forums()
   * fichier "templates/forums.html.twig"
 
 --------------------------------------------------------------------------------
 
-# Twig
+## Twig
 
   * Un template engine pour PHP
   * Créé par Fabien Potencier (Symfony)
@@ -1377,7 +1369,7 @@ Exemples d'utilisations de `theme()` :
 
 --------------------------------------------------------------------------------
 
-# Exemple de syntaxe
+## Exemple de syntaxe
 
     !twig
     <!DOCTYPE html>
@@ -1398,7 +1390,7 @@ Exemples d'utilisations de `theme()` :
 
 --------------------------------------------------------------------------------
 
-# 3 syntaxes à connaître
+## 3 syntaxes à connaître
 
   * {{ afficher }}
   * {# commenter #}
@@ -1406,20 +1398,20 @@ Exemples d'utilisations de `theme()` :
 
 --------------------------------------------------------------------------------
 
-# Afficher
+## Afficher
 
 ![][1]
 
 --------------------------------------------------------------------------------
 
-# Programmer
+## Programmer
 
   * {% if expr %} {% else %} {% endif %}
   * {% for item in items %} ({% else %}) {% endfor %}
 
 --------------------------------------------------------------------------------
 
-# Les filtres
+## Les filtres
 
   * {{ messages | join(', ') }}
   * {{ "now" | date('d/m/Y H:i') }}
@@ -1436,12 +1428,12 @@ Exemples d'utilisations de `theme()` :
 
 --------------------------------------------------------------------------------
 
-# Les fonctions
+## Les fonctions
 
   * dump(node)
   * {{ max(1, 3, 2) }}
   * {{ random(['pomme', 'orange', 'citron']) }}
-  * \+ celles fournies par Drupal : <https://www.drupal.org/node/2486991>
+  * \+ celles [fournies par Drupal](https://www.drupal.org/node/2486991) :
     * link()
     * path()
     * url()
@@ -1449,13 +1441,13 @@ Exemples d'utilisations de `theme()` :
 
 --------------------------------------------------------------------------------
 
-# Inclusion de template
+## Inclusion de template
 
   * {% include 'page.html.twig' with {'foo': 'bar', 'baz': 'bat'} %}
 
 --------------------------------------------------------------------------------
 
-# Héritage de template
+## Héritage de template
 
     !twig
     {# Template A #}
@@ -1476,20 +1468,20 @@ Exemples d'utilisations de `theme()` :
 
 --------------------------------------------------------------------------------
 
-# Hiérarchie des templates Drupal
+## Hiérarchie des templates Drupal
 
 ![][7]
 
 --------------------------------------------------------------------------------
 
-# Le nommage des templates
+## Le nommage des templates
 
   * <https://www.drupal.org/node/2354645>
   * Pour Views : <http://redcrackle.com/blog/drupal-8/theme-views-templates>
 
 --------------------------------------------------------------------------------
 
-# Debug Twig dans Drupal
+## Debug Twig dans Drupal
 
     !yaml
     parameters:
@@ -1502,7 +1494,7 @@ dans sites/default/services.yml
 
 --------------------------------------------------------------------------------
 
-# Création de theme avec un my_theme.info.yml
+## Création de theme avec un my_theme.info.yml
 
     !yaml
     name: My Theme
@@ -1523,7 +1515,7 @@ dans sites/default/services.yml
 
 --------------------------------------------------------------------------------
 
-# TP: Créer un template pour premium
+## TP: Créer un template pour premium
 
 Utiliser dans le hook_node_view() un render array #markup pour afficher
 
@@ -1546,7 +1538,7 @@ Ajouter des suggestions pour ce template.
 
 --------------------------------------------------------------------------------
 
-# Ajout de JS / CSS
+## Ajout de JS / CSS
 
     !yaml
     global-styling:
@@ -1566,7 +1558,7 @@ Ajouter des suggestions pour ce template.
 
 --------------------------------------------------------------------------------
 
-# Surcharge de bibliothèque (my_theme.info.yml)
+## Surcharge de bibliothèque (my_theme.info.yml)
 
     !yaml
     libraries-override:
@@ -1582,7 +1574,7 @@ Ajouter des suggestions pour ce template.
 
 --------------------------------------------------------------------------------
 
-# Extension de bibliothèques (my_theme.info.yml)
+## Extension de bibliothèques (my_theme.info.yml)
 
     !yaml
     libraries-extend:
@@ -1593,7 +1585,7 @@ Ajouter des suggestions pour ce template.
 
 --------------------------------------------------------------------------------
 
-# TP: Faire flotter l'image à droite
+## TP: Faire flotter l'image à droite
 
 Ajouter une classe à l'image et créer un fichier CSS:
 
@@ -1602,19 +1594,19 @@ Ajouter une classe à l'image et créer un fichier CSS:
       float: right;
     }
 
-L'ajouter lorsqu'un noœud premium est affiché.
+L'ajouter lorsqu'un nœud premium est affiché.
 
 .fx: tp
 
 --------------------------------------------------------------------------------
 
-# Le javascript
+## Le javascript
 
   * Bonnes pratiques 
   * Jquery (inclus dans Drupal) 
   * Le « Drupal way » 
 
-## Bonnes pratiques JS
+### Bonnes pratiques JS
 
   * « Unobtrusive javascript » 
     * Surcouche 
@@ -1625,7 +1617,7 @@ Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
-# Les librairies JS fournies avec le cœur
+## Les librairies JS fournies avec le cœur
 
   * jQuery
   * jQuery UI
@@ -1634,7 +1626,7 @@ Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
-# Les services
+## Les services
 
   * <https://api.drupal.org/api/drupal/services/8.1.x>
   * Les services à connaître :
@@ -1647,13 +1639,13 @@ Voir les modules `example`
 
 --------------------------------------------------------------------------------
 
-# La File API
+## La File API
 
   * Différence entre fichiers gérés et non gérés
   * Différence entre fichiers privés et fichiers publics
   * API complète <https://api.drupal.org/api/drupal/core!includes!file.inc/group/file/8>
 
-## Les streams wrappers
+### Les streams wrappers
 
 Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
@@ -1662,13 +1654,13 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 --------------------------------------------------------------------------------
 
-# En résumé : la vie d'une page Drupal
+## En résumé : la vie d'une page Drupal
 
 ![][8]
 
 --------------------------------------------------------------------------------
 
-# En résumé : la vie d'une page Drupal
+## En résumé : la vie d'une page Drupal
 
 ![][9]
 
@@ -1680,7 +1672,7 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 --------------------------------------------------------------------------------
 
-# On peut valider les entités
+## On peut valider les entités
 
 <https://www.drupal.org/node/2015613>
 
@@ -1689,21 +1681,21 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
     $violations->count(); // extends \IteratorAggregate
     $violation->getMessage();
 
-## 4 niveaux de validation
+### 4 niveaux de validation
 
   * l'entité ($entity)
   * un champ (global) de l'entité ($entity->field_invalid)
   * une valeur d'un champ de l'entité ($entity->field[0])
   * la propriété d'une valeur d'un champ de l'entité ($entity->field[0]['invalid_value'])
 
-## Pour une validation personnalisée
+### Pour une validation personnalisée
 
   * un plugin de Constraint
   * un Validator
 
 --------------------------------------------------------------------------------
 
-# Le cache
+## Le cache
 
 <http://md-systems.github.io/drupal-8-caching>
 
@@ -1722,7 +1714,7 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
 
 --------------------------------------------------------------------------------
 
-# Le cache de rendu
+## Le cache de rendu
 
   * Les clés : comment identifier ce cache
   * Les contextes : Qu'est ce qui fait varier ce cache ('language',
@@ -1733,7 +1725,7 @@ Un stream est un chemin, une URI, vers un fichier interne ou externe :
     * 0 (ne pas conserver en cache)
     * Cache::PERMANENT (ne pas expirer selon le temps, uniquement selon les tags)
 
-## Comment l'implémenter
+### Comment l'implémenter
     !php
     $build['#cache'] = array(
       'keys' => 'my_cache',
@@ -1746,7 +1738,7 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Liste des contextes
+## Liste des contextes
 
 <https://www.drupal.org/developing/api/8/cache/contexts>
 
@@ -1772,11 +1764,11 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# La sécurité
+## La sécurité
 
   * "Valider les entrées, filtrer les sorties"
 
-## Concrètement
+### Concrètement
   * URL : `Html::escape(UrlHelper::stripDangerousProtocols($uri));`
   * Texte brut : `Html::escape($string);`
   * Texte riche : `check_markup($text, $format_id = NULL, $langcode = '',
@@ -1784,14 +1776,14 @@ Directement dans le render array
   * HTML : `Xss::filter($string, array $html_tags = NULL);`
   * Sinon, on considère que le texte est validé
 
-## En bonus, déplacez les fichiers
+### En bonus, déplacez les fichiers
   * <https://www.drupal.org/node/2767907>
 
 --------------------------------------------------------------------------------
 
-# Les Web Services
+## Les Web Services
 
-## Appel (avec Guzzle)
+### Appel (avec Guzzle)
     !php
     // GET
     $request = \Drupal::service('http_default_client')->get($url, [
@@ -1812,15 +1804,15 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Les Web Services
+## Les Web Services
 
-## Réponse (dans un Controller)
+### Réponse (dans un Controller)
     !php
     return new JsonResponse($values);
 
 --------------------------------------------------------------------------------
 
-# Utilisation des APIs de Web Services du cœur
+## Utilisation des APIs de Web Services du cœur
 
     !php
     $output = $this->serializer->serialize($entity, 'json');
@@ -1835,27 +1827,27 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Intégrer des données à Views
+## Intégrer des données à Views
 
-## Des entités
+### Des entités
 
   * C'est (presque) natif !
   * Drupal console le génère pour vous.
 
-## Des tables "legacy"
+### Des tables "legacy"
 
   * Utiliser le hook_views_data()
   * [documentation](https://api.drupal.org/api/drupal/core!modules!views!views.api.php/function/hook_views_data/8.1.x)
 
 --------------------------------------------------------------------------------
 
-# Modifier des données de Views
+## Modifier des données de Views
 
-## Les données elles-mêmes
+### Les données elles-mêmes
 
   * hook_views_data_alter()
 
-## Leur affichage
+### Leur affichage
 
   * Views utilise des Plugins :
     * Field
@@ -1865,13 +1857,13 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Les migrations : le module Migrate
+## Les migrations : le module Migrate
 
-## Depuis Drupal
+### Depuis Drupal
   * Drupal fait le plus gros du boulot
   * Voir [la conférence d'Aurelien Navarre](http://www.slideshare.net/AurelienNavarre/drupalcamp-nantes-2016-migrer-un-site-drupal-6-ou-drupal-7-vers-drupal-8)
 
-## Depuis autre chose
+### Depuis autre chose
   * CSV, XML, JSON supportés par des plugins
   * Une migration est un fichier YAML
   * On ne code que si on a besoin de faire des traitements spécifiques
@@ -1881,7 +1873,7 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Exemple de migration
+## Exemple de migration
     !yaml
     id: basics
     label: Import articles
@@ -1906,7 +1898,7 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Quelques modules additionnels à utiliser
+## Quelques modules additionnels à utiliser
 
   * Migrate Plus : quelques fonctionnalités additionnelles pour Migrate
   * Migrate Tools : commandes Drush supplémentaires (pour lancer des migrations)
@@ -1914,7 +1906,7 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Les plugins de traitement
+## Les plugins de traitement
 
   * get() : plugin par défaut
   * _default_value_ : mettre une valeur
@@ -1928,7 +1920,7 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Industrialisation
+## Industrialisation
 
   * Les profils d'installation et les distributions
   * Le packaging du site
@@ -1940,14 +1932,14 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Les profils d'installation
+## Les profils d'installation
 
-## Qu'est ce que c'est
+### Qu'est ce que c'est
 
   * Simplement une pré-configuration de Drupal.
   * Peut contenir vos propres modules, et votre propre configuration !
 
-## Quelques exemples de distribution Drupal 8
+### Quelques exemples de distribution Drupal 8
 
   * [Lightning](https://www.drupal.org/project/lightning) (avec Roadmap) ~
   sert de démo pour les capacités de Drupal 8
@@ -1959,15 +1951,15 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Les installeurs
+## Les installeurs
 
-## Drush make
+### Drush make
 
   * Hérité de Drupal 6, puis 7
   * Permet de récupérer modules, thèmes, patchs, bibliothèques JS
   * Par requête HTTP, Git, SVN, ...
 
-## Utilisation de Composer
+### Utilisation de Composer
 
   * Et notamment de
   [_Drupal Project_](https://github.com/drupal-composer/drupal-project)
@@ -1978,23 +1970,23 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# La gestion de la configuration
+## La gestion de la configuration
 
-## CMI
+### CMI
 
   * Nouveauté Drupal 8 : tout ce qui n'est pas du contenu est exportable
   indépendamment du reste du site
 
-## Problème
+### Problème
 
   * Actuellement, on ne peut le réimporter que sur une même "version" du site
   (un site dont l'installation s'est faite à partir d'une copie de la base de
   données du site)
-  * En cours de résolution (<https://www.drupal.org/node/1613424>)
+  * [En cours de résolution](https://www.drupal.org/node/1613424)
 
 --------------------------------------------------------------------------------
 
-# Features
+## Features
 
   * Sert à créer des modules sur un même sujet
   * Récupère *automagiquement* la configuration associée
@@ -2005,11 +1997,11 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# Mais... Features ne doit théoriquement pas servir à déployer un site...
+## Mais... Features ne doit théoriquement pas servir à déployer un site...
 
 --------------------------------------------------------------------------------
 
-# Le worfklow qui fonctionne aujourd'hui
+## Le worfklow qui fonctionne aujourd'hui
 
   * Installer un site (peu importe le moyen, profil, dump, ...)
   * Exporter toute la configuration du site (drush cex)
@@ -2023,7 +2015,7 @@ Directement dans le render array
 
 --------------------------------------------------------------------------------
 
-# L'avenir
+## L'avenir
 
   * Les profils d'installation pourront directement importer une configuration
     * Déjà opérationnel grâce à [un patch](https://www.drupal.org/node/2788777)
@@ -2032,6 +2024,8 @@ Directement dans le render array
 --------------------------------------------------------------------------------
 
 # Questions ?
+
+.fx: alternate
 
 --------------------------------------------------------------------------------
 
