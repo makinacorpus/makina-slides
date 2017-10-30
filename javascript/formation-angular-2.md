@@ -5,19 +5,19 @@
 
 # 1 - Présentation générale
 
+![](../assets/makina/images/bg-rocks.jpg)
+
+.fx: title2 bg-image imageslide
+
 --------------------------------------------------------------------------------
 
 # La version 2 ?
 
-AngularJS est la version 1.
+* AngularJS est la version 1.
+* À partir de la verison 2, le nom devient "Angular".
+* La version 4 est parue le 23 mars 2017 (et reste dans la continuité d'Angular 2).
 
-À partir de la verison 2, le nom devient "Angular".
-
-La version 4 est parue le 23 mars 2017 (et reste dans la continuité d'Angular 2).
-
-# Presenter Notes
-
-parler du sémantic versionning
+.notes: parler du sémantic versionning
 
 --------------------------------------------------------------------------------
 
@@ -27,9 +27,8 @@ parler du sémantic versionning
 - Très structurant
 - Fortement contraint
 
-# Presenter Notes
 
-expliquer les différences avec React
+.notes: expliquer les différences avec React
 
 --------------------------------------------------------------------------------
 
@@ -39,13 +38,14 @@ expliquer les différences avec React
 - TypeScript
 - build
 
-# Presenter Notes
 
 --------------------------------------------------------------------------------
 
 # 2 - Installation et tooling
 
-# Presenter Notes
+![](../assets/makina/images/bg-rocks.jpg)
+
+.fx: title2 bg-image imageslide
 
 --------------------------------------------------------------------------------
 
@@ -65,8 +65,6 @@ Accessoirement les extensions Chrome suivantes peuvent être utiles:
 - Postman
 - JSONViewer
 - Allow-Control-Allow-Origin: *
-
-# Presenter Notes
 
 --------------------------------------------------------------------------------
 
@@ -102,6 +100,8 @@ Permet d'y ajouter des composants, des services, des sous-modules...
 
 [Solution](https://github.com/makinacorpus/angular-training/commit/f865cbf4660be2087da7e6925db7ff931bd833b6)
 
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # 3 - Les concepts
@@ -126,11 +126,9 @@ Permet d'y ajouter des composants, des services, des sous-modules...
 
 # Component
 
-Un composant est une classe avec un décorateur `@Component`.
-
-Il correspond à un tag.
-
-Il a un template HTML, éventuellement des fichiers de style.
+* Un composant est **une classe** avec un décorateur `@Component`.
+* Il correspond à un **tag**.
+* Il a un **template HTML**, éventuellement des fichiers de style.
 
 --------------------------------------------------------------------------------
 
@@ -138,11 +136,9 @@ Il a un template HTML, éventuellement des fichiers de style.
 
 Le module est le point d'entrée de l'app Angular.
 
-Il déclare les composants.
-
-Il charge les modules tiers.
-
-Il définit les injections disponibles.
+* Il déclare les composants.
+* Il charge les modules tiers.
+* Il définit les injections disponibles.
 
 --------------------------------------------------------------------------------
 
@@ -150,14 +146,12 @@ Il définit les injections disponibles.
 
 Les composants ont besoin de services globaux (persistence des données, accès au backend, routage, etc.).
 
-Ils les obtiennent par injection de dépendances :
+Ils les obtiennent par **injection de dépendances** :
 Angular va instancier les services dont on a besoin, et les fournir aux composants.
 
-Les services injectables sont des classes ayant le décorateur `@Injectable`.
-
-Ils sont déclarés dans le module (dans `providers`).
-
-Ils sont fournis aux composants dans leur constructeur.
+* Les services injectables sont des classes ayant le décorateur `@Injectable`.
+* Ils sont déclarés dans le module (dans `providers`).
+* Ils sont fournis aux composants dans leur constructeur.
 
 --------------------------------------------------------------------------------
 
@@ -191,7 +185,7 @@ Dans le cas présent :
 
 Le décorateur `@Input` permet de déclarer un nouvel attribut pour le composant :
 
-    !javascript
+    !typescript
     @Input() message: string;
 
 déclare un attribut `message` qu'on peut utiliser de cette façon :
@@ -207,7 +201,7 @@ déclare un attribut `message` qu'on peut utiliser de cette façon :
 
 Plutôt qu'un message écrit en dur, nous souhaitons passer la valeur d'une propriété du composant `App` :
 
-    !javascript
+    !typescript
     welcomeMessage: string = 'Bienvenue ici';
 
 Pour cela, on doit noter l'input entre crochet :
@@ -225,7 +219,7 @@ Pour cela, on doit noter l'input entre crochet :
 
 Ajoutons au composant Hom une méthode qui modifie le message :
 
-    !javascript
+    !typescript
     changeMessage() {
        this.message = 'This is a new message';
     }
@@ -242,15 +236,25 @@ Pour cela, on note l'événement entre parenthèses:
 
 # Input et output
 
+### input
+
 Les **inputs** sont les informations qui sont fournies en entrée au composant.
 
 Ils sont notés entre crochets.
+
+
+### output
 
 Les **outputs** sont les informations qui sont émises par le composant.
 
 Ils sont notés entre parenthèses.
 
-Pour les éléments pouvant être fournis en entrée et émis en sortie, on peut utiliser les 2 notations ensemble : `[()]`, par exemple pour un champ de formulaire. C'est le two-way data binding. En dehors de l'usage élémentaire pour des formulaires, on préfère l'éviter pour des raisons de performance.
+
+### two-way data-binding
+
+Pour les éléments pouvant être fournis en entrée et émis en sortie, on peut utiliser **les 2 notations ensemble : `[()]`**, par exemple pour un champ de formulaire. C'est le two-way data binding. 
+
+En dehors de l'usage élémentaire pour des formulaires, on préfère l'éviter pour des raisons de performance.
 
 --------------------------------------------------------------------------------
 
@@ -260,7 +264,7 @@ Interpolation `{{ }}` : permet d'évaluer une expression.
 
 Par exemple :
 
-    !javascript
+    !typescript
     {{ 1 + 2 }} // affiche 3
     {{ message }} // affiche la valeur de la propriété `message` du composant
 
@@ -281,6 +285,8 @@ Créons une propriété contenant une liste de pokémons et affichons-les dans u
 
 [Exemple](https://github.com/makinacorpus/angular-training/commit/f3f629d4d5781dcaee95c43733e042f527766768)
 
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # Syntaxe des templates
@@ -289,7 +295,7 @@ Condition avec `*ngIf` ou `*ngSwitch`
 
 On va créer une méthode qui indique si un pokémon est le plus fort :
 
-    !javascript
+    !typescript
     isStronger(pokemon:any) {
         let max_pv = Math.max(...this.pokemons.map(pok => pok.pv));
         return (pokemon.pv == max_pv)
@@ -302,6 +308,8 @@ Et on utilise cette méthode dans un `*ngIf` pour afficher une mention à côté
 
 [Exemple](https://github.com/makinacorpus/angular-training/commit/c28624c8128f7fadba7e175958a963717e554e76)
 
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # Syntaxe des templates
@@ -310,7 +318,7 @@ Classes (et style) avec `ngClass`  (ou `ngStyle`)
 
 On peut directement lier l'attribut normal `class` :
 
-    !javascript
+    !typescript
     private defaultClasses:string = 'btn btn-primary btn-special';
 
     <div [class]="defaultClasses"></div>
@@ -326,7 +334,7 @@ On peut aussi conditionner une classe avec un booléen:
 
 Mais la directive `ngClass` est souvent plus simple car elle permet de gérer plusieurs classes dans un dictionnaire :
 
-    !javascript
+    !typescript
     getClasses(pokemon:any) {
         return {
             grass: pokemon.type == 'grass',
@@ -347,7 +355,7 @@ Mais la directive `ngClass` est souvent plus simple car elle permet de gérer pl
 
 # Syntaxe des templates
 
-Les pipes permettent d'appliquer des transformations simples au résultat d'une interpolation.
+**Les pipes** permettent d'appliquer des transformations simples au résultat d'une interpolation.
 
 Exemples :
 
@@ -370,7 +378,7 @@ Le routage permet de naviguer de "pages" en "pages" dans notre application
 
 Le principe est de mettre en correspondance des URLs avec des composants :
 
-    !javascript
+    !typescript
     { path: '', component: HomeComponent },
     { path: 'about', component: AboutComponent },
 
@@ -387,6 +395,8 @@ le template de l'AppComponent :
 Créons un composant About et utilisons des routes pour atteindre soit Home soit About.
 
 Solution : [Mettre en place le routage](https://github.com/makinacorpus/angular-training/commit/ad97a817a1e66819c21173bd4217f4d65985f803) [Ajouter About et sa route](https://github.com/makinacorpus/angular-training/commit/6715ca7fc3cd9a463bfc1aeb232d931788391efb)
+
+.fx: alternate
 
 --------------------------------------------------------------------------------
 
@@ -412,7 +422,7 @@ Si on veut rendre le routage dynamique, on utilise la directive `routerLink`:
 
 On peut déclarer des routes contenant des paramètres :
 
-    !javascript
+    !typescript
     { path: 'pokemon/:id', component: DetailComponent }
 
 Le module `Router` fournit des services **injectables** (c'est-à-dire appelables depuis n'importe quel composant).
@@ -423,7 +433,7 @@ Le composant cible peut recevoir le (ou les) paramètre(s) d'une route en souscr
 
 Dans le cas d'un paramètre, on utilise l'observable `params` :
 
-    !javascript
+    !typescript
     this.route.params.subscribe(params => {
         console.log(params['id']);
     }
@@ -436,32 +446,35 @@ On va créer [une page de présentation détaillée d'un pokémon](https://githu
 
 Note: auparavant on va mettre les données sur les pokémons dans un [fichier de configuration](https://github.com/makinacorpus/angular-training/commit/a82ea22f7a53f08214a7a51411e8e4c2d42aa1f6)
 
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # 6 - Appels au backend
 
-Plutôt que gérer des informations localement, on souhaite utiliser l'API publique http://pokeapi.co/ .
+Plutôt que gérer des informations localement, on souhaite utiliser l'API publique [http://pokeapi.co/](http://pokeapi.co/).
 
 Pour cela on va utiliser le service `http` :
 
-    !javascript
+    !typescript
     this.http.get('http://pokeapi.co/api/v2/pokemon/')
 
 Les méthodes (get, post, etc.) de `http` renvoient des observables auquel on souscrit pour obtenir les données.
 La méthode `json()` permet de désérialiser les données reçues :
 
-    !javascript
+    !typescript
     this.http.get('http://pokeapi.co/api/v2/pokemon/')
     .subscribe(res => {
         this.pokemons = res.json().results
     });
 
+
 --------------------------------------------------------------------------------
 
 # Exercice
 
-Utiliser http://pokeapi.co/api/v2/pokemon/ pour avoir la liste des Pokémons sur la page d'accueil.
-Utiliser http://pokeapi.co/api/v2/pokemon/:id pour avoir les informations d'un pokémon.
+* Utiliser [http://pokeapi.co/api/v2/pokemon/](http://pokeapi.co/api/v2/pokemon/) pour avoir la liste des Pokémons sur la page d'accueil.
+* Utiliser [http://pokeapi.co/api/v2/pokemon/:id](http://pokeapi.co/api/v2/pokemon/:id) pour avoir les informations d'un pokémon.
 
 [Solution](https://github.com/makinacorpus/angular-training/commit/6376c0b3cb97dca531ef2eaf184aa5b015f44f7f)
 
@@ -469,22 +482,23 @@ L'API est lente, il faut faire un spinner (ou un message de chargement).
 
 [Solution](https://github.com/makinacorpus/angular-training/commit/d7b02efba2cac3d5c6d36b4338677aaef9f7ea10)
 
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # Créer un Injectable
 
 Plutôt qu'appeler `http` directement dans nos composants, il est plus sain de déléguer
-tous les appels à un service injectable spécifique.
+tous les appels à un **service injectable** spécifique.
 
 Cela peut faciliter la maintenance (meilleure isolation), ou permettre de greffer
 des améliorations (gérer l'authentification, le cache, le mode offline, etc.).
 
-Pour cela, il faut :
+Pour cela, il faut créer un service :
 
-- créer un service :
-    
     !console
     ng generate service MyService
+
 
 - y injecter `http`,
 - déclarer le service en tant que `provider` dans le module,
@@ -494,10 +508,10 @@ Pour cela, il faut :
 
 # Observables
 
-Grâce à l'opérateur `map` de RxJS, on peut appliquer une fonction sur un observable
-comme si c'était une liste normale, et le résultat reste un observable.
+Grâce à l'opérateur `map` de **RxJS**, on peut appliquer une fonction sur un observable
+comme si c'était une liste normale et le résultat reste un observable.
 
-C'est ainsi qu'on peut appliquer des traitements sur le résultat d'un appel HTTP.
+C'est ainsi qu'on peut **appliquer des traitements sur le résultat d'un appel HTTP**.
 
 --------------------------------------------------------------------------------
 
@@ -507,6 +521,8 @@ Créer un service fournissant une méthode `listAll()` et une méthode `get(id)`
 
 [Solution](https://github.com/makinacorpus/angular-training/commit/9b9462fadb7f03661bf194fce84162b1b6e09809)
 
+.fx: alternate
+
 --------------------------------------------------------------------------------
 
 # Exercice
@@ -514,6 +530,8 @@ Créer un service fournissant une méthode `listAll()` et une méthode `get(id)`
 Stocker le résultat de `listAll()` en cache.
 
 [Solution](https://github.com/makinacorpus/angular-training/commit/3c216e2e53f2250d5d604e99fd640aec768fa114)
+
+.fx: alternate
 
 --------------------------------------------------------------------------------
 
@@ -538,7 +556,7 @@ Le FormModule fournit des directives disponibles par défaut sur tous les `<form
 
 Et dans le composant :
 
-    !javascript
+    !typescript
     doSomething(data) {
         console.log(data.email);
         console.log(data.username);
@@ -548,16 +566,17 @@ Et dans le composant :
 
 # Exercice
 
-Faire un formulaire dans la page About qui permet de signaler
-un pokémon manquant.
+Faire un formulaire dans la page About qui permet de signaler un pokémon manquant.
 
-Note: comme on ne dispose pas d'un endpoint pour envoyer des mails, on va simplement écrire dans le log notre message.
+Note : comme on ne dispose pas d'un endpoint pour envoyer des mails, on va simplement écrire dans le log notre message.
+
+.fx: alternate
 
 --------------------------------------------------------------------------------
 
 # Accèder au formulaire depuis le composant
 
-    !javascript
+    !typescript
     import { NgForm } from '@angular/forms';
     ...
         @ViewChild('f') form: NgForm;
@@ -570,7 +589,7 @@ Note: comme on ne dispose pas d'un endpoint pour envoyer des mails, on va simple
 
 # Debounce sur la saisie
 
-    !javascript
+    !typescript
     import { NgForm } from '@angular/forms';
     ...
         @ViewChild('f') form: NgForm;
@@ -589,12 +608,12 @@ ViewChild permet d'accèder aux composants contenus dans le composant courant.
 
 C'est un décorateur qui prend en paramètre soit une classe:
 
-    !javascript
+    !typescript
     @ViewChild(ContactComponent) contact: ContactComponent;
 
 soit une référence de template:
 
-    !javascript
+    !typescript
     @ViewChild('f') form: NgForm;
 
 --------------------------------------------------------------------------------
@@ -603,7 +622,7 @@ soit une référence de template:
 
 Faire un observable à partir d'une valeur simple:
 
-    !javascript
+    !typescript
     import { Observable } from 'rxjs/Observable';
     import 'rxjs/add/observable/of';
 
@@ -620,7 +639,7 @@ Combiner 2 observables:
 `combineLatest` renvoie des données à partir du moment où il a obtenu au moins une réponse de chacun et à chaque nouvelle réponse d'un d'entre eux.
 
 
-    !javascript
+    !typescript
     import { Observable } from 'rxjs/Observable';
     import 'rxjs/add/operator/map';
     import 'rxjs/add/observable/of';
@@ -636,13 +655,15 @@ Combiner 2 observables:
     observable2
     ).subscribe(([result1, result2]) => ...)
 
+.fx: smaller
+
 --------------------------------------------------------------------------------
 
 # RxJS et les observables
 
 Chaîner 2 observables: mergeMap (ou concatMap pour des événements répétables)
 
-    !javascript
+    !typescript
     return this.http.get(this.baseUrl + id + '/')
       .map(res => {
         this.status.next({ loading: false, error: null });
@@ -659,7 +680,7 @@ Chaîner 2 observables: mergeMap (ou concatMap pour des événements répétable
 
 Les subjects sont des observables et des observateurs à la fois, on peut s'y abonner et leur envoyer des données.
 
-    !javascript
+    !typescript
     const subject = new Subject<number>();
 
     subject.subscribe((number) => {
@@ -680,9 +701,9 @@ Il a forcément une valeur intiale.
 
 # RxJS et les subjects
 
-AsyncSubject ne garde que sa dernière valeur et l'émet à partir du moment où on l'arrête.
+**AsyncSubject** ne garde que sa dernière valeur et l'émet à partir du moment où on l'arrête.
 
-    !javascript
+    !typescript
     protected vocabulary: AsyncSubject = new AsyncSubject();
 
     constructor(private api: HTTPService) {
@@ -706,7 +727,7 @@ Les tests sont lancés par la commande :
     !console
     ng test
 
-# Presenter Notes
+
 
 --------------------------------------------------------------------------------
 
@@ -754,6 +775,8 @@ Ajouter Material Design
     !console
     npm install angular2-mdl material-design-lite --save
 
+
+.fx: alternate
 
 --------------------------------------------------------------------------------
 

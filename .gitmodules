@@ -1,0 +1,3 @@
+[submodule "docs/assets/makina"]
+	path = docs/assets/makina
+	url = git@gitlab.makina-corpus.net:formation/landslide-theme-makina.git
