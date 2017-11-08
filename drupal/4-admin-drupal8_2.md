@@ -57,8 +57,6 @@ apparait.
   * Remplacer par les nouveaux fichiers
   * Décompresser la nouvelle version du cœur
 
-![][24]
-
 --------------------------------------------------------------------------------
 
 # DRUpal SHell
@@ -388,14 +386,27 @@ performance, architecture)
 
 # Gestion des médias 
 
+  * Depuis Drupal 8.4
+    * Media API dans le coeur (stable)
+    
+  * Utilisation avec Embed et Entity browser
+    * Gestionnaire de fichiers (Files/ Images)
+    * Intégration au WYSIWYG
+ 
+![][51]
+![][52]
+    
+--------------------------------------------------------------------------------
+
+# Gestion des médias 
+
   * Media Initiative
     * <http://www.drupalmedia.org>
-    * Suite de modules (Media entity, DropzoneJS, Entity Browser ...)
+    * Suite de modules (DropzoneJS, Media entity video ...)
     * Fichiers image, vidéo, audio, ...
     * La plupart des modules sont en version 1.x
     
 ![][26]
-
 
 --------------------------------------------------------------------------------
 
@@ -535,12 +546,14 @@ performance, architecture)
   * Aujourd'hui :
     * Workflow
     * Migration
+    * Media
   * Dans le futur :
     * Utilisation de composants dans le thème
   * Peut-être :
-    * Media
     * Modèle de données
     * Cross-channel
+    
+![][24]
 
 --------------------------------------------------------------------------------
 
@@ -720,3 +733,7 @@ Pour le développement
    [49]: img/drush-dc.png
    
    [50]: img/cmi.png
+   
+   [51]: img/media_d8_1.png
+   
+   [52]: img/media_d8_2.png

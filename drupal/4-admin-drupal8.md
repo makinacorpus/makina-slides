@@ -766,6 +766,21 @@ d'accueil' est cochée sur toutes les pages du site
 
 --------------------------------------------------------------------------------
 
+# L'organisation du contenu - Exercice récapitulatif
+
+  * Créer un type de contenu auteur : nom, biographie, photo (image)
+  * Ajouter une référence vers l'auteur dans le type de contenu ''Livre''
+  * Faire une vue qui affiche la bibliographie de l'auteur (bloc dans les
+contenus ''auteur'')
+  * Faire une vue page qui affiche un slideshow (views slideshow) des 5
+derniers livres publies. En en-tête, mettre un message de bienvenue. Définir
+cette page comme page d'accueil.
+  * Faire une vue de recherche des livres.
+
+.fx: tp
+
+--------------------------------------------------------------------------------
+
 # Objectifs de la formation
 
   * Les CMS et Drupal
@@ -816,21 +831,6 @@ d'accueil' est cochée sur toutes les pages du site
 
   * Installer le thème Adminimal
   * Installer le thème Writer
-
---------------------------------------------------------------------------------
-
-# L'organisation du contenu - Exercice récapitulatif
-
-  * Créer un type de contenu auteur : nom, biographie, photo (image)
-  * Ajouter une référence vers l'auteur dans le type de contenu ''Livre''
-  * Faire une vue qui affiche la bibliographie de l'auteur (bloc dans les
-contenus ''auteur'')
-  * Faire une vue page qui affiche un slideshow (views slideshow) des 5
-derniers livres publies. En en-tête, mettre un message de bienvenue. Définir
-cette page comme page d'accueil.
-  * Faire une vue de recherche des livres.
-
-.fx: tp
 
 --------------------------------------------------------------------------------
 
