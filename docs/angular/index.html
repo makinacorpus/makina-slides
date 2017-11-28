@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Formation Angular</title>
+        <link rel="stylesheet" href="./css/reveal.css">
+        <link rel="stylesheet" href="./_assets/./assets/theme-reveal/makina.css" id="theme">
+        <link rel="stylesheet" href="./css/highlight/zenburn.css">
+        <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print">
+          <link rel="stylesheet" href="./_assets/assets/theme-reveal/makina.css">
+
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
+<!-- .slide: class="title" data-background="#b5b42c" -->
+
+# Formation Angular
+#### Éric Bréhault / Alexandra Janin
+
+![](data:image/svg;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIwLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHdpZHRoPSIzMDAiIHZlcnNpb249IjEuMSIgaWQ9IkNhbHF1ZV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgNDgwIDYyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0ODAgNjI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojZmZmO30KCS5zdDF7ZmlsbDojMjMxRTFEO30KPC9zdHlsZT4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTU3LjQsNDcuNWMtMi0xLjYtNC0zLjMtNi00LjljLTAuOC0wLjctMC45LTAuOC0wLjMtMS43YzEuMi0yLjEsMi00LjMsMi41LTYuNmMwLjgtMy42LDAuNy03LjEtMC41LTEwLjYKCWMtMC40LTEuMi0xLTIuMi0xLjYtMy4zYy0wLjItMC4zLTAuMy0wLjYsMC0wLjljMC45LTEsMS44LTIsMi44LTIuOWMxLjQtMS41LDIuOS0yLjksNC4yLTQuNGMxLjUtMS43LDEuMS0zLjctMC44LTQuOAoJQzU3LjIsNyw1Ni42LDYuNyw1Niw2LjRjLTEuNS0wLjgtMy0wLjctNC40LTAuMWMtMS4yLDAuNS0yLDEuMy0yLjksMi4zbC01LDQuOGMtMC4zLDAuMi0wLjQsMC4yLTAuNywwLjJjLTAuMywwLTAuNi0wLjEtMS0wLjEKCWMtMTIuNS0yLTE5LjUsNS4zLTE5LjUsNS4zYy0wLjMsMC4zLTAuNiwwLjMtMC45LDBjLTAuOS0wLjctMS44LTEuMy0yLjYtMmMtMS40LTEuMS0yLjQtMS4zLTMuOS0wLjRjLTEsMC42LTEuNSwxLjUtMi4yLDIuMwoJYy0wLjQsMC40LTAuNywwLjktMSwxLjNjLTAuOCwxLjMtMC43LDIuNiwwLjQsMy43YzAuOSwwLjksMS44LDEuOCwyLjgsMi43YzAuNCwwLjMsMC40LDAuNiwwLjIsMS4xYy0wLjMsMC42LTAuNiwxLjEtMC44LDEuNwoJYy0yLjIsNS0yLjgsMTAuMS0xLDE1LjRjMC4zLDAuOCwwLjEsMS4yLTAuNCwxLjhjLTEuNCwxLjUtMi45LDIuOS00LjEsNC41Yy0xLjEsMS40LTEuMSwzLjEtMC4xLDQuNmMwLjQsMC41LDAuOCwxLDEuMiwxLjUKCWMxLjEsMS4zLDIuOSwxLjMsNC4xLDAuMmMxLjMtMS4yLDIuNS0yLjUsMy44LTMuN2MxLjUtMS40LDEtMS40LDIuOS0wLjRjMy4xLDEuNiw2LjQsMi4xLDkuOSwxLjhjMy43LTAuMyw3LTEuNiwxMC4yLTMuNAoJYzAuOS0wLjUsMS0wLjUsMS44LDAuMmwxLjMsMS4yYzEuMywxLjIsMi42LDIuNCwzLjksMy41YzEuOCwxLjUsNC41LDEuNiw2LjQsMC4zYzEuMy0wLjksMi40LTIsMy41LTMuMQoJQzU5LjUsNTEuOCw1OS41LDQ5LjIsNTcuNCw0Ny41eiBNMzkuNiw0MS40Yy00LjcsNC44LTEyLjksNi42LTE3LjMsMS45Yy00LjUtNC45LTIuOS0xMS4yLDAuNC0xNS43czExLjYtOS4zLDE3LjktNC40CglDNDYuNiwyNy44LDQ0LjMsMzYuNSwzOS42LDQxLjR6Ii8+CjxnPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTg4LjYsMTMuMWMwLjUsMC41LDAuOSwxLjEsMS4yLDEuOWw3LjksMjcuM2w4LTI3LjNjMC4yLTAuOCwwLjYtMS40LDEuMS0xLjljMC41LTAuNSwxLjItMC43LDIuMS0wLjcKCQljMC45LDAsMS42LDAuMiwyLjIsMC43YzAuNiwwLjUsMSwxLjIsMS4yLDJsNS42LDMzLjlsLTQuNCwwLjhMMTA4LjksMThsLTksMzAuM2gtNC40TDg2LjYsMThMODIuMSw0OGMtMC4xLDAuNi0wLjMsMS4xLTAuNywxLjUKCQlDODEsNDkuOCw4MC41LDUwLDc5LjgsNTBjLTAuNiwwLTEuMS0wLjItMS41LTAuNmMtMC40LTAuNC0wLjYtMC45LTAuNi0xLjVjMC0wLjMsMC0wLjYsMC0wLjhsNS40LTMyYzAuMi0wLjksMC42LTEuNSwxLjItMgoJCWMwLjYtMC41LDEuNC0wLjcsMi4yLTAuN1M4OC4xLDEyLjcsODguNiwxMy4xeiIvPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTEzNy40LDEzLjFjMC41LDAuNSwwLjksMS4yLDEuMiwybDEyLjgsMzMuN2wtNC40LDEuM2wtMy4yLTguNGgtMTdsLTIuNiw2LjljLTAuMiwwLjQtMC40LDAuOC0wLjgsMS4xCgkJcy0wLjgsMC40LTEuMywwLjRjLTAuNiwwLTEuMS0wLjItMS41LTAuNmMtMC40LTAuNC0wLjYtMC45LTAuNi0xLjVjMC0wLjQsMC4xLTAuOCwwLjMtMS4ybDExLjgtMzEuNmMwLjMtMC43LDAuNi0xLjQsMS4xLTEuOQoJCWMwLjUtMC42LDEuMS0wLjgsMi0wLjhDMTM2LjIsMTIuNCwxMzYuOSwxMi43LDEzNy40LDEzLjF6IE0xNDIuNSwzNy44bC03LjItMjAuMWwtNy4zLDIwLjFIMTQyLjV6Ii8+Cgk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMTU0LjQsMTQuNmMwLTAuNiwwLjItMS4xLDAuNi0xLjVjMC40LTAuNCwwLjktMC43LDEuNS0wLjdjMC42LDAsMS4xLDAuMiwxLjYsMC42YzAuNCwwLjQsMC43LDAuOSwwLjcsMS42CgkJdjEzLjhsMTYuOS0xNS45bDMuMiwyLjlsLTE1LjksMTQuOGwxNi42LDE2LjJjMC41LDAuNSwwLjgsMS4xLDAuOCwxLjdjMCwwLjYtMC4yLDEuMS0wLjYsMS40Yy0wLjQsMC40LTAuOSwwLjYtMS40LDAuNgoJCWMtMC43LDAtMS4zLTAuMy0xLjgtMC44TDE1OC44LDMydjE3LjZoLTQuNFYxNC42eiIvPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTE4NC4zLDE0LjdjMC0wLjYsMC4yLTEuMSwwLjctMS42YzAuNC0wLjQsMS0wLjcsMS42LTAuN2MwLjYsMCwxLjEsMC4yLDEuNSwwLjdjMC40LDAuNCwwLjYsMSwwLjYsMS42djM0LjkKCQloLTQuNFYxNC43eiIvPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTE5Ni42LDE0LjZjMC0wLjYsMC4yLTEuMSwwLjctMS42YzAuNC0wLjQsMS0wLjcsMS42LTAuN2MwLjgsMCwxLjQsMC4zLDEuOCwxbDE5LjgsMjguN2wwLTI3LjQKCQljMC0wLjYsMC4yLTEuMSwwLjYtMS42YzAuNC0wLjUsMC45LTAuNywxLjUtMC43YzAuNiwwLDEuMiwwLjIsMS42LDAuN2MwLjQsMC41LDAuNiwxLDAuNiwxLjZ2MzMuM2MwLDAuNi0wLjIsMS4xLTAuNiwxLjYKCQljLTAuNCwwLjQtMC45LDAuNi0xLjYsMC42Yy0wLjgsMC0xLjQtMC4zLTEuOC0xTDIwMSwyMC40djI5LjJsLTQuNC0wLjFWMTQuNnoiLz4KCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0yNDYuMywxMy4xYzAuNSwwLjUsMC45LDEuMiwxLjIsMmwxMi44LDMzLjdsLTQuNCwxLjNsLTMuMi04LjRoLTE3bC0yLjYsNi45Yy0wLjIsMC40LTAuNCwwLjgtMC44LDEuMQoJCXMtMC44LDAuNC0xLjMsMC40Yy0wLjYsMC0xLjEtMC4yLTEuNS0wLjZjLTAuNC0wLjQtMC42LTAuOS0wLjYtMS41YzAtMC40LDAuMS0wLjgsMC4zLTEuMkwyNDEsMTUuMmMwLjMtMC43LDAuNi0xLjQsMS4xLTEuOQoJCWMwLjUtMC42LDEuMS0wLjgsMi0wLjhDMjQ1LjEsMTIuNCwyNDUuOSwxMi43LDI0Ni4zLDEzLjF6IE0yNTEuNCwzNy44bC03LjItMjAuMUwyMzcsMzcuOEgyNTEuNHoiLz4KCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0yOTkuNCw0NS4yYy0wLjUsMC43LTEsMS4zLTEuNiwxLjhjLTAuNiwwLjYtMS40LDEuMS0yLjIsMS40Yy0wLjgsMC40LTEuNywwLjctMi41LDAuOXMtMS43LDAuNC0yLjYsMC41CgkJUzI4OC44LDUwLDI4OCw1MGMtMy4xLDAtNS45LTAuNy04LjQtMmMtMi41LTEuMy00LjUtMy4yLTYuMS01LjZ2MGMtMS4xLTEuNi0xLjktMy40LTIuNi01LjNjLTAuNi0xLjktMC45LTMuOS0wLjktNS45CgkJYzAtMi40LDAuNC00LjcsMS4xLTYuOGMwLjgtMi4yLDEuOC00LjEsMy4yLTUuOGMxLjQtMS43LDMtMy4xLDUtNC4yYzEuOS0xLjEsNC4xLTEuOCw2LjUtMmgxLjFjMSwwLDIsMC4xLDMuMSwwLjQKCQljMS4xLDAuMiwyLjIsMC42LDMuMywxYzEuMSwwLjQsMi4xLDAuOSwzLjEsMS40YzEsMC41LDEuOCwxLjEsMi41LDEuN2MwLjIsMC4yLDAuNCwwLjQsMC41LDAuNmMwLjEsMC4yLDAuMSwwLjUtMC4xLDAuN2wtMi42LDUuNAoJCWMtMC4yLDAuMy0wLjYsMC41LTEsMC42Yy0wLjQsMC4xLTAuOSwwLTEuMy0wLjJjLTEtMC44LTItMS41LTMtMmMtMS0wLjUtMi4yLTAuOC0zLjMtMC44Yy0wLjMsMC0wLjcsMC4xLTEuMiwwLjIKCQljLTEuMSwwLjItMiwwLjYtMi44LDEuMmMtMC44LDAuNi0xLjUsMS4zLTIuMSwyLjJjLTAuNiwwLjktMSwxLjgtMS4zLDIuOWMtMC4zLDEuMS0wLjQsMi4yLTAuNCwzLjRjMCwxLjMsMC4xLDIuNSwwLjQsMy43CgkJYzAuMywxLjIsMC43LDIuMiwxLjMsMy4xYzAuNiwwLjksMS4zLDEuNiwyLjIsMi4yYzAuOSwwLjUsMS45LDAuOCwzLjEsMC44YzAuOSwwLDEuNy0wLjEsMi41LTAuNGMwLjgtMC4zLDEuNS0wLjYsMi4xLTAuOQoJCWMwLjUtMC4zLDEuMS0wLjUsMS42LTAuN3MxLjEtMC4zLDEuNy0wLjNjMS4zLDAsMi40LDAuNCwzLjMsMS4yYzAuOSwwLjgsMS40LDEuOSwxLjQsMy4xQzMwMC4xLDQzLjgsMjk5LjksNDQuNSwyOTkuNCw0NS4yeiIvPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTMzNS4yLDM4LjRjLTAuOSwyLjMtMi4xLDQuMy0zLjcsNmMtMS42LDEuNy0zLjQsMy4xLTUuNiw0LjFjLTIuMiwxLTQuNiwxLjUtNy4yLDEuNWMtMi42LDAtNS0wLjUtNy4yLTEuNQoJCWMtMi4yLTEtNC4xLTIuNC01LjYtNC4xYy0xLjYtMS43LTIuOC0zLjctMy43LTZjLTAuOS0yLjMtMS4zLTQuNy0xLjMtNy4yYzAtMi42LDAuNC01LDEuMy03LjNjMC45LTIuMywyLjEtNC4zLDMuNy02CgkJYzEuNi0xLjcsMy40LTMuMSw1LjYtNC4xYzIuMi0xLDQuNi0xLjUsNy4yLTEuNWMyLjYsMCw1LDAuNSw3LjIsMS41YzIuMiwxLDQuMSwyLjQsNS42LDQuMWMxLjYsMS43LDIuOCwzLjcsMy43LDZzMS4zLDQuNywxLjMsNy4yCgkJQzMzNi41LDMzLjcsMzM2LjEsMzYuMSwzMzUuMiwzOC40eiBNMzI1LjQsMjcuN2MtMC4zLTEuMi0wLjctMi40LTEuMy0zLjNjLTAuNi0xLTEuMy0xLjgtMi4yLTIuM3MtMi0wLjktMy4zLTAuOQoJCWMtMS4yLDAtMi4zLDAuMy0zLjIsMC45cy0xLjYsMS40LTIuMiwyLjNjLTAuNiwxLTEsMi0xLjMsMy4yYy0wLjMsMS4yLTAuNCwyLjQtMC40LDMuNmMwLDEuMiwwLjEsMi40LDAuNCwzLjYKCQljMC4zLDEuMiwwLjcsMi4zLDEuMywzLjJjMC42LDEsMS4zLDEuOCwyLjIsMi4zYzAuOSwwLjYsMS45LDAuOSwzLjIsMC45YzEuMiwwLDIuMi0wLjMsMy4xLTAuOGMwLjktMC42LDEuNy0xLjMsMi4zLTIuMgoJCWMwLjYtMC45LDEuMS0yLDEuNC0zLjJjMC4zLTEuMiwwLjUtMi40LDAuNS0zLjZDMzI1LjksMzAuMiwzMjUuNywyOC45LDMyNS40LDI3Ljd6Ii8+Cgk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMzYyLjcsNTAuOGMtMC4zLDAuMS0wLjcsMC4yLTEuMSwwLjJjLTAuNCwwLTAuNy0wLjItMC45LTAuNGwtOS4xLTEyLjF2Ni43YzAsMC43LTAuMSwxLjMtMC40LDEuOQoJCWMtMC4zLDAuNi0wLjYsMS4xLTEuMSwxLjVjLTAuNSwwLjQtMSwwLjgtMS42LDFjLTAuNiwwLjMtMS4zLDAuNC0yLDAuNGMtMC43LDAtMS40LTAuMS0yLTAuNGMtMC42LTAuMy0xLjItMC42LTEuNi0xLjEKCQljLTAuNS0wLjQtMC45LTEtMS4xLTEuNmMtMC4zLTAuNi0wLjQtMS4yLTAuNC0xLjlWMTMuOGMwLTAuMywwLjItMC42LDAuNS0wLjhjMC4zLTAuMiwwLjctMC4zLDEuMi0wLjJjMC4yLDAsMC40LDAsMC44LDAKCQljMC4zLDAsMC43LDAsMS4yLDBjMC41LDAsMSwwLDEuNSwwYzAuNSwwLDEuMSwwLDEuNywwYzAuOSwwLDEuOC0wLjEsMi44LTAuMWMwLjksMCwxLjcsMCwyLjQsMGMwLjUsMCwxLDAsMS40LDAKCQljMC40LDAsMC42LDAsMC44LDAuMWMxLjcsMC4zLDMuMywwLjcsNC44LDEuM2MxLjUsMC42LDIuOCwxLjQsMy45LDIuM2MxLjEsMSwyLDIuMiwyLjYsMy42YzAuNiwxLjQsMSwzLDEsNC45CgkJYzAsMS4zLTAuMiwyLjUtMC42LDMuNWMtMC40LDEtMC45LDItMS42LDIuOGMtMC43LDAuOC0xLjUsMS41LTIuNCwyLjFjLTAuOSwwLjYtMS45LDEtMywxLjRsOC41LDEwLjZjMC4zLDAuMywwLjQsMC42LDAuNCwwLjgKCQlzLTAuMywwLjUtMC43LDAuN0wzNjIuNyw1MC44eiBNMzU2LjksMjIuNWMtMC41LTAuNi0xLjEtMC45LTEuNy0wLjloLTMuNnY2LjFoMy44YzAuNiwwLDEuMS0wLjMsMS42LTAuOWMwLjQtMC42LDAuNy0xLjMsMC43LTIuMQoJCUMzNTcuNywyMy45LDM1Ny40LDIzLjIsMzU2LjksMjIuNXoiLz4KCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik00MDAuMywzMC40Yy0wLjYsMS41LTEuNSwyLjgtMi42LDMuOXMtMi40LDEuOS0zLjksMi42Yy0xLjUsMC42LTMuMSwxLTQuOCwxLjJoMGMtMC40LDAuMS0xLjEsMC4xLTIuMSwwLjEKCQljLTEsMC0xLjksMC0yLjcsMHYwLjJjMCwwLjcsMCwxLjUsMCwyLjRjMCwwLjktMC4xLDEuOC0wLjEsMi44Yy0wLjEsMC45LTAuMiwxLjgtMC4zLDIuNWMtMC4xLDAuOC0wLjMsMS4zLTAuNiwxLjcKCQljLTAuNCwwLjYtMC45LDEuMS0xLjYsMS42Yy0wLjYsMC41LTEuNSwwLjctMi41LDAuN2MtMC43LDAtMS40LTAuMS0yLTAuNGMtMC42LTAuMy0xLjItMC42LTEuNi0xLjFjLTAuNS0wLjUtMC44LTEtMS4xLTEuNgoJCWMtMC4zLTAuNi0wLjQtMS4yLTAuNC0xLjlWMTMuOWMwLTAuMywwLjEtMC41LDAuNC0wLjdjMC4zLTAuMiwwLjYtMC4zLDEtMC4zaDcuNWMxLjUsMCwzLDAuMSw0LjUsMC4yYzEuNSwwLjIsMi45LDAuNCw0LjMsMC43CgkJdi0wLjFjMi4zLDAuNSw0LjQsMS43LDYuMSwzLjNjMS43LDEuNywyLjcsMy44LDMuMSw2LjNjMC4xLDAuNiwwLjIsMS4zLDAuMiwyLjFDNDAxLjIsMjcuMyw0MDAuOSwyOC45LDQwMC4zLDMwLjR6IE0zOTAuMiwyMi44CgkJYy0wLjYtMC43LTEuNC0xLjEtMi4yLTEuMWgtMy42djcuNmgzLjZjMC45LDAsMS42LTAuNCwyLjItMS4xYzAuNi0wLjcsMC45LTEuNiwwLjktMi43QzM5MS4xLDI0LjQsMzkwLjgsMjMuNSwzOTAuMiwyMi44eiIvPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTQzNi4yLDQxLjFjLTAuOCwxLjktMS45LDMuNS0zLjQsNC44Yy0xLjQsMS4zLTMuMiwyLjMtNS4xLDNjLTIsMC43LTQuMSwxLTYuNCwxcy00LjUtMC40LTYuNC0xCgkJYy0yLTAuNy0zLjctMS43LTUuMS0zcy0yLjYtMi45LTMuNC00LjhjLTAuOC0xLjktMS4yLTQtMS4yLTYuNVYxMy44YzAtMC4zLDAuMS0wLjUsMC40LTAuN2MwLjMtMC4yLDAuNy0wLjMsMS4xLTAuM2g3LjQKCQljMC40LDAsMC44LDAuMSwxLDAuM2MwLjMsMC4yLDAuNCwwLjUsMC40LDAuN3YyMWMwLDIsMC41LDMuNiwxLjYsNC44YzEuMSwxLjIsMi41LDEuOCw0LjIsMS44czMuMS0wLjYsNC4yLTEuOAoJCWMxLjEtMS4yLDEuNi0yLjgsMS42LTQuOFYxNy4zYzAtMC43LDAuMS0xLjMsMC40LTEuOWMwLjMtMC42LDAuNi0xLjEsMS4xLTEuNmMwLjUtMC41LDEtMC44LDEuNi0xLjFjMC42LTAuMywxLjMtMC40LDItMC40CgkJczEuNCwwLjEsMiwwLjRjMC42LDAuMywxLjIsMC42LDEuNywxLjFjMC41LDAuNSwwLjksMSwxLjEsMS42YzAuMywwLjYsMC40LDEuMiwwLjQsMS45djE3LjNDNDM3LjUsMzcuMSw0MzcsMzkuMiw0MzYuMiw0MS4xeiIvPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTQ2MC4zLDI3LjRjMS41LDAuNiwyLjgsMS4zLDQuMSwyLjFjMS4yLDAuOSwyLjIsMS45LDMsMy4yYzAuOCwxLjMsMS4yLDIuOSwxLjIsNC43YzAsMS4zLTAuMiwyLjUtMC43LDMuNwoJCWMtMC40LDEuMi0xLDIuMy0xLjgsMy40Yy0xLjQsMS45LTMsMy4zLTUsNC4xYy0yLDAuOS00LjEsMS4zLTYuNCwxLjNjLTAuOSwwLTEuOS0wLjEtMy0wLjNjLTEuMi0wLjItMi4zLTAuNS0zLjYtMC44CgkJYy0xLjItMC4zLTIuNC0wLjctMy41LTEuMWMtMS4xLTAuNC0yLjEtMC44LTIuOC0xLjJjLTAuMy0wLjEtMC41LTAuMi0wLjctMC41cy0wLjItMC41LTAuMi0wLjdjMC4xLTAuOSwwLjMtMS42LDAuNS0yLjIKCQljMC4yLTAuNiwwLjQtMS4yLDAuNi0xLjhjMC4xLTAuMywwLjEtMC41LDAuMi0wLjdjMC4xLTAuMiwwLjEtMC40LDAuMi0wLjVsLTAuMSwwLjFjMC4xLTAuMSwwLjEtMC4zLDAuMi0wLjUKCQljMC4xLTAuMiwwLjEtMC40LDAuMi0wLjZjMC0wLjEsMC0wLjIsMC4xLTAuM1YzOWMwLTAuMSwwLTAuMSwwLTAuMmMwLTAuNCwwLjItMC43LDAuNi0wLjljMC40LTAuMiwwLjktMC4yLDEuNS0wLjEKCQljMC4yLDAuMSwwLjUsMC4yLDAuOSwwLjNjMC40LDAuMiwwLjgsMC4zLDEuMywwLjVjMC41LDAuMiwwLjksMC40LDEuNCwwLjVjMC41LDAuMiwwLjgsMC4zLDEuMSwwLjRjMSwwLjQsMS45LDAuNywyLjgsMQoJCWMwLjksMC4zLDEuNywwLjQsMi41LDAuNGMwLjQsMCwwLjgtMC4xLDEuMi0wLjNjMC40LTAuMiwwLjctMC40LDEtMC43YzAuMy0wLjMsMC42LTAuNiwwLjctMWMwLjItMC40LDAuMy0wLjksMC4zLTEuMwoJCWMwLTAuMy0wLjEtMC42LTAuMy0wLjhzLTAuNS0wLjUtMC44LTAuN2MtMC4zLTAuMi0wLjYtMC40LTAuOS0wLjVjLTAuMy0wLjEtMC42LTAuMy0wLjgtMC40djAuMWMtMC44LTAuNC0xLjYtMC43LTIuNC0xCgkJYy0xLjMtMC40LTIuNi0wLjktMy44LTEuNGMtMS4zLTAuNS0yLjQtMS4yLTMuNC0xLjljLTEtMC44LTEuOC0xLjgtMi41LTIuOWMtMC42LTEuMi0wLjktMi42LTAuOS00LjNjMC0xLjgsMC40LTMuNSwxLjItNC45CgkJYzAuOC0xLjQsMS44LTIuNywzLjEtMy42YzEuMy0xLDIuNy0xLjcsNC4zLTIuMmMxLjYtMC41LDMuMi0wLjgsNC45LTAuOGMwLjgsMCwxLjksMC4xLDMuMSwwLjNjMS4yLDAuMiwyLjQsMC42LDMuNSwxLjEKCQljMS4xLDAuNSwyLjEsMS4yLDIuOSwyYzAuOCwwLjgsMS4yLDEuOCwxLjIsM2MwLDEuMi0wLjQsMi4yLTEuMywzcy0xLjksMS4zLTMuMiwxLjNjLTAuNywwLTEuNC0wLjEtMS45LTAuMwoJCWMtMC42LTAuMi0xLjItMC40LTEuNy0wLjdjLTAuNi0wLjItMS4yLTAuNS0xLjgtMC43Yy0wLjYtMC4yLTEuMi0wLjMtMS45LTAuM2MtMC40LDAtMC45LDAuMi0xLjQsMC41Yy0wLjUsMC4zLTAuNywwLjgtMC43LDEuNQoJCWMwLDAuNCwwLjEsMC43LDAuMywxYzAuMiwwLjMsMC40LDAuNSwwLjcsMC43YzAuMywwLjIsMC42LDAuNCwxLDAuNWMwLjQsMC4xLDAuNywwLjMsMSwwLjRjMC4yLDAuMSwwLjQsMC4yLDAuNiwwLjJsLTAuMi0wLjEKCQlsMC4yLDBjMCwwLDAsMC4xLDAsMC4xQzQ1Ny40LDI2LjQsNDU4LjgsMjYuOSw0NjAuMywyNy40eiIvPgo8L2c+Cjwvc3ZnPgo=)
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="title" data-background="./assets/images/bg-rocks.jpg" -->
+
+# 1. Présentation générale
+</script></section><section  data-markdown><script type="text/template">
+# La version 2 ?
+
+* AngularJS est la version 1.
+* À partir de la verison 2, le nom devient "Angular".
+* La version 4 est parue le 23 mars 2017 (et reste dans la continuité d'Angular 2).
+
+<aside class="notes"><p>parler du sémantic versionning</p>
+</aside></script></section><section  data-markdown><script type="text/template">
+# Quel type de framework ?
+
+- Spectre large
+- Très structurant
+- Fortement contraint
+
+
+<aside class="notes"><p>expliquer les différences avec React</p>
+</aside></script></section><section  data-markdown><script type="text/template">
+# Les grands principes
+
+- Composants
+- TypeScript
+- build
+
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="title" data-background="./assets/images/bg-rocks.jpg" -->
+
+# 2 - Installation et tooling
+</script></section><section  data-markdown><script type="text/template">
+# Installation
+
+Installer NodeJS (6.9+) et NPM.
+
+https://nodejs.org/en/download/
+
+Installer Angular CLI:
+
+    npm install -g @angular/cli
+
+Accessoirement les extensions Chrome suivantes peuvent être utiles:
+
+- Postman
+- JSONViewer
+- Allow-Control-Allow-Origin: *
+</script></section><section  data-markdown><script type="text/template">
+# Le CLI
+
+Permet de générer un projet.
+
+    ng new myproject # ET SI BESOIN --style=scss
+    cd myproject
+    ng serve
+
+Fournit des facilités pour le développement.
+
+    ng serve
+    
+Permet d'y ajouter des composants, des services, des sous-modules...
+
+    ng generate component MyComponent
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="alternate" -->
+
+# Installation et premiers pas
+
+- Installer NodeJS et Angular CLI
+- Créer un projet
+- Le lancer avec `ng serve` et ouvrir http://localhost:4200
+- Observer la structure de fichiers générée
+
+[Solution](https://github.com/makinacorpus/angular-training/commit/f865cbf4660be2087da7e6925db7ff931bd833b6)
+
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="title" -->
+
+# 3 - Les concepts
+
+- TypeScript
+- Component
+- Module
+- Injection
+</script></section><section  data-markdown><script type="text/template">
+# Typescript
+
+- TypeScript superset d'ES6 superset d'ES5
+- Un "compilateur" fait la conversion
+- Apporte :
+    - le typage
+    - les classes
+    - les décorateurs
+</script></section><section  data-markdown><script type="text/template">
+# Component
+
+* Un composant est **une classe** avec un décorateur `@Component`.
+* Il correspond à un **tag**.
+* Il a un **template HTML**, éventuellement des fichiers de style.
+</script></section><section  data-markdown><script type="text/template">
+# Module
+
+Le module est le point d'entrée de l'app Angular.
+
+* Il déclare les composants.
+* Il charge les modules tiers.
+* Il définit les injections disponibles.
+</script></section><section  data-markdown><script type="text/template">
+# Injections
+
+Les composants ont besoin de services globaux (persistence des données, accès au backend, routage, etc.).
+
+Ils les obtiennent par **injection de dépendances** :
+Angular va instancier les services dont on a besoin, et les fournir aux composants.
+
+* Les services injectables sont des classes ayant le décorateur `@Injectable`.
+* Ils sont déclarés dans le module (dans `providers`).
+* Ils sont fournis aux composants dans leur constructeur.
+</script></section><section  data-markdown><script type="text/template">
+# 4 - Créer un composant simple
+
+Le CLI permet de générer de nouveaux composants dans l'app.
+
+Nous allons créer un composant pour la page d'accueil :
+
+    ng generate component Home
+</script></section><section  data-markdown><script type="text/template">
+# Utiliser un composant
+
+Le décorateur `@Component` associe un sélecteur (`selector`) au composant.
+
+C'est sous ce nom qu'on peut utiliser le composant dans nos templates HTML.
+
+Dans le cas présent : 
+
+    <app-home></app-home>
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/3c42e93cf619d0efacc8581db4dbd212a4606902)
+</script></section><section  data-markdown><script type="text/template">
+# Créer un input
+
+Le décorateur `@Input` permet de déclarer un nouvel attribut pour le composant :
+
+    @Input() message: string;
+
+déclare un attribut `message` qu'on peut utiliser de cette façon :
+
+    <app-home message="Bonjour !"></app-home>
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/75741b6aeb7b9338ebf80cb98ce2e4855ec3259c)
+</script></section><section  data-markdown><script type="text/template">
+# Lier (i.e. binding) un input à une propriété
+
+Plutôt qu'un message écrit en dur, nous souhaitons passer la valeur d'une propriété du composant `App` :
+
+    welcomeMessage: string = 'Bienvenue ici';
+
+Pour cela, on doit noter l'input entre crochet :
+
+    <app-home [message]="welcomeMessage"></app-home>
+
+(sinon le message serait littéralement "welcomeMessage" et non pas "Bienvenue ici")
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/963495ca67318867b8b8d3ce67f0ccf63805e88e)
+</script></section><section  data-markdown><script type="text/template">
+# Lier un événement à une méthode
+
+Ajoutons au composant Hom une méthode qui modifie le message :
+
+    changeMessage() {
+       this.message = 'This is a new message';
+    }
+
+On souhaite appeler cette méthode lorsqu'on clique sur un bouton.
+Pour cela, on note l'événement entre parenthèses:
+
+    <button (click)="changeMessage()">Change the message</button>
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/6682d3ace9ad190878db075880e1d0745116c520)
+</script></section><section  data-markdown><script type="text/template">
+# Input et output
+
+### input
+
+* Les **inputs** sont les informations qui sont fournies en entrée au composant.
+* Ils sont notés entre crochets.
+
+
+### output
+
+* Les **outputs** sont les informations qui sont émises par le composant.
+* Ils sont notés entre parenthèses.
+</script></section><section  data-markdown><script type="text/template">
+# two-way data-binding
+
+Pour les éléments pouvant être fournis en entrée et émis en sortie, on peut utiliser **les 2 notations ensemble : `[()]`**, par exemple pour un champ de formulaire. C'est le two-way data binding. 
+
+En dehors de l'usage élémentaire pour des formulaires, on préfère l'éviter pour des raisons de performance.
+</script></section><section  data-markdown><script type="text/template">
+# Syntaxe des templates
+
+Interpolation `{{ }}` : permet d'évaluer une expression.
+
+Par exemple :
+
+    {{ 1 + 2 }} // affiche 3
+    {{ message }} // affiche la valeur de la propriété `message` du composant
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="alternate" -->
+
+# Syntaxe des templates
+
+Boucle avec `*ngFor`
+
+Note : les directives structurelles (celles qui utilisent un template propre) sont préfixées par `*`.
+
+Créons une propriété contenant une liste de pokémons et affichons-les dans une liste :
+
+    <ul>
+      <li *ngFor="let pokemon of pokemons">{{pokemon.name}}</li>
+    </ul>
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/f3f629d4d5781dcaee95c43733e042f527766768)
+
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="alternate" -->
+
+# Syntaxe des templates
+
+Condition avec `*ngIf` ou `*ngSwitch`
+
+On va créer une méthode qui indique si un pokémon est le plus fort :
+
+    isStronger(pokemon:any) {
+        let max_pv = Math.max(...this.pokemons.map(pok => pok.pv));
+        return (pokemon.pv == max_pv)
+    }
+
+Et on utilise cette méthode dans un `*ngIf` pour afficher une mention à côté du plus fort :
+
+    <strong *ngIf="isStronger(pokemon)">Le plus fort !!</strong>
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/c28624c8128f7fadba7e175958a963717e554e76)
+
+</script></section><section  data-markdown><script type="text/template">
+# Syntaxe des templates
+
+Classes (et style) avec `ngClass`  (ou `ngStyle`)
+
+On peut directement lier l'attribut normal `class` :
+
+    private defaultClasses:string = 'btn btn-primary btn-special';
+
+    <div [class]="defaultClasses"></div>
+
+On peut aussi conditionner une classe avec un booléen:
+
+    <div [class.alert]="isAlert"></div>
+</script></section><section  data-markdown><script type="text/template">
+# Syntaxe des templates
+
+Mais la directive `ngClass` est souvent plus simple car elle permet de gérer plusieurs classes dans un dictionnaire :
+
+    !typescript
+    getClasses(pokemon:any) {
+        return {
+            grass: pokemon.type == 'grass',
+            electric: pokemon.type == 'electric',
+            fire: pokemon.type == 'fire',
+            small: pokemon.size < 50,
+            medium: pokemon.size < 100 && pokemon.size >= 50,
+            big: pokemon.size >= 100
+        }
+    }
+
+    <li [ngClass]="getClasses(pokemon)">
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/8431681ebd45a1de742b042259658fc9e32d8e43)
+
+</script></section><section  data-markdown><script type="text/template">
+# Syntaxe des templates
+
+**Les pipes** permettent d'appliquer des transformations simples au résultat d'une interpolation.
+
+Exemples :
+
+Formatter une date :
+
+    {{ dateObj | date }}
+    {{ dateObj | date:'shortTime'}}
+
+Formatter des valeurs monétaires :
+
+    {{ price | currency:'EUR':true }}
+
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="title" data-background="./assets/images/bg-rocks.jpg" -->
+
+# 5 - Gérer le routage
+</script></section><section  data-markdown><script type="text/template">
+Le routage permet de naviguer de "pages" en "pages" dans notre application
+(en fait, physiquement on reste sur la même page `index.html`).
+
+Le principe est de mettre en correspondance des URLs avec des composants :
+
+    { path: '', component: HomeComponent },
+    { path: 'about', component: AboutComponent },
+
+Le composant sera affiché dans un point d'insertion qu'on met généralement dans
+le template de l'AppComponent :
+
+    <router-outlet></router-outlet>
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="alternate" -->
+
+# Exercice
+
+Créons un composant About et utilisons des routes pour atteindre soit Home soit About.
+
+Solution : [Mettre en place le routage](https://github.com/makinacorpus/angular-training/commit/ad97a817a1e66819c21173bd4217f4d65985f803) [Ajouter About et sa route](https://github.com/makinacorpus/angular-training/commit/6715ca7fc3cd9a463bfc1aeb232d931788391efb)
+
+.fx: alternate
+</script></section><section  data-markdown><script type="text/template">
+# Liens vers des routes
+
+On peut très bien faire un lien normal vers une route :
+
+    <a href="/about">About</a>
+
+Mais cela va recharger la page en entier. [Exemple](https://github.com/makinacorpus/angular-training/commit/21721389b3555f980d472f9f4035a787b6000d36)
+
+Si on veut rendre le routage dynamique, on utilise la directive `routerLink`:
+
+    <a routerLink="/about">About</a>
+
+[Exemple](https://github.com/makinacorpus/angular-training/commit/323c37239af8ddc07b51bd68141475a8447c3cc3)
+</script></section><section  data-markdown><script type="text/template">
+# Routes paramétrées
+
+On peut déclarer des routes contenant des paramètres :
+
+    { path: 'pokemon/:id', component: DetailComponent }
+
+Le module `Router` fournit des services **injectables** (c'est-à-dire appelables depuis n'importe quel composant).
+Notamment le service `ActivatedRoute` qui permet d'obtenir des informations sur la route courante.
+
+Le composant cible peut recevoir le (ou les) paramètre(s) d'une route en souscrivant (=subscribe)
+à des **Observables** proposés par `ActivatedRoute`.
+
+Dans le cas d'un paramètre, on utilise l'observable `params` :
+
+    this.route.params.subscribe(params => {
+        console.log(params['id']);
+    }
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="alternate" -->
+
+# Exercice
+
+On va créer [une page de présentation détaillée d'un pokémon](https://github.com/makinacorpus/angular-training/commit/3f74fcb655846f102aa782a693b2cc9f9323a429) et faire [des liens depuis la page d'accueil](https://github.com/makinacorpus/angular-training/commit/5d5ec1c2142722984346e17183cfffa80c6ce8aa).
+
+<aside class="notes"><p>auparavant on va mettre les données sur les pokémons dans un <a href="https://github.com/makinacorpus/angular-training/commit/a82ea22f7a53f08214a7a51411e8e4c2d42aa1f6">fichier de configuration</a></p>
+</aside></script></section><section  data-markdown><script type="text/template">
+# 6 - Appels au backend
+
+Plutôt que gérer des informations localement, on souhaite utiliser l'API publique [http://pokeapi.co/](http://pokeapi.co/).
+
+Pour cela on va utiliser le service `http` :
+
+    this.http.get('http://pokeapi.co/api/v2/pokemon/')
+
+Les méthodes (get, post, etc.) de `http` renvoient des observables auquel on souscrit pour obtenir les données.
+La méthode `json()` permet de désérialiser les données reçues :
+
+    this.http.get('http://pokeapi.co/api/v2/pokemon/')
+    .subscribe(res => {
+        this.pokemons = res.json().results
+    });
+
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="alternate" -->
+
+# Exercice
+
+* Utiliser [http://pokeapi.co/api/v2/pokemon/](http://pokeapi.co/api/v2/pokemon/) pour avoir la liste des Pokémons sur la page d'accueil.
+* Utiliser [http://pokeapi.co/api/v2/pokemon/:id](http://pokeapi.co/api/v2/pokemon/:id) pour avoir les informations d'un pokémon.
+
+[Solution](https://github.com/makinacorpus/angular-training/commit/6376c0b3cb97dca531ef2eaf184aa5b015f44f7f)
+
+L'API est lente, il faut faire un spinner (ou un message de chargement).
+
+[Solution](https://github.com/makinacorpus/angular-training/commit/d7b02efba2cac3d5c6d36b4338677aaef9f7ea10)
+</script></section><section  data-markdown><script type="text/template">
+# Créer un Injectable
+
+Plutôt qu'appeler `http` directement dans nos composants, il est plus sain de déléguer
+tous les appels à un **service injectable** spécifique.
+
+Cela peut faciliter la maintenance (meilleure isolation), ou permettre de greffer
+des améliorations (gérer l'authentification, le cache, le mode offline, etc.).
+
+Pour cela, il faut créer un service :
+
+    ng generate service MyService
+
+
+- y injecter `http`,
+- déclarer le service en tant que `provider` dans le module,
+- et injecter notre service dans nos composants.
+</script></section><section  data-markdown><script type="text/template">
+# Observables
+
+Grâce à l'opérateur `map` de **RxJS**, on peut appliquer une fonction sur un observable
+comme si c'était une liste normale et le résultat reste un observable.
+
+C'est ainsi qu'on peut **appliquer des traitements sur le résultat d'un appel HTTP**.
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="alternate" -->
+
+# Exercice
+
+Créer un service fournissant une méthode `listAll()` et une méthode `get(id)`.
+
+[Solution](https://github.com/makinacorpus/angular-training/commit/9b9462fadb7f03661bf194fce84162b1b6e09809)
+</script></section><section  data-markdown><script type="text/template">
+<!-- .slide: class="alternate" -->
+
+# Exercice
+
+Stocker le résultat de `listAll()` en cache.
+
+[Solution](https://github.com/makinacorpus/angular-training/commit/3c216e2e53f2250d5d604e99fd640aec768fa114)
+</script></section><section  data-markdown><script type="text/template">
+# 7 - Gérer des formulaires
+
+Le FormModule fournit des directives disponibles par défaut sur tous les `<form>` :
+
+- `ngForm`, l'objet form lui-même (avec notamment ses valeurs)
+- `ngModel`, le binding avec les champs
+- `ngSubmit`, l'action de submit
+</script></section><section  data-markdown><script type="text/template">
+# Exemple
+
+    !xml
+    <form #f="ngForm" (ngSubmit)="doSomething(f.value)">
+        <input type="text" name="email" ngModel />
+        <input type="text" name="username" [ngModel]="currentUser" />
+        <button (click)="ngSubmit">Go</button>
+    </form>
+
+Et dans le composant :
+
+    !typescript
+    doSomething(data) {
+        console.log(data.email);
+        console.log(data.username);
+    }
+</script></section><section  data-markdown><script type="text/template">
+# Exercice
+
+Faire un formulaire dans la page About qui permet de signaler un pokémon manquant.
+
+Note : comme on ne dispose pas d'un endpoint pour envoyer des mails, on va simplement écrire dans le log notre message.
+
+.fx: alternate
+</script></section><section  data-markdown><script type="text/template">
+# Accèder au formulaire depuis le composant
+
+    !typescript
+    import { NgForm } from '@angular/forms';
+    ...
+        @ViewChild('f') form: NgForm;
+
+        ngOnInit() {
+          this.form.valueChanges.subscribe(v => console.log(v));
+        }
+</script></section><section  data-markdown><script type="text/template">
+# Debounce sur la saisie
+
+    !typescript
+    import { NgForm } from '@angular/forms';
+    ...
+        @ViewChild('f') form: NgForm;
+
+        ngOnInit() {
+          this.form.valueChanges
+            .debounceTime(1000)
+            .subscribe(v => console.log(v));
+        }
+</script></section><section  data-markdown><script type="text/template">
+# ViewChild
+
+ViewChild permet d'accèder aux composants contenus dans le composant courant.
+
+C'est un décorateur qui prend en paramètre soit une classe:
+
+    !typescript
+    @ViewChild(ContactComponent) contact: ContactComponent;
+
+soit une référence de template:
+
+    !typescript
+    @ViewChild('f') form: NgForm;
+</script></section><section  data-markdown><script type="text/template">
+# RxJS et les observables
+
+Faire un observable à partir d'une valeur simple:
+
+    !typescript
+    import { Observable } from 'rxjs/Observable';
+    import 'rxjs/add/observable/of';
+
+    Observable.of('Bonjour')
+</script></section><section  data-markdown><script type="text/template">
+# RxJS et les observables
+
+Combiner 2 observables:
+
+`forkJoin` renvoie les données dès qu'il a obtenu une réponse de chacun.
+
+`combineLatest` renvoie des données à partir du moment où il a obtenu au moins une réponse de chacun et à chaque nouvelle réponse d'un d'entre eux.
+
+
+    !typescript
+    import { Observable } from 'rxjs/Observable';
+    import 'rxjs/add/operator/map';
+    import 'rxjs/add/observable/of';
+    import 'rxjs/add/observable/forkJoin';
+
+    Observable.forkJoin(
+    observable1,
+    observable2
+    ).map(([result1, result2]) => ...)
+
+    Observable.combineLatest(
+    observable1,
+    observable2
+    ).subscribe(([result1, result2]) => ...)
+
+.fx: smaller
+</script></section><section  data-markdown><script type="text/template">
+# RxJS et les observables
+
+Chaîner 2 observables: mergeMap (ou concatMap pour des événements répétables)
+
+    !typescript
+    return this.http.get(this.baseUrl + id + '/')
+      .map(res => {
+        this.status.next({ loading: false, error: null });
+        return res.json();
+      }).mergeMap(res => {
+        return Observable.forkJoin(
+          Observable.of(res),
+          this.http.get(res.abilities[0].ability.url).map(res2 => res2.json()));
+      });
+</script></section><section  data-markdown><script type="text/template">
+# RxJS et les subjects
+
+Les subjects sont des observables et des observateurs à la fois, on peut s'y abonner et leur envoyer des données.
+
+    !typescript
+    const subject = new Subject<number>();
+
+    subject.subscribe((number) => {
+        console.log(number);
+    });
+
+    subject.next(1);
+    subject.complete();
+</script></section><section  data-markdown><script type="text/template">
+# RxJS et les subjects
+
+BehaviorSubject renvoie la dernière valeur même si elle a été émise avant le subscribe.
+Il a forcément une valeur intiale.
+</script></section><section  data-markdown><script type="text/template">
+# RxJS et les subjects
+
+**AsyncSubject** ne garde que sa dernière valeur et l'émet à partir du moment où on l'arrête.
+
+    !typescript
+    protected vocabulary: AsyncSubject = new AsyncSubject();
+
+    constructor(private api: HTTPService) {
+        this.api.get('/vocabulary/')
+            .map((response: Response) => {
+                this.vocabulary.next(response.json());
+                this.vocabulary.complete();
+            });
+    }
+</script></section><section  data-markdown><script type="text/template">
+# 8 - Tester une app
+
+Par défaut, le CLI génère un fichier .spec.ts pour chaque composant.
+
+Ce fichier contiendra tous les tests unitaires du composant.
+
+Les tests sont lancés par la commande :
+
+    !console
+    ng test
+
+
+</script></section><section  data-markdown><script type="text/template">
+# Test d'acceptance
+
+RobotFramework
+
+- les tests sont rédigés en langage naturel,
+- ils sont interprétés par Selenium.
+</script></section><section  data-markdown><script type="text/template">
+# Installation
+
+Installer Python 2.7 puis :
+
+    !console
+    easy_install pip
+    pip install robotframework
+    pip install robotframework-selenium2library
+    pip install robotframework-debuglibrary
+
+ChromeDriver à ajouter dans le dossier bin de Python :
+http://chromedriver.storage.googleapis.com/index.html
+</script></section><section  data-markdown><script type="text/template">
+# 9 - Ajouter des dépendences externes
+
+On ajoute des dépendences avec :
+
+    !console
+    npm install nom-du-paquet
+    npm install nom-du-paquet@3.0.2
+    npm install nom-du-paquet --save
+
+<aside class="notes"><p><code>--save</code> sert à ajouter une entrée dans <code>package.json</code>.</p>
+</aside></script></section><section  data-markdown><script type="text/template">
+# Exercice
+
+Ajouter Material Design
+
+    !console
+    npm install angular2-mdl material-design-lite --save
+
+
+.fx: alternate
+</script></section><section  data-markdown><script type="text/template">
+# 10 - Déployer en prod
+
+Pour créer un build :
+
+    !console
+    ng build
+
+Pour un build minifié avec cache keys:
+
+    !console
+    ng build --prod
+
+Si le déploiement n'est pas fait à la racine :
+
+    !console
+    ng build --base-href=/pokemon
+</script></section><section  data-markdown><script type="text/template">
+# Respecter le routage
+
+Le routage de l'app Angular doit être accepté par le serveur web :
+
+- si l'utilisateur est sur une URL donnée produite par le routage Angular, et qu'il rafraîchit la page, il ne doit pas obtenir un 404,
+- idem pour les bookmarks ou les liens partagés par mail ou autre.
+
+Il faut donc un vhost qui renvoie toutes les URLs sur index.html (sauf les ressources JS/CSS/assets).
+
+Exemple Nginx:
+
+    location / {
+        try_files   $uri $uri/ /index.html;
+    }
+</script></section><section  data-markdown><script type="text/template">
+# Angular Universal
+
+Permet de faire tourner l'app Angular sur un serveur afin de servir la page demandée en HTML pré-généré :
+
+- augmente les performances,
+- gère le routage,
+- améliore le référencement.
+
+La page servie est ensuite ré-hydratée : le JS s'active et la suite de la navigation se fait en mode client-side.
+</script></section></div>
+        </div>
+
+        <script src="./lib/js/head.min.js"></script>
+        <script src="./js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: './lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: './plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: './plugin/zoom-js/zoom.js', async: true },
+              { src: './plugin/notes/notes.js', async: true },
+              { src: './plugin/math/math.js', async: true }
+            ];
+
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default', // none/fade/slide/convex/concave/zoom
+              dependencies: deps
+            };
+
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+
+            var options = {"transition":"fade"};
+            options = extend(defaultOptions, options, queryOptions);
+        </script>
+
+
+        <script>
+            Reveal.initialize(options);
+        </script>
+    </body>
+</html>

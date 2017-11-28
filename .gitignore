@@ -19,3 +19,4 @@ __pycache__
 .gitmodules
 docs/assets/makina
 
+.DS_Store
