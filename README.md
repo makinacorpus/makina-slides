@@ -123,3 +123,34 @@ Available classes for makina theme are:
 * `smaller`: smaller text (not title)
 * `larger`: larger text (not title)
 * `imageslide`: single image covering all slide
+
+
+----
+
+# Reveal-md
+
+## Installation
+
+```
+npm install -g reveal-md
+npm install -g phantomjs
+```
+
+# Live reload
+
+```
+cd javascript
+reveal-md
+```
+
+# Export HTML
+
+```
+reveal-md angular.md --css theme/makina.css --static ../docs/reveal-slides
+```
+
+# Export PDF
+
+```
+reveal-md angular.md --print angular.pdf
+```
