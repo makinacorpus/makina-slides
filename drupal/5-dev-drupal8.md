@@ -20,7 +20,8 @@
 
 --------------------------------------------------------------------------------
 
-## 1er jour
+## Au sommaire
+
   * Rappels PHP
   * Environnement de développement
   * Quelques outils utiles (Drush, Git, Devel)
@@ -28,28 +29,13 @@
   * Architecture de Drupal & concepts de base
   * Création du squelette d'un module
   * Les premiers hooks
-## 2ème jour
   * Les différentes API
   * Les nœuds, le contenu et les droits d'accès
   * L'alteration des modules
-
---------------------------------------------------------------------------------
-
-## 3ème jour
   * La form API
   * Les mails
   * Créer un thème basique
   * Les profils d'installation
-
-<br/>
-<br/>
-<br/>
-
-<center>
-## Slides disponibles en ligne
-
-<http://makinacorpus.github.io/makina-slides/drupal8-dev.html>
-</center>
 
 --------------------------------------------------------------------------------
 
@@ -74,9 +60,9 @@
 
 ## "Going off the island"
 
-  * Drupal 8 est une solution "jeune"
-  * Tout a changé depuis Drupal 7
-  * Peu de retours d'expérience
+  * Drupal 8 est une solution relativement "jeune"
+  * Actuellement en version 8.5.0
+  * Beaucoup de choses ont changé depuis Drupal 7
   * En phase de stabilisation sur les implémentations ou process
 
 --------------------------------------------------------------------------------
@@ -133,18 +119,13 @@
 ## [Composer](https://getcomposer.org)
 
   * Gestionnaire de dépendances utilisé par la communauté PHP
-  * Installation uniquement locale au projet
+  * Installation : <https://getcomposer.org/download/>
   * composer.json
   * "composer install"
   * composer.lock
   * Contient un autoloader
   * Pour les performances : <https://github.com/hirak/prestissimo>
-
-<pre><code>
-  curl -sS https://getcomposer.org/installer | php
-  mv composer.phar /usr/local/bin/composer
-</code></pre>
-
+ 
   * [D8 Composer definitive introduction](https://bojanz.wordpress.com/2015/09/18/d8-composer-definitive-intro/)
   * [Composer install vs. composer update](https://adamcod.es/2013/03/07/composer-install-vs-composer-update.html)
 
@@ -167,14 +148,11 @@
     * HTML
     * CSS
 
-On utilisera dans cette formation _Acquia Dev Desktop_ qui permet d'installer un
-environnement de développement avec tous les pré-requis Drupal.
-
 --------------------------------------------------------------------------------
 
 ## TP: Installer Drupal 8
 
-  * Choisir la distribution Drupal 8.x simple dans Acquia Dev Desktop
+  * Télécharger drupal : <https://www.drupal.org/project/drupal>
   * Installer le profil d'installation Standard
   * Paramètres
     * Nom du site : Formation
@@ -286,7 +264,7 @@ Avantages :
   * `composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction`
 
   * `composer create-project drupal/drupal my_site_name` installe un nouveau site
-  * composer require drupal/core ~8.3 --update-with-dependencies` met à jour le cœur
+  * composer require drupal/core ~8.5 --update-with-dependencies` met à jour le cœur
 
   * Attention, encore [quelques problèmes avec Composer](https://www.jeffgeerling.com/blog/2017/composer-and-drupal-are-still-strange-bedfellows)
 
