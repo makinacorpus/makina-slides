@@ -398,7 +398,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
   Aborde certains topics en profondeur : form API, schema API, hooks, etc
 
-  <https://api.drupal.org/api/drupal/core%21core.api.php/group/extending/8.1.x>
+  <https://api.drupal.org/api/drupal/core%21core.api.php/group/extending/8.4.x>
 
 <br>
 ### Votre guide : modules `examples`
@@ -457,7 +457,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
   * Plugins : <https://www.drupal.org/node/2087839>
   * Annotations très utilisé dans le cœur : pour tous le plugins (block, entre
   autres) : <https://www.drupal.org/node/1882526>
-  * <https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.1.x>
+  * <https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.4.x>
 
 --------------------------------------------------------------------------------
 
@@ -759,7 +759,7 @@ Quelques fonctions de l'API à connaitre :
     $ids = \Drupal::entityQuery('user')->condition('name', 'test')->execute();
     $users = User::loadMultiple($ids);
 
-[Documentation complète](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Database%21database.api.php/group/database/8.1.x)
+[Documentation complète](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Database%21database.api.php/group/database/8.4.x)
 
 --------------------------------------------------------------------------------
 
@@ -832,13 +832,13 @@ accès premium.
 
   * `hook_XXXXXXX_alter()` : permettent de _modifier_ des données créés par
   d'autres modules
-  * [Liste des hooks](https://api.drupal.org/api/drupal/core%21core.api.php/group/hooks/8.1.x)
+  * [Liste des hooks](https://api.drupal.org/api/drupal/core%21core.api.php/group/hooks/8.4.x)
 
 ### "Nouveauté" Drupal 8 : les Events symfony
 
   * On "s'inscrit" à un événement (via un service) pour que le système nous
   appelle automatiquement et qu'on puisse _réagir_
-  * [Liste des Events](https://api.drupal.org/api/drupal/core%21core.api.php/group/events/8.1.x)
+  * [Liste des Events](https://api.drupal.org/api/drupal/core%21core.api.php/group/events/8.4.x)
 
 
 --------------------------------------------------------------------------------
@@ -1192,7 +1192,7 @@ Rappels 
 
 ## TP : Contrôler l'accès aux nœuds
 
-Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.1.x))
+Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.4.x))
 
 Déclarer le `hook_node_access()` et ne retourner AccessResult::forbidden()
 uniquement si les 4 conditions sont réunies :
@@ -1531,7 +1531,6 @@ Ajouter des suggestions pour ce template.
 
   * Tout est sous forme de bibliothèque
   * \#attached[] -> au moment du rendering
-  * drupal_add_library()
   * [Adding stylesheets and JavaScript to a Drupal 8 module](https://www.drupal.org/node/2274843)
 
 --------------------------------------------------------------------------------
@@ -1606,7 +1605,7 @@ Voir les modules `example`
 
 ## Les services
 
-  * <https://api.drupal.org/api/drupal/services/8.1.x>
+  * <https://api.drupal.org/api/drupal/services/8.4.x>
   * Les services à connaître :
     * router.admin_context (->isAdminRoute())
     * path.matcher (->isFrontPage() / ->match())
@@ -1815,7 +1814,7 @@ Directement dans le render array
 ### Des tables "legacy"
 
   * Utiliser le hook_views_data()
-  * [documentation](https://api.drupal.org/api/drupal/core!modules!views!views.api.php/function/hook_views_data/8.1.x)
+  * [documentation](https://api.drupal.org/api/drupal/core!modules!views!views.api.php/function/hook_views_data/8.4.x)
 
 --------------------------------------------------------------------------------
 
@@ -1921,11 +1920,10 @@ Directement dans le render array
 
   * [Lightning](https://www.drupal.org/project/lightning) (avec Roadmap) ~
   sert de démo pour les capacités de Drupal 8
-  * [Commerce](https://www.drupal.org/project/commerce) 2.x (en alpha) :
+  * [Commerce](https://www.drupal.org/project/commerce) 2.x :
   refonte complète par rapport à la version Drupal 7
-  * [OpenSocial](https://www.drupal.org/project/social) (en alpha), avec
-  [prototype](http://goalgorilla.github.io/drupal_social/prototype.html)
-  disponible
+  * [OpenSocial](https://www.drupal.org/project/social)
+  * [ContentaCMS](http://www.contentacms.org/)
 
 --------------------------------------------------------------------------------
 
