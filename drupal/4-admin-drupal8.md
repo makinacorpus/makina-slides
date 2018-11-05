@@ -375,7 +375,7 @@ puisse modérer ces pages.
 
 # Workflow
 
-  * Content moderation (expérimental)
+  * Content moderation
     * Création de nouveaux états et de nouvelles transitions
 
 ![][37]
