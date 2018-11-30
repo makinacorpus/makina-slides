@@ -7,6 +7,23 @@
 
 --------------------------------------------------------------------------------
 
+## Qui sommes nous ?
+
+<center>
+<h2>Simon Georges</h2><br />
+@saisai sur le web<br />
+Expert Drupal / SEO<br /><br />
+
+<h2>Romain Moro</h2><br />
+@c4ilus sur le web<br />
+Expert PHP / Drupal<br /><br />
+
+![][10]
+</center>
+
+
+--------------------------------------------------------------------------------
+
 ## Objectifs de la formation
   * Appréhender l'environnement de développement Drupal
   * Comprendre les concepts et l'API Drupal 
@@ -2024,4 +2041,6 @@ Directement dans le render array
    [8]: img/drupal_page_render_1.png
 
    [9]: img/drupal_page_render_2.png
+   
+   [10]: img/makina.jpg
 
