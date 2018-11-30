@@ -78,7 +78,7 @@ Expert PHP / Drupal<br /><br />
 ## "Going off the island"
 
   * Drupal 8 est une solution relativement "jeune"
-  * Actuellement en version 8.5.0
+  * Actuellement en version 8.6.3
   * Beaucoup de choses ont changé depuis Drupal 7
   * En phase de stabilisation sur les implémentations ou process
 
@@ -281,7 +281,7 @@ Avantages :
   * `composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction`
 
   * `composer create-project drupal/drupal my_site_name` installe un nouveau site
-  * composer require drupal/core ~8.5 --update-with-dependencies` met à jour le cœur
+  * composer require drupal/core ~8.6.3 --update-with-dependencies` met à jour le cœur
 
   * Attention, encore [quelques problèmes avec Composer](https://www.jeffgeerling.com/blog/2017/composer-and-drupal-are-still-strange-bedfellows)
 
