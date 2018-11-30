@@ -11,7 +11,7 @@
 
 <center>
 <h2>Simon Georges</h2><br />
-@saisai sur le web<br />
+@simongeorges sur le web<br />
 Expert Drupal / SEO<br /><br />
 
 <h2>Romain Moro</h2><br />
