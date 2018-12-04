@@ -244,10 +244,8 @@ Avantages :
 --------------------------------------------------------------------------------
 
 ## TP: Drush
-  * Lancer Drush 
+  * Lancer Drush (vendor/bin/drush)
   * Regarder la liste des commandes 
-  * Installer un module (features) 
-  * Regarder à nouveau la liste des commandes 
   * Sauvegarder la base de données 
   * Installer les modules utiles au développement : devel, masquerade, examples
   * Desactiver le module history
@@ -270,7 +268,7 @@ Avantages :
 ## TP : Console
   * Intaller la console Drupal
   * Vérifier que c'est correctement installé
-  * Regarder la liste des commandes (drupal list)
+  * Regarder la liste des commandes (vendor/bin/drupal list)
 
 ![][5]
 
@@ -294,7 +292,7 @@ Avantages :
   * `composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction`
 
   * `composer create-project drupal/drupal my_site_name` installe un nouveau site
-  * composer require drupal/core ~8.6.3 --update-with-dependencies` met à jour le cœur
+  * `composer require drupal/core ~8.6.3 --update-with-dependencies` met à jour le cœur
 
   * Attention, encore [quelques problèmes avec Composer](https://www.jeffgeerling.com/blog/2017/composer-and-drupal-are-still-strange-bedfellows)
 
@@ -428,7 +426,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
   Aborde certains topics en profondeur : form API, schema API, hooks, etc
 
-  <https://api.drupal.org/api/drupal/core%21core.api.php/group/extending/8.4.x>
+  <https://api.drupal.org/api/drupal/core%21core.api.php/group/extending/8.6.x>
 
 <br>
 ### Votre guide : modules `examples`
@@ -471,7 +469,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
   * Plugins : <https://www.drupal.org/node/2087839>
   * Annotations très utilisé dans le cœur : pour tous le plugins (block, entre
   autres) : <https://www.drupal.org/node/1882526>
-  * <https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.4.x>
+  * <https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.6.x>
 
 --------------------------------------------------------------------------------
 
@@ -513,7 +511,15 @@ Créer un bloc :
   - qui affiche "Vous pouvez voir les contenus premium" ou "Vous ne pouvez pas
   voir les contenus premium"
 
-Rappel: \Drupal::currentUser()->hasPermission(); pour vérifier les permissions
+### Aide (création de bloc)
+
+    !bash
+    vendor/bin/drupal generate:plugin:block
+
+### Aide (vérification des permissions)
+
+    !php
+    \Drupal::currentUser()->hasPermission('view premium');`
 
 Attention au cache d'implementations
 
@@ -721,6 +727,11 @@ premium
 
   - url : page-premium
 
+### Aide (création d'une route et d'un controller)
+
+    !bash
+    vendor/bin/drupal generate:controller
+
 .fx: tp
 
 --------------------------------------------------------------------------------
@@ -773,7 +784,7 @@ Quelques fonctions de l'API à connaitre :
     $ids = \Drupal::entityQuery('user')->condition('name', 'test')->execute();
     $users = User::loadMultiple($ids);
 
-[Documentation complète](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Database%21database.api.php/group/database/8.4.x)
+[Documentation complète](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Database%21database.api.php/group/database/8.6.x)
 
 --------------------------------------------------------------------------------
 
@@ -827,14 +838,26 @@ Créer une page _Utilisateurs premium_ listant les utilisateurs du site ayant un
 accès premium.
 
   * Créer une page
-
   * Récupérer les utilisateurs ayant un rôle permettant de voir le contenu
   premium (->condition('roles', '...'))
-
   * Les afficher d'abord dans une liste ('#theme' => 'item_list')
-
   * Modifier pour les afficher dans un tableau ('#theme' => 'table') avec
   _Identifiant_, _Nom_, _Lien vers son profil_
+
+### Rappels (création de page)
+
+    !console
+    vendor/bin/drupal generate:controller
+
+### Rappels (requêtes)
+
+    !php
+    $ids = \Drupal::entityQuery('user')
+      ->condition('roles', 'premium')
+      ->execute();
+    $users = User::loadMultiple($ids);
+
+[Documentation de #theme => item_list](https://api.drupal.org/api/drupal/core%21modules%21system%21templates%21item-list.html.twig/8.6.x)
 
 .fx: tp
 
@@ -862,13 +885,13 @@ accès premium.
 
   * `hook_XXXXXXX_alter()` : permettent de _modifier_ des données créés par
   d'autres modules
-  * [Liste des hooks](https://api.drupal.org/api/drupal/core%21core.api.php/group/hooks/8.4.x)
+  * [Liste des hooks](https://api.drupal.org/api/drupal/core%21core.api.php/group/hooks/8.6.x)
 
 ### "Nouveauté" Drupal 8 : les Events symfony
 
   * On "s'inscrit" à un événement (via un service) pour que le système nous
   appelle automatiquement et qu'on puisse _réagir_
-  * [Liste des Events](https://api.drupal.org/api/drupal/core%21core.api.php/group/events/8.4.x)
+  * [Liste des Events](https://api.drupal.org/api/drupal/core%21core.api.php/group/events/8.6.x)
 
 
 --------------------------------------------------------------------------------
@@ -934,6 +957,9 @@ accès premium.
 
 Empêcher d'accéder à l'édition du profil d'un utilisateur (/user/{user}/edit)
 en interdisant l'accès à la route.
+
+    !console
+    vendor/bin/drupal generate:routesubscriber
 
 ### Hooks
 
@@ -1222,7 +1248,7 @@ Rappels 
 
 ## TP : Contrôler l'accès aux nœuds
 
-Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.4.x))
+Utiliser l'API Node Access ([documentation](https://api.drupal.org/api/drupal/core%21modules%21node%21node.module/group/node_access/8.6.x))
 
 Déclarer le `hook_node_access()` et ne retourner AccessResult::forbidden()
 uniquement si les 4 conditions sont réunies :
@@ -1635,7 +1661,7 @@ Voir les modules `example`
 
 ## Les services
 
-  * <https://api.drupal.org/api/drupal/services/8.4.x>
+  * <https://api.drupal.org/api/drupal/services/8.6.x>
   * Les services à connaître :
     * router.admin_context (->isAdminRoute())
     * path.matcher (->isFrontPage() / ->match())
@@ -1844,7 +1870,7 @@ Directement dans le render array
 ### Des tables "legacy"
 
   * Utiliser le hook_views_data()
-  * [documentation](https://api.drupal.org/api/drupal/core!modules!views!views.api.php/function/hook_views_data/8.4.x)
+  * [documentation](https://api.drupal.org/api/drupal/core!modules!views!views.api.php/function/hook_views_data/8.6.x)
 
 --------------------------------------------------------------------------------
 
