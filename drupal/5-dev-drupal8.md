@@ -41,7 +41,7 @@ Expert PHP / Drupal<br /><br />
 
   * Rappels PHP
   * Environnement de développement
-  * Quelques outils utiles (Drush, Git, Devel)
+  * Quelques outils utiles
   * Bonnes pratiques, standards de code, documentation
   * Architecture de Drupal & concepts de base
   * Création du squelette d'un module
@@ -77,10 +77,9 @@ Expert PHP / Drupal<br /><br />
 
 ## "Going off the island"
 
-  * Drupal 8 est une solution relativement "jeune"
   * Actuellement en version 8.6.3
   * Beaucoup de choses ont changé depuis Drupal 7
-  * En phase de stabilisation sur les implémentations ou process
+  * Comnce à être stabilisé sur les implémentations ou process
 
 --------------------------------------------------------------------------------
 
@@ -109,6 +108,7 @@ Expert PHP / Drupal<br /><br />
     * PSR-3 : interface du logger (pas implémentée dans Drupal)
     * PSR-4 : autoloader amélioré (choisi par Drupal) :
     <https://www.drupal.org/node/2156625>
+  * À suivre : Symfony a quitté le FIG
 
 --------------------------------------------------------------------------------
 
@@ -138,7 +138,8 @@ Expert PHP / Drupal<br /><br />
   * Gestionnaire de dépendances utilisé par la communauté PHP
   * Installation : <https://getcomposer.org/download/>
   * composer.json
-  * "composer install"
+  * "composer require" / "composer install"
+  * Dossier /vendor
   * composer.lock
   * Contient un autoloader
   * Pour les performances : <https://github.com/hirak/prestissimo>
@@ -229,16 +230,16 @@ Avantages :
 --------------------------------------------------------------------------------
 
 ## Les modules Drupal utiles au développement
-  * _Features_: transférer la configuration dans le code
-  * _Devel_ : debug et informations sur les données
   * _Drupal Console_ : générateur de code
   * _Drush_ : administration (DRUpal SHell) & téléchargement de modules et
   librairies
+  * _Devel_ : debug et informations sur les données
   * _Coder_ : revue de code
   * _Masquerade_ : changer d'utilisateur sans se déconnecter
   * _Examples for developpers_ : démonstrations de l'utilisation de l'API
   * Ne pas utiliser les caches durant le développement
   (<https://www.drupal.org/node/2598914> / <http://www.tothenew.com/blog/is-your-drupal-8-ready-for-writing-codes/>)
+  * Par rapport à Drupal 7, _Features_ n'est plus vraiment utile
 
 --------------------------------------------------------------------------------
 
@@ -249,9 +250,20 @@ Avantages :
   * Regarder à nouveau la liste des commandes 
   * Sauvegarder la base de données 
   * Installer les modules utiles au développement : devel, masquerade, examples
-  * Desactiver le module help
+  * Desactiver le module history
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+## Exemples de commandes souvent utilisées
+
+  * `drush cr` (cache-rebuild)
+  * `drush uli` (user-login)
+  * `drush sql-dump`
+  * `drush site-install`
+  * `drush archive-dump` / `drush archive-restore`
+  * `drush cim` / `drush cex`
 
 --------------------------------------------------------------------------------
 
@@ -273,6 +285,7 @@ Avantages :
   * `drupal generate:plugin:block`
   * `drupal generate:routesubscriber`
   * `drupal generate:form:config`
+  * `drupal generate:entity`
 
 --------------------------------------------------------------------------------
 
@@ -429,22 +442,6 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
   Très bien documentés, ne pas hésiter à lire, comprendre et reprendre le code
   de ces modules.
-
---------------------------------------------------------------------------------
-
-## Les hooks 
-
-  * Concept historique Drupal
-  * Implémenter `hook_form_alter()` donnera `mon_module_form_alter()`
-  * Poids des modules et altération
-  * Répondent à des déclencheurs
-  * Des hooks peuvent être déclarés par des modules contrib
-  * Rappel: on ne « hack » JAMAIS le core <small>(sauf en cas de module
-  bogué)</small>
-  * Tend à disparaître avec Drupal 8 (Plugins, yml, events), mais existe encore...
-  * Les implémentations sont mise en cache
-  * Liste des hooks
-  <https://api.drupal.org/api/drupal/core!core.api.php/group/hooks/8>
 
 --------------------------------------------------------------------------------
 
@@ -733,7 +730,7 @@ premium
   * &lt;front&gt;
   * &lt;nolink&gt;
 
-Pour voir les routes, utilisez la console : `drupal router:debug`
+Pour voir les routes, utilisez la console : `drupal debug:router`
 
 --------------------------------------------------------------------------------
 
@@ -840,6 +837,22 @@ accès premium.
   _Identifiant_, _Nom_, _Lien vers son profil_
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+## Les hooks 
+
+  * Concept historique Drupal
+  * Implémenter `hook_form_alter()` donnera `mon_module_form_alter()`
+  * Poids des modules et altération
+  * Répondent à des déclencheurs
+  * Des hooks peuvent être déclarés par des modules contrib
+  * Rappel: on ne « hack » JAMAIS le core <small>(sauf en cas de module
+  bogué)</small>
+  * Tend à disparaître avec Drupal 8 (Plugins, yml, events), mais existe encore...
+  * Les implémentations sont mise en cache
+  * Liste des hooks
+  <https://api.drupal.org/api/drupal/core!core.api.php/group/hooks/8>
 
 --------------------------------------------------------------------------------
 
