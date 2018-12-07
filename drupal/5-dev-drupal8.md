@@ -108,7 +108,7 @@ Expert PHP / Drupal<br /><br />
     * PSR-3 : interface du logger (pas implémentée dans Drupal)
     * PSR-4 : autoloader amélioré (choisi par Drupal) :
     <https://www.drupal.org/node/2156625>
-  * À suivre : Symfony a quitté le FIG
+  * À suivre : Symfony a quitté le FIG (après Laravel, Propel, Guzzle et Doctrine)
 
 --------------------------------------------------------------------------------
 
@@ -244,7 +244,7 @@ Avantages :
 --------------------------------------------------------------------------------
 
 ## TP: Drush
-  * Lancer Drush (vendor/bin/drush)
+  * Installer et lancer Drush (vendor/bin/drush)
   * Regarder la liste des commandes 
   * Sauvegarder la base de données 
   * Installer les modules utiles au développement : devel, masquerade, examples
@@ -1293,26 +1293,10 @@ La clé permet à un module de gérer plusieurs types de mail.
 
 --------------------------------------------------------------------------------
 
-## TP
-
-### Notification par mail
-
-Envoyer un mail à tous les utilisateurs premium :
-
-<pre>
-Sujet: Nouveau contenu premium
-
-Bonjour _Nom d'utilisateur_,
-Un nouveau _Type de contenu_ premium a été créé, il s'intitule _Titre_
-Vous pouvez le consulter ici : _URL_
-Cordialement,
-L'équipe du site _Nom du site_
-</pre>
-
-### Affichage du statut premium sur le nœud
+## TP : Affichage du statut premium sur le nœud
 
   - Trouver un hook qui permettrait d'ajouter un message
-  `<strong>Contenu premium/strong>` sur chaque contenu premium
+  `<strong>Contenu premium</strong>` sur chaque contenu premium
   - L'implementer avec #markup
 
 .fx: tp
