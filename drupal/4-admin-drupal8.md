@@ -353,10 +353,8 @@ Thèmes communs à tous les sites</small>
 
   * Créer un rôle 'Modérateur'
   * Créer un rôle 'Rédacteur'
-  * Créer 2 utilisateurs et leur attribuer ces rôles
-  * Paramètrer les droits d'accès pour ces rôles, de façon a ce que le
-'rédacteur' puisse créer/éditer des 'pages' uniquement. Et que le modérateur
-puisse modérer ces pages.
+  * Créer 2 utilisateurs (1 pour chaque rôle)
+  * Paramètrer les droits d'accès pour ces rôles, de façon a ce que le 'rédacteur' puisse créer/éditer des 'articles' uniquement. Et que le modérateur puisse modérer ces articles.
 
 .fx: tp larger
 
