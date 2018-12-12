@@ -365,7 +365,8 @@ Thèmes communs à tous les sites</small>
   * Un workflow très simple dans le cœur (Brouillon / Publié)
     * MAIS pas de permission spécifique
 
-  * Content moderation (expérimental)
+  * Content moderation
+    * Gestion de workflow complète
 
 ![][36]
 
