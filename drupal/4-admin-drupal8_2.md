@@ -544,16 +544,26 @@ performance, architecture)
 
   * <https://www.drupal.org/core/roadmap>
   * Aujourd'hui :
-    * Workflow
-    * Migration
     * Media
+    * Workflow
   * Dans le futur :
-    * Utilisation de composants dans le thème
+    * CMI 2.0
+    * Back-office en JS
+    * Mises à jour automatiques
   * Peut-être :
     * Modèle de données
     * Cross-channel
     
 ![][24]
+
+--------------------------------------------------------------------------------
+
+# Drupal 9
+
+![][53]
+
+<https://dri.es/plan-for-drupal-9>
+
 
 --------------------------------------------------------------------------------
 
@@ -737,3 +747,5 @@ Pour le développement
    [51]: img/media_d8_1.png
    
    [52]: img/media_d8_2.png
+
+   [53]: img/Drupal9_release_plan.jpg
