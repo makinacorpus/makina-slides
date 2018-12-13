@@ -212,7 +212,7 @@ Et bien d'autres
 
   * Méta-données intégrées dans le code HTML des pages du site
   * à définir pour chaque contenu
-  * paramétrage pour la page d'accueil
+  * paramétrage pour la page d'accueil
   * possibilité d'ajouter de nombreux tag
 
 --------------------------------------------------------------------------------
