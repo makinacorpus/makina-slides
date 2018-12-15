@@ -217,7 +217,7 @@ Et bien d'autres
 
 --------------------------------------------------------------------------------
 
-# Module XMLSitemap
+# Module Simple XML Sitemap
 
   * Génération d'un fichier sitemap.xml à la racine avec les urls du site (parsing par les robots de référencement)
   * Paramétrage pour définir quelles pages sont à inclure / exclure

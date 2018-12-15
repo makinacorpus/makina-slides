@@ -761,6 +761,11 @@ d'accueil' est cochée sur toutes les pages du site
     * Tri sur le titre et filtre expose sur le genre
     * Créer un menu ''Tous les livres'' vers cette page
 
+
+  * En bonus
+    * Installer le module _Better Exposed Filters_ pour masquer le bouton de
+    soumission du formulaire de filtres exposés
+
 .fx: tp
 
 --------------------------------------------------------------------------------
