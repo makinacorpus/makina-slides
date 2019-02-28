@@ -74,9 +74,9 @@ Expert PHP / Drupal<br /><br />
 
 ## "Going off the island"
 
-  * Actuellement en version 8.6.3
+  * Actuellement en version 8.6.x
   * Beaucoup de choses ont changé depuis Drupal 7
-  * Comnce à être stabilisé sur les implémentations ou process
+  * Commence à être stabilisé sur les implémentations ou process
 
 --------------------------------------------------------------------------------
 
@@ -245,7 +245,7 @@ Avantages :
   * Regarder la liste des commandes 
   * Sauvegarder la base de données 
   * Installer les modules utiles au développement : devel, masquerade, examples
-  * Desactiver le module history
+  * Désactiver le module history
 
 .fx: tp
 
@@ -289,7 +289,7 @@ Avantages :
   * `composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction`
 
   * `composer create-project drupal/drupal my_site_name` installe un nouveau site
-  * `composer require drupal/core ~8.6.3 --update-with-dependencies` met à jour le cœur
+  * `composer require drupal/core ~8.6.10 --update-with-dependencies` met à jour le cœur
 
   * Attention, encore [quelques problèmes avec Composer](https://www.jeffgeerling.com/blog/2017/composer-and-drupal-are-still-strange-bedfellows)
 
@@ -444,7 +444,6 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 
   * Créer un fichier `.permissions.yml`
   * Créer les deux permissions
-  * Vider le cache
   * Créer un role contributeur pouvant affecter le statut premium
   * Créer un role premium pouvant voir le statut premium
   * Créer un utilisateur pour chaque rôle
