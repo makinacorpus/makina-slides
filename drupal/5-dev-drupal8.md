@@ -10,9 +10,6 @@
 ## Qui sommes nous ?
 
 <center>
-<h2>Simon Georges</h2><br />
-@simongeorges sur le web<br />
-Expert Drupal / SEO<br /><br />
 
 <h2>Romain Moro</h2><br />
 @c4ilus sur le web<br />
