@@ -7,13 +7,13 @@
 
 --------------------------------------------------------------------------------
 
-## Qui sommes nous ?
+## Qui suis-je ?
 
 <center>
 
-<h2>Romain Moro</h2><br />
-@c4ilus sur le web<br />
-Expert PHP / Drupal<br /><br />
+<h2>Simon Georges</h2><br />
+@simongeorges sur le web<br />
+Expert Drupal / SEO<br /><br />
 
 ![][10]
 </center>
@@ -447,6 +447,11 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
   * Créer un role contributeur pouvant affecter le statut premium
   * Créer un role premium pouvant voir le statut premium
   * Créer un utilisateur pour chaque rôle
+
+### Aide (création de bloc)
+
+    !bash
+    vendor/bin/drupal generate:permissions
 
 .fx: tp
 
