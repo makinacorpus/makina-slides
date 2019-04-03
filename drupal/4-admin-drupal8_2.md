@@ -426,23 +426,13 @@ performance, architecture)
 
 # Formulaires
 
-  * Référence Drupal : module Webform
-    * YAML Form Jusqu'en Novembre 2016
-    * Création/Gestion intuitive des champs
-    * Visualisation/export des soumissions
-  * Utilisation du module __Contact__
-    * Avec Contact Storage (voir <http://flocondetoile.fr/blog/drupal-8-injecter-un-formulaire-de-contact-dans-un-contenu-en-5-etapes>)
-    * et d'autres éventuellement (pour l'export CSV)
-    
-
---------------------------------------------------------------------------------
-
-# Formulaires
-
   * Utilisation du module __Webform__
        * Module le plus complet à ce jour
        * Version actuelle suffisament stable
        * Pack de plusieurs modules
+       * Visualisation/export des soumissions
+       * Champ "signature électronique"
+       * Possibilités de layout flexbox directement
        
 ![][44]
 

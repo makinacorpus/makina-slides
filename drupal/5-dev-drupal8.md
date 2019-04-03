@@ -754,7 +754,7 @@ Quelques fonctions de l'API à connaitre :
   * `\Drupal::currentUser()` : utilisateur actuellement connecté
   * `Node::load()` et `Node::loadMultiple()` pour charger des nœuds
   * `User::load()` et `User::loadMultiple()` pour charger des utilisateurs
-  * \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
+  * `\Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);`
   * `$entity->save()` pour enregistrer un nœud, un utilisateur, ...
   * `$user->getDisplayName()` pour afficher un nom d'utilisateur
   * `Node::create(['type' => article])->save();`
@@ -1799,7 +1799,7 @@ Directement dans le render array
 ### Appel (avec Guzzle)
     !php
     // GET
-    $request = \Drupal::service('http_default_client')->get($url, [
+    $request = \Drupal::httpClient()->get($url, [
       'auth' => ['username','password']
     ]);
     $status = $request->getStatusCode();

@@ -259,9 +259,9 @@ Expert PHP / Drupal<br /><br /></p>
             
             <section><h2>"Going off the island"</h2>
 <ul>
-<li>Actuellement en version 8.6.3</li>
+<li>Actuellement en version 8.6.x</li>
 <li>Beaucoup de choses ont changé depuis Drupal 7</li>
-<li>Comnce à être stabilisé sur les implémentations ou process</li>
+<li>Commence à être stabilisé sur les implémentations ou process</li>
 </ul></section>
             
           </div>
@@ -773,7 +773,7 @@ Expert PHP / Drupal<br /><br /></p>
 <li>Regarder la liste des commandes </li>
 <li>Sauvegarder la base de données </li>
 <li>Installer les modules utiles au développement : devel, masquerade, examples</li>
-<li>Desactiver le module history</li>
+<li>Désactiver le module history</li>
 </ul>
 </section>
             
@@ -923,7 +923,7 @@ Expert PHP / Drupal<br /><br /></p>
 <p><code>composer create-project drupal/drupal my_site_name</code> installe un nouveau site</p>
 </li>
 <li>
-<p><code>composer require drupal/core ~8.6.3 --update-with-dependencies</code> met à jour le cœur</p>
+<p><code>composer require drupal/core ~8.6.10 --update-with-dependencies</code> met à jour le cœur</p>
 </li>
 <li>
 <p>Attention, encore <a href="https://www.jeffgeerling.com/blog/2017/composer-and-drupal-are-still-strange-bedfellows">quelques problèmes avec Composer</a></p>
@@ -1371,7 +1371,6 @@ sous-repertoire <code>custom</code></p>
             <section><ul>
 <li>Créer un fichier <code>.permissions.yml</code></li>
 <li>Créer les deux permissions</li>
-<li>Vider le cache</li>
 <li>Créer un role contributeur pouvant affecter le statut premium</li>
 <li>Créer un role premium pouvant voir le statut premium</li>
 <li>Créer un utilisateur pour chaque rôle</li>
@@ -2120,7 +2119,7 @@ premium</p>
 <li><code>\Drupal::currentUser()</code> : utilisateur actuellement connecté</li>
 <li><code>Node::load()</code> et <code>Node::loadMultiple()</code> pour charger des nœuds</li>
 <li><code>User::load()</code> et <code>User::loadMultiple()</code> pour charger des utilisateurs</li>
-<li>\Drupal::entityTypeManager()-&gt;getStorage('node')-&gt;loadMultiple($nids);</li>
+<li><code>\Drupal::entityTypeManager()-&gt;getStorage('node')-&gt;loadMultiple($nids);</code></li>
 <li><code>$entity-&gt;save()</code> pour enregistrer un nœud, un utilisateur, ...</li>
 <li><code>$user-&gt;getDisplayName()</code> pour afficher un nom d'utilisateur</li>
 <li><code>Node::create(['type' =&gt; article])-&gt;save();</code></li>
@@ -4886,7 +4885,7 @@ render() dans le template.</p>
             
             <section><h3>Appel (avec Guzzle)</h3>
 <div class="highlight"><pre><span></span><span class="c1">// GET</span>
-<span class="nv">$request</span> <span class="o">=</span> <span class="nx">\Drupal</span><span class="o">::</span><span class="na">service</span><span class="p">(</span><span class="s1">&#39;http_default_client&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="p">[</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nx">\Drupal</span><span class="o">::</span><span class="na">httpClient</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="p">[</span>
   <span class="s1">&#39;auth&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
 <span class="p">]);</span>
 <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">();</span>

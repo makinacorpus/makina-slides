@@ -471,9 +471,9 @@ Thèmes communs à tous les sites</small>
 
   * Créer un type de contenu 'livre'
   * Permettre l'affichage de commentaires
-  * Champs: Titre, résumé, référence, auteur, couverture
-  * Masquer la référence à l'affichage du nœud et de l'accroche
-  * Afficher le label auteur sur la même ligne que la valeur du champ
+  * Champs: Titre, résumé, référence (ISBN), auteur, couverture
+  * Masquer la référence (ISBN) à l'affichage du nœud et de l'accroche
+  * Afficher le label de l'auteur sur la même ligne que la valeur du champ
   * Créer au moins deux livres
   * Utiliser un style d'image pour uniformiser l'affichage
 
@@ -580,8 +580,9 @@ Fiction', 'Policier'...)
   * L'appliquer au type de contenu 'livre' et catégoriser les livres crées
 précédemment
   * Créer un item de menu (menu principal) pour chaque terme crée
-  * Créer un bloc 'À la une' avec un texte décrivant un livre. Afficher
-uniquement sur la page d'accueil dans la région de droite.
+  * Créer un type de bloc "Livre à la une", avec uniquement un champ
+"Entity Référence" vers un livre, et afficher ce bloc uniquement sur la page
+d'accueil dans la région de droite.
 
 .fx: tp
 
