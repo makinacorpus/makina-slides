@@ -448,7 +448,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
   * Créer un role premium pouvant voir le statut premium
   * Créer un utilisateur pour chaque rôle
 
-### Aide (création de bloc)
+### Aide (création de permissions)
 
     !bash
     vendor/bin/drupal generate:permissions
