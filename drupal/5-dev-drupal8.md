@@ -1055,6 +1055,8 @@ les autres modules.
   permet de faire de l'Ajax sans ecrire de JS
   (<https://www.sitepoint.com/using-ajax-forms-drupal-8/>)
   * \#autocomplete_route_name
+    * Route `system.entity_autocomplete`
+    * Privilégier l'élément de formulaire `'#type' => 'entity_autocomplete'`
 
 --------------------------------------------------------------------------------
 
