@@ -1086,6 +1086,11 @@ formulaires de création ou de modification de nœud.
 <button>Enregistrer</button>
 </code></p>
 
+### Rappels (création de formulaire)
+
+    !console
+    vendor/bin/drupal generate:form
+
 .fx: tp
 
 --------------------------------------------------------------------------------
