@@ -468,7 +468,7 @@ Créer ce module : il doit simplement apparaître dans la liste des modules.
 ## Les plugins & les annotations
 
   * Plugins : <https://www.drupal.org/node/2087839>
-  * Annotations très utilisé dans le cœur : pour tous le plugins (block, entre
+  * Annotations très utilisées dans le cœur : pour tous les plugins (block, entre
   autres) : <https://www.drupal.org/node/1882526>
   * <https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.6.x>
 
@@ -930,7 +930,7 @@ accès premium.
     use Symfony\Component\Routing\RouteCollection;
 
     class RouteSubscriber extends RouteSubscriberBase {
-      public function alterRoutes(RouteCollection $collection) {
+      protected function alterRoutes(RouteCollection $collection) {
         if ($route = $collection->get('user.login')) {
           $route->setPath('/login');
         }

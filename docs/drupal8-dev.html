@@ -1441,7 +1441,7 @@ sous-repertoire <code>custom</code></p>
             
             <section><ul>
 <li>Plugins : <a href="https://www.drupal.org/node/2087839">https://www.drupal.org/node/2087839</a></li>
-<li>Annotations très utilisé dans le cœur : pour tous le plugins (block, entre
+<li>Annotations très utilisées dans le cœur : pour tous les plugins (block, entre
   autres) : <a href="https://www.drupal.org/node/1882526">https://www.drupal.org/node/1882526</a></li>
 <li><a href="https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.6.x">https://api.drupal.org/api/drupal/core%21core.api.php/group/annotation/8.6.x</a></li>
 </ul></section>
@@ -2485,7 +2485,7 @@ accès premium.</p>
 <span class="k">use</span> <span class="nx">Symfony\Component\Routing\RouteCollection</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">RouteSubscriber</span> <span class="k">extends</span> <span class="nx">RouteSubscriberBase</span> <span class="p">{</span>
-  <span class="k">public</span> <span class="k">function</span> <span class="nf">alterRoutes</span><span class="p">(</span><span class="nx">RouteCollection</span> <span class="nv">$collection</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">protected</span> <span class="k">function</span> <span class="nf">alterRoutes</span><span class="p">(</span><span class="nx">RouteCollection</span> <span class="nv">$collection</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$route</span> <span class="o">=</span> <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;user.login&#39;</span><span class="p">))</span> <span class="p">{</span>
       <span class="nv">$route</span><span class="o">-&gt;</span><span class="na">setPath</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">);</span>
     <span class="p">}</span>
