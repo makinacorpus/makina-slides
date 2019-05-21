@@ -1054,9 +1054,6 @@ les autres modules.
   * \#ajax (<https://api.drupal.org/api/drupal/core!core.api.php/group/ajax/8>)
   permet de faire de l'Ajax sans ecrire de JS
   (<https://www.sitepoint.com/using-ajax-forms-drupal-8/>)
-  * \#autocomplete_route_name
-    * Route `system.entity_autocomplete`
-    * Privilégier l'élément de formulaire `'#type' => 'entity_autocomplete'`
 
 --------------------------------------------------------------------------------
 
@@ -1801,6 +1798,9 @@ Directement dans le render array
   * HTML : `Xss::filter($string, array $html_tags = NULL);`
   * Sinon, on considère que le texte est validé
 
+### Un bon article de blog sur le sujet
+  * <https://thinkshout.com/blog/2019/05/recognizing-insecure-drupal-code/>
+
 ### En bonus, déplacez les fichiers
   * <https://www.drupal.org/node/2767907>
 
@@ -2030,7 +2030,7 @@ Directement dans le render array
   * Installer un site (peu importe le moyen, profil, dump, ...)
   * Exporter toute la configuration du site (drush cex)
   * Ensuite, chaque nouveau développeur devra faire :
-    * Installer le site en utilisant le profil d'installation "Config Installer"
+    * Installer le site en utilisant l'installation depuis une config. existante
     * Utiliser un workflow classique d'export / import (drush cex / cim)
   * Il reste des problèmes :
     * Export d'une configuration non souhaitée (devel, ...)

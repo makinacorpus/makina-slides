@@ -2772,11 +2772,6 @@ les autres modules.</p>
 <li>#ajax (<a href="https://api.drupal.org/api/drupal/core!core.api.php/group/ajax/8">https://api.drupal.org/api/drupal/core!core.api.php/group/ajax/8</a>)
   permet de faire de l'Ajax sans ecrire de JS
   (<a href="https://www.sitepoint.com/using-ajax-forms-drupal-8/">https://www.sitepoint.com/using-ajax-forms-drupal-8/</a>)</li>
-<li>#autocomplete_route_name<ul>
-<li>Route <code>system.entity_autocomplete</code></li>
-<li>Privilégier l'élément de formulaire <code>'#type' =&gt; 'entity_autocomplete'</code></li>
-</ul>
-</li>
 </ul></section>
             
           </div>
@@ -4859,6 +4854,10 @@ render() dans le template.</p>
 <li>HTML : <code>Xss::filter($string, array $html_tags = NULL);</code></li>
 <li>Sinon, on considère que le texte est validé</li>
 </ul>
+<h3>Un bon article de blog sur le sujet</h3>
+<ul>
+<li><a href="https://thinkshout.com/blog/2019/05/recognizing-insecure-drupal-code/">https://thinkshout.com/blog/2019/05/recognizing-insecure-drupal-code/</a></li>
+</ul>
 <h3>En bonus, déplacez les fichiers</h3>
 <ul>
 <li><a href="https://www.drupal.org/node/2767907">https://www.drupal.org/node/2767907</a></li>
@@ -5502,7 +5501,7 @@ render() dans le template.</p>
 <li>Installer un site (peu importe le moyen, profil, dump, ...)</li>
 <li>Exporter toute la configuration du site (drush cex)</li>
 <li>Ensuite, chaque nouveau développeur devra faire :<ul>
-<li>Installer le site en utilisant le profil d'installation "Config Installer"</li>
+<li>Installer le site en utilisant l'installation depuis une config. existante</li>
 <li>Utiliser un workflow classique d'export / import (drush cex / cim)</li>
 </ul>
 </li>
