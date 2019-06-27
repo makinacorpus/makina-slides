@@ -672,8 +672,8 @@ fichier src/Controller/ModuleController.php :
     mymodule.abc_view:
       path: '/abc/def'
       defaults:
-        _title: "My ABC page"
-        _controller: "\Drupal\module\Controller\ModuleController::abc_view"
+        _title: 'My ABC page'
+        _controller: '\Drupal\module\Controller\ModuleController::abc_view'
       requirements:
         _permission: 'access my module'
 
