@@ -7,6 +7,8 @@
 
 # Que savez-vous de Drupal ?
 
+# Comment vous sentez-vous ?
+
 --------------------------------------------------------------------------------
 
 # Objectifs de la formation
@@ -777,9 +779,10 @@ d'accueil' est cochée sur toutes les pages du site
   * Ajouter une référence vers l'auteur dans le type de contenu ''Livre''
   * Faire une vue qui affiche la bibliographie de l'auteur (bloc dans les
 contenus ''auteur'')
-  * Faire une vue page qui affiche un slideshow (views slideshow) des 5
-derniers livres publies. En en-tête, mettre un message de bienvenue. Définir
-cette page comme page d'accueil.
+    * Indice : utiliser les filtres contextuels
+  * Faire une vue page qui affiche un slideshow (en installant le module
+_views slideshow_) des 5 derniers livres publies. En en-tête, mettre un message
+de bienvenue. Définir cette page comme page d'accueil.
   * Faire une vue de recherche des livres.
 
 .fx: tp
