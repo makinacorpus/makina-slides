@@ -370,8 +370,11 @@ sous-repertoire `custom`
 ## Qu'est ce qu'un module ?
   * `.info.yml` (<https://www.drupal.org/node/2000204>)
     * `name`
-    * `core`
     * `type: module` /!\
+  * Avant 8.7.7
+    * `core: 8.x`
+  * Après 8.7.7
+    * `core_version_requirement: ^8.8 || ^9`
   * `.module` (souvent vide en D8)
   * `.install` facultatif (configuration désormais indépendante)
   * répertoire "config/install" pour la configuration
@@ -520,7 +523,7 @@ Créer un bloc :
 ### Aide (vérification des permissions)
 
     !php
-    \Drupal::currentUser()->hasPermission('view premium');`
+    \Drupal::currentUser()->hasPermission('view premium');
 
 Attention au cache d'implementations
 

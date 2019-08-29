@@ -463,7 +463,7 @@ performance, architecture)
        * Nombreux choix de configuration
        * Gestion des droits par groupes/utilisateurs
        * Configuration des emails
-       * Consultation/EXport des soumissions
+       * Consultation/Export des soumissions
        
 ![][47]
 
