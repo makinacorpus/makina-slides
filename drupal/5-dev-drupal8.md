@@ -1527,6 +1527,7 @@ dans sites/default/services.yml
     type: theme
     version: 0.1
     core: 8.x
+    base theme: false
     regions:
       branding: "Branding"
       header: "Header"
@@ -1622,6 +1623,12 @@ Ajouter une classe à l'image et créer un fichier CSS:
 L'ajouter lorsqu'un nœud premium est affiché.
 
 .fx: tp
+
+--------------------------------------------------------------------------------
+
+## Pour aller plus loin avec Twig
+
+  * [Level Up Your Twiggery](https://www.lullabot.com/articles/level-your-twiggery)
 
 --------------------------------------------------------------------------------
 
