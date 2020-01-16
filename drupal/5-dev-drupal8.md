@@ -74,15 +74,14 @@ Expert Drupal / SEO<br /><br />
 
 ## "Going off the island"
 
-  * Actuellement en version 8.6.x
+  * Actuellement en version 8.8.x
   * Beaucoup de choses ont changé depuis Drupal 7
-  * Commence à être stabilisé sur les implémentations ou process
 
 --------------------------------------------------------------------------------
 
 ## Rappels PHP
 
-  * PHP 5.5.9 minimum (<http://www.phptherightway.com/>)
+  * PHP 7.0.8 minimum (<http://www.phptherightway.com/>)
   * Programmation orientée Object
   (<http://lornajane.net/posts/2012/introduction-to-php-oop>)
   * Documentation POO officielle (<http://php.net/manual/fr/language.oop5.php>)
@@ -236,7 +235,6 @@ Avantages :
   * _Examples for developpers_ : démonstrations de l'utilisation de l'API
   * Ne pas utiliser les caches durant le développement
   (<https://www.drupal.org/node/2598914> / <http://www.tothenew.com/blog/is-your-drupal-8-ready-for-writing-codes/>)
-  * Par rapport à Drupal 7, _Features_ n'est plus vraiment utile
 
 --------------------------------------------------------------------------------
 
@@ -289,7 +287,7 @@ Avantages :
   * `composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction`
 
   * `composer create-project drupal/drupal my_site_name` installe un nouveau site
-  * `composer require drupal/core ~8.6.10 --update-with-dependencies` met à jour le cœur
+  * `composer require drupal/core:8.8.1 --update-with-dependencies` met à jour le cœur
 
   * Attention, encore [quelques problèmes avec Composer](https://www.jeffgeerling.com/blog/2017/composer-and-drupal-are-still-strange-bedfellows)
 
@@ -1987,12 +1985,6 @@ Directement dans le render array
 
 ## Les installeurs
 
-### Drush make
-
-  * Hérité de Drupal 6, puis 7
-  * Permet de récupérer modules, thèmes, patchs, bibliothèques JS
-  * Par requête HTTP, Git, SVN, ...
-
 ### Utilisation de Composer
 
   * Et notamment de
@@ -2006,7 +1998,7 @@ Directement dans le render array
 
 ## La gestion de la configuration
 
-### CMI
+### Configuration Management Initiative (CMI)
 
   * Nouveauté Drupal 8 : tout ce qui n'est pas du contenu est exportable
   indépendamment du reste du site
@@ -2017,21 +2009,6 @@ Directement dans le render array
   (un site dont l'installation s'est faite à partir d'une copie de la base de
   données du site)
   * [En cours de résolution](https://www.drupal.org/node/1613424)
-
---------------------------------------------------------------------------------
-
-## Features
-
-  * Sert à créer des modules sur un même sujet
-  * Récupère *automagiquement* la configuration associée
-  * Fournit des commandes drush
-    * `drush fu` met à jour _votre code_ depuis le site
-    * `drush fr` met à jour _le site_ depuis votre code
-    * `drush fd` (features-diff) compare le code et le site
-
---------------------------------------------------------------------------------
-
-## Mais... Features ne doit théoriquement pas servir à déployer un site...
 
 --------------------------------------------------------------------------------
 
@@ -2054,6 +2031,22 @@ Directement dans le render array
   * Les profils d'installation pourront directement importer une configuration
     * Déjà opérationnel grâce à [un patch](https://www.drupal.org/node/2788777)
   * Voir <https://www.chapterthree.com/blog/installing-drupal-8-from-configuration>
+
+--------------------------------------------------------------------------------
+
+# Se préparer à Drupal 9
+
+  * Suppression du code déprécié
+  * composer require mglaman/drupal-check --dev
+  * ./vendor/bin/drupal-check [directory]
+
+--------------------------------------------------------------------------------
+
+# Pour aller plus loin
+
+  * Outils d'analyse statique
+    * composer require mglaman/phpstan-drupal --dev
+    * composer require vimeo/psalm --dev
 
 --------------------------------------------------------------------------------
 

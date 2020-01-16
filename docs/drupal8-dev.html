@@ -256,9 +256,8 @@ Expert Drupal / SEO<br /><br /></p>
             
             <section><h2>"Going off the island"</h2>
 <ul>
-<li>Actuellement en version 8.6.x</li>
+<li>Actuellement en version 8.8.x</li>
 <li>Beaucoup de choses ont changé depuis Drupal 7</li>
-<li>Commence à être stabilisé sur les implémentations ou process</li>
 </ul></section>
             
           </div>
@@ -290,7 +289,7 @@ Expert Drupal / SEO<br /><br /></p>
             
             
             <section><ul>
-<li>PHP 5.5.9 minimum (<a href="http://www.phptherightway.com/">http://www.phptherightway.com/</a>)</li>
+<li>PHP 7.0.8 minimum (<a href="http://www.phptherightway.com/">http://www.phptherightway.com/</a>)</li>
 <li>Programmation orientée Object
   (<a href="http://lornajane.net/posts/2012/introduction-to-php-oop">http://lornajane.net/posts/2012/introduction-to-php-oop</a>)</li>
 <li>Documentation POO officielle (<a href="http://php.net/manual/fr/language.oop5.php">http://php.net/manual/fr/language.oop5.php</a>)</li>
@@ -734,7 +733,6 @@ Expert Drupal / SEO<br /><br /></p>
 <li><em>Examples for developpers</em> : démonstrations de l'utilisation de l'API</li>
 <li>Ne pas utiliser les caches durant le développement
   (<a href="https://www.drupal.org/node/2598914">https://www.drupal.org/node/2598914</a> / <a href="http://www.tothenew.com/blog/is-your-drupal-8-ready-for-writing-codes/">http://www.tothenew.com/blog/is-your-drupal-8-ready-for-writing-codes/</a>)</li>
-<li>Par rapport à Drupal 7, <em>Features</em> n'est plus vraiment utile</li>
 </ul></section>
             
           </div>
@@ -920,7 +918,7 @@ Expert Drupal / SEO<br /><br /></p>
 <p><code>composer create-project drupal/drupal my_site_name</code> installe un nouveau site</p>
 </li>
 <li>
-<p><code>composer require drupal/core ~8.6.10 --update-with-dependencies</code> met à jour le cœur</p>
+<p><code>composer require drupal/core:8.8.1 --update-with-dependencies</code> met à jour le cœur</p>
 </li>
 <li>
 <p>Attention, encore <a href="https://www.jeffgeerling.com/blog/2017/composer-and-drupal-are-still-strange-bedfellows">quelques problèmes avec Composer</a></p>
@@ -5385,13 +5383,7 @@ render() dans le template.</p>
             <header><h2>Les installeurs</h2></header>
             
             
-            <section><h3>Drush make</h3>
-<ul>
-<li>Hérité de Drupal 6, puis 7</li>
-<li>Permet de récupérer modules, thèmes, patchs, bibliothèques JS</li>
-<li>Par requête HTTP, Git, SVN, ...</li>
-</ul>
-<h3>Utilisation de Composer</h3>
+            <section><h3>Utilisation de Composer</h3>
 <ul>
 <li>Et notamment de
   <a href="https://github.com/drupal-composer/drupal-project"><em>Drupal Project</em></a></li>
@@ -5429,7 +5421,7 @@ render() dans le template.</p>
             <header><h2>La gestion de la configuration</h2></header>
             
             
-            <section><h3>CMI</h3>
+            <section><h3>Configuration Management Initiative (CMI)</h3>
 <ul>
 <li>Nouveauté Drupal 8 : tout ce qui n'est pas du contenu est exportable
   indépendamment du reste du site</li>
@@ -5457,73 +5449,6 @@ render() dans le template.</p>
             
             <aside class="page_number">
               137/143
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: drupal/5-dev-drupal8.md -->
-      <div class="slide-wrapper">
-        <div class="slide">
-          <div class="inner">
-            
-            <header><h2>Features</h2></header>
-            
-            
-            <section><ul>
-<li>Sert à créer des modules sur un même sujet</li>
-<li>Récupère <em>automagiquement</em> la configuration associée</li>
-<li>Fournit des commandes drush<ul>
-<li><code>drush fu</code> met à jour <em>votre code</em> depuis le site</li>
-<li><code>drush fr</code> met à jour <em>le site</em> depuis votre code</li>
-<li><code>drush fd</code> (features-diff) compare le code et le site</li>
-</ul>
-</li>
-</ul></section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="drupal/5-dev-drupal8.md">drupal/5-dev-drupal8.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              138/143
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: drupal/5-dev-drupal8.md -->
-      <div class="slide-wrapper">
-        <div class="slide">
-          <div class="inner">
-            
-            <header><h2>Mais... Features ne doit théoriquement pas servir à déployer un site...</h2></header>
-            
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="drupal/5-dev-drupal8.md">drupal/5-dev-drupal8.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              139/143
             </aside>
           </footer>
         </div>
@@ -5567,7 +5492,7 @@ render() dans le template.</p>
             </aside>
             
             <aside class="page_number">
-              140/143
+              138/143
             </aside>
           </footer>
         </div>
@@ -5587,6 +5512,76 @@ render() dans le template.</p>
 </ul>
 </li>
 <li>Voir <a href="https://www.chapterthree.com/blog/installing-drupal-8-from-configuration">https://www.chapterthree.com/blog/installing-drupal-8-from-configuration</a></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="drupal/5-dev-drupal8.md">drupal/5-dev-drupal8.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              139/143
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: drupal/5-dev-drupal8.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Se préparer à Drupal 9</h1></header>
+            
+            
+            <section><ul>
+<li>Suppression du code déprécié</li>
+<li>composer require mglaman/drupal-check --dev</li>
+<li>./vendor/bin/drupal-check [directory]</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="drupal/5-dev-drupal8.md">drupal/5-dev-drupal8.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              140/143
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: drupal/5-dev-drupal8.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Pour aller plus loin</h1></header>
+            
+            
+            <section><ul>
+<li>Outils d'analyse statique<ul>
+<li>composer require mglaman/phpstan-drupal --dev</li>
+<li>composer require vimeo/psalm --dev</li>
+</ul>
+</li>
 </ul></section>
             
           </div>
@@ -6390,25 +6385,27 @@ render() dans le template.</p>
         </tr>
         
         <tr id="toc-row-138" class="sub">
-          <th><a href="#slide138">Features</a></th>
+          <th><a href="#slide138">Le worfklow qui fonctionne aujourd'hui</a></th>
           <td><a href="#slide138">138</a></td>
         </tr>
         
         <tr id="toc-row-139" class="sub">
-          <th><a href="#slide139">Mais... Features ne doit théoriquement pas servir à déployer un site...</a></th>
+          <th><a href="#slide139">L'avenir</a></th>
           <td><a href="#slide139">139</a></td>
         </tr>
         
-        <tr id="toc-row-140" class="sub">
-          <th><a href="#slide140">Le worfklow qui fonctionne aujourd'hui</a></th>
-          <td><a href="#slide140">140</a></td>
-        </tr>
-        
-        <tr id="toc-row-141" class="sub">
-          <th><a href="#slide141">L'avenir</a></th>
-          <td><a href="#slide141">141</a></td>
-        </tr>
-        
+      
+      
+      <tr id="toc-row-140">
+        <th><a href="#slide140">Se préparer à Drupal 9</a></th>
+        <td><a href="#slide140">140</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-141">
+        <th><a href="#slide141">Pour aller plus loin</a></th>
+        <td><a href="#slide141">141</a></td>
+      </tr>
       
       
       <tr id="toc-row-142">
