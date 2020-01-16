@@ -93,14 +93,6 @@ apparait.
   
 --------------------------------------------------------------------------------
 
-# Drupal Console VS Drush
-
-  * Concurrents ou compléments ? Fusion ?
-  
-![][49]
-
---------------------------------------------------------------------------------
-
 # Drupal CMI
 
   * Configuration Migration Interface
@@ -113,7 +105,7 @@ apparait.
   
   * Fichiers yml
   
-  * Remplace le module Features ...
+  * Remplace le module Features de Drupal 7
     
 ![][50]
 
@@ -144,7 +136,7 @@ apparait.
     * Copier le contenu de /sites/default dans les sous-répertoires.
     * Lancer l'installation classique via le navigateur
 
-  * Module Domain access (en cours de port D8) - Partage des données
+  * Module Domain access - Partage des données
     * Basé sur 1 instance (même base de données,  même code)
     * Facilité d'administration
     * Partage de contenus, utilisateurs, blocks, etc.
@@ -159,8 +151,6 @@ apparait.
     * Fonctionne très bien pour les anonymes
 
   * Intégration Varnish, Redis, Memcache, CDN, etc.
-
-  * Passez à PHP7 et MySQL 5.6 !
 
 --------------------------------------------------------------------------------
 
@@ -237,6 +227,8 @@ Et bien d'autres
 
   * Metadonnées pour l'affichage dans les résultats de recherche
   * Inclus dans le cœur de Drupal (module RDF)
+  * Aujourd'hui, on va préférer le module
+  [Schema.org Metatag](https://www.drupal.org/project/schema_metatag)
 
 ## Redirect
 
@@ -386,28 +378,16 @@ performance, architecture)
 
 # Gestion des médias 
 
-  * Depuis Drupal 8.4
-    * Media API dans le coeur (stable)
-    
-  * Utilisation avec Embed et Entity browser
-    * Gestionnaire de fichiers (Files/ Images)
-    * Intégration au WYSIWYG
+  * Module _Media Library_
  
-![][51]
-![][52]
-    
 --------------------------------------------------------------------------------
 
 # Gestion des médias 
 
   * Media Initiative
     * <http://www.drupalmedia.org>
-    * Suite de modules (DropzoneJS, Media entity video ...)
-    * Fichiers image, vidéo, audio, ...
-    * La plupart des modules sont en version 1.x
+    * Suite de modules (DropzoneJS...)
     
-![][26]
-
 --------------------------------------------------------------------------------
 
 # Newsletter
@@ -416,7 +396,6 @@ performance, architecture)
     * Gestion des abonnements
     * Gestion des envois instantanés ou asynchrones
     * Gestion de plusieurs catégories de newsletters
-    * Pas tout à fait finalisé pour Drupal 8
 
   * Gestion des souscriptions seules
     * Service externe : _Mailchimp_ (ou d'autres, Mailjet, ...)
@@ -489,7 +468,8 @@ performance, architecture)
   * Search API
     * Apache Solr (module __Search API Solr Search__)
     * ElasticSearch (module __Elasticsearch Connector__)
-  * Gestion des facets, des fichiers, ...
+  * Gestion des facets, des fichiers, de l'auto-complétion avec des modules
+  additionnels
 
 --------------------------------------------------------------------------------
 
@@ -533,27 +513,16 @@ performance, architecture)
 # La roadmap de Drupal
 
   * <https://www.drupal.org/core/roadmap>
-  * Aujourd'hui :
-    * Media
-    * Workflow
-  * Dans le futur :
+  * À venir 
     * CMI 2.0
-    * Back-office en JS
+    * Refonte du Back-office
     * Mises à jour automatiques
-  * Peut-être :
-    * Modèle de données
-    * Cross-channel
     
-![][24]
-
 --------------------------------------------------------------------------------
 
 # Drupal 9
 
 ![][53]
-
-<https://dri.es/plan-for-drupal-9>
-
 
 --------------------------------------------------------------------------------
 
@@ -708,10 +677,6 @@ Pour le développement
 
    [23]: https://www.palantir.net/blog/multi-headed-drupal
 
-   [24]: img/original_release_schedule.png
-   
-   [26]: img/media_entity.png
-      
    [40]: img/outside_in.png
    
    [41]: img/outside_in_2.png
@@ -730,12 +695,6 @@ Pour le développement
 
    [48]: https://drupalconsole.com
    
-   [49]: img/drush-dc.png
-   
    [50]: img/cmi.png
    
-   [51]: img/media_d8_1.png
-   
-   [52]: img/media_d8_2.png
-
-   [53]: img/Drupal9_release_plan.jpg
+   [53]: img/Drupal-9-timeline.png
