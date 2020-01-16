@@ -100,7 +100,6 @@
   * Eurostar
   * Orange Business Services
   * Rue89
-  * Le Figaro
 
 --------------------------------------------------------------------------------
 
@@ -111,12 +110,7 @@
       * Windows : Easyphp/Xampp/Wamp -> Acquia Dev Desktop plus intégré
       * Linux : LAMP
   * alternatives : Nginx (ou Microsoft IIS), PostgreSQL, SQLite (ou Oracle, MSSQL)
-  * versions :
-      * Apache 2.x (avec mod_rewrite)
-      * MySQL > 5.5.3 / MariaDB > 5.5.20
-      * PHP > 5.5.9, préférez les versions plus récentes (PHP 7)
   * [http://drupal.org/requirements][3]
-  * <http://jayl.ee/blog/2015/11/19/how-to-solve-drupal-8.0.0's-requirements-problem-on-wampserver>
 
 --------------------------------------------------------------------------------
 
@@ -135,9 +129,6 @@
 
 # Installation - Exercice
 
-  * Via PhpMyAdmin, créer une base de données vide
-  * Décompresser l'archive Drupal dans le répertoire pré-configuré du serveur
-  * Accéder à l'application via un navigateur
   * Dérouler le processus d'installation
 
 ![][22]
@@ -224,32 +215,6 @@ Thèmes communs à tous les sites</small>
 
 --------------------------------------------------------------------------------
 
-# Principales fonctionnalités - Modules du core
-
-  * _System, User_ -> prérequis
-  * _Node, cKEditor, Field, Comment_ -> création de contenu
-  * _Menu, Block, Taxonomy_ -> structuration
-  * _Toolbar, Shortcut, Color, Contextual, Quick Edit_ -> interface
-  * _Book, Forum_ -> Types de contenus avancés
-  * _Contact, Aggregator, Activity Tracker, Update_ -> fonctions spécifiques
-  * _Path, RDF_ -> SEO
-  * _Migrate_ -> gestion de migration d'autres systèmes (nouveauté D8)
-
---------------------------------------------------------------------------------
-
-# Principales fonctionnalités - Modules du core
-
-  * Content Moderation -> création de contenu
-  * _"Outside-In"_ -> structuration
-  * _Views_ -> listes de données (nouveauté D8)
-  * Section _Field types_ -> types de champs
-  * Section _Multilingual_ -> traduction (nouveauté D8)
-  * Section _Web services_ -> services web (nouveauté D8)
-
-> Drupal sans ses modules contrib ne permet que de faire des sites simples.
-
---------------------------------------------------------------------------------
-
 # Choix des modules
 
   * Choisir le module : [http://drupal.org/project/modules][5]
@@ -288,6 +253,7 @@ Thèmes communs à tous les sites</small>
   * Méthodes : ![][6]
     * Décompresser dans /modules
     * Utiliser l'interface d'installation
+    * Utiliser la ligne de commande
   * Lire le README.txt et le INSTALL.txt
   * Activer et Configurer
     * Paramètrer
@@ -309,7 +275,7 @@ Thèmes communs à tous les sites</small>
 
 # Exercice
 
-  * Installer le module Devel
+  * Installer le module Pathauto
 
 .fx: tp
 
@@ -386,19 +352,10 @@ Thèmes communs à tous les sites</small>
 # Gérer les utilisateurs - Exercice 2
 
   * Refaites l'exercice précédent avec le module "Content Modération"
-  * Vérifier que vous pouvez supprimer les droits d'aministration données
+  * Vérifier que vous pouvez supprimer les droits d'aministration donnés
   précédemment
 
 .fx: tp larger
-
---------------------------------------------------------------------------------
-
-# Pour aller plus loin...
-
-  * Modules de la communauté
-    * Content Access
-
-  * Reconstruction des droits d'accès
 
 --------------------------------------------------------------------------------
 
@@ -504,35 +461,27 @@ Thèmes communs à tous les sites</small>
 
   * Définissent si un champ doit apparaitre
   * Fonctionnent comme pour l'affichage
+  * MAIS
+    * Aucun moyen de les utiliser avec seulement le core
+    * Voir le module
+  [Form Mode Manager](https://www.drupal.org/project/form_mode_manager)
 
 --------------------------------------------------------------------------------
 
-# Panelizer
+# Mise en page des contenus (nouveauté Drupal 8)
 
-  * "Rolls-Royce de la mise en page"
-  * Permet de structurer les nœuds et les contenus entre eux
-  * Interface complexe
-  * Préférable de ne pas penser à Panelizer tout de suite
+  * Permettent d'organiser le contenu dans la page
+  * _Uniquement_ pour la zone de contenu
 
-![][23]
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Hx4EEzI7aNE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 --------------------------------------------------------------------------------
 
-# Display suite
+# Pour aller plus loin
 
-  * structurer les champs dans un nœud
-
-![][24]
-
---------------------------------------------------------------------------------
-
-# Exercices Display Suite
-
-  * Créer plusieurs displays pour le livre
-    * 2 colonnes (image seule à gauche & tout à droite)
-    * 2 colonnes (tout à gauche & body à droite)
-
-.fx: tp
+  * [Layout Builder Restrictions](https://www.drupal.org/project/layout_builder_restrictions)
+  * [Layout Builder Everywhere](https://www.drupal.org/project/lb_everywhere)
+  * [Layout Builder UX](https://www.drupal.org/project/lb_ux)
 
 --------------------------------------------------------------------------------
 
@@ -691,6 +640,17 @@ _La suite après les blocs_
   * Attention, pour le moment, pas de permissions spécifiques
     
 ![][27]
+
+--------------------------------------------------------------------------------
+
+# La gestion des blocs - Exercice
+
+  * Créer un nouveau type de bloc "à la une"
+  * Ajouter un champ "Référence à un contenu"
+  * Créer une instance de ce bloc en sélectionnant un livre créé précédemment
+  * Positionner ce bloc en haut de la page de gauche de la page d'accueil
+
+.fx: tp
 
 --------------------------------------------------------------------------------
 
@@ -889,10 +849,6 @@ de bienvenue. Définir cette page comme page d'accueil.
    [21]: img/drupal-logo.png
 
    [22]: img/installed8.png
-
-   [23]: img/panelizer.png
-
-   [24]: img/ds.jpg
 
    [25]: img/taxonomy8.png
 
